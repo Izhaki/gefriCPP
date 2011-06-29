@@ -13,7 +13,7 @@ We are currently looking for:
 Development
 -----------
 
-- wxWidgets 2.8.12 (built binaries provided).
+- wxWidgets 2.8.12.
 - [CodeLite] projects to build the library and samples.
 - Assuming Xcode tools on Mac and MinGW on Windows.
 
