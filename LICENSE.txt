@@ -1,0 +1,9 @@
+gefri - License
+
+The gefri library (src) is distributed under the wxWindows library license (see http://www.opensource.org/licenses/WXwindows). In short, the licence is an L-GPL one (Library General Public Licence), but it allows derived works in binary form to be distributed on the user's own terms. This allows commercial use of the library so long as it is distributed in binary form.
+
+The sample applications (samples) are distributed under the GPL-3.0 license (see http://opensource.org/licenses/GPL-3.0).
+
+The documentation is subject to the wxWindows documentation license.
+
+This library and its related sample applications are distributed in the hope that it will be useful, but without any warranty; without even the implied warranty of merchantability or fitness for a particular purpose. See the wxWindows library license for more details.

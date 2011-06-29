@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeLite_Project Name="gefri" InternalType="Library">
+  <Plugins>
+    <Plugin Name="qmake">
+      <![CDATA[00050001N0005Debug0000000000000001N0011Mac32 Debug0000000000000001N0013Mac32 Release0000000000000001N0011Win32 Debug0000000000000001N0013Win32 Release000000000000]]>
+    </Plugin>
+  </Plugins>
+  <Description/>
+  <Dependencies/>
+  <VirtualDirectory Name="adapters">
+    <VirtualDirectory Name="wx">
+      <File Name="../../src/adapters/wx/gxLightweightControl.cpp"/>
+      <File Name="../../src/adapters/wx/gxLightweightControl.h"/>
+      <File Name="../../src/adapters/wx/gxObject.h"/>
+      <File Name="../../src/adapters/wx/gxPaintDC.h"/>
+      <File Name="../../src/adapters/wx/gxRect.h"/>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <VirtualDirectory Name="core">
+    <File Name="../../src/core/gxComposite.cpp"/>
+    <File Name="../../src/core/gxComposite.h"/>
+    <File Name="../../src/core/gxObject.h"/>
+    <File Name="../../src/core/gxPaintDC.h"/>
+    <File Name="../../src/core/gxRect.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="lightweights">
+    <File Name="../../src/lightweights/gxDcPainter.cpp"/>
+    <File Name="../../src/lightweights/gxDcPainter.h"/>
+    <File Name="../../src/lightweights/gxLightweightControl.h"/>
+    <File Name="../../src/lightweights/gxLightweightSystem.cpp"/>
+    <File Name="../../src/lightweights/gxLightweightSystem.h"/>
+    <File Name="../../src/lightweights/gxPainter.cpp"/>
+    <File Name="../../src/lightweights/gxPainter.h"/>
+    <File Name="../../src/lightweights/gxRootViewElement.cpp"/>
+    <File Name="../../src/lightweights/gxRootViewElement.h"/>
+    <File Name="../../src/lightweights/gxSructuralViewElement.cpp"/>
+    <File Name="../../src/lightweights/gxStructuralViewElement.h"/>
+    <File Name="../../src/lightweights/gxViewElement.cpp"/>
+    <File Name="../../src/lightweights/gxViewElement.h"/>
+    <File Name="../../src/lightweights/gxVisualViewElement.cpp"/>
+    <File Name="../../src/lightweights/gxVisualViewElement.h"/>
+    <VirtualDirectory Name="shapes">
+      <File Name="../../src/lightweights/shapes/gxRectangle.cpp"/>
+      <File Name="../../src/lightweights/shapes/gxRectangle.h"/>
+      <File Name="../../src/lightweights/shapes/gxShape.cpp"/>
+      <File Name="../../src/lightweights/shapes/gxShape.h"/>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <Settings Type="Static Library">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="">
+        <IncludePath Value="../../src"/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Mac32 Debug" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Static Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g;-g;$(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes);-arch i386" C_Options="-g;-g;$(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes);-arch i386" Required="yes" PreCompiledHeader="">
+        <Preprocessor Value="__WX__"/>
+      </Compiler>
+      <Linker Options="-mwindows;-arch i386; $(shell $(WX_TOOL) --debug=yes --libs --unicode=yes)" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="./../../lib/lib$(ProjectName)_mac32d.a" IntermediateDirectory="./build/Mac32-Debug" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes"/>
+      <Environment EnvVarSetName="gefri debug" DbgSetName="&lt;Use Defaults&gt;"/>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName/>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+    </Configuration>
+    <Configuration Name="Mac32 Release" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Static Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-O2;$(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=no);-arch i386" C_Options="-O2;$(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=no);-arch i386" Required="yes" PreCompiledHeader="">
+        <Preprocessor Value="__WX__"/>
+      </Compiler>
+      <Linker Options="-s;-arch i386; $(shell $(WX_TOOL) --debug=no --libs --unicode=yes)" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="./../../lib/lib$(ProjectName)_mac32.a" IntermediateDirectory="./build/Mac32-Release" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes"/>
+      <Environment EnvVarSetName="gefri release" DbgSetName="&lt;Use Defaults&gt;"/>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName/>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+    </Configuration>
+    <Configuration Name="Win32 Debug" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Static Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g;$(shell wx-config --cxxflags --unicode=yes --debug=yes)" C_Options="-g;$(shell wx-config --cxxflags --unicode=yes --debug=yes)" Required="yes" PreCompiledHeader=""/>
+      <Linker Options="$(shell wx-config --debug=yes --libs --unicode=yes)" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="./../../lib/lib$(ProjectName)_msw32d.a" IntermediateDirectory="./build/Win32-Debug" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="no"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;"/>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName/>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+    </Configuration>
+    <Configuration Name="Win32 Release" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Static Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-O2;$(shell wx-config --cxxflags --unicode=yes --debug=no)" C_Options="-O2;$(shell wx-config --cxxflags --unicode=yes --debug=no)" Required="yes" PreCompiledHeader=""/>
+      <Linker Options="-s;$(shell wx-config --debug=no --libs --unicode=yes)" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="./../../lib/lib$(ProjectName)_msw32.a" IntermediateDirectory="./build/Win32-Release" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;"/>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName/>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+    </Configuration>
+  </Settings>
+</CodeLite_Project>

@@ -1,0 +1,7 @@
+build/gefri/build
+docs
+lib
+libs/wx/include
+libs/wx/lib
+libs/wx/license.txt
+samples/gxDraw/build
