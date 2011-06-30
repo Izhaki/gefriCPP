@@ -2,7 +2,14 @@
 <Session Name="/Development/gefri/build/gefri.workspace">
   <int Value="0" Name="m_selectedTab"/>
   <wxString Value="/Development/gefri/build/gefri.workspace" Name="m_workspaceName"/>
-  <TabInfoArray Name="TabInfoArray"/>
+  <TabInfoArray Name="TabInfoArray">
+    <TabInfo>
+      <wxString Value="/Development/gefri/src/lightweights/gxPainter.cpp" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="0" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+    </TabInfo>
+  </TabInfoArray>
   <SerializedObject Name="m_breakpoints">
     <long Value="0" Name="Count"/>
   </SerializedObject>
