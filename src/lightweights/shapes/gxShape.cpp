@@ -1,1 +1,6 @@
-#include "lightweights/shapes/gxShape.h"void gxShape::PaintSelf(gxPainter &aPainter){  PaintShape(aPainter);}
+#include "lightweights/shapes/gxShape.h"
+
+void gxShape::PaintSelf(gxPainter &aPainter)
+{
+  PaintShape(aPainter);
+}
