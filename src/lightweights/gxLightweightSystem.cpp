@@ -46,14 +46,6 @@ void gxLightweightSystem::Paint(gxPaintDC *aDc, gxRects const &aDamagedRects)
   // Create a painter
   gxDcPainter painter(aDc, aDamagedRects);
 
-  // Set the clip area of the painter to the bounds of the control, but with
-  // (0,0) origins. This is done as with MSW the clip area upon creation is
-  // (0, 0, 0, 0).
-  gxRect clip = GetControlBounds();
-  clip.SetX(0);
-  clip.SetY(0); 
-  painter.SetAbsoluteClipArea(clip );
-
   // Ask the root view element to paint itself using the painter.
   mRootViewElement->Paint(painter);
 }
