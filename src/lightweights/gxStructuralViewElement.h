@@ -29,6 +29,9 @@ public:
 
   /**
    * @brief Returns the bounds of this view element.
+   * 
+   *  The bounds are always at origin (0,0) and has the size of the parent.
+   *  This way any structural element is covering the whole of its parent.
    */
   virtual gxRect GetBounds() const;
 protected:

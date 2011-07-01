@@ -3,6 +3,7 @@
 #include "lightweights/gxLightweightControl.h"
 #include "lightweights/gxLightweightSystem.h"
 #include "lightweights/shapes/gxRectangle.h"
+#include "lightweights/gxScaler.h"
 
 #include "core/gxComposite.h"
 
@@ -17,6 +18,7 @@ private:
   gxLightweightControl *mLightweightControl;
   gxLightweightSystem *mLightweightSystem;
   gxRectangle *mBody, *mFace, *mEyeL, *mEyeR, *Iris1, *Iris2, *mLeg;
+  gxScaler *mZoom;
 public:
   MyFrame(wxWindow *parent,
             wxWindowID id,
@@ -35,4 +37,9 @@ public:
   void OnAction2(wxCommandEvent &e);
   void OnAction3(wxCommandEvent &e);
   void OnAction4(wxCommandEvent &e);	
+  
+  void OnZoomIn(wxCommandEvent &e);
+  void OnZoomOut(wxCommandEvent &e);
+  void OnZoomInVert(wxCommandEvent &e);
+  void OnZoomOutVert(wxCommandEvent &e);	
 };

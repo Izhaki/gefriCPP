@@ -14,7 +14,8 @@ typedef std::stack< gxPainterState* > StateStack;
 struct gxPainterState
 {
 public:
-  int dx, dy;
+  int dx, dy;     // The current translation (offset)
+  float sx, sy;  // The current scale (zoom)
   gxRect clipArea;
 };
 
@@ -56,10 +57,17 @@ public:
    * As painters often draw view elements that are traversed recursively,
    * painters allow moving the painting origin so view element won't have
    * each to calculate their absolute position.
-   * @param dx The amout of pixels to shift paining origin by on the X axis
-   * @param dy The amout of pixels to shift paining origin by on the Y axis
+   * @param dx The amout of pixels to shift paining origin by on the X axis.
+   * @param dy The amout of pixels to shift paining origin by on the Y axis.
    */
   virtual void SetTranslate(int dx, int dy) ;
+
+  /**
+   * @brief Sets the scale (zoom) for all drawing operations.
+   * @param sx The X axis scale.
+   * @param sy The Y axis scale.
+   */
+  virtual void SetScale(float sx, float sy);
 
   /**
    * @brief Sets the clip rect for drawing while intersecting with existing
@@ -122,6 +130,13 @@ protected:
 
   int mTranslateX;
   int mTranslateY;
+  
+  float mScaleX;
+  float mScaleY;
+
+  // These two are for performence optimization.
+  bool mNeedsTranslating;
+  bool mNeedsScaling;
 
   StateStack  mStateStack;
 };

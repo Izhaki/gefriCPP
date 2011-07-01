@@ -13,7 +13,11 @@ enum
   wxID_ACTION1 = 200,
   wxID_ACTION2,
   wxID_ACTION3,
-  wxID_ACTION4
+  wxID_ACTION4,
+  wxID_ZOOM_INS,
+  wxID_ZOOM_OUTS,
+  wxID_ZOOM_IN_VERT,
+  wxID_ZOOM_OUT_VERT
 };
 
 BEGIN_EVENT_TABLE(MyFrame, wxFrame)
@@ -24,6 +28,11 @@ BEGIN_EVENT_TABLE(MyFrame, wxFrame)
   EVT_MENU(wxID_ACTION2, MyFrame::OnAction2)
   EVT_MENU(wxID_ACTION3, MyFrame::OnAction3)
   EVT_MENU(wxID_ACTION4, MyFrame::OnAction4)
+  
+  EVT_MENU(wxID_ZOOM_INS, MyFrame::OnZoomIn)
+  EVT_MENU(wxID_ZOOM_OUTS, MyFrame::OnZoomOut)
+  EVT_MENU(wxID_ZOOM_IN_VERT, MyFrame::OnZoomInVert)
+  EVT_MENU(wxID_ZOOM_OUT_VERT, MyFrame::OnZoomOutVert)  
 END_EVENT_TABLE()
 
 
@@ -53,10 +62,14 @@ void MyFrame::InitGefri()
   mLightweightSystem = new gxLightweightSystem(mLightweightControl);
 
   mBody = new gxRectangle(gxRect(10, 10, 480, 480));
-  mFace = new gxRectangle(gxRect(20, 10, 100, 100));
-  mLeg = new gxRectangle(gxRect(410, 10, 10, 10));
-  mBody->AddChild(mFace);
-  mBody->AddChild(mLeg);
+  mZoom = new gxScaler();
+  
+  mFace = new gxRectangle(gxRect(40, 40, 100, 100));
+  //mLeg = new gxRectangle(gxRect(410, 10, 10, 10));
+  
+  mZoom->AddChild(mFace);
+  //mZoom->AddChild(mLeg);
+  mBody->AddChild(mZoom);
   mLightweightSystem->SetContents(mBody);
 }
 
@@ -97,15 +110,15 @@ void MyFrame::OnQuit(wxCommandEvent &e)
 void MyFrame::OnAction1(wxCommandEvent &e)
 {
   wxUnusedVar(e);
-  gxRect newBounds = gxRect(130, 120, 100, 100);
+  gxRect newBounds = gxRect(120, 120, 100, 100);
   mFace->SetBounds(newBounds);
 }
 
 void MyFrame::OnAction2(wxCommandEvent &e)
 {
   wxUnusedVar(e);
-  mEyeL = new gxRectangle(gxRect(10, 20, 20, 20));
-  mEyeR = new gxRectangle(gxRect(90, 20, 20, 20));
+  mEyeL = new gxRectangle(gxRect(10, 10, 20, 20));
+  mEyeR = new gxRectangle(gxRect(90, 10, 20, 20));
 
 //  Iris1 = new gxRectangle(gxRect(3, 3, 2, 2));
 //  Iris2 = new gxRectangle(gxRect(7, 7, 2, 2));
@@ -132,6 +145,32 @@ void MyFrame::OnAction4(wxCommandEvent &e)
   wxUnusedVar(e);
 }
 
+
+void MyFrame::OnZoomIn(wxCommandEvent &e)
+{
+    wxUnusedVar(e);
+    mZoom->MultiplyScale(2, 2);    
+}
+
+void MyFrame::OnZoomOut(wxCommandEvent &e)
+{
+    wxUnusedVar(e);
+    mZoom->MultiplyScale(0.5, 0.5);
+}
+
+void MyFrame::OnZoomInVert(wxCommandEvent &e)
+{
+    wxUnusedVar(e);
+    mZoom->MultiplyScale(2, 1);
+}
+
+void MyFrame::OnZoomOutVert(wxCommandEvent &e)
+{
+    wxUnusedVar(e);
+    mZoom->MultiplyScale(0.5, 1);
+}
+
+
 void MyFrame::CreateMenuBar()
 {
   wxMenuBar *mb = new wxMenuBar();
@@ -150,6 +189,14 @@ void MyFrame::CreateMenuBar()
   actionsMenu->Append(wxID_ACTION3, wxT("Remove Eyes\tCtrl-3"));
   actionsMenu->Append(wxID_ACTION4, wxT("Unused\tCtrl-4"));
   mb->Append(actionsMenu, wxT("&Actions"));
+
+  //Zoom Menu
+  wxMenu *zoomMenu = new wxMenu();
+  zoomMenu->Append(wxID_ZOOM_INS, wxT("Zoom In\t+" ));
+  zoomMenu->Append(wxID_ZOOM_OUTS, wxT("Zoom Out\t-"));
+  zoomMenu->Append(wxID_ZOOM_IN_VERT, wxT("Zoom In Vertically\tt"));
+  zoomMenu->Append(wxID_ZOOM_OUT_VERT, wxT("Zoom In Horizontally\tr"));
+  mb->Append(zoomMenu, wxT("&Zoom"));
 
   SetMenuBar(mb);
 }

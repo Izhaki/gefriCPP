@@ -19,7 +19,6 @@ bool gxDcPainter::NeedsPainting(gxRect const &aRect)
   // Transform the rect
   gxRect transformedRect(aRect);
   Transform(transformedRect);
-  //wxLogDebug(_T("NeedsPainting After Transform: %i, %i, %i, %i"), transformedRect.GetX(), transformedRect.GetY(), transformedRect.GetWidth(), transformedRect.GetHeight());
 
   // Get the cliping rect
   gxRect clipRect = GetClipRect();
