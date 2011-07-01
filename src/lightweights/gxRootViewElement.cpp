@@ -18,15 +18,13 @@ void gxRootViewElement::SetLightweightSystem(gxLightweightSystem *aLightweightSy
 
 gxRect gxRootViewElement::GetBounds() const
 {
+  wxASSERT_MSG(GetLightweightSystem() != NULL, _T("gxRootViewElement::GetBounds called but no Lightweight System"));
+  
   if (GetLightweightSystem() != NULL)
   {
-    // Get the lightweight system control bounds.
-    gxRect bounds =  GetLightweightSystem()->GetControlBounds();
-    // Set origin to 0
-    bounds.SetX(0);
-    bounds.SetY(0);
-
-    return bounds;
+    // This will return a rectangle at origin (0,0) with the size of the
+    // of the control bounds.
+    return gxRect(GetLightweightSystem()->GetControlBounds().GetSize());
   }
   return gxRect(0, 0, 0, 0);
 }
