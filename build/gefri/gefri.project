@@ -33,7 +33,6 @@
     <File Name="../../src/lightweights/gxPainter.h"/>
     <File Name="../../src/lightweights/gxRootViewElement.cpp"/>
     <File Name="../../src/lightweights/gxRootViewElement.h"/>
-    <File Name="../../src/lightweights/gxSructuralViewElement.cpp"/>
     <File Name="../../src/lightweights/gxStructuralViewElement.h"/>
     <File Name="../../src/lightweights/gxViewElement.cpp"/>
     <File Name="../../src/lightweights/gxViewElement.h"/>
@@ -45,6 +44,9 @@
       <File Name="../../src/lightweights/shapes/gxShape.cpp"/>
       <File Name="../../src/lightweights/shapes/gxShape.h"/>
     </VirtualDirectory>
+    <File Name="../../src/lightweights/gxScaler.h"/>
+    <File Name="../../src/lightweights/gxScaler.cpp"/>
+    <File Name="../../src/lightweights/gxStructuralViewElement.cpp"/>
   </VirtualDirectory>
   <Settings Type="Static Library">
     <GlobalSettings>

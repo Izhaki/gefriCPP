@@ -61,7 +61,7 @@ void MyFrame::InitGefri()
   mLightweightControl = new gxLightweightControl(this, wxID_HIGHEST + 1, wxPoint(10,10), wxSize(500,500));
   mLightweightSystem = new gxLightweightSystem(mLightweightControl);
 
-  mBody = new gxRectangle(gxRect(10, 10, 480, 480));
+  mDocument = new gxRectangle(gxRect(10, 10, 480, 480));
   mZoom = new gxScaler();
   
   mFace = new gxRectangle(gxRect(40, 40, 100, 100));
@@ -69,8 +69,8 @@ void MyFrame::InitGefri()
   
   mZoom->AddChild(mFace);
   //mZoom->AddChild(mLeg);
-  mBody->AddChild(mZoom);
-  mLightweightSystem->SetContents(mBody);
+  mDocument->AddChild(mZoom);
+  mLightweightSystem->SetContents(mDocument);
 }
 
 void MyFrame::Initialize()
@@ -90,6 +90,8 @@ void MyFrame::Initialize()
   CreateMenuBar();
 
   InitGefri();
+  
+  sz->Add(mLightweightControl, 1, wxEXPAND | wxALL);
 
   sz->Layout();
 }

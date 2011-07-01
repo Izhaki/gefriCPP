@@ -17,7 +17,7 @@ private:
   
   gxLightweightControl *mLightweightControl;
   gxLightweightSystem *mLightweightSystem;
-  gxRectangle *mBody, *mFace, *mEyeL, *mEyeR, *Iris1, *Iris2, *mLeg;
+  gxRectangle *mDocument, *mFace, *mEyeL, *mEyeR, *Iris1, *Iris2, *mLeg;
   gxScaler *mZoom;
 public:
   MyFrame(wxWindow *parent,

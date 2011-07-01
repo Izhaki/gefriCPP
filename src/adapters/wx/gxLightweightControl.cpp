@@ -67,10 +67,24 @@ void gxLightweightControl::OnPaint(wxPaintEvent& WXUNUSED(event))
     upd ++ ;
   }
 
-  // Temporal: Draw a rectangle so we can see the Control.
+  // Temporal: Draw chess board
+  dc.SetPen(wxPen(*wxTRANSPARENT_PEN));
   wxSize size = GetSize();
-  dc.DrawRectangle(0, 0, size.GetWidth(), size.GetHeight());
-
+  int boxSize = 40;
+  for (int x = 0; x <= (int)(size.GetWidth() / boxSize); x++)
+  {
+    for (int y = 0; y <= (int)(size.GetHeight() / boxSize); y++)
+    {
+      if ( (x + y) % 2 == 0)
+        dc.SetBrush(wxBrush(wxColor(240,240,240)));
+      else
+        dc.SetBrush(wxBrush(wxColor(255,255,255)));
+      dc.DrawRectangle(x * boxSize, y * boxSize, boxSize, boxSize);     
+    }
+  }
+  dc.SetBrush(wxBrush(_T("white"), wxSOLID));
+  dc.SetPen(*wxBLACK_PEN);
+  
   // Delegate paint duties to the lightweight system.
   if (mLightweightSystem)
   {

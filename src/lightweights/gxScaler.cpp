@@ -43,14 +43,10 @@ void gxScaler::TranslateToParent(gxRect &aRect)
     int w = aRect.width;
     int h = aRect.height;
         
-    wxLogDebug(_T("TranslateToParent Before: %i, %i, %i, %i"), x, y, w, h);    
-        
     aRect.SetX((int)floor(x * mScaleX));
     aRect.SetY((int)floor(y * mScaleY));
     aRect.SetWidth((int)floor( (x + w) * mScaleX) - aRect.x);
-    aRect.SetHeight((int)floor( (y + h) * mScaleY) - aRect.y); 
-
-   wxLogDebug(_T("TranslateToParent After Scale: %i, %i, %i, %i"), aRect.GetX(), aRect.GetY(), aRect.GetWidth(), aRect.GetHeight());   
+    aRect.SetHeight((int)floor( (y + h) * mScaleY) - aRect.y);  
     
   if (GetParent() != NULL)
     aRect.Offset(GetParent()->GetBounds().GetPosition());

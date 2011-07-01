@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CodeLite_Workspace Name="gefri" Database="./gefri.tags">
-  <Project Name="gefri" Path="gefri/gefri.project" Active="Yes"/>
-  <Project Name="gxDraw" Path="../samples/gxDraw/gxDraw.project" Active="No"/>
+  <Project Name="gefri" Path="gefri/gefri.project" Active="No"/>
+  <Project Name="gxDraw" Path="../samples/gxDraw/gxDraw.project" Active="Yes"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Mac32 Debug" Selected="yes">
+    <WorkspaceConfiguration Name="Mac32 Debug" Selected="no">
       <Project Name="gxDraw" ConfigName="Mac32 Debug"/>
       <Project Name="gefri" ConfigName="Mac32 Debug"/>
     </WorkspaceConfiguration>
@@ -11,7 +11,7 @@
       <Project Name="gxDraw" ConfigName="Mac32 Release"/>
       <Project Name="gefri" ConfigName="Mac32 Release"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Win32 Debug" Selected="no">
+    <WorkspaceConfiguration Name="Win32 Debug" Selected="yes">
       <Project Name="gxDraw" ConfigName="Win32 Debug"/>
       <Project Name="gefri" ConfigName="Win32 Debug"/>
     </WorkspaceConfiguration>
