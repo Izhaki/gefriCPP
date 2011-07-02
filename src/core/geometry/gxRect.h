@@ -160,6 +160,13 @@ public:
   {
     return CentreIn(r, dir);
   }
+  
+  /**
+   * @brief Scales the rect by the given factors.
+   * @param aScaleX The X scale factor
+   * @param aScaleY The Y scale factor
+   */
+  void Scale(float aScaleX, float aScaleY);
 
 public:
   int x, y, width, height;

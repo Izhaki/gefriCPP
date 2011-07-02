@@ -1,7 +1,5 @@
 #include "lightweights/gxScaler.h"
 
-#include <math.h>
-
 gxScaler::gxScaler()
   : mScaleX(1), mScaleY(1)
 {
@@ -42,15 +40,7 @@ void gxScaler::TranslateToParent(gxRect &aRect)
 {
   if (mScaleX != 1 || mScaleY != 1)
   {
-    int x = aRect.x;
-    int y = aRect.y;
-    int w = aRect.width;
-    int h = aRect.height;
-    
-    aRect.SetX((int)floor(x * mScaleX));
-    aRect.SetY((int)floor(y * mScaleY));
-    aRect.SetWidth((int)floor( (x + w) * mScaleX) - aRect.x);
-    aRect.SetHeight((int)floor( (y + h) * mScaleY) - aRect.y);
+    aRect.Scale(mScaleX, mScaleY);
   }
     
   if (GetParent() != NULL)

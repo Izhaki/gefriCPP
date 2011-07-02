@@ -103,15 +103,7 @@ void gxPainter::Transform(gxRect &aRect)
 {
   if (mNeedsScaling)
   {
-    int x = aRect.x;
-    int y = aRect.y;
-    int w = aRect.width;
-    int h = aRect.height;
-    
-    aRect.SetX((int)floor(x * mScaleX));
-    aRect.SetY((int)floor(y * mScaleY));
-    aRect.SetWidth((int)floor( (x + w) * mScaleX) - aRect.x);
-    aRect.SetHeight((int)floor( (y + h) * mScaleY) - aRect.y);
+    aRect.Scale(mScaleX, mScaleY);
   }
 
   if (mNeedsTranslating) {

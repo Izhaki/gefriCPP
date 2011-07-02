@@ -3,6 +3,7 @@
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
 #include "core/geometry/gxRect.h"
+#include <math.h>
 
 gxRect::gxRect(const gxPoint& point1, const gxPoint& point2)
 {
@@ -142,4 +143,15 @@ bool gxRect::Intersects(const gxRect& rect) const
 
   // if there is no intersection, both width and height are 0
   return r.width != 0;
+}
+
+void gxRect::Scale(float aScaleX, float aScaleY)
+{
+    int originalX = x;
+    int originalY = y;
+    
+    x = (int)floor(originalX * aScaleX);
+    y = (int)floor(originalY * aScaleY);
+    width = (int)floor( (originalX + width) * aScaleX) - x;
+    height = (int)floor( (originalY + height) * aScaleY) - y;
 }

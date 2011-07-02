@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo ----------Building project:[ gefri - Mac32 Debug ]----------
-	@cd "gefri" && "$(MAKE)" -w -f "gefri.mk"
+	@echo ----------Building project:[ gxDraw - Win32 Debug ]----------
+	@cd "..\samples\gxDraw" && "mingw32-make.exe"  -j 1 -f "gxDraw.mk"
 clean:
-	@echo ----------Cleaning project:[ gefri - Mac32 Debug ]----------
-	@cd "gefri" && "$(MAKE)" -w -f "gefri.mk" clean
+	@echo ----------Cleaning project:[ gxDraw - Win32 Debug ]----------
+	@cd "..\samples\gxDraw" && "mingw32-make.exe"  -j 1 -f "gxDraw.mk" clean
