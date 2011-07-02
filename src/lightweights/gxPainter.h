@@ -2,7 +2,7 @@
 #define gxPainter_h
 
 #include "core/gxObject.h"
-#include "core/gxRect.h"
+#include "core/geometry/gxGeometry.h"
 
 #include <stack>
 

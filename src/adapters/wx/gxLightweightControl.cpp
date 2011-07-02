@@ -40,7 +40,8 @@ void gxLightweightControl::UnsetLightweightSystem()
 
 gxRect gxLightweightControl::GetBounds() const
 {
-  return (gxRect)GetRect();
+  wxRect rect = GetRect();
+  return gxRect(rect.x, rect.y, rect.width, rect.height);
 }
 
 
@@ -62,7 +63,8 @@ void gxLightweightControl::OnPaint(wxPaintEvent& WXUNUSED(event))
   wxRegionIterator upd(GetUpdateRegion()); 
   while (upd)
   {
-    gxRect damagedRect(upd.GetRect());
+    wxRect rect = upd.GetRect();
+    gxRect damagedRect(rect.x, rect.y, rect.width, rect.height);
     damagedRects.push_back(damagedRect);
     upd ++ ;
   }
@@ -98,4 +100,10 @@ void gxLightweightControl::OnMouseMove(wxMouseEvent& event)
 
 void gxLightweightControl::OnLeftMouseBtnDown(wxMouseEvent& event)
 {
+}
+
+void gxLightweightControl::RefreshRect(const gxRect& aRect, bool eraseBackground)
+{
+  wxRect rect(aRect.x, aRect.y, aRect.width, aRect.height);
+  wxControl::RefreshRect(rect, eraseBackground);
 }

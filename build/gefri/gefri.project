@@ -13,7 +13,6 @@
       <File Name="../../src/adapters/wx/gxLightweightControl.h"/>
       <File Name="../../src/adapters/wx/gxObject.h"/>
       <File Name="../../src/adapters/wx/gxPaintDC.h"/>
-      <File Name="../../src/adapters/wx/gxRect.h"/>
     </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="core">
@@ -21,7 +20,14 @@
     <File Name="../../src/core/gxComposite.h"/>
     <File Name="../../src/core/gxObject.h"/>
     <File Name="../../src/core/gxPaintDC.h"/>
-    <File Name="../../src/core/gxRect.h"/>
+    <VirtualDirectory Name="geometry">
+      <File Name="../../src/core/geometry/gxGeometry.h"/>
+      <File Name="../../src/core/geometry/gxGeometryDefs.h"/>
+      <File Name="../../src/core/geometry/gxPoint.h"/>
+      <File Name="../../src/core/geometry/gxRect.cpp"/>
+      <File Name="../../src/core/geometry/gxRect.h"/>
+      <File Name="../../src/core/geometry/gxSize.h"/>
+    </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="lightweights">
     <File Name="../../src/lightweights/gxDcPainter.cpp"/>

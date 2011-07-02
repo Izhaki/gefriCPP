@@ -1,7 +1,7 @@
 #ifndef gxViewElement_h
 #define gxViewElement_h
 
-#include "core/gxRect.h"
+#include "core/geometry/gxGeometry.h"
 #include "core/gxComposite.h"
 #include "lightweights/gxPainter.h"
 

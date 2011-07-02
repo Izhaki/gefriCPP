@@ -1,5 +1,7 @@
 #include "lightweights/gxScaler.h"
 
+#include <math.h>
+
 gxScaler::gxScaler()
   : mScaleX(1), mScaleY(1)
 {

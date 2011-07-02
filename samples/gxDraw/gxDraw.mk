@@ -2,22 +2,22 @@
 ## Auto Generated makefile by CodeLite IDE
 ## any manual changes will be erased      
 ##
-## Win32_Debug
+## Mac32_Debug
 ProjectName            :=gxDraw
-ConfigurationName      :=Win32_Debug
-IntermediateDirectory  :=./build/Win32-Debug
+ConfigurationName      :=Mac32_Debug
+IntermediateDirectory  :=./build/Mac32-Debug
 OutDir                 := $(IntermediateDirectory)
-WorkspacePath          := "Z:\gefri\build"
-ProjectPath            := "Z:\gefri\samples\gxDraw"
+WorkspacePath          := "/Development/gefri/build"
+ProjectPath            := "/Development/gefri/samples/gxDraw"
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-User                   :=Administrator
-Date                   :=07/01/11
-CodeLitePath           :="C:\Program Files\CodeLite"
+User                   :=Izhaki
+Date                   :=07/02/11
+CodeLitePath           :="/Users/izhaki/Library/Application Support/codelite"
 LinkerName             :=g++
 ArchiveTool            :=ar rcus
-SharedObjectLinkerName :=g++ -shared -fPIC
+SharedObjectLinkerName :=g++ -dynamiclib -fPIC
 ObjectSuffix           :=.o
 DependSuffix           :=.o.d
 PreprocessSuffix       :=.o.i
@@ -30,33 +30,28 @@ PreprocessorSwitch     :=-D
 SourceSwitch           :=-c 
 CompilerName           :=g++
 C_CompilerName         :=gcc
-OutputFile             :=$(IntermediateDirectory)/$(ProjectName)
+OutputFile             :=$(IntermediateDirectory)/$(ProjectName).app/Contents/MacOS/$(ProjectName)
 Preprocessors          :=$(PreprocessorSwitch)__WX__ 
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E 
-ObjectsFileList        :="Z:\gefri\samples\gxDraw\gxDraw.txt"
-MakeDirCommand         :=makedir
-CmpOptions             := -g $(shell wx-config --cxxflags --unicode=yes --debug=yes) $(Preprocessors)
-C_CmpOptions           := -g $(shell wx-config --cxxflags --unicode=yes --debug=yes) $(Preprocessors)
-RcCmpOptions           := $(shell wx-config --rcflags)
-RcCompilerName         :=windres
-LinkOptions            :=  $(shell wx-config --debug=yes --libs --unicode=yes)
+ObjectsFileList        :="/Development/gefri/samples/gxDraw/gxDraw.txt"
+MakeDirCommand         :=mkdir -p
+CmpOptions             := -g $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes) -arch i386 $(Preprocessors)
+C_CmpOptions           := -g $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes) -arch i386 $(Preprocessors)
+LinkOptions            :=  -mwindows -arch i386  $(shell $(WX_TOOL) --debug=yes --libs --unicode=yes)
 IncludePath            :=  $(IncludeSwitch)$(WorkspacePath)/../src 
 RcIncludePath          :=
-Libs                   :=$(LibrarySwitch)gefri_msw32d 
+Libs                   :=$(LibrarySwitch)gefri_mac32d 
 LibPath                := $(LibraryPathSwitch)$(WorkspacePath)/../lib 
 
 
 ##
 ## User defined environment variables
 ##
-CodeLiteDir:=C:\Program Files\CodeLite
-UNIT_TEST_PP_SRC_DIR:=C:\UnitTest++-1.3
-WXWIN:=C:\wxWidgets-2.8.12
-PATH:=$(WXWIN)\lib\gcc_lib;$(PATH)
-WXCFG:=gcc_lib\mswu
-Objects=$(IntermediateDirectory)/src_main$(ObjectSuffix) $(IntermediateDirectory)/src_myFrame$(ObjectSuffix) $(IntermediateDirectory)/gxDraw.rc$(ObjectSuffix) 
+CodeLiteDir:=/Applications/CodeLite.app/Contents/SharedSupport/
+WX_TOOL:=/Development/wx/wx2.8.12/build-codelite-debug/wx-config
+Objects=$(IntermediateDirectory)/src_main$(ObjectSuffix) $(IntermediateDirectory)/src_myFrame$(ObjectSuffix) 
 
 ##
 ## Main Build Targets 
@@ -71,7 +66,14 @@ objects_file:
 	@echo $(Objects) > $(ObjectsFileList)
 
 makeDirStep:
-	@$(MakeDirCommand) "./build/Win32-Debug"
+	@test -d ./build/Mac32-Debug || $(MakeDirCommand) ./build/Mac32-Debug
+PrePreBuild: $(IntermediateDirectory)/$(ProjectName).app/Contents/Info.plist $(IntermediateDirectory)/$(ProjectName).app/Contents/Resources/gxDraw.icns
+## rule to copy the Info.plist file into the bundle
+$(IntermediateDirectory)/$(ProjectName).app/Contents/Info.plist: Info.plist
+	mkdir -p '$(IntermediateDirectory)/$(ProjectName).app/Contents' && cp -f Info.plist '$(IntermediateDirectory)/$(ProjectName).app/Contents/Info.plist'
+## rule to copy the icon file into the bundle
+$(IntermediateDirectory)/$(ProjectName).app/Contents/Resources/gxDraw.icns: gxDraw.icns
+	mkdir -p '$(IntermediateDirectory)/$(ProjectName).app/Contents/Resources/' && cp -f gxDraw.icns '$(IntermediateDirectory)/$(ProjectName).app/Contents/Resources/gxDraw.icns'
 
 PreBuild:
 
@@ -80,23 +82,21 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/src_main$(ObjectSuffix): src/main.cpp $(IntermediateDirectory)/src_main$(DependSuffix)
-	$(CompilerName) $(SourceSwitch) "Z:/gefri/samples/gxDraw/src/main.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/src_main$(ObjectSuffix) $(IncludePath)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/samples/gxDraw/src/main.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/src_main$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/src_main$(DependSuffix): src/main.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_main$(ObjectSuffix) -MF$(IntermediateDirectory)/src_main$(DependSuffix) -MM "Z:/gefri/samples/gxDraw/src/main.cpp"
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_main$(ObjectSuffix) -MF$(IntermediateDirectory)/src_main$(DependSuffix) -MM "/Development/gefri/samples/gxDraw/src/main.cpp"
 
 $(IntermediateDirectory)/src_main$(PreprocessSuffix): src/main.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_main$(PreprocessSuffix) "Z:/gefri/samples/gxDraw/src/main.cpp"
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_main$(PreprocessSuffix) "/Development/gefri/samples/gxDraw/src/main.cpp"
 
 $(IntermediateDirectory)/src_myFrame$(ObjectSuffix): src/myFrame.cpp $(IntermediateDirectory)/src_myFrame$(DependSuffix)
-	$(CompilerName) $(SourceSwitch) "Z:/gefri/samples/gxDraw/src/myFrame.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/src_myFrame$(ObjectSuffix) $(IncludePath)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/samples/gxDraw/src/myFrame.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/src_myFrame$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/src_myFrame$(DependSuffix): src/myFrame.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_myFrame$(ObjectSuffix) -MF$(IntermediateDirectory)/src_myFrame$(DependSuffix) -MM "Z:/gefri/samples/gxDraw/src/myFrame.cpp"
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_myFrame$(ObjectSuffix) -MF$(IntermediateDirectory)/src_myFrame$(DependSuffix) -MM "/Development/gefri/samples/gxDraw/src/myFrame.cpp"
 
 $(IntermediateDirectory)/src_myFrame$(PreprocessSuffix): src/myFrame.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_myFrame$(PreprocessSuffix) "Z:/gefri/samples/gxDraw/src/myFrame.cpp"
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_myFrame$(PreprocessSuffix) "/Development/gefri/samples/gxDraw/src/myFrame.cpp"
 
-$(IntermediateDirectory)/gxDraw.rc$(ObjectSuffix): gxDraw.rc
-	$(RcCompilerName) -i "Z:/gefri/samples/gxDraw/gxDraw.rc" $(RcCmpOptions)   $(ObjectSwitch)$(IntermediateDirectory)/gxDraw.rc$(ObjectSuffix) $(RcIncludePath)
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
 ##
@@ -109,8 +109,6 @@ clean:
 	$(RM) $(IntermediateDirectory)/src_myFrame$(ObjectSuffix)
 	$(RM) $(IntermediateDirectory)/src_myFrame$(DependSuffix)
 	$(RM) $(IntermediateDirectory)/src_myFrame$(PreprocessSuffix)
-	$(RM) $(IntermediateDirectory)/gxDraw.rc$(ObjectSuffix)
 	$(RM) $(OutputFile)
-	$(RM) $(OutputFile).exe
 
 

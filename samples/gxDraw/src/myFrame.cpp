@@ -6,7 +6,7 @@
 
 #include <wx/log.h>
 
-#include "core/gxRect.h"
+#include "core/geometry/gxGeometry.h"
 
 enum
 {

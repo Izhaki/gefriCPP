@@ -39,6 +39,8 @@ public:
   void OnMouseMove(wxMouseEvent& event);
   void OnLeftMouseBtnDown(wxMouseEvent& event); 
 
+  void RefreshRect(const gxRect& aRect, bool eraseBackground = true);
+
   DECLARE_EVENT_TABLE();
 protected:
   // common part of all ctors
