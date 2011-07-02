@@ -26,7 +26,7 @@ bool MyApp::OnInit()
 	// create a new frame and set it as the top most application window
 	wxFrame* frame = new MyFrame(NULL,
                                 wxID_ANY,
-                                wxT("Test"),
+                                wxT("gxDraw"),
                                 wxDefaultPosition,
                                 wxSize(800, 600));
 
