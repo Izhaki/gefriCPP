@@ -53,9 +53,10 @@ void gxLightweightControl::OnPaint(wxPaintEvent& WXUNUSED(event))
     // In MSW the clip area upon the dc creation is (0,0,0,0). So fix this
     // by setting an absolute clip region that has origins (0,0) and the size
     // equal to that of the control
-    wxRect clip(GetSize()); 
+    wxSize controlSize(GetSize());
+    gxRect clipRegion(gxSize(controlSize.x, controlSize.y)); 
     dc.DestroyClippingRegion();
-    dc.SetClippingRegion(clip);
+    dc.SetClippingRegion(clipRegion);
   #endif 
 
   // Get the damaged areas and put in a gxRect vector.
