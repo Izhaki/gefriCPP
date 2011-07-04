@@ -1,3 +1,12 @@
+v0.1.02
+-------
+
+- Linux Support
+- Added Scaler (allows scalling, ie zooming).
+- gxRect is no longer wxRect dependent.
+- Implemented geometry classes: gxSize, gxCoord, gxPoint
+- Fix: Flicker on Windows
+
 v0.1.01
 -------
 
