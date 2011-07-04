@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo ----------Building project:[ gxDraw - Win32 Debug ]----------
-	@cd "..\samples\gxDraw" && "mingw32-make.exe"  -j 1 -f "gxDraw.mk"
+	@echo ----------Building project:[ gxDraw - Linux32 Release ]----------
+	@cd "../samples/gxDraw" && "$(MAKE)" -f "gxDraw.mk"
 clean:
-	@echo ----------Cleaning project:[ gxDraw - Win32 Debug ]----------
-	@cd "..\samples\gxDraw" && "mingw32-make.exe"  -j 1 -f "gxDraw.mk" clean
+	@echo ----------Cleaning project:[ gxDraw - Linux32 Release ]----------
+	@cd "../samples/gxDraw" && "$(MAKE)" -f "gxDraw.mk" clean

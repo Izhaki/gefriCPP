@@ -1,8 +1,9 @@
 ![gefri logo](http://www.gefri.org/img/gefri.png "gefri")
 
-A C++ MVC-based graphical editing framework, like GEF (Eclipse) or Unidraw.
+A cross-platform C++ MVC-based graphical editing framework, like GEF (Eclipse) or Unidraw. The library and its samples build on Windows, Mac and Linux.
 
-The library currently adapts on top of [wxWidgets] although with relative ease can be adapted to other toolkits. Currently supporting Windows and Mac, with Linux coming soon.
+
+The library currently adapts on top of [wxWidgets] although with relative ease can be adapted to other toolkits.
 
 Contributor Posts
 -----------------

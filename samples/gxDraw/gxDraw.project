@@ -2,7 +2,7 @@
 <CodeLite_Project Name="gxDraw" InternalType="GUI">
   <Plugins>
     <Plugin Name="qmake">
-      <![CDATA[00040001N0011Mac32 Debug0000000000000001N0013Mac32 Release0000000000000001N0011Win32 Debug0000000000000001N0013Win32 Release000000000000]]>
+      <![CDATA[00060001N0013Linux32 Debug0000000000000001N0015Linux32 Release0000000000000001N0011Mac32 Debug0000000000000001N0013Mac32 Release0000000000000001N0011Win32 Debug0000000000000001N0013Win32 Release000000000000]]>
     </Plugin>
   </Plugins>
   <Description/>
@@ -29,6 +29,68 @@
       </Linker>
       <ResourceCompiler Options=""/>
     </GlobalSettings>
+    <Configuration Name="Linux32 Debug" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g;$(shell wx-config --cxxflags --unicode=yes --debug=yes)" C_Options="-g;$(shell wx-config --cxxflags --unicode=yes --debug=yes)" Required="yes" PreCompiledHeader="">
+        <Preprocessor Value="__WX__"/>
+      </Compiler>
+      <Linker Options="-mwindows; $(shell wx-config --debug=yes --libs --unicode=yes)" Required="yes">
+        <Library Value="gefri_linux32d.a"/>
+      </Linker>
+      <ResourceCompiler Options="$(shell wx-config --rcflags)" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./build/Linux32-Debug" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;"/>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+    </Configuration>
+    <Configuration Name="Linux32 Release" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-O2;$(shell wx-config --cxxflags --unicode=yes --debug=no)" C_Options="-O2;$(shell wx-config --cxxflags --unicode=yes --debug=no)" Required="yes" PreCompiledHeader="">
+        <Preprocessor Value="__WX__"/>
+      </Compiler>
+      <Linker Options="-mwindows; $(shell wx-config --debug=no --libs --unicode=yes)" Required="yes">
+        <Library Value="gefri_linux32.a"/>
+      </Linker>
+      <ResourceCompiler Options="$(shell wx-config --rcflags)" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./build/Linux32-Release" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;"/>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="">
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+    </Configuration>
     <Configuration Name="Mac32 Debug" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
       <Compiler Options="-g;$(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes);-arch i386" C_Options="-g;$(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes);-arch i386" Required="yes" PreCompiledHeader="">
         <Preprocessor Value="__WX__"/>
@@ -63,8 +125,7 @@ $(IntermediateDirectory)/$(ProjectName).app/Contents/Info.plist: Info.plist
 	mkdir -p '$(IntermediateDirectory)/$(ProjectName).app/Contents' &amp;&amp; cp -f Info.plist '$(IntermediateDirectory)/$(ProjectName).app/Contents/Info.plist'
 ## rule to copy the icon file into the bundle
 $(IntermediateDirectory)/$(ProjectName).app/Contents/Resources/gxDraw.icns: gxDraw.icns
-	mkdir -p '$(IntermediateDirectory)/$(ProjectName).app/Contents/Resources/' &amp;&amp; cp -f gxDraw.icns '$(IntermediateDirectory)/$(ProjectName).app/Contents/Resources/gxDraw.icns'
-</CustomPreBuild>
+	mkdir -p '$(IntermediateDirectory)/$(ProjectName).app/Contents/Resources/' &amp;&amp; cp -f gxDraw.icns '$(IntermediateDirectory)/$(ProjectName).app/Contents/Resources/gxDraw.icns'</CustomPreBuild>
       </AdditionalRules>
     </Configuration>
     <Configuration Name="Mac32 Release" CompilerType="gnu g++" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">

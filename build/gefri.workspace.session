@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Session Name="Z:\gefri\build\gefri.workspace">
-  <int Value="0" Name="m_selectedTab"/>
-  <wxString Value="Z:\gefri\build\gefri.workspace" Name="m_workspaceName"/>
+<Session Name="/Development/gefri/build/gefri.workspace">
+  <int Value="1" Name="m_selectedTab"/>
+  <wxString Value="/Development/gefri/build/gefri.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
-      <wxString Value="Z:\gefri\src\adapters\wx\gxLightweightControl.cpp" Name="FileName"/>
-      <int Value="38" Name="FirstVisibleLine"/>
-      <int Value="62" Name="CurrentLine"/>
+      <wxString Value="/Development/gefri/src/lightweights/gxDcPainter.cpp" Name="FileName"/>
+      <int Value="33" Name="FirstVisibleLine"/>
+      <int Value="43" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="Z:\gefri\src\adapters\wx\gxPaintDC.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="0" Name="CurrentLine"/>
+      <wxString Value="/Development/gefri/src/adapters/wx/gxLightweightControl.cpp" Name="FileName"/>
+      <int Value="7" Name="FirstVisibleLine"/>
+      <int Value="8" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
   </TabInfoArray>

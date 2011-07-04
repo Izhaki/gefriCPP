@@ -11,13 +11,21 @@
       <Project Name="gxDraw" ConfigName="Mac32 Release"/>
       <Project Name="gefri" ConfigName="Mac32 Release"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Win32 Debug" Selected="yes">
+    <WorkspaceConfiguration Name="Win32 Debug" Selected="no">
       <Project Name="gxDraw" ConfigName="Win32 Debug"/>
       <Project Name="gefri" ConfigName="Win32 Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Win32 Release" Selected="no">
       <Project Name="gxDraw" ConfigName="Win32 Release"/>
       <Project Name="gefri" ConfigName="Win32 Release"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Linux32 Debug" Selected="no">
+      <Project Name="gxDraw" ConfigName="Linux32 Debug"/>
+      <Project Name="gefri" ConfigName="Linux32 Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Linux32 Release" Selected="yes">
+      <Project Name="gxDraw" ConfigName="Linux32 Release"/>
+      <Project Name="gefri" ConfigName="Linux32 Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

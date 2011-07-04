@@ -2,19 +2,19 @@
 ## Auto Generated makefile by CodeLite IDE
 ## any manual changes will be erased      
 ##
-## Win32_Debug
+## Linux32_Release
 ProjectName            :=gxDraw
-ConfigurationName      :=Win32_Debug
-IntermediateDirectory  :=./build/Win32-Debug
+ConfigurationName      :=Linux32_Release
+IntermediateDirectory  :=./build/Linux32-Release
 OutDir                 := $(IntermediateDirectory)
-WorkspacePath          := "Z:\gefri\build"
-ProjectPath            := "Z:\gefri\samples\gxDraw"
+WorkspacePath          := "/Development/gefri/build"
+ProjectPath            := "/Development/gefri/samples/gxDraw"
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-User                   :=Administrator
-Date                   :=07/02/11
-CodeLitePath           :="C:\Program Files\CodeLite"
+User                   :=Roey Izhaki
+Date                   :=04/07/11
+CodeLitePath           :="/home/roey/.codelite"
 LinkerName             :=g++
 ArchiveTool            :=ar rcus
 SharedObjectLinkerName :=g++ -shared -fPIC
@@ -35,28 +35,22 @@ Preprocessors          :=$(PreprocessorSwitch)__WX__
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E 
-ObjectsFileList        :="Z:\gefri\samples\gxDraw\gxDraw.txt"
-MakeDirCommand         :=makedir
-CmpOptions             := -g $(shell wx-config --cxxflags --unicode=yes --debug=yes) $(Preprocessors)
-C_CmpOptions           := -g $(shell wx-config --cxxflags --unicode=yes --debug=yes) $(Preprocessors)
-RcCmpOptions           := $(shell wx-config --rcflags)
-RcCompilerName         :=windres
-LinkOptions            :=  $(shell wx-config --debug=yes --libs --unicode=yes)
+ObjectsFileList        :="/Development/gefri/samples/gxDraw/gxDraw.txt"
+MakeDirCommand         :=mkdir -p
+CmpOptions             := -O2 $(shell wx-config --cxxflags --unicode=yes --debug=no) $(Preprocessors)
+C_CmpOptions           := -O2 $(shell wx-config --cxxflags --unicode=yes --debug=no) $(Preprocessors)
+LinkOptions            :=  -mwindows  $(shell wx-config --debug=no --libs --unicode=yes)
 IncludePath            :=  $(IncludeSwitch)$(WorkspacePath)/../src 
 RcIncludePath          :=
-Libs                   :=$(LibrarySwitch)gefri_msw32d 
+Libs                   :=$(LibrarySwitch)gefri_linux32 
 LibPath                := $(LibraryPathSwitch)$(WorkspacePath)/../lib 
 
 
 ##
 ## User defined environment variables
 ##
-CodeLiteDir:=C:\Program Files\CodeLite
-UNIT_TEST_PP_SRC_DIR:=C:\UnitTest++-1.3
-WXWIN:=C:\wxWidgets-2.8.12
-PATH:=$(WXWIN)\lib\gcc_lib;$(PATH)
-WXCFG:=gcc_lib\mswu
-Objects=$(IntermediateDirectory)/src_main$(ObjectSuffix) $(IntermediateDirectory)/src_myFrame$(ObjectSuffix) $(IntermediateDirectory)/gxDraw.rc$(ObjectSuffix) 
+CodeLiteDir:=/usr/share/codelite
+Objects=$(IntermediateDirectory)/src_main$(ObjectSuffix) $(IntermediateDirectory)/src_myFrame$(ObjectSuffix) 
 
 ##
 ## Main Build Targets 
@@ -71,7 +65,7 @@ objects_file:
 	@echo $(Objects) > $(ObjectsFileList)
 
 makeDirStep:
-	@$(MakeDirCommand) "./build/Win32-Debug"
+	@test -d ./build/Linux32-Release || $(MakeDirCommand) ./build/Linux32-Release
 
 PreBuild:
 
@@ -80,23 +74,21 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/src_main$(ObjectSuffix): src/main.cpp $(IntermediateDirectory)/src_main$(DependSuffix)
-	$(CompilerName) $(SourceSwitch) "Z:/gefri/samples/gxDraw/src/main.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/src_main$(ObjectSuffix) $(IncludePath)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/samples/gxDraw/src/main.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/src_main$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/src_main$(DependSuffix): src/main.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_main$(ObjectSuffix) -MF$(IntermediateDirectory)/src_main$(DependSuffix) -MM "Z:/gefri/samples/gxDraw/src/main.cpp"
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_main$(ObjectSuffix) -MF$(IntermediateDirectory)/src_main$(DependSuffix) -MM "/Development/gefri/samples/gxDraw/src/main.cpp"
 
 $(IntermediateDirectory)/src_main$(PreprocessSuffix): src/main.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_main$(PreprocessSuffix) "Z:/gefri/samples/gxDraw/src/main.cpp"
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_main$(PreprocessSuffix) "/Development/gefri/samples/gxDraw/src/main.cpp"
 
 $(IntermediateDirectory)/src_myFrame$(ObjectSuffix): src/myFrame.cpp $(IntermediateDirectory)/src_myFrame$(DependSuffix)
-	$(CompilerName) $(SourceSwitch) "Z:/gefri/samples/gxDraw/src/myFrame.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/src_myFrame$(ObjectSuffix) $(IncludePath)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/samples/gxDraw/src/myFrame.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/src_myFrame$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/src_myFrame$(DependSuffix): src/myFrame.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_myFrame$(ObjectSuffix) -MF$(IntermediateDirectory)/src_myFrame$(DependSuffix) -MM "Z:/gefri/samples/gxDraw/src/myFrame.cpp"
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/src_myFrame$(ObjectSuffix) -MF$(IntermediateDirectory)/src_myFrame$(DependSuffix) -MM "/Development/gefri/samples/gxDraw/src/myFrame.cpp"
 
 $(IntermediateDirectory)/src_myFrame$(PreprocessSuffix): src/myFrame.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_myFrame$(PreprocessSuffix) "Z:/gefri/samples/gxDraw/src/myFrame.cpp"
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/src_myFrame$(PreprocessSuffix) "/Development/gefri/samples/gxDraw/src/myFrame.cpp"
 
-$(IntermediateDirectory)/gxDraw.rc$(ObjectSuffix): gxDraw.rc
-	$(RcCompilerName) -i "Z:/gefri/samples/gxDraw/gxDraw.rc" $(RcCmpOptions)   $(ObjectSwitch)$(IntermediateDirectory)/gxDraw.rc$(ObjectSuffix) $(RcIncludePath)
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
 ##
@@ -109,8 +101,6 @@ clean:
 	$(RM) $(IntermediateDirectory)/src_myFrame$(ObjectSuffix)
 	$(RM) $(IntermediateDirectory)/src_myFrame$(DependSuffix)
 	$(RM) $(IntermediateDirectory)/src_myFrame$(PreprocessSuffix)
-	$(RM) $(IntermediateDirectory)/gxDraw.rc$(ObjectSuffix)
 	$(RM) $(OutputFile)
-	$(RM) $(OutputFile).exe
 
 
