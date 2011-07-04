@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo ----------Building project:[ gxDraw - Linux32 Release ]----------
-	@cd "../samples/gxDraw" && "$(MAKE)" -f "gxDraw.mk"
+	@echo ----------Building project:[ gxDraw - Mac32 Debug ]----------
+	@cd "../samples/gxDraw" && "$(MAKE)" -w -f "gxDraw.mk" PrePreBuild && "$(MAKE)" -w -f "gxDraw.mk"
 clean:
-	@echo ----------Cleaning project:[ gxDraw - Linux32 Release ]----------
-	@cd "../samples/gxDraw" && "$(MAKE)" -f "gxDraw.mk" clean
+	@echo ----------Cleaning project:[ gxDraw - Mac32 Debug ]----------
+	@cd "../samples/gxDraw" && "$(MAKE)" -w -f "gxDraw.mk" clean

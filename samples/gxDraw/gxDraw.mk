@@ -2,22 +2,22 @@
 ## Auto Generated makefile by CodeLite IDE
 ## any manual changes will be erased      
 ##
-## Linux32_Release
+## Mac32_Debug
 ProjectName            :=gxDraw
-ConfigurationName      :=Linux32_Release
-IntermediateDirectory  :=./build/Linux32-Release
+ConfigurationName      :=Mac32_Debug
+IntermediateDirectory  :=./build/Mac32-Debug
 OutDir                 := $(IntermediateDirectory)
 WorkspacePath          := "/Development/gefri/build"
 ProjectPath            := "/Development/gefri/samples/gxDraw"
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-User                   :=Roey Izhaki
-Date                   :=04/07/11
-CodeLitePath           :="/home/roey/.codelite"
+User                   :=Izhaki
+Date                   :=07/05/11
+CodeLitePath           :="/Users/izhaki/Library/Application Support/codelite"
 LinkerName             :=g++
 ArchiveTool            :=ar rcus
-SharedObjectLinkerName :=g++ -shared -fPIC
+SharedObjectLinkerName :=g++ -dynamiclib -fPIC
 ObjectSuffix           :=.o
 DependSuffix           :=.o.d
 PreprocessSuffix       :=.o.i
@@ -30,26 +30,27 @@ PreprocessorSwitch     :=-D
 SourceSwitch           :=-c 
 CompilerName           :=g++
 C_CompilerName         :=gcc
-OutputFile             :=$(IntermediateDirectory)/$(ProjectName)
+OutputFile             :=$(IntermediateDirectory)/$(ProjectName).app/Contents/MacOS/$(ProjectName)
 Preprocessors          :=$(PreprocessorSwitch)__WX__ 
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E 
 ObjectsFileList        :="/Development/gefri/samples/gxDraw/gxDraw.txt"
 MakeDirCommand         :=mkdir -p
-CmpOptions             := -O2 $(shell wx-config --cxxflags --unicode=yes --debug=no) $(Preprocessors)
-C_CmpOptions           := -O2 $(shell wx-config --cxxflags --unicode=yes --debug=no) $(Preprocessors)
-LinkOptions            :=  -mwindows  $(shell wx-config --debug=no --libs --unicode=yes)
+CmpOptions             := -g $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes) -arch i386 $(Preprocessors)
+C_CmpOptions           := -g $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes) -arch i386 $(Preprocessors)
+LinkOptions            :=  -mwindows -arch i386  $(shell $(WX_TOOL) --debug=yes --libs --unicode=yes)
 IncludePath            :=  $(IncludeSwitch)$(WorkspacePath)/../src 
 RcIncludePath          :=
-Libs                   :=$(LibrarySwitch)gefri_linux32 
+Libs                   :=$(LibrarySwitch)gefri_mac32d 
 LibPath                := $(LibraryPathSwitch)$(WorkspacePath)/../lib 
 
 
 ##
 ## User defined environment variables
 ##
-CodeLiteDir:=/usr/share/codelite
+CodeLiteDir:=/Applications/CodeLite.app/Contents/SharedSupport/
+WX_TOOL:=/Development/wx/wx2.8.12/build-codelite-debug/wx-config
 Objects=$(IntermediateDirectory)/src_main$(ObjectSuffix) $(IntermediateDirectory)/src_myFrame$(ObjectSuffix) 
 
 ##
@@ -65,7 +66,14 @@ objects_file:
 	@echo $(Objects) > $(ObjectsFileList)
 
 makeDirStep:
-	@test -d ./build/Linux32-Release || $(MakeDirCommand) ./build/Linux32-Release
+	@test -d ./build/Mac32-Debug || $(MakeDirCommand) ./build/Mac32-Debug
+PrePreBuild: $(IntermediateDirectory)/$(ProjectName).app/Contents/Info.plist $(IntermediateDirectory)/$(ProjectName).app/Contents/Resources/gxDraw.icns
+## rule to copy the Info.plist file into the bundle
+$(IntermediateDirectory)/$(ProjectName).app/Contents/Info.plist: Info.plist
+	mkdir -p '$(IntermediateDirectory)/$(ProjectName).app/Contents' && cp -f Info.plist '$(IntermediateDirectory)/$(ProjectName).app/Contents/Info.plist'
+## rule to copy the icon file into the bundle
+$(IntermediateDirectory)/$(ProjectName).app/Contents/Resources/gxDraw.icns: gxDraw.icns
+	mkdir -p '$(IntermediateDirectory)/$(ProjectName).app/Contents/Resources/' && cp -f gxDraw.icns '$(IntermediateDirectory)/$(ProjectName).app/Contents/Resources/gxDraw.icns'
 
 PreBuild:
 

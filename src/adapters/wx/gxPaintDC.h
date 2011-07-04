@@ -1,17 +1,17 @@
 #ifndef gxPaintDC_wx_h
 #define gxPaintDC_wx_h
 
-#include <wx/dcclient.h>
+#include <wx/dcbuffer.h>
 #include "core/geometry/gxGeometry.h"
 
 /**
- * @brief A wrapper to a system's DC using wxPaintDC
+ * @brief A wrapper to a system's DC using wxAutoBufferedPaintDC
  */
-class gxPaintDC: public wxPaintDC
+class gxPaintDC: public wxAutoBufferedPaintDC
 {
 public:
   gxPaintDC(wxWindow *win)
-    : wxPaintDC(win) {}
+    : wxAutoBufferedPaintDC(win) {}
   void SetClippingRegion(const gxRect& rect)
     { DoSetClippingRegion(rect.x, rect.y, rect.width, rect.height); }
 

@@ -3,7 +3,7 @@
   <Project Name="gefri" Path="gefri/gefri.project" Active="No"/>
   <Project Name="gxDraw" Path="../samples/gxDraw/gxDraw.project" Active="Yes"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Mac32 Debug" Selected="no">
+    <WorkspaceConfiguration Name="Mac32 Debug" Selected="yes">
       <Project Name="gxDraw" ConfigName="Mac32 Debug"/>
       <Project Name="gefri" ConfigName="Mac32 Debug"/>
     </WorkspaceConfiguration>
@@ -23,7 +23,7 @@
       <Project Name="gxDraw" ConfigName="Linux32 Debug"/>
       <Project Name="gefri" ConfigName="Linux32 Debug"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Linux32 Release" Selected="yes">
+    <WorkspaceConfiguration Name="Linux32 Release" Selected="no">
       <Project Name="gxDraw" ConfigName="Linux32 Release"/>
       <Project Name="gefri" ConfigName="Linux32 Release"/>
     </WorkspaceConfiguration>

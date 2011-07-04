@@ -21,6 +21,9 @@ END_EVENT_TABLE()
 void gxLightweightControl::Init()
 {
   mLightweightSystem = NULL;
+  
+  // For wxAutoBufferedPaintDC to work
+  SetBackgroundStyle(wxBG_STYLE_CUSTOM);
 }
 
 gxLightweightControl::~gxLightweightControl()
@@ -48,25 +51,26 @@ gxRect gxLightweightControl::GetBounds() const
 void gxLightweightControl::OnPaint(wxPaintEvent& WXUNUSED(event))
 {
   gxPaintDC dc(this);
-  
-  // On some systems (MSW, Linux) the clip area upon the dc creation is 
-  // (0,0,0,0). So fix this by setting an absolute clip region that has
-  // origins (0,0) and the size equal to that of the control.
-  wxSize controlSize(GetSize());
-  gxRect clipRegion(gxSize(controlSize.x, controlSize.y)); 
-  dc.DestroyClippingRegion();
-  dc.SetClippingRegion(clipRegion);
 
-  // Get the damaged areas and put in a gxRect vector.
+  // What will be the clip region - a union between all damaged regions.
+  gxRect clipRect;
+
+  // Get the damaged areas and put in a gxRects vector.
   gxRects damagedRects;
   wxRegionIterator upd(GetUpdateRegion()); 
   while (upd)
   {
     wxRect rect = upd.GetRect();
     gxRect damagedRect(rect.x, rect.y, rect.width, rect.height);
+    // Union the damaged recangle with the clip region
+    clipRect.Union(damagedRect);
     damagedRects.push_back(damagedRect);
     upd ++ ;
   }
+  
+  // Set an absolute clip area (to the union between all damaged areas).
+  dc.DestroyClippingRegion();
+  dc.SetClippingRegion(clipRect);
 
   // Temporal: Draw chess board
   dc.SetPen(wxPen(*wxTRANSPARENT_PEN));
