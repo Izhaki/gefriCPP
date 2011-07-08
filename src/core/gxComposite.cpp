@@ -22,7 +22,7 @@ void gxComposite::SetParent(gxComposite* aParent, bool aAndRemoveFromParent)
   mParent = aParent;
 }
 
-void gxComposite::AddChild(gxComposite* aChild)
+void gxComposite::AddChild(gxComposite *aChild)
 {
   // Make sure child isn't null
   wxASSERT_MSG(aChild != NULL, _T("Null paased to AddChild"));

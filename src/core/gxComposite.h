@@ -47,14 +47,14 @@ public:
    * @brief Adds a new child to this object.
    * @param aChild The child to be added
    */
-  void AddChild(gxComposite* aChild);
+  void AddChild(gxComposite *aChild);
 
   /**
    * @brief Removes a child from this object.
    * @param aChild The child to be deleted
    * @param aAndDelete Whether or not the child object should be deleted and nulled
    */
-  void RemoveChild(gxComposite* aChild, bool aAndDelete = false);
+  void RemoveChild(gxComposite *aChild, bool aAndDelete = false);
 
   /**
    * @brief Removes all object children.
