@@ -63,6 +63,10 @@ void MyFrame::InitGefri()
 
   mDocument = new gxRectangle(gxRect(10, 10, 480, 480));
   mZoom = new gxScaler();
+  mZoomManager = new gxZoomManager();
+  //TODO: pass the zoom manger to the constructor of mZoom;
+  mZoom->SetZoomManager(mZoomManager);
+  
   
   mFace = new gxRectangle(gxRect(40, 40, 100, 100));
   //mLeg = new gxRectangle(gxRect(410, 10, 10, 10));
@@ -150,26 +154,26 @@ void MyFrame::OnAction4(wxCommandEvent &e)
 
 void MyFrame::OnZoomIn(wxCommandEvent &e)
 {
-    wxUnusedVar(e);
-    mZoom->MultiplyScale(2, 2);    
+  wxUnusedVar(e);
+  mZoomManager->MultiplyZoom(2);
 }
 
 void MyFrame::OnZoomOut(wxCommandEvent &e)
 {
-    wxUnusedVar(e);
-    mZoom->MultiplyScale(0.5, 0.5);
+  wxUnusedVar(e);
+  mZoomManager->MultiplyZoom(0.5);
 }
 
 void MyFrame::OnZoomInVert(wxCommandEvent &e)
 {
-    wxUnusedVar(e);
-    mZoom->MultiplyScale(2, 1);
+  wxUnusedVar(e);
+  mZoomManager->MultiplyZoom(2, 1);
 }
 
 void MyFrame::OnZoomOutVert(wxCommandEvent &e)
 {
-    wxUnusedVar(e);
-    mZoom->MultiplyScale(0.5, 1);
+  wxUnusedVar(e);
+  mZoomManager->MultiplyZoom(0.5, 1);
 }
 
 

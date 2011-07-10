@@ -1,12 +1,32 @@
 #include "lightweights/gxScaler.h"
+#include "core/gxCallback.h"
 
 gxScaler::gxScaler()
   : mScaleX(1), mScaleY(1)
 {
 }
 
+gxScaler::gxScaler(gxZoomManager *aZoomManager)
+  : mScaleX(1), mScaleY(1)
+{
+  SetZoomManager(aZoomManager);
+}
+
 gxScaler::~gxScaler()
 {
+    // Remove the callback from the previous zoom manager (if any).
+  if (mZoomManager)
+    mZoomManager->mObservers.Remove( CALLBACK(gxScaler, OnZoomManagerUpdate) );
+}
+
+void gxScaler::SetZoomManager(gxZoomManager *aZoomManager)
+{
+  // Remove the callback from the previous zoom manager (if any).
+  if (mZoomManager)
+    mZoomManager->mObservers.Remove( CALLBACK(gxScaler, OnZoomManagerUpdate) );
+
+  mZoomManager = aZoomManager;
+  aZoomManager->mObservers.Add( CALLBACK(gxScaler, OnZoomManagerUpdate) );
 }
 
 void gxScaler::SetScale(float aScaleX, float aScaleY)
@@ -17,9 +37,10 @@ void gxScaler::SetScale(float aScaleX, float aScaleY)
   Repaint();
 }
 
-void gxScaler::MultiplyScale(float aXfactor, float aYfactor)
+void gxScaler::OnZoomManagerUpdate(const gxObject *aSubject)
 {
-  SetScale(mScaleX * aXfactor, mScaleY * aYfactor);
+  gxZoom newZoom = mZoomManager->GetZoom();
+  SetScale(newZoom.v, newZoom.h);
 }
 
 void gxScaler::Paint(gxPainter &aPainter)

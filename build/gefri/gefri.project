@@ -28,6 +28,9 @@
       <File Name="../../src/core/geometry/gxRect.h"/>
       <File Name="../../src/core/geometry/gxSize.h"/>
     </VirtualDirectory>
+    <File Name="../../src/core/gxCallback.h"/>
+    <File Name="../../src/core/gxObserverList.cpp"/>
+    <File Name="../../src/core/gxObserverList.h"/>
   </VirtualDirectory>
   <VirtualDirectory Name="lightweights">
     <File Name="../../src/lightweights/gxDcPainter.cpp"/>
@@ -53,6 +56,10 @@
     <File Name="../../src/lightweights/gxScaler.h"/>
     <File Name="../../src/lightweights/gxScaler.cpp"/>
     <File Name="../../src/lightweights/gxStructuralViewElement.cpp"/>
+    <VirtualDirectory Name="managers">
+      <File Name="../../src/lightweights/managers/gxZoomManager.h"/>
+      <File Name="../../src/lightweights/managers/gxZoomManager.cpp"/>
+    </VirtualDirectory>
   </VirtualDirectory>
   <Settings Type="Static Library">
     <GlobalSettings>

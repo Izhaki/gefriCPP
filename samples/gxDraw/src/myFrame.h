@@ -4,6 +4,7 @@
 #include "lightweights/gxLightweightSystem.h"
 #include "lightweights/shapes/gxRectangle.h"
 #include "lightweights/gxScaler.h"
+#include "lightweights/managers/gxZoomManager.h"
 
 #include "core/gxComposite.h"
 
@@ -19,6 +20,7 @@ private:
   gxLightweightSystem *mLightweightSystem;
   gxRectangle *mDocument, *mFace, *mEyeL, *mEyeR, *Iris1, *Iris2, *mLeg;
   gxScaler *mZoom;
+  gxZoomManager *mZoomManager;
 public:
   MyFrame(wxWindow *parent,
             wxWindowID id,

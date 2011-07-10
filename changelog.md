@@ -1,3 +1,8 @@
+v0.1.03
+- Added: gxObserverList as the gefri's core subject-observer mechanism.
+- Added: gxCallback - a non-static member method callback wrapper (for gxOberverList).
+- Added: gxZoomManager, which communicates with gxScaler.
+
 v0.1.02
 -------
 
