@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CodeLite_Workspace Name="gefri" Database="./gefri.tags">
-  <Project Name="gefri" Path="gefri/gefri.project" Active="Yes"/>
-  <Project Name="gxDraw" Path="../samples/gxDraw/gxDraw.project" Active="No"/>
+  <Project Name="gefri" Path="gefri/gefri.project" Active="No"/>
+  <Project Name="gxDraw" Path="../samples/gxDraw/gxDraw.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Mac32 Debug" Selected="yes">
       <Project Name="gxDraw" ConfigName="Mac32 Debug"/>

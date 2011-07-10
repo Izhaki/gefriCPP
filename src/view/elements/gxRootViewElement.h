@@ -1,7 +1,7 @@
 #ifndef gxRootViewElement_h
 #define gxRootViewElement_h
 
-#include "lightweights/gxStructuralViewElement.h"
+#include "view/elements/gxStructuralViewElement.h"
 
 // Forward declaration
 class gxLightweightSystem;

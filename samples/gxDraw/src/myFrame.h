@@ -1,10 +1,10 @@
 #include "wx/frame.h"
 
-#include "lightweights/gxLightweightControl.h"
-#include "lightweights/gxLightweightSystem.h"
-#include "lightweights/shapes/gxRectangle.h"
-#include "lightweights/gxScaler.h"
-#include "lightweights/managers/gxZoomManager.h"
+#include "view/gxLightweightControl.h"
+#include "view/gxLightweightSystem.h"
+#include "view/elements/shapes/gxRectangle.h"
+#include "view/elements/gxScaler.h"
+#include "view/managers/gxZoomManager.h"
 
 #include "core/gxComposite.h"
 

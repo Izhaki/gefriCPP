@@ -1,7 +1,7 @@
 #ifndef gxVisualViewElement_h
 #define gxVisualViewElement_h
 
-#include "lightweights/gxViewElement.h"
+#include "view/elements/gxViewElement.h"
 
 /**
  * @brief A view element that has visual representation and defined bounds,

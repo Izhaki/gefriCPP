@@ -1,7 +1,7 @@
 #ifndef gxRectangle_h
 #define gxRectangle_h
 
-#include "lightweights/shapes/gxShape.h"
+#include "view/elements/shapes/gxShape.h"
 
 /**
  * @brief A rectanglular shape.

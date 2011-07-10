@@ -1,7 +1,7 @@
 #ifndef gxStructuralViewElement_h
 #define gxStructuralViewElement_h
 
-#include "lightweights/gxViewElement.h"
+#include "view/elements/gxViewElement.h"
 
 /**
  * @brief A view element that has no visual representation, but is inserted

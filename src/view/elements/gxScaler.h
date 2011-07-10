@@ -1,8 +1,8 @@
 #ifndef gxScaler_h
 #define gxScaler_h
 
-#include "lightweights/gxStructuralViewElement.h"
-#include "lightweights/managers/gxZoomManager.h"
+#include "view/elements/gxStructuralViewElement.h"
+#include "view/managers/gxZoomManager.h"
 
 /**
  * @brief A view element that scales (zoom) all its children.

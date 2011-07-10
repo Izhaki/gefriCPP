@@ -1,7 +1,7 @@
 #ifndef gxShape_h
 #define gxShape_h
 
-#include "lightweights/gxVisualViewElement.h"
+#include "view/elements/gxVisualViewElement.h"
 
 /**
  * @brief A {@link gxViewElement visual element} that is drawn on screen

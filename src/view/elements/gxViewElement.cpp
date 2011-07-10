@@ -1,5 +1,5 @@
-#include "lightweights/gxViewElement.h"
-#include "gxLightweightSystem.h"
+#include "view/elements/gxViewElement.h"
+#include "view/gxLightweightSystem.h"
 
 gxViewElement::gxViewElement()
 {

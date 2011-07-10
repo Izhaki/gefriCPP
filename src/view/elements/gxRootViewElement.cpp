@@ -1,5 +1,5 @@
-#include "lightweights/gxRootViewElement.h"
-#include "gxLightweightSystem.h"
+#include "view/elements/gxRootViewElement.h"
+#include "view/gxLightweightSystem.h"
 
 gxRootViewElement* gxRootViewElement::GetRootViewElement()
 {

@@ -3,7 +3,7 @@
 
 #include "core/gxObject.h"
 #include "core/gxPaintDC.h"
-#include "lightweights/gxRootViewElement.h"
+#include "view/elements/gxRootViewElement.h"
 
 // forward declaration
 class gxLightweightControl;

@@ -51,8 +51,8 @@ LibPath                := $(LibraryPathSwitch).
 ##
 CodeLiteDir:=/Applications/CodeLite.app/Contents/SharedSupport/
 WX_TOOL:=/Development/wx/wx2.8.12/build-codelite-debug/wx-config
-Objects=$(IntermediateDirectory)/wx_gxLightweightControl$(ObjectSuffix) $(IntermediateDirectory)/core_gxComposite$(ObjectSuffix) $(IntermediateDirectory)/geometry_gxRect$(ObjectSuffix) $(IntermediateDirectory)/core_gxObserverList$(ObjectSuffix) $(IntermediateDirectory)/lightweights_gxDcPainter$(ObjectSuffix) $(IntermediateDirectory)/lightweights_gxLightweightSystem$(ObjectSuffix) $(IntermediateDirectory)/lightweights_gxPainter$(ObjectSuffix) $(IntermediateDirectory)/lightweights_gxRootViewElement$(ObjectSuffix) $(IntermediateDirectory)/lightweights_gxViewElement$(ObjectSuffix) $(IntermediateDirectory)/lightweights_gxVisualViewElement$(ObjectSuffix) \
-	$(IntermediateDirectory)/shapes_gxRectangle$(ObjectSuffix) $(IntermediateDirectory)/shapes_gxShape$(ObjectSuffix) $(IntermediateDirectory)/lightweights_gxScaler$(ObjectSuffix) $(IntermediateDirectory)/lightweights_gxStructuralViewElement$(ObjectSuffix) $(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix) 
+Objects=$(IntermediateDirectory)/wx_gxLightweightControl$(ObjectSuffix) $(IntermediateDirectory)/core_gxComposite$(ObjectSuffix) $(IntermediateDirectory)/geometry_gxRect$(ObjectSuffix) $(IntermediateDirectory)/core_gxObserverList$(ObjectSuffix) $(IntermediateDirectory)/view_gxDcPainter$(ObjectSuffix) $(IntermediateDirectory)/view_gxLightweightSystem$(ObjectSuffix) $(IntermediateDirectory)/view_gxPainter$(ObjectSuffix) $(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix) $(IntermediateDirectory)/elements_gxRootViewElement$(ObjectSuffix) $(IntermediateDirectory)/elements_gxScaler$(ObjectSuffix) \
+	$(IntermediateDirectory)/elements_gxStructuralViewElement$(ObjectSuffix) $(IntermediateDirectory)/elements_gxViewElement$(ObjectSuffix) $(IntermediateDirectory)/elements_gxVisualViewElement$(ObjectSuffix) $(IntermediateDirectory)/shapes_gxRectangle$(ObjectSuffix) $(IntermediateDirectory)/shapes_gxShape$(ObjectSuffix) 
 
 ##
 ## Main Build Targets 
@@ -107,93 +107,93 @@ $(IntermediateDirectory)/core_gxObserverList$(DependSuffix): ../../src/core/gxOb
 $(IntermediateDirectory)/core_gxObserverList$(PreprocessSuffix): ../../src/core/gxObserverList.cpp
 	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/core_gxObserverList$(PreprocessSuffix) "/Development/gefri/src/core/gxObserverList.cpp"
 
-$(IntermediateDirectory)/lightweights_gxDcPainter$(ObjectSuffix): ../../src/lightweights/gxDcPainter.cpp $(IntermediateDirectory)/lightweights_gxDcPainter$(DependSuffix)
-	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/lightweights/gxDcPainter.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/lightweights_gxDcPainter$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/lightweights_gxDcPainter$(DependSuffix): ../../src/lightweights/gxDcPainter.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/lightweights_gxDcPainter$(ObjectSuffix) -MF$(IntermediateDirectory)/lightweights_gxDcPainter$(DependSuffix) -MM "/Development/gefri/src/lightweights/gxDcPainter.cpp"
+$(IntermediateDirectory)/view_gxDcPainter$(ObjectSuffix): ../../src/view/gxDcPainter.cpp $(IntermediateDirectory)/view_gxDcPainter$(DependSuffix)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/view/gxDcPainter.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/view_gxDcPainter$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/view_gxDcPainter$(DependSuffix): ../../src/view/gxDcPainter.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/view_gxDcPainter$(ObjectSuffix) -MF$(IntermediateDirectory)/view_gxDcPainter$(DependSuffix) -MM "/Development/gefri/src/view/gxDcPainter.cpp"
 
-$(IntermediateDirectory)/lightweights_gxDcPainter$(PreprocessSuffix): ../../src/lightweights/gxDcPainter.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/lightweights_gxDcPainter$(PreprocessSuffix) "/Development/gefri/src/lightweights/gxDcPainter.cpp"
+$(IntermediateDirectory)/view_gxDcPainter$(PreprocessSuffix): ../../src/view/gxDcPainter.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/view_gxDcPainter$(PreprocessSuffix) "/Development/gefri/src/view/gxDcPainter.cpp"
 
-$(IntermediateDirectory)/lightweights_gxLightweightSystem$(ObjectSuffix): ../../src/lightweights/gxLightweightSystem.cpp $(IntermediateDirectory)/lightweights_gxLightweightSystem$(DependSuffix)
-	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/lightweights/gxLightweightSystem.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/lightweights_gxLightweightSystem$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/lightweights_gxLightweightSystem$(DependSuffix): ../../src/lightweights/gxLightweightSystem.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/lightweights_gxLightweightSystem$(ObjectSuffix) -MF$(IntermediateDirectory)/lightweights_gxLightweightSystem$(DependSuffix) -MM "/Development/gefri/src/lightweights/gxLightweightSystem.cpp"
+$(IntermediateDirectory)/view_gxLightweightSystem$(ObjectSuffix): ../../src/view/gxLightweightSystem.cpp $(IntermediateDirectory)/view_gxLightweightSystem$(DependSuffix)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/view/gxLightweightSystem.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/view_gxLightweightSystem$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/view_gxLightweightSystem$(DependSuffix): ../../src/view/gxLightweightSystem.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/view_gxLightweightSystem$(ObjectSuffix) -MF$(IntermediateDirectory)/view_gxLightweightSystem$(DependSuffix) -MM "/Development/gefri/src/view/gxLightweightSystem.cpp"
 
-$(IntermediateDirectory)/lightweights_gxLightweightSystem$(PreprocessSuffix): ../../src/lightweights/gxLightweightSystem.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/lightweights_gxLightweightSystem$(PreprocessSuffix) "/Development/gefri/src/lightweights/gxLightweightSystem.cpp"
+$(IntermediateDirectory)/view_gxLightweightSystem$(PreprocessSuffix): ../../src/view/gxLightweightSystem.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/view_gxLightweightSystem$(PreprocessSuffix) "/Development/gefri/src/view/gxLightweightSystem.cpp"
 
-$(IntermediateDirectory)/lightweights_gxPainter$(ObjectSuffix): ../../src/lightweights/gxPainter.cpp $(IntermediateDirectory)/lightweights_gxPainter$(DependSuffix)
-	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/lightweights/gxPainter.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/lightweights_gxPainter$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/lightweights_gxPainter$(DependSuffix): ../../src/lightweights/gxPainter.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/lightweights_gxPainter$(ObjectSuffix) -MF$(IntermediateDirectory)/lightweights_gxPainter$(DependSuffix) -MM "/Development/gefri/src/lightweights/gxPainter.cpp"
+$(IntermediateDirectory)/view_gxPainter$(ObjectSuffix): ../../src/view/gxPainter.cpp $(IntermediateDirectory)/view_gxPainter$(DependSuffix)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/view/gxPainter.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/view_gxPainter$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/view_gxPainter$(DependSuffix): ../../src/view/gxPainter.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/view_gxPainter$(ObjectSuffix) -MF$(IntermediateDirectory)/view_gxPainter$(DependSuffix) -MM "/Development/gefri/src/view/gxPainter.cpp"
 
-$(IntermediateDirectory)/lightweights_gxPainter$(PreprocessSuffix): ../../src/lightweights/gxPainter.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/lightweights_gxPainter$(PreprocessSuffix) "/Development/gefri/src/lightweights/gxPainter.cpp"
+$(IntermediateDirectory)/view_gxPainter$(PreprocessSuffix): ../../src/view/gxPainter.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/view_gxPainter$(PreprocessSuffix) "/Development/gefri/src/view/gxPainter.cpp"
 
-$(IntermediateDirectory)/lightweights_gxRootViewElement$(ObjectSuffix): ../../src/lightweights/gxRootViewElement.cpp $(IntermediateDirectory)/lightweights_gxRootViewElement$(DependSuffix)
-	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/lightweights/gxRootViewElement.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/lightweights_gxRootViewElement$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/lightweights_gxRootViewElement$(DependSuffix): ../../src/lightweights/gxRootViewElement.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/lightweights_gxRootViewElement$(ObjectSuffix) -MF$(IntermediateDirectory)/lightweights_gxRootViewElement$(DependSuffix) -MM "/Development/gefri/src/lightweights/gxRootViewElement.cpp"
+$(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix): ../../src/view/managers/gxZoomManager.cpp $(IntermediateDirectory)/managers_gxZoomManager$(DependSuffix)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/view/managers/gxZoomManager.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/managers_gxZoomManager$(DependSuffix): ../../src/view/managers/gxZoomManager.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix) -MF$(IntermediateDirectory)/managers_gxZoomManager$(DependSuffix) -MM "/Development/gefri/src/view/managers/gxZoomManager.cpp"
 
-$(IntermediateDirectory)/lightweights_gxRootViewElement$(PreprocessSuffix): ../../src/lightweights/gxRootViewElement.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/lightweights_gxRootViewElement$(PreprocessSuffix) "/Development/gefri/src/lightweights/gxRootViewElement.cpp"
+$(IntermediateDirectory)/managers_gxZoomManager$(PreprocessSuffix): ../../src/view/managers/gxZoomManager.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/managers_gxZoomManager$(PreprocessSuffix) "/Development/gefri/src/view/managers/gxZoomManager.cpp"
 
-$(IntermediateDirectory)/lightweights_gxViewElement$(ObjectSuffix): ../../src/lightweights/gxViewElement.cpp $(IntermediateDirectory)/lightweights_gxViewElement$(DependSuffix)
-	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/lightweights/gxViewElement.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/lightweights_gxViewElement$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/lightweights_gxViewElement$(DependSuffix): ../../src/lightweights/gxViewElement.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/lightweights_gxViewElement$(ObjectSuffix) -MF$(IntermediateDirectory)/lightweights_gxViewElement$(DependSuffix) -MM "/Development/gefri/src/lightweights/gxViewElement.cpp"
+$(IntermediateDirectory)/elements_gxRootViewElement$(ObjectSuffix): ../../src/view/elements/gxRootViewElement.cpp $(IntermediateDirectory)/elements_gxRootViewElement$(DependSuffix)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/view/elements/gxRootViewElement.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/elements_gxRootViewElement$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/elements_gxRootViewElement$(DependSuffix): ../../src/view/elements/gxRootViewElement.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/elements_gxRootViewElement$(ObjectSuffix) -MF$(IntermediateDirectory)/elements_gxRootViewElement$(DependSuffix) -MM "/Development/gefri/src/view/elements/gxRootViewElement.cpp"
 
-$(IntermediateDirectory)/lightweights_gxViewElement$(PreprocessSuffix): ../../src/lightweights/gxViewElement.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/lightweights_gxViewElement$(PreprocessSuffix) "/Development/gefri/src/lightweights/gxViewElement.cpp"
+$(IntermediateDirectory)/elements_gxRootViewElement$(PreprocessSuffix): ../../src/view/elements/gxRootViewElement.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/elements_gxRootViewElement$(PreprocessSuffix) "/Development/gefri/src/view/elements/gxRootViewElement.cpp"
 
-$(IntermediateDirectory)/lightweights_gxVisualViewElement$(ObjectSuffix): ../../src/lightweights/gxVisualViewElement.cpp $(IntermediateDirectory)/lightweights_gxVisualViewElement$(DependSuffix)
-	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/lightweights/gxVisualViewElement.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/lightweights_gxVisualViewElement$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/lightweights_gxVisualViewElement$(DependSuffix): ../../src/lightweights/gxVisualViewElement.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/lightweights_gxVisualViewElement$(ObjectSuffix) -MF$(IntermediateDirectory)/lightweights_gxVisualViewElement$(DependSuffix) -MM "/Development/gefri/src/lightweights/gxVisualViewElement.cpp"
+$(IntermediateDirectory)/elements_gxScaler$(ObjectSuffix): ../../src/view/elements/gxScaler.cpp $(IntermediateDirectory)/elements_gxScaler$(DependSuffix)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/view/elements/gxScaler.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/elements_gxScaler$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/elements_gxScaler$(DependSuffix): ../../src/view/elements/gxScaler.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/elements_gxScaler$(ObjectSuffix) -MF$(IntermediateDirectory)/elements_gxScaler$(DependSuffix) -MM "/Development/gefri/src/view/elements/gxScaler.cpp"
 
-$(IntermediateDirectory)/lightweights_gxVisualViewElement$(PreprocessSuffix): ../../src/lightweights/gxVisualViewElement.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/lightweights_gxVisualViewElement$(PreprocessSuffix) "/Development/gefri/src/lightweights/gxVisualViewElement.cpp"
+$(IntermediateDirectory)/elements_gxScaler$(PreprocessSuffix): ../../src/view/elements/gxScaler.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/elements_gxScaler$(PreprocessSuffix) "/Development/gefri/src/view/elements/gxScaler.cpp"
 
-$(IntermediateDirectory)/shapes_gxRectangle$(ObjectSuffix): ../../src/lightweights/shapes/gxRectangle.cpp $(IntermediateDirectory)/shapes_gxRectangle$(DependSuffix)
-	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/lightweights/shapes/gxRectangle.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/shapes_gxRectangle$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/shapes_gxRectangle$(DependSuffix): ../../src/lightweights/shapes/gxRectangle.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/shapes_gxRectangle$(ObjectSuffix) -MF$(IntermediateDirectory)/shapes_gxRectangle$(DependSuffix) -MM "/Development/gefri/src/lightweights/shapes/gxRectangle.cpp"
+$(IntermediateDirectory)/elements_gxStructuralViewElement$(ObjectSuffix): ../../src/view/elements/gxStructuralViewElement.cpp $(IntermediateDirectory)/elements_gxStructuralViewElement$(DependSuffix)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/view/elements/gxStructuralViewElement.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/elements_gxStructuralViewElement$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/elements_gxStructuralViewElement$(DependSuffix): ../../src/view/elements/gxStructuralViewElement.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/elements_gxStructuralViewElement$(ObjectSuffix) -MF$(IntermediateDirectory)/elements_gxStructuralViewElement$(DependSuffix) -MM "/Development/gefri/src/view/elements/gxStructuralViewElement.cpp"
 
-$(IntermediateDirectory)/shapes_gxRectangle$(PreprocessSuffix): ../../src/lightweights/shapes/gxRectangle.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/shapes_gxRectangle$(PreprocessSuffix) "/Development/gefri/src/lightweights/shapes/gxRectangle.cpp"
+$(IntermediateDirectory)/elements_gxStructuralViewElement$(PreprocessSuffix): ../../src/view/elements/gxStructuralViewElement.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/elements_gxStructuralViewElement$(PreprocessSuffix) "/Development/gefri/src/view/elements/gxStructuralViewElement.cpp"
 
-$(IntermediateDirectory)/shapes_gxShape$(ObjectSuffix): ../../src/lightweights/shapes/gxShape.cpp $(IntermediateDirectory)/shapes_gxShape$(DependSuffix)
-	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/lightweights/shapes/gxShape.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/shapes_gxShape$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/shapes_gxShape$(DependSuffix): ../../src/lightweights/shapes/gxShape.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/shapes_gxShape$(ObjectSuffix) -MF$(IntermediateDirectory)/shapes_gxShape$(DependSuffix) -MM "/Development/gefri/src/lightweights/shapes/gxShape.cpp"
+$(IntermediateDirectory)/elements_gxViewElement$(ObjectSuffix): ../../src/view/elements/gxViewElement.cpp $(IntermediateDirectory)/elements_gxViewElement$(DependSuffix)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/view/elements/gxViewElement.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/elements_gxViewElement$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/elements_gxViewElement$(DependSuffix): ../../src/view/elements/gxViewElement.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/elements_gxViewElement$(ObjectSuffix) -MF$(IntermediateDirectory)/elements_gxViewElement$(DependSuffix) -MM "/Development/gefri/src/view/elements/gxViewElement.cpp"
 
-$(IntermediateDirectory)/shapes_gxShape$(PreprocessSuffix): ../../src/lightweights/shapes/gxShape.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/shapes_gxShape$(PreprocessSuffix) "/Development/gefri/src/lightweights/shapes/gxShape.cpp"
+$(IntermediateDirectory)/elements_gxViewElement$(PreprocessSuffix): ../../src/view/elements/gxViewElement.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/elements_gxViewElement$(PreprocessSuffix) "/Development/gefri/src/view/elements/gxViewElement.cpp"
 
-$(IntermediateDirectory)/lightweights_gxScaler$(ObjectSuffix): ../../src/lightweights/gxScaler.cpp $(IntermediateDirectory)/lightweights_gxScaler$(DependSuffix)
-	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/lightweights/gxScaler.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/lightweights_gxScaler$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/lightweights_gxScaler$(DependSuffix): ../../src/lightweights/gxScaler.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/lightweights_gxScaler$(ObjectSuffix) -MF$(IntermediateDirectory)/lightweights_gxScaler$(DependSuffix) -MM "/Development/gefri/src/lightweights/gxScaler.cpp"
+$(IntermediateDirectory)/elements_gxVisualViewElement$(ObjectSuffix): ../../src/view/elements/gxVisualViewElement.cpp $(IntermediateDirectory)/elements_gxVisualViewElement$(DependSuffix)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/view/elements/gxVisualViewElement.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/elements_gxVisualViewElement$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/elements_gxVisualViewElement$(DependSuffix): ../../src/view/elements/gxVisualViewElement.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/elements_gxVisualViewElement$(ObjectSuffix) -MF$(IntermediateDirectory)/elements_gxVisualViewElement$(DependSuffix) -MM "/Development/gefri/src/view/elements/gxVisualViewElement.cpp"
 
-$(IntermediateDirectory)/lightweights_gxScaler$(PreprocessSuffix): ../../src/lightweights/gxScaler.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/lightweights_gxScaler$(PreprocessSuffix) "/Development/gefri/src/lightweights/gxScaler.cpp"
+$(IntermediateDirectory)/elements_gxVisualViewElement$(PreprocessSuffix): ../../src/view/elements/gxVisualViewElement.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/elements_gxVisualViewElement$(PreprocessSuffix) "/Development/gefri/src/view/elements/gxVisualViewElement.cpp"
 
-$(IntermediateDirectory)/lightweights_gxStructuralViewElement$(ObjectSuffix): ../../src/lightweights/gxStructuralViewElement.cpp $(IntermediateDirectory)/lightweights_gxStructuralViewElement$(DependSuffix)
-	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/lightweights/gxStructuralViewElement.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/lightweights_gxStructuralViewElement$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/lightweights_gxStructuralViewElement$(DependSuffix): ../../src/lightweights/gxStructuralViewElement.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/lightweights_gxStructuralViewElement$(ObjectSuffix) -MF$(IntermediateDirectory)/lightweights_gxStructuralViewElement$(DependSuffix) -MM "/Development/gefri/src/lightweights/gxStructuralViewElement.cpp"
+$(IntermediateDirectory)/shapes_gxRectangle$(ObjectSuffix): ../../src/view/elements/shapes/gxRectangle.cpp $(IntermediateDirectory)/shapes_gxRectangle$(DependSuffix)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/view/elements/shapes/gxRectangle.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/shapes_gxRectangle$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/shapes_gxRectangle$(DependSuffix): ../../src/view/elements/shapes/gxRectangle.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/shapes_gxRectangle$(ObjectSuffix) -MF$(IntermediateDirectory)/shapes_gxRectangle$(DependSuffix) -MM "/Development/gefri/src/view/elements/shapes/gxRectangle.cpp"
 
-$(IntermediateDirectory)/lightweights_gxStructuralViewElement$(PreprocessSuffix): ../../src/lightweights/gxStructuralViewElement.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/lightweights_gxStructuralViewElement$(PreprocessSuffix) "/Development/gefri/src/lightweights/gxStructuralViewElement.cpp"
+$(IntermediateDirectory)/shapes_gxRectangle$(PreprocessSuffix): ../../src/view/elements/shapes/gxRectangle.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/shapes_gxRectangle$(PreprocessSuffix) "/Development/gefri/src/view/elements/shapes/gxRectangle.cpp"
 
-$(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix): ../../src/lightweights/managers/gxZoomManager.cpp $(IntermediateDirectory)/managers_gxZoomManager$(DependSuffix)
-	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/lightweights/managers/gxZoomManager.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/managers_gxZoomManager$(DependSuffix): ../../src/lightweights/managers/gxZoomManager.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix) -MF$(IntermediateDirectory)/managers_gxZoomManager$(DependSuffix) -MM "/Development/gefri/src/lightweights/managers/gxZoomManager.cpp"
+$(IntermediateDirectory)/shapes_gxShape$(ObjectSuffix): ../../src/view/elements/shapes/gxShape.cpp $(IntermediateDirectory)/shapes_gxShape$(DependSuffix)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/view/elements/shapes/gxShape.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/shapes_gxShape$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/shapes_gxShape$(DependSuffix): ../../src/view/elements/shapes/gxShape.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/shapes_gxShape$(ObjectSuffix) -MF$(IntermediateDirectory)/shapes_gxShape$(DependSuffix) -MM "/Development/gefri/src/view/elements/shapes/gxShape.cpp"
 
-$(IntermediateDirectory)/managers_gxZoomManager$(PreprocessSuffix): ../../src/lightweights/managers/gxZoomManager.cpp
-	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/managers_gxZoomManager$(PreprocessSuffix) "/Development/gefri/src/lightweights/managers/gxZoomManager.cpp"
+$(IntermediateDirectory)/shapes_gxShape$(PreprocessSuffix): ../../src/view/elements/shapes/gxShape.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/shapes_gxShape$(PreprocessSuffix) "/Development/gefri/src/view/elements/shapes/gxShape.cpp"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
@@ -213,39 +213,39 @@ clean:
 	$(RM) $(IntermediateDirectory)/core_gxObserverList$(ObjectSuffix)
 	$(RM) $(IntermediateDirectory)/core_gxObserverList$(DependSuffix)
 	$(RM) $(IntermediateDirectory)/core_gxObserverList$(PreprocessSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxDcPainter$(ObjectSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxDcPainter$(DependSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxDcPainter$(PreprocessSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxLightweightSystem$(ObjectSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxLightweightSystem$(DependSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxLightweightSystem$(PreprocessSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxPainter$(ObjectSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxPainter$(DependSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxPainter$(PreprocessSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxRootViewElement$(ObjectSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxRootViewElement$(DependSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxRootViewElement$(PreprocessSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxViewElement$(ObjectSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxViewElement$(DependSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxViewElement$(PreprocessSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxVisualViewElement$(ObjectSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxVisualViewElement$(DependSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxVisualViewElement$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/view_gxDcPainter$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/view_gxDcPainter$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/view_gxDcPainter$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/view_gxLightweightSystem$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/view_gxLightweightSystem$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/view_gxLightweightSystem$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/view_gxPainter$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/view_gxPainter$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/view_gxPainter$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/managers_gxZoomManager$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/managers_gxZoomManager$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxRootViewElement$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxRootViewElement$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxRootViewElement$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxScaler$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxScaler$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxScaler$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxStructuralViewElement$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxStructuralViewElement$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxStructuralViewElement$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxViewElement$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxViewElement$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxViewElement$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxVisualViewElement$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxVisualViewElement$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxVisualViewElement$(PreprocessSuffix)
 	$(RM) $(IntermediateDirectory)/shapes_gxRectangle$(ObjectSuffix)
 	$(RM) $(IntermediateDirectory)/shapes_gxRectangle$(DependSuffix)
 	$(RM) $(IntermediateDirectory)/shapes_gxRectangle$(PreprocessSuffix)
 	$(RM) $(IntermediateDirectory)/shapes_gxShape$(ObjectSuffix)
 	$(RM) $(IntermediateDirectory)/shapes_gxShape$(DependSuffix)
 	$(RM) $(IntermediateDirectory)/shapes_gxShape$(PreprocessSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxScaler$(ObjectSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxScaler$(DependSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxScaler$(PreprocessSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxStructuralViewElement$(ObjectSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxStructuralViewElement$(DependSuffix)
-	$(RM) $(IntermediateDirectory)/lightweights_gxStructuralViewElement$(PreprocessSuffix)
-	$(RM) $(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix)
-	$(RM) $(IntermediateDirectory)/managers_gxZoomManager$(DependSuffix)
-	$(RM) $(IntermediateDirectory)/managers_gxZoomManager$(PreprocessSuffix)
 	$(RM) $(OutputFile)
 
 

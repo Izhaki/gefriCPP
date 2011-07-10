@@ -1,4 +1,4 @@
-#include "lightweights/gxStructuralViewElement.h"
+#include "view/elements/gxStructuralViewElement.h"
 
 gxStructuralViewElement::gxStructuralViewElement()
 {

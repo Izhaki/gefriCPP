@@ -32,35 +32,6 @@
     <File Name="../../src/core/gxObserverList.cpp"/>
     <File Name="../../src/core/gxObserverList.h"/>
   </VirtualDirectory>
-  <VirtualDirectory Name="lightweights">
-    <File Name="../../src/lightweights/gxDcPainter.cpp"/>
-    <File Name="../../src/lightweights/gxDcPainter.h"/>
-    <File Name="../../src/lightweights/gxLightweightControl.h"/>
-    <File Name="../../src/lightweights/gxLightweightSystem.cpp"/>
-    <File Name="../../src/lightweights/gxLightweightSystem.h"/>
-    <File Name="../../src/lightweights/gxPainter.cpp"/>
-    <File Name="../../src/lightweights/gxPainter.h"/>
-    <File Name="../../src/lightweights/gxRootViewElement.cpp"/>
-    <File Name="../../src/lightweights/gxRootViewElement.h"/>
-    <File Name="../../src/lightweights/gxStructuralViewElement.h"/>
-    <File Name="../../src/lightweights/gxViewElement.cpp"/>
-    <File Name="../../src/lightweights/gxViewElement.h"/>
-    <File Name="../../src/lightweights/gxVisualViewElement.cpp"/>
-    <File Name="../../src/lightweights/gxVisualViewElement.h"/>
-    <VirtualDirectory Name="shapes">
-      <File Name="../../src/lightweights/shapes/gxRectangle.cpp"/>
-      <File Name="../../src/lightweights/shapes/gxRectangle.h"/>
-      <File Name="../../src/lightweights/shapes/gxShape.cpp"/>
-      <File Name="../../src/lightweights/shapes/gxShape.h"/>
-    </VirtualDirectory>
-    <File Name="../../src/lightweights/gxScaler.h"/>
-    <File Name="../../src/lightweights/gxScaler.cpp"/>
-    <File Name="../../src/lightweights/gxStructuralViewElement.cpp"/>
-    <VirtualDirectory Name="managers">
-      <File Name="../../src/lightweights/managers/gxZoomManager.h"/>
-      <File Name="../../src/lightweights/managers/gxZoomManager.cpp"/>
-    </VirtualDirectory>
-  </VirtualDirectory>
   <Settings Type="Static Library">
     <GlobalSettings>
       <Compiler Options="" C_Options="">
@@ -242,4 +213,35 @@
       </AdditionalRules>
     </Configuration>
   </Settings>
+  <VirtualDirectory Name="view">
+    <File Name="../../src/view/gxDcPainter.cpp"/>
+    <File Name="../../src/view/gxDcPainter.h"/>
+    <File Name="../../src/view/gxLightweightControl.h"/>
+    <File Name="../../src/view/gxLightweightSystem.cpp"/>
+    <File Name="../../src/view/gxLightweightSystem.h"/>
+    <File Name="../../src/view/gxPainter.cpp"/>
+    <File Name="../../src/view/gxPainter.h"/>
+    <VirtualDirectory Name="managers">
+      <File Name="../../src/view/managers/gxZoomManager.cpp"/>
+      <File Name="../../src/view/managers/gxZoomManager.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="elements">
+      <File Name="../../src/view/elements/gxRootViewElement.cpp"/>
+      <File Name="../../src/view/elements/gxRootViewElement.h"/>
+      <File Name="../../src/view/elements/gxScaler.cpp"/>
+      <File Name="../../src/view/elements/gxScaler.h"/>
+      <File Name="../../src/view/elements/gxStructuralViewElement.cpp"/>
+      <File Name="../../src/view/elements/gxStructuralViewElement.h"/>
+      <File Name="../../src/view/elements/gxViewElement.cpp"/>
+      <File Name="../../src/view/elements/gxViewElement.h"/>
+      <File Name="../../src/view/elements/gxVisualViewElement.cpp"/>
+      <File Name="../../src/view/elements/gxVisualViewElement.h"/>
+      <VirtualDirectory Name="shapes">
+        <File Name="../../src/view/elements/shapes/gxRectangle.cpp"/>
+        <File Name="../../src/view/elements/shapes/gxRectangle.h"/>
+        <File Name="../../src/view/elements/shapes/gxShape.cpp"/>
+        <File Name="../../src/view/elements/shapes/gxShape.h"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+  </VirtualDirectory>
 </CodeLite_Project>

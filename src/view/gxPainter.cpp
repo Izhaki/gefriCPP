@@ -1,4 +1,4 @@
-#include "lightweights/gxPainter.h"
+#include "view/gxPainter.h"
 #include <wx/log.h>
 #include <math.h>
 

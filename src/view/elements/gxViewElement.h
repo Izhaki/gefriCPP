@@ -3,7 +3,7 @@
 
 #include "core/geometry/gxGeometry.h"
 #include "core/gxComposite.h"
-#include "lightweights/gxPainter.h"
+#include "view/gxPainter.h"
 
 // Forward declaration
 class gxRootViewElement;

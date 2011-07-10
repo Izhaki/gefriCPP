@@ -1,8 +1,8 @@
-#include "lightweights/gxScaler.h"
+#include "view/elements/gxScaler.h"
 #include "core/gxCallback.h"
 
 gxScaler::gxScaler()
-  : mScaleX(1), mScaleY(1)
+  : mScaleX(1), mScaleY(1), mZoomManager(NULL)
 {
 }
 

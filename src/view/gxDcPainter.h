@@ -2,7 +2,7 @@
 #define gxDcPainter_h
 
 #include "core/gxPaintDC.h"
-#include "lightweights/gxPainter.h"
+#include "view/gxPainter.h"
 
 /**
  * @brief A painter that paints on a control DC.
