@@ -13,6 +13,7 @@
       <File Name="../../src/adapters/wx/gxLightweightControl.h"/>
       <File Name="../../src/adapters/wx/gxObject.h"/>
       <File Name="../../src/adapters/wx/gxPaintDC.h"/>
+      <File Name="../../src/adapters/wx/gxAssert.h"/>
     </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="core">
@@ -31,6 +32,7 @@
     <File Name="../../src/core/gxCallback.h"/>
     <File Name="../../src/core/gxObserverList.cpp"/>
     <File Name="../../src/core/gxObserverList.h"/>
+    <File Name="../../src/core/gxAssert.h"/>
   </VirtualDirectory>
   <Settings Type="Static Library">
     <GlobalSettings>

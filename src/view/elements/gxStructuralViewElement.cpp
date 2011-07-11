@@ -1,4 +1,5 @@
 #include "view/elements/gxStructuralViewElement.h"
+#include "core/gxAssert.h"
 
 gxStructuralViewElement::gxStructuralViewElement()
 {
@@ -32,7 +33,7 @@ gxRect gxStructuralViewElement::GetBounds() const
     // This will return a rect at (0,0) origin with the size of the parent.
     return gxRect(GetParent()->GetBounds().GetSize());
   } else {
-    wxASSERT_MSG(false, _T("gxStructuralViewElement::GetBounds() called but no parent."));
+    gxASSERT(true, "gxStructuralViewElement::GetBounds() called but no parent.");
   }
   return gxRect(0, 0, 0, 0);
 }

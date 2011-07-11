@@ -1,5 +1,6 @@
 #include "view/elements/gxRootViewElement.h"
 #include "view/gxLightweightSystem.h"
+#include "core/gxAssert.h"
 
 gxRootViewElement* gxRootViewElement::GetRootViewElement()
 {
@@ -18,7 +19,7 @@ void gxRootViewElement::SetLightweightSystem(gxLightweightSystem *aLightweightSy
 
 gxRect gxRootViewElement::GetBounds() const
 {
-  wxASSERT_MSG(GetLightweightSystem() != NULL, _T("gxRootViewElement::GetBounds called but no Lightweight System"));
+  gxASSERT(GetLightweightSystem() == NULL, "gxRootViewElement::GetBounds called but no Lightweight System");
   
   if (GetLightweightSystem() != NULL)
   {

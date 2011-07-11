@@ -1,5 +1,5 @@
-#include "gxComposite.h"
-
+#include "core/gxComposite.h"
+#include "core/gxAssert.h"
 gxComposite::gxComposite()
 {
   mParent = NULL;
@@ -25,12 +25,12 @@ void gxComposite::SetParent(gxComposite* aParent, bool aAndRemoveFromParent)
 void gxComposite::AddChild(gxComposite *aChild)
 {
   // Make sure child isn't null
-  wxASSERT_MSG(aChild != NULL, _T("Null paased to AddChild"));
+  gxASSERT(aChild == NULL, "Null paased to AddChild");
 
   // Check for cycle in hierarchy
   for (gxComposite* f = this; f!= NULL; f = f->GetParent())
   {
-    wxASSERT_MSG(aChild != f, _T("Cycle in Hierarchy when trying to add a child"));
+    gxASSERT(aChild == f, "Cycle in Hierarchy when trying to add a child");
   }
 
   // Set the child parent to this
@@ -46,7 +46,7 @@ void gxComposite::AddChild(gxComposite *aChild)
 void gxComposite::RemoveChild(gxComposite* aChild, bool aAndDelete)
 {
   // Make sure it is one of my children
-  wxASSERT(aChild->GetParent() == this);
+  gxASSERT(aChild->GetParent() != this, "RemoveChild is called on a wrong parent." );
 
   // Notify
   OnRemoveChild(aChild);

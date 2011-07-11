@@ -2,10 +2,10 @@
 ## Auto Generated makefile by CodeLite IDE
 ## any manual changes will be erased      
 ##
-## Mac32_Debug
+## Mac32_Release
 ProjectName            :=gxDraw
-ConfigurationName      :=Mac32_Debug
-IntermediateDirectory  :=./build/Mac32-Debug
+ConfigurationName      :=Mac32_Release
+IntermediateDirectory  :=./build/Mac32-Release
 OutDir                 := $(IntermediateDirectory)
 WorkspacePath          := "/Development/gefri/build"
 ProjectPath            := "/Development/gefri/samples/gxDraw"
@@ -37,12 +37,12 @@ ArchiveOutputSwitch    :=
 PreprocessOnlySwitch   :=-E 
 ObjectsFileList        :="/Development/gefri/samples/gxDraw/gxDraw.txt"
 MakeDirCommand         :=mkdir -p
-CmpOptions             := -g $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes) -arch i386 $(Preprocessors)
-C_CmpOptions           := -g $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes) -arch i386 $(Preprocessors)
-LinkOptions            :=  -mwindows -arch i386  $(shell $(WX_TOOL) --debug=yes --libs --unicode=yes)
+CmpOptions             := -O2 $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=no) -arch i386 $(Preprocessors)
+C_CmpOptions           := -O2 $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=no) -arch i386 $(Preprocessors)
+LinkOptions            :=  -mwindows -arch i386  $(shell $(WX_TOOL) --debug=no --libs --unicode=yes)
 IncludePath            :=  $(IncludeSwitch)$(WorkspacePath)/../src 
 RcIncludePath          :=
-Libs                   :=$(LibrarySwitch)gefri_mac32d 
+Libs                   :=$(LibrarySwitch)gefri_mac32 
 LibPath                := $(LibraryPathSwitch)$(WorkspacePath)/../lib 
 
 
@@ -50,7 +50,7 @@ LibPath                := $(LibraryPathSwitch)$(WorkspacePath)/../lib
 ## User defined environment variables
 ##
 CodeLiteDir:=/Applications/CodeLite.app/Contents/SharedSupport/
-WX_TOOL:=/Development/wx/wx2.8.12/build-codelite-debug/wx-config
+WX_TOOL:=/Development/wx/wx2.8.12/build-codelite-release/wx-config
 Objects=$(IntermediateDirectory)/src_main$(ObjectSuffix) $(IntermediateDirectory)/src_myFrame$(ObjectSuffix) 
 
 ##
@@ -66,7 +66,7 @@ objects_file:
 	@echo $(Objects) > $(ObjectsFileList)
 
 makeDirStep:
-	@test -d ./build/Mac32-Debug || $(MakeDirCommand) ./build/Mac32-Debug
+	@test -d ./build/Mac32-Release || $(MakeDirCommand) ./build/Mac32-Release
 PrePreBuild: $(IntermediateDirectory)/$(ProjectName).app/Contents/Info.plist $(IntermediateDirectory)/$(ProjectName).app/Contents/Resources/gxDraw.icns
 ## rule to copy the Info.plist file into the bundle
 $(IntermediateDirectory)/$(ProjectName).app/Contents/Info.plist: Info.plist
