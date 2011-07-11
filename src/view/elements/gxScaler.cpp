@@ -1,5 +1,6 @@
 #include "view/elements/gxScaler.h"
 #include "core/gxCallback.h"
+#include "core/gxAssert.h"
 
 gxScaler::gxScaler()
   : mScaleX(1), mScaleY(1), mZoomManager(NULL)
@@ -63,7 +64,8 @@ void gxScaler::TranslateToParent(gxRect &aRect)
   {
     aRect.Scale(mScaleX, mScaleY);
   }
-    
-  if (GetParent() != NULL)
-    aRect.Offset(GetParent()->GetBounds().GetPosition());
+  
+  gxASSERT(GetParent() == NULL, "gxScaler::TranslateToParent called, but no parent");
+
+  aRect.Offset(GetParent()->GetBounds().GetPosition());
 }

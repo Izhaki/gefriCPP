@@ -44,6 +44,9 @@ public:
    * lightweight control, but with the origin set to (0,0).
    */
   virtual gxRect GetBounds() const;
+  
+  virtual void TranslateToAbsolute(gxRect &aRect);
+  virtual void TranslateToParent(gxRect &aRect);
 private:
   /// The {@link gxLightweightSystem lightweight system} associated with this
   /// root view element.

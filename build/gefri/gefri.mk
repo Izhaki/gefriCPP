@@ -2,10 +2,10 @@
 ## Auto Generated makefile by CodeLite IDE
 ## any manual changes will be erased      
 ##
-## Mac32_Release
+## Mac32_Debug
 ProjectName            :=gefri
-ConfigurationName      :=Mac32_Release
-IntermediateDirectory  :=./build/Mac32-Release
+ConfigurationName      :=Mac32_Debug
+IntermediateDirectory  :=./build/Mac32-Debug
 OutDir                 := $(IntermediateDirectory)
 WorkspacePath          := "/Development/gefri/build"
 ProjectPath            := "/Development/gefri/build/gefri"
@@ -30,16 +30,16 @@ PreprocessorSwitch     :=-D
 SourceSwitch           :=-c 
 CompilerName           :=g++
 C_CompilerName         :=gcc
-OutputFile             :=./../../lib/lib$(ProjectName)_mac32.a
+OutputFile             :=./../../lib/lib$(ProjectName)_mac32d.a
 Preprocessors          :=$(PreprocessorSwitch)__WX__ 
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
 PreprocessOnlySwitch   :=-E 
 ObjectsFileList        :="/Development/gefri/build/gefri/gefri.txt"
 MakeDirCommand         :=mkdir -p
-CmpOptions             := -O2 $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=no) -arch i386 $(Preprocessors)
-C_CmpOptions           := -O2 $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=no) -arch i386 $(Preprocessors)
-LinkOptions            :=  -s -arch i386  $(shell $(WX_TOOL) --debug=no --libs --unicode=yes)
+CmpOptions             := -g $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes) -arch i386 $(Preprocessors)
+C_CmpOptions           := -g $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes) -arch i386 $(Preprocessors)
+LinkOptions            :=  -arch i386  $(shell $(WX_TOOL) --debug=yes --libs --unicode=yes)
 IncludePath            :=  $(IncludeSwitch)../../src 
 RcIncludePath          :=
 Libs                   :=
@@ -50,7 +50,7 @@ LibPath                := $(LibraryPathSwitch).
 ## User defined environment variables
 ##
 CodeLiteDir:=/Applications/CodeLite.app/Contents/SharedSupport/
-WX_TOOL:=/Development/wx/wx2.8.12/build-codelite-release/wx-config
+WX_TOOL:=/Development/wx/wx2.8.12/build-codelite-debug/wx-config
 Objects=$(IntermediateDirectory)/wx_gxLightweightControl$(ObjectSuffix) $(IntermediateDirectory)/core_gxComposite$(ObjectSuffix) $(IntermediateDirectory)/geometry_gxRect$(ObjectSuffix) $(IntermediateDirectory)/core_gxObserverList$(ObjectSuffix) $(IntermediateDirectory)/view_gxDcPainter$(ObjectSuffix) $(IntermediateDirectory)/view_gxLightweightSystem$(ObjectSuffix) $(IntermediateDirectory)/view_gxPainter$(ObjectSuffix) $(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix) $(IntermediateDirectory)/elements_gxRootViewElement$(ObjectSuffix) $(IntermediateDirectory)/elements_gxScaler$(ObjectSuffix) \
 	$(IntermediateDirectory)/elements_gxStructuralViewElement$(ObjectSuffix) $(IntermediateDirectory)/elements_gxViewElement$(ObjectSuffix) $(IntermediateDirectory)/elements_gxVisualViewElement$(ObjectSuffix) $(IntermediateDirectory)/shapes_gxRectangle$(ObjectSuffix) $(IntermediateDirectory)/shapes_gxShape$(ObjectSuffix) 
 
@@ -66,8 +66,8 @@ $(OutputFile): $(Objects)
 objects_file:
 	@echo $(Objects) > $(ObjectsFileList)
 
-./build/Mac32-Release:
-	@test -d ./build/Mac32-Release || $(MakeDirCommand) ./build/Mac32-Release
+./build/Mac32-Debug:
+	@test -d ./build/Mac32-Debug || $(MakeDirCommand) ./build/Mac32-Debug
 
 PreBuild:
 

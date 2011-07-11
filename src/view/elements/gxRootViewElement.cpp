@@ -29,3 +29,13 @@ gxRect gxRootViewElement::GetBounds() const
   }
   return gxRect(0, 0, 0, 0);
 }
+
+void gxRootViewElement::TranslateToAbsolute(gxRect &aRect)
+{
+  // RootViewElement has no parent. So translation stops here.
+}
+
+void gxRootViewElement::TranslateToParent(gxRect &aRect)
+{
+    // RootViewElement has no parent. So translation stops here.
+}

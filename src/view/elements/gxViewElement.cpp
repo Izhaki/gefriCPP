@@ -1,5 +1,6 @@
 #include "view/elements/gxViewElement.h"
 #include "view/gxLightweightSystem.h"
+#include "core/gxAssert.h"
 
 gxViewElement::gxViewElement()
 {
@@ -21,17 +22,17 @@ gxRootViewElement* gxViewElement::GetRootViewElement()
 
 void gxViewElement::TranslateToAbsolute(gxRect &aRect)
 {
-  if (GetParent() != NULL) 
-  {
-    TranslateToParent(aRect);
-    GetParent()->TranslateToAbsolute(aRect);
-  }
+  gxASSERT(GetParent() == NULL, "gxViewElement::TranslateToAbsolute called, but no parent");
+
+  TranslateToParent(aRect);
+  GetParent()->TranslateToAbsolute(aRect);
 }
 
 void gxViewElement::TranslateToParent(gxRect &aRect)
 {
-  if (GetParent() != NULL)
-    aRect.Offset(GetParent()->GetBounds().GetPosition());
+  gxASSERT(GetParent() == NULL, "gxViewElement::TranslateToParent called, but no parent");
+
+  aRect.Offset(GetParent()->GetBounds().GetPosition());
 }
 
 void gxViewElement::Erase()
