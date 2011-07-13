@@ -119,7 +119,7 @@ protected:
    * @brief Returns the current (absolute) clip rectangle
    * @return The clip rectangle
    */
-  virtual gxRect GetClipRect() = 0;
+  virtual gxRect GetClipRect() const = 0;
 
   /**
    * @brief Transforms a {@link gxRect}, taking into account translate, scale

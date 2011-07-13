@@ -1,6 +1,7 @@
 #include "view/gxPainter.h"
 #include <wx/log.h>
 #include <math.h>
+#include "core/gxLog.h"
 
 gxPainter::gxPainter()
   :mTranslateX(0), mTranslateY(0),
@@ -36,9 +37,7 @@ void gxPainter::SetScale(float sx, float sy)
 
 void gxPainter::PushState()
 {
-  //wxLogDebug(_T("PushState: %i, %i, %i, %i"), mClipArea.GetX(), mClipArea.GetY(), mClipArea.GetWidth(), mClipArea.GetHeight());
   //gxRect clipRect = GetDcClipRect();
-  //wxLogDebug(_T("PushState (absolute clip rect): %i, %i, %i, %i"), clipRect.GetX(), clipRect.GetY(), clipRect.GetWidth(), clipRect.GetHeight());
 
   gxPainterState *s = new gxPainterState();
 
@@ -54,9 +53,9 @@ void gxPainter::PushState()
 
 void gxPainter::PopState()
 {
-  //wxLogDebug(_T("PopState"));
   // Get the top state from the stack
   gxPainterState *s = mStateStack.top();
+  
   // Restore it
   RestoreState(s);
 
@@ -95,7 +94,7 @@ void gxPainter::SetClipArea(gxRect const &aRect)
   // Transforms the rect, taking into account trnaslation, scale, etc.
   gxRect transformedRect(aRect);
   Transform(transformedRect);
-
+  
   IntersectClipArea(transformedRect);
 }
 

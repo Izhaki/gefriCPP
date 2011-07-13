@@ -1,5 +1,6 @@
 #include "view/gxDcPainter.h"
 #include <wx/log.h>
+#include "core/gxLog.h"
 
 gxDcPainter::gxDcPainter(gxPaintDC *aDc, gxRects const &aDamagedRects)
 {
@@ -7,11 +8,9 @@ gxDcPainter::gxDcPainter(gxPaintDC *aDc, gxRects const &aDamagedRects)
   mDamagedRects = aDamagedRects;
 }
 
-gxRect gxDcPainter::GetClipRect()
+gxRect gxDcPainter::GetClipRect() const
 {
-  long x, y, w, h;
-  mDc->GetClippingBox(&x, &y, &w, &h);
-  return gxRect(x, y, w, h);
+  return mDc->GetClippingBox();
 }
 
 bool gxDcPainter::NeedsPainting(gxRect const &aRect)
@@ -27,6 +26,7 @@ bool gxDcPainter::NeedsPainting(gxRect const &aRect)
   if (!clipRect.Intersects(transformedRect))
     return false;
 
+  
   // If the rect intersects with any of the damaged rects return true
   for( unsigned int i = 0; i < mDamagedRects.size(); i++)
   {

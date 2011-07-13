@@ -18,6 +18,8 @@ class gxStructuralViewElement: public gxViewElement
 public:
   gxStructuralViewElement();
   ~gxStructuralViewElement();
+  
+    virtual bool IsStructural() const { return true; }
 
   /**
    * @brief Paints the view element by calling 
@@ -26,6 +28,10 @@ public:
    * @param aPainter The {@link gxPainter painter} to be used for drawing.
    */
   void Paint(gxPainter &aPainter);
+  
+  // TODO: doc - since structural elements always start at (0,0), no need to
+  // call the viewelement transform
+  virtual void TransformChild(gxRect &aRect, bool isStructural = false) {};
 
   /**
    * @brief Returns the bounds of this view element.

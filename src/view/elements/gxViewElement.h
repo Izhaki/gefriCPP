@@ -54,13 +54,15 @@ public:
    */
   virtual gxRect GetBounds() const = 0;
 
+  virtual bool IsStructural() const =0;
+
   /**
    * @brief Translates a rect (typically bounds) to absolute coordinates.
    *
    * This is a recursive method that goes all the way up the parent tree.
    * @param aRect The rect to translate
    */
-  virtual void TranslateToAbsolute(gxRect &aRect);
+  virtual void TranslateToAbsolute(gxRect &aRect, bool isStructural = false);
   /**
    * @brief Translates a rect (typically bounds) to the coordinates of its parent.
    *
@@ -70,6 +72,7 @@ public:
    */
   virtual void TranslateToParent(gxRect &aRect);
 
+  virtual void TransformChild(gxRect &aRect, bool isStructural = false);
 protected:
   /**
    * @brief Paints the children of this view element.

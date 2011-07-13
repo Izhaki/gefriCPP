@@ -4,7 +4,7 @@
 #include "core/gxObject.h"
 #include "core/gxPaintDC.h"
 #include "view/elements/gxRootViewElement.h"
-
+#include "view/managers/gxScrollManager.h"
 // forward declaration
 class gxLightweightControl;
 
@@ -40,6 +40,15 @@ public:
    */
   void SetContents(gxViewElement *aViewElement);
 
+  /**
+   * @brief Sets the scroll manager.
+   * 
+   * In case the {@link gxLightweightControl lightweight control was
+   * created with scrollbars, it will send scroll events to this class, which the
+   * class then delegates to the scroll manager.
+   * @param aScrollManager The scroll manager.
+   */
+  void SetScrollManager(gxScrollManager *aScrollManager);
   // gxLightweightControl delegate methods
   
   /**
@@ -65,6 +74,14 @@ public:
    * @brief Returns the bounds of the control associated with the system.
    */
   gxRect GetControlBounds() const;
+  
+  /**
+   * @brief Called upon scrol events on the control.
+   * @param isVertical Whether the scroll was a vertical one (otherwise it's
+   * horizontal).
+   * @param aPosition The scroll position.
+   */
+  void OnScroll (const bool isVertical, const int aPosition);
 protected:
   /**
    * @brief Sets the {@link gxRootViewElement root view element} of the system.
@@ -75,6 +92,9 @@ protected:
 
   /// The control this system is linked to.
   gxLightweightControl *mControl;
+  
+  /// The scroll manager linked to the system.
+  gxScrollManager* mScrollManager;
 
   /// The root view element of this system.
   gxRootViewElement *mRootViewElement;

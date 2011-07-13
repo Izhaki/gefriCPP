@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Izhaki
-Date                   :=07/11/11
+Date                   :=07/13/11
 CodeLitePath           :="/Users/izhaki/Library/Application Support/codelite"
 LinkerName             :=g++
 ArchiveTool            :=ar rcus
@@ -51,8 +51,8 @@ LibPath                := $(LibraryPathSwitch).
 ##
 CodeLiteDir:=/Applications/CodeLite.app/Contents/SharedSupport/
 WX_TOOL:=/Development/wx/wx2.8.12/build-codelite-debug/wx-config
-Objects=$(IntermediateDirectory)/wx_gxLightweightControl$(ObjectSuffix) $(IntermediateDirectory)/core_gxComposite$(ObjectSuffix) $(IntermediateDirectory)/geometry_gxRect$(ObjectSuffix) $(IntermediateDirectory)/core_gxObserverList$(ObjectSuffix) $(IntermediateDirectory)/view_gxDcPainter$(ObjectSuffix) $(IntermediateDirectory)/view_gxLightweightSystem$(ObjectSuffix) $(IntermediateDirectory)/view_gxPainter$(ObjectSuffix) $(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix) $(IntermediateDirectory)/elements_gxRootViewElement$(ObjectSuffix) $(IntermediateDirectory)/elements_gxScaler$(ObjectSuffix) \
-	$(IntermediateDirectory)/elements_gxStructuralViewElement$(ObjectSuffix) $(IntermediateDirectory)/elements_gxViewElement$(ObjectSuffix) $(IntermediateDirectory)/elements_gxVisualViewElement$(ObjectSuffix) $(IntermediateDirectory)/shapes_gxRectangle$(ObjectSuffix) $(IntermediateDirectory)/shapes_gxShape$(ObjectSuffix) 
+Objects=$(IntermediateDirectory)/wx_gxLightweightControl$(ObjectSuffix) $(IntermediateDirectory)/core_gxComposite$(ObjectSuffix) $(IntermediateDirectory)/geometry_gxRect$(ObjectSuffix) $(IntermediateDirectory)/core_gxObserverList$(ObjectSuffix) $(IntermediateDirectory)/view_gxDcPainter$(ObjectSuffix) $(IntermediateDirectory)/view_gxLightweightSystem$(ObjectSuffix) $(IntermediateDirectory)/view_gxPainter$(ObjectSuffix) $(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix) $(IntermediateDirectory)/managers_gxScrollManager$(ObjectSuffix) $(IntermediateDirectory)/elements_gxRootViewElement$(ObjectSuffix) \
+	$(IntermediateDirectory)/elements_gxScaler$(ObjectSuffix) $(IntermediateDirectory)/elements_gxStructuralViewElement$(ObjectSuffix) $(IntermediateDirectory)/elements_gxViewElement$(ObjectSuffix) $(IntermediateDirectory)/elements_gxVisualViewElement$(ObjectSuffix) $(IntermediateDirectory)/shapes_gxRectangle$(ObjectSuffix) $(IntermediateDirectory)/shapes_gxShape$(ObjectSuffix) $(IntermediateDirectory)/elements_gxScroller$(ObjectSuffix) 
 
 ##
 ## Main Build Targets 
@@ -139,6 +139,14 @@ $(IntermediateDirectory)/managers_gxZoomManager$(DependSuffix): ../../src/view/m
 $(IntermediateDirectory)/managers_gxZoomManager$(PreprocessSuffix): ../../src/view/managers/gxZoomManager.cpp
 	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/managers_gxZoomManager$(PreprocessSuffix) "/Development/gefri/src/view/managers/gxZoomManager.cpp"
 
+$(IntermediateDirectory)/managers_gxScrollManager$(ObjectSuffix): ../../src/view/managers/gxScrollManager.cpp $(IntermediateDirectory)/managers_gxScrollManager$(DependSuffix)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/view/managers/gxScrollManager.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/managers_gxScrollManager$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/managers_gxScrollManager$(DependSuffix): ../../src/view/managers/gxScrollManager.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/managers_gxScrollManager$(ObjectSuffix) -MF$(IntermediateDirectory)/managers_gxScrollManager$(DependSuffix) -MM "/Development/gefri/src/view/managers/gxScrollManager.cpp"
+
+$(IntermediateDirectory)/managers_gxScrollManager$(PreprocessSuffix): ../../src/view/managers/gxScrollManager.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/managers_gxScrollManager$(PreprocessSuffix) "/Development/gefri/src/view/managers/gxScrollManager.cpp"
+
 $(IntermediateDirectory)/elements_gxRootViewElement$(ObjectSuffix): ../../src/view/elements/gxRootViewElement.cpp $(IntermediateDirectory)/elements_gxRootViewElement$(DependSuffix)
 	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/view/elements/gxRootViewElement.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/elements_gxRootViewElement$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/elements_gxRootViewElement$(DependSuffix): ../../src/view/elements/gxRootViewElement.cpp
@@ -195,6 +203,14 @@ $(IntermediateDirectory)/shapes_gxShape$(DependSuffix): ../../src/view/elements/
 $(IntermediateDirectory)/shapes_gxShape$(PreprocessSuffix): ../../src/view/elements/shapes/gxShape.cpp
 	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/shapes_gxShape$(PreprocessSuffix) "/Development/gefri/src/view/elements/shapes/gxShape.cpp"
 
+$(IntermediateDirectory)/elements_gxScroller$(ObjectSuffix): ../../src/view/elements/gxScroller.cpp $(IntermediateDirectory)/elements_gxScroller$(DependSuffix)
+	$(CompilerName) $(SourceSwitch) "/Development/gefri/src/view/elements/gxScroller.cpp" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/elements_gxScroller$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/elements_gxScroller$(DependSuffix): ../../src/view/elements/gxScroller.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/elements_gxScroller$(ObjectSuffix) -MF$(IntermediateDirectory)/elements_gxScroller$(DependSuffix) -MM "/Development/gefri/src/view/elements/gxScroller.cpp"
+
+$(IntermediateDirectory)/elements_gxScroller$(PreprocessSuffix): ../../src/view/elements/gxScroller.cpp
+	@$(CompilerName) $(CmpOptions) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/elements_gxScroller$(PreprocessSuffix) "/Development/gefri/src/view/elements/gxScroller.cpp"
+
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
 ##
@@ -225,6 +241,9 @@ clean:
 	$(RM) $(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix)
 	$(RM) $(IntermediateDirectory)/managers_gxZoomManager$(DependSuffix)
 	$(RM) $(IntermediateDirectory)/managers_gxZoomManager$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/managers_gxScrollManager$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/managers_gxScrollManager$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/managers_gxScrollManager$(PreprocessSuffix)
 	$(RM) $(IntermediateDirectory)/elements_gxRootViewElement$(ObjectSuffix)
 	$(RM) $(IntermediateDirectory)/elements_gxRootViewElement$(DependSuffix)
 	$(RM) $(IntermediateDirectory)/elements_gxRootViewElement$(PreprocessSuffix)
@@ -246,6 +265,9 @@ clean:
 	$(RM) $(IntermediateDirectory)/shapes_gxShape$(ObjectSuffix)
 	$(RM) $(IntermediateDirectory)/shapes_gxShape$(DependSuffix)
 	$(RM) $(IntermediateDirectory)/shapes_gxShape$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxScroller$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxScroller$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/elements_gxScroller$(PreprocessSuffix)
 	$(RM) $(OutputFile)
 
 

@@ -5,6 +5,8 @@
 #include "view/elements/shapes/gxRectangle.h"
 #include "view/elements/gxScaler.h"
 #include "view/managers/gxZoomManager.h"
+#include "view/elements/gxScroller.h"
+#include "view/managers/gxScrollManager.h"
 
 #include "core/gxComposite.h"
 
@@ -21,6 +23,8 @@ private:
   gxRectangle *mDocument, *mFace, *mEyeL, *mEyeR, *Iris1, *Iris2, *mLeg;
   gxScaler *mZoom;
   gxZoomManager *mZoomManager;
+  gxScroller *mScroller;
+  gxScrollManager *mScrollManager;
 public:
   MyFrame(wxWindow *parent,
             wxWindowID id,

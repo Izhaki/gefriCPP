@@ -45,7 +45,7 @@ public:
    */
   virtual gxRect GetBounds() const;
   
-  virtual void TranslateToAbsolute(gxRect &aRect);
+  virtual void TranslateToAbsolute(gxRect &aRect, bool isStructural = false);
   virtual void TranslateToParent(gxRect &aRect);
 private:
   /// The {@link gxLightweightSystem lightweight system} associated with this

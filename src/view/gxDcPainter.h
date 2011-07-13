@@ -23,7 +23,7 @@ protected:
    * @brief Returns the current (absolute) clip rectangle of the DC
    * @return The dc clip rectangle
    */
-  virtual gxRect GetClipRect();
+  virtual gxRect GetClipRect() const;
 private:
   /// The painting DC
   gxPaintDC *mDc;

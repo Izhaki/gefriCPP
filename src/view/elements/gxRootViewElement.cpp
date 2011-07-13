@@ -30,7 +30,7 @@ gxRect gxRootViewElement::GetBounds() const
   return gxRect(0, 0, 0, 0);
 }
 
-void gxRootViewElement::TranslateToAbsolute(gxRect &aRect)
+void gxRootViewElement::TranslateToAbsolute(gxRect &aRect, bool isStructural)
 {
   // RootViewElement has no parent. So translation stops here.
 }

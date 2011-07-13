@@ -4,10 +4,10 @@
 #include "core/gxObject.h"
 
 // A helper macro for the creation of callbacks. Example usage:
-// ZoomManager.Observers.Attach( CALLBACK(gxScaler, OnZoomChaged) );
+// ZoomManager.Observers.Attach( gxCALLBACK(gxScaler, OnZoomChaged) );
 // Needs to be called from within the object that has the method
 // (because of 'this').
-#define CALLBACK(aClass, aMethod) \
+#define gxCALLBACK(aClass, aMethod) \
   new gxTemplateCallback<aClass>(this, &aClass::aMethod)
 
 /**

@@ -13,6 +13,8 @@ public:
   gxVisualViewElement();
   gxVisualViewElement(const gxRect &aBounds);
   ~gxVisualViewElement();
+  
+  virtual bool IsStructural() const { return false; }
 
   /**
    * @brief Paints the view element, by calling {@link

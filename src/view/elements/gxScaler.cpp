@@ -8,7 +8,7 @@ gxScaler::gxScaler()
 }
 
 gxScaler::gxScaler(gxZoomManager *aZoomManager)
-  : mScaleX(1), mScaleY(1)
+  : mScaleX(1), mScaleY(1), mZoomManager(NULL)
 {
   SetZoomManager(aZoomManager);
 }
@@ -17,17 +17,17 @@ gxScaler::~gxScaler()
 {
     // Remove the callback from the previous zoom manager (if any).
   if (mZoomManager)
-    mZoomManager->mObservers.Remove( CALLBACK(gxScaler, OnZoomManagerUpdate) );
+    mZoomManager->mObservers.Remove( gxCALLBACK(gxScaler, OnZoomManagerUpdate) );
 }
 
 void gxScaler::SetZoomManager(gxZoomManager *aZoomManager)
 {
   // Remove the callback from the previous zoom manager (if any).
   if (mZoomManager)
-    mZoomManager->mObservers.Remove( CALLBACK(gxScaler, OnZoomManagerUpdate) );
+    mZoomManager->mObservers.Remove( gxCALLBACK(gxScaler, OnZoomManagerUpdate) );
 
   mZoomManager = aZoomManager;
-  aZoomManager->mObservers.Add( CALLBACK(gxScaler, OnZoomManagerUpdate) );
+  aZoomManager->mObservers.Add( gxCALLBACK(gxScaler, OnZoomManagerUpdate) );
 }
 
 void gxScaler::SetScale(float aScaleX, float aScaleY)
@@ -68,4 +68,16 @@ void gxScaler::TranslateToParent(gxRect &aRect)
   gxASSERT(GetParent() == NULL, "gxScaler::TranslateToParent called, but no parent");
 
   aRect.Offset(GetParent()->GetBounds().GetPosition());
+}
+
+void gxScaler::TransformChild(gxRect &aRect, bool aisStructural)
+{
+  // Structural areas don't need scaling
+  if (aisStructural)
+    return;
+
+  if (mScaleX != 1 || mScaleY != 1)
+  {
+    aRect.Scale(mScaleX, mScaleY);
+  }
 }

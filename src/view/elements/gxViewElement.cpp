@@ -20,12 +20,13 @@ gxRootViewElement* gxViewElement::GetRootViewElement()
   }
 }
 
-void gxViewElement::TranslateToAbsolute(gxRect &aRect)
-{
+void gxViewElement::TranslateToAbsolute(gxRect &aRect, bool isStructural)
+{ 
   gxASSERT(GetParent() == NULL, "gxViewElement::TranslateToAbsolute called, but no parent");
 
-  TranslateToParent(aRect);
-  GetParent()->TranslateToAbsolute(aRect);
+  //TranslateToParent(aRect);
+  GetParent()->TransformChild(aRect, isStructural);
+  GetParent()->TranslateToAbsolute(aRect, isStructural);
 }
 
 void gxViewElement::TranslateToParent(gxRect &aRect)
@@ -35,11 +36,17 @@ void gxViewElement::TranslateToParent(gxRect &aRect)
   aRect.Offset(GetParent()->GetBounds().GetPosition());
 }
 
+void gxViewElement::TransformChild(gxRect &aRect, bool isStructural)
+{
+  aRect.Offset(GetBounds().GetPosition());
+}
+
 void gxViewElement::Erase()
 {
   // Repaint really does what we need - takes the element's bounds and adds
   // dirty region to queue repaint.
   Repaint();
+  
 }
 
 void gxViewElement::Repaint()
@@ -57,10 +64,10 @@ void gxViewElement::Repaint(gxRect &aRect)
   // Get the lightweight system and return if no such found
   gxLightweightSystem *lws = root->GetLightweightSystem();
   if (!lws) return;
-
+  
   // Translate the bounds to absolute coordinates.
-  TranslateToAbsolute(aRect);
-
+  TranslateToAbsolute(aRect, IsStructural());
+  
   // instruct the lightweight system to mark the bounds of this view element
   // as ones need repainting
   lws->AddDirtyRegion(aRect);

@@ -16,6 +16,7 @@ BEGIN_EVENT_TABLE(gxLightweightControl, wxControl)
   EVT_PAINT(gxLightweightControl::OnPaint)
   EVT_MOTION(gxLightweightControl::OnMouseMove)
   EVT_LEFT_DOWN(gxLightweightControl::OnLeftMouseBtnDown)
+  EVT_SCROLLWIN(gxLightweightControl::OnScroll)
 END_EVENT_TABLE()
 
 void gxLightweightControl::Init()
@@ -24,6 +25,8 @@ void gxLightweightControl::Init()
   
   // For wxAutoBufferedPaintDC to work
   SetBackgroundStyle(wxBG_STYLE_CUSTOM);
+  
+  SetScrollbar(wxHORIZONTAL, 0, 500, 1000);
 }
 
 gxLightweightControl::~gxLightweightControl()
@@ -50,6 +53,7 @@ gxRect gxLightweightControl::GetBounds() const
 
 void gxLightweightControl::OnPaint(wxPaintEvent& WXUNUSED(event))
 {
+  
   gxPaintDC dc(this);
 
   // What will be the clip region - a union between all damaged regions.
@@ -109,4 +113,12 @@ void gxLightweightControl::RefreshRect(const gxRect& aRect, bool eraseBackground
 {
   wxRect rect(aRect.x, aRect.y, aRect.width, aRect.height);
   wxControl::RefreshRect(rect, eraseBackground);
+}
+
+void gxLightweightControl::OnScroll(wxScrollWinEvent& event)
+{
+  if (mLightweightSystem)
+  {
+    mLightweightSystem->OnScroll(event.GetOrientation() == wxVERTICAL, event.GetPosition());
+  }
 }

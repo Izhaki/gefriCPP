@@ -50,6 +50,9 @@ public:
    */
   void Paint(gxPainter &aPainter);
   
+  // TODO: Docs
+  virtual void TransformChild(gxRect &aRect, bool aisStructural = false);
+  
   virtual void TranslateToParent(gxRect &aRect);
 protected:
   gxZoomManager *mZoomManager;

@@ -41,6 +41,12 @@ void gxLightweightSystem::SetRootViewElement(gxRootViewElement *aRootViewElement
   mRootViewElement = aRootViewElement;
 }
 
+void gxLightweightSystem::SetScrollManager(gxScrollManager *aScrollManager)
+{
+  //TODO: detach from previous ScrollManager if any.
+  mScrollManager = aScrollManager;
+}
+
 void gxLightweightSystem::Paint(gxPaintDC *aDc, gxRects const &aDamagedRects)
 {
   // Create a painter
@@ -60,4 +66,10 @@ void gxLightweightSystem::AddDirtyRegion(gxRect &aRect)
 gxRect gxLightweightSystem::GetControlBounds() const
 {
   return mControl->GetBounds();
+}
+
+void gxLightweightSystem::OnScroll (const bool isVertical, const int aPosition)
+{
+  if (mScrollManager)
+    mScrollManager->SetScroll(isVertical, aPosition);
 }

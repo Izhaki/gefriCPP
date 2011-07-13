@@ -58,22 +58,28 @@ MyFrame::~MyFrame()
 
 void MyFrame::InitGefri()
 {
-  mLightweightControl = new gxLightweightControl(this, wxID_HIGHEST + 1, wxPoint(10,10), wxSize(500,500));
+  mLightweightControl = new gxLightweightControl(this, wxID_HIGHEST + 1, wxPoint(10,10), wxSize(500,500), LightweightControlStyle | wxHSCROLL);
   mLightweightSystem = new gxLightweightSystem(mLightweightControl);
 
   mDocument = new gxRectangle(gxRect(10, 10, 480, 480));
-  mZoom = new gxScaler();
-  mZoomManager = new gxZoomManager();
-  //TODO: pass the zoom manger to the constructor of mZoom;
-  mZoom->SetZoomManager(mZoomManager);
   
+  mZoomManager = new gxZoomManager();
+  mZoom = new gxScaler(mZoomManager);
+  
+  mScrollManager = new gxScrollManager();
+  mLightweightSystem->SetScrollManager(mScrollManager);
   
   mFace = new gxRectangle(gxRect(40, 40, 100, 100));
   //mLeg = new gxRectangle(gxRect(410, 10, 10, 10));
   
   mZoom->AddChild(mFace);
+  
+  mScroller = new gxScroller(mScrollManager);
+  mDocument->AddChild(mScroller);
+  mScroller->AddChild(mZoom);
+  
   //mZoom->AddChild(mLeg);
-  mDocument->AddChild(mZoom);
+
   mLightweightSystem->SetContents(mDocument);
 }
 

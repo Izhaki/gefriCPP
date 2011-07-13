@@ -4,7 +4,7 @@
 #include <wx/control.h>
 #include "view/gxLightweightSystem.h"
 
-static const long LightweightControlStyle = wxNO_BORDER; // | wxVSCROLL | wxALWAYS_SHOW_SB; //| wxNO_FULL_REPAINT_ON_RESIZE | wxTRANSPARENT_WINDOW; // , //0x00000020L, //| wxCLIP_SIBLINGS, //| 0x00000020L, //0x00000008L
+static const long LightweightControlStyle = wxNO_BORDER;// | wxVSCROLL;// | wxALWAYS_SHOW_SB; //| wxNO_FULL_REPAINT_ON_RESIZE | wxTRANSPARENT_WINDOW; // , //0x00000020L, //| wxCLIP_SIBLINGS, //| 0x00000020L, //0x00000008L
 
 /**
   * @brief A system-depandent control with which the lightweight system
@@ -38,6 +38,7 @@ public:
   void OnPaint(wxPaintEvent& event);
   void OnMouseMove(wxMouseEvent& event);
   void OnLeftMouseBtnDown(wxMouseEvent& event); 
+  void OnScroll(wxScrollWinEvent& event);
 
   void RefreshRect(const gxRect& aRect, bool eraseBackground = true);
 

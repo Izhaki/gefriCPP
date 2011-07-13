@@ -14,6 +14,7 @@
       <File Name="../../src/adapters/wx/gxObject.h"/>
       <File Name="../../src/adapters/wx/gxPaintDC.h"/>
       <File Name="../../src/adapters/wx/gxAssert.h"/>
+      <File Name="../../src/adapters/wx/gxLog.h"/>
     </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="core">
@@ -33,6 +34,7 @@
     <File Name="../../src/core/gxObserverList.cpp"/>
     <File Name="../../src/core/gxObserverList.h"/>
     <File Name="../../src/core/gxAssert.h"/>
+    <File Name="../../src/core/gxLog.h"/>
   </VirtualDirectory>
   <Settings Type="Static Library">
     <GlobalSettings>
@@ -226,6 +228,8 @@
     <VirtualDirectory Name="managers">
       <File Name="../../src/view/managers/gxZoomManager.cpp"/>
       <File Name="../../src/view/managers/gxZoomManager.h"/>
+      <File Name="../../src/view/managers/gxScrollManager.h"/>
+      <File Name="../../src/view/managers/gxScrollManager.cpp"/>
     </VirtualDirectory>
     <VirtualDirectory Name="elements">
       <File Name="../../src/view/elements/gxRootViewElement.cpp"/>
@@ -244,6 +248,8 @@
         <File Name="../../src/view/elements/shapes/gxShape.cpp"/>
         <File Name="../../src/view/elements/shapes/gxShape.h"/>
       </VirtualDirectory>
+      <File Name="../../src/view/elements/gxScroller.h"/>
+      <File Name="../../src/view/elements/gxScroller.cpp"/>
     </VirtualDirectory>
   </VirtualDirectory>
 </CodeLite_Project>
