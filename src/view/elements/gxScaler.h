@@ -50,9 +50,9 @@ public:
    */
   void Paint(gxPainter &aPainter);
 
+protected:
   virtual void TransformChild(gxBounds &aBounds);
 
-protected:
   gxZoomManager *mZoomManager;
 private:
   float mScaleX;

@@ -30,7 +30,7 @@ gxBounds gxRootViewElement::GetBounds() const
   return gxBounds(0, 0, 0, 0);
 }
 
-void gxRootViewElement::TranslateToAbsolute(gxBounds &aBounds)
+void gxRootViewElement::TransformToAbsolute(gxBounds &aBounds)
 {
   // RootViewElement has no parent. So translation stops here.
 }

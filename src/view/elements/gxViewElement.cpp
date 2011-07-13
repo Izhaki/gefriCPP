@@ -20,12 +20,12 @@ gxRootViewElement* gxViewElement::GetRootViewElement()
   }
 }
 
-void gxViewElement::TranslateToAbsolute(gxBounds &aBounds)
+void gxViewElement::TransformToAbsolute(gxBounds &aBounds)
 { 
-  gxASSERT(GetParent() == NULL, "gxViewElement::TranslateToAbsolute called, but no parent");
+  gxASSERT(GetParent() == NULL, "gxViewElement::TransformToAbsolute called, but no parent");
 
   GetParent()->TransformChild(aBounds);
-  GetParent()->TranslateToAbsolute(aBounds);
+  GetParent()->TransformToAbsolute(aBounds);
 }
 
 void gxViewElement::TransformChild(gxBounds &aBounds)
@@ -58,7 +58,7 @@ void gxViewElement::Repaint(gxBounds &aBounds)
   if (!lws) return;
   
   // Translate the bounds to absolute coordinates.
-  TranslateToAbsolute(aBounds);
+  TransformToAbsolute(aBounds);
   
   // instruct the lightweight system to mark the bounds of this view element
   // as ones need repainting

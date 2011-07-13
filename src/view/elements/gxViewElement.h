@@ -55,13 +55,14 @@ public:
    */
   virtual gxBounds GetBounds() const = 0;
 
+protected:
   /**
-   * @brief Translates the bounds to absolute coordinates.
+   * @brief Transforms the bounds to absolute coordinates.
    *
    * This is a recursive method that goes all the way up the parent tree.
-   * @param aBounds The bounds to translate
+   * @param aBounds The bounds to transform
    */
-  virtual void TranslateToAbsolute(gxBounds &aBounds);
+  virtual void TransformToAbsolute(gxBounds &aBounds);
 
   /**
    * @brief Transforms the bounds of the child to the coordinates of this 
@@ -71,7 +72,7 @@ public:
    * @param aBounds The bounds to transform.
    */
   virtual void TransformChild(gxBounds &aBounds);
-protected:
+  
   /**
    * @brief Paints the children of this view element.
    *

@@ -45,9 +45,9 @@ public:
    */
   void Paint(gxPainter &aPainter);
 
+protected:
   virtual void TransformChild(gxBounds &aBounds);
 
-protected:
   gxScrollManager *mScrollManager;
 private:
   float mScrollX;

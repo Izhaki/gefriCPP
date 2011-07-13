@@ -27,11 +27,6 @@ public:
    */
   void Paint(gxPainter &aPainter);
 
-  // This method overrides the gxViewElement implementation to do nothing.
-  // The base class translate the bounds origins to those of the current object,
-  // but as structural elements always start at (0,0) no point in doing that.
-  virtual void TransformChild(gxBounds &aBounds) {};
-
   /**
    * @brief Returns the bounds of this view element.
    * 
@@ -45,6 +40,11 @@ protected:
    * @param aPainter The {@link gxPainter painter} to be used for drawing.
    */
   virtual void PaintChildren(gxPainter &aPainter);
+
+  // This method overrides the gxViewElement implementation to do nothing.
+  // The base class translate the bounds origins to those of the current object,
+  // but as structural elements always start at (0,0) no point in doing that.
+  virtual void TransformChild(gxBounds &aBounds) {};
 };
 
 #endif // gxStructuralViewElement_h
