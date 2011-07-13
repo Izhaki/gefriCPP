@@ -20,25 +20,17 @@ gxRootViewElement* gxViewElement::GetRootViewElement()
   }
 }
 
-void gxViewElement::TranslateToAbsolute(gxRect &aRect, bool isStructural)
+void gxViewElement::TranslateToAbsolute(gxBounds &aBounds)
 { 
   gxASSERT(GetParent() == NULL, "gxViewElement::TranslateToAbsolute called, but no parent");
 
-  //TranslateToParent(aRect);
-  GetParent()->TransformChild(aRect, isStructural);
-  GetParent()->TranslateToAbsolute(aRect, isStructural);
+  GetParent()->TransformChild(aBounds);
+  GetParent()->TranslateToAbsolute(aBounds);
 }
 
-void gxViewElement::TranslateToParent(gxRect &aRect)
+void gxViewElement::TransformChild(gxBounds &aBounds)
 {
-  gxASSERT(GetParent() == NULL, "gxViewElement::TranslateToParent called, but no parent");
-
-  aRect.Offset(GetParent()->GetBounds().GetPosition());
-}
-
-void gxViewElement::TransformChild(gxRect &aRect, bool isStructural)
-{
-  aRect.Offset(GetBounds().GetPosition());
+  aBounds.Offset(GetBounds().GetPosition());
 }
 
 void gxViewElement::Erase()
@@ -51,11 +43,11 @@ void gxViewElement::Erase()
 
 void gxViewElement::Repaint()
 {
-  gxRect bounds = GetBounds();
+  gxBounds bounds = GetBounds();
   Repaint(bounds);
 }
 
-void gxViewElement::Repaint(gxRect &aRect)
+void gxViewElement::Repaint(gxBounds &aBounds)
 {
   // Get root view element and return if no such found
   gxRootViewElement *root = GetRootViewElement();
@@ -66,11 +58,11 @@ void gxViewElement::Repaint(gxRect &aRect)
   if (!lws) return;
   
   // Translate the bounds to absolute coordinates.
-  TranslateToAbsolute(aRect, IsStructural());
+  TranslateToAbsolute(aBounds);
   
   // instruct the lightweight system to mark the bounds of this view element
   // as ones need repainting
-  lws->AddDirtyRegion(aRect);
+  lws->AddDirtyRegion(aBounds);
 }
 
 void gxViewElement::OnAddChild(gxViewElement *aChild)

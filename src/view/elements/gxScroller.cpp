@@ -57,26 +57,14 @@ void gxScroller::Paint(gxPainter &aPainter)
   aPainter.PopState();
 }
 
-void gxScroller::TranslateToParent(gxRect &aRect)
-{
-  if (mScrollX != 1 || mScrollY != 1)
-  {
-    aRect.Offset(-mScrollX, -mScrollY);
-  }
-  
-  gxASSERT(GetParent() == NULL, "gxScroller::TranslateToParent called, but no parent");
-
-  aRect.Offset(GetParent()->GetBounds().GetPosition());
-}
-
-void gxScroller::TransformChild(gxRect &aRect, bool aisStructural)
+void gxScroller::TransformChild(gxBounds &aBounds)
 {
   // Structural areas don't need scrolling
-  if (aisStructural)
+  if (aBounds.Structural)
     return;  
 
   if (mScrollX != 1 || mScrollY != 1)
   {
-    aRect.Offset(-mScrollX, -mScrollY);
+    aBounds.Offset(-mScrollX, -mScrollY);
   }
 }

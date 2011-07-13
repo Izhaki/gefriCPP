@@ -13,8 +13,6 @@ public:
   gxVisualViewElement();
   gxVisualViewElement(const gxRect &aBounds);
   ~gxVisualViewElement();
-  
-  virtual bool IsStructural() const { return false; }
 
   /**
    * @brief Paints the view element, by calling {@link
@@ -31,7 +29,7 @@ public:
   /**
    * @brief Returns the bounds of this view element.
    */
-  gxRect GetBounds() const;
+  gxBounds GetBounds() const;
   /**
    * @brief Sets new bounds to this view element.
    * @param aNewBounds The new bounds
@@ -68,7 +66,7 @@ protected:
   void Translate(int dx, int dy);
 
   /// The bounds of this view element
-  gxRect mBounds;
+  gxBounds mBounds;
 };
 
 #endif // gxVisualViewElement_h

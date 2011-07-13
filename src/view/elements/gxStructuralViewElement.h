@@ -18,8 +18,6 @@ class gxStructuralViewElement: public gxViewElement
 public:
   gxStructuralViewElement();
   ~gxStructuralViewElement();
-  
-    virtual bool IsStructural() const { return true; }
 
   /**
    * @brief Paints the view element by calling 
@@ -28,10 +26,11 @@ public:
    * @param aPainter The {@link gxPainter painter} to be used for drawing.
    */
   void Paint(gxPainter &aPainter);
-  
-  // TODO: doc - since structural elements always start at (0,0), no need to
-  // call the viewelement transform
-  virtual void TransformChild(gxRect &aRect, bool isStructural = false) {};
+
+  // This method overrides the gxViewElement implementation to do nothing.
+  // The base class translate the bounds origins to those of the current object,
+  // but as structural elements always start at (0,0) no point in doing that.
+  virtual void TransformChild(gxBounds &aBounds) {};
 
   /**
    * @brief Returns the bounds of this view element.
@@ -39,7 +38,7 @@ public:
    *  The bounds are always at origin (0,0) and has the size of the parent.
    *  This way any structural element is covering the whole of its parent.
    */
-  virtual gxRect GetBounds() const;
+  virtual gxBounds GetBounds() const;
 protected:
   /**
    * @brief Paints the children of this view element.

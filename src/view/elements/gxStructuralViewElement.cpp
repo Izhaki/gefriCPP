@@ -26,10 +26,13 @@ void gxStructuralViewElement::PaintChildren(gxPainter &aPainter)
   }
 }
 
-gxRect gxStructuralViewElement::GetBounds() const
+gxBounds gxStructuralViewElement::GetBounds() const
 {
   gxASSERT(GetParent() == NULL, "gxStructuralViewElement::GetBounds() called but no parent.");
 
   // This will return a rect at (0,0) origin with the size of the parent.
-  return gxRect(GetParent()->GetBounds().GetSize());
+  gxBounds bounds(GetParent()->GetBounds().GetSize());
+  // Mark the bounds as those belong to a structural view element.
+  bounds.Structural = true;
+  return bounds;
 }

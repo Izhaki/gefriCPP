@@ -49,11 +49,9 @@ public:
    * @param aPainter The {@link gxPainter painter} to be used for drawing.
    */
   void Paint(gxPainter &aPainter);
-  
-  // TODO: Docs
-  virtual void TransformChild(gxRect &aRect, bool aisStructural = false);
-  
-  virtual void TranslateToParent(gxRect &aRect);
+
+  virtual void TransformChild(gxBounds &aBounds);
+
 protected:
   gxZoomManager *mZoomManager;
 private:

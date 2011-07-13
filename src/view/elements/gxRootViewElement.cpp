@@ -17,7 +17,7 @@ void gxRootViewElement::SetLightweightSystem(gxLightweightSystem *aLightweightSy
   mLightweightSystem = aLightweightSystem;
 }
 
-gxRect gxRootViewElement::GetBounds() const
+gxBounds gxRootViewElement::GetBounds() const
 {
   gxASSERT(GetLightweightSystem() == NULL, "gxRootViewElement::GetBounds called but no Lightweight System");
   
@@ -25,17 +25,12 @@ gxRect gxRootViewElement::GetBounds() const
   {
     // This will return a rectangle at origin (0,0) with the size of the
     // of the control bounds.
-    return gxRect(GetLightweightSystem()->GetControlBounds().GetSize());
+    return gxBounds(GetLightweightSystem()->GetControlBounds().GetSize());
   }
-  return gxRect(0, 0, 0, 0);
+  return gxBounds(0, 0, 0, 0);
 }
 
-void gxRootViewElement::TranslateToAbsolute(gxRect &aRect, bool isStructural)
+void gxRootViewElement::TranslateToAbsolute(gxBounds &aBounds)
 {
   // RootViewElement has no parent. So translation stops here.
-}
-
-void gxRootViewElement::TranslateToParent(gxRect &aRect)
-{
-    // RootViewElement has no parent. So translation stops here.
 }

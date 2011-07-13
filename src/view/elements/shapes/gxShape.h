@@ -18,7 +18,7 @@ class gxShape: public gxVisualViewElement
 public:
   gxShape() {}
   gxShape(const gxRect &aBounds)
-    : gxVisualViewElement(aBounds) {}
+    : gxVisualViewElement(aBounds) { }
 protected:
   void PaintSelf(gxPainter &aPainter);
   /**

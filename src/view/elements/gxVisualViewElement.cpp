@@ -2,9 +2,8 @@
 #include "view/gxLightweightSystem.h"
 
 gxVisualViewElement::gxVisualViewElement()
+  : mBounds(0, 0, 10, 10)
 {
-  // default bounds
-  mBounds = gxRect(0, 0, 10, 10);
 }
 
 gxVisualViewElement::gxVisualViewElement(const gxRect &aBounds)
@@ -65,7 +64,7 @@ void gxVisualViewElement::PaintChildren(gxPainter &aPainter)
   aPainter.PopState();
 }
 
-gxRect gxVisualViewElement::GetBounds() const
+gxBounds gxVisualViewElement::GetBounds() const
 {
   return mBounds;
 }

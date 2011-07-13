@@ -58,26 +58,14 @@ void gxScaler::Paint(gxPainter &aPainter)
   aPainter.PopState();
 }
 
-void gxScaler::TranslateToParent(gxRect &aRect)
+void gxScaler::TransformChild(gxBounds &aBounds)
 {
-  if (mScaleX != 1 || mScaleY != 1)
-  {
-    aRect.Scale(mScaleX, mScaleY);
-  }
-  
-  gxASSERT(GetParent() == NULL, "gxScaler::TranslateToParent called, but no parent");
-
-  aRect.Offset(GetParent()->GetBounds().GetPosition());
-}
-
-void gxScaler::TransformChild(gxRect &aRect, bool aisStructural)
-{
-  // Structural areas don't need scaling
-  if (aisStructural)
+  // Structural bounds don't need scaling
+  if (aBounds.Structural)
     return;
 
   if (mScaleX != 1 || mScaleY != 1)
   {
-    aRect.Scale(mScaleX, mScaleY);
+    aBounds.Scale(mScaleX, mScaleY);
   }
 }

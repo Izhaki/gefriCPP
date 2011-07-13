@@ -4,6 +4,7 @@
 #include "core/geometry/gxGeometry.h"
 #include "core/gxComposite.h"
 #include "view/gxPainter.h"
+#include "view/gxBounds.h"
 
 // Forward declaration
 class gxRootViewElement;
@@ -52,27 +53,24 @@ public:
    * 
    * This abstract method is implemented by subclasses.
    */
-  virtual gxRect GetBounds() const = 0;
-
-  virtual bool IsStructural() const =0;
+  virtual gxBounds GetBounds() const = 0;
 
   /**
-   * @brief Translates a rect (typically bounds) to absolute coordinates.
+   * @brief Translates the bounds to absolute coordinates.
    *
    * This is a recursive method that goes all the way up the parent tree.
-   * @param aRect The rect to translate
+   * @param aBounds The bounds to translate
    */
-  virtual void TranslateToAbsolute(gxRect &aRect, bool isStructural = false);
-  /**
-   * @brief Translates a rect (typically bounds) to the coordinates of its parent.
-   *
-   * For example, if parent positioned at (5,5) and the rect is at (10,10)
-   * within its parent the rect will change to (15,15).
-   * @param aRect The rect to translate
-   */
-  virtual void TranslateToParent(gxRect &aRect);
+  virtual void TranslateToAbsolute(gxBounds &aBounds);
 
-  virtual void TransformChild(gxRect &aRect, bool isStructural = false);
+  /**
+   * @brief Transforms the bounds of the child to the coordinates of this 
+   * parent.
+   * 
+   * Used by TransformToAbsolute.
+   * @param aBounds The bounds to transform.
+   */
+  virtual void TransformChild(gxBounds &aBounds);
 protected:
   /**
    * @brief Paints the children of this view element.
@@ -94,9 +92,9 @@ protected:
   virtual void Repaint();
   /**
    * @brief Repaints part or the whole of the view element.
-   * @param aRect The rect to be repainted.
+   * @param aBounds The bounds of the area to be repainted.
    */
-  virtual void Repaint(gxRect &aRect);
+  virtual void Repaint(gxBounds &aBounds);
 
   IMPLEMENT_COMPOSITE(gxViewElement)
 };

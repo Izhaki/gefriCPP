@@ -251,5 +251,6 @@
       <File Name="../../src/view/elements/gxScroller.h"/>
       <File Name="../../src/view/elements/gxScroller.cpp"/>
     </VirtualDirectory>
+    <File Name="../../src/view/gxBounds.h"/>
   </VirtualDirectory>
 </CodeLite_Project>

@@ -43,10 +43,9 @@ public:
    * @brief Returns the bounds of this view element by getting the bounds of the
    * lightweight control, but with the origin set to (0,0).
    */
-  virtual gxRect GetBounds() const;
+  virtual gxBounds GetBounds() const;
   
-  virtual void TranslateToAbsolute(gxRect &aRect, bool isStructural = false);
-  virtual void TranslateToParent(gxRect &aRect);
+  virtual void TranslateToAbsolute(gxBounds &aBounds);
 private:
   /// The {@link gxLightweightSystem lightweight system} associated with this
   /// root view element.
