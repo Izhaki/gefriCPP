@@ -18,6 +18,8 @@ class gxLightweightSystem;
 class gxRootViewElement: public gxStructuralViewElement
 {
 public:
+  gxRootViewElement()
+    : mLightweightSystem(NULL) { }
   /**
    * @brief Overrides the base class implementation to return itself. 
    */
