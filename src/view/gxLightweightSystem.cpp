@@ -3,9 +3,8 @@
 #include "view/gxDcPainter.h"
 
 gxLightweightSystem::gxLightweightSystem(gxLightweightControl *aControl)
+  : mContents(NULL), mScrollManager(NULL)
 {
-  mContents = NULL;
-
   // Sets this a the lightweight system of the control so delegation can start.
   aControl->SetLightweightSystem(this);
 
@@ -43,7 +42,6 @@ void gxLightweightSystem::SetRootViewElement(gxRootViewElement *aRootViewElement
 
 void gxLightweightSystem::SetScrollManager(gxScrollManager *aScrollManager)
 {
-  //TODO: detach from previous ScrollManager if any.
   mScrollManager = aScrollManager;
 }
 
