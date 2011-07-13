@@ -3,10 +3,21 @@
 
 #include "core/geometry/gxRect.h"
 
+/**
+ * @brief A class similar to gxRect, but with an added flag denoting whether
+ * the bounds are those of a structural element.
+ * 
+ * Structural bounds are used with structural view elements and are not subject
+ * to some transformations, like scaling or scrolling.
+ */
 class gxBounds: public gxRect
 {
 public:
+  /**
+  * @brief True means that the bounds are structural ones.
+  */
   bool Structural;
+
   gxBounds()
     : gxRect(),
     Structural(false)
