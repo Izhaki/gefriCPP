@@ -58,7 +58,7 @@ MyFrame::~MyFrame()
 
 void MyFrame::InitGefri()
 {
-  mLightweightControl = new gxLightweightControl(this, wxID_HIGHEST + 1, wxPoint(10,10), wxSize(500,500), LightweightControlStyle | wxHSCROLL);
+  mLightweightControl = new gxLightweightControl(this, wxID_HIGHEST + 1, wxPoint(10,10), wxSize(500,500), LightweightControlStyle | wxHSCROLL | wxVSCROLL);
   mLightweightSystem = new gxLightweightSystem(mLightweightControl);
 
   mDocument = new gxRectangle(gxRect(10, 10, 480, 480));
