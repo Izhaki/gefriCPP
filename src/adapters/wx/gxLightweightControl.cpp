@@ -26,7 +26,7 @@ void gxLightweightControl::Init()
   // For wxAutoBufferedPaintDC to work
   SetBackgroundStyle(wxBG_STYLE_CUSTOM);
   
-  SetScrollbar(wxHORIZONTAL, 0, 500, 1000);
+  SetScrollbar(wxHORIZONTAL, 0, 50, 1000);
 }
 
 gxLightweightControl::~gxLightweightControl()
@@ -117,8 +117,13 @@ void gxLightweightControl::RefreshRect(const gxRect& aRect, bool eraseBackground
 
 void gxLightweightControl::OnScroll(wxScrollWinEvent& event)
 {
+  // The position of the scroll bar returns to 0 on MSW, we need to set the
+  // position ourselves.
+  SetScrollbar(wxHORIZONTAL, event.GetPosition(), 50, 1000);
+  
   if (mLightweightSystem)
   {
     mLightweightSystem->OnScroll(event.GetOrientation() == wxVERTICAL, event.GetPosition());
   }
+  event.Skip();
 }
