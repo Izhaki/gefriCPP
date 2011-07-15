@@ -5,14 +5,19 @@ gxObserverList::~gxObserverList()
   RemoveAll();
 }
 
-void gxObserverList::Notify(gxObject *aSubject)
+void gxObserverList::Notify(gxNotification *aNotification)
 {
   ObserverList::iterator observer;
     
   for (observer = mObservers.begin(); observer != mObservers.end(); ++observer)
   {
-    (**observer)(aSubject);
+    // Call the call back
+    (**observer)(aNotification);
   }
+  
+  // Clients will call observers.Notify(new gxNotification()), so
+  // once we're done notifying delete the notification object. 
+  delete aNotification;
 }
 
 void gxObserverList::Add(gxCallback *aCallback)

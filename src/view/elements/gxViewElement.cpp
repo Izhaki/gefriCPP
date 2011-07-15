@@ -65,6 +65,17 @@ void gxViewElement::Repaint(gxBounds &aBounds)
   lws->AddDirtyRegion(aBounds);
 }
 
+void gxViewElement::GetChildrenBounds(gxBounds &aBounds)
+{
+  for (EACHCHILD)
+  {
+    gxBounds childBounds;
+    CHILD->GetChildrenBounds(childBounds);
+    TransformChild(childBounds);
+    aBounds.Union(childBounds);
+  }
+}
+
 void gxViewElement::OnAddChild(gxViewElement *aChild)
 {
   aChild->Repaint();

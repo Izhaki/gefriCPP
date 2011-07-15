@@ -1,6 +1,7 @@
 #include "view/elements/gxScroller.h"
 #include "core/gxCallback.h"
 #include "core/gxAssert.h"
+#include "core/gxLog.h"
 
 gxScroller::gxScroller()
   : mScrollX(0), mScrollY(0), mScrollManager(NULL)
@@ -32,13 +33,16 @@ void gxScroller::SetScrollManager(gxScrollManager *aScrollManager)
 
 void gxScroller::SetScroll(float aScrollX, float aScrollY)
 {
-  Erase();
-  mScrollX = aScrollX;
-  mScrollY = aScrollY;
-  Repaint();
+  if (mScrollX != aScrollX || mScrollY != aScrollY)
+  {
+    Erase();
+    mScrollX = aScrollX;
+    mScrollY = aScrollY;
+    Repaint();
+  }
 }
 
-void gxScroller::OnScrollManagerUpdate(const gxObject *aSubject)
+void gxScroller::OnScrollManagerUpdate(const gxNotification *aNotification)
 {
   SetScroll(mScrollManager->GetScrollX(), mScrollManager->GetScrollY());
 }
@@ -63,8 +67,32 @@ void gxScroller::TransformChild(gxBounds &aBounds)
   if (aBounds.Structural)
     return;  
 
-  if (mScrollX != 1 || mScrollY != 1)
+  if (mScrollX != 0 || mScrollY != 0)
   {
     aBounds.Offset(-mScrollX, -mScrollY);
   }
+}
+
+// TODO: Replace this with Bounds.IgnoreScroll() or something.
+// Where the bounds create in ReadjustScrollbars has IgnoreScroll set
+// So transform won't scroll it, and so we won't need to have this method.
+void gxScroller::GetChildrenBounds(gxBounds &aBounds)
+{
+  for (EACHCHILD)
+  {
+    gxBounds childBounds;
+    CHILD->GetChildrenBounds(childBounds);
+    aBounds.Union(childBounds);
+  }
+}
+
+void gxScroller::ReadjustScrollbars()
+{
+  gxBounds bounds;
+  GetChildrenBounds(bounds);
+  
+  gxSize mySize = GetBounds().GetSize();
+
+  if (mScrollManager)
+    mScrollManager->AdjustScrollbars(mySize.x, bounds.x + bounds.width, mySize.y, bounds.y + bounds.height);
 }

@@ -82,6 +82,8 @@ public:
    * @param aPosition The scroll position.
    */
   void OnScroll (const bool isVertical, const int aPosition);
+
+  void OnScrollRangeChanged(const gxNotification *aNotification);
 protected:
   /**
    * @brief Sets the {@link gxRootViewElement root view element} of the system.

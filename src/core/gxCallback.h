@@ -1,7 +1,8 @@
 #ifndef gxCallback_h
 #define gxCallback_h
 
-#include "core/gxObject.h"
+// Forward Declaration.
+class gxNotification;
 
 // A helper macro for the creation of callbacks. Example usage:
 // ZoomManager.Observers.Attach( gxCALLBACK(gxScaler, OnZoomChaged) );
@@ -33,9 +34,9 @@ public:
   /**
    * @brief Overloading the () operator, allowing clients to simply use
    * callback() syntex.
-   * @param aSubject
+   * @param aNotification A notification object
    */
-  virtual void operator()(const gxObject* aSubject) = 0;
+  virtual void operator()(const gxNotification *aNotification) = 0;
 
   /**
    * @brief Overloading the comparison operator is needed as we compare
@@ -53,7 +54,7 @@ template <class TClass> class gxTemplateCallback : public gxCallback
 {
 private:
   // A pointer to the member method.
-  void (TClass::*mMethod)(const gxObject*); 
+  void (TClass::*mMethod)(const gxNotification*); 
   // A pointer to the object.
   TClass* mObj;
 public:
@@ -65,11 +66,11 @@ public:
    * @param aObj The instance of the observer object.
    * @param aMethod The method to be called.
    */
-  gxTemplateCallback(TClass* aObj, void(TClass::*aMethod)(const gxObject*))
+  gxTemplateCallback(TClass* aObj, void(TClass::*aMethod)(const gxNotification*))
      { mObj = aObj;  mMethod =aMethod; };
 
-  virtual void operator()(const gxObject* aSubject)
-   {  (*mObj.*mMethod)(aSubject); }
+  virtual void operator()(const gxNotification* aNotification)
+   {  (*mObj.*mMethod)(aNotification); }
     
   virtual bool operator==(const gxCallback &aOther) const
   {

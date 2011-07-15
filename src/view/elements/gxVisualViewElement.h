@@ -30,11 +30,14 @@ public:
    * @brief Returns the bounds of this view element.
    */
   gxBounds GetBounds() const;
+
   /**
    * @brief Sets new bounds to this view element.
    * @param aNewBounds The new bounds
    */
   void SetBounds(gxRect &aNewBounds);
+  
+  virtual void GetChildrenBounds(gxBounds &aBounds);
 protected:
   /**
    * @brief Paints graphics related to this view element.

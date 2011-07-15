@@ -42,7 +42,22 @@ void gxLightweightSystem::SetRootViewElement(gxRootViewElement *aRootViewElement
 
 void gxLightweightSystem::SetScrollManager(gxScrollManager *aScrollManager)
 {
+  // Remove notification from previous scroll manager, (if such exist).
+  if (mScrollManager)
+    mScrollManager->mObservers.Remove( gxCALLBACK(gxLightweightSystem, OnScrollRangeChanged) );
+    
   mScrollManager = aScrollManager;
+  mScrollManager->mObservers.Add( gxCALLBACK(gxLightweightSystem, OnScrollRangeChanged) );
+}
+
+void gxLightweightSystem::OnScrollRangeChanged(const gxNotification *aNotification)
+{
+  const gxScrollRangeChangedNotification* Notification = dynamic_cast<const gxScrollRangeChangedNotification*> (aNotification);
+  if ( Notification )
+  {
+    mControl->SetScrollbar(wxHORIZONTAL, Notification->scrollX, Notification->visibleX, Notification->rangeX);
+    mControl->SetScrollbar(wxVERTICAL, Notification->scrollY, Notification->visibleY, Notification->rangeY);
+  }
 }
 
 void gxLightweightSystem::Paint(gxPaintDC *aDc, gxRects const &aDamagedRects)

@@ -64,6 +64,15 @@ void gxVisualViewElement::PaintChildren(gxPainter &aPainter)
   aPainter.PopState();
 }
 
+void gxVisualViewElement::GetChildrenBounds(gxBounds &aBounds)
+{
+  // Union with my bounds.
+  aBounds.Union(GetBounds());
+  
+  // And then with those of all children (this isn't needed if we clip children).
+  gxViewElement::GetChildrenBounds(aBounds);
+}
+
 gxBounds gxVisualViewElement::GetBounds() const
 {
   return mBounds;

@@ -54,6 +54,8 @@ public:
    * This abstract method is implemented by subclasses.
    */
   virtual gxBounds GetBounds() const = 0;
+  
+  virtual void GetChildrenBounds(gxBounds &aBounds);
 
 protected:
   /**

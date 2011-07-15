@@ -38,10 +38,15 @@ void gxScaler::SetScale(float aScaleX, float aScaleY)
   Repaint();
 }
 
-void gxScaler::OnZoomManagerUpdate(const gxObject *aSubject)
+void gxScaler::OnZoomManagerUpdate(const gxNotification *aNotification)
 {
-  gxZoom newZoom = mZoomManager->GetZoom();
-  SetScale(newZoom.v, newZoom.h);
+  const gxZoomChangedNotification* Notification = dynamic_cast<const gxZoomChangedNotification*> (aNotification);
+  if ( Notification )
+  {
+    SetScale(Notification->zoomV, Notification->zoomH);
+  }
+  //gxZoom newZoom = mZoomManager->GetZoom();
+  //SetScale(newZoom.v, newZoom.h);
 }
 
 void gxScaler::Paint(gxPainter &aPainter)

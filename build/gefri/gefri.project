@@ -239,7 +239,6 @@
       <File Name="../../src/view/elements/gxStructuralViewElement.cpp"/>
       <File Name="../../src/view/elements/gxStructuralViewElement.h"/>
       <File Name="../../src/view/elements/gxViewElement.cpp"/>
-      <File Name="../../src/view/elements/gxViewElement.h"/>
       <File Name="../../src/view/elements/gxVisualViewElement.cpp"/>
       <File Name="../../src/view/elements/gxVisualViewElement.h"/>
       <VirtualDirectory Name="shapes">
@@ -250,6 +249,7 @@
       </VirtualDirectory>
       <File Name="../../src/view/elements/gxScroller.h"/>
       <File Name="../../src/view/elements/gxScroller.cpp"/>
+      <File Name="../../src/view/elements/gxViewElement.h"/>
     </VirtualDirectory>
     <File Name="../../src/view/gxBounds.h"/>
   </VirtualDirectory>

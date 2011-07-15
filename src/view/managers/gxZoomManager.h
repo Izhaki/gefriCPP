@@ -1,14 +1,27 @@
 #ifndef gxZoomManager_h
 #define gxZoomManager_h#include "core/gxObject.h"
 #include "core/gxObserverList.h"
-class gxZoom{public:  float v, h;  gxZoom() : v(1), h(1) {}  gxZoom(float aV, float aH): v(aV), h(aH) {}};class gxZoomManager: public gxObject
+/**
+ * @brief A class representing zoom levels.
+ */
+class gxZoom{public:  float v, h;  gxZoom() : v(1), h(1) {}  gxZoom(float aV, float aH): v(aV), h(aH) {}};
+/**
+ * @brief Manages zoom by providing clients advance zoom modification protocol
+ * and the ability to notify observers on changes.
+ */
+class gxZoomManager: public gxObject
 {
 public:
   gxZoomManager();
   ~gxZoomManager(); 
 
 
+  /**
+   * @brief Returns the current zoom.
+   * @return The current zoom.
+   */
   gxZoom GetZoom() const;
+  
   /**
    * @brief Sets the Zoom to the given values.
    * @param aZoomV The vertical zoom factor.
@@ -38,4 +51,16 @@ public:
   void MultiplyZoom(const float aMultiplier);
   
   gxObserverList mObservers;
-private:  gxZoom mZoom;};#endif // gxZoomManager_h
+private:  gxZoom mZoom;};
+
+/**
+ * @brief A notification object to inform observers of zoom changes.
+ */
+class gxZoomChangedNotification: public gxNotification
+{
+public:
+  gxZoomChangedNotification(const gxZoomManager *aZoomManager)
+    : zoomV(aZoomManager->GetZoom().v), zoomH(aZoomManager->GetZoom().h) { }
+  float zoomV;
+  float zoomH;
+};#endif // gxZoomManager_h

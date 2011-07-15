@@ -1,11 +1,18 @@
 #ifndef gxObserverList_h
 #define gxObserverList_h
 
-#include "core/gxCallback.h"
 #include "core/gxObject.h"
+#include "core/gxCallback.h"
 
 #include <vector>
 typedef std::vector < gxCallback* > ObserverList;
+
+class gxNotification
+{
+public:
+  // A dummy virtual method to make this class polymorphic
+  virtual void dummy() { }
+};
 
 /**
  * @brief A class that maintains a list of observers (callbacks), and allows
@@ -23,9 +30,9 @@ public:
   /**
    * @brief Notifies all observers (that is, calls all the callbacks in the
    * list.
-   * @param aSubject The parameter passed to the callbacks.
+   * @param aNotification A notification object passed to the callbacks.
    */
-  void Notify(gxObject *aSubject);
+  void Notify(gxNotification *aNotification);
 
   /**
    * @brief Adds a new callback to the list of observers.

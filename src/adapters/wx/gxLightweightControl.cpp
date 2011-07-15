@@ -120,9 +120,9 @@ void gxLightweightControl::OnScroll(wxScrollWinEvent& event)
   // The position of the scroll bar returns to 0 on MSW, we need to set the
   // position ourselves.
   if (event.GetOrientation() == wxVERTICAL)
-    SetScrollbar(wxVERTICAL, event.GetPosition(), 50, 1000);
+    SetScrollPos(wxVERTICAL, event.GetPosition());
   else
-        SetScrollbar(wxHORIZONTAL, event.GetPosition(), 50, 1000);
+    SetScrollPos(wxHORIZONTAL, event.GetPosition());
   
   if (mLightweightSystem)
   {
