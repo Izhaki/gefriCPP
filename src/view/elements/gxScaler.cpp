@@ -32,10 +32,13 @@ void gxScaler::SetZoomManager(gxZoomManager *aZoomManager)
 
 void gxScaler::SetScale(float aScaleX, float aScaleY)
 {
-  Erase();
-  mScaleX = aScaleX;
-  mScaleY = aScaleY;
-  Repaint();
+  if (mScaleX != aScaleX || mScaleY != aScaleY)
+  {
+    Erase();
+    mScaleX = aScaleX;
+    mScaleY = aScaleY;
+    Repaint();
+  }
 }
 
 void gxScaler::OnZoomManagerUpdate(const gxNotification *aNotification)
