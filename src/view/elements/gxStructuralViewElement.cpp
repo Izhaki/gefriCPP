@@ -32,7 +32,9 @@ gxBounds gxStructuralViewElement::GetBounds() const
 
   // This will return a rect at (0,0) origin with the size of the parent.
   gxBounds bounds(GetParent()->GetBounds().GetSize());
-  // Mark the bounds as those belong to a structural view element.
-  bounds.Structural = true;
+  
+  // The bounds of a structural element should not be subject to any zoom or
+  // scroll transformations.
+  bounds.ExludeFlags(gxTransformation::Scale | gxTransformation::Scroll);
   return bounds;
 }

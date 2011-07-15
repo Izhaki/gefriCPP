@@ -46,9 +46,6 @@ public:
    * @param aPainter The {@link gxPainter painter} to be used for drawing.
    */
   void Paint(gxPainter &aPainter);
-
-  void GetChildrenBounds(gxBounds &aBounds);
-
 protected:
   virtual void TransformChild(gxBounds &aBounds);
 

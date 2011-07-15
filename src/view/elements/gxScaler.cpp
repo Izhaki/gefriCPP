@@ -68,8 +68,8 @@ void gxScaler::Paint(gxPainter &aPainter)
 
 void gxScaler::TransformChild(gxBounds &aBounds)
 {
-  // Structural bounds don't need scaling
-  if (aBounds.Structural)
+  // Don't scale if the bounds reject it
+  if (aBounds.Reject(gxTransformation::Scale))
     return;
 
   if (mScaleX != 1 || mScaleY != 1)

@@ -63,8 +63,8 @@ void gxScroller::Paint(gxPainter &aPainter)
 
 void gxScroller::TransformChild(gxBounds &aBounds)
 {
-  // Structural areas don't need scrolling
-  if (aBounds.Structural)
+  // Don't scroll if the bounds reject it
+  if (aBounds.Reject(gxTransformation::Scroll))
     return;  
 
   if (mScrollX != 0 || mScrollY != 0)
@@ -73,24 +73,11 @@ void gxScroller::TransformChild(gxBounds &aBounds)
   }
 }
 
-// TODO: Replace this with Bounds.IgnoreScroll() or something.
-// Where the bounds create in ReadjustScrollbars has IgnoreScroll set
-// So transform won't scroll it, and so we won't need to have this method.
-void gxScroller::GetChildrenBounds(gxBounds &aBounds)
-{
-  for (EACHCHILD)
-  {
-    gxBounds childBounds;
-    CHILD->GetChildrenBounds(childBounds);
-    aBounds.Union(childBounds);
-  }
-}
-
 void gxScroller::ReadjustScrollbars()
 {
   gxBounds bounds;
   GetChildrenBounds(bounds);
-  
+
   gxSize mySize = GetBounds().GetSize();
 
   if (mScrollManager)
