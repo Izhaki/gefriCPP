@@ -1,4 +1,6 @@
 v0.1.03
+-------
+- Added: Scroll support.
 - Added: gxObserverList as the gefri's core subject-observer mechanism.
 - Added: gxCallback - a non-static member method callback wrapper (for gxOberverList).
 - Added: gxZoomManager, which communicates with gxScaler.
