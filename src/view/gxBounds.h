@@ -4,8 +4,6 @@
 #include "core/geometry/gxRect.h"
 #include "core/gxFlags.h"
 
-#define gxTransformFlags gx8Flags
-
 /**
  * @brief A class similar to gxRect, but with an added flag denoting whether
  * the bounds are those of a structural element.
