@@ -11,9 +11,9 @@ struct gxTransformation
   enum
   {
     Translate = 0x01,
-    Scroll      = 0x02,
-    Scale      = 0x04,
-    All          = Translate | Scroll | Scale
+    Scroll    = 0x02,
+    Scale     = 0x04,
+    All       = Translate | Scroll | Scale
   };
 };
 
