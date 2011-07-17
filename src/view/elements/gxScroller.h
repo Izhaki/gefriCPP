@@ -40,12 +40,14 @@ public:
   void ReadjustScrollbars();
 
   /**
-   * @brief Paints the view element by scaling the painter then calling
+   * @brief Paints the view element by translating the painter then calling
    * {@link gxViewElement::PaintChildren() PaintChildren()}.
    * 
    * @param aPainter The {@link gxPainter painter} to be used for drawing.
    */
   void Paint(gxPainter &aPainter);
+
+  virtual void ValidateSelf();
 protected:
   virtual void TransformChild(gxBounds &aBounds);
 

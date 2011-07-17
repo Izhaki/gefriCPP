@@ -61,6 +61,11 @@ void gxScroller::Paint(gxPainter &aPainter)
   aPainter.PopState();
 }
 
+void gxScroller::ValidateSelf()
+{
+  ReadjustScrollbars();
+}
+
 void gxScroller::TransformChild(gxBounds &aBounds)
 {
   // Don't scroll if the bounds reject it

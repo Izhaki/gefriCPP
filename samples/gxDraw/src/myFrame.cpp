@@ -77,10 +77,8 @@ void MyFrame::InitGefri()
   mZoom->AddChild(mFace);
   
   mScroller = new gxScroller(mScrollManager);
-  mDocument->AddChild(mScroller);
   mScroller->AddChild(mZoom);
-  
-  mScroller->ReadjustScrollbars();
+  mDocument->AddChild(mScroller);
   
   //mZoom->AddChild(mLeg);
 
@@ -166,28 +164,24 @@ void MyFrame::OnZoomIn(wxCommandEvent &e)
 {
   wxUnusedVar(e);
   mZoomManager->MultiplyZoom(2);
-  mScroller->ReadjustScrollbars();
 }
 
 void MyFrame::OnZoomOut(wxCommandEvent &e)
 {
   wxUnusedVar(e);
   mZoomManager->MultiplyZoom(0.5);
-  mScroller->ReadjustScrollbars();
 }
 
 void MyFrame::OnZoomInVert(wxCommandEvent &e)
 {
   wxUnusedVar(e);
   mZoomManager->MultiplyZoom(2, 1);
-  mScroller->ReadjustScrollbars();
 }
 
 void MyFrame::OnZoomOutVert(wxCommandEvent &e)
 {
   wxUnusedVar(e);
   mZoomManager->MultiplyZoom(0.5, 1);
-  mScroller->ReadjustScrollbars();
 }
 
 

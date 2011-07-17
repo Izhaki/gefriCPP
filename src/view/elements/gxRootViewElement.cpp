@@ -30,6 +30,15 @@ gxBounds gxRootViewElement::GetBounds() const
   return gxBounds(0, 0, 0, 0);
 }
 
+void gxRootViewElement::Revalidate()
+{
+  Invalidate();
+  
+  // Once revalidation hit the root view element, we start validating down the 
+  // hierarchy tree.
+  Validate();
+}
+
 void gxRootViewElement::TransformToAbsolute(gxBounds &aBounds)
 {
   // RootViewElement has no parent. So translation stops here.

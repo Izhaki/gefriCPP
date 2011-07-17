@@ -37,6 +37,10 @@ void gxScaler::SetScale(float aScaleX, float aScaleY)
     Erase();
     mScaleX = aScaleX;
     mScaleY = aScaleY;
+    
+    // As the scale changed we need to revalidate the hierarcy tree (for
+    // example so a Scroller parent can readjust the scrollbars).
+    Revalidate();
     Repaint();
   }
 }

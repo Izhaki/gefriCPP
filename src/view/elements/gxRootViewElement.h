@@ -46,6 +46,8 @@ public:
    * lightweight control, but with the origin set to (0,0).
    */
   virtual gxBounds GetBounds() const;
+  
+  virtual void Revalidate();
 
 protected:
   virtual void TransformToAbsolute(gxBounds &aBounds);
