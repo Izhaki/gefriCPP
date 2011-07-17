@@ -35,6 +35,7 @@
     <File Name="../../src/core/gxObserverList.h"/>
     <File Name="../../src/core/gxAssert.h"/>
     <File Name="../../src/core/gxLog.h"/>
+    <File Name="../../src/core/gxFlags.h"/>
   </VirtualDirectory>
   <Settings Type="Static Library">
     <GlobalSettings>

@@ -2,20 +2,9 @@
 #define gxBounds_h
 
 #include "core/geometry/gxRect.h"
+#include "core/gxFlags.h"
 
-// char used as 1 byte int
-#define gxTransformFlags char
-
-struct gxTransformation
-{
-  enum
-  {
-    Translate = 0x01,
-    Scroll    = 0x02,
-    Scale     = 0x04,
-    All       = Translate | Scroll | Scale
-  };
-};
+#define gxTransformFlags gx8Flags
 
 /**
  * @brief A class similar to gxRect, but with an added flag denoting whether
@@ -27,11 +16,13 @@ struct gxTransformation
 class gxBounds: public gxRect
 {
 public:
-  /**
-  * @brief True means that the bounds are structural ones.
-  */
-//  bool Structural;
-
+  enum TransformFlags
+  {
+    Translatable       = 0x01,
+    Scrollable         = 0x02,
+    Scalable           = 0x04,
+    FullyTransformable = Translatable | Scrollable | Scalable
+  };
 
   gxBounds()
     : gxRect()
@@ -62,30 +53,10 @@ public:
    */
   virtual void Init()
   {
-    mTransformFlags = gxTransformation::All;
+    mTransformFlags.Set(gxBounds::FullyTransformable);
   }
-  
-  /**
-   * @brief Checks if the bounds reject a certain type of transformation.
-   * @param aFlags The transformation flags being tested.
-   * @return True if the bounds reject the given flag.
-   */
-  bool Reject(gxTransformFlags aFlags)
-  {
-    return !(mTransformFlags & aFlags);
-  }
-  
-  /**
-   * @brief Exludes the given transformation flag from the bounds.
-   * @param aFlags The flag to exclude
-   */
-  void ExludeFlags(gxTransformFlags aFlags)
-  {
-    mTransformFlags &= ~aFlags;
-  }
-  
-private:
-  gxTransformFlags mTransformFlags;
+
+  gxFlags<gx8Flags> mTransformFlags;
 };
 
 #endif // gxBounds_h

@@ -64,7 +64,7 @@ void gxScroller::Paint(gxPainter &aPainter)
 void gxScroller::TransformChild(gxBounds &aBounds)
 {
   // Don't scroll if the bounds reject it
-  if (aBounds.Reject(gxTransformation::Scroll))
+  if (aBounds.mTransformFlags.IsntSet(gxBounds::Scrollable))
     return;  
 
   if (mScrollX != 0 || mScrollY != 0)

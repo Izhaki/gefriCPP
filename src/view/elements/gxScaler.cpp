@@ -69,7 +69,7 @@ void gxScaler::Paint(gxPainter &aPainter)
 void gxScaler::TransformChild(gxBounds &aBounds)
 {
   // Don't scale if the bounds reject it
-  if (aBounds.Reject(gxTransformation::Scale))
+  if (aBounds.mTransformFlags.IsntSet(gxBounds::Scalable))
     return;
 
   if (mScaleX != 1 || mScaleY != 1)

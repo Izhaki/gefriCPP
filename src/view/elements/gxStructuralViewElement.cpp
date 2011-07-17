@@ -35,6 +35,6 @@ gxBounds gxStructuralViewElement::GetBounds() const
   
   // The bounds of a structural element should not be subject to any zoom or
   // scroll transformations.
-  bounds.ExludeFlags(gxTransformation::Scale | gxTransformation::Scroll);
+  bounds.mTransformFlags.Unset(gxBounds::Scalable | gxBounds::Scrollable);
   return bounds;
 }

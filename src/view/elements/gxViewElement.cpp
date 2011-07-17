@@ -73,7 +73,7 @@ void gxViewElement::GetChildrenBounds(gxBounds &aBounds)
     CHILD->GetChildrenBounds(childBounds);
     
     // Exclude scroll transformations for these bounds.
-    childBounds.ExludeFlags(gxTransformation::Scroll);
+    childBounds.mTransformFlags.Unset(gxBounds::Scrollable);
 
     TransformChild(childBounds);
     aBounds.Union(childBounds);
