@@ -1,5 +1,6 @@
 v0.1.03
 -------
+- Added: Rulers added
 - Added: Validation mechanism.
 - Added: Scroll support.
 - Added: gxObserverList as the gefri's core subject-observer mechanism.
