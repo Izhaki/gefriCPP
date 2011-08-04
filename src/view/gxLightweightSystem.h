@@ -74,7 +74,9 @@ public:
    * @brief Returns the bounds of the control associated with the system.
    */
   gxRect GetControlBounds() const;
-  
+
+  gxSize GetTextSize(std::string aText);
+
   /**
    * @brief Called upon scrol events on the control.
    * @param isVertical Whether the scroll was a vertical one (otherwise it's

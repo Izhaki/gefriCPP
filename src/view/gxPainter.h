@@ -3,8 +3,10 @@
 
 #include "core/gxObject.h"
 #include "core/geometry/gxGeometry.h"
+#include "core/gxFlags.h"
 
 #include <stack>
+#include <string>
 
 // Forward declaration
 class gxPainterState;
@@ -14,9 +16,11 @@ typedef std::stack< gxPainterState* > StateStack;
 struct gxPainterState
 {
 public:
-  int dx, dy;     // The current translation (offset)
-  float sx, sy;  // The current scale (zoom)
+  int dx, dy;           // The current translation (offset)
+  int scrollX, scrollY; // The current scroll values
+  float sx, sy;         // The current scale (zoom)
   gxRect clipArea;
+  gxFlags<gx8Flags> transformEnabledFlags;
 };
 
 /**
@@ -52,7 +56,7 @@ public:
   virtual void RestoreState();
 
   /**
-   * @brief Sets the translation (offset) for all drawing operation.
+   * @brief Sets the translation (offset) for all drawing operations.
    *
    * As painters often draw view elements that are traversed recursively,
    * painters allow moving the painting origin so view element won't have
@@ -60,7 +64,14 @@ public:
    * @param dx The amout of pixels to shift paining origin by on the X axis.
    * @param dy The amout of pixels to shift paining origin by on the Y axis.
    */
-  virtual void SetTranslate(int dx, int dy) ;
+  virtual void SetTranslate(int dx, int dy);
+
+  /**
+   * @brief Sets the scroll value for all drawing operations.
+   * @param sx The scroll value on the X axis.
+   * @param sy The scroll value on the Y axis.
+   */
+  virtual void SetScroll(int sx, int sy);
 
   /**
    * @brief Sets the scale (zoom) for all drawing operations.
@@ -92,6 +103,12 @@ public:
   virtual void SetAbsoluteClipArea(gxRect const &aRect) = 0;
 
   /**
+   * @brief Returns the current (absolute) clip rectangle
+   * @return The clip rectangle
+   */
+  virtual gxRect GetClipRect() const = 0;
+
+  /**
    * @brief Checks if the passed rectangle requires repainting.
    *
    * Normally this is done by checking if the rect intersects with the clipped 
@@ -100,9 +117,31 @@ public:
    */
   virtual bool NeedsPainting(gxRect const &aRect) = 0;
 
+  void DisableScale();
+  bool ScaleEnabled();
+  
+  void DisableScroll();
+  bool ScrollEnabled();
+
   // Drawing methods
   virtual void DrawRectangle(int x, int y, int w, int h) = 0;
-
+  virtual void DrawLine(int x1, int y1, int x2, int y2, bool isHorizontal = true) = 0;
+  
+  virtual void DrawText(std::string aText, int x, int y) = 0;
+  /**
+   * @brief This method is particularly to be used by rulers.
+   * @param aText The text to be drawns.
+   * @param x The X position.
+   * @param y The Y Position.
+   * @param aPadX Padding to add to the X axis; Not subject to transformations.
+   * @param aPadY Padding to add to the Y axis; Not subject to transformations.
+   * @param isHorizontal Whether the text to be drawn horizontally or 
+   * vertically.
+   */
+  virtual void DrawText(std::string aText, int x, int y, int aPadX, int aPadY, bool isHorizontal = true) = 0;
+  virtual void DrawRotatedText(std::string aText, int x, int y, double aAngle) = 0;
+  
+  virtual gxSize GetTextSize(std::string aText) = 0;
 protected:
   /**
    * @brief Performs state restoration.  
@@ -116,20 +155,23 @@ protected:
   virtual void IntersectClipArea(gxRect const &aRect) = 0;
 
   /**
-   * @brief Returns the current (absolute) clip rectangle
-   * @return The clip rectangle
-   */
-  virtual gxRect GetClipRect() const = 0;
-
-  /**
    * @brief Transforms a {@link gxRect}, taking into account translate, scale
    * , etc.
    * @param aRect The rect to transform.
    */
   virtual void Transform(gxRect &aRect);
 
+  /**
+   * @brief Transfroms a {@link gxPoint).
+   * @param aPoint The point to transform.
+   */
+  virtual void Transform(gxPoint &aPoint);
+
   int mTranslateX;
   int mTranslateY;
+  
+  int mScrollX;
+  int mScrollY;
   
   float mScaleX;
   float mScaleY;
@@ -137,6 +179,17 @@ protected:
   // These two are for performence optimization.
   bool mNeedsTranslating;
   bool mNeedsScaling;
+  bool mNeedsScrolling;
+
+  enum TransformFlags
+  {
+    Translate = 0x01,
+    Scroll    = 0x02,
+    Scale     = 0x04,
+    All       = Translate | Scroll | Scale
+  };
+  
+  gxFlags<gx8Flags> mTransformEnabledFlags;
 
   StateStack  mStateStack;
 };

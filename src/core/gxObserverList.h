@@ -28,11 +28,13 @@ public:
   ~gxObserverList();
   
   /**
-   * @brief Notifies all observers (that is, calls all the callbacks in the
-   * list.
+   * @brief Notifies a single or all observers (that is, all the callbacks in
+   * the list).
    * @param aNotification A notification object passed to the callbacks.
+   * @param aCallback If provided a notification will only be sent to the
+   * give callback. NULL will call all callbacks.
    */
-  void Notify(gxNotification *aNotification);
+  void Notify(gxNotification *aNotification, gxCallback *aCallback = NULL);
 
   /**
    * @brief Adds a new callback to the list of observers.

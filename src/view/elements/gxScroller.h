@@ -25,15 +25,15 @@ public:
   
   /**
    * @brief Sets the scale.
-   * @param aScaleX the X axis scale
-   * @param aScaleY the Y axis scale
+   * @param aScrollX The X axis scroll
+   * @param aScaleY The Y axis scroll
    */
-  void SetScroll(float aScrollX, float aScrollY);
+  void SetScroll(int aScrollX, int aScrollY);
 
   /**
    * @brief A handler method for scroll change notifications from the
    * {@link gxScrollManager scroll manager}.
-   * @param aSubject The object that triggered the notification.
+   * @param aNotification The notification object.
    */
   void OnScrollManagerUpdate(const gxNotification *aNotification);
   
@@ -53,8 +53,8 @@ protected:
 
   gxScrollManager *mScrollManager;
 private:
-  float mScrollX;
-  float mScrollY;
+  int mScrollX;
+  int mScrollY;
 };
 
 #endif // gxScroller_h

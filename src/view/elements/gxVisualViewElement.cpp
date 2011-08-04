@@ -1,8 +1,9 @@
 #include "view/elements/gxVisualViewElement.h"
 #include "view/gxLightweightSystem.h"
+#include "core/gxLog.h"
 
 gxVisualViewElement::gxVisualViewElement()
-  : mBounds(0, 0, 10, 10)
+  : mBounds(0, 0, 0, 0)
 {
 }
 
@@ -17,6 +18,15 @@ gxVisualViewElement::~gxVisualViewElement()
 
 void gxVisualViewElement::Paint(gxPainter &aPainter)
 {
+  // Push the painter state as the next few conditions might change it.
+  aPainter.PushState();
+
+  if (GetBounds().mTransformFlags.IsntSet(gxBounds::Scalable))
+    aPainter.DisableScale();
+
+  if (GetBounds().mTransformFlags.IsntSet(gxBounds::Scrollable))
+    aPainter.DisableScroll();
+
   // Get the bounds
   gxRect bounds(GetBounds());
 
@@ -40,6 +50,8 @@ void gxVisualViewElement::Paint(gxPainter &aPainter)
     // Pop (will also restore) the painter state to before SetClipArea.
     aPainter.PopState();
   }
+  
+  aPainter.PopState();
 }
 
 void gxVisualViewElement::PaintChildren(gxPainter &aPainter)
@@ -78,7 +90,7 @@ gxBounds gxVisualViewElement::GetBounds() const
   return mBounds;
 }
 
-void gxVisualViewElement::SetBounds(gxRect &aNewBounds)
+void gxVisualViewElement::SetBounds(const gxRect &aNewBounds)
 {
   // Check if either translate or resize happened
   bool translate = (aNewBounds.x != mBounds.x) || (aNewBounds.y != mBounds.y); 

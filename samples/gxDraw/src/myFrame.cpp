@@ -33,8 +33,8 @@ BEGIN_EVENT_TABLE(MyFrame, wxFrame)
   
   EVT_MENU(wxID_ZOOM_INS, MyFrame::OnZoomIn)
   EVT_MENU(wxID_ZOOM_OUTS, MyFrame::OnZoomOut)
-  EVT_MENU(wxID_ZOOM_IN_VERT, MyFrame::OnZoomInVert)
-  EVT_MENU(wxID_ZOOM_OUT_VERT, MyFrame::OnZoomOutVert)  
+  EVT_MENU(wxID_ZOOM_IN_VERT, MyFrame::OnZoomInHorz)
+  EVT_MENU(wxID_ZOOM_OUT_VERT, MyFrame::OnZoomOutHorz)  
 END_EVENT_TABLE()
 
 
@@ -44,12 +44,12 @@ void MyFrame::Test()
 }
 
 MyFrame::MyFrame(wxWindow* parent,
-                     wxWindowID id,
-                     const wxString& title,
-                     const wxPoint& pos,
-                     const wxSize& size,
-                     long style)
-                    : wxFrame(parent, id, title, pos, size, style)
+                 wxWindowID id,
+                 const wxString& title,
+                 const wxPoint& pos,
+                 const wxSize& size,
+                 long style)
+                 : wxFrame(parent, id, title, pos, size, style)
 {
   Initialize();
 }
@@ -64,7 +64,7 @@ void MyFrame::InitGefri()
   mLightweightSystem = new gxLightweightSystem(mLightweightControl);
 
   mDocument = new gxRectangle(gxRect(10, 10, 480, 480));
-  
+
   mZoomManager = new gxZoomManager();
   mZoom = new gxScaler(mZoomManager);
   
@@ -75,11 +75,20 @@ void MyFrame::InitGefri()
   //mLeg = new gxRectangle(gxRect(410, 10, 10, 10));
   
   mZoom->AddChild(mFace);
-  
+
+  mViewUnit = new gxPixelUnit();
+  mDivProvider = new gxDivProvider(mViewUnit);
+  mRulerH = new gxRuler(gxRect(0, 0, 480, 20), mDivProvider);
+  //mRulerH = new gxRuler(gxRect(0, 0, 20, 480),  mDivProvider, mViewUnit);
+  mRulerH->SetZoomManager(mZoomManager);
+  mRulerH->SetScrollManager(mScrollManager);
+  mZoom->AddChild(mRulerH);
+
   mScroller = new gxScroller(mScrollManager);
   mScroller->AddChild(mZoom);
+
   mDocument->AddChild(mScroller);
-  
+
   //mZoom->AddChild(mLeg);
 
   mLightweightSystem->SetContents(mDocument);
@@ -172,13 +181,13 @@ void MyFrame::OnZoomOut(wxCommandEvent &e)
   mZoomManager->MultiplyZoom(0.5);
 }
 
-void MyFrame::OnZoomInVert(wxCommandEvent &e)
+void MyFrame::OnZoomInHorz(wxCommandEvent &e)
 {
   wxUnusedVar(e);
   mZoomManager->MultiplyZoom(2, 1);
 }
 
-void MyFrame::OnZoomOutVert(wxCommandEvent &e)
+void MyFrame::OnZoomOutHorz(wxCommandEvent &e)
 {
   wxUnusedVar(e);
   mZoomManager->MultiplyZoom(0.5, 1);

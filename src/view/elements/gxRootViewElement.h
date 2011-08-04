@@ -3,9 +3,6 @@
 
 #include "view/elements/gxStructuralViewElement.h"
 
-// Forward declaration
-class gxLightweightSystem;
-
 /**
  * @brief The root view element in any {@link gxViewElement view element}
  * hierarchy, which links all children to the lightweight system. 
@@ -20,16 +17,17 @@ class gxRootViewElement: public gxStructuralViewElement
 public:
   gxRootViewElement()
     : mLightweightSystem(NULL) { }
-  /**
-   * @brief Overrides the base class implementation to return itself. 
-   */
-  virtual gxRootViewElement* GetRootViewElement();
 
   /**
    * @brief Returns the {@link gxLightweightSystem lightweight system}
    * associated with this view element (and all its children).
    */
-  gxLightweightSystem* GetLightweightSystem() const;
+  virtual gxLightweightSystem* GetLightweightSystem() const;
+
+  /**
+   * @brief Overrides the base class implementation to return itself. 
+   */
+  virtual const gxRootViewElement* GetRootViewElement() const;
 
   /**
    * @brief Sets this view element's {@link gxLightweightSystem lightweight

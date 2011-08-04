@@ -1,6 +1,7 @@
 #include "view/elements/gxViewElement.h"
 #include "view/gxLightweightSystem.h"
 #include "core/gxAssert.h"
+#include "core/gxLog.h"
 
 gxViewElement::gxViewElement()
   : mFlags(0)
@@ -11,7 +12,7 @@ gxViewElement::~gxViewElement()
 {
 }
 
-gxRootViewElement* gxViewElement::GetRootViewElement()
+const gxRootViewElement* gxViewElement::GetRootViewElement() const
 {
   if (GetParent() != NULL)
   {
@@ -19,6 +20,19 @@ gxRootViewElement* gxViewElement::GetRootViewElement()
   } else {
     return NULL;
   }
+}
+
+gxLightweightSystem* gxViewElement::GetLightweightSystem() const
+{
+  // Get root view element and return if no such found.
+  const gxRootViewElement *root = GetRootViewElement();
+  gxASSERT(root == NULL, "gxViewElement: could not find root element");
+
+  // Get the lightweight system and return if no such found.
+  gxLightweightSystem *lws = root->GetLightweightSystem();
+  gxASSERT(root == NULL, "gxViewElement: Could not find the lightweight system");
+
+  return lws;
 }
 
 void gxViewElement::TransformToAbsolute(gxBounds &aBounds)
@@ -39,7 +53,6 @@ void gxViewElement::Erase()
   // Repaint really does what we need - takes the element's bounds and adds
   // dirty region to queue repaint.
   Repaint();
-  
 }
 
 void gxViewElement::Repaint()
@@ -58,20 +71,12 @@ void gxViewElement::Repaint(gxBounds &aBounds)
   if (!IsValid())
     return;
 
-  // Get root view element and return if no such found.
-  gxRootViewElement *root = GetRootViewElement();
-  gxASSERT(root == NULL, "gxViewElement::Repaint could not find root element");
-
-  // Get the lightweight system and return if no such found.
-  gxLightweightSystem *lws = root->GetLightweightSystem();
-  gxASSERT(root == NULL, "gxViewElement::Repaint could not find the lightweight system");
-  
   // Translate the bounds to absolute coordinates.
   TransformToAbsolute(aBounds);
-  
+
   // instruct the lightweight system to mark the bounds of this view element
   // as ones need repainting
-  lws->AddDirtyRegion(aBounds);
+  GetLightweightSystem()->AddDirtyRegion(aBounds);
 }
 
 void gxViewElement::GetChildrenBounds(gxBounds &aBounds)

@@ -27,7 +27,7 @@ void gxScaler::SetZoomManager(gxZoomManager *aZoomManager)
     mZoomManager->mObservers.Remove( gxCALLBACK(gxScaler, OnZoomManagerUpdate) );
 
   mZoomManager = aZoomManager;
-  aZoomManager->mObservers.Add( gxCALLBACK(gxScaler, OnZoomManagerUpdate) );
+  aZoomManager->AddObserverAndNotify( gxCALLBACK(gxScaler, OnZoomManagerUpdate) );
 }
 
 void gxScaler::SetScale(float aScaleX, float aScaleY)
@@ -50,10 +50,8 @@ void gxScaler::OnZoomManagerUpdate(const gxNotification *aNotification)
   const gxZoomChangedNotification* Notification = dynamic_cast<const gxZoomChangedNotification*> (aNotification);
   if ( Notification )
   {
-    SetScale(Notification->zoomV, Notification->zoomH);
+    SetScale(Notification->zoomH, Notification->zoomV);
   }
-  //gxZoom newZoom = mZoomManager->GetZoom();
-  //SetScale(newZoom.v, newZoom.h);
 }
 
 void gxScaler::Paint(gxPainter &aPainter)

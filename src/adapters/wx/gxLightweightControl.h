@@ -33,6 +33,7 @@ public:
   void UnsetLightweightSystem();
 
   gxRect GetBounds() const;
+  gxSize GetTextSize(std::string aText);
 
   // Event Handlers
   void OnPaint(wxPaintEvent& event);

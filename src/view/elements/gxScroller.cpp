@@ -28,10 +28,10 @@ void gxScroller::SetScrollManager(gxScrollManager *aScrollManager)
     mScrollManager->mObservers.Remove( gxCALLBACK(gxScroller, OnScrollManagerUpdate) );
 
   mScrollManager = aScrollManager;
-  aScrollManager->mObservers.Add( gxCALLBACK(gxScroller, OnScrollManagerUpdate) );
+  aScrollManager->AddObserverAndNotify( gxCALLBACK(gxScroller, OnScrollManagerUpdate) );
 }
 
-void gxScroller::SetScroll(float aScrollX, float aScrollY)
+void gxScroller::SetScroll(int aScrollX, int aScrollY)
 {
   if (mScrollX != aScrollX || mScrollY != aScrollY)
   {
@@ -53,7 +53,7 @@ void gxScroller::Paint(gxPainter &aPainter)
   // scroll values
   aPainter.PushState();
 
-  aPainter.SetTranslate(-mScrollX, -mScrollY);
+  aPainter.SetScroll(mScrollX, mScrollY);
 
   PaintChildren(aPainter);
 

@@ -1,4 +1,4 @@
-#include "gxLightweightSystem.h"
+#include "view/gxLightweightSystem.h"
 #include "gxLightweightControl.h"
 #include "view/gxDcPainter.h"
 
@@ -79,6 +79,12 @@ void gxLightweightSystem::AddDirtyRegion(gxRect &aRect)
 gxRect gxLightweightSystem::GetControlBounds() const
 {
   return mControl->GetBounds();
+}
+
+gxSize gxLightweightSystem::GetTextSize(std::string aText)
+{
+  gxSize size = mControl->GetTextSize(aText);
+  return gxSize(size.x, size.y);
 }
 
 void gxLightweightSystem::OnScroll (const bool isVertical, const int aPosition)

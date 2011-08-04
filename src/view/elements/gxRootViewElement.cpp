@@ -2,7 +2,7 @@
 #include "view/gxLightweightSystem.h"
 #include "core/gxAssert.h"
 
-gxRootViewElement* gxRootViewElement::GetRootViewElement()
+const gxRootViewElement* gxRootViewElement::GetRootViewElement() const
 {
   return this;
 }

@@ -5,14 +5,16 @@ gxObserverList::~gxObserverList()
   RemoveAll();
 }
 
-void gxObserverList::Notify(gxNotification *aNotification)
+void gxObserverList::Notify(gxNotification *aNotification, gxCallback *aCallback)
 {
   ObserverList::iterator observer;
     
   for (observer = mObservers.begin(); observer != mObservers.end(); ++observer)
   {
-    // Call the call back
-    (**observer)(aNotification);
+    // If no particular callback was requested or we are on that particular one,
+    // Call the callback
+    if (aCallback == NULL || aCallback == *observer)
+      (**observer)(aNotification);
   }
   
   // Clients will call observers.Notify(new gxNotification()), so

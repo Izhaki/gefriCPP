@@ -50,6 +50,12 @@ gxRect gxLightweightControl::GetBounds() const
   return gxRect(rect.x, rect.y, rect.width, rect.height);
 }
 
+gxSize gxLightweightControl::GetTextSize(std::string aText)
+{
+  int w, h;
+  GetTextExtent(wxString(aText.c_str(), wxConvUTF8), &w, &h);
+  return gxSize(w, h);
+}
 
 void gxLightweightControl::OnPaint(wxPaintEvent& WXUNUSED(event))
 {

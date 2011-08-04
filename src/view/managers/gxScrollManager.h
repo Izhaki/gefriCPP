@@ -1,7 +1,10 @@
 #ifndef gxScrollManager_h
-#define gxScrollManager_h#include "core/gxObject.h"
+#define gxScrollManager_h
+
+#include "core/gxObject.h"
 #include "core/gxObserverList.h"
-/**
+
+/**
  * @brief Manages scroll by providing clients advance scroll modification
  * protocol and the ability to notify observers on changes.
  */
@@ -32,14 +35,24 @@ public:
   int GetRangeX() const { return mRangeX; }
   int GetVisibleY() const { return mVisibleY; }
   int GetRangeY() const { return mRangeY; }
+
+  /**
+   * @brief Adds an observer to the observers list and notify to the added
+   * observer only.
+   * @param aCallback The callback to add to the observers list.
+   */
+  void AddObserverAndNotify(gxCallback *aCallback);
+
   gxObserverList mObservers;
-private:  int mScrollX;
+private:
+  int mScrollX;
   int mScrollY;
   
   int mVisibleX;
   int mRangeX;
   int mVisibleY;
-  int mRangeY;};
+  int mRangeY;
+};
 
 /**
  * @brief A notification object to inform observers of scroll position changes.
@@ -71,4 +84,6 @@ public:
   int rangeX;
   int visibleY;
   int rangeY;
-};#endif // gxScrollManager_h
+};
+
+#endif // gxScrollManager_h

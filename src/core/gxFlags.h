@@ -13,31 +13,30 @@ public:
     : mFlags(0)
     { }
   
-  gxFlags(TClass aFlags)
+  gxFlags(const TClass aFlags)
     : mFlags(aFlags)
     { }
 
-  void Set(TClass aFlags)
+  void Set(const TClass aFlags)
   {
     mFlags |= aFlags;
   }
 
-  void Unset(TClass aFlags)
+  void Unset(const TClass aFlags)
   {
     mFlags &= ~aFlags;
   }
 
-  bool IsSet(TClass aFlags)
+  bool IsSet(const TClass aFlags)
   {
     return ( mFlags & aFlags );
   }
   
-  bool IsntSet(TClass aFlags)
+  bool IsntSet(const TClass aFlags)
   {
     return !(IsSet(aFlags));
   }
 
-  
 private:
   TClass mFlags;
 };

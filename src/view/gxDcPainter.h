@@ -14,16 +14,24 @@ public:
 
   virtual void SetAbsoluteClipArea(gxRect const &aRect);
 
-  virtual bool NeedsPainting(gxRect const &aRect);
-
-  void DrawRectangle(int x, int y, int w, int h);
-protected:
-  virtual void IntersectClipArea(gxRect const &aRect);
   /**
    * @brief Returns the current (absolute) clip rectangle of the DC
    * @return The dc clip rectangle
    */
   virtual gxRect GetClipRect() const;
+
+  virtual bool NeedsPainting(gxRect const &aRect);
+
+  void DrawRectangle(int x, int y, int w, int h);
+  void DrawLine(int x1, int y1, int x2, int y2, bool isHorizontal = true);
+  
+  void DrawText(std::string aText, int x, int y);
+  void DrawText(std::string  aText, int x, int y, int aPadX, int aPadY, bool isHorizontal = true);
+  void DrawRotatedText(std::string aText, int x, int y, double aAngle);
+
+  virtual gxSize GetTextSize(std::string aText);
+protected:
+  virtual void IntersectClipArea(gxRect const &aRect);
 private:
   /// The painting DC
   gxPaintDC *mDc;

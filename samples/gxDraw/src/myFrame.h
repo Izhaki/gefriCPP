@@ -7,6 +7,9 @@
 #include "view/managers/gxZoomManager.h"
 #include "view/elements/gxScroller.h"
 #include "view/managers/gxScrollManager.h"
+#include "view/elements/gxRuler.h"
+#include "view/gxDivProvider.h"
+#include "view/gxViewUnit.h"
 
 #include "core/gxComposite.h"
 
@@ -25,13 +28,17 @@ private:
   gxZoomManager *mZoomManager;
   gxScroller *mScroller;
   gxScrollManager *mScrollManager;
+
+  gxViewUnit    *mViewUnit;
+  gxDivProvider *mDivProvider;
+  gxRuler       *mRulerH;
 public:
-  MyFrame(wxWindow *parent,
-            wxWindowID id,
-            const wxString& title,
-            const wxPoint& pos = wxDefaultPosition,
-            const wxSize& size = wxDefaultSize,
-            long style = wxDEFAULT_FRAME_STYLE | wxSUNKEN_BORDER);
+  MyFrame(wxWindow   *parent,
+          wxWindowID id,
+          const      wxString& title,
+          const      wxPoint& pos = wxDefaultPosition,
+          const      wxSize& size = wxDefaultSize,
+          long       style = wxDEFAULT_FRAME_STYLE | wxSUNKEN_BORDER);
 
   ~MyFrame();
   DECLARE_EVENT_TABLE()
@@ -46,6 +53,6 @@ public:
   
   void OnZoomIn(wxCommandEvent &e);
   void OnZoomOut(wxCommandEvent &e);
-  void OnZoomInVert(wxCommandEvent &e);
-  void OnZoomOutVert(wxCommandEvent &e);	
+  void OnZoomInHorz(wxCommandEvent &e);
+  void OnZoomOutHorz(wxCommandEvent &e);
 };

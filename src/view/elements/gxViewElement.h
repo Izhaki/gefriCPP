@@ -11,8 +11,9 @@
 // char used as 1 byte int
 #define gxViewElementFlags char
 
-// Forward declaration
+// Forward declarations
 class gxRootViewElement;
+class gxLightweightSystem;
 
 /**
  * @brief A class representing a lightweight object that is part of the view
@@ -89,10 +90,16 @@ protected:
   virtual void PaintChildren(gxPainter &aPainter) = 0;
 
   /**
+   * @brief Returns the {@link gxLightweightSystem lightweight system}
+   * associated with this view element (and all its children).
+   */
+  virtual gxLightweightSystem* GetLightweightSystem() const;
+
+  /**
    * @brief Returns the {@link gxRootViewElement root element} of the hierarchy
    * by traversing up the hierarchy until hitting the root.
    */
-  virtual gxRootViewElement* GetRootViewElement();
+  virtual const gxRootViewElement* GetRootViewElement() const;
 
   /**
    * @brief Repaints the view element making its bounds dirty.

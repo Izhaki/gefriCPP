@@ -38,7 +38,7 @@ public:
   /**
    * @brief A handler method for zoom change notifications from the
    * {@link gxZoomManager zoom manager}.
-   * @param aSubject The object that triggered the notification.
+   * @param aNotification The notification object.
    */
   void OnZoomManagerUpdate(const gxNotification *aNotification); 
 
