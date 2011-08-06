@@ -141,7 +141,7 @@ gxViewDiv* gxDivProvider::NextBlock()
 
 gxViewDiv* gxDivProvider::Next()
 {
-  if (mDiv.Index == mBlock.DivCount)
+  if (mDiv.Index == mBlock.DivCount - 1)
     return NextBlock();
 
   mDiv.Index++;

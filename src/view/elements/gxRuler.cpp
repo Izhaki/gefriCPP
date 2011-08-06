@@ -108,6 +108,7 @@ void gxRuler::PaintSelf(gxPainter &aPainter)
   do
   {
     iPos = div->Pixel;
+
     // Based on the type of the div draw different lines / text
     switch (div->Type)
     {
