@@ -66,25 +66,25 @@ void gxScroller::ValidateSelf()
   ReadjustScrollbars();
 }
 
-void gxScroller::TransformChild(gxBounds &aBounds)
+void gxScroller::Transform(gxRect &aRect, gxTransformFlags &aTransFlags)
 {
   // Don't scroll if the bounds reject it
-  if (aBounds.mTransformFlags.IsntSet(gxBounds::Scrollable))
-    return;  
+  if (aTransFlags.IsntSet(gxTransformFlags::Scroll))
+    return;
 
   if (mScrollX != 0 || mScrollY != 0)
   {
-    aBounds.Offset(-mScrollX, -mScrollY);
+    aRect.Offset(-mScrollX, -mScrollY);
   }
 }
 
 void gxScroller::ReadjustScrollbars()
 {
-  gxBounds bounds;
-  GetChildrenBounds(bounds);
+  gxRect iBounds;
+  GetChildrenBounds(iBounds);
 
-  gxSize mySize = GetBounds().GetSize();
+  gxSize iMySize = GetBounds().GetSize();
 
   if (mScrollManager)
-    mScrollManager->AdjustScrollbars(mySize.x, bounds.x + bounds.width, mySize.y, bounds.y + bounds.height);
+    mScrollManager->AdjustScrollbars(iMySize.x, iBounds.x + iBounds.width, iMySize.y, iBounds.y + iBounds.height);
 }

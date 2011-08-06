@@ -3,7 +3,7 @@
 
 #include "core/gxObject.h"
 #include "core/geometry/gxGeometry.h"
-#include "core/gxFlags.h"
+#include "view/gxTransformations.h"
 
 #include <stack>
 #include <string>
@@ -16,11 +16,9 @@ typedef std::stack< gxPainterState* > StateStack;
 struct gxPainterState
 {
 public:
-  int dx, dy;           // The current translation (offset)
-  int scrollX, scrollY; // The current scroll values
-  float sx, sy;         // The current scale (zoom)
-  gxRect clipArea;
-  gxFlags<gx8Flags> transformEnabledFlags;
+  gxRect            clipArea;
+  gxTransformations transformations;
+  gxTransformFlags  transformEnabledFlags;
 };
 
 /**
@@ -117,11 +115,15 @@ public:
    */
   virtual bool NeedsPainting(gxRect const &aRect) = 0;
 
-  void DisableScale();
-  bool ScaleEnabled();
-  
-  void DisableScroll();
-  bool ScrollEnabled();
+  /**
+   * @brief Sets the transform flags for this painter, allowing clients to
+   * disable scale, scroll or translate.
+   * 
+   * As an example, view elements with absolute coordinates will disable
+   * translate.
+   * @param aFlags The new set of transform flags.
+   */
+  virtual void SetTransformFlags(gxTransformFlags aFlags); 
 
   // Drawing methods
   virtual void DrawRectangle(int x, int y, int w, int h) = 0;
@@ -141,6 +143,11 @@ public:
   virtual void DrawText(std::string aText, int x, int y, int aPadX, int aPadY, bool isHorizontal = true) = 0;
   virtual void DrawRotatedText(std::string aText, int x, int y, double aAngle) = 0;
   
+  /**
+   * @brief Returns the size of the given text.
+   * @param aText The text whose size we enquire.
+   * @return The size of the given text.
+   */
   virtual gxSize GetTextSize(std::string aText) = 0;
 protected:
   /**
@@ -167,29 +174,23 @@ protected:
    */
   virtual void Transform(gxPoint &aPoint);
 
-  int mTranslateX;
-  int mTranslateY;
-  
-  int mScrollX;
-  int mScrollY;
-  
-  float mScaleX;
-  float mScaleY;
+  /**
+   * @brief Works out what transformations are actually neede.
+   * 
+   * This method will update the mNeedsX members.
+   */
+  void UpdateTransformationsNeeded();
 
-  // These two are for performence optimization.
+  // These are for performence optimization.
   bool mNeedsTranslating;
   bool mNeedsScaling;
   bool mNeedsScrolling;
 
-  enum TransformFlags
-  {
-    Translate = 0x01,
-    Scroll    = 0x02,
-    Scale     = 0x04,
-    All       = Translate | Scroll | Scale
-  };
-  
-  gxFlags<gx8Flags> mTransformEnabledFlags;
+  /// The various transformations this painter applies.
+  gxTransformations mTrans;
+
+  /// Flags representing which transformation clients wish to be enabled.
+  gxTransformFlags mTransformEnabledFlags;
 
   StateStack  mStateStack;
 };

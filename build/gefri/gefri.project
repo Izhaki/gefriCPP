@@ -36,7 +36,6 @@
     <File Name="../../src/core/gxAssert.h"/>
     <File Name="../../src/core/gxLog.h"/>
     <File Name="../../src/core/gxFlags.h"/>
-    <File Name="../../src/view/gxPainter.cpp"/>
   </VirtualDirectory>
   <Settings Type="Static Library">
     <GlobalSettings>
@@ -225,7 +224,6 @@
     <File Name="../../src/view/gxLightweightControl.h"/>
     <File Name="../../src/view/gxLightweightSystem.cpp"/>
     <File Name="../../src/view/gxLightweightSystem.h"/>
-    <File Name="../../src/view/gxPainter.h"/>
     <VirtualDirectory Name="managers">
       <File Name="../../src/view/managers/gxZoomManager.cpp"/>
       <File Name="../../src/view/managers/gxZoomManager.h"/>
@@ -254,10 +252,12 @@
       <File Name="../../src/view/elements/gxRuler.h"/>
       <File Name="../../src/view/elements/gxRuler.cpp"/>
     </VirtualDirectory>
-    <File Name="../../src/view/gxBounds.h"/>
     <File Name="../../src/view/gxDivProvider.h"/>
     <File Name="../../src/view/gxDivProvider.cpp"/>
     <File Name="../../src/view/gxViewUnit.h"/>
     <File Name="../../src/view/gxViewUnit.cpp"/>
+    <File Name="../../src/view/gxPainter.cpp"/>
+    <File Name="../../src/view/gxPainter.h"/>
+    <File Name="../../src/view/gxTransformations.h"/>
   </VirtualDirectory>
 </CodeLite_Project>

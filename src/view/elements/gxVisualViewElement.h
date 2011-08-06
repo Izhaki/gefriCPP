@@ -29,7 +29,7 @@ public:
   /**
    * @brief Returns the bounds of this view element.
    */
-  gxBounds GetBounds() const;
+  gxRect GetBounds() const;
 
   /**
    * @brief Sets new bounds to this view element.
@@ -37,7 +37,7 @@ public:
    */
   virtual void SetBounds(const gxRect &aNewBounds);
   
-  virtual void GetChildrenBounds(gxBounds &aBounds);
+  virtual void GetChildrenBounds(gxRect &aBounds);
 protected:
   /**
    * @brief Paints graphics related to this view element.
@@ -69,7 +69,7 @@ protected:
   void Translate(int dx, int dy);
 
   /// The bounds of this view element
-  gxBounds mBounds;
+  gxRect mBounds;
 };
 
 #endif // gxVisualViewElement_h

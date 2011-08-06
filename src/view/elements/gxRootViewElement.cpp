@@ -17,7 +17,7 @@ void gxRootViewElement::SetLightweightSystem(gxLightweightSystem *aLightweightSy
   mLightweightSystem = aLightweightSystem;
 }
 
-gxBounds gxRootViewElement::GetBounds() const
+gxRect gxRootViewElement::GetBounds() const
 {
   gxASSERT(GetLightweightSystem() == NULL, "gxRootViewElement::GetBounds called but no Lightweight System");
   
@@ -25,9 +25,9 @@ gxBounds gxRootViewElement::GetBounds() const
   {
     // This will return a rectangle at origin (0,0) with the size of the
     // of the control bounds.
-    return gxBounds(GetLightweightSystem()->GetControlBounds().GetSize());
+    return gxRect(GetLightweightSystem()->GetControlBounds().GetSize());
   }
-  return gxBounds(0, 0, 0, 0);
+  return gxRect(0, 0, 0, 0);
 }
 
 void gxRootViewElement::Revalidate()
@@ -39,7 +39,7 @@ void gxRootViewElement::Revalidate()
   Validate();
 }
 
-void gxRootViewElement::TransformToAbsolute(gxBounds &aBounds)
+void gxRootViewElement::TransformToAbsolute(gxRect &aRect, gxTransformFlags &aTransFlags)
 {
   // RootViewElement has no parent. So translation stops here.
 }

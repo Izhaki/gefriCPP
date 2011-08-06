@@ -37,7 +37,7 @@ public:
     return !(IsSet(aFlags));
   }
 
-private:
+protected:
   TClass mFlags;
 };
 

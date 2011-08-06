@@ -36,8 +36,6 @@ public:
    * @param aNotification The notification object.
    */
   void OnScrollManagerUpdate(const gxNotification *aNotification);
-  
-  void ReadjustScrollbars();
 
   /**
    * @brief Paints the view element by translating the painter then calling
@@ -47,9 +45,16 @@ public:
    */
   void Paint(gxPainter &aPainter);
 
-  virtual void ValidateSelf();
 protected:
-  virtual void TransformChild(gxBounds &aBounds);
+  virtual void Transform(gxRect &aRect, gxTransformFlags &aTransFlags);
+
+  void ValidateSelf();
+
+  /**
+   * @brief This method is called when the scroller needs to readjust the
+   * scroll bars associated with it.
+   */
+  void ReadjustScrollbars();
 
   gxScrollManager *mScrollManager;
 private:

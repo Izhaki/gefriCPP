@@ -18,14 +18,11 @@ gxVisualViewElement::~gxVisualViewElement()
 
 void gxVisualViewElement::Paint(gxPainter &aPainter)
 {
-  // Push the painter state as the next few conditions might change it.
+  // Push the painter state as the next line might change it.
   aPainter.PushState();
 
-  if (GetBounds().mTransformFlags.IsntSet(gxBounds::Scalable))
-    aPainter.DisableScale();
-
-  if (GetBounds().mTransformFlags.IsntSet(gxBounds::Scrollable))
-    aPainter.DisableScroll();
+  // Sets the painter transform flags to my own transform flags.
+  aPainter.SetTransformFlags(mTransformFlags);
 
   // Get the bounds
   gxRect bounds(GetBounds());
@@ -76,7 +73,7 @@ void gxVisualViewElement::PaintChildren(gxPainter &aPainter)
   aPainter.PopState();
 }
 
-void gxVisualViewElement::GetChildrenBounds(gxBounds &aBounds)
+void gxVisualViewElement::GetChildrenBounds(gxRect &aBounds)
 {
   // Union with my bounds.
   aBounds.Union(GetBounds());
@@ -85,7 +82,7 @@ void gxVisualViewElement::GetChildrenBounds(gxBounds &aBounds)
   gxViewElement::GetChildrenBounds(aBounds);
 }
 
-gxBounds gxVisualViewElement::GetBounds() const
+gxRect gxVisualViewElement::GetBounds() const
 {
   return mBounds;
 }

@@ -4,7 +4,7 @@
 #include "core/gxLog.h"
 
 gxViewElement::gxViewElement()
-  : mFlags(0)
+: mFlags(0)
 {
 }
 
@@ -35,17 +35,18 @@ gxLightweightSystem* gxViewElement::GetLightweightSystem() const
   return lws;
 }
 
-void gxViewElement::TransformToAbsolute(gxBounds &aBounds)
+void gxViewElement::TransformToAbsolute(gxRect &aRect, gxTransformFlags &aTransFlags)
 { 
   gxASSERT(GetParent() == NULL, "gxViewElement::TransformToAbsolute called, but no parent");
 
-  GetParent()->TransformChild(aBounds);
-  GetParent()->TransformToAbsolute(aBounds);
+  GetParent()->Transform(aRect, aTransFlags);
+  GetParent()->TransformToAbsolute(aRect, aTransFlags);
 }
 
-void gxViewElement::TransformChild(gxBounds &aBounds)
+void gxViewElement::Transform(gxRect &aRect, gxTransformFlags &aTransFlags)
 {
-  aBounds.Offset(GetBounds().GetPosition());
+  if ( aTransFlags.IsSet(gxTransformFlags::Translate) )
+    aRect.Offset(GetBounds().GetPosition());
 }
 
 void gxViewElement::Erase()
@@ -61,35 +62,36 @@ void gxViewElement::Repaint()
   if (!IsValid())
     return;
     
-  gxBounds bounds = GetBounds();
+  gxRect bounds = GetBounds();
   Repaint(bounds);
 }
 
-void gxViewElement::Repaint(gxBounds &aBounds)
+void gxViewElement::Repaint(gxRect &aBounds)
 {
   // No point repainting the figure if it is invalid.
   if (!IsValid())
     return;
 
   // Translate the bounds to absolute coordinates.
-  TransformToAbsolute(aBounds);
+  TransformToAbsolute(aBounds, mTransformFlags);
 
   // instruct the lightweight system to mark the bounds of this view element
   // as ones need repainting
   GetLightweightSystem()->AddDirtyRegion(aBounds);
 }
 
-void gxViewElement::GetChildrenBounds(gxBounds &aBounds)
+void gxViewElement::GetChildrenBounds(gxRect &aBounds)
 {
   for (EACHCHILD)
   {
-    gxBounds childBounds;
+    gxRect childBounds;
     CHILD->GetChildrenBounds(childBounds);
-    
-    // Exclude scroll transformations for these bounds.
-    childBounds.mTransformFlags.Unset(gxBounds::Scrollable);
 
-    TransformChild(childBounds);
+    // When getting the children bounds we want all transformations to be done
+    // but scroll.
+    gxTransformFlags iFlags(gxTransformFlags::All | ~gxTransformFlags::Scroll);
+    Transform(childBounds, iFlags);
+
     aBounds.Union(childBounds);
   }
 }

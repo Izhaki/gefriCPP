@@ -4,12 +4,23 @@
 #include "core/gxLog.h"
 
 gxPainter::gxPainter()
-  :mTranslateX(0), mTranslateY(0),
-   mScrollX(0), mScrollY(0),
-   mScaleX(1), mScaleY(1),
-   mNeedsTranslating(false), mNeedsScaling(false), mNeedsScrolling(false)
+: mNeedsTranslating(false),
+  mNeedsScaling(false),
+  mNeedsScrolling(false),
+  mTransformEnabledFlags(gxTransformFlags::All)
 {
-  mTransformEnabledFlags.Set(gxPainter::All);
+}
+
+void gxPainter::UpdateTransformationsNeeded()
+{
+  mNeedsTranslating = ( (mTrans.Translate.X != 0) || (mTrans.Translate.Y != 0) ) &&
+                      mTransformEnabledFlags.IsSet(gxTransformFlags::Translate);
+
+  mNeedsScrolling = ( (mTrans.Scroll.X != 0) || (mTrans.Scroll.Y != 0) ) &&
+                    mTransformEnabledFlags.IsSet(gxTransformFlags::Scroll);
+
+  mNeedsScaling = ( (mTrans.Scale.X != 1) || (mTrans.Scale.Y != 1) ) &&
+                  mTransformEnabledFlags.IsSet(gxTransformFlags::Scale);
 }
 
 void gxPainter::SetTranslate(int dx, int dy)
@@ -19,14 +30,14 @@ void gxPainter::SetTranslate(int dx, int dy)
     // Take into account any scaling that is in force.
     // Say the value given is (40,40), with a scale set to 2 the resultant
     // position will be (80,80). Makes sense innit?
-    mTranslateX += (int)floor( dx * mScaleX);
-    mTranslateY += (int)floor( dy * mScaleY);
+    mTrans.Translate.X += (int)floor( dx * mTrans.Scale.X);
+    mTrans.Translate.Y += (int)floor( dy * mTrans.Scale.Y);
   } else {
-    mTranslateX += dx;
-    mTranslateY += dy;
+    mTrans.Translate.X += dx;
+    mTrans.Translate.Y += dy;
   }
-  
-  mNeedsTranslating = (mTranslateX != 0) || (mTranslateY != 0); 
+
+  UpdateTransformationsNeeded();
 }
 
 void gxPainter::SetScroll(int sx, int sy)
@@ -36,22 +47,22 @@ void gxPainter::SetScroll(int sx, int sy)
     // Take into account any scaling that is in force.
     // Say the value given is (40,40), with a scale set to 2 the resultant
     // position will be (80,80). Makes sense innit?
-    mScrollX += (int)floor( sx * mScaleX);
-    mScrollY += (int)floor( sy * mScaleY);
+    mTrans.Scroll.X += (int)floor( sx * mTrans.Scale.X);
+    mTrans.Scroll.Y += (int)floor( sy * mTrans.Scale.Y);
   } else {
-    mScrollX += sx;
-    mScrollY += sy;
+    mTrans.Scroll.X += sx;
+    mTrans.Scroll.Y += sy;
   }
-  
-  mNeedsScrolling = (mScrollX != 0) || (mScrollY != 0); 
+
+  UpdateTransformationsNeeded();
 }
 
 void gxPainter::SetScale(float sx, float sy)
 {
-  mScaleX *= sx;
-  mScaleY *= sy;
+  mTrans.Scale.X *= sx;
+  mTrans.Scale.Y *= sy;
 
-  mNeedsScaling = (mScaleX != 1) || (mScaleY != 1);
+  UpdateTransformationsNeeded();
 }
 
 void gxPainter::PushState()
@@ -60,17 +71,9 @@ void gxPainter::PushState()
 
   gxPainterState *s = new gxPainterState();
 
-  s->dx = mTranslateX;
-  s->dy = mTranslateY;
-
-  s->scrollX = mScrollX;
-  s->scrollY = mScrollY;
-
-  s->sx = mScaleX;
-  s->sy = mScaleY;
-  s->clipArea = GetClipRect();
-
+  s->transformations = mTrans;
   s->transformEnabledFlags = mTransformEnabledFlags;
+  s->clipArea = GetClipRect();
 
   mStateStack.push(s);
 }
@@ -100,24 +103,11 @@ void gxPainter::RestoreState()
 
 void gxPainter::RestoreState(gxPainterState *aState)
 {
-  mTranslateX = aState->dx;
-  mTranslateY = aState->dy;
-
-  mNeedsTranslating = (mTranslateX != 0) || (mTranslateY != 0); 
-  
-  mScrollX = aState->scrollX;
-  mScrollY = aState->scrollY;
-  
-  mNeedsScrolling = (mScrollX != 0) || (mScrollY != 0);
-  
-  mScaleX = aState->sx;
-  mScaleY = aState->sy;
-
-  mNeedsScaling = (mScaleX != 1) || (mScaleY != 1);
-  
-  SetAbsoluteClipArea(aState->clipArea);
-  
+  mTrans = aState->transformations;
   mTransformEnabledFlags = aState->transformEnabledFlags;
+  UpdateTransformationsNeeded();
+
+  SetAbsoluteClipArea(aState->clipArea);
 }
 
 void gxPainter::SetClipArea(gxRect const &aRect)
@@ -129,55 +119,41 @@ void gxPainter::SetClipArea(gxRect const &aRect)
   IntersectClipArea(transformedRect);
 }
 
-void gxPainter::DisableScale()
+void gxPainter::SetTransformFlags(gxTransformFlags aFlags)
 {
-  mTransformEnabledFlags.Unset(gxPainter::Scale);
-}
-
-bool gxPainter::ScaleEnabled()
-{
-  return mTransformEnabledFlags.IsSet(gxPainter::Scale);
-}
-
-void gxPainter::DisableScroll()
-{
-  mTransformEnabledFlags.Unset(gxPainter::Scroll);
-}
-
-bool gxPainter::ScrollEnabled()
-{
-  return mTransformEnabledFlags.IsSet(gxPainter::Scroll);
+  mTransformEnabledFlags = aFlags;
+  UpdateTransformationsNeeded();
 }
 
 void gxPainter::Transform(gxRect &aRect)
 {
-  if (ScaleEnabled() && mNeedsScaling)
-    aRect.Scale(mScaleX, mScaleY);
+  if (mNeedsScaling)
+    aRect.Scale(mTrans.Scale.X, mTrans.Scale.Y);
 
   if (mNeedsTranslating)
-    aRect.Offset(mTranslateX, mTranslateY); 
+    aRect.Offset(mTrans.Translate.X, mTrans.Translate.Y); 
 
-  if (ScrollEnabled() && mNeedsScrolling)
-    aRect.Offset(-mScrollX, -mScrollY); 
+  if (mNeedsScrolling)
+    aRect.Offset(-mTrans.Scroll.X, -mTrans.Scroll.Y); 
 }
 
 void gxPainter::Transform(gxPoint &aPoint)
 {
-  if (ScaleEnabled() && mNeedsScaling)
+  if (mNeedsScaling)
   {
-    aPoint.x = (int)(aPoint.x * mScaleX);
-    aPoint.y = (int)(aPoint.y * mScaleY);
+    aPoint.x = (int)(aPoint.x * mTrans.Scale.X);
+    aPoint.y = (int)(aPoint.y * mTrans.Scale.Y);
   }
 
   if (mNeedsTranslating)
   {
-    aPoint.x += mTranslateX;
-    aPoint.y += mTranslateY;
+    aPoint.x += mTrans.Translate.X;
+    aPoint.y += mTrans.Translate.Y;
   }
 
-  if (ScrollEnabled() && mNeedsScrolling)
+  if (mNeedsScrolling)
   {
-    aPoint.x -= mScrollX;
-    aPoint.y -= mScrollY;
+    aPoint.x -= mTrans.Scroll.X;
+    aPoint.y -= mTrans.Scroll.Y;
   }
 }

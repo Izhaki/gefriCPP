@@ -51,7 +51,7 @@ public:
   void Paint(gxPainter &aPainter);
 
 protected:
-  virtual void TransformChild(gxBounds &aBounds);
+  virtual void Transform(gxRect &aRect, gxTransformFlags &aTransFlags);
 
   gxZoomManager *mZoomManager;
 private:

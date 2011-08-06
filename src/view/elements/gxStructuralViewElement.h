@@ -33,7 +33,7 @@ public:
    *  The bounds are always at origin (0,0) and has the size of the parent.
    *  This way any structural element is covering the whole of its parent.
    */
-  virtual gxBounds GetBounds() const;
+  virtual gxRect GetBounds() const;
 protected:
   /**
    * @brief Paints the children of this view element.
@@ -44,7 +44,7 @@ protected:
   // This method overrides the gxViewElement implementation to do nothing.
   // The base class translate the bounds origins to those of the current object,
   // but as structural elements always start at (0,0) no point in doing that.
-  virtual void TransformChild(gxBounds &aBounds) {};
+  virtual void Transform(gxRect &aRect, gxTransformFlags &aTransFlags) {};
 };
 
 #endif // gxStructuralViewElement_h

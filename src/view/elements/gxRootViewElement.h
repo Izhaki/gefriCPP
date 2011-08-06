@@ -43,12 +43,12 @@ public:
    * @brief Returns the bounds of this view element by getting the bounds of the
    * lightweight control, but with the origin set to (0,0).
    */
-  virtual gxBounds GetBounds() const;
+  virtual gxRect GetBounds() const;
   
   virtual void Revalidate();
 
 protected:
-  virtual void TransformToAbsolute(gxBounds &aBounds);
+  virtual void TransformToAbsolute(gxRect &aRect, gxTransformFlags &aTransFlags);
 private:
   /// The {@link gxLightweightSystem lightweight system} associated with this
   /// root view element.

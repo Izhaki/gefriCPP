@@ -6,7 +6,6 @@
 
 #include <wx/log.h>
 
-#include "view/gxBounds.h"
 #include "core/gxLog.h"
 #include "core/geometry/gxGeometry.h"
 

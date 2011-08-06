@@ -3,13 +3,8 @@
 
 #include "core/geometry/gxGeometry.h"
 #include "core/gxComposite.h"
-#include "core/gxFlags.h"
 #include "view/gxPainter.h"
-#include "view/gxBounds.h"
-
-
-// char used as 1 byte int
-#define gxViewElementFlags char
+#include "view/gxTransformations.h"
 
 // Forward declarations
 class gxRootViewElement;
@@ -59,7 +54,7 @@ public:
    * 
    * This abstract method is implemented by subclasses.
    */
-  virtual gxBounds GetBounds() const = 0;
+  virtual gxRect GetBounds() const = 0;
   
   /**
    * @brief Returns the union of all desendents bounds.
@@ -67,25 +62,25 @@ public:
    * This is a recursive method.
    * @param aBounds The bounds to union all children with.
    */
-  virtual void GetChildrenBounds(gxBounds &aBounds);
+  virtual void GetChildrenBounds(gxRect &aBounds);
 
 protected:
   /**
-   * @brief Transforms the bounds to absolute coordinates.
+   * @brief Transforms a rect (typically bounds) to absolute coordinates.
    *
    * This is a recursive method that goes all the way up the parent tree.
-   * @param aBounds The bounds to transform
+   * @param aRect The rect to transform
    */
-  virtual void TransformToAbsolute(gxBounds &aBounds);
+  virtual void TransformToAbsolute(gxRect &aRect, gxTransformFlags &aTransFlags);
 
   /**
-   * @brief Transforms the bounds of the child to the coordinates of this 
-   * parent.
+   * @brief Transforms a rect (typically bounds) to the coordinates of this 
+   * element. Normally called by children.
    * 
    * Used by TransformToAbsolute.
-   * @param aBounds The bounds to transform.
+   * @param aRect The rect to transform.
    */
-  virtual void TransformChild(gxBounds &aBounds);
+  virtual void Transform(gxRect &aRect, gxTransformFlags &aTransFlags);
   
   /**
    * @brief Paints the children of this view element.
@@ -116,7 +111,7 @@ protected:
    * @brief Repaints part or the whole of the view element.
    * @param aBounds The bounds of the area to be repainted.
    */
-  virtual void Repaint(gxBounds &aBounds);
+  virtual void Repaint(gxRect &aBounds);
 
   // Validation related methods
   
@@ -162,7 +157,8 @@ protected:
   };
   
   gxFlags<gx8Flags> mFlags;
-
+  
+  gxTransformFlags mTransformFlags;
 
   IMPLEMENT_COMPOSITE(gxViewElement)
 };
