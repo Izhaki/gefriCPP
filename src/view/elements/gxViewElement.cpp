@@ -80,12 +80,12 @@ void gxViewElement::Repaint(gxRect &aBounds)
   GetLightweightSystem()->AddDirtyRegion(aBounds);
 }
 
-void gxViewElement::GetChildrenBounds(gxRect &aBounds)
+void gxViewElement::GetDescendantsBounds(gxRect &aBounds)
 {
   for (EACHCHILD)
   {
     gxRect childBounds;
-    CHILD->GetChildrenBounds(childBounds);
+    CHILD->GetDescendantsBounds(childBounds);
 
     // When getting the children bounds we want all transformations to be done
     // but scroll.

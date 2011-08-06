@@ -37,7 +37,7 @@ public:
    */
   virtual void SetBounds(const gxRect &aNewBounds);
   
-  virtual void GetChildrenBounds(gxRect &aBounds);
+  virtual void GetDescendantsBounds(gxRect &aBounds);
 protected:
   /**
    * @brief Paints graphics related to this view element.

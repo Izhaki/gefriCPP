@@ -81,7 +81,7 @@ void gxScroller::Transform(gxRect &aRect, gxTransformFlags &aTransFlags)
 void gxScroller::ReadjustScrollbars()
 {
   gxRect iBounds;
-  GetChildrenBounds(iBounds);
+  GetDescendantsBounds(iBounds);
 
   gxSize iMySize = GetBounds().GetSize();
 

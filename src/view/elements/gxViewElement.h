@@ -57,12 +57,13 @@ public:
   virtual gxRect GetBounds() const = 0;
   
   /**
-   * @brief Returns the union of all desendents bounds.
+   * @brief Returns the union of all descendant bounds.
    * 
-   * This is a recursive method.
+   * This is a recursive method, that travels down the composition tree to
+   * all children and their childrean and so on...
    * @param aBounds The bounds to union all children with.
    */
-  virtual void GetChildrenBounds(gxRect &aBounds);
+  virtual void GetDescendantsBounds(gxRect &aBounds);
 
 protected:
   /**
