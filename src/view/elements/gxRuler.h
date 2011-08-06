@@ -26,7 +26,6 @@ public:
    * @param aBounds The bounds of the ruler.
    * @param aDivProvider The {@link gxDivProvider div provider} providing
    * the divisions for this ruler.
-   * @param aViewUnit The {@link gxViewUnit view unit} used for this ruller.
    */
   gxRuler(const gxRect  &aBounds,
           gxDivProvider *aDivProvider);
