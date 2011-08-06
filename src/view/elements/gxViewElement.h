@@ -61,6 +61,12 @@ public:
    */
   virtual gxBounds GetBounds() const = 0;
   
+  /**
+   * @brief Returns the union of all desendents bounds.
+   * 
+   * This is a recursive method.
+   * @param aBounds The bounds to union all children with.
+   */
   virtual void GetChildrenBounds(gxBounds &aBounds);
 
 protected:
