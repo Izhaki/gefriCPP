@@ -111,10 +111,10 @@ void gxPainter::RestoreState(gxPainterState *aState)
 void gxPainter::SetClipArea(gxRect const &aRect)
 {
   // Transforms the rect, taking into account trnaslation, scale, etc.
-  gxRect transformedRect(aRect);
-  Transform(transformedRect);
+  gxRect iTransformedRect(aRect);
+  Transform(iTransformedRect);
   
-  IntersectClipArea(transformedRect);
+  IntersectClipArea(iTransformedRect);
 }
 
 void gxPainter::SetTransformFlags(gxTransformFlags aFlags)
