@@ -38,10 +38,10 @@ void gxRuler::SetZoomManager(gxZoomManager *aZoomManager)
 void gxRuler::OnZoomManagerUpdate(const gxNotification *aNotification)
 {
   // Convert the notification to the correct class.
-  const gxZoomChangedNotification* Notification = dynamic_cast<const gxZoomChangedNotification*> (aNotification);
-  if ( Notification )
+  const gxZoomChangedNotification* iNotification = dynamic_cast<const gxZoomChangedNotification*> (aNotification);
+  if ( iNotification )
   {
-    SetScale ( mIsHorizontal ? Notification->zoomH : Notification->zoomV );
+    SetScale ( mIsHorizontal ? iNotification->mZoom.X : iNotification->mZoom.Y );
   }
 }
 

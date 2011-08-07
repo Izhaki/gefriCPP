@@ -28,8 +28,12 @@ public:
  */
 struct gxScale
 {
-  gxScale() : X(1.0), Y(1.0) { }
   float X, Y;
+
+  gxScale() : X(1.0), Y(1.0) { }
+
+  bool operator==(const gxScale& aScale) const { return X == aScale.X && Y == aScale.Y; }
+  bool operator!=(const gxScale& aScale) const { return X != aScale.X || Y != aScale.Y; }
 };
 
 /**

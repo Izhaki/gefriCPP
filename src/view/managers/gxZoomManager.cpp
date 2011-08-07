@@ -2,43 +2,42 @@
 
 gxZoomManager::gxZoomManager()
 {
-  mZoom = gxZoom(1, 1);
 }
 
 gxZoomManager::~gxZoomManager()
 {
 }
 
-gxZoom gxZoomManager::GetZoom() const
+gxScale gxZoomManager::GetZoom() const
 {
   return mZoom;
 }
 
 void gxZoomManager::SetZoom(const float aZoomH, const float aZoomV)
 {
-  mZoom.h = aZoomH;
-  mZoom.v = aZoomV;
+  mZoom.X = aZoomH;
+  mZoom.Y = aZoomV;
   mObservers.Notify(new gxZoomChangedNotification(this));
 }
 
 void gxZoomManager::SetZoom(const float aZoom)
 {
-  mZoom.h = aZoom;
-  mZoom.v = aZoom;
+  mZoom.X = aZoom;
+  mZoom.Y = aZoom;
   mObservers.Notify(new gxZoomChangedNotification(this));
 }
 
 void gxZoomManager::MultiplyZoom(const float aMultiplierH, const float aMultiplierV)
 {
-  mZoom.h *= aMultiplierH;
-  mZoom.v *= aMultiplierV;
+  mZoom.X *= aMultiplierH;
+  mZoom.Y *= aMultiplierV;
   mObservers.Notify(new gxZoomChangedNotification(this));
 }
 
 void gxZoomManager::MultiplyZoom(const float aMultiplier)
 {
-  mZoom.h *= aMultiplier;
-  mZoom.v *= aMultiplier;
+  mZoom.X *= aMultiplier;
+  mZoom.Y *= aMultiplier;
   mObservers.Notify(new gxZoomChangedNotification(this));
 }
 

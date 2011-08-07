@@ -3,6 +3,7 @@
 
 #include "view/elements/gxStructuralViewElement.h"
 #include "view/managers/gxZoomManager.h"
+#include "view/gxTransformations.h"
 
 /**
  * @brief A view element that scales (zoom) all its children.
@@ -30,10 +31,9 @@ public:
   
   /**
    * @brief Sets the scale.
-   * @param aScaleX the X axis scale
-   * @param aScaleY the Y axis scale
+   * @param aScale The new scale
    */
-  void SetScale(float aScaleX, float aScaleY);
+  void SetScale(gxScale const &aScale);
 
   /**
    * @brief A handler method for zoom change notifications from the
@@ -55,8 +55,7 @@ protected:
 
   gxZoomManager *mZoomManager;
 private:
-  float mScaleX;
-  float mScaleY;
+  gxScale mScale;
 };
 
 #endif // gxScaler_h

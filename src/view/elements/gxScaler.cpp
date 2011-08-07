@@ -3,19 +3,19 @@
 #include "core/gxAssert.h"
 
 gxScaler::gxScaler()
-  : mScaleX(1), mScaleY(1), mZoomManager(NULL)
+: mZoomManager(NULL)
 {
 }
 
 gxScaler::gxScaler(gxZoomManager *aZoomManager)
-  : mScaleX(1), mScaleY(1), mZoomManager(NULL)
+: mZoomManager(NULL)
 {
   SetZoomManager(aZoomManager);
 }
 
 gxScaler::~gxScaler()
 {
-    // Remove the callback from the previous zoom manager (if any).
+  // Remove the callback from the previous zoom manager (if any).
   if (mZoomManager)
     mZoomManager->mObservers.Remove( gxCALLBACK(gxScaler, OnZoomManagerUpdate) );
 }
@@ -30,13 +30,12 @@ void gxScaler::SetZoomManager(gxZoomManager *aZoomManager)
   aZoomManager->AddObserverAndNotify( gxCALLBACK(gxScaler, OnZoomManagerUpdate) );
 }
 
-void gxScaler::SetScale(float aScaleX, float aScaleY)
+void gxScaler::SetScale(gxScale const &aScale)
 {
-  if (mScaleX != aScaleX || mScaleY != aScaleY)
+  if (mScale != aScale)
   {
     Erase();
-    mScaleX = aScaleX;
-    mScaleY = aScaleY;
+    mScale = aScale;
     
     // As the scale changed we need to revalidate the hierarcy tree (for
     // example so a Scroller parent can readjust the scrollbars).
@@ -50,7 +49,7 @@ void gxScaler::OnZoomManagerUpdate(const gxNotification *aNotification)
   const gxZoomChangedNotification* Notification = dynamic_cast<const gxZoomChangedNotification*> (aNotification);
   if ( Notification )
   {
-    SetScale(Notification->zoomH, Notification->zoomV);
+    SetScale(Notification->mZoom);
   }
 }
 
@@ -60,7 +59,7 @@ void gxScaler::Paint(gxPainter &aPainter)
   // scale
   aPainter.PushState();
   
-  aPainter.SetScale(mScaleX, mScaleY);
+  aPainter.SetScale(mScale);
   
   PaintChildren(aPainter);
 
@@ -74,8 +73,8 @@ void gxScaler::Transform(gxRect &aRect, gxTransformFlags &aTransFlags)
   if (aTransFlags.IsntSet(gxTransformFlags::Scale))
     return;
 
-  if (mScaleX != 1 || mScaleY != 1)
+  if (mScale.X != 1 || mScale.Y != 1)
   {
-    aRect.Scale(mScaleX, mScaleY);
+    aRect.Scale(mScale.X, mScale.Y);
   }
 }

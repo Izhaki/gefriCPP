@@ -21,7 +21,7 @@ public:
   // no copy ctor or assignment operator - the defaults are ok
 
   bool operator==(const gxSize& aSize) const { return X == aSize.X && Y == aSize.Y; }
-  bool operator!=(const gxSize& aSize) const { return X != aSize.Y || Y != aSize.Y; }
+  bool operator!=(const gxSize& aSize) const { return X != aSize.X || Y != aSize.Y; }
 
   gxSize operator+(const gxSize& aSize) const { return gxSize(X + aSize.X, Y + aSize.Y); }
   gxSize operator-(const gxSize& aSize) const { return gxSize(X - aSize.X, Y - aSize.Y); }

@@ -57,48 +57,46 @@ void gxPainter::SetScroll(int sx, int sy)
   UpdateTransformationsNeeded();
 }
 
-void gxPainter::SetScale(float sx, float sy)
+void gxPainter::SetScale(gxScale const &aScale)
 {
-  mTrans.Scale.X *= sx;
-  mTrans.Scale.Y *= sy;
+  mTrans.Scale.X *= aScale.X;
+  mTrans.Scale.Y *= aScale.Y;
 
   UpdateTransformationsNeeded();
 }
 
 void gxPainter::PushState()
 {
-  //gxRect clipRect = GetDcClipRect();
+  gxPainterState *iState = new gxPainterState();
 
-  gxPainterState *s = new gxPainterState();
+  iState->transformations = mTrans;
+  iState->transformEnabledFlags = mTransformEnabledFlags;
+  iState->clipArea = GetClipRect();
 
-  s->transformations = mTrans;
-  s->transformEnabledFlags = mTransformEnabledFlags;
-  s->clipArea = GetClipRect();
-
-  mStateStack.push(s);
+  mStateStack.push(iState);
 }
 
 void gxPainter::PopState()
 {
   // Get the top state from the stack
-  gxPainterState *s = mStateStack.top();
+  gxPainterState *iState = mStateStack.top();
   
   // Restore it
-  RestoreState(s);
+  RestoreState(iState);
 
   // Remove it from stack;
   mStateStack.pop();
 
-  delete s;
-  s = NULL;
+  delete iState;
+  iState = NULL;
 }
 
 void gxPainter::RestoreState()
 {
   // Get the top state from the stack
-  gxPainterState *s = mStateStack.top();
+  gxPainterState *iState = mStateStack.top();
   // Restore it
-  RestoreState(s);
+  RestoreState(iState);
 }
 
 void gxPainter::RestoreState(gxPainterState *aState)

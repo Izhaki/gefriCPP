@@ -3,18 +3,7 @@
 
 #include "core/gxObject.h"
 #include "core/gxObserverList.h"
-
-/**
- * @brief A class representing zoom levels.
- */
-class gxZoom
-{
-public:
-  float h, v;
-
-  gxZoom() : h(1), v(1) {}
-  gxZoom(float aH, float aV): h(aH), v(aV) {}
-};
+#include "view/gxTransformations.h"
 
 /**
  * @brief Manages zoom by providing clients advance zoom modification protocol
@@ -31,7 +20,7 @@ public:
    * @brief Returns the current zoom.
    * @return The current zoom.
    */
-  gxZoom GetZoom() const;
+  gxScale GetZoom() const;
   
   /**
    * @brief Sets the Zoom to the given values.
@@ -70,7 +59,7 @@ public:
   
   gxObserverList mObservers;
 private:
-  gxZoom mZoom;
+  gxScale mZoom;
 };
 
 /**
@@ -80,9 +69,9 @@ class gxZoomChangedNotification: public gxNotification
 {
 public:
   gxZoomChangedNotification(const gxZoomManager *aZoomManager)
-    : zoomH(aZoomManager->GetZoom().h), zoomV(aZoomManager->GetZoom().v) { }
-  float zoomH;
-  float zoomV;
+  : mZoom( aZoomManager->GetZoom() ) { }
+
+  gxScale mZoom;
 };
 
 #endif // gxZoomManager_h

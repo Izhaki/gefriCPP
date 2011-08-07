@@ -73,10 +73,9 @@ public:
 
   /**
    * @brief Sets the scale (zoom) for all drawing operations.
-   * @param sx The X axis scale.
-   * @param sy The Y axis scale.
+   * @param aScale The new scale
    */
-  virtual void SetScale(float sx, float sy);
+  virtual void SetScale(gxScale const &aScale);
 
   /**
    * @brief Sets the clip rect for drawing while intersecting with existing
