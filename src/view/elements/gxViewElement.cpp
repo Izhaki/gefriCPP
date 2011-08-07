@@ -25,14 +25,14 @@ const gxRootViewElement* gxViewElement::GetRootViewElement() const
 gxLightweightSystem* gxViewElement::GetLightweightSystem() const
 {
   // Get root view element and return if no such found.
-  const gxRootViewElement *root = GetRootViewElement();
-  gxASSERT(root == NULL, "gxViewElement: could not find root element");
+  const gxRootViewElement *iRoot = GetRootViewElement();
+  gxASSERT(iRoot == NULL, "gxViewElement: could not find root element");
 
   // Get the lightweight system and return if no such found.
-  gxLightweightSystem *lws = root->GetLightweightSystem();
-  gxASSERT(root == NULL, "gxViewElement: Could not find the lightweight system");
+  gxLightweightSystem *iLws = iRoot->GetLightweightSystem();
+  gxASSERT(iLws == NULL, "gxViewElement: Could not find the lightweight system");
 
-  return lws;
+  return iLws;
 }
 
 void gxViewElement::TransformToAbsolute(gxRect &aRect, gxTransformFlags &aTransFlags)
@@ -62,8 +62,8 @@ void gxViewElement::Repaint()
   if (!IsValid())
     return;
     
-  gxRect bounds = GetBounds();
-  Repaint(bounds);
+  gxRect iBounds = GetBounds();
+  Repaint(iBounds);
 }
 
 void gxViewElement::Repaint(gxRect &aBounds)
@@ -84,15 +84,15 @@ void gxViewElement::GetDescendantsBounds(gxRect &aBounds)
 {
   for (EACHCHILD)
   {
-    gxRect childBounds;
-    CHILD->GetDescendantsBounds(childBounds);
+    gxRect iChildBounds;
+    CHILD->GetDescendantsBounds(iChildBounds);
 
     // When getting the children bounds we want all transformations to be done
     // but scroll.
     gxTransformFlags iFlags(gxTransformFlags::All | ~gxTransformFlags::Scroll);
-    Transform(childBounds, iFlags);
+    Transform(iChildBounds, iFlags);
 
-    aBounds.Union(childBounds);
+    aBounds.Union(iChildBounds);
   }
 }
 

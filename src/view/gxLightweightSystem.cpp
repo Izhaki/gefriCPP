@@ -52,21 +52,21 @@ void gxLightweightSystem::SetScrollManager(gxScrollManager *aScrollManager)
 
 void gxLightweightSystem::OnScrollRangeChanged(const gxNotification *aNotification)
 {
-  const gxScrollRangeChangedNotification* Notification = dynamic_cast<const gxScrollRangeChangedNotification*> (aNotification);
-  if ( Notification )
+  const gxScrollRangeChangedNotification* iNotification = dynamic_cast<const gxScrollRangeChangedNotification*> (aNotification);
+  if ( iNotification )
   {
-    mControl->SetScrollbar(wxHORIZONTAL, Notification->mScroll.X, Notification->mVisible.X, Notification->mRange.X);
-    mControl->SetScrollbar(wxVERTICAL, Notification->mScroll.Y, Notification->mVisible.Y, Notification->mRange.Y);
+    mControl->SetScrollbar(wxHORIZONTAL, iNotification->mScroll.X, iNotification->mVisible.X, iNotification->mRange.X);
+    mControl->SetScrollbar(wxVERTICAL, iNotification->mScroll.Y, iNotification->mVisible.Y, iNotification->mRange.Y);
   }
 }
 
 void gxLightweightSystem::Paint(gxPaintDC *aDc, gxRects const &aDamagedRects)
 {
   // Create a painter
-  gxDcPainter painter(aDc, aDamagedRects);
+  gxDcPainter iPainter(aDc, aDamagedRects);
 
   // Ask the root view element to paint itself using the painter.
-  mRootViewElement->Paint(painter);
+  mRootViewElement->Paint(iPainter);
 }
 
 void gxLightweightSystem::AddDirtyRegion(gxRect &aRect)
@@ -83,8 +83,8 @@ gxRect gxLightweightSystem::GetControlBounds() const
 
 gxSize gxLightweightSystem::GetTextSize(std::string aText)
 {
-  gxSize size = mControl->GetTextSize(aText);
-  return gxSize(size.X, size.Y);
+  gxSize iSize = mControl->GetTextSize(aText);
+  return gxSize(iSize.X, iSize.Y);
 }
 
 void gxLightweightSystem::OnScroll (const bool isVertical, const int aPosition)

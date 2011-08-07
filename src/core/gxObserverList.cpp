@@ -7,14 +7,14 @@ gxObserverList::~gxObserverList()
 
 void gxObserverList::Notify(gxNotification *aNotification, gxCallback *aCallback)
 {
-  ObserverList::iterator observer;
+  ObserverList::iterator iObserver;
     
-  for (observer = mObservers.begin(); observer != mObservers.end(); ++observer)
+  for (iObserver = mObservers.begin(); iObserver != mObservers.end(); ++iObserver)
   {
     // If no particular callback was requested or we are on that particular one,
     // Call the callback
-    if (aCallback == NULL || aCallback == *observer)
-      (**observer)(aNotification);
+    if (aCallback == NULL || aCallback == *iObserver)
+      (**iObserver)(aNotification);
   }
   
   // Clients will call observers.Notify(new gxNotification()), so
@@ -29,17 +29,17 @@ void gxObserverList::Add(gxCallback *aCallback)
 
 void gxObserverList::Remove(gxCallback *aCallback)
 {
-  ObserverList::iterator observer;
+  ObserverList::iterator iObserver;
     
-  for (observer = mObservers.begin(); observer != mObservers.end(); ++observer)
+  for (iObserver = mObservers.begin(); iObserver != mObservers.end(); ++iObserver)
   {
-    if ( (**observer) == (*aCallback))
+    if ( (**iObserver) == (*aCallback))
     {
       // Both the original callback and the one passed as a parameter are
       // stray pointers, so delete them.
-      delete *observer;
+      delete *iObserver;
       delete aCallback;
-      mObservers.erase(observer);
+      mObservers.erase(iObserver);
       break;
     }
   }
@@ -47,12 +47,12 @@ void gxObserverList::Remove(gxCallback *aCallback)
 
 void gxObserverList::RemoveAll()
 {
-  ObserverList::iterator observer;
+  ObserverList::iterator iObserver;
     
-  for (observer = mObservers.begin(); observer != mObservers.end(); ++observer)
+  for (iObserver = mObservers.begin(); iObserver != mObservers.end(); ++iObserver)
   {
-    delete *observer;
+    delete *iObserver;
     // erase() returns a new valid iterator that exludes the object removed.
-    observer = mObservers.erase(observer);
+    iObserver = mObservers.erase(iObserver);
   }
 }

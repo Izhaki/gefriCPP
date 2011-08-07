@@ -90,15 +90,15 @@ gxRect gxVisualViewElement::GetBounds() const
 void gxVisualViewElement::SetBounds(const gxRect &aNewBounds)
 {
   // Check if either translate or resize happened
-  bool translate = (aNewBounds.x != mBounds.x) || (aNewBounds.y != mBounds.y); 
-  bool resize = (aNewBounds.width != mBounds.width) || (aNewBounds.height != mBounds.height);
+  bool iTranslate = (aNewBounds.x != mBounds.x) || (aNewBounds.y != mBounds.y); 
+  bool iResize = (aNewBounds.width != mBounds.width) || (aNewBounds.height != mBounds.height);
 
   // Erase the view element if either happened
-  if (translate || resize)
+  if (iTranslate || iResize)
     Erase();
 
   // Preform translation
-  if (translate)
+  if (iTranslate)
   {
     int dx = aNewBounds.x - mBounds.x;
     int dy = aNewBounds.y - mBounds.y;
@@ -106,14 +106,14 @@ void gxVisualViewElement::SetBounds(const gxRect &aNewBounds)
   }
 
   // Preform resize
-  if (resize)
+  if (iResize)
   {
     mBounds.width = aNewBounds.width;
     mBounds.height = aNewBounds.height;
   }
 
   // Repaint
-  if (translate || resize)
+  if (iTranslate || iResize)
   {
     Revalidate();
     Repaint();

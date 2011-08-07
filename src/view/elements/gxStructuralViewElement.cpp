@@ -34,7 +34,7 @@ gxRect gxStructuralViewElement::GetBounds() const
   gxASSERT(GetParent() == NULL, "gxStructuralViewElement::GetBounds() called but no parent.");
 
   // This will return a rect at (0,0) origin with the size of the parent.
-  gxRect bounds(GetParent()->GetBounds().GetSize());
+  gxRect iBounds(GetParent()->GetBounds().GetSize());
 
-  return bounds;
+  return iBounds;
 }

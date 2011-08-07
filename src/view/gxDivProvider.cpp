@@ -5,10 +5,10 @@
 // -----------
 
 gxDivProvider::gxDivProvider(gxViewUnit *aViewUnit)
-  : mMinBlockSize(50),
-    mScale(1.0),
-    mFixedBlockSize(true),
-    mViewUnit ( aViewUnit )
+: mMinBlockSize(50),
+  mScale(1.0),
+  mFixedBlockSize(true),
+  mViewUnit ( aViewUnit )
 {
 }
 
