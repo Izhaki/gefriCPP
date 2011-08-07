@@ -104,13 +104,13 @@ void gxRuler::PaintSelf(gxPainter &aPainter)
   int iEndPixel =  (int)( (mStartPixel + GetMyVisibleSize()) / mScale);
 
   // Start with the block at the start pixel
-  gxViewDiv *div = mDivProvider->BlockAtPixel(mStartPixel / mScale);
+  gxViewDiv *iDiv = mDivProvider->BlockAtPixel(mStartPixel / mScale);
   do
   {
-    iPos = div->Pixel;
+    iPos = iDiv->Pixel;
 
     // Based on the type of the div draw different lines / text
-    switch (div->Type)
+    switch (iDiv->Type)
     {
       case gxViewDiv::Block:
         iLineLength = mBounds.height;
@@ -125,7 +125,7 @@ void gxRuler::PaintSelf(gxPainter &aPainter)
     }
     aPainter.DrawLine(iPos, 0, iPos, iLineLength, mIsHorizontal);
 
-    div = mDivProvider->Next();
+    iDiv = mDivProvider->Next();
     // Carry on painting divs so long as the position of the div is smaller
     // than the last pixel to be drawn.
   } while ( iPos < iEndPixel);
