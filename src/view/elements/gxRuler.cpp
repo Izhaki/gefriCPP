@@ -101,7 +101,7 @@ void gxRuler::PaintSelf(gxPainter &aPainter)
   int iLineLength;
   
   // The last pixel to be drawn, we need to take into account the scale 
-  int iEndPixel =  (int)( (mStartPixel + GetMyVisibleSize()) / mScale);
+  int iEndPixel =  mStartPixel + GetMyVisibleSize();
 
   // Start with the block at the start pixel
   gxViewDiv *iDiv = mDivProvider->BlockAtPixel(mStartPixel / mScale);
@@ -126,16 +126,17 @@ void gxRuler::PaintSelf(gxPainter &aPainter)
     aPainter.DrawLine(iPos, 0, iPos, iLineLength, mIsHorizontal);
 
     iDiv = mDivProvider->Next();
-    // Carry on painting divs so long as the position of the div is smaller
-    // than the last pixel to be drawn.
-  } while ( iPos < iEndPixel);
+
+    // Stop when the actual position (taking into account the scale) of the
+    // next div is smaller than the last pixel to be drawn. 
+  } while ( (int)(iDiv->Pixel * mScale) < iEndPixel );
 }
 
 int gxRuler::GetMyVisibleSize()
 {
-  // Returns whichever is smaller: my size or my parent size
+  // Returns whichever is smaller: my scaled size or my parent size
   if (mIsHorizontal)
-    return gxMin(mBounds.width, GetParent()->GetBounds().width);
+    return gxMin((int)( mBounds.width * mScale ), GetParent()->GetBounds().width);
   else
-    return gxMin(mBounds.height, GetParent()->GetBounds().height);
+    return gxMin((int)( mBounds.height * mScale ), GetParent()->GetBounds().height);
 }
