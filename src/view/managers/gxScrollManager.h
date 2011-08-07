@@ -3,6 +3,8 @@
 
 #include "core/gxObject.h"
 #include "core/gxObserverList.h"
+#include "view/gxTransformations.h"
+#include "core/geometry/gxGeometry.h"
 
 /**
  * @brief Manages scroll by providing clients advance scroll modification
@@ -29,12 +31,17 @@ public:
    */
   void AdjustScrollbars(int aVisibleX, int aRangeX, int aVisibleY, int aRangeY);
   
-  int GetScrollX() const { return mScrollX; }
-  int GetScrollY() const { return mScrollY; }
-  int GetVisibleX() const { return mVisibleX; }
-  int GetRangeX() const { return mRangeX; }
-  int GetVisibleY() const { return mVisibleY; }
-  int GetRangeY() const { return mRangeY; }
+  int GetScrollX() const { return mScroll.X; }
+  int GetScrollY() const { return mScroll.Y; }
+  gxScroll GetScroll() const { return mScroll; }
+
+  int GetVisibleX() const { return mVisible.X; }
+  int GetVisibleY() const { return mVisible.Y; }
+  gxSize GetVisible() const { return mVisible; }
+
+  int GetRangeX() const { return mRange.X; }
+  int GetRangeY() const { return mRange.Y; }
+  gxSize GetRange() const { return mRange; }
 
   /**
    * @brief Adds an observer to the observers list and notify to the added
@@ -45,13 +52,14 @@ public:
 
   gxObserverList mObservers;
 private:
-  int mScrollX;
-  int mScrollY;
+  /// The current scoll position.
+  gxScroll mScroll;
+
+  /// Represent the visible size of the viewable part of the whole.
+  gxSize mVisible;
   
-  int mVisibleX;
-  int mRangeX;
-  int mVisibleY;
-  int mRangeY;
+  /// Represent the size of the whole area.
+  gxSize mRange;
 };
 
 /**
@@ -61,10 +69,9 @@ class gxScrollPositionChangedNotification: public gxNotification
 {
 public:
   gxScrollPositionChangedNotification(const gxScrollManager* aScrollManager)
-    : scrollX(aScrollManager->GetScrollX()),
-      scrollY(aScrollManager->GetScrollY()) { }
-  int scrollX;
-  int scrollY;
+    : mScroll(aScrollManager->GetScroll()) { }
+
+  gxScroll mScroll;
 };
 
 /**
@@ -74,16 +81,13 @@ class gxScrollRangeChangedNotification: public gxNotification
 {
 public:
   gxScrollRangeChangedNotification(const gxScrollManager* aScrollManager)
-    : scrollX(aScrollManager->GetScrollX()), scrollY(aScrollManager->GetScrollY()),
-      visibleX(aScrollManager->GetVisibleX()), rangeX(aScrollManager->GetRangeX()),
-      visibleY(aScrollManager->GetVisibleY()), rangeY(aScrollManager->GetRangeY()) { }
+    : mScroll( aScrollManager->GetScroll() ),
+      mVisible( aScrollManager->GetVisible() ),
+      mRange( aScrollManager->GetRange() ) { }
 
-  int scrollX;
-  int scrollY;
-  int visibleX;
-  int rangeX;
-  int visibleY;
-  int rangeY;
+  gxScroll mScroll;
+  gxSize   mVisible;
+  gxSize   mRange;
 };
 
 #endif // gxScrollManager_h

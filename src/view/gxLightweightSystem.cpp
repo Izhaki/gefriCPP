@@ -55,8 +55,8 @@ void gxLightweightSystem::OnScrollRangeChanged(const gxNotification *aNotificati
   const gxScrollRangeChangedNotification* Notification = dynamic_cast<const gxScrollRangeChangedNotification*> (aNotification);
   if ( Notification )
   {
-    mControl->SetScrollbar(wxHORIZONTAL, Notification->scrollX, Notification->visibleX, Notification->rangeX);
-    mControl->SetScrollbar(wxVERTICAL, Notification->scrollY, Notification->visibleY, Notification->rangeY);
+    mControl->SetScrollbar(wxHORIZONTAL, Notification->mScroll.X, Notification->mVisible.X, Notification->mRange.X);
+    mControl->SetScrollbar(wxVERTICAL, Notification->mScroll.Y, Notification->mVisible.Y, Notification->mRange.Y);
   }
 }
 

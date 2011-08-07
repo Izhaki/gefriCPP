@@ -3,6 +3,7 @@
 
 #include "view/elements/gxStructuralViewElement.h"
 #include "view/managers/gxScrollManager.h"
+#include "view/gxTransformations.h"
 
 /**
  * @brief A view element that scrolls all its children.
@@ -58,8 +59,7 @@ protected:
 
   gxScrollManager *mScrollManager;
 private:
-  int mScrollX;
-  int mScrollY;
+  gxScroll mScroll;
 };
 
 #endif // gxScroller_h

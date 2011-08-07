@@ -3,7 +3,6 @@
 #include <math.h>
 
 gxScrollManager::gxScrollManager()
-  : mScrollX(0), mScrollY(0), mVisibleX(0), mRangeX(0), mVisibleY(0), mRangeY(0)
 {
 }
 
@@ -13,8 +12,8 @@ gxScrollManager::~gxScrollManager()
 
 void gxScrollManager::SetScroll(const int aScrollX, const int aScrollY)
 {
-  mScrollX = aScrollX;
-  mScrollY = aScrollY;
+  mScroll.X = aScrollX;
+  mScroll.Y = aScrollY;
   mObservers.Notify(new gxNotification());
 }
 
@@ -28,13 +27,13 @@ void gxScrollManager::SetScroll(const bool isVertical, const int aScroll)
 
 void gxScrollManager::SetScrollX(const int aScrollX)
 {
-  mScrollX = aScrollX;
+  mScroll.X = aScrollX;
   mObservers.Notify(new gxScrollPositionChangedNotification(this));
 }
 
 void gxScrollManager::SetScrollY(const int aScrollY)
 {
-  mScrollY = aScrollY;
+  mScroll.Y = aScrollY;
   mObservers.Notify(new gxScrollPositionChangedNotification(this));
 }
 
@@ -44,23 +43,23 @@ void gxScrollManager::AdjustScrollbars(int aVisibleX, int aRangeX, int aVisibleY
   int newPosY = 0;
 
   // The new scroll position is proportional to the previous one.
-  if (mScrollX != 0 && aRangeX - aVisibleX > 0)
+  if (mScroll.X != 0 && aRangeX - aVisibleX > 0)
   {
-    float oldPosRatio = (mRangeX - mVisibleX) / (float)mScrollX;
+    float oldPosRatio = (mRange.X - mVisible.X) / (float)mScroll.X;
     newPosX = (int)floor((aRangeX - aVisibleX) / oldPosRatio);
   }
 
   // The new scroll position is proportional to the previous one.
-  if (mScrollY != 0 && aRangeY - aVisibleY > 0)
+  if (mScroll.Y != 0 && aRangeY - aVisibleY > 0)
   {
-    float oldPosRatio = (mRangeY - mVisibleY) / (float)mScrollY;
+    float oldPosRatio = (mRange.Y - mVisible.Y) / (float)mScroll.Y;
     newPosY = (int)floor((aRangeY - aVisibleY) / oldPosRatio);
   }
 
-  mVisibleX = aVisibleX;
-  mRangeX = aRangeX;
-  mVisibleY = aVisibleY;
-  mRangeY = aRangeY;
+  mVisible.X = aVisibleX;
+  mRange.X = aRangeX;
+  mVisible.Y = aVisibleY;
+  mRange.Y = aRangeY;
 
   SetScroll(newPosX, newPosY);
 

@@ -4,12 +4,12 @@
 #include "core/gxLog.h"
 
 gxScroller::gxScroller()
-  : mScrollX(0), mScrollY(0), mScrollManager(NULL)
+  : mScrollManager(NULL)
 {
 }
 
 gxScroller::gxScroller(gxScrollManager *aScrollManager)
-  : mScrollX(0), mScrollY(0), mScrollManager(NULL)
+  : mScrollManager(NULL)
 {
   SetScrollManager(aScrollManager);
 }
@@ -33,11 +33,11 @@ void gxScroller::SetScrollManager(gxScrollManager *aScrollManager)
 
 void gxScroller::SetScroll(int aScrollX, int aScrollY)
 {
-  if (mScrollX != aScrollX || mScrollY != aScrollY)
+  if (mScroll.X != aScrollX || mScroll.Y != aScrollY)
   {
     Erase();
-    mScrollX = aScrollX;
-    mScrollY = aScrollY;
+    mScroll.X = aScrollX;
+    mScroll.Y = aScrollY;
     Repaint();
   }
 }
@@ -53,7 +53,7 @@ void gxScroller::Paint(gxPainter &aPainter)
   // scroll values
   aPainter.PushState();
 
-  aPainter.SetScroll(mScrollX, mScrollY);
+  aPainter.SetScroll(mScroll.X, mScroll.Y);
 
   PaintChildren(aPainter);
 
@@ -72,9 +72,9 @@ void gxScroller::Transform(gxRect &aRect, gxTransformFlags &aTransFlags)
   if (aTransFlags.IsntSet(gxTransformFlags::Scroll))
     return;
 
-  if (mScrollX != 0 || mScrollY != 0)
+  if (mScroll.X != 0 || mScroll.Y != 0)
   {
-    aRect.Offset(-mScrollX, -mScrollY);
+    aRect.Offset(-mScroll.X, -mScroll.Y);
   }
 }
 
@@ -86,5 +86,5 @@ void gxScroller::ReadjustScrollbars()
   gxSize iMySize = GetBounds().GetSize();
 
   if (mScrollManager)
-    mScrollManager->AdjustScrollbars(iMySize.x, iBounds.x + iBounds.width, iMySize.y, iBounds.y + iBounds.height);
+    mScrollManager->AdjustScrollbars(iMySize.X, iBounds.x + iBounds.width, iMySize.Y, iBounds.y + iBounds.height);
 }
