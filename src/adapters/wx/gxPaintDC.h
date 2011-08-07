@@ -28,8 +28,8 @@ public:
 
   void DrawRectangle(gxCoord x, gxCoord y, gxCoord width, gxCoord height)
         { DoDrawRectangle(x, y, width, height); }
-  void DrawRectangle(const gxPoint& pt, const gxSize& sz)
-        { DoDrawRectangle(pt.x, pt.y, sz.x, sz.y); }
+  void DrawRectangle(const gxPoint& pt, const gxSize& aSize)
+        { DoDrawRectangle(pt.x, pt.y, aSize.X, aSize.Y); }
   void DrawRectangle(const gxRect& rect)
     { DoDrawRectangle(rect.x, rect.y, rect.width, rect.height); }
 };

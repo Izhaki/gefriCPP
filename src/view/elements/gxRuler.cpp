@@ -74,7 +74,7 @@ void gxRuler::CalcMinBlockSize()
   gxSize iMaxTextSize = GetLightweightSystem()->GetTextSize(iBiggestLabel);
 
   // Take into account the ratio of the text for the block.
-  mDivProvider->SetMinBlockSize( (int)ceil(iMaxTextSize.x / mBlockTextRatio) );
+  mDivProvider->SetMinBlockSize( (int)ceil(iMaxTextSize.X / mBlockTextRatio) );
 }
 
 void gxRuler::SetScale(const float aScale)

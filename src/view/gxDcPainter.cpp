@@ -86,7 +86,7 @@ void gxDcPainter::DrawText(std::string aText, int x, int y, int aPadX, int aPadY
   } else {
     // Text rotation is done with the top left point as origion,
     // so make the old top right the new top left
-    p.y = p.y + GetTextSize(aText).x;
+    p.y = p.y + GetTextSize(aText).X;
     mDc->DrawRotatedText(wxString(aText.c_str(), wxConvUTF8), p.x, p.y, 90);
   }
 }

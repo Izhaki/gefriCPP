@@ -27,10 +27,10 @@ public:
     { }
   gxRect(const gxPoint& topLeft, const gxPoint& bottomRight);
   gxRect(const gxPoint& pt, const gxSize& size)
-    : x(pt.x), y(pt.y), width(size.x), height(size.y)
+    : x(pt.x), y(pt.y), width(size.X), height(size.Y)
     { }
   gxRect(const gxSize& size)
-    : x(0), y(0), width(size.x), height(size.y)
+    : x(0), y(0), width(size.X), height(size.Y)
     { }
 
   // default copy ctor and assignment operators ok
@@ -87,7 +87,7 @@ public:
 
   // operations with rect
   gxRect& Inflate(gxCoord dx, gxCoord dy);
-  gxRect& Inflate(const gxSize& d) { return Inflate(d.x, d.y); }
+  gxRect& Inflate(const gxSize& d) { return Inflate(d.X, d.Y); }
   gxRect& Inflate(gxCoord d) { return Inflate(d, d); }
   gxRect Inflate(gxCoord dx, gxCoord dy) const
   {
@@ -97,7 +97,7 @@ public:
   }
 
   gxRect& Deflate(gxCoord dx, gxCoord dy) { return Inflate(-dx, -dy); }
-  gxRect& Deflate(const gxSize& d) { return Inflate(-d.x, -d.y); }
+  gxRect& Deflate(const gxSize& d) { return Inflate(-d.X, -d.Y); }
   gxRect& Deflate(gxCoord d) { return Inflate(-d); }
   gxRect Deflate(gxCoord dx, gxCoord dy) const
   {

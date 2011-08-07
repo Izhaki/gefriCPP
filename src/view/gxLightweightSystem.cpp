@@ -84,7 +84,7 @@ gxRect gxLightweightSystem::GetControlBounds() const
 gxSize gxLightweightSystem::GetTextSize(std::string aText)
 {
   gxSize size = mControl->GetTextSize(aText);
-  return gxSize(size.x, size.y);
+  return gxSize(size.X, size.Y);
 }
 
 void gxLightweightSystem::OnScroll (const bool isVertical, const int aPosition)
