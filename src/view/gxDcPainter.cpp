@@ -55,6 +55,13 @@ void gxDcPainter::DrawRectangle(int x, int y, int w, int h)
   mDc->DrawRectangle(iRect);
 }
 
+void gxDcPainter::DrawRectangle(gxRect const &aRect)
+{
+  gxRect iRect(aRect);
+  Transform(iRect);
+  mDc->DrawRectangle(iRect);
+}
+
 void gxDcPainter::DrawLine(int x1, int y1, int x2, int y2, bool isHorizontal)
 {
   gxPoint iFrom = isHorizontal ? gxPoint(x1, y1) : gxPoint(y1, x1);

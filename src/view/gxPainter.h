@@ -126,6 +126,8 @@ public:
 
   // Drawing methods
   virtual void DrawRectangle(int x, int y, int w, int h) = 0;
+  virtual void DrawRectangle(gxRect const &aRect) = 0;
+
   virtual void DrawLine(int x1, int y1, int x2, int y2, bool isHorizontal = true) = 0;
   
   virtual void DrawText(std::string aText, int x, int y) = 0;

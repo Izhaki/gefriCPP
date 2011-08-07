@@ -92,7 +92,7 @@ void gxRuler::SetBounds(const gxRect &aNewBounds)
 void gxRuler::PaintSelf(gxPainter &aPainter)
 {
   // Draw border
-  aPainter.DrawRectangle(mBounds.x, mBounds.y, mBounds.width, mBounds.height);
+  aPainter.DrawRectangle(mBounds);
 
   // The div position, in pixels, and not subject to any scale calculations
   int iPos;

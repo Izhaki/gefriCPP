@@ -23,6 +23,8 @@ public:
   virtual bool NeedsPainting(gxRect const &aRect);
 
   void DrawRectangle(int x, int y, int w, int h);
+  void DrawRectangle(gxRect const &aRect);
+
   void DrawLine(int x1, int y1, int x2, int y2, bool isHorizontal = true);
   
   void DrawText(std::string aText, int x, int y);
