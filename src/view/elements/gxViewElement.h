@@ -143,8 +143,11 @@ protected:
   /**
    * @brief Asks the view element to perform any operations that are needed
    * to make it valid
+   * @return True if repainting is needed after validation.
    */
-  virtual void ValidateSelf() { }
+  virtual bool ValidateSelf() { return false; }
+  
+  virtual void OnAfterChildRemoval();
   
   /**
    * @brief Returns whether or not the view element is valid.

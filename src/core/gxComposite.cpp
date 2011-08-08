@@ -49,7 +49,7 @@ void gxComposite::RemoveChild(gxComposite* aChild, bool aAndDelete)
   gxASSERT(aChild->GetParent() != this, "RemoveChild is called on a wrong parent." );
 
   // Notify
-  OnRemoveChild(aChild);
+  OnBeforeChildRemoval(aChild);
 
   // Remove from children list
   mChildren.remove(aChild);
@@ -63,6 +63,8 @@ void gxComposite::RemoveChild(gxComposite* aChild, bool aAndDelete)
     delete aChild;
     aChild = NULL;
   }
+
+  OnAfterChildRemoval();
 }
 
 void gxComposite::RemoveAllChildren(bool aAndDelete)

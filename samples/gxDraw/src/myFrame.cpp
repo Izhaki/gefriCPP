@@ -77,7 +77,7 @@ void MyFrame::InitGefri()
 
   mViewUnit = new gxPixelUnit();
   mDivProvider = new gxDivProvider(mViewUnit);
-  mRulerH = new gxRuler(gxRect(0, 0, 480, 20), mDivProvider);
+  mRulerH = new gxRuler(gxRect(0, 0, 140, 20), mDivProvider);
   //mRulerH = new gxRuler(gxRect(0, 0, 20, 480),  mDivProvider, mViewUnit);
   mRulerH->SetZoomManager(mZoomManager);
   mRulerH->SetScrollManager(mScrollManager);

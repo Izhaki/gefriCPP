@@ -14,15 +14,18 @@ typedef Children::iterator ChildIterator;
 
 // A macro with common implementation for direct descendants
 // Largly implementing typecasting.
-#define IMPLEMENT_COMPOSITE(compositeclass) \
-public: \
+#define IMPLEMENT_COMPOSITE(compositeclass)                             \
+public:                                                                 \
   compositeclass* GetParent() const { return (compositeclass*)mParent; } \
-protected: \
-  compositeclass* Child(ChildIterator it) { return ((compositeclass*)(*it)); } \
-  virtual void OnAddChild(gxComposite* aChild) { OnAddChild((compositeclass*)aChild); } \
-  virtual void OnAddChild(compositeclass* aChild); \
-  virtual void OnRemoveChild(gxComposite* aChild) { OnRemoveChild((compositeclass*)aChild); } \
-  virtual void OnRemoveChild(compositeclass* aChild);
+protected:                                                              \
+  compositeclass* Child(ChildIterator it)                               \
+    { return ((compositeclass*)(*it)); }                                \
+  virtual void OnAddChild(gxComposite* aChild)                          \
+    { OnAddChild((compositeclass*)aChild); }                            \
+  virtual void OnAddChild(compositeclass* aChild);                      \
+  virtual void OnBeforeChildRemoval(gxComposite* aChild)                \
+    { OnBeforeChildRemoval( (compositeclass*)aChild ); }                \
+  virtual void OnBeforeChildRemoval(compositeclass* aChild);
 
 // A macro for looping all childrens
 #define EACHCHILD ChildIterator it = mChildren.begin(); it != mChildren.end(); ++it
@@ -89,16 +92,25 @@ protected:
    * the typecasted version instead; eg, OnAddChild(gxFigure* aChild).
    * @param aChild The child that was added
    */
-  virtual void OnAddChild(gxComposite* aChild) {}
+  virtual void OnAddChild(gxComposite* aChild) { }
    /**
-   * @brief A virtual method that will be called whenever a child is removed.
+   * @brief A virtual method that will be called whenever a child is about to
+   * be removed.
    *
    * This method will be overriden by the IMPLEMENT_COMPOSITE macro, so
    * when used, subclasses should not override this method, but implement
    * the typecasted version instead; eg, OnRemoveChild(gxFigure* aChild).
    * @param aChild The child that was removed
    */ 
-  virtual void OnRemoveChild(gxComposite* aChild) {}
+  virtual void OnBeforeChildRemoval(gxComposite* aChild) { }
+
+  /**
+   * @brief A virtual method that will be called after a child has been removed.
+   * 
+   * This will give view elements a chance to, for example, revalidate
+   * themselves.
+   */
+  virtual void OnAfterChildRemoval() { }
 
   /**
    * @brief Convinience method for type casting. Subclasses will override this by using

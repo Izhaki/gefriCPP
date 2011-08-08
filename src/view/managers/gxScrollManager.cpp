@@ -37,20 +37,21 @@ void gxScrollManager::SetScrollY(const int aScrollY)
   mObservers.Notify(new gxScrollPositionChangedNotification(this));
 }
 
+//TODO: Return if no change, change protocol?
 void gxScrollManager::AdjustScrollbars(int aVisibleX, int aRangeX, int aVisibleY, int aRangeY)
 {
   int newPosX = 0;
   int newPosY = 0;
 
   // The new scroll position is proportional to the previous one.
-  if (mScroll.X != 0 && aRangeX - aVisibleX > 0)
+  if (mScroll.X != 0 && aRangeX > aVisibleX )
   {
     float oldPosRatio = (mRange.X - mVisible.X) / (float)mScroll.X;
     newPosX = (int)floor((aRangeX - aVisibleX) / oldPosRatio);
   }
 
   // The new scroll position is proportional to the previous one.
-  if (mScroll.Y != 0 && aRangeY - aVisibleY > 0)
+  if (mScroll.Y != 0 && aRangeY > aVisibleY )
   {
     float oldPosRatio = (mRange.Y - mVisible.Y) / (float)mScroll.Y;
     newPosY = (int)floor((aRangeY - aVisibleY) / oldPosRatio);
@@ -61,6 +62,7 @@ void gxScrollManager::AdjustScrollbars(int aVisibleX, int aRangeX, int aVisibleY
   mVisible.Y = aVisibleY;
   mRange.Y = aRangeY;
 
+  wxLogDebug(_T("Adjust Old:%i : New: %i"), mScroll.X, newPosX);
   SetScroll(newPosX, newPosY);
 
   mObservers.Notify(new gxScrollRangeChangedNotification(this));

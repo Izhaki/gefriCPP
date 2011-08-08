@@ -31,13 +31,16 @@ void gxScroller::SetScrollManager(gxScrollManager *aScrollManager)
   aScrollManager->AddObserverAndNotify( gxCALLBACK(gxScroller, OnScrollManagerUpdate) );
 }
 
+//TODO: change interface
 void gxScroller::SetScroll(int aScrollX, int aScrollY)
 {
+  wxLogDebug(_T("gxScroller::SetScroll (%i)"), aScrollX);
   if (mScroll.X != aScrollX || mScroll.Y != aScrollY)
   {
     Erase();
     mScroll.X = aScrollX;
     mScroll.Y = aScrollY;
+    wxLogDebug(_T("gxScroller::Repaint"));
     Repaint();
   }
 }
@@ -61,9 +64,10 @@ void gxScroller::Paint(gxPainter &aPainter)
   aPainter.PopState();
 }
 
-void gxScroller::ValidateSelf()
+bool gxScroller::ValidateSelf()
 {
   ReadjustScrollbars();
+  return true;
 }
 
 void gxScroller::Transform(gxRect &aRect, gxTransformFlags &aTransFlags)

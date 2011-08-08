@@ -68,9 +68,12 @@ void gxViewElement::Repaint()
 
 void gxViewElement::Repaint(gxRect &aBounds)
 {
+  wxLogDebug(_T("VE:Repaint"));
   // No point repainting the figure if it is invalid.
   if (!IsValid())
     return;
+
+  gxLogRect(_T("Repaint bounds:"), aBounds);
 
   // Translate the bounds to absolute coordinates.
   TransformToAbsolute(aBounds, mTransformFlags);
@@ -89,7 +92,8 @@ void gxViewElement::GetDescendantsBounds(gxRect &aBounds)
 
     // When getting the children bounds we want all transformations to be done
     // but scroll.
-    gxTransformFlags iFlags(gxTransformFlags::All | ~gxTransformFlags::Scroll);
+    gxTransformFlags iFlags(gxTransformFlags::All & ~gxTransformFlags::Scroll);
+
     Transform(iChildBounds, iFlags);
 
     aBounds.Union(iChildBounds);
@@ -120,8 +124,10 @@ void gxViewElement::Validate()
   if (IsValid())
     return;
 
+  bool iNeedsRepainting = false;
+
   // Validate myself
-  ValidateSelf();
+  iNeedsRepainting = ValidateSelf();
   
   // Set myself as Valid
   mFlags.Set(gxViewElement::Valid);
@@ -131,6 +137,9 @@ void gxViewElement::Validate()
   {
     CHILD->Validate();
   }
+
+  if (iNeedsRepainting)
+    Repaint();
 }
 
 bool gxViewElement::IsValid()
@@ -149,7 +158,12 @@ void gxViewElement::OnAddChild(gxViewElement *aChild)
   aChild->Repaint();
 }
 
-void gxViewElement::OnRemoveChild(gxViewElement *aChild)
+void gxViewElement::OnBeforeChildRemoval(gxViewElement *aChild)
 {
   aChild->Erase();
+}
+
+void gxViewElement::OnAfterChildRemoval()
+{
+  Revalidate();
 }
