@@ -33,10 +33,17 @@ gxRect gxRootViewElement::GetBounds() const
 void gxRootViewElement::Revalidate()
 {
   Invalidate();
-  
-  // Once revalidation hit the root view element, we start validating down the 
-  // hierarchy tree.
-  Validate();
+
+  // Since a single user action might lead to a multitude of objects becoming
+  // invalid (like the removal of 3 children), we don't want to validate the
+  // whole tree per object that changed. Instead, we queue some validation
+  // requests (in some event loop).
+  //
+  // What this means is that after all modified objects have been doing their
+  // marking of invalid objects, the queue validation request will be processed
+  // and will lead to Validate() on this class being called.
+  if (GetLightweightSystem() != NULL)
+    GetLightweightSystem()->QueueValidation();
 }
 
 void gxRootViewElement::TransformToAbsolute(gxRect &aRect, gxTransformFlags &aTransFlags)

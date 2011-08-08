@@ -31,23 +31,20 @@ void gxScroller::SetScrollManager(gxScrollManager *aScrollManager)
   aScrollManager->AddObserverAndNotify( gxCALLBACK(gxScroller, OnScrollManagerUpdate) );
 }
 
-//TODO: change interface
-void gxScroller::SetScroll(int aScrollX, int aScrollY)
-{
-  wxLogDebug(_T("gxScroller::SetScroll (%i)"), aScrollX);
-  if (mScroll.X != aScrollX || mScroll.Y != aScrollY)
-  {
-    Erase();
-    mScroll.X = aScrollX;
-    mScroll.Y = aScrollY;
-    wxLogDebug(_T("gxScroller::Repaint"));
-    Repaint();
-  }
-}
-
 void gxScroller::OnScrollManagerUpdate(const gxNotification *aNotification)
 {
   SetScroll(mScrollManager->GetScrollX(), mScrollManager->GetScrollY());
+}
+
+//TODO: change interface?
+void gxScroller::SetScroll(int aScrollX, int aScrollY)
+{
+  if (mScroll.X != aScrollX || mScroll.Y != aScrollY)
+  {
+    mScroll.X = aScrollX;
+    mScroll.Y = aScrollY;
+    Repaint();
+  }
 }
 
 void gxScroller::Paint(gxPainter &aPainter)

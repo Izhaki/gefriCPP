@@ -3,7 +3,9 @@
 #include "view/gxDcPainter.h"
 
 gxLightweightSystem::gxLightweightSystem(gxLightweightControl *aControl)
-  : mContents(NULL), mScrollManager(NULL)
+: mContents(NULL),
+  mScrollManager(NULL),
+  mValidationQueued(false)
 {
   // Sets this a the lightweight system of the control so delegation can start.
   aControl->SetLightweightSystem(this);
@@ -91,4 +93,24 @@ void gxLightweightSystem::OnScroll (const bool isVertical, const int aPosition)
 {
   if (mScrollManager)
     mScrollManager->SetScroll(isVertical, aPosition);
+}
+
+void gxLightweightSystem::QueueValidation()
+{
+  // To prevent duplicate events, only queue a validation request if none is
+  // currently queued.
+  if (!mValidationQueued)
+  {
+    mControl->QueueValidation();
+    mValidationQueued = true;
+  }
+}
+
+void gxLightweightSystem::OnValidationRequest()
+{
+  // As this is the handler of the event, once this is called validation is
+  // no longer queued.
+  mValidationQueued = false;
+
+  mRootViewElement->Validate();
 }

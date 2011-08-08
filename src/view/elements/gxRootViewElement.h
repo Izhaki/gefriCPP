@@ -44,11 +44,12 @@ public:
    * lightweight control, but with the origin set to (0,0).
    */
   virtual gxRect GetBounds() const;
-  
-  virtual void Revalidate();
 
+  // Validate is promoted to public as the lightweight system needs to call it.
+  virtual void Validate() { gxStructuralViewElement::Validate(); }
 protected:
   virtual void TransformToAbsolute(gxRect &aRect, gxTransformFlags &aTransFlags);
+  virtual void Revalidate();
 private:
   /// The {@link gxLightweightSystem lightweight system} associated with this
   /// root view element.

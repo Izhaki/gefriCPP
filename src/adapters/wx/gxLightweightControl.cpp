@@ -10,23 +10,29 @@
 #include "core/gxPaintDC.h"
 #include "gxLightweightControl.h"
 
-IMPLEMENT_DYNAMIC_CLASS(gxLightweightControl, wxControl);
+IMPLEMENT_DYNAMIC_CLASS(gxLightweightControl, wxControl)
+
+DEFINE_EVENT_TYPE(wxEVT_VALIDATION_REQUEST)
 
 BEGIN_EVENT_TABLE(gxLightweightControl, wxControl)
   EVT_PAINT(gxLightweightControl::OnPaint)
   EVT_MOTION(gxLightweightControl::OnMouseMove)
   EVT_LEFT_DOWN(gxLightweightControl::OnLeftMouseBtnDown)
   EVT_SCROLLWIN(gxLightweightControl::OnScroll)
+
+  EVT_CUSTOM(wxEVT_VALIDATION_REQUEST, wxID_ANY, gxLightweightControl::OnValidationRequest)
 END_EVENT_TABLE()
 
 void gxLightweightControl::Init()
 {
   mLightweightSystem = NULL;
-  
+
   // For wxAutoBufferedPaintDC to work
   SetBackgroundStyle(wxBG_STYLE_CUSTOM);
-  
-  SetScrollbar(wxHORIZONTAL, 0, 50, 1000);
+
+  // Start with the scrollbars hidden
+  SetScrollbar(wxHORIZONTAL, 0,1000, 1000);
+  SetScrollbar(wxVERTICAL, 0,1000, 1000);
 }
 
 gxLightweightControl::~gxLightweightControl()
@@ -136,3 +142,17 @@ void gxLightweightControl::OnScroll(wxScrollWinEvent& event)
   }
   event.Skip();
 }
+
+void gxLightweightControl::QueueValidation()
+{
+  wxCommandEvent event( wxEVT_VALIDATION_REQUEST, GetId() );
+  event.SetEventObject( this );
+  GetEventHandler()->AddPendingEvent(event);
+}
+
+void gxLightweightControl::OnValidationRequest(wxEvent& event)
+{
+  if (mLightweightSystem)
+    mLightweightSystem->OnValidationRequest();
+}
+

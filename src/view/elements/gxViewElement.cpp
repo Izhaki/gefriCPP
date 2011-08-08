@@ -68,12 +68,9 @@ void gxViewElement::Repaint()
 
 void gxViewElement::Repaint(gxRect &aBounds)
 {
-  wxLogDebug(_T("VE:Repaint"));
   // No point repainting the figure if it is invalid.
   if (!IsValid())
     return;
-
-  gxLogRect(_T("Repaint bounds:"), aBounds);
 
   // Translate the bounds to absolute coordinates.
   TransformToAbsolute(aBounds, mTransformFlags);
@@ -113,8 +110,7 @@ void gxViewElement::Revalidate()
   // hierarchy tree (when they are still created and added to their parents).
   if (GetParent() != NULL)
   {
-    // Revalidate further up the hierarchy tree. When the revalidation hits a
-    // RootViewElement validation will start downwards.
+    // Revalidate further up the hierarchy tree.
     GetParent()->Revalidate();
   }
 }

@@ -123,7 +123,7 @@ protected:
 
   /**
    * @brief Marks the view element as invalid and calls Revalidate on all
-   * parents.
+   * composition ancestors.
    * 
    * This method is called whenever the size or position of the element change,
    * so to let parent objects a change to respond to the change.

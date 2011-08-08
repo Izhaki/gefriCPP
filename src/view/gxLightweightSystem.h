@@ -75,7 +75,26 @@ public:
    */
   gxRect GetControlBounds() const;
 
+  /**
+   * @brief Returns the text size for a given string.
+   * @param aText The text whose size we equire.
+   * @return The given text size.
+   */
   gxSize GetTextSize(std::string aText);
+
+  /**
+   * @brief Queues an asynchronous validation request.
+   * 
+   * This will send and event loop an validation request event that will be
+   * processed after the currently processed event is handled.
+   */
+  void QueueValidation();
+
+  /**
+   * @brief Handles a validation request that originated from
+   * {@link gxLightweightSystem::QueueValidation QueueValidation()}
+   */
+  void OnValidationRequest();
 
   /**
    * @brief Called upon scrol events on the control.
@@ -85,6 +104,11 @@ public:
    */
   void OnScroll (const bool isVertical, const int aPosition);
 
+  /**
+   * @brief Called when the scroll range of the scroll bars has changed.
+   * @param aNotification The notification object carrying information
+   * regarding the change.
+   */
   void OnScrollRangeChanged(const gxNotification *aNotification);
 protected:
   /**
@@ -104,7 +128,10 @@ protected:
   gxRootViewElement *mRootViewElement;
 
   /// the top-level view element.
-  gxViewElement *mContents ;
+  gxViewElement *mContents;
+  
+  /// Denotes whether or not a validation request is already queued.
+  bool mValidationQueued;
 };
 
 #endif // gxLightweightSystem_h

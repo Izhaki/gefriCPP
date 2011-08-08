@@ -62,7 +62,6 @@ void gxScrollManager::AdjustScrollbars(int aVisibleX, int aRangeX, int aVisibleY
   mVisible.Y = aVisibleY;
   mRange.Y = aRangeY;
 
-  wxLogDebug(_T("Adjust Old:%i : New: %i"), mScroll.X, newPosX);
   SetScroll(newPosX, newPosY);
 
   mObservers.Notify(new gxScrollRangeChangedNotification(this));

@@ -6,6 +6,8 @@
 
 static const long LightweightControlStyle = wxNO_BORDER;// | wxVSCROLL;// | wxALWAYS_SHOW_SB; //| wxNO_FULL_REPAINT_ON_RESIZE | wxTRANSPARENT_WINDOW; // , //0x00000020L, //| wxCLIP_SIBLINGS, //| 0x00000020L, //0x00000008L
 
+DECLARE_EVENT_TYPE(wxEVT_VALIDATION_REQUEST, -1)
+
 /**
   * @brief A system-depandent control with which the lightweight system
   * communicates.
@@ -35,11 +37,18 @@ public:
   gxRect GetBounds() const;
   gxSize GetTextSize(std::string aText);
 
+  // The lightweight system needs a way to queue validations on the event loop.
+  // This method does that.
+  void QueueValidation();
+
   // Event Handlers
   void OnPaint(wxPaintEvent& event);
   void OnMouseMove(wxMouseEvent& event);
   void OnLeftMouseBtnDown(wxMouseEvent& event); 
   void OnScroll(wxScrollWinEvent& event);
+
+  // A handler called when a validation request has been queued.
+  void OnValidationRequest(wxEvent& event);
 
   void RefreshRect(const gxRect& aRect, bool eraseBackground = true);
 
