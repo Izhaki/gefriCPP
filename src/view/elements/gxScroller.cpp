@@ -33,16 +33,14 @@ void gxScroller::SetScrollManager(gxScrollManager *aScrollManager)
 
 void gxScroller::OnScrollManagerUpdate(const gxNotification *aNotification)
 {
-  SetScroll(mScrollManager->GetScrollX(), mScrollManager->GetScrollY());
+  SetScroll( mScrollManager->GetScroll() );
 }
 
-//TODO: change interface?
-void gxScroller::SetScroll(int aScrollX, int aScrollY)
+void gxScroller::SetScroll(gxScroll const &aScroll)
 {
-  if (mScroll.X != aScrollX || mScroll.Y != aScrollY)
+  if (mScroll != aScroll)
   {
-    mScroll.X = aScrollX;
-    mScroll.Y = aScrollY;
+    mScroll = aScroll;
     Repaint();
   }
 }
@@ -81,11 +79,15 @@ void gxScroller::Transform(gxRect &aRect, gxTransformFlags &aTransFlags)
 
 void gxScroller::ReadjustScrollbars()
 {
+  if (!mScrollManager)
+    return;
+
   gxRect iBounds;
   GetDescendantsBounds(iBounds);
 
   gxSize iMySize = GetBounds().GetSize();
+  gxSize iRange(iBounds.x + iBounds.width, iBounds.y + iBounds.height);
+ 
+  mScrollManager->AdjustScrollbars(iMySize, iRange);
 
-  if (mScrollManager)
-    mScrollManager->AdjustScrollbars(iMySize.X, iBounds.x + iBounds.width, iMySize.Y, iBounds.y + iBounds.height);
 }

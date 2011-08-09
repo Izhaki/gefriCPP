@@ -41,8 +41,13 @@ struct gxScale
  */
 struct gxScroll
 {
-  gxScroll() : X(0), Y(0) { }
   int   X, Y;
+
+  gxScroll() : X(0), Y(0) { }
+  gxScroll(int aX, int aY) : X(aX), Y(aY) { }
+
+  bool operator==(const gxScroll& aScroll) const { return X == aScroll.X && Y == aScroll.Y; }
+  bool operator!=(const gxScroll& aScroll) const { return X != aScroll.X || Y != aScroll.Y; }
 };
 
 /**

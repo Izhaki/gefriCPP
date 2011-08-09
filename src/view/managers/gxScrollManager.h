@@ -16,6 +16,7 @@ public:
   gxScrollManager();
   ~gxScrollManager(); 
 
+  void SetScroll(gxScroll const &aScroll);
   void SetScroll(const int aScrollX, const int aScrollY);
   void SetScroll(const bool isVertical, const int aScroll);
   void SetScrollX(const int aScrollX);
@@ -29,7 +30,7 @@ public:
    * @param aVisibleY The visible part for vertical scrollbar
    * @param aRangeY The vertical scroll range
    */
-  void AdjustScrollbars(int aVisibleX, int aRangeX, int aVisibleY, int aRangeY);
+  void AdjustScrollbars(gxSize const &aVisible, gxSize const &aRange);
   
   int GetScrollX() const { return mScroll.X; }
   int GetScrollY() const { return mScroll.Y; }

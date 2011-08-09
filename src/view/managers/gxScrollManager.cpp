@@ -10,11 +10,16 @@ gxScrollManager::~gxScrollManager()
 {
 }
 
+void gxScrollManager::SetScroll(gxScroll const &aScroll)
+{
+  mScroll = aScroll;
+  mObservers.Notify(new gxNotification());
+}
+
 void gxScrollManager::SetScroll(const int aScrollX, const int aScrollY)
 {
-  mScroll.X = aScrollX;
-  mScroll.Y = aScrollY;
-  mObservers.Notify(new gxNotification());
+  gxScroll newScroll(aScrollX, aScrollY);
+  SetScroll(newScroll);
 }
 
 void gxScrollManager::SetScroll(const bool isVertical, const int aScroll)
@@ -37,32 +42,31 @@ void gxScrollManager::SetScrollY(const int aScrollY)
   mObservers.Notify(new gxScrollPositionChangedNotification(this));
 }
 
-//TODO: Return if no change, change protocol?
-void gxScrollManager::AdjustScrollbars(int aVisibleX, int aRangeX, int aVisibleY, int aRangeY)
+void gxScrollManager::AdjustScrollbars(gxSize const &aVisible, gxSize const &aRange)
 {
-  int newPosX = 0;
-  int newPosY = 0;
+  if (mVisible == aVisible && mRange == aRange)
+    return;
+
+  gxScroll newScroll;
 
   // The new scroll position is proportional to the previous one.
-  if (mScroll.X != 0 && aRangeX > aVisibleX )
+  if (mScroll.X != 0 && aRange.X > aVisible.X )
   {
     float oldPosRatio = (mRange.X - mVisible.X) / (float)mScroll.X;
-    newPosX = (int)floor((aRangeX - aVisibleX) / oldPosRatio);
+    newScroll.X = (int)floor((aRange.X - aVisible.X) / oldPosRatio);
   }
 
   // The new scroll position is proportional to the previous one.
-  if (mScroll.Y != 0 && aRangeY > aVisibleY )
+  if (mScroll.Y != 0 && aRange.Y > aVisible.Y )
   {
     float oldPosRatio = (mRange.Y - mVisible.Y) / (float)mScroll.Y;
-    newPosY = (int)floor((aRangeY - aVisibleY) / oldPosRatio);
+    newScroll.Y = (int)floor((aRange.Y - aVisible.Y) / oldPosRatio);
   }
 
-  mVisible.X = aVisibleX;
-  mRange.X = aRangeX;
-  mVisible.Y = aVisibleY;
-  mRange.Y = aRangeY;
+  mVisible = aVisible;
+  mRange = aRange;
 
-  SetScroll(newPosX, newPosY);
+  SetScroll(newScroll);
 
   mObservers.Notify(new gxScrollRangeChangedNotification(this));
 }

@@ -29,7 +29,7 @@ public:
    * @param aScrollX The X axis scroll
    * @param aScaleY The Y axis scroll
    */
-  void SetScroll(int aScrollX, int aScrollY);
+  void SetScroll(gxScroll const &aScroll);
 
   /**
    * @brief A handler method for scroll change notifications from the
