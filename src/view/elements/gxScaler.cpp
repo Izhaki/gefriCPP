@@ -17,17 +17,17 @@ gxScaler::~gxScaler()
 {
   // Remove the callback from the previous zoom manager (if any).
   if (mZoomManager)
-    mZoomManager->mObservers.Remove( gxCALLBACK(gxScaler, OnZoomManagerUpdate) );
+    mZoomManager->mObservers.Remove( gxCALLBACK( OnZoomManagerUpdate ) );
 }
 
 void gxScaler::SetZoomManager(gxZoomManager *aZoomManager)
 {
   // Remove the callback from the previous zoom manager (if any).
   if (mZoomManager)
-    mZoomManager->mObservers.Remove( gxCALLBACK(gxScaler, OnZoomManagerUpdate) );
+    mZoomManager->mObservers.Remove( gxCALLBACK( OnZoomManagerUpdate ) );
 
   mZoomManager = aZoomManager;
-  aZoomManager->AddObserverAndNotify( gxCALLBACK(gxScaler, OnZoomManagerUpdate) );
+  aZoomManager->AddObserverAndNotify( gxCALLBACK( OnZoomManagerUpdate ) );
 }
 
 void gxScaler::SetScale(gxScale const &aScale)
@@ -44,13 +44,9 @@ void gxScaler::SetScale(gxScale const &aScale)
   }
 }
 
-void gxScaler::OnZoomManagerUpdate(const gxNotification *aNotification)
+void gxScaler::OnZoomManagerUpdate(const gxZoomChangedNotification *aNotification)
 {
-  const gxZoomChangedNotification* Notification = dynamic_cast<const gxZoomChangedNotification*> (aNotification);
-  if ( Notification )
-  {
-    SetScale(Notification->mZoom);
-  }
+  SetScale(aNotification->mZoom);
 }
 
 void gxScaler::Paint(gxPainter &aPainter)

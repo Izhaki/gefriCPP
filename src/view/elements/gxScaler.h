@@ -40,7 +40,8 @@ public:
    * {@link gxZoomManager zoom manager}.
    * @param aNotification The notification object.
    */
-  void OnZoomManagerUpdate(const gxNotification *aNotification); 
+  void OnZoomManagerUpdate(const gxZoomChangedNotification *aNotification); 
+  DECLARE_CALLBACK(gxScaler, OnZoomManagerUpdate, gxZoomChangedNotification)
 
   /**
    * @brief Paints the view element by scaling the painter then calling

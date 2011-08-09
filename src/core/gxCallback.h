@@ -4,13 +4,24 @@
 // Forward Declaration.
 class gxNotification;
 
-// A helper macro for the creation of callbacks. Example usage:
-// ZoomManager.Observers.Attach( gxCALLBACK(gxScaler, OnZoomChaged) );
-// Needs to be called from within the object that has the method
-// (because of 'this').
-#define gxCALLBACK(aClass, aMethod) \
-  new gxTemplateCallback<aClass>(this, &aClass::aMethod)
+// Two helper macros to simplify the dealing with callbacks.
 
+// DECLARE_CALLBACK should be placed within the declaration (.h) of the class.
+// It stores the method class and the notification class for the gxCALLBACK
+// macro. Example usage:
+//
+// void OnUpdate(const gxUpdateNotification *aNotification);
+// DECLARE_CALLBACK(gxScroller, OnUpdate, gxUpdateNotification)
+#define DECLARE_CALLBACK(aClass, aMethod, aNotificationClass) \
+  typedef aClass             C##aMethod; \
+  typedef aNotificationClass N##aMethod;
+
+// gxCALLBACK creates a callback object by taking only the method name.
+// Example usage:
+// mScrollManager->mObservers.Remove( gxCALLBACK( OnUpdate ) );
+#define gxCALLBACK(aMethod) \
+  new gxTemplateCallback<C##aMethod, N##aMethod>(this, &C##aMethod::aMethod)
+ 
 /**
  * @brief A callback class used in subject-observer communication.
  * 
@@ -50,11 +61,12 @@ public:
 /**
  * @brief A template class that implement the actuall callback.
  */
-template <class TClass> class gxTemplateCallback : public gxCallback
+template <class TClass, class TNotification>
+class gxTemplateCallback : public gxCallback
 {
 private:
   // A pointer to the member method.
-  void (TClass::*mMethod)(const gxNotification*); 
+  void (TClass::*mMethod)(const TNotification*); 
   // A pointer to the object.
   TClass* mObj;
 public:
@@ -66,19 +78,26 @@ public:
    * @param aObj The instance of the observer object.
    * @param aMethod The method to be called.
    */
-  gxTemplateCallback(TClass* aObj, void(TClass::*aMethod)(const gxNotification*))
+  gxTemplateCallback(TClass* aObj, void(TClass::*aMethod)(const TNotification*))
      { mObj = aObj;  mMethod =aMethod; };
 
   virtual void operator()(const gxNotification* aNotification)
-   {  (*mObj.*mMethod)(aNotification); }
+  {
+    // Try to convert the notification to the type associated with this callback
+    // (will return null if fails).
+    const TNotification* iNotification = dynamic_cast<const TNotification*> (aNotification);
+    // If it's the same notification class then call the method.
+    if ( iNotification )
+      (*mObj.*mMethod)(iNotification);
+  }
     
   virtual bool operator==(const gxCallback &aOther) const
   {
     // Try to type cast the abstract callback to the concrete one (will return null if not successful).
-    const gxTemplateCallback<TClass>* const other = dynamic_cast<const gxTemplateCallback<TClass>*>(&aOther);
-    if (other)
+    const gxTemplateCallback<TClass, TNotification>* const iOther = dynamic_cast<const gxTemplateCallback<TClass, TNotification>*>(&aOther);
+    if (iOther)
     {
-      return (other->mObj == mObj && other->mMethod == mMethod);
+      return (iOther->mObj == mObj && iOther->mMethod == mMethod);
     } else {
       return false;
     }

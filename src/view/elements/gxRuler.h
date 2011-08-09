@@ -43,7 +43,8 @@ public:
    * {@link gxZoomManager zoom manager}.
    * @param aNotification The notification object.
    */
-  void OnZoomManagerUpdate(const gxNotification *aNotification); 
+  void OnZoomManagerUpdate(const gxZoomChangedNotification *aNotification);
+  DECLARE_CALLBACK(gxRuler, OnZoomManagerUpdate, gxZoomChangedNotification)
 
   /**
    * @brief Sets the {@link gxScrollManager scroll manager} for this ruler.
@@ -56,7 +57,8 @@ public:
    * {@link gxScrollManager scroll manager}.
    * @param aNotification The notification object.
    */
-  void OnScrollManagerUpdate(const gxNotification *aNotification);
+  void OnScrollManagerUpdate(const gxScrollPositionChangedNotification *aNotification);
+  DECLARE_CALLBACK(gxRuler, OnScrollManagerUpdate, gxScrollPositionChangedNotification)
 
   virtual void SetBounds(const gxRect &aNewBounds);
 

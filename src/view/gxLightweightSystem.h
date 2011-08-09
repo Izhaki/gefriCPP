@@ -109,7 +109,8 @@ public:
    * @param aNotification The notification object carrying information
    * regarding the change.
    */
-  void OnScrollRangeChanged(const gxNotification *aNotification);
+  void OnScrollRangeChanged(const gxScrollRangeChangedNotification *aNotification);
+  DECLARE_CALLBACK(gxLightweightSystem, OnScrollRangeChanged, gxScrollRangeChangedNotification)
 protected:
   /**
    * @brief Sets the {@link gxRootViewElement root view element} of the system.

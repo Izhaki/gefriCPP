@@ -18,20 +18,33 @@ gxScroller::~gxScroller()
 {
     // Remove the callback from the previous scroll manager (if any).
   if (mScrollManager)
-    mScrollManager->mObservers.Remove( gxCALLBACK(gxScroller, OnScrollManagerUpdate) );
+  {
+    mScrollManager->mObservers.Remove( gxCALLBACK( OnScrollPositionUpdate ) );
+    mScrollManager->mObservers.Remove( gxCALLBACK( OnScrollRangeUpdate ) );
+  }
 }
 
 void gxScroller::SetScrollManager(gxScrollManager *aScrollManager)
 {
   // Remove the callback from the previous scroll manager (if any).
   if (mScrollManager)
-    mScrollManager->mObservers.Remove( gxCALLBACK(gxScroller, OnScrollManagerUpdate) );
+  {
+    //mScrollManager->mObservers.Remove( gxCALLBACK(gxScroller, OnScrollPositionUpdate, gxScrollPositionChangedNotification) );
+    mScrollManager->mObservers.Remove( gxCALLBACK( OnScrollPositionUpdate ) );
+    mScrollManager->mObservers.Remove( gxCALLBACK( OnScrollRangeUpdate ) );
+  }
 
   mScrollManager = aScrollManager;
-  aScrollManager->AddObserverAndNotify( gxCALLBACK(gxScroller, OnScrollManagerUpdate) );
+  aScrollManager->AddObserverAndNotify( gxCALLBACK( OnScrollPositionUpdate ) );
+  aScrollManager->AddObserverAndNotify( gxCALLBACK( OnScrollRangeUpdate ) );
 }
 
-void gxScroller::OnScrollManagerUpdate(const gxNotification *aNotification)
+void gxScroller::OnScrollPositionUpdate(const gxScrollPositionChangedNotification *aNotification)
+{
+  SetScroll( mScrollManager->GetScroll() );
+}
+
+void gxScroller::OnScrollRangeUpdate(const gxScrollRangeChangedNotification *aNotification)
 {
   SetScroll( mScrollManager->GetScroll() );
 }

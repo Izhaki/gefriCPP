@@ -36,7 +36,16 @@ public:
    * {@link gxScrollManager scroll manager}.
    * @param aNotification The notification object.
    */
-  void OnScrollManagerUpdate(const gxNotification *aNotification);
+  void OnScrollPositionUpdate(const gxScrollPositionChangedNotification *aNotification);
+  DECLARE_CALLBACK(gxScroller, OnScrollPositionUpdate, gxScrollPositionChangedNotification)
+
+  /**
+   * @brief A  handler method for scroll range change notifications from the
+   * {@link gxScrollManager scroll manager}.
+   * @param aNotification The notification object.
+   */
+  void OnScrollRangeUpdate(const gxScrollRangeChangedNotification *aNotification);
+  DECLARE_CALLBACK(gxScroller, OnScrollRangeUpdate, gxScrollRangeChangedNotification)
 
   /**
    * @brief Paints the view element by translating the painter then calling

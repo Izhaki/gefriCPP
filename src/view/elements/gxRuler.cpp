@@ -18,44 +18,39 @@ gxRuler::~gxRuler()
 {
   // If a zoom manager is linked, remove the callbacks.
   if (mZoomManager)
-    mZoomManager->mObservers.Remove( gxCALLBACK(gxRuler, OnZoomManagerUpdate) );
+    mZoomManager->mObservers.Remove( gxCALLBACK( OnZoomManagerUpdate ) );
 
   // If a scroll manager is linked, remove the callbacks.
   if (mScrollManager)
-    mScrollManager->mObservers.Remove( gxCALLBACK(gxRuler, OnScrollManagerUpdate) );
+    mScrollManager->mObservers.Remove( gxCALLBACK( OnScrollManagerUpdate ) );
 }
 
 void gxRuler::SetZoomManager(gxZoomManager *aZoomManager)
 {
   // Remove the callback from the previous zoom manager (if any).
   if (mZoomManager)
-    mZoomManager->mObservers.Remove( gxCALLBACK(gxRuler, OnZoomManagerUpdate) );
+    mZoomManager->mObservers.Remove( gxCALLBACK( OnZoomManagerUpdate ) );
 
   mZoomManager = aZoomManager;
-  aZoomManager->AddObserverAndNotify( gxCALLBACK(gxRuler, OnZoomManagerUpdate) );
+  aZoomManager->AddObserverAndNotify( gxCALLBACK( OnZoomManagerUpdate ) );
 }
 
-void gxRuler::OnZoomManagerUpdate(const gxNotification *aNotification)
+void gxRuler::OnZoomManagerUpdate(const gxZoomChangedNotification *aNotification)
 {
-  // Convert the notification to the correct class.
-  const gxZoomChangedNotification* iNotification = dynamic_cast<const gxZoomChangedNotification*> (aNotification);
-  if ( iNotification )
-  {
-    SetScale ( mIsHorizontal ? iNotification->mZoom.X : iNotification->mZoom.Y );
-  }
+  SetScale ( mIsHorizontal ? aNotification->mZoom.X : aNotification->mZoom.Y );
 }
 
 void gxRuler::SetScrollManager(gxScrollManager *aScrollManager)
 {
   // Remove the callback from the previous scroll manager (if any).
   if (mScrollManager)
-    mScrollManager->mObservers.Remove( gxCALLBACK(gxRuler, OnScrollManagerUpdate) );
+    mScrollManager->mObservers.Remove( gxCALLBACK( OnScrollManagerUpdate ) );
 
   mScrollManager = aScrollManager;
-  aScrollManager->AddObserverAndNotify( gxCALLBACK(gxRuler, OnScrollManagerUpdate) );
+  aScrollManager->AddObserverAndNotify( gxCALLBACK( OnScrollManagerUpdate ) );
 }
 
-void gxRuler::OnScrollManagerUpdate(const gxNotification *aNotification)
+void gxRuler::OnScrollManagerUpdate(const gxScrollPositionChangedNotification *aNotification)
 {
   mStartPixel = mIsHorizontal ? mScrollManager->GetScrollX() : mScrollManager->GetScrollY();
 }
