@@ -14,7 +14,7 @@ gxLightweightSystem::gxLightweightSystem(gxLightweightControl *aControl)
   mControl = aControl;
 
   // Create the root view element
-  SetRootViewElement(new gxRootViewElement);
+  mRootViewElement = new gxRootViewElement(this);
 }
 
 gxLightweightSystem::~gxLightweightSystem()
@@ -27,6 +27,9 @@ gxLightweightSystem::~gxLightweightSystem()
   // delegated to an object that has been destroyed
   mControl->UnsetLightweightSystem();
   mControl = NULL;
+
+  delete mRootViewElement;
+  mRootViewElement = NULL;
 }
 
 void gxLightweightSystem::SetContents(gxViewElement *aViewElement)
@@ -38,12 +41,6 @@ void gxLightweightSystem::SetContents(gxViewElement *aViewElement)
   // Add the new view element as a child to the root view element.
   mContents = aViewElement;
   mRootViewElement->AddChild(mContents);
-}
-
-void gxLightweightSystem::SetRootViewElement(gxRootViewElement *aRootViewElement)
-{
-  aRootViewElement->SetLightweightSystem(this);
-  mRootViewElement = aRootViewElement;
 }
 
 void gxLightweightSystem::SetScrollManager(gxScrollManager *aScrollManager)

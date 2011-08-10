@@ -15,8 +15,12 @@
 class gxRootViewElement: public gxStructuralViewElement
 {
 public:
-  gxRootViewElement()
-    : mLightweightSystem(NULL) { }
+  /**
+   * @brief The root view elemetn constructor
+   * @param aLightweightSystem The {@link gxLightweightSystem lightweight
+   * system} associated with the root view element.
+   */
+  gxRootViewElement(gxLightweightSystem *aLightweightSystem);
 
   /**
    * @brief Returns the {@link gxLightweightSystem lightweight system}
@@ -28,16 +32,6 @@ public:
    * @brief Overrides the base class implementation to return itself. 
    */
   virtual const gxRootViewElement* GetRootViewElement() const;
-
-  /**
-   * @brief Sets this view element's {@link gxLightweightSystem lightweight
-   * system}.
-   * Normally called by the {@link gxLightweightSystem lightweight system}
-   *  itself.
-   * @param aLightweightSystem The {@link gxLightweightSystem lightweight
-   * system} associated with the root view element.
-   */
-  void SetLightweightSystem(gxLightweightSystem *aLightweightSystem);
 
   /**
    * @brief Returns the bounds of this view element by getting the bounds of the

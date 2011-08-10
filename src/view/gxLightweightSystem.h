@@ -112,13 +112,6 @@ public:
   void OnScrollRangeChanged(const gxScrollRangeChangedNotification *aNotification);
   DECLARE_CALLBACK(gxLightweightSystem, OnScrollRangeChanged, gxScrollRangeChangedNotification)
 protected:
-  /**
-   * @brief Sets the {@link gxRootViewElement root view element} of the system.
-   * @param aRootViewElement The new {@link gxRootViewElement root view 
-    * element}.
-   */
-  void SetRootViewElement(gxRootViewElement *aRootViewElement);
-
   /// The control this system is linked to.
   gxLightweightControl *mControl;
   
