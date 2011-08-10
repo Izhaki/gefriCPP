@@ -49,7 +49,8 @@ public:
   void OnAction1(wxCommandEvent &e);
   void OnAction2(wxCommandEvent &e);
   void OnAction3(wxCommandEvent &e);
-  void OnAction4(wxCommandEvent &e);	
+  void OnHideFace(wxCommandEvent &e);
+  void OnShowFace(wxCommandEvent &e);
   
   void OnZoomIn(wxCommandEvent &e);
   void OnZoomOut(wxCommandEvent &e);

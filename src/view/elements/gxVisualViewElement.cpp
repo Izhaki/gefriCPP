@@ -18,6 +18,9 @@ gxVisualViewElement::~gxVisualViewElement()
 
 void gxVisualViewElement::Paint(gxPainter &aPainter)
 {
+  if (!IsVisible())
+    return;
+
   // Push the painter state as the next line might change it.
   aPainter.PushState();
 

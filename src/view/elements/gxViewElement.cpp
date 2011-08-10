@@ -4,7 +4,7 @@
 #include "core/gxLog.h"
 
 gxViewElement::gxViewElement()
-: mFlags(0)
+: mFlags(~gxViewElement::Valid | gxViewElement::Visible)
 {
 }
 
@@ -143,6 +143,35 @@ bool gxViewElement::IsValid()
   return mFlags.IsSet(gxViewElement::Valid);
 }
 
+bool gxViewElement::IsVisible()
+{
+  return mFlags.IsSet(gxViewElement::Visible);
+}
+
+void gxViewElement::SetVisible(bool const aVisible)
+{
+  if (aVisible == IsVisible())
+    return;
+
+  if (aVisible)
+    mFlags.Set(gxViewElement::Visible);
+  else
+    mFlags.Unset(gxViewElement::Visible);
+
+  Revalidate();
+  Repaint();
+}
+
+void gxViewElement::Show()
+{
+  SetVisible(true);
+}
+
+void gxViewElement::Hide()
+{
+  SetVisible(false);
+}
+
 void gxViewElement::OnAddChild(gxViewElement *aChild)
 {
   // Newly created children are invalid. So once a child is added try to
@@ -161,5 +190,6 @@ void gxViewElement::OnBeforeChildRemoval(gxViewElement *aChild)
 
 void gxViewElement::OnAfterChildRemoval()
 {
+  // We need revalidation as an addition of a child might affect layouts etc.
   Revalidate();
 }

@@ -14,6 +14,9 @@ gxStructuralViewElement::~gxStructuralViewElement()
 
 void gxStructuralViewElement::Paint(gxPainter &aPainter)
 {
+  if (!IsVisible())
+    return;
+
   PaintChildren(aPainter);
 }
 

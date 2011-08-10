@@ -14,7 +14,8 @@ enum
   wxID_ACTION1 = 200,
   wxID_ACTION2,
   wxID_ACTION3,
-  wxID_ACTION4,
+  wxID_HIDE_FACE,
+  wxID_SHOW_FACE,
   wxID_ZOOM_INS,
   wxID_ZOOM_OUTS,
   wxID_ZOOM_IN_VERT,
@@ -28,8 +29,9 @@ BEGIN_EVENT_TABLE(MyFrame, wxFrame)
   EVT_MENU(wxID_ACTION1, MyFrame::OnAction1)
   EVT_MENU(wxID_ACTION2, MyFrame::OnAction2)
   EVT_MENU(wxID_ACTION3, MyFrame::OnAction3)
-  EVT_MENU(wxID_ACTION4, MyFrame::OnAction4)
-  
+  EVT_MENU(wxID_HIDE_FACE, MyFrame::OnHideFace)
+  EVT_MENU(wxID_SHOW_FACE, MyFrame::OnShowFace)
+
   EVT_MENU(wxID_ZOOM_INS, MyFrame::OnZoomIn)
   EVT_MENU(wxID_ZOOM_OUTS, MyFrame::OnZoomOut)
   EVT_MENU(wxID_ZOOM_IN_VERT, MyFrame::OnZoomInHorz)
@@ -162,11 +164,17 @@ void MyFrame::OnAction3(wxCommandEvent &e)
   mEyeR = NULL;
 }
 
-void MyFrame::OnAction4(wxCommandEvent &e)
+void MyFrame::OnHideFace(wxCommandEvent &e)
 {
   wxUnusedVar(e);
+  mFace->Hide();
 }
 
+void MyFrame::OnShowFace(wxCommandEvent &e)
+{
+  wxUnusedVar(e);
+  mFace->Show();
+}
 
 void MyFrame::OnZoomIn(wxCommandEvent &e)
 {
@@ -209,7 +217,8 @@ void MyFrame::CreateMenuBar()
   actionsMenu->Append(wxID_ACTION1, wxT("Move Face\tCtrl-1"), wxT("Move the face\n" ));
   actionsMenu->Append(wxID_ACTION2, wxT("Add Eyes\tCtrl-2"));
   actionsMenu->Append(wxID_ACTION3, wxT("Remove Eyes\tCtrl-3"));
-  actionsMenu->Append(wxID_ACTION4, wxT("Unused\tCtrl-4"));
+  actionsMenu->Append(wxID_HIDE_FACE, wxT("Hide Face\tCtrl-4"));
+  actionsMenu->Append(wxID_SHOW_FACE, wxT("Show Face\tCtrl-5"));
   mb->Append(actionsMenu, wxT("&Actions"));
 
   //Zoom Menu

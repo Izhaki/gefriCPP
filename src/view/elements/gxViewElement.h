@@ -65,6 +65,26 @@ public:
    */
   virtual void GetDescendantsBounds(gxRect &aBounds);
 
+  /**
+   * @brief Returns whether or not the view element is visible.
+   * @return Ture if the view element is visible.
+   */
+  bool IsVisible();
+  /**
+   * @brief Sets whether or not the view element is visible.
+   * @param aVisible whether or not the view element should be visible.
+   */
+  virtual void SetVisible(bool const aVisible); 
+
+  /**
+   * @brief Marks the view element as visible.
+   */
+  void Show();
+
+  /**
+   * @brief Hides the view element (marking it as invisible).
+   */
+  void Hide();
 protected:
   /**
    * @brief Transforms a rect (typically bounds) to absolute coordinates.
@@ -157,7 +177,9 @@ protected:
 
   enum Flags
   {
-    Valid = 0x01
+    Valid         = 0x01,
+    Visible       = 0x02,
+    ClipsChildren = 0x04
   };
   
   gxFlags<gx8Flags> mFlags;
