@@ -50,7 +50,7 @@ void gxRuler::SetScrollManager(gxScrollManager *aScrollManager)
   aScrollManager->AddObserverAndNotify( gxCALLBACK( OnScrollManagerUpdate ) );
 }
 
-void gxRuler::OnScrollManagerUpdate(const gxScrollPositionChangedNotification *aNotification)
+void gxRuler::OnScrollManagerUpdate(const gxNotification *aNotification)
 {
   mStartPixel = mIsHorizontal ? mScrollManager->GetScrollX() : mScrollManager->GetScrollY();
 }
@@ -87,6 +87,7 @@ void gxRuler::SetBounds(const gxRect &aNewBounds)
 
 void gxRuler::PaintSelf(gxPainter &aPainter)
 {
+  wxLogDebug(_T("gxRuler::PaintSelf"));
   // Draw border
   aPainter.DrawRectangle(mBounds);
 
@@ -104,6 +105,8 @@ void gxRuler::PaintSelf(gxPainter &aPainter)
   do
   {
     iPos = iDiv->Pixel;
+
+    wxLogDebug(_T("Pos: %i, End: %i"), iPos, iEndPixel);
 
     // Based on the type of the div draw different lines / text
     switch (iDiv->Type)

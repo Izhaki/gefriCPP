@@ -57,8 +57,8 @@ public:
    * {@link gxScrollManager scroll manager}.
    * @param aNotification The notification object.
    */
-  void OnScrollManagerUpdate(const gxScrollPositionChangedNotification *aNotification);
-  DECLARE_CALLBACK(gxRuler, OnScrollManagerUpdate, gxScrollPositionChangedNotification)
+  void OnScrollManagerUpdate(const gxNotification *aNotification);
+  DECLARE_CALLBACK(gxRuler, OnScrollManagerUpdate, gxNotification)
 
   virtual void SetBounds(const gxRect &aNewBounds);
 

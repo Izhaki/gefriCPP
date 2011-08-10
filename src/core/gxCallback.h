@@ -12,6 +12,11 @@ class gxNotification;
 //
 // void OnUpdate(const gxUpdateNotification *aNotification);
 // DECLARE_CALLBACK(gxScroller, OnUpdate, gxUpdateNotification)
+//
+// Note: If the callback uses a subclass of gxNotification, it will only receive
+// that type of notification. If the callback uses gxNotification, it will
+// receive all the notifications from the subject, and can do the cast itself,
+// if needed.
 #define DECLARE_CALLBACK(aClass, aMethod, aNotificationClass) \
   typedef aClass             C##aMethod; \
   typedef aNotificationClass N##aMethod;
