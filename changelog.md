@@ -1,3 +1,8 @@
+v0.1.04
+-------
+- Added: gxString
+
+
 v0.1.03
 -------
 - Added: Rulers added

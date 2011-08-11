@@ -71,7 +71,7 @@ void gxRuler::Validate()
 void gxRuler::CalcMinBlockSize()
 {
   // Find the maximum text size.
-  std::string iBiggestLabel = mDivProvider->GetLabelOfPixel( mIsHorizontal ? mBounds.width : mBounds.height );
+  gxString iBiggestLabel = mDivProvider->GetLabelOfPixel( mIsHorizontal ? mBounds.width : mBounds.height );
   gxSize iMaxTextSize = GetLightweightSystem()->GetTextSize(iBiggestLabel);
 
   // Take into account the ratio of the text for the block.
@@ -104,6 +104,8 @@ void gxRuler::PaintSelf(gxPainter &aPainter)
   // The last pixel to be drawn, we need to take into account the scale 
   int iEndPixel =  mStartPixel + GetMyVisibleSize();
 
+  gxString iLabel;
+
   // Start with the block at the start pixel
   gxViewDiv *iDiv = mDivProvider->BlockAtPixel(mStartPixel / mScale);
   do
@@ -115,7 +117,8 @@ void gxRuler::PaintSelf(gxPainter &aPainter)
     {
       case gxViewDiv::Block:
         iLineLength = mBounds.height;
-        aPainter.DrawText(mDivProvider->GetLabelOfPixel(iPos), iPos, 0, 3, 3, mIsHorizontal);
+        iLabel = mDivProvider->GetLabelOfPixel(iPos);
+        aPainter.DrawText(iLabel, iPos, 0, 3, 3, mIsHorizontal);
         break;
       case gxViewDiv::Key:
         iLineLength = int(mBounds.height / 3);

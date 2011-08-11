@@ -91,14 +91,14 @@ public:
    * @param aPixel The pixel value.
    * @return The label for that pixel value.
    */
-  std::string GetLabelOfPixel(const int aPixel);
+  gxString GetLabelOfPixel(const int aPixel);
 
   /**
    * @brief Returns the label of a given unit.
    * @param aUnit The unit value.
    * @return The label for the given unit value.
    */
-  std::string GetLabelOfUnit(const int aUnit);
+  gxString GetLabelOfUnit(const int aUnit);
 protected:
   /**
    * @brief Calculates the correct block size.

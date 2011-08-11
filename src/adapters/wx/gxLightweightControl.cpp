@@ -56,10 +56,10 @@ gxRect gxLightweightControl::GetBounds() const
   return gxRect(rect.x, rect.y, rect.width, rect.height);
 }
 
-gxSize gxLightweightControl::GetTextSize(std::string aText)
+gxSize gxLightweightControl::GetTextSize(gxString &aText)
 {
   int w, h;
-  GetTextExtent(wxString(aText.c_str(), wxConvUTF8), &w, &h);
+  GetTextExtent(aText, &w, &h);
   return gxSize(w, h);
 }
 

@@ -2,11 +2,12 @@
 #define gxPainter_h
 
 #include "core/gxObject.h"
+#include "core/gxString.h"
 #include "core/geometry/gxGeometry.h"
 #include "view/gxTransformations.h"
 
 #include <stack>
-#include <string>
+
 
 // Forward declaration
 class gxPainterState;
@@ -130,7 +131,7 @@ public:
 
   virtual void DrawLine(int x1, int y1, int x2, int y2, bool isHorizontal = true) = 0;
   
-  virtual void DrawText(std::string aText, int x, int y) = 0;
+  virtual void DrawText(gxString &aText, int x, int y) = 0;
   /**
    * @brief This method is particularly to be used by rulers.
    * @param aText The text to be drawns.
@@ -141,15 +142,15 @@ public:
    * @param isHorizontal Whether the text to be drawn horizontally or 
    * vertically.
    */
-  virtual void DrawText(std::string aText, int x, int y, int aPadX, int aPadY, bool isHorizontal = true) = 0;
-  virtual void DrawRotatedText(std::string aText, int x, int y, double aAngle) = 0;
+  virtual void DrawText(gxString &aText, int x, int y, int aPadX, int aPadY, bool isHorizontal = true) = 0;
+  virtual void DrawRotatedText(gxString &aText, int x, int y, double aAngle) = 0;
   
   /**
    * @brief Returns the size of the given text.
    * @param aText The text whose size we enquire.
    * @return The size of the given text.
    */
-  virtual gxSize GetTextSize(std::string aText) = 0;
+  virtual gxSize GetTextSize(gxString &aText) = 0;
 protected:
   /**
    * @brief Performs state restoration.  

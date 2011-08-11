@@ -156,12 +156,12 @@ gxViewDiv* gxDivProvider::Next()
   return &mDiv;
 }
 
-std::string gxDivProvider::GetLabelOfPixel(const int aPixel)
+gxString gxDivProvider::GetLabelOfPixel(const int aPixel)
 {
   return mViewUnit->GetLabelOfPixel(aPixel);
 }
 
-std::string gxDivProvider::GetLabelOfUnit(const int aUnit)
+gxString gxDivProvider::GetLabelOfUnit(const int aUnit)
 {
   return mViewUnit->GetLabelOfUnit(aUnit);
 }

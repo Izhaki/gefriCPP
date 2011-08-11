@@ -35,7 +35,7 @@ public:
   void UnsetLightweightSystem();
 
   gxRect GetBounds() const;
-  gxSize GetTextSize(std::string aText);
+  gxSize GetTextSize(gxString &aText);
 
   // The lightweight system needs a way to queue validations on the event loop.
   // This method does that.

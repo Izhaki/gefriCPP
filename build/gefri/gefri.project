@@ -15,6 +15,7 @@
       <File Name="../../src/adapters/wx/gxPaintDC.h"/>
       <File Name="../../src/adapters/wx/gxAssert.h"/>
       <File Name="../../src/adapters/wx/gxLog.h"/>
+      <File Name="../../src/adapters/wx/gxString.h"/>
     </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="core">
@@ -36,6 +37,7 @@
     <File Name="../../src/core/gxAssert.h"/>
     <File Name="../../src/core/gxLog.h"/>
     <File Name="../../src/core/gxFlags.h"/>
+    <File Name="../../src/core/gxString.h"/>
   </VirtualDirectory>
   <Settings Type="Static Library">
     <GlobalSettings>

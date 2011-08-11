@@ -80,7 +80,7 @@ public:
    * @param aText The text whose size we equire.
    * @return The given text size.
    */
-  gxSize GetTextSize(std::string aText);
+  gxSize GetTextSize(gxString &aText);
 
   /**
    * @brief Queues an asynchronous validation request.

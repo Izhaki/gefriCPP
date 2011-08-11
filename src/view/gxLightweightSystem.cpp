@@ -80,7 +80,7 @@ gxRect gxLightweightSystem::GetControlBounds() const
   return mControl->GetBounds();
 }
 
-gxSize gxLightweightSystem::GetTextSize(std::string aText)
+gxSize gxLightweightSystem::GetTextSize(gxString &aText)
 {
   gxSize iSize = mControl->GetTextSize(aText);
   return gxSize(iSize.X, iSize.Y);

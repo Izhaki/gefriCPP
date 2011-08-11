@@ -27,11 +27,11 @@ public:
 
   void DrawLine(int x1, int y1, int x2, int y2, bool isHorizontal = true);
   
-  void DrawText(std::string aText, int x, int y);
-  void DrawText(std::string  aText, int x, int y, int aPadX, int aPadY, bool isHorizontal = true);
-  void DrawRotatedText(std::string aText, int x, int y, double aAngle);
+  void DrawText(gxString &aText, int x, int y);
+  void DrawText(gxString  &aText, int x, int y, int aPadX, int aPadY, bool isHorizontal = true);
+  void DrawRotatedText(gxString &aText, int x, int y, double aAngle);
 
-  virtual gxSize GetTextSize(std::string aText);
+  virtual gxSize GetTextSize(gxString &aText);
 protected:
   virtual void IntersectClipArea(gxRect const &aRect);
 private:

@@ -1,7 +1,7 @@
 #ifndef gxViewUnit_h
 #define gxViewUnit_h
 
-#include <string>
+#include "core/gxString.h"
 
 /**
  * @brief A class to convert between pixels and the unit used in the view.
@@ -44,14 +44,14 @@ public:
    * @param aPixel The pixel value.
    * @return The label for that pixel value.
    */
-  virtual std::string GetLabelOfPixel(const int aPixel);
+  virtual gxString GetLabelOfPixel(const int aPixel);
 
   /**
    * @brief Returns the label of a given unit.
    * @param aUnit The unit value.
    * @return The label for the given unit value.
    */
-  virtual std::string GetLabelOfUnit(const int aUnit);
+  virtual gxString GetLabelOfUnit(const int aUnit);
 };
 
 /**

@@ -1,18 +1,14 @@
 #include "view/gxViewUnit.h"
 #include <sstream>
 
-std::string gxViewUnit::GetLabelOfPixel(const int aPixel)
+gxString gxViewUnit::GetLabelOfPixel(const int aPixel)
 {
   return GetLabelOfUnit(PixelToUnit(aPixel));
 }
 
-std::string gxViewUnit::GetLabelOfUnit(const int aUnit)
+gxString gxViewUnit::GetLabelOfUnit(const int aUnit)
 {
-  std::string result;
-  std::stringstream out;
-  out << aUnit;
-  result = out.str();
-  return result; 
+  return gxString::Format(_T("%i"), aUnit); 
 }
 
 
