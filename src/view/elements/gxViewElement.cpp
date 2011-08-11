@@ -4,7 +4,7 @@
 #include "core/gxLog.h"
 
 gxViewElement::gxViewElement()
-: mFlags(~gxViewElement::Valid | gxViewElement::Visible)
+: mFlags(gxViewElement::Visible | gxViewElement::ClipChildren)
 {
 }
 
@@ -157,6 +157,11 @@ void gxViewElement::Show()
 void gxViewElement::Hide()
 {
   SetVisible(false);
+}
+
+bool gxViewElement::IsClippingChildren()
+{
+  return mFlags.IsSet(gxViewElement::ClipChildren);
 }
 
 void gxViewElement::OnAddChild(gxViewElement *aChild)

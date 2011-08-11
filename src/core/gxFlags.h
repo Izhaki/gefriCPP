@@ -36,9 +36,9 @@ public:
   {
     return !(IsSet(aFlags));
   }
-
-protected:
   TClass mFlags;
+protected:
+
 };
 
 #endif // gxFlags_h

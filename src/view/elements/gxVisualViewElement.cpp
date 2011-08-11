@@ -36,18 +36,19 @@ void gxVisualViewElement::Paint(gxPainter &aPainter)
   // damaged areas).
   if (aPainter.NeedsPainting(bounds))
   {
-    // Push current painter state so it can be restored after setting the
-    // clip area
+    // Push current painter state so it can be restored later on.
     aPainter.PushState();
 
     // Sets the clip area of the painter to the bounds
-    aPainter.SetClipArea(bounds);
+    if ( IsClippingChildren() )
+      aPainter.SetClipArea(bounds);
 
     PaintSelf(aPainter);
     PaintChildren(aPainter);
     PaintBorder(aPainter);
 
-    // Pop (will also restore) the painter state to before SetClipArea.
+    // Pop (will also restore) the painter state to before any painting was
+    // done.
     aPainter.PopState();
   }
   
@@ -81,8 +82,9 @@ void gxVisualViewElement::GetDescendantsBounds(gxRect &aBounds)
   // Union with my bounds.
   aBounds.Union(GetBounds());
   
-  // And then with those of all children (this isn't needed if we clip children).
-  gxViewElement::GetDescendantsBounds(aBounds);
+  // And then with those of all children (in case these are not clipped).
+  if ( !IsClippingChildren() )
+   gxViewElement::GetDescendantsBounds(aBounds);
 }
 
 gxRect gxVisualViewElement::GetBounds() const

@@ -153,7 +153,6 @@ protected:
    */
   virtual void Invalidate();
 
-
   /**
    * @brief Asks the view element to perfor any operation that are needed
    * to make it valid. Also validates all the children.
@@ -170,13 +169,19 @@ protected:
    */
   bool IsValid();
 
+  /**
+   * @brief Returns whether or not the view element clips its children.
+   * @return Ture if it clips.
+   */
+  bool IsClippingChildren();
+
   virtual void OnAfterChildRemoval();
 
   enum Flags
   {
-    Valid         = 0x01,
-    Visible       = 0x02,
-    ClipsChildren = 0x04
+    Valid        = 0x01,
+    Visible      = 0x02,
+    ClipChildren = 0x04
   };
   
   gxFlags<gx8Flags> mFlags;
