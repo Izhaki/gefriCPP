@@ -86,7 +86,7 @@ gxSize gxLightweightSystem::GetTextSize(gxString &aText)
   return gxSize(iSize.X, iSize.Y);
 }
 
-void gxLightweightSystem::OnScroll (const bool isVertical, const int aPosition)
+void gxLightweightSystem::OnScroll (const bool isVertical, const gxPix aPosition)
 {
   if (mScrollManager)
     mScrollManager->SetScroll(isVertical, aPosition);

@@ -11,31 +11,31 @@
 class gxPoint
 {
 public:
-  int x, y;
+  gxPix X, Y;
 
-  gxPoint() : x(0), y(0) { }
-  gxPoint(int xx, int yy) : x(xx), y(yy) { }
+  gxPoint() : X(0), Y(0) { }
+  gxPoint(gxPix aX, gxPix aY) : X(aX), Y(aY) { }
 
   // no copy ctor or assignment operator - the defaults are ok
 
   // comparison
-  bool operator==(const gxPoint& p) const { return x == p.x && y == p.y; }
+  bool operator==(const gxPoint& p) const { return X == p.X && Y == p.Y; }
   bool operator!=(const gxPoint& p) const { return !(*this == p); }
 
   // arithmetic operations (component wise)
-  gxPoint operator+(const gxPoint& p) const { return gxPoint(x + p.x, y + p.y); }
-  gxPoint operator-(const gxPoint& p) const { return gxPoint(x - p.x, y - p.y); }
+  gxPoint operator+(const gxPoint& p) const { return gxPoint(X + p.X, Y + p.Y); }
+  gxPoint operator-(const gxPoint& p) const { return gxPoint(X - p.X, Y - p.Y); }
 
-  gxPoint& operator+=(const gxPoint& p) { x += p.x; y += p.y; return *this; }
-  gxPoint& operator-=(const gxPoint& p) { x -= p.x; y -= p.y; return *this; }
+  gxPoint& operator+=(const gxPoint& p) { X += p.X; Y += p.Y; return *this; }
+  gxPoint& operator-=(const gxPoint& p) { X -= p.X; Y -= p.Y; return *this; }
 
-  gxPoint& operator+=(const gxSize& s) { x += s.GetWidth(); y += s.GetHeight(); return *this; }
-  gxPoint& operator-=(const gxSize& s) { x -= s.GetWidth(); y -= s.GetHeight(); return *this; }
+  gxPoint& operator+=(const gxSize& s) { X += s.GetWidth(); Y += s.GetHeight(); return *this; }
+  gxPoint& operator-=(const gxSize& s) { X -= s.GetWidth(); Y -= s.GetHeight(); return *this; }
 
-  gxPoint operator+(const gxSize& s) const { return gxPoint(x + s.GetWidth(), y + s.GetHeight()); }
-  gxPoint operator-(const gxSize& s) const { return gxPoint(x - s.GetWidth(), y - s.GetHeight()); }
+  gxPoint operator+(const gxSize& s) const { return gxPoint(X + s.GetWidth(), Y + s.GetHeight()); }
+  gxPoint operator-(const gxSize& s) const { return gxPoint(X - s.GetWidth(), Y - s.GetHeight()); }
 
-  gxPoint operator-() const { return gxPoint(-x, -y); }
+  gxPoint operator-() const { return gxPoint(-X, -Y); }
 };
 
 #endif // gxPoint_h

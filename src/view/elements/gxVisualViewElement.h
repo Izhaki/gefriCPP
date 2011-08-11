@@ -66,7 +66,7 @@ protected:
    * @param dx The amount of pixels to move on the X axis.
    * @param dy The amount of pixels to move on the Y axis.
    */
-  void Translate(int dx, int dy);
+  void Translate(gxPix dx, gxPix dy);
 
   /// The bounds of this view element
   gxRect mBounds;

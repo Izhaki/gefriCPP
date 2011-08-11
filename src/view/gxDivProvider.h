@@ -15,7 +15,7 @@ struct gxViewBlock
   /// The start position of the block in units.
   int Unit;
   /// The size of the block in units (units per block).
-  int Size;
+  gxPix Size;
   /// The amount of (sub) divisions the block has.
   int DivCount;
   /// The amount of units between each block.
@@ -36,7 +36,7 @@ struct gxViewDiv
   /// The position of the division in units.
   int  Unit;
   /// The position of the division in pixels.
-  int  Pixel;
+  gxPix  Pixel;
   /// A division can be one of 3 types: block, key, or normal.
   enum { Block, Key, Normal } Type;
 };
@@ -57,7 +57,7 @@ public:
    * @brief Sets the minimum block size in pixels.
    * @param aSize The minimum block size.
    */
-  virtual void SetMinBlockSize(int aSize);
+  virtual void SetMinBlockSize(gxPix aSize);
   
   /**
    * @brief Sets the scale of this block provider.
@@ -72,7 +72,7 @@ public:
    * @param aPos The pixel contained within the block.
    * @return The block division the pixel is at.
    */
-  virtual gxViewDiv* BlockAtPixel(int aPos);
+  virtual gxViewDiv* BlockAtPixel(gxPix aPos);
   
   /**
    * @brief Returns the block after the current one.
@@ -91,7 +91,7 @@ public:
    * @param aPixel The pixel value.
    * @return The label for that pixel value.
    */
-  gxString GetLabelOfPixel(const int aPixel);
+  gxString GetLabelOfPixel(const gxPix aPixel);
 
   /**
    * @brief Returns the label of a given unit.
@@ -139,7 +139,7 @@ protected:
 
   gxViewUnit  *mViewUnit;
 
-  int   mMinBlockSize;
+  gxPix   mMinBlockSize;
   float mScale;
 
   /// Whether or not this div provider is dealing with fixed units and block

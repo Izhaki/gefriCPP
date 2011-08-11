@@ -75,7 +75,7 @@ void gxRuler::CalcMinBlockSize()
   gxSize iMaxTextSize = GetLightweightSystem()->GetTextSize(iBiggestLabel);
 
   // Take into account the ratio of the text for the block.
-  mDivProvider->SetMinBlockSize( (int)ceil(iMaxTextSize.X / mBlockTextRatio) );
+  mDivProvider->SetMinBlockSize( gxCeil(iMaxTextSize.X / mBlockTextRatio) );
 }
 
 void gxRuler::SetScale(const float aScale)
@@ -96,13 +96,13 @@ void gxRuler::PaintSelf(gxPainter &aPainter)
   aPainter.DrawRectangle(mBounds);
 
   // The div position, in pixels, and not subject to any scale calculations
-  int iPos;
+  gxPix iPos;
   
   // The length of the line of the div
-  int iLineLength;
+  gxPix iLineLength;
   
   // The last pixel to be drawn, we need to take into account the scale 
-  int iEndPixel =  mStartPixel + GetMyVisibleSize();
+  gxPix iEndPixel =  mStartPixel + GetMyVisibleSize();
 
   gxString iLabel;
 
@@ -121,7 +121,7 @@ void gxRuler::PaintSelf(gxPainter &aPainter)
         aPainter.DrawText(iLabel, iPos, 0, 3, 3, mIsHorizontal);
         break;
       case gxViewDiv::Key:
-        iLineLength = int(mBounds.height / 3);
+        iLineLength = gxFloor(mBounds.height / 3);
         break;
       case gxViewDiv::Normal:
         iLineLength = 2;
@@ -133,14 +133,14 @@ void gxRuler::PaintSelf(gxPainter &aPainter)
 
     // Stop when the actual position (taking into account the scale) of the
     // next div is smaller than the last pixel to be drawn. 
-  } while ( (int)(iDiv->Pixel * mScale) < iEndPixel );
+  } while ( gxFloor(iDiv->Pixel * mScale) < iEndPixel );
 }
 
-int gxRuler::GetMyVisibleSize()
+gxPix gxRuler::GetMyVisibleSize()
 {
   // Returns whichever is smaller: my scaled size or my parent size
   if (mIsHorizontal)
-    return gxMin((int)( mBounds.width * mScale ), GetParent()->GetBounds().width);
+    return gxMin(gxFloor( mBounds.width * mScale ), GetParent()->GetBounds().width);
   else
-    return gxMin((int)( mBounds.height * mScale ), GetParent()->GetBounds().height);
+    return gxMin(gxFloor( mBounds.height * mScale ), GetParent()->GetBounds().height);
 }

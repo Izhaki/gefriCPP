@@ -20,145 +20,150 @@ class gxRect
 {
 public:
   gxRect()
-    : x(0), y(0), width(0), height(0)
+    : X(0), Y(0), width(0), height(0)
     { }
-  gxRect(int xx, int yy, int ww, int hh)
-    : x(xx), y(yy), width(ww), height(hh)
+  gxRect(gxPix aX, gxPix aY, gxPix aW, gxPix aH)
+    : X(aX), Y(aY), width(aW), height(aH)
     { }
-  gxRect(const gxPoint& topLeft, const gxPoint& bottomRight);
-  gxRect(const gxPoint& pt, const gxSize& size)
-    : x(pt.x), y(pt.y), width(size.X), height(size.Y)
+  gxRect(const gxPoint& aTopLeft, const gxPoint& aBottomRight);
+  gxRect(const gxPoint& aPoint, const gxSize& aSize)
+    : X(aPoint.X), Y(aPoint.Y), width(aSize.X), height(aSize.Y)
     { }
-  gxRect(const gxSize& size)
-    : x(0), y(0), width(size.X), height(size.Y)
+  gxRect(const gxSize& aSize)
+    : X(0), Y(0), width(aSize.X), height(aSize.Y)
     { }
 
   // default copy ctor and assignment operators ok
 
-  int GetX() const { return x; }
-  void SetX(int xx) { x = xx; }
+  gxPix GetX() const { return X; }
+  void SetX(gxPix aX) { X = aX; }
 
-  int GetY() const { return y; }
-  void SetY(int yy) { y = yy; }
+  gxPix GetY() const { return Y; }
+  void SetY(gxPix aY) { Y = aY; }
 
-  int GetWidth() const { return width; }
-  void SetWidth(int w) { width = w; }
+  gxPix GetWidth() const { return width; }
+  void SetWidth(gxPix aW) { width = aW; }
 
-  int GetHeight() const { return height; }
-  void SetHeight(int h) { height = h; }
+  gxPix GetHeight() const { return height; }
+  void SetHeight(gxPix aH) { height = aH; }
 
-  gxPoint GetPosition() const { return gxPoint(x, y); }
-  void SetPosition( const gxPoint &p ) { x = p.x; y = p.y; }
+  gxPoint GetPosition() const { return gxPoint(X, Y); }
+  void SetPosition( const gxPoint &aPoint ) { X = aPoint.X; Y = aPoint.Y; }
 
   gxSize GetSize() const { return gxSize(width, height); }
-  void SetSize( const gxSize &s ) { width = s.GetWidth(); height = s.GetHeight(); }
+  void SetSize( const gxSize &aSize )
+    { width = aSize.GetWidth();
+      height = aSize.GetHeight();
+    }
 
   bool IsEmpty() const { return (width <= 0) || (height <= 0); }
 
-  int GetLeft()   const { return x; }
-  int GetTop()    const { return y; }
-  int GetBottom() const { return y + height - 1; }
-  int GetRight()  const { return x + width - 1; }
+  gxPix GetLeft()   const { return X; }
+  gxPix GetTop()    const { return Y; }
+  gxPix GetBottom() const { return Y + height - 1; }
+  gxPix GetRight()  const { return X + width - 1; }
 
-  void SetLeft(int left) { x = left; }
-  void SetRight(int right) { width = right - x + 1; }
-  void SetTop(int top) { y = top; }
-  void SetBottom(int bottom) { height = bottom - y + 1; }
+  void SetLeft(gxPix aLeft) { X = aLeft; }
+  void SetRight(gxPix aRight) { width = aRight - X + 1; }
+  void SetTop(gxPix aTop) { Y = aTop; }
+  void SetBottom(gxPix aBottom) { height = aBottom - Y + 1; }
 
   gxPoint GetTopLeft() const { return GetPosition(); }
   gxPoint GetLeftTop() const { return GetTopLeft(); }
-  void SetTopLeft(const gxPoint &p) { SetPosition(p); }
-  void SetLeftTop(const gxPoint &p) { SetTopLeft(p); }
+  void SetTopLeft(const gxPoint &aPoint) { SetPosition(aPoint); }
+  void SetLeftTop(const gxPoint &aPoint) { SetTopLeft(aPoint); }
 
   gxPoint GetBottomRight() const { return gxPoint(GetRight(), GetBottom()); }
   gxPoint GetRightBottom() const { return GetBottomRight(); }
-  void SetBottomRight(const gxPoint &p) { SetRight(p.x); SetBottom(p.y); }
-  void SetRightBottom(const gxPoint &p) { SetBottomRight(p); }
+  void SetBottomRight(const gxPoint &aPoint)
+    { SetRight(aPoint.X); SetBottom(aPoint.Y); }
+  void SetRightBottom(const gxPoint &aPoint) { SetBottomRight(aPoint); }
 
   gxPoint GetTopRight() const { return gxPoint(GetRight(), GetTop()); }
   gxPoint GetRightTop() const { return GetTopRight(); }
-  void SetTopRight(const gxPoint &p) { SetRight(p.x); SetTop(p.y); }
-  void SetRightTop(const gxPoint &p) { SetTopLeft(p); }
+  void SetTopRight(const gxPoint &aPoint)
+    { SetRight(aPoint.X); SetTop(aPoint.Y); }
+  void SetRightTop(const gxPoint &aPoint) { SetTopLeft(aPoint); }
 
   gxPoint GetBottomLeft() const { return gxPoint(GetLeft(), GetBottom()); }
   gxPoint GetLeftBottom() const { return GetBottomLeft(); }
-  void SetBottomLeft(const gxPoint &p) { SetLeft(p.x); SetBottom(p.y); }
-  void SetLeftBottom(const gxPoint &p) { SetBottomLeft(p); }
+  void SetBottomLeft(const gxPoint &aPoint) { SetLeft(aPoint.X); SetBottom(aPoint.Y); }
+  void SetLeftBottom(const gxPoint &aPoint) { SetBottomLeft(aPoint); }
 
   // operations with rect
-  gxRect& Inflate(gxCoord dx, gxCoord dy);
+  gxRect& Inflate(gxPix dx, gxPix dy);
   gxRect& Inflate(const gxSize& d) { return Inflate(d.X, d.Y); }
-  gxRect& Inflate(gxCoord d) { return Inflate(d, d); }
-  gxRect Inflate(gxCoord dx, gxCoord dy) const
+  gxRect& Inflate(gxPix d) { return Inflate(d, d); }
+  gxRect  Inflate(gxPix dx, gxPix dy) const
   {
     gxRect r = *this;
     r.Inflate(dx, dy);
     return r;
   }
 
-  gxRect& Deflate(gxCoord dx, gxCoord dy) { return Inflate(-dx, -dy); }
+  gxRect& Deflate(gxPix dx, gxPix dy) { return Inflate(-dx, -dy); }
   gxRect& Deflate(const gxSize& d) { return Inflate(-d.X, -d.Y); }
-  gxRect& Deflate(gxCoord d) { return Inflate(-d); }
-  gxRect Deflate(gxCoord dx, gxCoord dy) const
+  gxRect& Deflate(gxPix d) { return Inflate(-d); }
+  gxRect Deflate(gxPix dx, gxPix dy) const
   {
     gxRect r = *this;
     r.Deflate(dx, dy);
     return r;
   }
 
-  void Offset(gxCoord dx, gxCoord dy) { x += dx; y += dy; }
-  void Offset(const gxPoint& pt) { Offset(pt.x, pt.y); }
+  void Offset(gxPix dx, gxPix dy) { X += dx; Y += dy; }
+  void Offset(const gxPoint& aPoint) { Offset(aPoint.X, aPoint.Y); }
 
-  gxRect& Intersect(const gxRect& rect);
-  gxRect Intersect(const gxRect& rect) const
+  gxRect& Intersect(const gxRect& aRect);
+  gxRect Intersect(const gxRect& aRect) const
   {
     gxRect r = *this;
-    r.Intersect(rect);
+    r.Intersect(aRect);
     return r;
   }
 
-  gxRect& Union(const gxRect& rect);
-  gxRect Union(const gxRect& rect) const
+  gxRect& Union(const gxRect& aRect);
+  gxRect Union(const gxRect& aRect) const
   {
-    gxRect r = *this;
-    r.Union(rect);
-    return r;
+    gxRect iRect = *this;
+    iRect.Union(aRect);
+    return iRect;
   }
 
   // compare rectangles
-  bool operator==(const gxRect& rect) const;
-  bool operator!=(const gxRect& rect) const { return !(*this == rect); }
+  bool operator==(const gxRect& aRect) const;
+  bool operator!=(const gxRect& aRect) const { return !(*this == aRect); }
 
   // return true if the point is (not strcitly) inside the rect
-  bool Contains(int x, int y) const;
-  bool Contains(const gxPoint& pt) const { return Contains(pt.x, pt.y); }
+  bool Contains(gxPix X, gxPix Y) const;
+  bool Contains(const gxPoint& aPoint) const { return Contains(aPoint.X, aPoint.Y); }
   // return true if the rectangle is (not strcitly) inside the rect
-  bool Contains(const gxRect& rect) const;
+  bool Contains(const gxRect& aRect) const;
 
   // return true if the rectangles have a non empty intersection
-  bool Intersects(const gxRect& rect) const;
+  bool Intersects(const gxRect& aRect) const;
 
   // these are like Union() but don't ignore empty rectangles
-  gxRect operator+(const gxRect& rect) const;
-  gxRect& operator+=(const gxRect& rect)
+  gxRect operator+(const gxRect& aRect) const;
+  gxRect& operator+=(const gxRect& aRect)
   {
-    *this = *this + rect;
+    *this = *this + aRect;
     return *this;
   }
 
 
   // centre this rectangle in the given (usually, but not necessarily,
   // larger) one
-  gxRect CentreIn(const gxRect& r, int dir = gxBOTH) const
+  gxRect CentreIn(const gxRect& aRect, int dir = gxBOTH) const
   {
-    return gxRect(dir & gxHORIZONTAL ? r.x + (r.width - width)/2 : x,
-      dir & gxVERTICAL ? r.y + (r.height - height)/2 : y,
+    return gxRect(dir & gxHORIZONTAL ? aRect.X + (aRect.width - width)/2 : X,
+      dir & gxVERTICAL ? aRect.Y + (aRect.height - height)/2 : Y,
       width, height);
   }
 
-  gxRect CenterIn(const gxRect& r, int dir = gxBOTH) const
+  gxRect CenterIn(const gxRect& aRect, int dir = gxBOTH) const
   {
-    return CentreIn(r, dir);
+    return CentreIn(aRect, dir);
   }
   
   /**
@@ -169,7 +174,7 @@ public:
   void Scale(float aScaleX, float aScaleY);
 
 public:
-  int x, y, width, height;
+  gxPix X, Y, width, height;
 };
 
 #endif // gxRect_h

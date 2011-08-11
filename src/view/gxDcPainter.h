@@ -22,14 +22,14 @@ public:
 
   virtual bool NeedsPainting(gxRect const &aRect);
 
-  void DrawRectangle(int x, int y, int w, int h);
+  void DrawRectangle(gxPix aX, gxPix aY, gxPix aW, gxPix aH);
   void DrawRectangle(gxRect const &aRect);
 
-  void DrawLine(int x1, int y1, int x2, int y2, bool isHorizontal = true);
+  void DrawLine(gxPix x1, gxPix y1, gxPix x2, gxPix y2, bool isHorizontal = true);
   
-  void DrawText(gxString &aText, int x, int y);
-  void DrawText(gxString  &aText, int x, int y, int aPadX, int aPadY, bool isHorizontal = true);
-  void DrawRotatedText(gxString &aText, int x, int y, double aAngle);
+  void DrawText(gxString &aText, gxPix aX, gxPix aY);
+  void DrawText(gxString  &aText, gxPix aX, gxPix aY, gxPix aPadX, gxPix aPadY, bool isHorizontal = true);
+  void DrawRotatedText(gxString &aText, gxPix aX, gxPix aY, double aAngle);
 
   virtual gxSize GetTextSize(gxString &aText);
 protected:

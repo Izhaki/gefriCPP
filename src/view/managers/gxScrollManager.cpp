@@ -16,13 +16,13 @@ void gxScrollManager::SetScroll(gxScroll const &aScroll)
   mObservers.Notify(new gxNotification());
 }
 
-void gxScrollManager::SetScroll(const int aScrollX, const int aScrollY)
+void gxScrollManager::SetScroll(const gxPix aScrollX, const gxPix aScrollY)
 {
   gxScroll newScroll(aScrollX, aScrollY);
   SetScroll(newScroll);
 }
 
-void gxScrollManager::SetScroll(const bool isVertical, const int aScroll)
+void gxScrollManager::SetScroll(const bool isVertical, const gxPix aScroll)
 {
   if (isVertical)
     SetScrollY(aScroll);
@@ -30,13 +30,13 @@ void gxScrollManager::SetScroll(const bool isVertical, const int aScroll)
     SetScrollX(aScroll);
 }
 
-void gxScrollManager::SetScrollX(const int aScrollX)
+void gxScrollManager::SetScrollX(const gxPix aScrollX)
 {
   mScroll.X = aScrollX;
   mObservers.Notify(new gxScrollPositionChangedNotification(this));
 }
 
-void gxScrollManager::SetScrollY(const int aScrollY)
+void gxScrollManager::SetScrollY(const gxPix aScrollY)
 {
   mScroll.Y = aScrollY;
   mObservers.Notify(new gxScrollPositionChangedNotification(this));
@@ -53,14 +53,14 @@ void gxScrollManager::AdjustScrollbars(gxSize const &aVisible, gxSize const &aRa
   if (mScroll.X != 0 && aRange.X > aVisible.X )
   {
     float oldPosRatio = (mRange.X - mVisible.X) / (float)mScroll.X;
-    newScroll.X = (int)floor((aRange.X - aVisible.X) / oldPosRatio);
+    newScroll.X = gxFloor((aRange.X - aVisible.X) / oldPosRatio);
   }
 
   // The new scroll position is proportional to the previous one.
   if (mScroll.Y != 0 && aRange.Y > aVisible.Y )
   {
     float oldPosRatio = (mRange.Y - mVisible.Y) / (float)mScroll.Y;
-    newScroll.Y = (int)floor((aRange.Y - aVisible.Y) / oldPosRatio);
+    newScroll.Y = gxFloor((aRange.Y - aVisible.Y) / oldPosRatio);
   }
 
   mVisible = aVisible;

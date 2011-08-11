@@ -2,6 +2,7 @@
 #define gxTransformations_h
 
 #include "core/gxFlags.h"
+#include "core/geometry/gxGeometry.h"
 
 /**
  * @brief A class representing which transformations are enabled.
@@ -41,10 +42,10 @@ struct gxScale
  */
 struct gxScroll
 {
-  int   X, Y;
+  gxPix X, Y;
 
   gxScroll() : X(0), Y(0) { }
-  gxScroll(int aX, int aY) : X(aX), Y(aY) { }
+  gxScroll(gxPix aX, gxPix aY) : X(aX), Y(aY) { }
 
   bool operator==(const gxScroll& aScroll) const { return X == aScroll.X && Y == aScroll.Y; }
   bool operator!=(const gxScroll& aScroll) const { return X != aScroll.X || Y != aScroll.Y; }
@@ -56,7 +57,7 @@ struct gxScroll
 struct gxTranslate
 {
   gxTranslate() : X(0), Y(0) { }
-  int   X, Y;
+  gxPix X, Y;
 };
 
 /**

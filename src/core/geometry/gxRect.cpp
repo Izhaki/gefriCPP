@@ -3,64 +3,63 @@
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
 #include "core/geometry/gxRect.h"
-#include <math.h>
 
-gxRect::gxRect(const gxPoint& point1, const gxPoint& point2)
+gxRect::gxRect(const gxPoint& aTopLeft, const gxPoint& aBottomRight)
 {
-  x = point1.x;
-  y = point1.y;
-  width = point2.x - point1.x;
-  height = point2.y - point1.y;
+  X = aTopLeft.X;
+  Y = aTopLeft.Y;
+  width = aBottomRight.X - aTopLeft.X;
+  height = aBottomRight.Y - aTopLeft.Y;
 
   if (width < 0)
   {
     width = -width;
-    x = point2.x;
+    X = aBottomRight.X;
   }
   width++;
 
   if (height < 0)
   {
     height = -height;
-    y = point2.y;
+    Y = aBottomRight.Y;
   }
   height++;
 }
 
-bool gxRect::operator==(const gxRect& rect) const
+bool gxRect::operator==(const gxRect& aRect) const
 {
-  return ((x == rect.x) &&
-    (y == rect.y) &&
-    (width == rect.width) &&
-    (height == rect.height));
+  return ((X == aRect.X) &&
+    (Y == aRect.Y) &&
+    (width == aRect.width) &&
+    (height == aRect.height));
 }
 
-gxRect gxRect::operator+(const gxRect& rect) const
+gxRect gxRect::operator+(const gxRect& aRect) const
 {
-  int x1 = gxMin(this->x, rect.x);
-  int y1 = gxMin(this->y, rect.y);
-  int y2 = gxMax(y+height, rect.height+rect.y);
-  int x2 = gxMax(x+width, rect.width+rect.x);
+  gxPix x1 = gxMin(this->X, aRect.X);
+  gxPix y1 = gxMin(this->Y, aRect.Y);
+  gxPix y2 = gxMax(Y + height, aRect.height + aRect.Y);
+  gxPix x2 = gxMax(X + width, aRect.width + aRect.X);
   return gxRect(x1, y1, x2-x1, y2-y1);
 }
 
-gxRect& gxRect::Union(const gxRect& rect)
+gxRect& gxRect::Union(const gxRect& aRect)
 {
   // ignore empty rectangles: union with an empty rectangle shouldn't extend
   // this one to (0, 0)
   if ( !width || !height )
   {
-    *this = rect;
+    *this = aRect;
   }
-  else if ( rect.width && rect.height )
+  else if ( aRect.width && aRect.height )
   {
-    int x1 = gxMin(x, rect.x);
-    int y1 = gxMin(y, rect.y);
-    int y2 = gxMax(y + height, rect.height + rect.y);
-    int x2 = gxMax(x + width, rect.width + rect.x);
+    gxPix x1 = gxMin(X, aRect.X);
+    gxPix y1 = gxMin(Y, aRect.Y);
+    gxPix y2 = gxMax(Y + height, aRect.height + aRect.Y);
+    gxPix x2 = gxMax(X + width, aRect.width + aRect.X);
 
-    x = x1;
-    y = y1;
+    X = x1;
+    Y = y1;
     width = x2 - x1;
     height = y2 - y1;
   }
@@ -69,64 +68,64 @@ gxRect& gxRect::Union(const gxRect& rect)
   return *this;
 }
 
-gxRect& gxRect::Inflate(gxCoord dx, gxCoord dy)
+gxRect& gxRect::Inflate(gxPix dx, gxPix dy)
 {
-  if (-2*dx>width)
+  if (-2 * dx>width)
   {
     // Don't allow deflate to eat more width than we have,
     // a well-defined rectangle cannot have negative width.
-    x+=width/2;
-    width=0;
+    X += width/2;
+    width = 0;
   } else {
     // The inflate is valid.
-    x-=dx;
-    width+=2*dx;
+    X -= dx;
+    width += 2*dx;
   }
 
-  if (-2*dy>height)
+  if (-2 * dy > height)
   {
     // Don't allow deflate to eat more height than we have,
     // a well-defined rectangle cannot have negative height.
-    y+=height/2;
-    height=0;
+    Y += height/2;
+    height = 0;
   } else {
     // The inflate is valid.
-    y-=dy;
-    height+=2*dy;
+    Y -= dy;
+    height += 2 * dy;
   }
 
   return *this;
 }
 
-bool gxRect::Contains(int cx, int cy) const
+bool gxRect::Contains(gxPix cx, gxPix cy) const
 {
-  return ( (cx >= x) && (cy >= y)
-      && ((cy - y) < height)
-      && ((cx - x) < width)
+  return ( (cx >= X) && (cy >= Y)
+      && ((cy - Y) < height)
+      && ((cx - X) < width)
       );
 }
 
-bool gxRect::Contains(const gxRect& rect) const
+bool gxRect::Contains(const gxRect& aRect) const
 {
-  return Contains(rect.GetTopLeft()) && Contains(rect.GetBottomRight());
+  return Contains(aRect.GetTopLeft()) && Contains(aRect.GetBottomRight());
 }
 
-gxRect& gxRect::Intersect(const gxRect& rect)
+gxRect& gxRect::Intersect(const gxRect& aRect)
 {
-  int x2 = GetRight(),
-    y2 = GetBottom();
+  gxPix x2 = GetRight(),
+        y2 = GetBottom();
 
-  if ( x < rect.x )
-    x = rect.x;
-  if ( y < rect.y )
-    y = rect.y;
-  if ( x2 > rect.GetRight() )
-    x2 = rect.GetRight();
-  if ( y2 > rect.GetBottom() )
-    y2 = rect.GetBottom();
+  if ( X < aRect.X )
+    X = aRect.X;
+  if ( Y < aRect.Y )
+    Y = aRect.Y;
+  if ( x2 > aRect.GetRight() )
+    x2 = aRect.GetRight();
+  if ( y2 > aRect.GetBottom() )
+    y2 = aRect.GetBottom();
 
-  width = x2 - x + 1;
-  height = y2 - y + 1;
+  width = x2 - X + 1;
+  height = y2 - Y + 1;
 
   if ( width <= 0 || height <= 0 )
   {
@@ -137,21 +136,21 @@ gxRect& gxRect::Intersect(const gxRect& rect)
   return *this;
 }
 
-bool gxRect::Intersects(const gxRect& rect) const
+bool gxRect::Intersects(const gxRect& aRect) const
 {
-  gxRect r = Intersect(rect);
+  gxRect iRect = Intersect(aRect);
 
   // if there is no intersection, both width and height are 0
-  return r.width != 0;
+  return iRect.width != 0;
 }
 
 void gxRect::Scale(float aScaleX, float aScaleY)
 {
-    int originalX = x;
-    int originalY = y;
+    gxPix originalX = X;
+    gxPix originalY = Y;
     
-    x = (int)floor(originalX * aScaleX);
-    y = (int)floor(originalY * aScaleY);
-    width = (int)floor( (originalX + width) * aScaleX) - x;
-    height = (int)floor( (originalY + height) * aScaleY) - y;
+    X = gxFloor(originalX * aScaleX);
+    Y = gxFloor(originalY * aScaleY);
+    width = gxFloor( (originalX + width) * aScaleX) - X;
+    height = gxFloor( (originalY + height) * aScaleY) - Y;
 }

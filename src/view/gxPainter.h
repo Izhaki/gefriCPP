@@ -63,14 +63,14 @@ public:
    * @param dx The amout of pixels to shift paining origin by on the X axis.
    * @param dy The amout of pixels to shift paining origin by on the Y axis.
    */
-  virtual void SetTranslate(int dx, int dy);
+  virtual void SetTranslate(gxPix dx, gxPix dy);
 
   /**
    * @brief Sets the scroll value for all drawing operations.
    * @param sx The scroll value on the X axis.
    * @param sy The scroll value on the Y axis.
    */
-  virtual void SetScroll(int sx, int sy);
+  virtual void SetScroll(gxPix sx, gxPix sy);
 
   /**
    * @brief Sets the scale (zoom) for all drawing operations.
@@ -126,12 +126,12 @@ public:
   virtual void SetTransformFlags(gxTransformFlags aFlags); 
 
   // Drawing methods
-  virtual void DrawRectangle(int x, int y, int w, int h) = 0;
+  virtual void DrawRectangle(gxPix x, gxPix y,gxPix w, gxPix h) = 0;
   virtual void DrawRectangle(gxRect const &aRect) = 0;
 
-  virtual void DrawLine(int x1, int y1, int x2, int y2, bool isHorizontal = true) = 0;
+  virtual void DrawLine(gxPix x1, gxPix y1, gxPix x2, gxPix y2, bool isHorizontal = true) = 0;
   
-  virtual void DrawText(gxString &aText, int x, int y) = 0;
+  virtual void DrawText(gxString &aText, gxPix x, gxPix y) = 0;
   /**
    * @brief This method is particularly to be used by rulers.
    * @param aText The text to be drawns.
@@ -142,8 +142,8 @@ public:
    * @param isHorizontal Whether the text to be drawn horizontally or 
    * vertically.
    */
-  virtual void DrawText(gxString &aText, int x, int y, int aPadX, int aPadY, bool isHorizontal = true) = 0;
-  virtual void DrawRotatedText(gxString &aText, int x, int y, double aAngle) = 0;
+  virtual void DrawText(gxString &aText, gxPix x, gxPix y, gxPix aPadX, gxPix aPadY, bool isHorizontal = true) = 0;
+  virtual void DrawRotatedText(gxString &aText, gxPix x, gxPix y, double aAngle) = 0;
   
   /**
    * @brief Returns the size of the given text.

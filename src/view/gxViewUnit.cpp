@@ -1,7 +1,7 @@
 #include "view/gxViewUnit.h"
 #include <sstream>
 
-gxString gxViewUnit::GetLabelOfPixel(const int aPixel)
+gxString gxViewUnit::GetLabelOfPixel(const gxPix aPixel)
 {
   return GetLabelOfUnit(PixelToUnit(aPixel));
 }
@@ -12,23 +12,23 @@ gxString gxViewUnit::GetLabelOfUnit(const int aUnit)
 }
 
 
-int gxPixelUnit::PixelToUnit(const int aPixel)
+int gxPixelUnit::PixelToUnit(const gxPix aPixel)
 {
   return aPixel;
 }
 
-int gxPixelUnit::UnitToPixel(const int aUnit)
+gxPix gxPixelUnit::UnitToPixel(const int aUnit)
 {
   return aUnit;
 }
 
 
-int gxRationalViewUnit::PixelToUnit(const int aPixel)
+int gxRationalViewUnit::PixelToUnit(const gxPix aPixel)
 {
-  return (int)(aPixel * mPixelsPerUnit);
+  return gxFloor(aPixel * mPixelsPerUnit);
 }
 
-int gxRationalViewUnit::UnitToPixel(const int aUnit)
+gxPix gxRationalViewUnit::UnitToPixel(const int aUnit)
 {
-  return (int)(aUnit / mPixelsPerUnit);
+  return gxFloor(aUnit / mPixelsPerUnit);
 }

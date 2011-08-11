@@ -95,7 +95,7 @@ void gxScroller::ReadjustScrollbars()
   GetDescendantsBounds(iBounds);
 
   gxSize iMySize = GetBounds().GetSize();
-  gxSize iRange(iBounds.x + iBounds.width, iBounds.y + iBounds.height);
+  gxSize iRange(iBounds.X + iBounds.width, iBounds.Y + iBounds.height);
  
   mScrollManager->AdjustScrollbars(iMySize, iRange);
 

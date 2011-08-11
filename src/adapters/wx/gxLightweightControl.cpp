@@ -123,7 +123,7 @@ void gxLightweightControl::OnLeftMouseBtnDown(wxMouseEvent& event)
 
 void gxLightweightControl::RefreshRect(const gxRect& aRect, bool eraseBackground)
 {
-  wxRect rect(aRect.x, aRect.y, aRect.width, aRect.height);
+  wxRect rect(aRect.X, aRect.Y, aRect.width, aRect.height);
   wxControl::RefreshRect(rect, eraseBackground);
 }
 

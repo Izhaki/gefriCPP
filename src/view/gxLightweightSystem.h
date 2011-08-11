@@ -102,7 +102,7 @@ public:
    * horizontal).
    * @param aPosition The scroll position.
    */
-  void OnScroll (const bool isVertical, const int aPosition);
+  void OnScroll (const bool isVertical, const gxPix aPosition);
 
   /**
    * @brief Called when the scroll range of the scroll bars has changed.

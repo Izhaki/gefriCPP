@@ -2,6 +2,7 @@
 #define gxViewUnit_h
 
 #include "core/gxString.h"
+#include "core/geometry/gxGeometry.h"
 
 /**
  * @brief A class to convert between pixels and the unit used in the view.
@@ -30,21 +31,21 @@ public:
    * @param aPixel The pixel value to convert.
    * @return The unit value of the provided pixel.
    */
-  virtual int PixelToUnit(const int aPixel) = 0;
+  virtual int PixelToUnit(const gxPix aPixel) = 0;
 
   /**
    * @brief Coverts from a unit value to pixel value.
    * @param aUnit The unit value to convert.
    * @return The unit value of the provided unit.
    */
-  virtual int UnitToPixel(const int aUnit) = 0;
+  virtual gxPix UnitToPixel(const int aUnit) = 0;
   
   /**
    * @brief Returns the label of a given pixel.
    * @param aPixel The pixel value.
    * @return The label for that pixel value.
    */
-  virtual gxString GetLabelOfPixel(const int aPixel);
+  virtual gxString GetLabelOfPixel(const gxPix aPixel);
 
   /**
    * @brief Returns the label of a given unit.
@@ -59,8 +60,8 @@ public:
  */
 class gxPixelUnit : public gxViewUnit
 {
-  virtual int PixelToUnit(const int aPixel);
-  virtual int UnitToPixel(const int aUnit);
+  virtual int PixelToUnit(const gxPix aPixel);
+  virtual gxPix UnitToPixel(const int aUnit);
 };
 
 /**
@@ -76,8 +77,8 @@ public:
   : mPixelsPerUnit(aPixelsPerUnit)
   { }
 
-  virtual int PixelToUnit(const int aPixel);
-  virtual int UnitToPixel(const int aUnit);
+  virtual int PixelToUnit(const gxPix aPixel);
+  virtual gxPix UnitToPixel(const int aUnit);
 protected:
   double mPixelsPerUnit;
 };

@@ -23,15 +23,15 @@ void gxPainter::UpdateTransformationsNeeded()
                   mTransformEnabledFlags.IsSet(gxTransformFlags::Scale);
 }
 
-void gxPainter::SetTranslate(int dx, int dy)
+void gxPainter::SetTranslate(gxPix dx, gxPix dy)
 {
   if (mNeedsScaling)
   {
     // Take into account any scaling that is in force.
     // Say the value given is (40,40), with a scale set to 2 the resultant
     // position will be (80,80). Makes sense innit?
-    mTrans.Translate.X += (int)floor( dx * mTrans.Scale.X);
-    mTrans.Translate.Y += (int)floor( dy * mTrans.Scale.Y);
+    mTrans.Translate.X += gxFloor( dx * mTrans.Scale.X);
+    mTrans.Translate.Y += gxFloor( dy * mTrans.Scale.Y);
   } else {
     mTrans.Translate.X += dx;
     mTrans.Translate.Y += dy;
@@ -40,15 +40,15 @@ void gxPainter::SetTranslate(int dx, int dy)
   UpdateTransformationsNeeded();
 }
 
-void gxPainter::SetScroll(int sx, int sy)
+void gxPainter::SetScroll(gxPix sx, gxPix sy)
 {
   if (mNeedsScaling)
   {
     // Take into account any scaling that is in force.
     // Say the value given is (40,40), with a scale set to 2 the resultant
     // position will be (80,80). Makes sense innit?
-    mTrans.Scroll.X += (int)floor( sx * mTrans.Scale.X);
-    mTrans.Scroll.Y += (int)floor( sy * mTrans.Scale.Y);
+    mTrans.Scroll.X += gxFloor( sx * mTrans.Scale.X);
+    mTrans.Scroll.Y += gxFloor( sy * mTrans.Scale.Y);
   } else {
     mTrans.Scroll.X += sx;
     mTrans.Scroll.Y += sy;
@@ -139,19 +139,19 @@ void gxPainter::Transform(gxPoint &aPoint)
 {
   if (mNeedsScaling)
   {
-    aPoint.x = (int)(aPoint.x * mTrans.Scale.X);
-    aPoint.y = (int)(aPoint.y * mTrans.Scale.Y);
+    aPoint.X = gxFloor(aPoint.X * mTrans.Scale.X);
+    aPoint.Y = gxFloor(aPoint.Y * mTrans.Scale.Y);
   }
 
   if (mNeedsTranslating)
   {
-    aPoint.x += mTrans.Translate.X;
-    aPoint.y += mTrans.Translate.Y;
+    aPoint.X += mTrans.Translate.X;
+    aPoint.Y += mTrans.Translate.Y;
   }
 
   if (mNeedsScrolling)
   {
-    aPoint.x -= mTrans.Scroll.X;
-    aPoint.y -= mTrans.Scroll.Y;
+    aPoint.X -= mTrans.Scroll.X;
+    aPoint.Y -= mTrans.Scroll.Y;
   }
 }

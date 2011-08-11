@@ -17,10 +17,10 @@ public:
   ~gxScrollManager(); 
 
   void SetScroll(gxScroll const &aScroll);
-  void SetScroll(const int aScrollX, const int aScrollY);
-  void SetScroll(const bool isVertical, const int aScroll);
-  void SetScrollX(const int aScrollX);
-  void SetScrollY(const int aScrollY);
+  void SetScroll(const gxPix aScrollX, const gxPix aScrollY);
+  void SetScroll(const bool isVertical, const gxPix aScroll);
+  void SetScrollX(const gxPix aScrollX);
+  void SetScrollY(const gxPix aScrollY);
   
   /**
    * @brief Will be called when the scroll manager needs to adjust the
@@ -32,16 +32,16 @@ public:
    */
   void AdjustScrollbars(gxSize const &aVisible, gxSize const &aRange);
   
-  int GetScrollX() const { return mScroll.X; }
-  int GetScrollY() const { return mScroll.Y; }
+  gxPix GetScrollX() const { return mScroll.X; }
+  gxPix GetScrollY() const { return mScroll.Y; }
   gxScroll GetScroll() const { return mScroll; }
 
-  int GetVisibleX() const { return mVisible.X; }
-  int GetVisibleY() const { return mVisible.Y; }
+  gxPix GetVisibleX() const { return mVisible.X; }
+  gxPix GetVisibleY() const { return mVisible.Y; }
   gxSize GetVisible() const { return mVisible; }
 
-  int GetRangeX() const { return mRange.X; }
-  int GetRangeY() const { return mRange.Y; }
+  gxPix GetRangeX() const { return mRange.X; }
+  gxPix GetRangeY() const { return mRange.Y; }
   gxSize GetRange() const { return mRange; }
 
   /**

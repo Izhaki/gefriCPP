@@ -65,7 +65,7 @@ void gxVisualViewElement::PaintChildren(gxPainter &aPainter)
   aPainter.PushState();
 
   // Offset all paint operation by the top-left point of this elemet
-  aPainter.SetTranslate(mBounds.x, mBounds.y);
+  aPainter.SetTranslate(mBounds.X, mBounds.Y);
 
   for (EACHCHILD)
   {
@@ -95,7 +95,7 @@ gxRect gxVisualViewElement::GetBounds() const
 void gxVisualViewElement::SetBounds(const gxRect &aNewBounds)
 {
   // Check if either translate or resize happened
-  bool iTranslate = (aNewBounds.x != mBounds.x) || (aNewBounds.y != mBounds.y); 
+  bool iTranslate = (aNewBounds.X != mBounds.X) || (aNewBounds.Y != mBounds.Y); 
   bool iResize = (aNewBounds.width != mBounds.width) || (aNewBounds.height != mBounds.height);
 
   // Erase the view element if either happened
@@ -105,8 +105,8 @@ void gxVisualViewElement::SetBounds(const gxRect &aNewBounds)
   // Preform translation
   if (iTranslate)
   {
-    int dx = aNewBounds.x - mBounds.x;
-    int dy = aNewBounds.y - mBounds.y;
+    gxPix dx = aNewBounds.X - mBounds.X;
+    gxPix dy = aNewBounds.Y - mBounds.Y;
     Translate(dx,dy);
   }
 
@@ -125,8 +125,8 @@ void gxVisualViewElement::SetBounds(const gxRect &aNewBounds)
   }
 }
 
-void gxVisualViewElement::Translate(int dx, int dy)
+void gxVisualViewElement::Translate(gxPix dx, gxPix dy)
 {
-  mBounds.x += dx;
-  mBounds.y += dy;
+  mBounds.X += dx;
+  mBounds.Y += dy;
 }

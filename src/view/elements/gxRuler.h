@@ -88,7 +88,7 @@ protected:
    * size.
    * @return The visible size in pixels. 
    */
-  int GetMyVisibleSize();
+  gxPix GetMyVisibleSize();
 
   /**
    * @brief Sets the scale this ruler represents.
@@ -100,7 +100,7 @@ protected:
   float mScale;
 
   /// The first pixel to be displayed by the ruler.
-  int   mStartPixel;
+  gxPix mStartPixel;
   
   /// How much of the cell is dedicated for text. A value of 0.5 means the
   /// block size will be twice as big as the largest text.

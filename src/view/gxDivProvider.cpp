@@ -12,7 +12,7 @@ gxDivProvider::gxDivProvider(gxViewUnit *aViewUnit)
 {
 }
 
-void gxDivProvider::SetMinBlockSize(int aSize)
+void gxDivProvider::SetMinBlockSize(gxPix aSize)
 { 
   mMinBlockSize = aSize;
   // If the block size fixed, this would be the right time to work out its
@@ -40,10 +40,10 @@ void gxDivProvider::SetScale(float aScale)
 void gxDivProvider::CalcBlockSize(gxViewBlock &aBlock)
 {
   // Get the current block pixel
-  int iCurPixel = mViewUnit->UnitToPixel(aBlock.Unit);
+  gxPix iCurPixel = mViewUnit->UnitToPixel(aBlock.Unit);
 
   // And the pixel of the next block based on the minimum block size
-  int iNextBlockPixel = iCurPixel + (int)ceil(mMinBlockSize / mScale);
+  gxPix iNextBlockPixel = iCurPixel + gxCeil(mMinBlockSize / mScale);
 
   // Find the next block unit based on the pixel of the next block.
   int iNextBlockUnit = mViewUnit->PixelToUnit(iNextBlockPixel);
@@ -63,7 +63,7 @@ void gxDivProvider::AdjustBlock(gxViewBlock &aBlock)
   // to the same amount of digits later.
   while (aBlock.Size > 10)
   {
-    aBlock.Size = (int)ceil(aBlock.Size / 10.0);
+    aBlock.Size = gxCeil(aBlock.Size / 10.0);
     iExponent++;
   }
 
@@ -112,7 +112,7 @@ gxViewDiv* gxDivProvider::BlockToDiv(gxViewBlock &aBlock)
   return &mDiv;
 }
 
-gxViewDiv* gxDivProvider::BlockAtPixel(int aPos)
+gxViewDiv* gxDivProvider::BlockAtPixel(gxPix aPos)
 {
   mBlock.Unit = mViewUnit->PixelToUnit(aPos);
 
@@ -156,7 +156,7 @@ gxViewDiv* gxDivProvider::Next()
   return &mDiv;
 }
 
-gxString gxDivProvider::GetLabelOfPixel(const int aPixel)
+gxString gxDivProvider::GetLabelOfPixel(const gxPix aPixel)
 {
   return mViewUnit->GetLabelOfPixel(aPixel);
 }
