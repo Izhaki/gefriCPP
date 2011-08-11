@@ -63,10 +63,15 @@ void gxScroller::Paint(gxPainter &aPainter)
   aPainter.PopState();
 }
 
-bool gxScroller::ValidateSelf()
+void gxScroller::Validate()
 {
   ReadjustScrollbars();
-  return true;
+
+  // Call the base class validate so children are also validated and this object
+  // is marked as valid.
+  gxStructuralViewElement::Validate();
+
+  Repaint();
 }
 
 void gxScroller::Transform(gxRect &aRect, gxTransformFlags &aTransFlags)

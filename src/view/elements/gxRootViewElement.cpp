@@ -25,9 +25,9 @@ gxRect gxRootViewElement::GetBounds() const
 
 }
 
-void gxRootViewElement::Revalidate()
+void gxRootViewElement::Invalidate()
 {
-  Invalidate();
+  mFlags.Unset(gxViewElement::Valid);
 
   // Since a single user action might lead to a multitude of objects becoming
   // invalid (like the removal of 3 children), we don't want to validate the

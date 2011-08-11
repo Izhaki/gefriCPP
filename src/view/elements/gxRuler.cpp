@@ -55,12 +55,17 @@ void gxRuler::OnScrollManagerUpdate(const gxNotification *aNotification)
   mStartPixel = mIsHorizontal ? mScrollManager->GetScrollX() : mScrollManager->GetScrollY();
 }
 
-bool gxRuler::ValidateSelf()
+void gxRuler::Validate()
 {
   // To calculate the minimum block size we need the lightweight
-  // system, which will only be available when ValidateSelf is called.
+  // system, which will only be available when Validate is called.
   CalcMinBlockSize();
-  return true;
+
+  // Call the base class validate so children are also validated and this object
+  // is marked as valid.
+  gxVisualViewElement::Validate();
+
+  Repaint();
 }
 
 void gxRuler::CalcMinBlockSize()

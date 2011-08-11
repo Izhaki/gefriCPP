@@ -100,18 +100,13 @@ void gxViewElement::GetDescendantsBounds(gxRect &aBounds)
 void gxViewElement::Invalidate()
 {
   mFlags.Unset(gxViewElement::Valid);
-}
-
-void gxViewElement::Revalidate()
-{
-  Invalidate();
 
   // View elements parent might be null before all elements are inserted to the
   // hierarchy tree (when they are still created and added to their parents).
   if (GetParent() != NULL)
   {
-    // Revalidate further up the hierarchy tree.
-    GetParent()->Revalidate();
+    // Invalidate further up the hierarchy tree.
+    GetParent()->Invalidate();
   }
 }
 
@@ -119,11 +114,6 @@ void gxViewElement::Validate()
 {
   if (IsValid())
     return;
-
-  bool iNeedsRepainting = false;
-
-  // Validate myself
-  iNeedsRepainting = ValidateSelf();
   
   // Set myself as Valid
   mFlags.Set(gxViewElement::Valid);
@@ -133,9 +123,6 @@ void gxViewElement::Validate()
   {
     CHILD->Validate();
   }
-
-  if (iNeedsRepainting)
-    Repaint();
 }
 
 bool gxViewElement::IsValid()
@@ -158,7 +145,7 @@ void gxViewElement::SetVisible(bool const aVisible)
   else
     mFlags.Unset(gxViewElement::Visible);
 
-  Revalidate();
+  Invalidate();
   Repaint();
 }
 
@@ -179,7 +166,7 @@ void gxViewElement::OnAddChild(gxViewElement *aChild)
   // has root view element at the very top of the hierarchy tree, the view
   // element will remain invalid and therefore will not be repainted as
   // Repaint will return.
-  aChild->Revalidate();
+  aChild->Invalidate();
   aChild->Repaint();
 }
 
@@ -191,5 +178,5 @@ void gxViewElement::OnBeforeChildRemoval(gxViewElement *aChild)
 void gxViewElement::OnAfterChildRemoval()
 {
   // We need revalidation as an addition of a child might affect layouts etc.
-  Revalidate();
+  Invalidate();
 }

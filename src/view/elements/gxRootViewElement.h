@@ -43,7 +43,7 @@ public:
   virtual void Validate() { gxStructuralViewElement::Validate(); }
 protected:
   virtual void TransformToAbsolute(gxRect &aRect, gxTransformFlags &aTransFlags);
-  virtual void Revalidate();
+  virtual void Invalidate();
 private:
   /// The {@link gxLightweightSystem lightweight system} associated with this
   /// root view element.

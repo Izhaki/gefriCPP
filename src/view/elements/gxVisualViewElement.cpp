@@ -118,7 +118,7 @@ void gxVisualViewElement::SetBounds(const gxRect &aNewBounds)
   // Repaint
   if (iTranslate || iResize)
   {
-    Revalidate();
+    Invalidate();
     Repaint();
   }
 }

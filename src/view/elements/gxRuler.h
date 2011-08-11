@@ -79,7 +79,7 @@ protected:
   /// Whether or not the scroller is horizontal
   bool mIsHorizontal;
 
-  virtual bool ValidateSelf();
+  virtual void Validate();
 protected:
   /**
    * @brief Returns the visible size of the ruler.

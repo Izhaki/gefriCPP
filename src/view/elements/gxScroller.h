@@ -52,7 +52,7 @@ public:
 protected:
   virtual void Transform(gxRect &aRect, gxTransformFlags &aTransFlags);
 
-  bool ValidateSelf();
+  void Validate();
 
   /**
    * @brief This method is called when the scroller needs to readjust the

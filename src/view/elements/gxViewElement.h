@@ -135,14 +135,9 @@ protected:
   virtual void Repaint(gxRect &aBounds);
 
   // Validation related methods
-  
-  /**
-   * @brief Marks the view element is invalid.
-   */
-  virtual void Invalidate();
 
   /**
-   * @brief Marks the view element as invalid and calls Revalidate on all
+   * @brief Marks the view element as invalid and calls Invalidate on all
    * composition ancestors.
    * 
    * This method is called whenever the size or position of the element change,
@@ -151,29 +146,31 @@ protected:
    * For example, a layout will need to update all children if one changes
    * position; a Scroller might need to readjust the scrollbar range when a
    * child grows in size.
+   * 
+   * Once invalidation reaches the root view element, it will queue a validation
+   * request in the event loop, which once process will cause validation to all
+   * invalid figures.
    */
-  virtual void Revalidate();
+  virtual void Invalidate();
 
 
   /**
-   * @brief Calls ValidateSelf(), and then Validate() on all children.
+   * @brief Asks the view element to perfor any operation that are needed
+   * to make it valid. Also validates all the children.
+   * 
+   * Note that subclasses are likely to need to call the base class
+   * validate, so chilren are also validated and the view element is marked as
+   * valid.
    */
   virtual void Validate();
 
-  /**
-   * @brief Asks the view element to perform any operations that are needed
-   * to make it valid
-   * @return True if repainting is needed after validation.
-   */
-  virtual bool ValidateSelf() { return false; }
-  
-  virtual void OnAfterChildRemoval();
-  
   /**
    * @brief Returns whether or not the view element is valid.
    * @return True if the view element is valid.
    */
   bool IsValid();
+
+  virtual void OnAfterChildRemoval();
 
   enum Flags
   {
