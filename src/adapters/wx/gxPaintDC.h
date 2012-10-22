@@ -16,22 +16,23 @@ public:
   
   gxRect GetClippingBox() const
   {
-    long x, y, w, h;
+    wxCoord x, y, w, h;
     wxAutoBufferedPaintDC::GetClippingBox(&x, &y, &w, &h);
     return gxRect(x, y, w, h);
   }
   
   void SetClippingRegion(const gxRect& rect)
   {
-    DoSetClippingRegion(rect.X, rect.Y, rect.width, rect.height);
+    //DoSetClippingRegion(rect.X, rect.Y, rect.width, rect.height);
+    wxAutoBufferedPaintDC::SetClippingRegion(rect.X, rect.Y, rect.width, rect.height);
   }
 
   void DrawRectangle(gxPix aX, gxPix aY, gxPix width, gxPix height)
-        { DoDrawRectangle(aX, aY, width, height); }
+        { wxAutoBufferedPaintDC::DrawRectangle(aX, aY, width, height); }
   void DrawRectangle(const gxPoint& aPoint, const gxSize& aSize)
-        { DoDrawRectangle(aPoint.X, aPoint.Y, aSize.X, aSize.Y); }
+        { wxAutoBufferedPaintDC::DrawRectangle(aPoint.X, aPoint.Y, aSize.X, aSize.Y); }
   void DrawRectangle(const gxRect& rect)
-    { DoDrawRectangle(rect.X, rect.Y, rect.width, rect.height); }
+    { wxAutoBufferedPaintDC::DrawRectangle(rect.X, rect.Y, rect.width, rect.height); }
 };
 
 #endif // gxPaintDC_wx_h

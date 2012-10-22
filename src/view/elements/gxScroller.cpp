@@ -76,7 +76,6 @@ void gxScroller::Validate()
 
 void gxScroller::Transform(gxRect &aRect, gxTransformFlags &aTransFlags)
 {
-  // Don't scroll if the bounds reject it
   if (aTransFlags.IsntSet(gxTransformFlags::Scroll))
     return;
 
@@ -96,7 +95,7 @@ void gxScroller::ReadjustScrollbars()
 
   gxSize iMySize = GetBounds().GetSize();
   gxSize iRange(iBounds.X + iBounds.width, iBounds.Y + iBounds.height);
- 
+
   mScrollManager->AdjustScrollbars(iMySize, iRange);
 
 }
