@@ -2,18 +2,18 @@
 ## Auto Generated makefile by CodeLite IDE
 ## any manual changes will be erased      
 ##
-## Mac32_Release
+## Mac32_Debug
 ProjectName            :=gefri
-ConfigurationName      :=Mac32_Release
+ConfigurationName      :=Mac32_Debug
 WorkspacePath          := "/Volumes/Blackstore/Development/gefri/build"
 ProjectPath            := "/Volumes/Blackstore/Development/gefri/build/gefri"
-IntermediateDirectory  :=./build/Mac32-Release
+IntermediateDirectory  :=./build/Mac32-Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Izhaki
-Date                   :=2012-10-22
+Date                   :=2012-11-06
 CodeLitePath           :="/Users/izhaki/Library/Application Support/codelite"
 LinkerName             :=g++
 SharedObjectLinkerName :=g++ -dynamiclib -fPIC
@@ -27,7 +27,7 @@ OutputSwitch           :=-o
 LibraryPathSwitch      :=-L
 PreprocessorSwitch     :=-D
 SourceSwitch           :=-c 
-OutputFile             :=./../../lib/lib$(ProjectName)_mac32.a
+OutputFile             :=./../../lib/lib$(ProjectName)_mac32d.a
 Preprocessors          :=$(PreprocessorSwitch)__WX__ 
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
@@ -35,7 +35,7 @@ PreprocessOnlySwitch   :=-E
 ObjectsFileList        :="/Volumes/Blackstore/Development/gefri/build/gefri/gefri.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
-LinkOptions            :=  -s $(shell $(WX_TOOL) --debug=no --libs --unicode=yes)
+LinkOptions            :=  $(shell $(WX_TOOL) --debug=yes --libs --unicode=yes)
 IncludePath            :=  $(IncludeSwitch)../../src 
 IncludePCH             := 
 RcIncludePath          := 
@@ -50,16 +50,16 @@ LibPath                := $(LibraryPathSwitch).
 AR       := ar rcus
 CXX      := g++
 CC       := gcc
-CXXFLAGS :=  -O2 $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=no)  $(Preprocessors)
-CFLAGS   :=  -O2 $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=no)  $(Preprocessors)
+CXXFLAGS :=  -g $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes) $(Preprocessors)
+CFLAGS   :=  -g $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes) $(Preprocessors)
 
 
 ##
 ## User defined environment variables
 ##
 CodeLiteDir:=/Applications/CodeLite.app/Contents/SharedSupport/
-WX_TOOL:=/Volumes/Blackstore/Development/wx/wx2.9.4/build-release-mac/wx-config
-Objects=$(IntermediateDirectory)/wx_gxLightweightControl$(ObjectSuffix) $(IntermediateDirectory)/core_gxComposite$(ObjectSuffix) $(IntermediateDirectory)/geometry_gxRect$(ObjectSuffix) $(IntermediateDirectory)/core_gxObserverList$(ObjectSuffix) $(IntermediateDirectory)/view_gxDcPainter$(ObjectSuffix) $(IntermediateDirectory)/view_gxLightweightSystem$(ObjectSuffix) $(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix) $(IntermediateDirectory)/managers_gxScrollManager$(ObjectSuffix) $(IntermediateDirectory)/elements_gxRootViewElement$(ObjectSuffix) $(IntermediateDirectory)/elements_gxScaler$(ObjectSuffix) \
+WX_TOOL:=/Volumes/Blackstore/Development/wx/wx2.9.4/build-debug-mac/wx-config
+Objects=$(IntermediateDirectory)/wx_gxLightweightControl$(ObjectSuffix) $(IntermediateDirectory)/core_gxComposite$(ObjectSuffix) $(IntermediateDirectory)/geometry_gxRect$(ObjectSuffix) $(IntermediateDirectory)/observable_gxObservable$(ObjectSuffix) $(IntermediateDirectory)/view_gxDcPainter$(ObjectSuffix) $(IntermediateDirectory)/view_gxLightweightSystem$(ObjectSuffix) $(IntermediateDirectory)/managers_gxZoomManager$(ObjectSuffix) $(IntermediateDirectory)/managers_gxScrollManager$(ObjectSuffix) $(IntermediateDirectory)/elements_gxRootViewElement$(ObjectSuffix) $(IntermediateDirectory)/elements_gxScaler$(ObjectSuffix) \
 	$(IntermediateDirectory)/elements_gxStructuralViewElement$(ObjectSuffix) $(IntermediateDirectory)/elements_gxViewElement$(ObjectSuffix) $(IntermediateDirectory)/elements_gxVisualViewElement$(ObjectSuffix) $(IntermediateDirectory)/shapes_gxRectangle$(ObjectSuffix) $(IntermediateDirectory)/shapes_gxShape$(ObjectSuffix) $(IntermediateDirectory)/elements_gxScroller$(ObjectSuffix) $(IntermediateDirectory)/elements_gxRuler$(ObjectSuffix) $(IntermediateDirectory)/view_gxDivProvider$(ObjectSuffix) $(IntermediateDirectory)/view_gxViewUnit$(ObjectSuffix) $(IntermediateDirectory)/view_gxPainter$(ObjectSuffix) \
 	
 
@@ -74,11 +74,11 @@ $(OutputFile): $(Objects)
 	@echo "" > $(IntermediateDirectory)/.d
 	@echo $(Objects) > $(ObjectsFileList)
 	$(AR) $(ArchiveOutputSwitch)$(OutputFile) $(Objects) $(ArLibs)
-	@$(MakeDirCommand) "/Volumes/Blackstore/Development/gefri/build/.build-mac32_release"
-	@echo rebuilt > "/Volumes/Blackstore/Development/gefri/build/.build-mac32_release/gefri"
+	@$(MakeDirCommand) "/Volumes/Blackstore/Development/gefri/build/.build-mac32_debug"
+	@echo rebuilt > "/Volumes/Blackstore/Development/gefri/build/.build-mac32_debug/gefri"
 
-./build/Mac32-Release:
-	@test -d ./build/Mac32-Release || $(MakeDirCommand) ./build/Mac32-Release
+./build/Mac32-Debug:
+	@test -d ./build/Mac32-Debug || $(MakeDirCommand) ./build/Mac32-Debug
 
 PreBuild:
 
@@ -110,13 +110,13 @@ $(IntermediateDirectory)/geometry_gxRect$(DependSuffix): ../../src/core/geometry
 $(IntermediateDirectory)/geometry_gxRect$(PreprocessSuffix): ../../src/core/geometry/gxRect.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/geometry_gxRect$(PreprocessSuffix) "/Volumes/Blackstore/Development/gefri/src/core/geometry/gxRect.cpp"
 
-$(IntermediateDirectory)/core_gxObserverList$(ObjectSuffix): ../../src/core/gxObserverList.cpp $(IntermediateDirectory)/core_gxObserverList$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/Volumes/Blackstore/Development/gefri/src/core/gxObserverList.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/core_gxObserverList$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/core_gxObserverList$(DependSuffix): ../../src/core/gxObserverList.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/core_gxObserverList$(ObjectSuffix) -MF$(IntermediateDirectory)/core_gxObserverList$(DependSuffix) -MM "/Volumes/Blackstore/Development/gefri/src/core/gxObserverList.cpp"
+$(IntermediateDirectory)/observable_gxObservable$(ObjectSuffix): ../../src/core/observable/gxObservable.cpp $(IntermediateDirectory)/observable_gxObservable$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/Volumes/Blackstore/Development/gefri/src/core/observable/gxObservable.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/observable_gxObservable$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/observable_gxObservable$(DependSuffix): ../../src/core/observable/gxObservable.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/observable_gxObservable$(ObjectSuffix) -MF$(IntermediateDirectory)/observable_gxObservable$(DependSuffix) -MM "/Volumes/Blackstore/Development/gefri/src/core/observable/gxObservable.cpp"
 
-$(IntermediateDirectory)/core_gxObserverList$(PreprocessSuffix): ../../src/core/gxObserverList.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/core_gxObserverList$(PreprocessSuffix) "/Volumes/Blackstore/Development/gefri/src/core/gxObserverList.cpp"
+$(IntermediateDirectory)/observable_gxObservable$(PreprocessSuffix): ../../src/core/observable/gxObservable.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/observable_gxObservable$(PreprocessSuffix) "/Volumes/Blackstore/Development/gefri/src/core/observable/gxObservable.cpp"
 
 $(IntermediateDirectory)/view_gxDcPainter$(ObjectSuffix): ../../src/view/gxDcPainter.cpp $(IntermediateDirectory)/view_gxDcPainter$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "/Volumes/Blackstore/Development/gefri/src/view/gxDcPainter.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/view_gxDcPainter$(ObjectSuffix) $(IncludePath)
@@ -261,9 +261,9 @@ clean:
 	$(RM) $(IntermediateDirectory)/geometry_gxRect$(ObjectSuffix)
 	$(RM) $(IntermediateDirectory)/geometry_gxRect$(DependSuffix)
 	$(RM) $(IntermediateDirectory)/geometry_gxRect$(PreprocessSuffix)
-	$(RM) $(IntermediateDirectory)/core_gxObserverList$(ObjectSuffix)
-	$(RM) $(IntermediateDirectory)/core_gxObserverList$(DependSuffix)
-	$(RM) $(IntermediateDirectory)/core_gxObserverList$(PreprocessSuffix)
+	$(RM) $(IntermediateDirectory)/observable_gxObservable$(ObjectSuffix)
+	$(RM) $(IntermediateDirectory)/observable_gxObservable$(DependSuffix)
+	$(RM) $(IntermediateDirectory)/observable_gxObservable$(PreprocessSuffix)
 	$(RM) $(IntermediateDirectory)/view_gxDcPainter$(ObjectSuffix)
 	$(RM) $(IntermediateDirectory)/view_gxDcPainter$(DependSuffix)
 	$(RM) $(IntermediateDirectory)/view_gxDcPainter$(PreprocessSuffix)
@@ -313,6 +313,6 @@ clean:
 	$(RM) $(IntermediateDirectory)/view_gxPainter$(DependSuffix)
 	$(RM) $(IntermediateDirectory)/view_gxPainter$(PreprocessSuffix)
 	$(RM) $(OutputFile)
-	$(RM) "/Volumes/Blackstore/Development/gefri/build/.build-mac32_release/gefri"
+	$(RM) "/Volumes/Blackstore/Development/gefri/build/.build-mac32_debug/gefri"
 
 

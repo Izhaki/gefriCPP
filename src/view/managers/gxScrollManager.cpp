@@ -13,7 +13,7 @@ gxScrollManager::~gxScrollManager()
 void gxScrollManager::SetScroll(gxScroll const &aScroll)
 {
   mScroll = aScroll;
-  mObservers.Notify(new gxNotification());
+  Fire( new evEvent() );
 }
 
 void gxScrollManager::SetScroll(const gxPix aScrollX, const gxPix aScrollY)
@@ -33,13 +33,13 @@ void gxScrollManager::SetScroll(const bool isVertical, const gxPix aScroll)
 void gxScrollManager::SetScrollX(const gxPix aScrollX)
 {
   mScroll.X = aScrollX;
-  mObservers.Notify(new gxScrollPositionChangedNotification(this));
+  Fire( new evScrollPosition( this ) );
 }
 
 void gxScrollManager::SetScrollY(const gxPix aScrollY)
 {
   mScroll.Y = aScrollY;
-  mObservers.Notify(new gxScrollPositionChangedNotification(this));
+  Fire( new evScrollPosition( this ) );
 }
 
 void gxScrollManager::AdjustScrollbars(gxSize const &aVisible, gxSize const &aRange)
@@ -68,11 +68,11 @@ void gxScrollManager::AdjustScrollbars(gxSize const &aVisible, gxSize const &aRa
 
   SetScroll(newScroll);
 
-  mObservers.Notify(new gxScrollRangeChangedNotification(this));
+  Fire( new evScrollRange(this) );
 }
 
-void gxScrollManager::AddObserverAndNotify(gxCallback *aCallback)
+void gxScrollManager::AddObserverAndNotify( gxCallback *aCallback )
 {
-  mObservers.Add(aCallback);
-  mObservers.Notify(new gxScrollRangeChangedNotification(this), aCallback);
+  Subscribe( aCallback );
+  Fire( new evScrollRange( this ), aCallback );
 }

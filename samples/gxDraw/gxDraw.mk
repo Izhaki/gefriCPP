@@ -2,18 +2,18 @@
 ## Auto Generated makefile by CodeLite IDE
 ## any manual changes will be erased      
 ##
-## Mac32_Release
+## Mac32_Debug
 ProjectName            :=gxDraw
-ConfigurationName      :=Mac32_Release
+ConfigurationName      :=Mac32_Debug
 WorkspacePath          := "/Volumes/Blackstore/Development/gefri/build"
 ProjectPath            := "/Volumes/Blackstore/Development/gefri/samples/gxDraw"
-IntermediateDirectory  :=./build/Mac32-Release
+IntermediateDirectory  :=./build/Mac32-Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Izhaki
-Date                   :=2012-10-22
+Date                   :=2012-11-06
 CodeLitePath           :="/Users/izhaki/Library/Application Support/codelite"
 LinkerName             :=g++
 SharedObjectLinkerName :=g++ -dynamiclib -fPIC
@@ -35,12 +35,12 @@ PreprocessOnlySwitch   :=-E
 ObjectsFileList        :="/Volumes/Blackstore/Development/gefri/samples/gxDraw/gxDraw.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
-LinkOptions            :=  -mwindows  $(shell $(WX_TOOL) --debug=no --libs --unicode=yes)
+LinkOptions            :=  -mwindows  $(shell $(WX_TOOL) --debug=yes --libs --unicode=yes)
 IncludePath            :=  $(IncludeSwitch)$(WorkspacePath)/../src 
 IncludePCH             := 
 RcIncludePath          := 
-Libs                   := $(LibrarySwitch)gefri_mac32 
-ArLibs                 :=  "gefri_mac32.a" 
+Libs                   := $(LibrarySwitch)gefri_mac32d 
+ArLibs                 :=  "gefri_mac32d.a" 
 LibPath                := $(LibraryPathSwitch)$(WorkspacePath)/../lib 
 
 ##
@@ -50,15 +50,15 @@ LibPath                := $(LibraryPathSwitch)$(WorkspacePath)/../lib
 AR       := ar rcus
 CXX      := g++
 CC       := gcc
-CXXFLAGS :=  -O2 $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=no)  $(Preprocessors)
-CFLAGS   :=  -O2 $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=no)  $(Preprocessors)
+CXXFLAGS :=  -g $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes)  $(Preprocessors)
+CFLAGS   :=  -g $(shell $(WX_TOOL) --cxxflags --unicode=yes --debug=yes)  $(Preprocessors)
 
 
 ##
 ## User defined environment variables
 ##
 CodeLiteDir:=/Applications/CodeLite.app/Contents/SharedSupport/
-WX_TOOL:=/Volumes/Blackstore/Development/wx/wx2.9.4/build-release-mac/wx-config
+WX_TOOL:=/Volumes/Blackstore/Development/wx/wx2.9.4/build-debug-mac/wx-config
 Objects=$(IntermediateDirectory)/src_main$(ObjectSuffix) $(IntermediateDirectory)/src_myFrame$(ObjectSuffix) 
 
 ##
@@ -74,7 +74,7 @@ $(OutputFile): $(IntermediateDirectory)/.d $(Objects)
 	$(LinkerName) $(OutputSwitch)$(OutputFile) $(Objects) $(LibPath) $(Libs) $(LinkOptions)
 
 $(IntermediateDirectory)/.d:
-	@test -d ./build/Mac32-Release || $(MakeDirCommand) ./build/Mac32-Release
+	@test -d ./build/Mac32-Debug || $(MakeDirCommand) ./build/Mac32-Debug
 PrePreBuild: $(IntermediateDirectory)/$(ProjectName).app/Contents/Info.plist $(IntermediateDirectory)/$(ProjectName).app/Contents/Resources/gxDraw.icns
 ## rule to copy the Info.plist file into the bundle
 $(IntermediateDirectory)/$(ProjectName).app/Contents/Info.plist: Info.plist
@@ -118,6 +118,6 @@ clean:
 	$(RM) $(IntermediateDirectory)/src_myFrame$(DependSuffix)
 	$(RM) $(IntermediateDirectory)/src_myFrame$(PreprocessSuffix)
 	$(RM) $(OutputFile)
-	$(RM) "/Volumes/Blackstore/Development/gefri/build/.build-mac32_release/gxDraw"
+	$(RM) "/Volumes/Blackstore/Development/gefri/build/.build-mac32_debug/gxDraw"
 
 

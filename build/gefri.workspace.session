@@ -1,72 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="/Volumes/Blackstore/Development/gefri/build/gefri.workspace">
-  <int Value="10" Name="m_selectedTab"/>
+  <int Value="5" Name="m_selectedTab"/>
   <wxString Value="/Volumes/Blackstore/Development/gefri/build/gefri.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/samples/gxDraw/src/main.cpp" Name="FileName"/>
+      <wxString Value="/Volumes/Blackstore/Development/gefri/src/core/gxObserverList.h" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="1" Name="CurrentLine"/>
+      <int Value="30" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/samples/gxDraw/src/myFrame.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="0" Name="CurrentLine"/>
+      <wxString Value="/Volumes/Blackstore/Development/gefri/src/core/gxObserverList.cpp" Name="FileName"/>
+      <int Value="71" Name="FirstVisibleLine"/>
+      <int Value="83" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/samples/gxDraw/src/myFrame.cpp" Name="FileName"/>
-      <int Value="117" Name="FirstVisibleLine"/>
-      <int Value="137" Name="CurrentLine"/>
+      <wxString Value="/Volumes/Blackstore/Development/gefri/src/view/managers/gxZoomManager.h" Name="FileName"/>
+      <int Value="37" Name="FirstVisibleLine"/>
+      <int Value="60" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/src/view/elements/gxViewElement.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="0" Name="CurrentLine"/>
+      <wxString Value="/Volumes/Blackstore/Development/gefri/src/view/managers/gxZoomManager.cpp" Name="FileName"/>
+      <int Value="12" Name="FirstVisibleLine"/>
+      <int Value="49" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/src/view/elements/gxViewElement.cpp" Name="FileName"/>
+      <wxString Value="/Volumes/Blackstore/Development/gefri/src/view/elements/gxScaler.cpp" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="13" Name="CurrentLine"/>
+      <int Value="12" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/src/view/gxLightweightControl.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="0" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/src/view/gxLightweightSystem.cpp" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="0" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/src/adapters/wx/gxLightweightControl.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="0" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/src/view/elements/gxVisualViewElement.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="0" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/src/view/elements/gxVisualViewElement.cpp" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="13" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/src/adapters/wx/gxPaintDC.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="24" Name="CurrentLine"/>
+      <wxString Value="/Volumes/Blackstore/Development/gefri/src/core/gxCallback.h" Name="FileName"/>
+      <int Value="46" Name="FirstVisibleLine"/>
+      <int Value="71" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
   </TabInfoArray>

@@ -106,11 +106,10 @@ public:
 
   /**
    * @brief Called when the scroll range of the scroll bars has changed.
-   * @param aNotification The notification object carrying information
+   * @param aEvent The event object carrying information
    * regarding the change.
    */
-  void OnScrollRangeChanged(const gxScrollRangeChangedNotification *aNotification);
-  DECLARE_CALLBACK(gxLightweightSystem, OnScrollRangeChanged, gxScrollRangeChangedNotification)
+  void OnScrollRangeChanged( const evScrollRange *aEvent );
 protected:
   /// The control this system is linked to.
   gxLightweightControl *mControl;

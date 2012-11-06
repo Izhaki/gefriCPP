@@ -32,14 +32,20 @@ public:
   void SetScroll(gxScroll const &aScroll);
 
   /**
-   * @brief A handler method for scroll change notifications from the
+   * @brief A handler method for scroll position events from the
    * {@link gxScrollManager scroll manager}.
    * 
-   * Both scroll position and range change are handled by this method
-   * @param aNotification The notification object.
+   * @param aEvent The notification object.
    */
-  void OnScrollUpdate(const gxNotification *aNotification);
-  DECLARE_CALLBACK(gxScroller, OnScrollUpdate, gxNotification)
+  void OnScrollPositionChanged( const evScrollPosition *aEvent );
+
+  /**
+   * @brief A handler method for scroll Range events from the
+   * {@link gxScrollManager scroll manager}.
+   * 
+   * @param aEvent The notification object.
+   */
+  void OnScrollRangeChanged( const evScrollRange *aEvent );
 
   /**
    * @brief Paints the view element by translating the painter then calling

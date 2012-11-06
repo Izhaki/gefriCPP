@@ -21,7 +21,7 @@ gxLightweightSystem::~gxLightweightSystem()
 {
   // Remove notification from previous scroll manager, (if such exist).
   if (mScrollManager)
-    mScrollManager->mObservers.Remove( gxCALLBACK( OnScrollRangeChanged ) );
+    mScrollManager->Unsubscribe( mcCallback( evScrollRange, gxLightweightSystem::OnScrollRangeChanged ) );
 
   // Unset the lightweight system on the control, so event like paint won't be
   // delegated to an object that has been destroyed
@@ -47,16 +47,16 @@ void gxLightweightSystem::SetScrollManager(gxScrollManager *aScrollManager)
 {
   // Remove notification from previous scroll manager, (if such exist).
   if (mScrollManager)
-    mScrollManager->mObservers.Remove( gxCALLBACK( OnScrollRangeChanged ) );
+    mScrollManager->Unsubscribe( mcCallback( evScrollRange, gxLightweightSystem::OnScrollRangeChanged ) );
     
   mScrollManager = aScrollManager;
-  mScrollManager->mObservers.Add( gxCALLBACK( OnScrollRangeChanged ) );
+  mScrollManager->Subscribe( mcCallback( evScrollRange, gxLightweightSystem::OnScrollRangeChanged ) );
 }
 
-void gxLightweightSystem::OnScrollRangeChanged(const gxScrollRangeChangedNotification *aNotification)
+void gxLightweightSystem::OnScrollRangeChanged(const evScrollRange *aEvent)
 {
-  mControl->SetScrollbar(wxHORIZONTAL, aNotification->mScroll.X, aNotification->mVisible.X, aNotification->mRange.X);
-  mControl->SetScrollbar(wxVERTICAL, aNotification->mScroll.Y, aNotification->mVisible.Y, aNotification->mRange.Y);
+  mControl->SetScrollbar(wxHORIZONTAL, aEvent->mScroll.X, aEvent->mVisible.X, aEvent->mRange.X);
+  mControl->SetScrollbar(wxVERTICAL, aEvent->mScroll.Y, aEvent->mVisible.Y, aEvent->mRange.Y);
 }
 
 void gxLightweightSystem::Paint(gxPaintDC *aDc, gxRects const &aDamagedRects)

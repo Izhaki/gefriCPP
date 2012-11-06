@@ -18,39 +18,51 @@ gxRuler::~gxRuler()
 {
   // If a zoom manager is linked, remove the callbacks.
   if (mZoomManager)
-    mZoomManager->mObservers.Remove( gxCALLBACK( OnZoomManagerUpdate ) );
+    mZoomManager->Unsubscribe( mcCallback( evZoom, gxRuler::OnZoomManagerUpdate ) );
 
   // If a scroll manager is linked, remove the callbacks.
   if (mScrollManager)
-    mScrollManager->mObservers.Remove( gxCALLBACK( OnScrollManagerUpdate ) );
+  {
+    mScrollManager->Unsubscribe( mcCallback( evScrollPosition, gxRuler::OnScrollPositionChanged ) );
+    mScrollManager->Unsubscribe( mcCallback( evScrollRange, gxRuler::OnScrollRangeChanged ) );
+  }
 }
 
 void gxRuler::SetZoomManager(gxZoomManager *aZoomManager)
 {
   // Remove the callback from the previous zoom manager (if any).
   if (mZoomManager)
-    mZoomManager->mObservers.Remove( gxCALLBACK( OnZoomManagerUpdate ) );
+    mZoomManager->Unsubscribe( mcCallback( evZoom, gxRuler::OnZoomManagerUpdate ) );
 
   mZoomManager = aZoomManager;
-  aZoomManager->AddObserverAndNotify( gxCALLBACK( OnZoomManagerUpdate ) );
+  aZoomManager->AddObserverAndNotify( mcCallback( evZoom, gxRuler::OnZoomManagerUpdate ) );
 }
 
-void gxRuler::OnZoomManagerUpdate(const gxZoomChangedNotification *aNotification)
+void gxRuler::OnZoomManagerUpdate( const evZoom *aEvent )
 {
-  SetScale ( mIsHorizontal ? aNotification->mZoom.X : aNotification->mZoom.Y );
+  SetScale ( mIsHorizontal ? aEvent->mZoom.X : aEvent->mZoom.Y );
 }
 
 void gxRuler::SetScrollManager(gxScrollManager *aScrollManager)
 {
   // Remove the callback from the previous scroll manager (if any).
   if (mScrollManager)
-    mScrollManager->mObservers.Remove( gxCALLBACK( OnScrollManagerUpdate ) );
+  {
+    mScrollManager->Unsubscribe( mcCallback( evScrollPosition, gxRuler::OnScrollPositionChanged ) );
+    mScrollManager->Unsubscribe( mcCallback( evScrollRange, gxRuler::OnScrollRangeChanged ) );
+  }
 
   mScrollManager = aScrollManager;
-  aScrollManager->AddObserverAndNotify( gxCALLBACK( OnScrollManagerUpdate ) );
+  mScrollManager->Subscribe( mcCallback( evScrollPosition, gxRuler::OnScrollPositionChanged ) );
+  aScrollManager->AddObserverAndNotify( mcCallback( evScrollRange, gxRuler::OnScrollRangeChanged ) );
 }
 
-void gxRuler::OnScrollManagerUpdate(const gxNotification *aNotification)
+void gxRuler::OnScrollPositionChanged( const evScrollPosition *aEvent )
+{
+  mStartPixel = mIsHorizontal ? mScrollManager->GetScrollX() : mScrollManager->GetScrollY();
+}
+
+void gxRuler::OnScrollRangeChanged( const evScrollRange *aEvent )
 {
   mStartPixel = mIsHorizontal ? mScrollManager->GetScrollX() : mScrollManager->GetScrollY();
 }

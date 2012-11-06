@@ -41,10 +41,9 @@ public:
   /**
    * @brief A handler method for zoom change notifications from the
    * {@link gxZoomManager zoom manager}.
-   * @param aNotification The notification object.
+   * @param aEvent The notification event.
    */
-  void OnZoomManagerUpdate(const gxZoomChangedNotification *aNotification);
-  DECLARE_CALLBACK(gxRuler, OnZoomManagerUpdate, gxZoomChangedNotification)
+  void OnZoomManagerUpdate( const evZoom *aEvent );
 
   /**
    * @brief Sets the {@link gxScrollManager scroll manager} for this ruler.
@@ -53,12 +52,20 @@ public:
   void SetScrollManager(gxScrollManager *aScrollManager);
 
   /**
-   * @brief A handler method for scroll change notifications from the
+   * @brief A handler method for scroll position events from the
    * {@link gxScrollManager scroll manager}.
-   * @param aNotification The notification object.
+   * 
+   * @param aEvent The notification object.
    */
-  void OnScrollManagerUpdate(const gxNotification *aNotification);
-  DECLARE_CALLBACK(gxRuler, OnScrollManagerUpdate, gxNotification)
+  void OnScrollPositionChanged( const evScrollPosition *aEvent );
+
+  /**
+   * @brief A handler method for scroll Range events from the
+   * {@link gxScrollManager scroll manager}.
+   * 
+   * @param aEvent The notification object.
+   */
+  void OnScrollRangeChanged( const evScrollRange *aEvent );
 
   virtual void SetBounds(const gxRect &aNewBounds);
 

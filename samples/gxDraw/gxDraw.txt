@@ -1,1 +1,1 @@
-./build/Mac32-Release/src_main.o ./build/Mac32-Release/src_myFrame.o
+./build/Mac32-Debug/src_main.o ./build/Mac32-Debug/src_myFrame.o

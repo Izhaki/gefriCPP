@@ -31,13 +31,17 @@
       <File Name="../../src/core/geometry/gxRect.h"/>
       <File Name="../../src/core/geometry/gxSize.h"/>
     </VirtualDirectory>
-    <File Name="../../src/core/gxCallback.h"/>
-    <File Name="../../src/core/gxObserverList.cpp"/>
-    <File Name="../../src/core/gxObserverList.h"/>
     <File Name="../../src/core/gxAssert.h"/>
     <File Name="../../src/core/gxLog.h"/>
     <File Name="../../src/core/gxFlags.h"/>
     <File Name="../../src/core/gxString.h"/>
+    <VirtualDirectory Name="observable">
+      <File Name="../../src/core/observable/FastDelegate.h"/>
+      <File Name="../../src/core/observable/gxObservable.cpp"/>
+      <File Name="../../src/core/observable/gxObservable.h"/>
+      <File Name="../../src/core/observable/gxCallback.h"/>
+      <File Name="../../src/core/observable/gxCallbackClugston.h"/>
+    </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="view">
     <File Name="../../src/view/gxDcPainter.cpp"/>

@@ -1,5 +1,5 @@
 #include "view/elements/gxScroller.h"
-#include "core/gxCallback.h"
+#include "core/observable/gxCallback.h"
 #include "core/gxAssert.h"
 #include "core/gxLog.h"
 
@@ -18,7 +18,10 @@ gxScroller::~gxScroller()
 {
     // Remove the callback from the previous scroll manager (if any).
   if (mScrollManager)
-    mScrollManager->mObservers.Remove( gxCALLBACK( OnScrollUpdate ) );
+  {
+    mScrollManager->Unsubscribe( mcCallback( evScrollPosition, gxScroller::OnScrollPositionChanged ) );
+    mScrollManager->Unsubscribe( mcCallback( evScrollRange, gxScroller::OnScrollRangeChanged ) );
+  }
 
 }
 
@@ -27,15 +30,22 @@ void gxScroller::SetScrollManager(gxScrollManager *aScrollManager)
   // Remove the callback from the previous scroll manager (if any).
   if (mScrollManager)
   {
-    //mScrollManager->mObservers.Remove( gxCALLBACK(gxScroller, OnScrollPositionUpdate, gxScrollPositionChangedNotification) );
-    mScrollManager->mObservers.Remove( gxCALLBACK( OnScrollUpdate ) );
+    mScrollManager->Unsubscribe( mcCallback( evScrollPosition, gxScroller::OnScrollPositionChanged ) );
+    mScrollManager->Unsubscribe( mcCallback( evScrollRange, gxScroller::OnScrollRangeChanged ) );
   }
 
   mScrollManager = aScrollManager;
-  aScrollManager->AddObserverAndNotify( gxCALLBACK( OnScrollUpdate ) );
+
+  mScrollManager->Subscribe( mcCallback( evScrollPosition, gxScroller::OnScrollPositionChanged ) );
+  aScrollManager->AddObserverAndNotify( mcCallback( evScrollRange, gxScroller::OnScrollRangeChanged ) );
 }
 
-void gxScroller::OnScrollUpdate(const gxNotification *aNotification)
+void gxScroller::OnScrollPositionChanged( const evScrollPosition *aEvent )
+{
+  SetScroll( mScrollManager->GetScroll() );
+}
+
+void gxScroller::OnScrollRangeChanged( const evScrollRange *aEvent )
 {
   SetScroll( mScrollManager->GetScroll() );
 }

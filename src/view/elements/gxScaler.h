@@ -19,44 +19,43 @@
 class gxScaler: public gxStructuralViewElement
 {
 public:
-  gxScaler();
-  gxScaler(gxZoomManager *aZoomManager);
-  ~gxScaler();
+    gxScaler();
+    gxScaler( gxZoomManager *aZoomManager );
+    ~gxScaler();
 
-  /**
-   * @brief Sets the {@link gxZoomManager zoom manager} for this scaler.
-   * @param aZoomManager The new {@link gxZoomManager zoom manager}.
-   */
-  void SetZoomManager(gxZoomManager *aZoomManager);
+    /**
+     * @brief Sets the {@link gxZoomManager zoom manager} for this scaler.
+     * @param aZoomManager The new {@link gxZoomManager zoom manager}.
+     */
+    void SetZoomManager( gxZoomManager *aZoomManager );
   
-  /**
-   * @brief Sets the scale.
-   * @param aScale The new scale
-   */
-  void SetScale(gxScale const &aScale);
+    /**
+     * @brief Sets the scale.
+     * @param aScale The new scale
+     */
+    void SetScale( gxScale const &aScale );
 
-  /**
-   * @brief A handler method for zoom change notifications from the
-   * {@link gxZoomManager zoom manager}.
-   * @param aNotification The notification object.
-   */
-  void OnZoomManagerUpdate(const gxZoomChangedNotification *aNotification); 
-  DECLARE_CALLBACK(gxScaler, OnZoomManagerUpdate, gxZoomChangedNotification)
+    /**
+     * @brief A handler method for zoom change notifications from the
+     * {@link gxZoomManager zoom manager}.
+     * @param aNotification The notification object.
+     */
+    void OnZoomManagerUpdate( const evZoom *aEvent ); 
 
-  /**
-   * @brief Paints the view element by scaling the painter then calling
-   * {@link gxViewElement::PaintChildren() PaintChildren()}.
-   * 
-   * @param aPainter The {@link gxPainter painter} to be used for drawing.
-   */
-  void Paint(gxPainter &aPainter);
+    /**
+     * @brief Paints the view element by scaling the painter then calling
+     * {@link gxViewElement::PaintChildren() PaintChildren()}.
+     * 
+     * @param aPainter The {@link gxPainter painter} to be used for drawing.
+     */
+    void Paint( gxPainter &aPainter );
 
 protected:
-  virtual void Transform(gxRect &aRect, gxTransformFlags &aTransFlags);
+    virtual void Transform( gxRect &aRect, gxTransformFlags &aTransFlags );
 
-  gxZoomManager *mZoomManager;
+    gxZoomManager *mZoomManager;
 private:
-  gxScale mScale;
+    gxScale mScale;
 };
 
 #endif // gxScaler_h
