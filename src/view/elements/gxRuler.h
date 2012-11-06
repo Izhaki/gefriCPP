@@ -21,99 +21,99 @@
 class gxRuler: public gxVisualViewElement
 {
 public:
-  /**
-   * @brief The ruler's constructor.
-   * @param aBounds The bounds of the ruler.
-   * @param aDivProvider The {@link gxDivProvider div provider} providing
-   * the divisions for this ruler.
-   */
-  gxRuler(const gxRect  &aBounds,
-          gxDivProvider *aDivProvider);
+    /**
+     * @brief The ruler's constructor.
+     * @param aBounds The bounds of the ruler.
+     * @param aDivProvider The {@link gxDivProvider div provider} providing
+     * the divisions for this ruler.
+     */
+    gxRuler( const gxRect  &aBounds,
+             gxDivProvider *aDivProvider );
 
-  ~gxRuler();
+    ~gxRuler();
 
-  /**
-   * @brief Sets the {@link gxZoomManager zoom manager} for this ruler.
-   * @param aZoomManager The new {@link gxZoomManager zoom manager}.
-   */
-  void SetZoomManager(gxZoomManager *aZoomManager);
+    /**
+     * @brief Sets the {@link gxZoomManager zoom manager} for this ruler.
+     * @param aZoomManager The new {@link gxZoomManager zoom manager}.
+    */
+    void SetZoomManager( gxZoomManager *aZoomManager );
 
-  /**
-   * @brief A handler method for zoom change notifications from the
-   * {@link gxZoomManager zoom manager}.
-   * @param aEvent The notification event.
-   */
-  void OnZoomManagerUpdate( const evZoom *aEvent );
+    /**
+     * @brief A handler method for zoom change notifications from the
+     * {@link gxZoomManager zoom manager}.
+     * @param aEvent The notification event.
+     */
+    void OnZoomManagerUpdate( const evZoom *aEvent );
 
-  /**
-   * @brief Sets the {@link gxScrollManager scroll manager} for this ruler.
-   * @param aScrollManager The new {@link gxScrollManager scroll manager}.
-   */
-  void SetScrollManager(gxScrollManager *aScrollManager);
+    /**
+     * @brief Sets the {@link gxScrollManager scroll manager} for this ruler.
+     * @param aScrollManager The new {@link gxScrollManager scroll manager}.
+     */
+    void SetScrollManager( gxScrollManager *aScrollManager );
 
-  /**
-   * @brief A handler method for scroll position events from the
-   * {@link gxScrollManager scroll manager}.
-   * 
-   * @param aEvent The notification object.
-   */
-  void OnScrollPositionChanged( const evScrollPosition *aEvent );
+    /**
+     * @brief A handler method for scroll position events from the
+     * {@link gxScrollManager scroll manager}.
+     * 
+     * @param aEvent The notification object.
+     */
+    void OnScrollPositionChanged( const evScrollPosition *aEvent );
 
-  /**
-   * @brief A handler method for scroll Range events from the
-   * {@link gxScrollManager scroll manager}.
-   * 
-   * @param aEvent The notification object.
-   */
-  void OnScrollRangeChanged( const evScrollRange *aEvent );
+    /**
+     * @brief A handler method for scroll Range events from the
+     * {@link gxScrollManager scroll manager}.
+     * 
+     * @param aEvent The notification object.
+     */
+    void OnScrollRangeChanged( const evScrollRange *aEvent );
 
-  virtual void SetBounds(const gxRect &aNewBounds);
+    virtual void SetBounds( const gxRect &aNewBounds );
 
 protected:
-  void PaintSelf(gxPainter &aPainter);
+    void PaintSelf( gxPainter &aPainter );
 
-  /**
-   * @brief Calculates the miminum block size in pixel.
-   * 
-   * This is done based on the largest text to be displayed and the text
-   * portion of a block.
-   */
-  virtual void CalcMinBlockSize();
+    /**
+     * @brief Calculates the miminum block size in pixel.
+     * 
+     * This is done based on the largest text to be displayed and the text
+     * portion of a block.
+     */
+    virtual void CalcMinBlockSize();
 
-  gxZoomManager *mZoomManager;
-  gxScrollManager *mScrollManager;
+    gxZoomManager *mZoomManager;
+    gxScrollManager *mScrollManager;
 
-  /// Whether or not the scroller is horizontal
-  bool mIsHorizontal;
+    // Whether or not the scroller is horizontal
+    bool mIsHorizontal;
 
-  virtual void Validate();
+    virtual void Validate();
 protected:
-  /**
-   * @brief Returns the visible size of the ruler.
-   * 
-   * The visible size is either the bounds size after scaling or the parent
-   * size.
-   * @return The visible size in pixels. 
-   */
-  gxPix GetMyVisibleSize();
+    /**
+     * @brief Returns the visible size of the ruler.
+     * 
+     * The visible size is either the bounds size after scaling or the parent
+     * size.
+     * @return The visible size in pixels. 
+     */
+    gxPix GetMyVisibleSize();
 
-  /**
-   * @brief Sets the scale this ruler represents.
-   * @param aScale The new scale
-   */
-  virtual void SetScale(const float aScale);
+    /**
+     * @brief Sets the scale this ruler represents.
+     * @param aScale The new scale
+     */
+    virtual void SetScale( const float aScale );
 
-  /// The scale the ruler represents
-  float mScale;
+    /// The scale the ruler represents
+    float mScale;
 
-  /// The first pixel to be displayed by the ruler.
-  gxPix mStartPixel;
+    /// The first pixel to be displayed by the ruler.
+    gxPix mStartPixel;
   
-  /// How much of the cell is dedicated for text. A value of 0.5 means the
-  /// block size will be twice as big as the largest text.
-  float mBlockTextRatio;
+    /// How much of the cell is dedicated for text. A value of 0.5 means the
+    /// block size will be twice as big as the largest text.
+    float mBlockTextRatio;
   
-  gxDivProvider *mDivProvider;
+    gxDivProvider *mDivProvider;
 };
 
 #endif // gxRuler_h

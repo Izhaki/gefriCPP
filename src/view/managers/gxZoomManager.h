@@ -68,10 +68,10 @@ private:
 class evZoom: public evEvent
 {
 public:
-  evZoom( const gxZoomManager *aZoomManager )
-  : mZoom( aZoomManager->GetZoom() ) { }
+    evZoom( const gxZoomManager *aZoomManager )
+    : mZoom( aZoomManager->GetZoom() ) { }
 
-  gxScale mZoom;
+    gxScale mZoom;
 };
 
 #endif // gxZoomManager_h

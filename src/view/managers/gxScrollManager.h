@@ -81,9 +81,9 @@ class evScrollRange: public evEvent
 {
 public:
     evScrollRange( const gxScrollManager* aScrollManager )
-    : mScroll( aScrollManager->GetScroll() ),
-      mVisible( aScrollManager->GetVisible() ),
-      mRange( aScrollManager->GetRange() ) { }
+    : mScroll  ( aScrollManager->GetScroll() ),
+      mVisible ( aScrollManager->GetVisible() ),
+      mRange   ( aScrollManager->GetRange() ) { }
 
     gxScroll mScroll;
     gxSize   mVisible;

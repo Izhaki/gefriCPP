@@ -3,12 +3,12 @@
 #include "core/gxAssert.h"
 
 gxScaler::gxScaler()
-: mZoomManager(NULL)
+: mZoomManager( NULL )
 {
 }
 
 gxScaler::gxScaler( gxZoomManager *aZoomManager )
-: mZoomManager(NULL)
+: mZoomManager( NULL )
 {
     SetZoomManager( aZoomManager );
 }
@@ -22,7 +22,7 @@ gxScaler::~gxScaler()
 
 void gxScaler::SetZoomManager( gxZoomManager *aZoomManager )
 {
-  // Remove the callback from the previous zoom manager (if any).
+    // Remove the callback from the previous zoom manager (if any).
     if ( mZoomManager )
         mZoomManager->Unsubscribe( mcCallback( evZoom, gxScaler::OnZoomManagerUpdate ) );
 
