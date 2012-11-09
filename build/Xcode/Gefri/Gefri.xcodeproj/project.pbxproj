@@ -1,0 +1,551 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		876C5D32164C73E60006CB61 /* gxAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CEF164C73E60006CB61 /* gxAssert.h */; };
+		876C5D33164C73E60006CB61 /* gxLightweightControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5CF0164C73E60006CB61 /* gxLightweightControl.cpp */; };
+		876C5D34164C73E60006CB61 /* gxLightweightControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF1164C73E60006CB61 /* gxLightweightControl.h */; };
+		876C5D35164C73E60006CB61 /* gxLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF2164C73E60006CB61 /* gxLog.h */; };
+		876C5D36164C73E60006CB61 /* gxObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF3164C73E60006CB61 /* gxObject.h */; };
+		876C5D37164C73E60006CB61 /* gxPaintDC.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF4164C73E60006CB61 /* gxPaintDC.h */; };
+		876C5D38164C73E60006CB61 /* gxString.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF5164C73E60006CB61 /* gxString.h */; };
+		876C5D39164C73E60006CB61 /* gxGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF8164C73E60006CB61 /* gxGeometry.h */; };
+		876C5D3A164C73E60006CB61 /* gxGeometryDefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF9164C73E60006CB61 /* gxGeometryDefs.h */; };
+		876C5D3B164C73E60006CB61 /* gxPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CFA164C73E60006CB61 /* gxPoint.h */; };
+		876C5D3C164C73E60006CB61 /* gxRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5CFB164C73E60006CB61 /* gxRect.cpp */; };
+		876C5D3D164C73E60006CB61 /* gxRect.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CFC164C73E60006CB61 /* gxRect.h */; };
+		876C5D3E164C73E60006CB61 /* gxSize.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CFD164C73E60006CB61 /* gxSize.h */; };
+		876C5D3F164C73E60006CB61 /* gxAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CFE164C73E60006CB61 /* gxAssert.h */; };
+		876C5D40164C73E60006CB61 /* gxComposite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5CFF164C73E60006CB61 /* gxComposite.cpp */; };
+		876C5D41164C73E60006CB61 /* gxComposite.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D00164C73E60006CB61 /* gxComposite.h */; };
+		876C5D42164C73E60006CB61 /* gxFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D01164C73E60006CB61 /* gxFlags.h */; };
+		876C5D43164C73E60006CB61 /* gxLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D02164C73E60006CB61 /* gxLog.h */; };
+		876C5D44164C73E60006CB61 /* gxObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D03164C73E60006CB61 /* gxObject.h */; };
+		876C5D45164C73E60006CB61 /* gxPaintDC.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D04164C73E60006CB61 /* gxPaintDC.h */; };
+		876C5D46164C73E60006CB61 /* gxString.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D05164C73E60006CB61 /* gxString.h */; };
+		876C5D47164C73E60006CB61 /* FastDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D07164C73E60006CB61 /* FastDelegate.h */; };
+		876C5D48164C73E60006CB61 /* gxCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D08164C73E60006CB61 /* gxCallback.h */; };
+		876C5D49164C73E60006CB61 /* gxCallbackClugston.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D09164C73E60006CB61 /* gxCallbackClugston.h */; };
+		876C5D4A164C73E60006CB61 /* gxObservable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D0A164C73E60006CB61 /* gxObservable.cpp */; };
+		876C5D4B164C73E60006CB61 /* gxObservable.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D0B164C73E60006CB61 /* gxObservable.h */; };
+		876C5D4C164C73E60006CB61 /* gxRootViewElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D0E164C73E60006CB61 /* gxRootViewElement.cpp */; };
+		876C5D4D164C73E60006CB61 /* gxRootViewElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D0F164C73E60006CB61 /* gxRootViewElement.h */; };
+		876C5D4E164C73E60006CB61 /* gxRuler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D10164C73E60006CB61 /* gxRuler.cpp */; };
+		876C5D4F164C73E60006CB61 /* gxRuler.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D11164C73E60006CB61 /* gxRuler.h */; };
+		876C5D50164C73E60006CB61 /* gxScaler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D12164C73E60006CB61 /* gxScaler.cpp */; };
+		876C5D51164C73E60006CB61 /* gxScaler.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D13164C73E60006CB61 /* gxScaler.h */; };
+		876C5D52164C73E60006CB61 /* gxScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D14164C73E60006CB61 /* gxScroller.cpp */; };
+		876C5D53164C73E60006CB61 /* gxScroller.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D15164C73E60006CB61 /* gxScroller.h */; };
+		876C5D54164C73E60006CB61 /* gxStructuralViewElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D16164C73E60006CB61 /* gxStructuralViewElement.cpp */; };
+		876C5D55164C73E60006CB61 /* gxStructuralViewElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D17164C73E60006CB61 /* gxStructuralViewElement.h */; };
+		876C5D56164C73E60006CB61 /* gxViewElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D18164C73E60006CB61 /* gxViewElement.cpp */; };
+		876C5D57164C73E60006CB61 /* gxViewElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D19164C73E60006CB61 /* gxViewElement.h */; };
+		876C5D58164C73E60006CB61 /* gxVisualViewElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D1A164C73E60006CB61 /* gxVisualViewElement.cpp */; };
+		876C5D59164C73E60006CB61 /* gxVisualViewElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D1B164C73E60006CB61 /* gxVisualViewElement.h */; };
+		876C5D5A164C73E60006CB61 /* gxRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D1D164C73E60006CB61 /* gxRectangle.cpp */; };
+		876C5D5B164C73E60006CB61 /* gxRectangle.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D1E164C73E60006CB61 /* gxRectangle.h */; };
+		876C5D5C164C73E60006CB61 /* gxShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D1F164C73E60006CB61 /* gxShape.cpp */; };
+		876C5D5D164C73E60006CB61 /* gxShape.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D20164C73E60006CB61 /* gxShape.h */; };
+		876C5D5E164C73E60006CB61 /* gxDcPainter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D21164C73E60006CB61 /* gxDcPainter.cpp */; };
+		876C5D5F164C73E60006CB61 /* gxDcPainter.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D22164C73E60006CB61 /* gxDcPainter.h */; };
+		876C5D60164C73E60006CB61 /* gxDivProvider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D23164C73E60006CB61 /* gxDivProvider.cpp */; };
+		876C5D61164C73E60006CB61 /* gxDivProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D24164C73E60006CB61 /* gxDivProvider.h */; };
+		876C5D62164C73E60006CB61 /* gxLightweightControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D25164C73E60006CB61 /* gxLightweightControl.h */; };
+		876C5D63164C73E60006CB61 /* gxLightweightSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D26164C73E60006CB61 /* gxLightweightSystem.cpp */; };
+		876C5D64164C73E60006CB61 /* gxLightweightSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D27164C73E60006CB61 /* gxLightweightSystem.h */; };
+		876C5D65164C73E60006CB61 /* gxPainter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D28164C73E60006CB61 /* gxPainter.cpp */; };
+		876C5D66164C73E60006CB61 /* gxPainter.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D29164C73E60006CB61 /* gxPainter.h */; };
+		876C5D67164C73E60006CB61 /* gxTransformations.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D2A164C73E60006CB61 /* gxTransformations.h */; };
+		876C5D68164C73E60006CB61 /* gxViewUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D2B164C73E60006CB61 /* gxViewUnit.cpp */; };
+		876C5D69164C73E60006CB61 /* gxViewUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D2C164C73E60006CB61 /* gxViewUnit.h */; };
+		876C5D6A164C73E60006CB61 /* gxScrollManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D2E164C73E60006CB61 /* gxScrollManager.cpp */; };
+		876C5D6B164C73E60006CB61 /* gxScrollManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D2F164C73E60006CB61 /* gxScrollManager.h */; };
+		876C5D6C164C73E60006CB61 /* gxZoomManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D30164C73E60006CB61 /* gxZoomManager.cpp */; };
+		876C5D6D164C73E60006CB61 /* gxZoomManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D31164C73E60006CB61 /* gxZoomManager.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		876C5C62164C73460006CB61 /* libGefri.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGefri.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		876C5CEF164C73E60006CB61 /* gxAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxAssert.h; sourceTree = "<group>"; };
+		876C5CF0164C73E60006CB61 /* gxLightweightControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxLightweightControl.cpp; sourceTree = "<group>"; };
+		876C5CF1164C73E60006CB61 /* gxLightweightControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxLightweightControl.h; sourceTree = "<group>"; };
+		876C5CF2164C73E60006CB61 /* gxLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxLog.h; sourceTree = "<group>"; };
+		876C5CF3164C73E60006CB61 /* gxObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxObject.h; sourceTree = "<group>"; };
+		876C5CF4164C73E60006CB61 /* gxPaintDC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxPaintDC.h; sourceTree = "<group>"; };
+		876C5CF5164C73E60006CB61 /* gxString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxString.h; sourceTree = "<group>"; };
+		876C5CF8164C73E60006CB61 /* gxGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxGeometry.h; sourceTree = "<group>"; };
+		876C5CF9164C73E60006CB61 /* gxGeometryDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxGeometryDefs.h; sourceTree = "<group>"; };
+		876C5CFA164C73E60006CB61 /* gxPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxPoint.h; sourceTree = "<group>"; };
+		876C5CFB164C73E60006CB61 /* gxRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxRect.cpp; sourceTree = "<group>"; };
+		876C5CFC164C73E60006CB61 /* gxRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxRect.h; sourceTree = "<group>"; };
+		876C5CFD164C73E60006CB61 /* gxSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxSize.h; sourceTree = "<group>"; };
+		876C5CFE164C73E60006CB61 /* gxAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxAssert.h; sourceTree = "<group>"; };
+		876C5CFF164C73E60006CB61 /* gxComposite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxComposite.cpp; sourceTree = "<group>"; };
+		876C5D00164C73E60006CB61 /* gxComposite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxComposite.h; sourceTree = "<group>"; };
+		876C5D01164C73E60006CB61 /* gxFlags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxFlags.h; sourceTree = "<group>"; };
+		876C5D02164C73E60006CB61 /* gxLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxLog.h; sourceTree = "<group>"; };
+		876C5D03164C73E60006CB61 /* gxObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxObject.h; sourceTree = "<group>"; };
+		876C5D04164C73E60006CB61 /* gxPaintDC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxPaintDC.h; sourceTree = "<group>"; };
+		876C5D05164C73E60006CB61 /* gxString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxString.h; sourceTree = "<group>"; };
+		876C5D07164C73E60006CB61 /* FastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastDelegate.h; sourceTree = "<group>"; };
+		876C5D08164C73E60006CB61 /* gxCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxCallback.h; sourceTree = "<group>"; };
+		876C5D09164C73E60006CB61 /* gxCallbackClugston.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxCallbackClugston.h; sourceTree = "<group>"; };
+		876C5D0A164C73E60006CB61 /* gxObservable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxObservable.cpp; sourceTree = "<group>"; };
+		876C5D0B164C73E60006CB61 /* gxObservable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxObservable.h; sourceTree = "<group>"; };
+		876C5D0E164C73E60006CB61 /* gxRootViewElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxRootViewElement.cpp; sourceTree = "<group>"; };
+		876C5D0F164C73E60006CB61 /* gxRootViewElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxRootViewElement.h; sourceTree = "<group>"; };
+		876C5D10164C73E60006CB61 /* gxRuler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxRuler.cpp; sourceTree = "<group>"; };
+		876C5D11164C73E60006CB61 /* gxRuler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxRuler.h; sourceTree = "<group>"; };
+		876C5D12164C73E60006CB61 /* gxScaler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxScaler.cpp; sourceTree = "<group>"; };
+		876C5D13164C73E60006CB61 /* gxScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxScaler.h; sourceTree = "<group>"; };
+		876C5D14164C73E60006CB61 /* gxScroller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxScroller.cpp; sourceTree = "<group>"; };
+		876C5D15164C73E60006CB61 /* gxScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxScroller.h; sourceTree = "<group>"; };
+		876C5D16164C73E60006CB61 /* gxStructuralViewElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxStructuralViewElement.cpp; sourceTree = "<group>"; };
+		876C5D17164C73E60006CB61 /* gxStructuralViewElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxStructuralViewElement.h; sourceTree = "<group>"; };
+		876C5D18164C73E60006CB61 /* gxViewElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxViewElement.cpp; sourceTree = "<group>"; };
+		876C5D19164C73E60006CB61 /* gxViewElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxViewElement.h; sourceTree = "<group>"; };
+		876C5D1A164C73E60006CB61 /* gxVisualViewElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxVisualViewElement.cpp; sourceTree = "<group>"; };
+		876C5D1B164C73E60006CB61 /* gxVisualViewElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxVisualViewElement.h; sourceTree = "<group>"; };
+		876C5D1D164C73E60006CB61 /* gxRectangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxRectangle.cpp; sourceTree = "<group>"; };
+		876C5D1E164C73E60006CB61 /* gxRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxRectangle.h; sourceTree = "<group>"; };
+		876C5D1F164C73E60006CB61 /* gxShape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxShape.cpp; sourceTree = "<group>"; };
+		876C5D20164C73E60006CB61 /* gxShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxShape.h; sourceTree = "<group>"; };
+		876C5D21164C73E60006CB61 /* gxDcPainter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxDcPainter.cpp; sourceTree = "<group>"; };
+		876C5D22164C73E60006CB61 /* gxDcPainter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxDcPainter.h; sourceTree = "<group>"; };
+		876C5D23164C73E60006CB61 /* gxDivProvider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxDivProvider.cpp; sourceTree = "<group>"; };
+		876C5D24164C73E60006CB61 /* gxDivProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxDivProvider.h; sourceTree = "<group>"; };
+		876C5D25164C73E60006CB61 /* gxLightweightControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxLightweightControl.h; sourceTree = "<group>"; };
+		876C5D26164C73E60006CB61 /* gxLightweightSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxLightweightSystem.cpp; sourceTree = "<group>"; };
+		876C5D27164C73E60006CB61 /* gxLightweightSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxLightweightSystem.h; sourceTree = "<group>"; };
+		876C5D28164C73E60006CB61 /* gxPainter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxPainter.cpp; sourceTree = "<group>"; };
+		876C5D29164C73E60006CB61 /* gxPainter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxPainter.h; sourceTree = "<group>"; };
+		876C5D2A164C73E60006CB61 /* gxTransformations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxTransformations.h; sourceTree = "<group>"; };
+		876C5D2B164C73E60006CB61 /* gxViewUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxViewUnit.cpp; sourceTree = "<group>"; };
+		876C5D2C164C73E60006CB61 /* gxViewUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxViewUnit.h; sourceTree = "<group>"; };
+		876C5D2E164C73E60006CB61 /* gxScrollManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxScrollManager.cpp; sourceTree = "<group>"; };
+		876C5D2F164C73E60006CB61 /* gxScrollManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxScrollManager.h; sourceTree = "<group>"; };
+		876C5D30164C73E60006CB61 /* gxZoomManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxZoomManager.cpp; sourceTree = "<group>"; };
+		876C5D31164C73E60006CB61 /* gxZoomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxZoomManager.h; sourceTree = "<group>"; };
+		876C5D6F164C74B30006CB61 /* wx2.9.4.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = wx2.9.4.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		876C5C5F164C73460006CB61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		876C5C57164C73460006CB61 = {
+			isa = PBXGroup;
+			children = (
+				876C5D6E164C74880006CB61 /* Supporting Files */,
+				876C5CEC164C73CB0006CB61 /* Source */,
+				876C5C63164C73460006CB61 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		876C5C63164C73460006CB61 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				876C5C62164C73460006CB61 /* libGefri.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		876C5CEC164C73CB0006CB61 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				876C5CED164C73E60006CB61 /* adapters */,
+				876C5CF6164C73E60006CB61 /* core */,
+				876C5D0C164C73E60006CB61 /* view */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		876C5CED164C73E60006CB61 /* adapters */ = {
+			isa = PBXGroup;
+			children = (
+				876C5CEE164C73E60006CB61 /* wx */,
+			);
+			name = adapters;
+			path = ../../../src/adapters;
+			sourceTree = "<group>";
+		};
+		876C5CEE164C73E60006CB61 /* wx */ = {
+			isa = PBXGroup;
+			children = (
+				876C5CEF164C73E60006CB61 /* gxAssert.h */,
+				876C5CF0164C73E60006CB61 /* gxLightweightControl.cpp */,
+				876C5CF1164C73E60006CB61 /* gxLightweightControl.h */,
+				876C5CF2164C73E60006CB61 /* gxLog.h */,
+				876C5CF3164C73E60006CB61 /* gxObject.h */,
+				876C5CF4164C73E60006CB61 /* gxPaintDC.h */,
+				876C5CF5164C73E60006CB61 /* gxString.h */,
+			);
+			path = wx;
+			sourceTree = "<group>";
+		};
+		876C5CF6164C73E60006CB61 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				876C5CF7164C73E60006CB61 /* geometry */,
+				876C5CFE164C73E60006CB61 /* gxAssert.h */,
+				876C5CFF164C73E60006CB61 /* gxComposite.cpp */,
+				876C5D00164C73E60006CB61 /* gxComposite.h */,
+				876C5D01164C73E60006CB61 /* gxFlags.h */,
+				876C5D02164C73E60006CB61 /* gxLog.h */,
+				876C5D03164C73E60006CB61 /* gxObject.h */,
+				876C5D04164C73E60006CB61 /* gxPaintDC.h */,
+				876C5D05164C73E60006CB61 /* gxString.h */,
+				876C5D06164C73E60006CB61 /* observable */,
+			);
+			name = core;
+			path = ../../../src/core;
+			sourceTree = "<group>";
+		};
+		876C5CF7164C73E60006CB61 /* geometry */ = {
+			isa = PBXGroup;
+			children = (
+				876C5CF8164C73E60006CB61 /* gxGeometry.h */,
+				876C5CF9164C73E60006CB61 /* gxGeometryDefs.h */,
+				876C5CFA164C73E60006CB61 /* gxPoint.h */,
+				876C5CFB164C73E60006CB61 /* gxRect.cpp */,
+				876C5CFC164C73E60006CB61 /* gxRect.h */,
+				876C5CFD164C73E60006CB61 /* gxSize.h */,
+			);
+			path = geometry;
+			sourceTree = "<group>";
+		};
+		876C5D06164C73E60006CB61 /* observable */ = {
+			isa = PBXGroup;
+			children = (
+				876C5D07164C73E60006CB61 /* FastDelegate.h */,
+				876C5D08164C73E60006CB61 /* gxCallback.h */,
+				876C5D09164C73E60006CB61 /* gxCallbackClugston.h */,
+				876C5D0A164C73E60006CB61 /* gxObservable.cpp */,
+				876C5D0B164C73E60006CB61 /* gxObservable.h */,
+			);
+			path = observable;
+			sourceTree = "<group>";
+		};
+		876C5D0C164C73E60006CB61 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				876C5D0D164C73E60006CB61 /* elements */,
+				876C5D21164C73E60006CB61 /* gxDcPainter.cpp */,
+				876C5D22164C73E60006CB61 /* gxDcPainter.h */,
+				876C5D23164C73E60006CB61 /* gxDivProvider.cpp */,
+				876C5D24164C73E60006CB61 /* gxDivProvider.h */,
+				876C5D25164C73E60006CB61 /* gxLightweightControl.h */,
+				876C5D26164C73E60006CB61 /* gxLightweightSystem.cpp */,
+				876C5D27164C73E60006CB61 /* gxLightweightSystem.h */,
+				876C5D28164C73E60006CB61 /* gxPainter.cpp */,
+				876C5D29164C73E60006CB61 /* gxPainter.h */,
+				876C5D2A164C73E60006CB61 /* gxTransformations.h */,
+				876C5D2B164C73E60006CB61 /* gxViewUnit.cpp */,
+				876C5D2C164C73E60006CB61 /* gxViewUnit.h */,
+				876C5D2D164C73E60006CB61 /* managers */,
+			);
+			name = view;
+			path = ../../../src/view;
+			sourceTree = "<group>";
+		};
+		876C5D0D164C73E60006CB61 /* elements */ = {
+			isa = PBXGroup;
+			children = (
+				876C5D0E164C73E60006CB61 /* gxRootViewElement.cpp */,
+				876C5D0F164C73E60006CB61 /* gxRootViewElement.h */,
+				876C5D10164C73E60006CB61 /* gxRuler.cpp */,
+				876C5D11164C73E60006CB61 /* gxRuler.h */,
+				876C5D12164C73E60006CB61 /* gxScaler.cpp */,
+				876C5D13164C73E60006CB61 /* gxScaler.h */,
+				876C5D14164C73E60006CB61 /* gxScroller.cpp */,
+				876C5D15164C73E60006CB61 /* gxScroller.h */,
+				876C5D16164C73E60006CB61 /* gxStructuralViewElement.cpp */,
+				876C5D17164C73E60006CB61 /* gxStructuralViewElement.h */,
+				876C5D18164C73E60006CB61 /* gxViewElement.cpp */,
+				876C5D19164C73E60006CB61 /* gxViewElement.h */,
+				876C5D1A164C73E60006CB61 /* gxVisualViewElement.cpp */,
+				876C5D1B164C73E60006CB61 /* gxVisualViewElement.h */,
+				876C5D1C164C73E60006CB61 /* shapes */,
+			);
+			path = elements;
+			sourceTree = "<group>";
+		};
+		876C5D1C164C73E60006CB61 /* shapes */ = {
+			isa = PBXGroup;
+			children = (
+				876C5D1D164C73E60006CB61 /* gxRectangle.cpp */,
+				876C5D1E164C73E60006CB61 /* gxRectangle.h */,
+				876C5D1F164C73E60006CB61 /* gxShape.cpp */,
+				876C5D20164C73E60006CB61 /* gxShape.h */,
+			);
+			path = shapes;
+			sourceTree = "<group>";
+		};
+		876C5D2D164C73E60006CB61 /* managers */ = {
+			isa = PBXGroup;
+			children = (
+				876C5D2E164C73E60006CB61 /* gxScrollManager.cpp */,
+				876C5D2F164C73E60006CB61 /* gxScrollManager.h */,
+				876C5D30164C73E60006CB61 /* gxZoomManager.cpp */,
+				876C5D31164C73E60006CB61 /* gxZoomManager.h */,
+			);
+			path = managers;
+			sourceTree = "<group>";
+		};
+		876C5D6E164C74880006CB61 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				876C5D6F164C74B30006CB61 /* wx2.9.4.xcconfig */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		876C5C60164C73460006CB61 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				876C5D32164C73E60006CB61 /* gxAssert.h in Headers */,
+				876C5D34164C73E60006CB61 /* gxLightweightControl.h in Headers */,
+				876C5D35164C73E60006CB61 /* gxLog.h in Headers */,
+				876C5D36164C73E60006CB61 /* gxObject.h in Headers */,
+				876C5D37164C73E60006CB61 /* gxPaintDC.h in Headers */,
+				876C5D38164C73E60006CB61 /* gxString.h in Headers */,
+				876C5D39164C73E60006CB61 /* gxGeometry.h in Headers */,
+				876C5D3A164C73E60006CB61 /* gxGeometryDefs.h in Headers */,
+				876C5D3B164C73E60006CB61 /* gxPoint.h in Headers */,
+				876C5D3D164C73E60006CB61 /* gxRect.h in Headers */,
+				876C5D3E164C73E60006CB61 /* gxSize.h in Headers */,
+				876C5D3F164C73E60006CB61 /* gxAssert.h in Headers */,
+				876C5D41164C73E60006CB61 /* gxComposite.h in Headers */,
+				876C5D42164C73E60006CB61 /* gxFlags.h in Headers */,
+				876C5D43164C73E60006CB61 /* gxLog.h in Headers */,
+				876C5D44164C73E60006CB61 /* gxObject.h in Headers */,
+				876C5D45164C73E60006CB61 /* gxPaintDC.h in Headers */,
+				876C5D46164C73E60006CB61 /* gxString.h in Headers */,
+				876C5D47164C73E60006CB61 /* FastDelegate.h in Headers */,
+				876C5D48164C73E60006CB61 /* gxCallback.h in Headers */,
+				876C5D49164C73E60006CB61 /* gxCallbackClugston.h in Headers */,
+				876C5D4B164C73E60006CB61 /* gxObservable.h in Headers */,
+				876C5D4D164C73E60006CB61 /* gxRootViewElement.h in Headers */,
+				876C5D4F164C73E60006CB61 /* gxRuler.h in Headers */,
+				876C5D51164C73E60006CB61 /* gxScaler.h in Headers */,
+				876C5D53164C73E60006CB61 /* gxScroller.h in Headers */,
+				876C5D55164C73E60006CB61 /* gxStructuralViewElement.h in Headers */,
+				876C5D57164C73E60006CB61 /* gxViewElement.h in Headers */,
+				876C5D59164C73E60006CB61 /* gxVisualViewElement.h in Headers */,
+				876C5D5B164C73E60006CB61 /* gxRectangle.h in Headers */,
+				876C5D5D164C73E60006CB61 /* gxShape.h in Headers */,
+				876C5D5F164C73E60006CB61 /* gxDcPainter.h in Headers */,
+				876C5D61164C73E60006CB61 /* gxDivProvider.h in Headers */,
+				876C5D62164C73E60006CB61 /* gxLightweightControl.h in Headers */,
+				876C5D64164C73E60006CB61 /* gxLightweightSystem.h in Headers */,
+				876C5D66164C73E60006CB61 /* gxPainter.h in Headers */,
+				876C5D67164C73E60006CB61 /* gxTransformations.h in Headers */,
+				876C5D69164C73E60006CB61 /* gxViewUnit.h in Headers */,
+				876C5D6B164C73E60006CB61 /* gxScrollManager.h in Headers */,
+				876C5D6D164C73E60006CB61 /* gxZoomManager.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		876C5C61164C73460006CB61 /* Gefri */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 876C5C66164C73460006CB61 /* Build configuration list for PBXNativeTarget "Gefri" */;
+			buildPhases = (
+				876C5C5E164C73460006CB61 /* Sources */,
+				876C5C5F164C73460006CB61 /* Frameworks */,
+				876C5C60164C73460006CB61 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Gefri;
+			productName = Gefri;
+			productReference = 876C5C62164C73460006CB61 /* libGefri.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		876C5C59164C73460006CB61 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = Izhaki;
+			};
+			buildConfigurationList = 876C5C5C164C73460006CB61 /* Build configuration list for PBXProject "Gefri" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 876C5C57164C73460006CB61;
+			productRefGroup = 876C5C63164C73460006CB61 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				876C5C61164C73460006CB61 /* Gefri */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		876C5C5E164C73460006CB61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				876C5D33164C73E60006CB61 /* gxLightweightControl.cpp in Sources */,
+				876C5D3C164C73E60006CB61 /* gxRect.cpp in Sources */,
+				876C5D40164C73E60006CB61 /* gxComposite.cpp in Sources */,
+				876C5D4A164C73E60006CB61 /* gxObservable.cpp in Sources */,
+				876C5D4C164C73E60006CB61 /* gxRootViewElement.cpp in Sources */,
+				876C5D4E164C73E60006CB61 /* gxRuler.cpp in Sources */,
+				876C5D50164C73E60006CB61 /* gxScaler.cpp in Sources */,
+				876C5D52164C73E60006CB61 /* gxScroller.cpp in Sources */,
+				876C5D54164C73E60006CB61 /* gxStructuralViewElement.cpp in Sources */,
+				876C5D56164C73E60006CB61 /* gxViewElement.cpp in Sources */,
+				876C5D58164C73E60006CB61 /* gxVisualViewElement.cpp in Sources */,
+				876C5D5A164C73E60006CB61 /* gxRectangle.cpp in Sources */,
+				876C5D5C164C73E60006CB61 /* gxShape.cpp in Sources */,
+				876C5D5E164C73E60006CB61 /* gxDcPainter.cpp in Sources */,
+				876C5D60164C73E60006CB61 /* gxDivProvider.cpp in Sources */,
+				876C5D63164C73E60006CB61 /* gxLightweightSystem.cpp in Sources */,
+				876C5D65164C73E60006CB61 /* gxPainter.cpp in Sources */,
+				876C5D68164C73E60006CB61 /* gxViewUnit.cpp in Sources */,
+				876C5D6A164C73E60006CB61 /* gxScrollManager.cpp in Sources */,
+				876C5D6C164C73E60006CB61 /* gxZoomManager.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		876C5C64164C73460006CB61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		876C5C65164C73460006CB61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		876C5C67164C73460006CB61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 876C5D6F164C74B30006CB61 /* wx2.9.4.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREFIX_HEADER = "$(PREFIX_HEADER)";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				HEADER_SEARCH_PATHS = "../../../src/**";
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		876C5C68164C73460006CB61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				EXECUTABLE_PREFIX = lib;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				HEADER_SEARCH_PATHS = "../../../src/**";
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		876C5C5C164C73460006CB61 /* Build configuration list for PBXProject "Gefri" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				876C5C64164C73460006CB61 /* Debug */,
+				876C5C65164C73460006CB61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		876C5C66164C73460006CB61 /* Build configuration list for PBXNativeTarget "Gefri" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				876C5C67164C73460006CB61 /* Debug */,
+				876C5C68164C73460006CB61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 876C5C59164C73460006CB61 /* Project object */;
+}

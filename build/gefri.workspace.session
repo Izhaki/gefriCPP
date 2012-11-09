@@ -1,42 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="/Volumes/Blackstore/Development/gefri/build/gefri.workspace">
-  <int Value="5" Name="m_selectedTab"/>
+  <int Value="0" Name="m_selectedTab"/>
   <wxString Value="/Volumes/Blackstore/Development/gefri/build/gefri.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/src/core/gxObserverList.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="30" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/src/core/gxObserverList.cpp" Name="FileName"/>
-      <int Value="71" Name="FirstVisibleLine"/>
-      <int Value="83" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
       <wxString Value="/Volumes/Blackstore/Development/gefri/src/view/managers/gxZoomManager.h" Name="FileName"/>
-      <int Value="37" Name="FirstVisibleLine"/>
-      <int Value="60" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/src/view/managers/gxZoomManager.cpp" Name="FileName"/>
-      <int Value="12" Name="FirstVisibleLine"/>
-      <int Value="49" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/src/view/elements/gxScaler.cpp" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="12" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/Volumes/Blackstore/Development/gefri/src/core/gxCallback.h" Name="FileName"/>
       <int Value="46" Name="FirstVisibleLine"/>
-      <int Value="71" Name="CurrentLine"/>
+      <int Value="66" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
     </TabInfo>
   </TabInfoArray>

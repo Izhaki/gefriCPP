@@ -4,7 +4,7 @@
 #include "core/gxLog.h"
 
 gxScroller::gxScroller()
-  : mScrollManager( NULL å)
+  : mScrollManager( NULL )
 {
 }
 
