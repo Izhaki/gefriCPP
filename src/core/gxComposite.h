@@ -43,8 +43,11 @@ protected:                                                              \
 class gxComposite: public gxObject
 {
 public:
-  gxComposite();
-  ~gxComposite(); 
+    gxComposite();
+    
+    // A virtual destructor is a must or a polymorphic derived class destructor
+    // won't be called.
+    virtual ~gxComposite();
 
   /**
    * @brief Adds a new child to this object.

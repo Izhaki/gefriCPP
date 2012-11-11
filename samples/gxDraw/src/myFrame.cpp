@@ -41,7 +41,7 @@ END_EVENT_TABLE()
 
 void MyFrame::Test()
 {
-  wxLogDebug(_T("Test"));
+  wxLogDebug( "Test" );
 }
 
 MyFrame::MyFrame(wxWindow* parent,
@@ -57,6 +57,23 @@ MyFrame::MyFrame(wxWindow* parent,
 
 MyFrame::~MyFrame()
 {
+//    delete mScroller;
+//    delete mRulerH;
+//    delete mDivProvider;
+//    delete mViewUnit;
+    
+//    Will be deleted by parent
+//    delete mFace;
+    
+//    delete mScrollManager;
+//    delete mZoom;
+
+//    delete mDocument;
+    delete mLightweightSystem;
+    delete mLightweightControl;
+    
+    delete mScrollManager;
+    delete mZoomManager;    
 }
 
 void MyFrame::InitGefri()

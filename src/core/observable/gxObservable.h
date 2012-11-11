@@ -15,7 +15,7 @@ public:
 class gxObservable
 {
 public:
-    ~gxObservable();
+    virtual ~gxObservable();
     
     void Fire( evEvent *aEvent, gxCallback *aCallback = NULL);
     
