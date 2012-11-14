@@ -73,7 +73,7 @@ MyFrame::~MyFrame()
     delete mLightweightControl;
     
     delete mScrollManager;
-    delete mZoomManager;    
+    delete mZoomManager;
 }
 
 void MyFrame::InitGefri()

@@ -16,7 +16,7 @@ void gxObservable::Fire( evEvent *aEvent, gxCallback *aCallback )
         // If no particular callback was requested or we are on that particular one,
         if ( aCallback == NULL ||  *aCallback == **iCallback )
         {
-            // call the callback
+            // call the callback (would only happen if it involves the same event type).
             ( **iCallback )( aEvent );
         }
     }

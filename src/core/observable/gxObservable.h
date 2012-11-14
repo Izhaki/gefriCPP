@@ -7,8 +7,10 @@
 class evEvent
 {
 public:
-  // A dummy virtual method to make this class polymorphic
-  virtual void dummy() { }
+    // A virtual destructor to make this class polymorphic. This is needed
+    // so dynamic_cast can work. Also this will lead to the destructors
+    // of derived classes to be called when the generic evEvent is destroyed.
+    virtual ~evEvent() { }
 };
 
 
@@ -17,6 +19,7 @@ class gxObservable
 public:
     virtual ~gxObservable();
     
+    // TODo: docs
     void Fire( evEvent *aEvent, gxCallback *aCallback = NULL);
     
     void Subscribe( gxCallback *aCallback );

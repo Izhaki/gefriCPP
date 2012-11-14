@@ -14,8 +14,7 @@ class gxZoomManager: public gxObject,
 {
 public:
     gxZoomManager();
-    ~gxZoomManager(); 
-
+    ~gxZoomManager();
 
     /**
      * @brief Returns the current zoom.

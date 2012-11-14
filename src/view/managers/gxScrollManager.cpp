@@ -64,8 +64,9 @@ void gxScrollManager::AdjustScrollbars( gxSize const &aVisible, gxSize const &aR
     }
 
     mVisible = aVisible;
-    mRange = aRange;
+    mRange   = aRange;
 
+    // TODO: this will scroll event which is not really needed.
     SetScroll( newScroll );
 
     Fire( new evScrollRange( this ) );

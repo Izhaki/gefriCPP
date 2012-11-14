@@ -34,5 +34,6 @@ public:
 
 // The specialised implementation is being injected here.
 #include "core/observable/gxCallbackClugston.h"
+//#include "core/observable/gxCallbackMai.h"
 
 #endif // gxCallback_h

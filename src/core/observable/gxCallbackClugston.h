@@ -4,8 +4,6 @@
 #include "core/observable/FastDelegate.h"
 #include "core/observable/gxCallback.h"
 
-#include "core/gxLog.h"
-
 #define mcCallback( aEventClass, aDelegate ) \
     new gxSignedCallback< aEventClass >( fastdelegate::MakeDelegate( this, &aDelegate ) )
 

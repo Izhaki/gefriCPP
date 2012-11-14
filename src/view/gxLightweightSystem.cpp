@@ -56,7 +56,7 @@ void gxLightweightSystem::SetScrollManager( gxScrollManager *aScrollManager )
 void gxLightweightSystem::OnScrollRangeChanged( const evScrollRange *aEvent )
 {
     mControl->SetScrollbar( wxHORIZONTAL, aEvent->mScroll.X, aEvent->mVisible.X, aEvent->mRange.X );
-    mControl->SetScrollbar( wxVERTICAL, aEvent->mScroll.Y, aEvent->mVisible.Y, aEvent->mRange.Y );
+    mControl->SetScrollbar( wxVERTICAL,   aEvent->mScroll.Y, aEvent->mVisible.Y, aEvent->mRange.Y );
 }
 
 void gxLightweightSystem::Paint( gxPaintDC *aDc, gxRects const &aDamagedRects )

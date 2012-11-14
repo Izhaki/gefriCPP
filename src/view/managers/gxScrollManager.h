@@ -69,7 +69,7 @@ class evScrollPosition: public evEvent
 {
 public:
     evScrollPosition( const gxScrollManager* aScrollManager )
-      : mScroll(aScrollManager->GetScroll()) { }
+      : mScroll( aScrollManager->GetScroll() ) { }
 
     gxScroll mScroll;
 };

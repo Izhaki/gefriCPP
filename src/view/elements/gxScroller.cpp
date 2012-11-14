@@ -76,8 +76,8 @@ void gxScroller::Validate()
 {
     ReadjustScrollbars();
 
-    // Call the base class validate so children are also validated and this object
-    // is marked as valid.
+    // Call the base class validate so children are also validated and this
+    // object is marked as valid.
     gxStructuralViewElement::Validate();
 
     Repaint();

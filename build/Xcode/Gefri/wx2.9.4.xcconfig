@@ -9,6 +9,7 @@
 // 64 Bit (x86_64)
 OTHER_LDFLAGS[arch=*64*] = -L/Volumes/Blackstore/Development/wx/wx2.9.4/build-debug-mac-64-10.7/lib   -framework IOKit -framework Carbon -framework Cocoa -framework AudioToolbox -framework System -framework OpenGL /Volumes/Blackstore/Development/wx/wx2.9.4/build-debug-mac-64-10.7/lib/libwx_osx_cocoau_xrc-2.9.a /Volumes/Blackstore/Development/wx/wx2.9.4/build-debug-mac-64-10.7/lib/libwx_osx_cocoau_webview-2.9.a /Volumes/Blackstore/Development/wx/wx2.9.4/build-debug-mac-64-10.7/lib/libwx_osx_cocoau_qa-2.9.a /Volumes/Blackstore/Development/wx/wx2.9.4/build-debug-mac-64-10.7/lib/libwx_baseu_net-2.9.a /Volumes/Blackstore/Development/wx/wx2.9.4/build-debug-mac-64-10.7/lib/libwx_osx_cocoau_html-2.9.a /Volumes/Blackstore/Development/wx/wx2.9.4/build-debug-mac-64-10.7/lib/libwx_osx_cocoau_adv-2.9.a /Volumes/Blackstore/Development/wx/wx2.9.4/build-debug-mac-64-10.7/lib/libwx_osx_cocoau_core-2.9.a /Volumes/Blackstore/Development/wx/wx2.9.4/build-debug-mac-64-10.7/lib/libwx_baseu_xml-2.9.a /Volumes/Blackstore/Development/wx/wx2.9.4/build-debug-mac-64-10.7/lib/libwx_baseu-2.9.a -framework WebKit -lwxregexu-2.9 -lwxjpeg-2.9 -lwxpng-2.9
 
+// HAVE_TYPE_TRAITS is defined so we can compile on Apples' LLVM
 OTHER_CPLUSPLUSFLAGS[arch=*64*] = -I/Volumes/Blackstore/Development/wx/wx2.9.4/build-debug-mac-64-10.7/lib/wx/include/osx_cocoa-unicode-static-2.9 -I/Volumes/Blackstore/Development/wx/wx2.9.4/include -D_FILE_OFFSET_BITS=64 -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__
 
 

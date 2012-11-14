@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		871E04621651CE3300E14350 /* callback.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 871E04611651CE3300E14350 /* callback.hpp */; };
+		871E04641651CE6400E14350 /* gxCallbackMai.h in Headers */ = {isa = PBXBuildFile; fileRef = 871E04631651CE6400E14350 /* gxCallbackMai.h */; };
 		876C5D32164C73E60006CB61 /* gxAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CEF164C73E60006CB61 /* gxAssert.h */; };
 		876C5D33164C73E60006CB61 /* gxLightweightControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5CF0164C73E60006CB61 /* gxLightweightControl.cpp */; };
 		876C5D34164C73E60006CB61 /* gxLightweightControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF1164C73E60006CB61 /* gxLightweightControl.h */; };
@@ -70,6 +72,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		871E04611651CE3300E14350 /* callback.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = callback.hpp; sourceTree = "<group>"; };
+		871E04631651CE6400E14350 /* gxCallbackMai.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxCallbackMai.h; sourceTree = "<group>"; };
 		876C5C62164C73460006CB61 /* libGefri.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGefri.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		876C5CEF164C73E60006CB61 /* gxAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxAssert.h; sourceTree = "<group>"; };
 		876C5CF0164C73E60006CB61 /* gxLightweightControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxLightweightControl.cpp; sourceTree = "<group>"; };
@@ -229,11 +233,13 @@
 		876C5D06164C73E60006CB61 /* observable */ = {
 			isa = PBXGroup;
 			children = (
+				871E04611651CE3300E14350 /* callback.hpp */,
 				876C5D07164C73E60006CB61 /* FastDelegate.h */,
 				876C5D08164C73E60006CB61 /* gxCallback.h */,
 				876C5D09164C73E60006CB61 /* gxCallbackClugston.h */,
 				876C5D0A164C73E60006CB61 /* gxObservable.cpp */,
 				876C5D0B164C73E60006CB61 /* gxObservable.h */,
+				871E04631651CE6400E14350 /* gxCallbackMai.h */,
 			);
 			path = observable;
 			sourceTree = "<group>";
@@ -359,6 +365,8 @@
 				876C5D69164C73E60006CB61 /* gxViewUnit.h in Headers */,
 				876C5D6B164C73E60006CB61 /* gxScrollManager.h in Headers */,
 				876C5D6D164C73E60006CB61 /* gxZoomManager.h in Headers */,
+				871E04621651CE3300E14350 /* callback.hpp in Headers */,
+				871E04641651CE6400E14350 /* gxCallbackMai.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				HEADER_SEARCH_PATHS = "../../../src/**";
 				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx10.7;
 				SKIP_INSTALL = YES;
@@ -511,6 +520,7 @@
 		};
 		876C5C68164C73460006CB61 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 876C5D6F164C74B30006CB61 /* wx2.9.4.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				EXECUTABLE_PREFIX = lib;
@@ -518,6 +528,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				HEADER_SEARCH_PATHS = "../../../src/**";
 				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx10.7;
 				SKIP_INSTALL = YES;
