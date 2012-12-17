@@ -21,7 +21,7 @@ gxLightweightSystem::~gxLightweightSystem()
 {
     // Remove notification from previous scroll manager, (if such exist).
     if ( mScrollManager )
-        mScrollManager->Unsubscribe( mcCallback( evScrollRange, gxLightweightSystem::OnScrollRangeChanged ) );
+        mScrollManager->Unsubscribe( mcCallback( evScroll, gxLightweightSystem::OnScrollChanged ) );
 
     // Unset the lightweight system on the control, so event like paint won't be
     // delegated to an object that has been destroyed
@@ -47,16 +47,16 @@ void gxLightweightSystem::SetScrollManager( gxScrollManager *aScrollManager )
 {
     // Remove notification from previous scroll manager, (if such exist).
     if ( mScrollManager )
-        mScrollManager->Unsubscribe( mcCallback( evScrollRange, gxLightweightSystem::OnScrollRangeChanged ) );
+        mScrollManager->Unsubscribe( mcCallback( evScroll, gxLightweightSystem::OnScrollChanged ) );
     
     mScrollManager = aScrollManager;
-    mScrollManager->Subscribe( mcCallback( evScrollRange, gxLightweightSystem::OnScrollRangeChanged ) );
+    mScrollManager->Subscribe( mcCallback( evScroll, gxLightweightSystem::OnScrollChanged ) );
 }
 
-void gxLightweightSystem::OnScrollRangeChanged( const evScrollRange *aEvent )
+void gxLightweightSystem::OnScrollChanged( const evScroll *aEvent )
 {
-    mControl->SetScrollbar( wxHORIZONTAL, aEvent->mScroll.X, aEvent->mVisible.X, aEvent->mRange.X );
-    mControl->SetScrollbar( wxVERTICAL,   aEvent->mScroll.Y, aEvent->mVisible.Y, aEvent->mRange.Y );
+    mControl->SetScrollbar( wxHORIZONTAL, aEvent->mScroll.mPosition.X, aEvent->mScroll.mVisible.X, aEvent->mScroll.mRange.X );
+    mControl->SetScrollbar( wxVERTICAL,   aEvent->mScroll.mPosition.Y, aEvent->mScroll.mVisible.Y, aEvent->mScroll.mRange.Y );
 }
 
 void gxLightweightSystem::Paint( gxPaintDC *aDc, gxRects const &aDamagedRects )
@@ -89,7 +89,7 @@ gxSize gxLightweightSystem::GetTextSize( gxString &aText )
 void gxLightweightSystem::OnScroll ( const bool isVertical, const gxPix aPosition )
 {
     if ( mScrollManager )
-        mScrollManager->SetScroll( isVertical, aPosition );
+        mScrollManager->SetPosition( isVertical, aPosition );
 }
 
 void gxLightweightSystem::QueueValidation()

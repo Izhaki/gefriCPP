@@ -40,15 +40,15 @@ struct gxScale
 /**
  * @brief A structures containing the values for scroll transformations
  */
-struct gxScroll
+struct gxPosition
 {
   gxPix X, Y;
 
-  gxScroll() : X(0), Y(0) { }
-  gxScroll(gxPix aX, gxPix aY) : X(aX), Y(aY) { }
+  gxPosition() : X(0), Y(0) { }
+  gxPosition(gxPix aX, gxPix aY) : X(aX), Y(aY) { }
 
-  bool operator==(const gxScroll& aScroll) const { return X == aScroll.X && Y == aScroll.Y; }
-  bool operator!=(const gxScroll& aScroll) const { return X != aScroll.X || Y != aScroll.Y; }
+  bool operator==(const gxPosition& aPosition) const { return X == aPosition.X && Y == aPosition.Y; }
+  bool operator!=(const gxPosition& aPosition) const { return X != aPosition.X || Y != aPosition.Y; }
 };
 
 /**
@@ -67,7 +67,7 @@ struct gxTranslate
 struct gxTransformations
 {
   gxScale     Scale;
-  gxScroll    Scroll;
+  gxPosition  Scroll;
   gxTranslate Translate;
 };
 

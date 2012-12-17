@@ -19,8 +19,7 @@ gxScroller::~gxScroller()
     // Remove the callback from the previous scroll manager (if any).
     if ( mScrollManager )
     {
-        mScrollManager->Unsubscribe( mcCallback( evScrollPosition, gxScroller::OnScrollPositionChanged ) );
-        mScrollManager->Unsubscribe( mcCallback( evScrollRange, gxScroller::OnScrollRangeChanged ) );
+        mScrollManager->Unsubscribe( mcCallback( evScroll, gxScroller::OnScrollChanged ) );
     }
 }
 
@@ -29,31 +28,24 @@ void gxScroller::SetScrollManager( gxScrollManager *aScrollManager )
     // Remove the callback from the previous scroll manager (if any).
     if ( mScrollManager )
     {
-        mScrollManager->Unsubscribe( mcCallback( evScrollPosition, gxScroller::OnScrollPositionChanged ) );
-        mScrollManager->Unsubscribe( mcCallback( evScrollRange, gxScroller::OnScrollRangeChanged ) );
+        mScrollManager->Unsubscribe( mcCallback( evScroll, gxScroller::OnScrollChanged ) );
     }
 
     mScrollManager = aScrollManager;
 
-    mScrollManager->Subscribe( mcCallback( evScrollPosition, gxScroller::OnScrollPositionChanged ) );
-    aScrollManager->AddObserverAndNotify( mcCallback( evScrollRange, gxScroller::OnScrollRangeChanged ) );
+    aScrollManager->AddObserverAndNotify( mcCallback( evScroll, gxScroller::OnScrollChanged ) );
 }
 
-void gxScroller::OnScrollPositionChanged( const evScrollPosition *aEvent )
+void gxScroller::OnScrollChanged( const evScroll *aEvent )
 {
-    SetScroll( mScrollManager->GetScroll() );
+    SetScroll( aEvent->mScroll.mPosition );
 }
 
-void gxScroller::OnScrollRangeChanged( const evScrollRange *aEvent )
+void gxScroller::SetScroll( gxPosition const &aScrollPosition )
 {
-    SetScroll( mScrollManager->GetScroll() );
-}
-
-void gxScroller::SetScroll( gxScroll const &aScroll )
-{
-    if ( mScroll != aScroll )
+    if ( mScrollPosition != aScrollPosition )
     {
-        mScroll = aScroll;
+        mScrollPosition = aScrollPosition;
         Repaint();
     }
 }
@@ -64,7 +56,7 @@ void gxScroller::Paint( gxPainter &aPainter )
     // scroll values
     aPainter.PushState();
 
-    aPainter.SetScroll( mScroll.X, mScroll.Y );
+    aPainter.SetScroll( mScrollPosition.X, mScrollPosition.Y );
 
     PaintChildren( aPainter );
 
@@ -88,9 +80,9 @@ void gxScroller::Transform( gxRect &aRect, gxTransformFlags &aTransFlags )
     if ( aTransFlags.IsntSet( gxTransformFlags::Scroll ) )
         return;
 
-    if ( mScroll.X != 0 || mScroll.Y != 0 )
+    if ( mScrollPosition.X != 0 || mScrollPosition.Y != 0 )
     {
-        aRect.Offset( -mScroll.X, -mScroll.Y );
+        aRect.Offset( -mScrollPosition.X, -mScrollPosition.Y );
     }
 }
 

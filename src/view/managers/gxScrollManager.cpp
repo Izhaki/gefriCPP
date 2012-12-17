@@ -10,70 +10,68 @@ gxScrollManager::~gxScrollManager()
 {
 }
 
-void gxScrollManager::SetScroll( gxScroll const &aScroll )
+void gxScrollManager::SetPosition( gxPosition const &aPosition )
 {
-    mScroll = aScroll;
-    Fire( new evEvent() );
+    mScroll.mPosition = aPosition;
+    Fire( new evScroll( this ) );
 }
 
-void gxScrollManager::SetScroll( const gxPix aScrollX, const gxPix aScrollY )
+void gxScrollManager::SetPosition( const gxPix aPositionX, const gxPix aPositionY )
 {
-    gxScroll newScroll( aScrollX, aScrollY );
-    SetScroll( newScroll );
+    gxPosition iPosition( aPositionX, aPositionY );
+    SetPosition( iPosition );
 }
 
-void gxScrollManager::SetScroll( const bool isVertical, const gxPix aScroll )
+void gxScrollManager::SetPosition( const bool isVertical, const gxPix aPosition )
 {
     if ( isVertical )
-        SetScrollY( aScroll );
+        SetPositionY( aPosition );
     else
-        SetScrollX( aScroll );
+        SetPositionX( aPosition );
 }
 
-void gxScrollManager::SetScrollX( const gxPix aScrollX )
+void gxScrollManager::SetPositionX( const gxPix aPositionX )
 {
-    mScroll.X = aScrollX;
-    Fire( new evScrollPosition( this ) );
+    mScroll.mPosition.X = aPositionX;
+    Fire( new evScroll( this ) );    
 }
 
-void gxScrollManager::SetScrollY( const gxPix aScrollY )
+void gxScrollManager::SetPositionY( const gxPix aPositionY )
 {
-    mScroll.Y = aScrollY;
-    Fire( new evScrollPosition( this ) );
+    mScroll.mPosition.Y = aPositionY;
+    Fire( new evScroll( this ) );    
 }
 
 void gxScrollManager::AdjustScrollbars( gxSize const &aVisible, gxSize const &aRange )
 {
-    if ( mVisible == aVisible && mRange == aRange )
+    if ( mScroll.mVisible == aVisible && mScroll.mRange == aRange )
         return;
 
-    gxScroll newScroll;
+    gxPosition iPosition;
 
     // The new scroll position is proportional to the previous one.
-    if ( mScroll.X != 0 && aRange.X > aVisible.X )
+    if ( mScroll.mPosition.X != 0 && aRange.X > aVisible.X )
     {
-        float oldPosRatio = ( mRange.X - mVisible.X ) / (float)mScroll.X;
-        newScroll.X = gxFloor( ( aRange.X - aVisible.X ) / oldPosRatio );
+        float oldPosRatio = ( mScroll.mRange.X - mScroll.mVisible.X ) / (float)mScroll.mPosition.X;
+        iPosition.X = gxFloor( ( aRange.X - aVisible.X ) / oldPosRatio );
     }
 
     // The new scroll position is proportional to the previous one.
-    if ( mScroll.Y != 0 && aRange.Y > aVisible.Y )
+    if ( mScroll.mPosition.Y != 0 && aRange.Y > aVisible.Y )
     {
-        float oldPosRatio = ( mRange.Y - mVisible.Y ) / (float)mScroll.Y;
-        newScroll.Y = gxFloor( ( aRange.Y - aVisible.Y ) / oldPosRatio );
+        float oldPosRatio = ( mScroll.mRange.Y - mScroll.mVisible.Y ) / (float)mScroll.mPosition.Y;
+        iPosition.Y = gxFloor( ( aRange.Y - aVisible.Y ) / oldPosRatio );
     }
 
-    mVisible = aVisible;
-    mRange   = aRange;
+    mScroll.mPosition = iPosition;
+    mScroll.mVisible  = aVisible;
+    mScroll.mRange    = aRange;
 
-    // TODO: this will scroll event which is not really needed.
-    SetScroll( newScroll );
-
-    Fire( new evScrollRange( this ) );
+    Fire( new evScroll( this ) );
 }
 
 void gxScrollManager::AddObserverAndNotify( gxCallback *aCallback )
 {
     Subscribe( aCallback );
-    Fire( new evScrollRange( this ), aCallback );
+    Fire( new evScroll( this ), aCallback );
 }

@@ -106,11 +106,11 @@ public:
     void OnScroll ( const bool isVertical, const gxPix aPosition );
 
     /**
-     * @brief Called when the scroll range of the scroll bars has changed.
+     * @brief Called when the scroll of the scroll bars has changed.
      * @param aEvent The event object carrying information
      * regarding the change.
      */
-    void OnScrollRangeChanged( const evScrollRange *aEvent );
+    void OnScrollChanged( const evScroll *aEvent );
 protected:
     /// The control this system is linked to.
     gxLightweightControl *mControl;

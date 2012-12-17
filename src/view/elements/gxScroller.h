@@ -25,11 +25,11 @@ public:
     void SetScrollManager( gxScrollManager *aScrollManager );
   
     /**
-     * @brief Sets the scale.
+     * @brief Sets the scroll.
      * @param aScrollX The X axis scroll
      * @param aScaleY The Y axis scroll
      */
-    void SetScroll( gxScroll const &aScroll );
+    void SetScroll( gxPosition const &aScrollPosition );
 
     /**
      * @brief A handler method for scroll position events from the
@@ -37,15 +37,7 @@ public:
      * 
      * @param aEvent The notification object.
      */
-    void OnScrollPositionChanged( const evScrollPosition *aEvent );
-
-    /**
-     * @brief A handler method for scroll Range events from the
-     * {@link gxScrollManager scroll manager}.
-     * 
-     * @param aEvent The notification object.
-     */
-    void OnScrollRangeChanged( const evScrollRange *aEvent );
+    void OnScrollChanged( const evScroll *aEvent );
 
     /**
      * @brief Paints the view element by translating the painter then calling
@@ -68,7 +60,7 @@ protected:
 
     gxScrollManager *mScrollManager;
 private:
-    gxScroll mScroll;
+    gxPosition mScrollPosition;
 };
 
 #endif // gxScroller_h

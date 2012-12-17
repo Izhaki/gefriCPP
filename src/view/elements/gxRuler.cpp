@@ -23,8 +23,7 @@ gxRuler::~gxRuler()
     // If a scroll manager is linked, remove the callbacks.
     if ( mScrollManager )
     {
-        mScrollManager->Unsubscribe( mcCallback( evScrollPosition, gxRuler::OnScrollPositionChanged ) );
-        mScrollManager->Unsubscribe( mcCallback( evScrollRange, gxRuler::OnScrollRangeChanged ) );
+        mScrollManager->Unsubscribe( mcCallback( evScroll, gxRuler::OnScrollChanged ) );
     }
 }
 
@@ -48,23 +47,16 @@ void gxRuler::SetScrollManager( gxScrollManager *aScrollManager )
     // Remove the callback from the previous scroll manager (if any).
     if ( mScrollManager )
     {
-        mScrollManager->Unsubscribe( mcCallback( evScrollPosition, gxRuler::OnScrollPositionChanged ) );
-        mScrollManager->Unsubscribe( mcCallback( evScrollRange, gxRuler::OnScrollRangeChanged ) );
+        mScrollManager->Unsubscribe( mcCallback( evScroll, gxRuler::OnScrollChanged ) );
     }
 
     mScrollManager = aScrollManager;
-    mScrollManager->Subscribe( mcCallback( evScrollPosition, gxRuler::OnScrollPositionChanged ) );
-    aScrollManager->AddObserverAndNotify( mcCallback( evScrollRange, gxRuler::OnScrollRangeChanged ) );
+    aScrollManager->AddObserverAndNotify( mcCallback( evScroll, gxRuler::OnScrollChanged ) );
 }
 
-void gxRuler::OnScrollPositionChanged( const evScrollPosition *aEvent )
+void gxRuler::OnScrollChanged( const evScroll *aEvent )
 {
-    mStartPixel = mIsHorizontal ? mScrollManager->GetScrollX() : mScrollManager->GetScrollY();
-}
-
-void gxRuler::OnScrollRangeChanged( const evScrollRange *aEvent )
-{
-    mStartPixel = mIsHorizontal ? mScrollManager->GetScrollX() : mScrollManager->GetScrollY();
+    mStartPixel = mIsHorizontal ? aEvent->mScroll.mPosition.X : aEvent->mScroll.mPosition.Y;
 }
 
 void gxRuler::Validate()

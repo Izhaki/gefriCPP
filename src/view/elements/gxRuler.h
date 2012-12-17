@@ -52,20 +52,12 @@ public:
     void SetScrollManager( gxScrollManager *aScrollManager );
 
     /**
-     * @brief A handler method for scroll position events from the
+     * @brief A handler method for scroll events from the
      * {@link gxScrollManager scroll manager}.
      * 
      * @param aEvent The notification object.
      */
-    void OnScrollPositionChanged( const evScrollPosition *aEvent );
-
-    /**
-     * @brief A handler method for scroll Range events from the
-     * {@link gxScrollManager scroll manager}.
-     * 
-     * @param aEvent The notification object.
-     */
-    void OnScrollRangeChanged( const evScrollRange *aEvent );
+    void OnScrollChanged( const evScroll *aEvent );
 
     virtual void SetBounds( const gxRect &aNewBounds );
 
