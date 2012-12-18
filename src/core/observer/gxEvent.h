@@ -17,11 +17,29 @@ class gxCallback : public fastdelegate::DelegateMemento
 {
 public:
     /**
+     * @brief The default constructor represents an empty callback.
+     */
+    gxCallback() { }
+    
+    /**
      * @brief A copy constructor from DelegateMemento class.
      * @param aMemento The DelegateMemento.
      */
     gxCallback( const fastdelegate::DelegateMemento &aMemento )
         :fastdelegate::DelegateMemento( aMemento ) { }
+    
+    /**
+     * For some odd reason (and a opposed to the documentation) DelegateMemento
+     * does not implement the equality operator. So we do (although we don't
+     * really need this, mods might).
+     *
+     * @param aCallback 
+     *     The callback we are comparing to.
+     */
+	bool operator == (const gxCallback &aCallback) const
+    {
+		return IsEqual( aCallback );
+    }
     
     /**
      * @brief Retrieves the object pointer from the callback.
@@ -70,7 +88,6 @@ public:
      */
     virtual void Fire();
     
-protected:
     /**
      * @brief Fires a specific callback.
      *
@@ -79,7 +96,8 @@ protected:
      * @param aCallback The callback to fire.
      */
     virtual void Fire( gxCallback &aCallback ) = 0;
-
+protected:
+    
     /**
      * @brief Checks if a callback is already in the subscription list.
      *
@@ -103,11 +121,12 @@ class gxEvent0 : public gxEvent
 {
 public:
     typedef fastdelegate::FastDelegate0<> gxDelegate;
-protected:
+
     /**
      * @brief Calls the actual callback.
      *
-     * The base class gxEvent will call this for each callback.     
+     * The base class gxEvent will call this for each callback, or the subject
+     * will call this directly upon subscription of bound events.
      */
     virtual void Fire( gxCallback &aCallback )
     {
@@ -136,11 +155,11 @@ public:
         m1 = a1;
     }
     
-protected:
     /**
      * @brief Calls the actual callback with the cached arguments.
      *
-     * The base class gxEvent will call this for each callback.     
+     * The base class gxEvent will call this for each callback, or the subject
+     * will call this directly upon subscription of bound events.
      */
     virtual void Fire( gxCallback &aCallback )
     {
@@ -171,11 +190,11 @@ public:
         m1 = a1; m2 = a2;
     }
     
-protected:
     /**
      * @brief Calls the actual callback with the cached arguments.
      *
-     * The base class gxEvent will call this for each callback.     
+     * The base class gxEvent will call this for each callback, or the subject
+     * will call this directly upon subscription of bound events.
      */    
     virtual void Fire( gxCallback &aCallback )
     {
@@ -206,11 +225,11 @@ public:
         m1 = a1; m2 = a2; m3 = a3;
     }
     
-protected:
     /**
      * @brief Calls the actual callback with the cached arguments.
      *
-     * The base class gxEvent will call this for each callback.     
+     * The base class gxEvent will call this for each callback, or the subject
+     * will call this directly upon subscription of bound events.
      */
     virtual void Fire( gxCallback &aCallback )
     {
@@ -241,11 +260,11 @@ public:
         m1 = a1; m2 = a2; m3 = a3; m4 = a4;
     }
     
-protected:
     /**
      * @brief Calls the actual callback with the cached arguments.
      *
-     * The base class gxEvent will call this for each callback.
+     * The base class gxEvent will call this for each callback, or the subject
+     * will call this directly upon subscription of bound events.
      */
     virtual void Fire( gxCallback &aCallback )
     {

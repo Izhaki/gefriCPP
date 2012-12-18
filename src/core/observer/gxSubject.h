@@ -51,10 +51,12 @@ public:
     /**
      * @brief Suspends the firing of events.
      *
-     * @param aQueueSuspended If true, events fired by the subject will be
-     * queued and fired one ResumeEvents is called. **Note:** If an event is
-     * is being fired more than onces when queue suspension is on, only the
-     * most recent event will be fired upon ResumeEvents().
+     * @param aQueueSuspended
+     *     If true, events fired by the subject will be queued and fired once
+     *     ResumeEvents is called. 
+     *     **Note:** If an event is is being fired more than onces when queue 
+     *     suspension is on, only the most recent event will be fired upon 
+     *     ResumeEvents().
      */
     void SuspendEvents( bool aQueueSuspended );
 
@@ -77,8 +79,22 @@ protected:
      * prior to firing it.
      *
      * @param aEvent The {@link gxEvent event} to be fired.
+     * @param [aCallback] The {@link gxCallback callback} to be fired. Defaults
+     * to an empty callback, in which case all callbacks will be called.
      */
-    void Fire( gxEvent &aEvent );
+    void Fire( gxEvent &aEvent, gxCallback aCallback = gxCallback() );
+
+    /**
+     * @brief Fires an event to a specific callback, accounting for any event 
+     * supspension or queuing.
+     *
+     * This method is only used with bound events, where upon subscription 
+     * we only want to update the subscribing observer.
+     *
+     * @param aEvent The {@link gxEvent event} to be fired.
+     * @param aCallback The {@link gxCallback callback} to be fired.     
+     */
+//    void Fire( gxEvent &aEvent, gxCallback aCallback );
 
 private:
     /** The event Firing mode can be one of 3: */
@@ -254,7 +270,8 @@ private:
     void mEvent##Subscribe( mEvent##Type::gxDelegate aDelegate ) \
     { \
         Subscribe( mEvent, aDelegate.GetMemento() ); \
-        Fire( mEvent, aGetter ); \
+        mEvent.SetParams( aGetter ); \
+        gxSubject::Fire( mEvent, aDelegate.GetMemento() ); \
     } \
     gxImpUnsubscribe( mEvent )\
     void Fire( mEvent##Type &aEvent, t1 a1 ) \
@@ -280,7 +297,8 @@ private:
     void mEvent##Subscribe( mEvent##Type::gxDelegate aDelegate ) \
     { \
         Subscribe( mEvent, aDelegate.GetMemento() ); \
-        Fire( mEvent, this, aGetter ); \
+        mEvent.SetParams( this, aGetter ); \
+        gxSubject::Fire( mEvent, aDelegate.GetMemento() ); \
     } \
     gxImpUnsubscribe( mEvent )\
     void Fire( mEvent##Type &aEvent, tSubject aSubject, t1 a1 ) \

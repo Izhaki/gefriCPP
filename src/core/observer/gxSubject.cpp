@@ -19,11 +19,13 @@ void gxSubject::Unsubscribe( gxEvent &aEvent, void *aObj )
     aEvent.Unsubscribe( aObj );
 }
 
-void gxSubject::Fire( gxEvent &aEvent )
-{
+void gxSubject::Fire( gxEvent &aEvent, gxCallback aCallback )
+{    
     if ( mFiringMode == on )
     {
-        aEvent.Fire();
+        // If a specific callback was requested then only fire that one,
+        // otherwise Fire() will fire all callbacks.
+        aCallback.empty() ? aEvent.Fire() : aEvent.Fire( aCallback );
     } else if ( mFiringMode == queue ) {
         QueueEvent( aEvent );
     } // Otherwise FiringMode is off
