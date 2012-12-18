@@ -303,6 +303,8 @@ private:
     gxImpUnsubscribe( mEvent )\
     void Fire( mEvent##Type &aEvent, tSubject aSubject, t1 a1 ) \
         gxImpFire( aEvent, aSubject, a1 ) \
+    void Fire( mEvent##Type &aEvent, t1 a1 ) \
+        gxImpFire( aEvent, this, a1 ) \
     void Fire( mEvent##Type &aEvent ) \
         gxImpFire( aEvent, this, aGetter ) \
 
