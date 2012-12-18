@@ -2,7 +2,7 @@
 #define gxObservable_h
 
 #include <vector>
-#include "core/observable/gxCallback.h"
+#include "core/observable/gxOldCallback.h"
 
 class evEvent
 {
@@ -20,16 +20,16 @@ public:
     virtual ~gxObservable();
     
     // TODo: docs
-    void Fire( evEvent *aEvent, gxCallback *aCallback = NULL);
+    void Fire( evEvent *aEvent, gxOldCallback *aCallback = NULL);
     
-    void Subscribe( gxCallback *aCallback );
-    void Unsubscribe( gxCallback *aCallback );
+    void Subscribe( gxOldCallback *aCallback );
+    void Unsubscribe( gxOldCallback *aCallback );
     
 private:
-    typedef std::vector < gxCallback* > CallbackList;
+    typedef std::vector < gxOldCallback* > CallbackList;
 
     void UnsubscribeAll();
-    bool AlreadySubscribed( gxCallback *aCallback );
+    bool AlreadySubscribed( gxOldCallback *aCallback );
   
     CallbackList mCallbacks;
 };

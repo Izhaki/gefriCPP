@@ -2,6 +2,7 @@
 #define gxScaler_h
 
 #include "view/elements/gxStructuralViewElement.h"
+#include "core/observer/gxObserver.h"
 #include "view/managers/gxZoomManager.h"
 #include "view/gxTransformations.h"
 
@@ -18,6 +19,7 @@
  */
 class gxScaler: public gxStructuralViewElement
 {
+    gxDeclareObserver( gxScaler )
 public:
     gxScaler();
     gxScaler( gxZoomManager *aZoomManager );
@@ -38,9 +40,9 @@ public:
     /**
      * @brief A handler method for zoom change notifications from the
      * {@link gxZoomManager zoom manager}.
-     * @param aEvent The event.
+     * @param aZoom The new zoom.
      */
-    void OnZoomManagerUpdate( const evZoom *aEvent ); 
+    void OnZoomChanged( const gxScale *aZoom );
 
     /**
      * @brief Paints the view element by scaling the painter then calling

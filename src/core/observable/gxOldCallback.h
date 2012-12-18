@@ -1,5 +1,5 @@
-#ifndef gxCallback_h
-#define gxCallback_h
+#ifndef gxOldCallback_h
+#define gxOldCallback_h
 
 // Forward declaration
 class evEvent;
@@ -12,12 +12,12 @@ class evEvent;
  * member methods to be used as callbacks.
  */
  
-class gxCallback
+class gxOldCallback
 {
 public:
     // A virtual destructor is a must or a polymorphic derived class destructor
     // won't be called.
-    virtual ~gxCallback() {}
+    virtual ~gxOldCallback() {}
   /**
    * @brief Overloading the () operator, allowing clients to simply use
    * iCallback( new SomeEvent() ) syntex.
@@ -29,11 +29,11 @@ public:
    * @brief Overloading the comparison operator is needed as we compare
    * callbacks by comparing the instance of their object.
    */
-    virtual bool operator==(const gxCallback &aOther) const = 0; 
+    virtual bool operator==(const gxOldCallback &aOther) const = 0; 
 };
 
 // The specialised implementation is being injected here.
 #include "core/observable/gxCallbackClugston.h"
 //#include "core/observable/gxCallbackMai.h"
 
-#endif // gxCallback_h
+#endif // gxOldCallback_h

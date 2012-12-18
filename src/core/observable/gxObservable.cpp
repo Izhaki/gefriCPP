@@ -6,7 +6,7 @@ gxObservable::~gxObservable()
     UnsubscribeAll();
 }
 
-void gxObservable::Fire( evEvent *aEvent, gxCallback *aCallback )
+void gxObservable::Fire( evEvent *aEvent, gxOldCallback *aCallback )
 {
     CallbackList::iterator iCallback;
     
@@ -26,7 +26,7 @@ void gxObservable::Fire( evEvent *aEvent, gxCallback *aCallback )
     delete aEvent;
 }
 
-bool gxObservable::AlreadySubscribed( gxCallback *aCallback )
+bool gxObservable::AlreadySubscribed( gxOldCallback *aCallback )
 {
     CallbackList::iterator iCallback;
 
@@ -40,7 +40,7 @@ bool gxObservable::AlreadySubscribed( gxCallback *aCallback )
     return false;
 }
 
-void gxObservable::Subscribe( gxCallback *aCallback )
+void gxObservable::Subscribe( gxOldCallback *aCallback )
 {
     // If the callback already subscribed
     if ( AlreadySubscribed( aCallback ) )
@@ -55,7 +55,7 @@ void gxObservable::Subscribe( gxCallback *aCallback )
     }
 }
 
-void gxObservable::Unsubscribe( gxCallback *aCallback )
+void gxObservable::Unsubscribe( gxOldCallback *aCallback )
 {
     CallbackList::iterator iCallback;
 

@@ -2,6 +2,7 @@
 #define gxScroller_h
 
 #include "view/elements/gxStructuralViewElement.h"
+#include "core/observer/gxObserver.h"
 #include "view/managers/gxScrollManager.h"
 #include "view/gxTransformations.h"
 
@@ -13,6 +14,7 @@
  */
 class gxScroller: public gxStructuralViewElement
 {
+    gxDeclareObserver( gxScroller )
 public:
     gxScroller();
     gxScroller( gxScrollManager *aScrollManager );
@@ -35,9 +37,9 @@ public:
      * @brief A handler method for scroll position events from the
      * {@link gxScrollManager scroll manager}.
      * 
-     * @param aEvent The notification object.
+     * @param aScroll The new scroll.
      */
-    void OnScrollChanged( const evScroll *aEvent );
+    void OnScrollChanged( const gxScroll *aScroll );
 
     /**
      * @brief Paints the view element by translating the painter then calling

@@ -642,8 +642,7 @@ protected:
 #endif
 	}
 };
-
-
+    
 //						ClosurePtr<>
 //
 // A private wrapper class that adds function signatures to DelegateMemento.

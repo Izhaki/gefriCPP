@@ -13,7 +13,7 @@ gxScrollManager::~gxScrollManager()
 void gxScrollManager::SetPosition( gxPosition const &aPosition )
 {
     mScroll.mPosition = aPosition;
-    Fire( new evScroll( this ) );
+    Fire( evScrollChanged );
 }
 
 void gxScrollManager::SetPosition( const gxPix aPositionX, const gxPix aPositionY )
@@ -33,13 +33,13 @@ void gxScrollManager::SetPosition( const bool isVertical, const gxPix aPosition 
 void gxScrollManager::SetPositionX( const gxPix aPositionX )
 {
     mScroll.mPosition.X = aPositionX;
-    Fire( new evScroll( this ) );    
+    Fire( evScrollChanged );
 }
 
 void gxScrollManager::SetPositionY( const gxPix aPositionY )
 {
     mScroll.mPosition.Y = aPositionY;
-    Fire( new evScroll( this ) );    
+    Fire( evScrollChanged );
 }
 
 void gxScrollManager::AdjustScrollbars( gxSize const &aVisible, gxSize const &aRange )
@@ -67,11 +67,5 @@ void gxScrollManager::AdjustScrollbars( gxSize const &aVisible, gxSize const &aR
     mScroll.mVisible  = aVisible;
     mScroll.mRange    = aRange;
 
-    Fire( new evScroll( this ) );
-}
-
-void gxScrollManager::AddObserverAndNotify( gxCallback *aCallback )
-{
-    Subscribe( aCallback );
-    Fire( new evScroll( this ), aCallback );
+    Fire( evScrollChanged );
 }

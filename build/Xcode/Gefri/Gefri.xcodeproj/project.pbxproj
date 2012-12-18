@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		871E04621651CE3300E14350 /* callback.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 871E04611651CE3300E14350 /* callback.hpp */; };
-		871E04641651CE6400E14350 /* gxCallbackMai.h in Headers */ = {isa = PBXBuildFile; fileRef = 871E04631651CE6400E14350 /* gxCallbackMai.h */; };
 		876C5D32164C73E60006CB61 /* gxAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CEF164C73E60006CB61 /* gxAssert.h */; };
 		876C5D33164C73E60006CB61 /* gxLightweightControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5CF0164C73E60006CB61 /* gxLightweightControl.cpp */; };
 		876C5D34164C73E60006CB61 /* gxLightweightControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF1164C73E60006CB61 /* gxLightweightControl.h */; };
@@ -30,11 +28,6 @@
 		876C5D44164C73E60006CB61 /* gxObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D03164C73E60006CB61 /* gxObject.h */; };
 		876C5D45164C73E60006CB61 /* gxPaintDC.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D04164C73E60006CB61 /* gxPaintDC.h */; };
 		876C5D46164C73E60006CB61 /* gxString.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D05164C73E60006CB61 /* gxString.h */; };
-		876C5D47164C73E60006CB61 /* FastDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D07164C73E60006CB61 /* FastDelegate.h */; };
-		876C5D48164C73E60006CB61 /* gxCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D08164C73E60006CB61 /* gxCallback.h */; };
-		876C5D49164C73E60006CB61 /* gxCallbackClugston.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D09164C73E60006CB61 /* gxCallbackClugston.h */; };
-		876C5D4A164C73E60006CB61 /* gxObservable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D0A164C73E60006CB61 /* gxObservable.cpp */; };
-		876C5D4B164C73E60006CB61 /* gxObservable.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D0B164C73E60006CB61 /* gxObservable.h */; };
 		876C5D4C164C73E60006CB61 /* gxRootViewElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D0E164C73E60006CB61 /* gxRootViewElement.cpp */; };
 		876C5D4D164C73E60006CB61 /* gxRootViewElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D0F164C73E60006CB61 /* gxRootViewElement.h */; };
 		876C5D4E164C73E60006CB61 /* gxRuler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D10164C73E60006CB61 /* gxRuler.cpp */; };
@@ -69,11 +62,15 @@
 		876C5D6B164C73E60006CB61 /* gxScrollManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D2F164C73E60006CB61 /* gxScrollManager.h */; };
 		876C5D6C164C73E60006CB61 /* gxZoomManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D30164C73E60006CB61 /* gxZoomManager.cpp */; };
 		876C5D6D164C73E60006CB61 /* gxZoomManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D31164C73E60006CB61 /* gxZoomManager.h */; };
+		87C7BA7F167FE2F200BB7FE2 /* FastDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */; };
+		87C7BA80167FE2F200BB7FE2 /* gxEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */; };
+		87C7BA81167FE2F200BB7FE2 /* gxEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */; };
+		87C7BA82167FE2F200BB7FE2 /* gxObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA7C167FE2F200BB7FE2 /* gxObserver.h */; };
+		87C7BA83167FE2F200BB7FE2 /* gxSubject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7D167FE2F200BB7FE2 /* gxSubject.cpp */; };
+		87C7BA84167FE2F200BB7FE2 /* gxSubject.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA7E167FE2F200BB7FE2 /* gxSubject.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		871E04611651CE3300E14350 /* callback.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = callback.hpp; sourceTree = "<group>"; };
-		871E04631651CE6400E14350 /* gxCallbackMai.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxCallbackMai.h; sourceTree = "<group>"; };
 		876C5C62164C73460006CB61 /* libGefri.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGefri.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		876C5CEF164C73E60006CB61 /* gxAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxAssert.h; sourceTree = "<group>"; };
 		876C5CF0164C73E60006CB61 /* gxLightweightControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxLightweightControl.cpp; sourceTree = "<group>"; };
@@ -96,11 +93,6 @@
 		876C5D03164C73E60006CB61 /* gxObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxObject.h; sourceTree = "<group>"; };
 		876C5D04164C73E60006CB61 /* gxPaintDC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxPaintDC.h; sourceTree = "<group>"; };
 		876C5D05164C73E60006CB61 /* gxString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxString.h; sourceTree = "<group>"; };
-		876C5D07164C73E60006CB61 /* FastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastDelegate.h; sourceTree = "<group>"; };
-		876C5D08164C73E60006CB61 /* gxCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxCallback.h; sourceTree = "<group>"; };
-		876C5D09164C73E60006CB61 /* gxCallbackClugston.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxCallbackClugston.h; sourceTree = "<group>"; };
-		876C5D0A164C73E60006CB61 /* gxObservable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxObservable.cpp; sourceTree = "<group>"; };
-		876C5D0B164C73E60006CB61 /* gxObservable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxObservable.h; sourceTree = "<group>"; };
 		876C5D0E164C73E60006CB61 /* gxRootViewElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxRootViewElement.cpp; sourceTree = "<group>"; };
 		876C5D0F164C73E60006CB61 /* gxRootViewElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxRootViewElement.h; sourceTree = "<group>"; };
 		876C5D10164C73E60006CB61 /* gxRuler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxRuler.cpp; sourceTree = "<group>"; };
@@ -136,6 +128,12 @@
 		876C5D30164C73E60006CB61 /* gxZoomManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxZoomManager.cpp; sourceTree = "<group>"; };
 		876C5D31164C73E60006CB61 /* gxZoomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxZoomManager.h; sourceTree = "<group>"; };
 		876C5D6F164C74B30006CB61 /* wx2.9.4.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = wx2.9.4.xcconfig; sourceTree = "<group>"; };
+		87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastDelegate.h; sourceTree = "<group>"; };
+		87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxEvent.cpp; sourceTree = "<group>"; };
+		87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxEvent.h; sourceTree = "<group>"; };
+		87C7BA7C167FE2F200BB7FE2 /* gxObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxObserver.h; sourceTree = "<group>"; };
+		87C7BA7D167FE2F200BB7FE2 /* gxSubject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxSubject.cpp; sourceTree = "<group>"; };
+		87C7BA7E167FE2F200BB7FE2 /* gxSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxSubject.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +200,7 @@
 		876C5CF6164C73E60006CB61 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				87C7BA78167FE2F200BB7FE2 /* observer */,
 				876C5CF7164C73E60006CB61 /* geometry */,
 				876C5CFE164C73E60006CB61 /* gxAssert.h */,
 				876C5CFF164C73E60006CB61 /* gxComposite.cpp */,
@@ -211,7 +210,6 @@
 				876C5D03164C73E60006CB61 /* gxObject.h */,
 				876C5D04164C73E60006CB61 /* gxPaintDC.h */,
 				876C5D05164C73E60006CB61 /* gxString.h */,
-				876C5D06164C73E60006CB61 /* observable */,
 			);
 			name = core;
 			path = ../../../src/core;
@@ -228,20 +226,6 @@
 				876C5CFD164C73E60006CB61 /* gxSize.h */,
 			);
 			path = geometry;
-			sourceTree = "<group>";
-		};
-		876C5D06164C73E60006CB61 /* observable */ = {
-			isa = PBXGroup;
-			children = (
-				871E04611651CE3300E14350 /* callback.hpp */,
-				876C5D07164C73E60006CB61 /* FastDelegate.h */,
-				876C5D08164C73E60006CB61 /* gxCallback.h */,
-				876C5D09164C73E60006CB61 /* gxCallbackClugston.h */,
-				876C5D0A164C73E60006CB61 /* gxObservable.cpp */,
-				876C5D0B164C73E60006CB61 /* gxObservable.h */,
-				871E04631651CE6400E14350 /* gxCallbackMai.h */,
-			);
-			path = observable;
 			sourceTree = "<group>";
 		};
 		876C5D0C164C73E60006CB61 /* view */ = {
@@ -318,6 +302,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		87C7BA78167FE2F200BB7FE2 /* observer */ = {
+			isa = PBXGroup;
+			children = (
+				87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */,
+				87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */,
+				87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */,
+				87C7BA7C167FE2F200BB7FE2 /* gxObserver.h */,
+				87C7BA7D167FE2F200BB7FE2 /* gxSubject.cpp */,
+				87C7BA7E167FE2F200BB7FE2 /* gxSubject.h */,
+			);
+			path = observer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -343,10 +340,6 @@
 				876C5D44164C73E60006CB61 /* gxObject.h in Headers */,
 				876C5D45164C73E60006CB61 /* gxPaintDC.h in Headers */,
 				876C5D46164C73E60006CB61 /* gxString.h in Headers */,
-				876C5D47164C73E60006CB61 /* FastDelegate.h in Headers */,
-				876C5D48164C73E60006CB61 /* gxCallback.h in Headers */,
-				876C5D49164C73E60006CB61 /* gxCallbackClugston.h in Headers */,
-				876C5D4B164C73E60006CB61 /* gxObservable.h in Headers */,
 				876C5D4D164C73E60006CB61 /* gxRootViewElement.h in Headers */,
 				876C5D4F164C73E60006CB61 /* gxRuler.h in Headers */,
 				876C5D51164C73E60006CB61 /* gxScaler.h in Headers */,
@@ -365,8 +358,10 @@
 				876C5D69164C73E60006CB61 /* gxViewUnit.h in Headers */,
 				876C5D6B164C73E60006CB61 /* gxScrollManager.h in Headers */,
 				876C5D6D164C73E60006CB61 /* gxZoomManager.h in Headers */,
-				871E04621651CE3300E14350 /* callback.hpp in Headers */,
-				871E04641651CE6400E14350 /* gxCallbackMai.h in Headers */,
+				87C7BA7F167FE2F200BB7FE2 /* FastDelegate.h in Headers */,
+				87C7BA81167FE2F200BB7FE2 /* gxEvent.h in Headers */,
+				87C7BA82167FE2F200BB7FE2 /* gxObserver.h in Headers */,
+				87C7BA84167FE2F200BB7FE2 /* gxSubject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +419,6 @@
 				876C5D33164C73E60006CB61 /* gxLightweightControl.cpp in Sources */,
 				876C5D3C164C73E60006CB61 /* gxRect.cpp in Sources */,
 				876C5D40164C73E60006CB61 /* gxComposite.cpp in Sources */,
-				876C5D4A164C73E60006CB61 /* gxObservable.cpp in Sources */,
 				876C5D4C164C73E60006CB61 /* gxRootViewElement.cpp in Sources */,
 				876C5D4E164C73E60006CB61 /* gxRuler.cpp in Sources */,
 				876C5D50164C73E60006CB61 /* gxScaler.cpp in Sources */,
@@ -441,6 +435,8 @@
 				876C5D68164C73E60006CB61 /* gxViewUnit.cpp in Sources */,
 				876C5D6A164C73E60006CB61 /* gxScrollManager.cpp in Sources */,
 				876C5D6C164C73E60006CB61 /* gxZoomManager.cpp in Sources */,
+				87C7BA80167FE2F200BB7FE2 /* gxEvent.cpp in Sources */,
+				87C7BA83167FE2F200BB7FE2 /* gxSubject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

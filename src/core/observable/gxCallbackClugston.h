@@ -2,7 +2,7 @@
 #define gxCallbackClugston_h
 
 #include "core/observable/FastDelegate.h"
-#include "core/observable/gxCallback.h"
+#include "core/observable/gxOldCallback.h"
 
 #define mcCallback( aEventClass, aDelegate ) \
     new gxSignedCallback< aEventClass >( fastdelegate::MakeDelegate( this, &aDelegate ) )
@@ -12,7 +12,7 @@
  * actual callback with a specific event given as a parameter.
  */
 template < class TEvent >
-class gxSignedCallback : public gxCallback
+class gxSignedCallback : public gxOldCallback
 {
 public:
     // Typedef our callback signature using FastDelegate
@@ -34,7 +34,7 @@ public:
             mDelegate( iEvent );
     } 
   
-    virtual bool operator==(const gxCallback &aOther) const
+    virtual bool operator==(const gxOldCallback &aOther) const
     {
         // Try to type cast the abstract callback to the concrete one (will return null if not successful).
         const gxSignedCallback< TEvent >* const iOther = dynamic_cast<const gxSignedCallback< TEvent >*>(&aOther);

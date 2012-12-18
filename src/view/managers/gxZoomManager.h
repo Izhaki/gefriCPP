@@ -2,7 +2,7 @@
 #define gxZoomManager_h
 
 #include "core/gxObject.h"
-#include "core/observable/gxObservable.h"
+#include "core/observer/gxSubject.h"
 #include "view/gxTransformations.h"
 
 /**
@@ -10,12 +10,15 @@
  * and the ability to notify observers on changes.
  */
 class gxZoomManager: public gxObject,
-                     public virtual gxObservable
+                     public virtual gxSubject
 {
 public:
     gxZoomManager();
     ~gxZoomManager();
 
+    // Events definition
+    gxDefineBoundEvent( evZoomChanged, const gxScale*, &mZoom )
+    
     /**
      * @brief Returns the current zoom.
      * @return The current zoom.
@@ -49,28 +52,10 @@ public:
      * @param aMultiplier Both the vertical and horizontal multiplier.
      */
     void MultiplyZoom( const float aMultiplier );
-
-    /**
-     * @brief Adds an observer to the observers list and notify to the added
-     * observer only.
-     * @param aCallback The callback to add to the observers list.
-     */
-    void AddObserverAndNotify( gxCallback *aCallback );
   
 private:
     gxScale mZoom;
 };
 
-/**
- * @brief A notification object to inform observers of zoom changes.
- */
-class evZoom: public evEvent
-{
-public:
-    evZoom( const gxZoomManager *aZoomManager )
-    : mZoom( aZoomManager->GetZoom() ) { }
-
-    gxScale mZoom;
-};
 
 #endif // gxZoomManager_h

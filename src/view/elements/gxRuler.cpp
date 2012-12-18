@@ -18,12 +18,12 @@ gxRuler::~gxRuler()
 {
     // If a zoom manager is linked, remove the callbacks.
     if ( mZoomManager )
-        mZoomManager->Unsubscribe( mcCallback( evZoom, gxRuler::OnZoomManagerUpdate ) );
+        mZoomManager->gxUnsubscribe( evZoomChanged );
 
     // If a scroll manager is linked, remove the callbacks.
     if ( mScrollManager )
     {
-        mScrollManager->Unsubscribe( mcCallback( evScroll, gxRuler::OnScrollChanged ) );
+        mScrollManager->gxUnsubscribe( evScrollChanged );
     }
 }
 
@@ -31,15 +31,15 @@ void gxRuler::SetZoomManager( gxZoomManager *aZoomManager )
 {
     // Remove the callback from the previous zoom manager (if any).
     if ( mZoomManager )
-        mZoomManager->Unsubscribe( mcCallback( evZoom, gxRuler::OnZoomManagerUpdate ) );
+        mZoomManager->gxUnsubscribe( evZoomChanged );
 
     mZoomManager = aZoomManager;
-    aZoomManager->AddObserverAndNotify( mcCallback( evZoom, gxRuler::OnZoomManagerUpdate ) );
+    aZoomManager->gxSubscribe( evZoomChanged, OnZoomChanged );
 }
 
-void gxRuler::OnZoomManagerUpdate( const evZoom *aEvent )
+void gxRuler::OnZoomChanged( const gxScale *aZoom )
 {
-    SetScale ( mIsHorizontal ? aEvent->mZoom.X : aEvent->mZoom.Y );
+    SetScale ( mIsHorizontal ? aZoom->X : aZoom->Y );
 }
 
 void gxRuler::SetScrollManager( gxScrollManager *aScrollManager )
@@ -47,16 +47,16 @@ void gxRuler::SetScrollManager( gxScrollManager *aScrollManager )
     // Remove the callback from the previous scroll manager (if any).
     if ( mScrollManager )
     {
-        mScrollManager->Unsubscribe( mcCallback( evScroll, gxRuler::OnScrollChanged ) );
+        mScrollManager->gxUnsubscribe( evScrollChanged );
     }
 
     mScrollManager = aScrollManager;
-    aScrollManager->AddObserverAndNotify( mcCallback( evScroll, gxRuler::OnScrollChanged ) );
+    aScrollManager->gxSubscribe( evScrollChanged, OnScrollChanged );
 }
 
-void gxRuler::OnScrollChanged( const evScroll *aEvent )
+void gxRuler::OnScrollChanged( const gxScroll *aScroll )
 {
-    mStartPixel = mIsHorizontal ? aEvent->mScroll.mPosition.X : aEvent->mScroll.mPosition.Y;
+    mStartPixel = mIsHorizontal ? aScroll->mPosition.X : aScroll->mPosition.Y;
 }
 
 void gxRuler::Validate()

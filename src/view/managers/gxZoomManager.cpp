@@ -18,7 +18,7 @@ void gxZoomManager::SetZoom( const float aZoomH, const float aZoomV )
     mZoom.X = aZoomH;
     mZoom.Y = aZoomV;
 
-    Fire( new evZoom( this ) );
+    Fire( evZoomChanged );
 }
 
 void gxZoomManager::SetZoom( const float aZoom )
@@ -26,7 +26,7 @@ void gxZoomManager::SetZoom( const float aZoom )
     mZoom.X = aZoom;
     mZoom.Y = aZoom;
 
-    Fire( new evZoom( this ) );
+    Fire( evZoomChanged );
 }
 
 void gxZoomManager::MultiplyZoom( const float aMultiplierH, const float aMultiplierV )
@@ -34,7 +34,7 @@ void gxZoomManager::MultiplyZoom( const float aMultiplierH, const float aMultipl
     mZoom.X *= aMultiplierH;
     mZoom.Y *= aMultiplierV;
 
-    Fire( new evZoom(this) );
+    Fire( evZoomChanged );
 }
 
 void gxZoomManager::MultiplyZoom( const float aMultiplier )
@@ -42,12 +42,5 @@ void gxZoomManager::MultiplyZoom( const float aMultiplier )
     mZoom.X *= aMultiplier;
     mZoom.Y *= aMultiplier;
 
-    Fire( new evZoom(this) );
-}
-
-void gxZoomManager::AddObserverAndNotify( gxCallback *aCallback )
-{
-    Subscribe( aCallback );
-
-    Fire( new evZoom(this), aCallback );
+    Fire( evZoomChanged );
 }

@@ -2,6 +2,7 @@
 #define gxRuler_h
 
 #include "view/elements/gxVisualViewElement.h"
+#include "core/observer/gxObserver.h"
 #include "view/managers/gxZoomManager.h"
 #include "view/managers/gxScrollManager.h"
 #include "view/gxDivProvider.h"
@@ -20,6 +21,7 @@
  */
 class gxRuler: public gxVisualViewElement
 {
+    gxDeclareObserver( gxRuler )
 public:
     /**
      * @brief The ruler's constructor.
@@ -39,13 +41,6 @@ public:
     void SetZoomManager( gxZoomManager *aZoomManager );
 
     /**
-     * @brief A handler method for zoom change notifications from the
-     * {@link gxZoomManager zoom manager}.
-     * @param aEvent The notification event.
-     */
-    void OnZoomManagerUpdate( const evZoom *aEvent );
-
-    /**
      * @brief Sets the {@link gxScrollManager scroll manager} for this ruler.
      * @param aScrollManager The new {@link gxScrollManager scroll manager}.
      */
@@ -55,10 +50,17 @@ public:
      * @brief A handler method for scroll events from the
      * {@link gxScrollManager scroll manager}.
      * 
-     * @param aEvent The notification object.
+     * @param aScroll The new scroll.
      */
-    void OnScrollChanged( const evScroll *aEvent );
+    void OnScrollChanged( const gxScroll *aScroll );
 
+    /**
+     * @brief A handler method for zoom change notifications from the
+     * {@link gxZoomManager zoom manager}.
+     * @param aZoom The new zoom.
+     */
+    void OnZoomChanged( const gxScale *aZoom );
+    
     virtual void SetBounds( const gxRect &aNewBounds );
 
 protected:

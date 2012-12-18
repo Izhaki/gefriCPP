@@ -1,5 +1,4 @@
 #include "view/elements/gxScroller.h"
-#include "core/observable/gxCallback.h"
 #include "core/gxAssert.h"
 #include "core/gxLog.h"
 
@@ -19,7 +18,7 @@ gxScroller::~gxScroller()
     // Remove the callback from the previous scroll manager (if any).
     if ( mScrollManager )
     {
-        mScrollManager->Unsubscribe( mcCallback( evScroll, gxScroller::OnScrollChanged ) );
+        mScrollManager->gxUnsubscribe( evScrollChanged );
     }
 }
 
@@ -28,17 +27,17 @@ void gxScroller::SetScrollManager( gxScrollManager *aScrollManager )
     // Remove the callback from the previous scroll manager (if any).
     if ( mScrollManager )
     {
-        mScrollManager->Unsubscribe( mcCallback( evScroll, gxScroller::OnScrollChanged ) );
+        mScrollManager->gxUnsubscribe( evScrollChanged );
     }
 
     mScrollManager = aScrollManager;
 
-    aScrollManager->AddObserverAndNotify( mcCallback( evScroll, gxScroller::OnScrollChanged ) );
+    aScrollManager->gxSubscribe( evScrollChanged, OnScrollChanged );
 }
 
-void gxScroller::OnScrollChanged( const evScroll *aEvent )
+void gxScroller::OnScrollChanged( const gxScroll *aScroll )
 {
-    SetScroll( aEvent->mScroll.mPosition );
+    SetScroll( aScroll->mPosition );
 }
 
 void gxScroller::SetScroll( gxPosition const &aScrollPosition )

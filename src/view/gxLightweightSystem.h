@@ -3,6 +3,7 @@
 
 #include "core/gxObject.h"
 #include "core/gxPaintDC.h"
+#include "core/observer/gxObserver.h"
 #include "view/elements/gxRootViewElement.h"
 #include "view/managers/gxScrollManager.h"
 // forward declaration
@@ -19,6 +20,7 @@ class gxLightweightControl;
  */
 class gxLightweightSystem: public gxObject
 {
+    gxDeclareObserver( gxLightweightSystem )
 public:
     /**
      * The constructor of the lightweight system.
@@ -107,10 +109,9 @@ public:
 
     /**
      * @brief Called when the scroll of the scroll bars has changed.
-     * @param aEvent The event object carrying information
-     * regarding the change.
+     * @param aScroll The new scroll.
      */
-    void OnScrollChanged( const evScroll *aEvent );
+    void OnScrollChanged( const gxScroll *aScroll );
 protected:
     /// The control this system is linked to.
     gxLightweightControl *mControl;

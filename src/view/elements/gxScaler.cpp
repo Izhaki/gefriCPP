@@ -1,5 +1,4 @@
 #include "view/elements/gxScaler.h"
-#include "core/observable/gxCallback.h"
 #include "core/gxAssert.h"
 
 gxScaler::gxScaler()
@@ -17,17 +16,17 @@ gxScaler::~gxScaler()
 {
     // Remove the callback from the previous zoom manager (if any).
     if ( mZoomManager )
-        mZoomManager->Unsubscribe( mcCallback( evZoom, gxScaler::OnZoomManagerUpdate ) );
+        mZoomManager->gxUnsubscribe( evZoomChanged );
 }
 
 void gxScaler::SetZoomManager( gxZoomManager *aZoomManager )
 {
     // Remove the callback from the previous zoom manager (if any).
     if ( mZoomManager )
-        mZoomManager->Unsubscribe( mcCallback( evZoom, gxScaler::OnZoomManagerUpdate ) );
+        mZoomManager->gxUnsubscribe( evZoomChanged );
 
     mZoomManager = aZoomManager;
-    aZoomManager->AddObserverAndNotify( mcCallback( evZoom, gxScaler::OnZoomManagerUpdate ) );
+    aZoomManager->gxSubscribe( evZoomChanged, OnZoomChanged );
 }
 
 void gxScaler::SetScale( gxScale const &aScale )
@@ -44,9 +43,9 @@ void gxScaler::SetScale( gxScale const &aScale )
     }
 }
 
-void gxScaler::OnZoomManagerUpdate( const evZoom *aEvent )
+void gxScaler::OnZoomChanged( const gxScale *aZoom )
 {
-    SetScale( aEvent->mZoom );
+    SetScale( *aZoom );
 }
 
 void gxScaler::Paint( gxPainter &aPainter )
