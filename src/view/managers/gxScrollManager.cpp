@@ -1,5 +1,4 @@
 #include "view/managers/gxScrollManager.h"
-#include <wx/log.h>
 #include <math.h>
 
 gxScrollManager::gxScrollManager()

@@ -1,6 +1,4 @@
 #include "view/gxDcPainter.h"
-#include <wx/log.h>
-#include "core/gxLog.h"
 
 gxDcPainter::gxDcPainter(gxPaintDC *aDc, gxRects const &aDamagedRects)
 {

@@ -1,5 +1,4 @@
 #include "view/gxPainter.h"
-#include <wx/log.h>
 #include <math.h>
 #include "core/gxLog.h"
 

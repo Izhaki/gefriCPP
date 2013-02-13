@@ -3,7 +3,6 @@
 
 #include <wx/dcbuffer.h>
 #include "core/geometry/gxGeometry.h"
-#include <wx/log.h>
 
 /**
  * @brief A wrapper to a system's DC using wxAutoBufferedPaintDC

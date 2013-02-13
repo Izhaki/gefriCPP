@@ -2,7 +2,6 @@
 #define gxComposite_h
 
 #include "core/gxObject.h"
-#include <wx/log.h>
 
 #include <list>
 
