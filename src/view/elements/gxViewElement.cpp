@@ -26,7 +26,7 @@ gxLightweightSystem* gxViewElement::GetLightweightSystem() const
 {
     // Get root view element and return if no such found.
     const gxRootViewElement *iRoot = GetRootViewElement();
-    gxASSERT( iRoot != NULL, "Could not find root element" );
+    gxASSERT( iRoot == NULL, "Could not find root element" );
 
     // Get the lightweight system and return if no such found.
     gxLightweightSystem *iLws = iRoot->GetLightweightSystem();
@@ -104,7 +104,7 @@ void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
 
 void gxViewElement::Invalidate()
 {
-    mFlags.Unset(gxViewElement::Valid);
+    mFlags.Unset( gxViewElement::Valid );
 
     // View elements parent might be null before all elements are inserted to
     // the hierarchy tree (when they are still created and added to their

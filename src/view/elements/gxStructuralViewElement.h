@@ -16,35 +16,37 @@
 class gxStructuralViewElement: public gxViewElement
 {
 public:
-  gxStructuralViewElement();
-  ~gxStructuralViewElement();
+    gxStructuralViewElement();
+    ~gxStructuralViewElement();
 
-  /**
-   * @brief Paints the view element by calling 
-   * {@link gxViewElement::PaintChildren() PaintChildren()}.
-   * 
-   * @param aPainter The {@link gxPainter painter} to be used for drawing.
-   */
-  void Paint(gxPainter &aPainter);
+    /**
+     * @brief Paints the view element by calling
+     * {@link gxViewElement::PaintChildren() PaintChildren()}.
+     *
+     * @param aPainter The {@link gxPainter painter} to be used for drawing.
+     */
+    void Paint( gxPainter &aPainter );
 
-  /**
-   * @brief Returns the bounds of this view element.
-   * 
-   *  The bounds are always at origin (0,0) and has the size of the parent.
-   *  This way any structural element is covering the whole of its parent.
-   */
-  virtual gxRect GetBounds() const;
+    /**
+     * @brief Returns the bounds of this view element.
+     *
+     *  The bounds are always at origin (0,0) and has the size of the parent.
+     *  This way any structural element is covering the whole of its parent.
+     */
+    virtual gxRect GetBounds() const;
 protected:
-  /**
-   * @brief Paints the children of this view element.
-   * @param aPainter The {@link gxPainter painter} to be used for drawing.
-   */
-  virtual void PaintChildren(gxPainter &aPainter);
+    /**
+     * @brief Paints the children of this view element.
+     * @param aPainter The {@link gxPainter painter} to be used for drawing.
+     */
+    virtual void PaintChildren( gxPainter &aPainter );
 
-  // This method overrides the gxViewElement implementation to do nothing.
-  // The base class translate the bounds origins to those of the current object,
-  // but as structural elements always start at (0,0) no point in doing that.
-  virtual void Transform(gxRect &aRect, gxTransformFlags &aTransFlags) {};
+    // This method overrides the gxViewElement implementation to do nothing.
+    // The base class translate the bounds origins to those of the current
+    // object, but as structural elements always start at (0,0) no point in
+    // doing that.
+    virtual void Transform( gxRect           &aRect,
+                            gxTransformFlags &aTransFlags) {};
 };
 
 #endif // gxStructuralViewElement_h

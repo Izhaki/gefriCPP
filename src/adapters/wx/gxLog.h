@@ -13,7 +13,7 @@
     #define gxLog( aDebug ) wxLogDebug( aDebug)
 #else
     #define gxLogRect( aMsg, aRect )
-    #define gxLod( aMsg )
+    #define gxLog( aMsg )
 #endif
   
 #endif // gxLog_wx_h
