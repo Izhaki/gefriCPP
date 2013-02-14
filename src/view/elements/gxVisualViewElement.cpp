@@ -28,20 +28,20 @@ void gxVisualViewElement::Paint( gxPainter &aPainter )
   aPainter.SetTransformFlags( mTransformFlags );
 
   // Get the bounds
-  gxRect bounds( GetBounds() );
+  gxRect iBounds( GetBounds() );
 
   // wxLogDebug(_T("Paint: %i, %i, %i, %i"), bounds.GetX(), bounds.GetY(), bounds.GetWidth(), bounds.GetHeight());
 
   // Only paint if need to (intersect with the bounds of painting area and
   // damaged areas).
-  if ( aPainter.NeedsPainting( bounds ) )
+  if ( aPainter.NeedsPainting( iBounds ) )
   {
     // Push current painter state so it can be restored later on.
     aPainter.PushState();
 
     // Sets the clip area of the painter to the bounds
     if ( IsClippingChildren() )
-      aPainter.SetClipArea( bounds );
+      aPainter.SetClipArea( iBounds );
 
     PaintSelf( aPainter );
     PaintChildren( aPainter );

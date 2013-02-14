@@ -76,10 +76,13 @@ void gxScroller::Validate()
 
 void gxScroller::Transform( gxRect &aRect, gxTransformFlags &aTransFlags )
 {
+    // TODO - super long line to say:
+    // aTrans.ScrollEnabled()
     if ( aTransFlags.IsntSet( gxTransformFlags::Scroll ) )
         return;
 
-    if ( mScrollPosition.X != 0 || mScrollPosition.Y != 0 )
+    // TODO - a fairly bad name
+    if ( mScrollPosition.Needed() )
     {
         aRect.Offset( -mScrollPosition.X, -mScrollPosition.Y );
     }

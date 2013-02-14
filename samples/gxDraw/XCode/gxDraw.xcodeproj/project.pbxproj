@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		87C7ADDC164C8F6900894B8A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C7ADDB164C8F6900894B8A /* Cocoa.framework */; };
 		87C7ADE6164C8F6900894B8A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87C7ADE4164C8F6900894B8A /* InfoPlist.strings */; };
-		87C7ADF9164C8F8800894B8A /* wx2.9.4.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 87C7ADF8164C8F8800894B8A /* wx2.9.4.xcconfig */; };
 		87C7ADFD164C927C00894B8A /* libGefri.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C7ADFC164C927C00894B8A /* libGefri.a */; };
 		87C7AE0C164C9CEF00894B8A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7AE09164C9CEF00894B8A /* main.cpp */; };
 		87C7AE0D164C9CEF00894B8A /* myFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7AE0A164C9CEF00894B8A /* myFrame.cpp */; };
@@ -137,7 +136,7 @@
 		87C7ADCE164C8F6900894B8A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Izhaki;
 			};
 			buildConfigurationList = 87C7ADD1164C8F6900894B8A /* Build configuration list for PBXProject "gxDraw" */;
@@ -163,7 +162,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				87C7ADE6164C8F6900894B8A /* InfoPlist.strings in Resources */,
-				87C7ADF9164C8F8800894B8A /* wx2.9.4.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +261,7 @@
 					"\"/Users/izhaki/Library/Developer/Xcode/DerivedData/Gefri-ckbhjnwcbebfzcbpgwdafuuoykem/Build/Products/Debug\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -285,7 +283,7 @@
 					"\"/Users/izhaki/Library/Developer/Xcode/DerivedData/Gefri-ckbhjnwcbebfzcbpgwdafuuoykem/Build/Products/Debug\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

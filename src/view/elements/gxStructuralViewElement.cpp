@@ -4,7 +4,7 @@
 
 gxStructuralViewElement::gxStructuralViewElement()
 {
-    // Structural view elements should not be subject to any zoom or
+    // Structural view elements are not subject to any zoom or
     // scroll transformations.
     mTransformFlags.Unset( gxTransformFlags::Scale | gxTransformFlags::Scroll );
 }

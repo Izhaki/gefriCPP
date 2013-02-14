@@ -46,7 +46,7 @@ protected:
     // object, but as structural elements always start at (0,0) no point in
     // doing that.
     virtual void Transform( gxRect           &aRect,
-                            gxTransformFlags &aTransFlags) {};
+                            gxTransformFlags &aTransFlags ) {};
 };
 
 #endif // gxStructuralViewElement_h

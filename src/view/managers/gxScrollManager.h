@@ -32,7 +32,8 @@ public:
     // Events definition
     gxDefineBoundEvent( evScrollChanged, const gxScroll*, &mScroll )
     
-    void SetPosition( const bool isVertical, const gxPix aScroll );
+    void SetPosition( const bool  isVertical,
+                      const gxPix aScroll );
 
     /**
      * @brief Will be called when the scroll manager needs to adjust the
@@ -42,11 +43,14 @@ public:
      * @param aVisibleY The visible part for vertical scrollbar
      * @param aRangeY The vertical scroll range
      */
-    void AdjustScrollbars( gxSize const &aVisible, gxSize const &aRange );
+    void AdjustScrollbars( gxSize const &aVisible,
+                           gxSize const &aRange );
 
 private:
     void SetPosition( gxPosition const &aScroll );
-    void SetPosition( const gxPix aScrollX, const gxPix aScrollY );
+    void SetPosition( const gxPix aScrollX,
+                      const gxPix aScrollY );
+    
     void SetPositionX( const gxPix aScrollX );
     void SetPositionY( const gxPix aScrollY );
     

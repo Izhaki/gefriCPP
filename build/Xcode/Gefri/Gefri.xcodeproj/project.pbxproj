@@ -391,7 +391,7 @@
 		876C5C59164C73460006CB61 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Izhaki;
 			};
 			buildConfigurationList = 876C5C5C164C73460006CB61 /* Build configuration list for PBXProject "Gefri" */;
@@ -501,6 +501,7 @@
 			baseConfigurationReference = 876C5D6F164C74B30006CB61 /* wx2.9.4.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREFIX_HEADER = "$(PREFIX_HEADER)";
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -509,7 +510,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -519,6 +520,7 @@
 			baseConfigurationReference = 876C5D6F164C74B30006CB61 /* wx2.9.4.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
@@ -526,7 +528,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
