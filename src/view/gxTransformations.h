@@ -12,16 +12,16 @@
 class gxTransformFlags : public gxFlags<gx8Flags>
 {
 public:
-  gxTransformFlags() { Set(gxTransformFlags::All); }
-  gxTransformFlags(gx8Flags aFlags) { Set(aFlags); }
+    gxTransformFlags() { Set( gxTransformFlags::All ); }
+    gxTransformFlags( gx8Flags aFlags ) { Set( aFlags ); }
   
-  enum
-  {
-    Translate = 0x01,
-    Scroll    = 0x02,
-    Scale     = 0x04,
-    All       = Translate | Scroll | Scale
-  };
+    enum
+    {
+        Translate = 0x01,
+        Scroll    = 0x02,
+        Scale     = 0x04,
+        All       = Translate | Scroll | Scale
+    };
 };
 
 /**
@@ -29,12 +29,14 @@ public:
  */
 struct gxScale
 {
-  float X, Y;
+    float X, Y;
 
-  gxScale() : X(1.0), Y(1.0) { }
+    gxScale() : X( 1.0 ), Y( 1.0 ) { }
 
-  bool operator==(const gxScale& aScale) const { return X == aScale.X && Y == aScale.Y; }
-  bool operator!=(const gxScale& aScale) const { return X != aScale.X || Y != aScale.Y; }
+    bool operator==( const gxScale& aScale ) const { return X == aScale.X && Y == aScale.Y; }
+    bool operator!=( const gxScale& aScale ) const { return X != aScale.X || Y != aScale.Y; }
+    
+    bool Needed() { return X != 1 || Y != 1; }
 };
 
 /**
@@ -42,13 +44,15 @@ struct gxScale
  */
 struct gxPosition
 {
-  gxPix X, Y;
+    gxPix X, Y;
 
-  gxPosition() : X(0), Y(0) { }
-  gxPosition(gxPix aX, gxPix aY) : X(aX), Y(aY) { }
+    gxPosition() : X( 0 ), Y( 0 ) { }
+    gxPosition( gxPix aX, gxPix aY ) : X( aX ), Y( aY ) { }
 
-  bool operator==(const gxPosition& aPosition) const { return X == aPosition.X && Y == aPosition.Y; }
-  bool operator!=(const gxPosition& aPosition) const { return X != aPosition.X || Y != aPosition.Y; }
+    bool operator==( const gxPosition& aPosition ) const { return X == aPosition.X && Y == aPosition.Y; }
+    bool operator!=( const gxPosition& aPosition ) const { return X != aPosition.X || Y != aPosition.Y; }
+    
+    bool Needed() { return X != 0 || Y != 0; }
 };
 
 /**
@@ -56,8 +60,10 @@ struct gxPosition
  */
 struct gxTranslate
 {
-  gxTranslate() : X(0), Y(0) { }
-  gxPix X, Y;
+    gxTranslate() : X( 0 ), Y( 0 ) { }
+    gxPix X, Y;
+    
+    bool Needed() { return X != 0 || Y != 0; }
 };
 
 /**
@@ -66,9 +72,14 @@ struct gxTranslate
  */
 struct gxTransformations
 {
-  gxScale     Scale;
-  gxPosition  Scroll;
-  gxTranslate Translate;
+    gxScale     Scale;
+    gxPosition  Scroll;
+    gxTranslate Translate;
+
+    bool ScaleNeeded()     { return Scale.Needed(); }
+    bool ScrollNeeded()    { return Scroll.Needed(); }    
+    bool TranslateNeeded() { return Translate.Needed(); }
+    
 };
 
 #endif // gxTransformations_h

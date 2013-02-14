@@ -13,15 +13,15 @@ gxPainter::gxPainter()
 void gxPainter::UpdateTransformationsNeeded()
 {
     mNeedsTranslating =
-        ( ( mTrans.Translate.X != 0 ) || ( mTrans.Translate.Y != 0 ) ) &&
+         mTrans.TranslateNeeded() &&
          mTransformEnabledFlags.IsSet( gxTransformFlags::Translate );
 
     mNeedsScrolling =
-        ( ( mTrans.Scroll.X != 0 ) || ( mTrans.Scroll.Y != 0 ) ) &&
+        mTrans.ScrollNeeded() &&
         mTransformEnabledFlags.IsSet( gxTransformFlags::Scroll );
 
     mNeedsScaling =
-        ( ( mTrans.Scale.X != 1 ) || ( mTrans.Scale.Y != 1 ) ) &&
+        mTrans.ScaleNeeded() &&
         mTransformEnabledFlags.IsSet( gxTransformFlags::Scale );
 }
 
