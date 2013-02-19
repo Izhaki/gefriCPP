@@ -9,7 +9,7 @@ gxScrollManager::~gxScrollManager()
 {
 }
 
-void gxScrollManager::SetPosition( gxPosition const &aPosition )
+void gxScrollManager::SetPosition( gxPoint const &aPosition )
 {
     mScroll.mPosition = aPosition;
     Fire( evScrollChanged );
@@ -17,7 +17,7 @@ void gxScrollManager::SetPosition( gxPosition const &aPosition )
 
 void gxScrollManager::SetPosition( const gxPix aPositionX, const gxPix aPositionY )
 {
-    gxPosition iPosition( aPositionX, aPositionY );
+    gxPoint iPosition( aPositionX, aPositionY );
     SetPosition( iPosition );
 }
 
@@ -46,7 +46,7 @@ void gxScrollManager::AdjustScrollbars( gxSize const &aVisible, gxSize const &aR
     if ( mScroll.mVisible == aVisible && mScroll.mRange == aRange )
         return;
 
-    gxPosition iPosition;
+    gxPoint iPosition;
 
     // The new scroll position is proportional to the previous one.
     if ( mScroll.mPosition.X != 0 && aRange.X > aVisible.X )

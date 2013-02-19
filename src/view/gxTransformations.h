@@ -40,45 +40,18 @@ struct gxScale
 };
 
 /**
- * @brief A structures containing the values for scroll transformations
- */
-struct gxPosition
-{
-    gxPix X, Y;
-
-    gxPosition() : X( 0 ), Y( 0 ) { }
-    gxPosition( gxPix aX, gxPix aY ) : X( aX ), Y( aY ) { }
-
-    bool operator==( const gxPosition& aPosition ) const { return X == aPosition.X && Y == aPosition.Y; }
-    bool operator!=( const gxPosition& aPosition ) const { return X != aPosition.X || Y != aPosition.Y; }
-    
-    bool Needed() { return X != 0 || Y != 0; }
-};
-
-/**
- * @brief A structures containing the values for translate transformations
- */
-struct gxTranslate
-{
-    gxTranslate() : X( 0 ), Y( 0 ) { }
-    gxPix X, Y;
-    
-    bool Needed() { return X != 0 || Y != 0; }
-};
-
-/**
  * @brief A structure containing the values of various transformations that
  * can be performed in the view layer.
  */
 struct gxTransformations
 {
-    gxScale     Scale;
-    gxPosition  Scroll;
-    gxTranslate Translate;
+    gxScale Scale;
+    gxPoint Scroll;
+    gxPoint Translate;
 
     bool ScaleNeeded()     { return Scale.Needed(); }
-    bool ScrollNeeded()    { return Scroll.Needed(); }    
-    bool TranslateNeeded() { return Translate.Needed(); }
+    bool ScrollNeeded()    { return Scroll.IsntZero(); }
+    bool TranslateNeeded() { return Translate.IsntZero(); }
     
 };
 

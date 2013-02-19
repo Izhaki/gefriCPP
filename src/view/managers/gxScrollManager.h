@@ -9,13 +9,13 @@
 struct gxScroll
 {
     /// The current scoll position.
-    gxPosition mPosition;
+    gxPoint mPosition;
     
-    /// Represent the visible size of the viewable part of the whole.
-    gxSize     mVisible;
+    /// Represents the visible size of the viewable part of the whole.
+    gxSize  mVisible;
     
-    /// Represent the size of the whole area.
-    gxSize     mRange;
+    /// Represents the size of the whole area.
+    gxSize  mRange;
 };
 
 /**
@@ -47,7 +47,7 @@ public:
                            gxSize const &aRange );
 
 private:
-    void SetPosition( gxPosition const &aScroll );
+    void SetPosition( gxPoint const &aScroll );
     void SetPosition( const gxPix aScrollX,
                       const gxPix aScrollY );
     

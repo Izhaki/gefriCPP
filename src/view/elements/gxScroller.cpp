@@ -40,7 +40,7 @@ void gxScroller::OnScrollChanged( const gxScroll *aScroll )
     SetScroll( aScroll->mPosition );
 }
 
-void gxScroller::SetScroll( gxPosition const &aScrollPosition )
+void gxScroller::SetScroll( gxPoint const &aScrollPosition )
 {
     if ( mScrollPosition != aScrollPosition )
     {
@@ -81,8 +81,7 @@ void gxScroller::Transform( gxRect &aRect, gxTransformFlags &aTransFlags )
     if ( aTransFlags.IsntSet( gxTransformFlags::Scroll ) )
         return;
 
-    // TODO - a fairly bad name
-    if ( mScrollPosition.Needed() )
+    if ( mScrollPosition.IsntZero() )
     {
         aRect.Offset( -mScrollPosition.X, -mScrollPosition.Y );
     }

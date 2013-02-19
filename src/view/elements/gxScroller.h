@@ -31,7 +31,7 @@ public:
      * @param aScrollX The X axis scroll
      * @param aScaleY The Y axis scroll
      */
-    void SetScroll( gxPosition const &aScrollPosition );
+    void SetScroll( gxPoint const &aScrollPosition );
 
     /**
      * @brief A handler method for scroll position events from the
@@ -62,7 +62,7 @@ protected:
 
     gxScrollManager *mScrollManager;
 private:
-    gxPosition mScrollPosition;
+    gxPoint mScrollPosition;
 };
 
 #endif // gxScroller_h
