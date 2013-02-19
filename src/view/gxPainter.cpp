@@ -3,25 +3,13 @@
 #include "core/gxLog.h"
 
 gxPainter::gxPainter()
-  : mNeedsTranslating( false ),
-    mNeedsScaling( false ),
-    mNeedsScrolling( false )
 {
-}
-
-void gxPainter::UpdateTransformationsNeeded()
-{
-    mNeedsTranslating = mTrans.TranslateNeeded();
-
-    mNeedsScrolling = mTrans.ScrollNeeded();
-
-    mNeedsScaling = mTrans.ScaleNeeded();
 }
 
 void gxPainter::SetTranslate( gxPix dx,
                               gxPix dy )
 {
-    if ( mNeedsScaling )
+    if ( ScaleNeeded() )
     {
         // Take into account any scaling that is in force.
         // Say the value given is (40,40), with a scale set to 2 the resultant
@@ -32,14 +20,12 @@ void gxPainter::SetTranslate( gxPix dx,
         mTrans.Translate.X += dx;
         mTrans.Translate.Y += dy;
     }
-
-    UpdateTransformationsNeeded();
 }
 
 void gxPainter::SetScroll( gxPix sx,
                            gxPix sy )
 {
-    if ( mNeedsScaling )
+    if ( ScaleNeeded() )
     {
         // Take into account any scaling that is in force.
         // Say the value given is (40,40), with a scale set to 2 the resultant
@@ -50,16 +36,12 @@ void gxPainter::SetScroll( gxPix sx,
         mTrans.Scroll.X += sx;
         mTrans.Scroll.Y += sy;
     }
-
-    UpdateTransformationsNeeded();
 }
 
 void gxPainter::SetScale( gxScale const &aScale )
 {
     mTrans.Scale.X *= aScale.X;
     mTrans.Scale.Y *= aScale.Y;
-
-    UpdateTransformationsNeeded();
 }
 
 void gxPainter::PushState()
@@ -99,7 +81,6 @@ void gxPainter::RestoreState()
 void gxPainter::RestoreState( gxPainterState *aState )
 {
     mTrans = aState->transformations;
-    UpdateTransformationsNeeded();
 
     SetAbsoluteClipArea( aState->clipArea );
 }
@@ -116,39 +97,53 @@ void gxPainter::SetClipArea( gxRect const &aRect )
 void gxPainter::SetTransformFlags( gxTransformFlags aFlags )
 {
     mTrans.Enabled = aFlags;
-    UpdateTransformationsNeeded();
 }
 
 void gxPainter::Transform( gxRect &aRect )
 {
-    if ( mNeedsScaling )
+    if ( ScaleNeeded() )
         aRect.Scale( mTrans.Scale.X, mTrans.Scale.Y );
 
     // TODO - change to aRect += mTrans.Translate (ditto for scrolling)
-    if ( mNeedsTranslating )
+    if ( TranslateNeeded() )
         aRect.Offset( mTrans.Translate.X, mTrans.Translate.Y );
 
-    if ( mNeedsScrolling )
+    if ( ScrollNeeded() )
         aRect.Offset( -mTrans.Scroll.X, -mTrans.Scroll.Y );
 }
 
 void gxPainter::Transform( gxPoint &aPoint )
 {
-    if ( mNeedsScaling )
+    if ( ScaleNeeded() )
     {
         aPoint.X = gxFloor( aPoint.X * mTrans.Scale.X );
         aPoint.Y = gxFloor( aPoint.Y * mTrans.Scale.Y );
     }
 
-    if ( mNeedsTranslating )
+    if ( TranslateNeeded() )
     {
         aPoint.X += mTrans.Translate.X;
         aPoint.Y += mTrans.Translate.Y;
     }
 
-    if ( mNeedsScrolling )
+    if ( ScrollNeeded() )
     {
         aPoint.X -= mTrans.Scroll.X;
         aPoint.Y -= mTrans.Scroll.Y;
     }
+}
+
+bool gxPainter::TranslateNeeded()
+{
+    return mTrans.TranslateNeeded();
+}
+
+bool gxPainter::ScaleNeeded()
+{
+    return mTrans.ScaleNeeded();
+}
+
+bool gxPainter::ScrollNeeded()
+{
+    return mTrans.ScrollNeeded();    
 }

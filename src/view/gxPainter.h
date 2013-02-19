@@ -197,18 +197,10 @@ protected:
     */
     virtual void Transform( gxPoint &aPoint );
 
-    /**
-    * @brief Works out what transformations are actually neede.
-    * 
-    * This method will update the mNeedsX members.
-    */
-    void UpdateTransformationsNeeded();
-
-    // These are for performence optimization.
-    bool mNeedsTranslating;
-    bool mNeedsScaling;
-    bool mNeedsScrolling;
-
+    bool TranslateNeeded();
+    bool ScaleNeeded();
+    bool ScrollNeeded();
+    
     /// The various transformations this painter applies.
     gxTransformations mTrans;
 
