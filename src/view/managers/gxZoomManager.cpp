@@ -13,7 +13,8 @@ gxScale gxZoomManager::GetZoom() const
     return mZoom;
 }
 
-void gxZoomManager::SetZoom( const float aZoomH, const float aZoomV )
+void gxZoomManager::SetZoom( const float aZoomH,
+                             const float aZoomV )
 {
     mZoom.X = aZoomH;
     mZoom.Y = aZoomV;
@@ -29,7 +30,8 @@ void gxZoomManager::SetZoom( const float aZoom )
     Fire( evZoomChanged );
 }
 
-void gxZoomManager::MultiplyZoom( const float aMultiplierH, const float aMultiplierV )
+void gxZoomManager::MultiplyZoom( const float aMultiplierH,
+                                  const float aMultiplierV )
 {
     mZoom.X *= aMultiplierH;
     mZoom.Y *= aMultiplierV;

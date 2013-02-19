@@ -17,7 +17,9 @@ public:
     ~gxZoomManager();
 
     // Events definition
-    gxDefineBoundEvent( evZoomChanged, const gxScale*, &mZoom )
+    gxDefineBoundEvent( evZoomChanged,
+                        const gxScale*,
+                        &mZoom )
     
     /**
      * @brief Returns the current zoom.
@@ -30,7 +32,8 @@ public:
      * @param aZoomV The vertical zoom factor.
      * @param aZoomH The horizontal zoom factor.
      */
-    void SetZoom( const float aZoomH, const float aZoomV );
+    void SetZoom( const float aZoomH,
+                  const float aZoomV );
 
     /**
      * @brief A convinience method for setting both the vertical and horizontal
@@ -44,7 +47,8 @@ public:
      * @param aMultiplierV The vertical zoom multiplier.
      * @param aMultiplierH The horizontal zoom multiplier.
      */
-    void MultiplyZoom( const float aMultiplierH, const float aMultiplierV );
+    void MultiplyZoom( const float aMultiplierH,
+                       const float aMultiplierV );
 
     /**
      * @brief A convinience method for multiplying both the horizontal and

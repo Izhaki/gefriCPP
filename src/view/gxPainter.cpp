@@ -5,24 +5,17 @@
 gxPainter::gxPainter()
   : mNeedsTranslating( false ),
     mNeedsScaling( false ),
-    mNeedsScrolling( false ),
-    mTransformEnabledFlags( gxTransformFlags::All )
+    mNeedsScrolling( false )
 {
 }
 
 void gxPainter::UpdateTransformationsNeeded()
 {
-    mNeedsTranslating =
-         mTrans.TranslateNeeded() &&
-         mTransformEnabledFlags.IsSet( gxTransformFlags::Translate );
+    mNeedsTranslating = mTrans.TranslateNeeded();
 
-    mNeedsScrolling =
-        mTrans.ScrollNeeded() &&
-        mTransformEnabledFlags.IsSet( gxTransformFlags::Scroll );
+    mNeedsScrolling = mTrans.ScrollNeeded();
 
-    mNeedsScaling =
-        mTrans.ScaleNeeded() &&
-        mTransformEnabledFlags.IsSet( gxTransformFlags::Scale );
+    mNeedsScaling = mTrans.ScaleNeeded();
 }
 
 void gxPainter::SetTranslate( gxPix dx,
@@ -74,7 +67,6 @@ void gxPainter::PushState()
     gxPainterState *iState = new gxPainterState();
 
     iState->transformations = mTrans;
-    iState->transformEnabledFlags = mTransformEnabledFlags;
     iState->clipArea = GetClipRect();
 
     mStateStack.push( iState );
@@ -107,7 +99,6 @@ void gxPainter::RestoreState()
 void gxPainter::RestoreState( gxPainterState *aState )
 {
     mTrans = aState->transformations;
-    mTransformEnabledFlags = aState->transformEnabledFlags;
     UpdateTransformationsNeeded();
 
     SetAbsoluteClipArea( aState->clipArea );
@@ -124,7 +115,7 @@ void gxPainter::SetClipArea( gxRect const &aRect )
 
 void gxPainter::SetTransformFlags( gxTransformFlags aFlags )
 {
-    mTransformEnabledFlags = aFlags;
+    mTrans.Enabled = aFlags;
     UpdateTransformationsNeeded();
 }
 
@@ -133,6 +124,7 @@ void gxPainter::Transform( gxRect &aRect )
     if ( mNeedsScaling )
         aRect.Scale( mTrans.Scale.X, mTrans.Scale.Y );
 
+    // TODO - change to aRect += mTrans.Translate (ditto for scrolling)
     if ( mNeedsTranslating )
         aRect.Offset( mTrans.Translate.X, mTrans.Translate.Y );
 

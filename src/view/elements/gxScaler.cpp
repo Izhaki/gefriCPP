@@ -68,7 +68,7 @@ void gxScaler::Transform( gxRect &aRect, gxTransformFlags &aTransFlags )
     if ( aTransFlags.IsntSet(gxTransformFlags::Scale) )
         return;
 
-    if ( mScale.Needed() )
+    if ( mScale.IsntZero() )
     {
         aRect.Scale( mScale.X, mScale.Y );
     }

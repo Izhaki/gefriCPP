@@ -36,7 +36,7 @@ public:
      * @brief Paints the view element and its children.
      * @param aPainter The {@link gxPainter painter} to be used for drawing.
      */
-    virtual void Paint(gxPainter &aPainter) = 0;
+    virtual void Paint( gxPainter &aPainter ) = 0;
 
     /**
      * @brief Erases the view element from the view.
@@ -113,7 +113,7 @@ protected:
      * This is an abstract methods that subclasses will override.
      * @param aPainter The {@link gxPainter painter} to be used for drawing.
      */
-    virtual void PaintChildren(gxPainter &aPainter) = 0;
+    virtual void PaintChildren( gxPainter &aPainter ) = 0;
 
     /**
      * @brief Returns the {@link gxLightweightSystem lightweight system}

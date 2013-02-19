@@ -19,7 +19,6 @@ struct gxPainterState
 public:
     gxRect            clipArea;
     gxTransformations transformations;
-    gxTransformFlags  transformEnabledFlags;
 };
 
 /**
@@ -212,9 +211,6 @@ protected:
 
     /// The various transformations this painter applies.
     gxTransformations mTrans;
-
-    /// Flags representing which transformation clients wish to be enabled.
-    gxTransformFlags  mTransformEnabledFlags;
 
     StateStack        mStateStack;
 };

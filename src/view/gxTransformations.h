@@ -33,10 +33,26 @@ struct gxScale
 
     gxScale() : X( 1.0 ), Y( 1.0 ) { }
 
-    bool operator==( const gxScale& aScale ) const { return X == aScale.X && Y == aScale.Y; }
-    bool operator!=( const gxScale& aScale ) const { return X != aScale.X || Y != aScale.Y; }
+    bool operator==( const gxScale& aScale ) const
+    {
+        return X == aScale.X && Y == aScale.Y;
+    }
     
-    bool Needed() { return X != 1 || Y != 1; }
+    bool operator!=( const gxScale& aScale ) const
+    {
+        return X != aScale.X || Y != aScale.Y;
+    }
+    
+    bool IsntZero()
+    {
+        return X != 1 || Y != 1;
+    }
+
+    bool IsZero()
+    {
+        return X == 1 && Y == 1;
+    }
+    
 };
 
 /**
@@ -49,10 +65,23 @@ struct gxTransformations
     gxPoint Scroll;
     gxPoint Translate;
 
-    bool ScaleNeeded()     { return Scale.Needed(); }
-    bool ScrollNeeded()    { return Scroll.IsntZero(); }
-    bool TranslateNeeded() { return Translate.IsntZero(); }
+    bool ScaleNeeded()
+    {
+        return Scale.IsntZero() && Enabled.IsSet( gxTransformFlags::Scale );
+    }
     
+    bool ScrollNeeded()
+    {
+        return Scroll.IsntZero() && Enabled.IsSet( gxTransformFlags::Scroll );
+    }
+    
+    bool TranslateNeeded()
+    {
+        return Translate.IsntZero() && Enabled.IsSet( gxTransformFlags::Translate );
+    }
+    
+    // What trasformations are enabled
+    gxTransformFlags Enabled;
 };
 
 #endif // gxTransformations_h
