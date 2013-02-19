@@ -124,7 +124,7 @@ public:
     * translate.
     * @param aFlags The new set of transform flags.
     */
-    virtual void SetTransformFlags( gxTransformFlags aFlags );
+    virtual void SetTransformFlags( gxTransFlags aFlags );
 
     // Drawing methods
     virtual void DrawRectangle( gxPix x,

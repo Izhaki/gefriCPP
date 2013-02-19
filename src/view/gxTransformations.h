@@ -9,11 +9,11 @@
  * 
  * Used by {@link gxPainter painters} and {@ling gxViewElement view elements}
  */
-class gxTransformFlags : public gxFlags<gx8Flags>
+class gxTransFlags : public gxFlags<gx8Flags>
 {
 public:
-    gxTransformFlags() { Set( gxTransformFlags::All ); }
-    gxTransformFlags( gx8Flags aFlags ) { Set( aFlags ); }
+    gxTransFlags() { Set( gxTransFlags::All ); }
+    gxTransFlags( gx8Flags aFlags ) { Set( aFlags ); }
   
     enum
     {
@@ -67,21 +67,21 @@ struct gxTransformations
 
     bool ScaleNeeded()
     {
-        return Scale.IsntZero() && Enabled.IsSet( gxTransformFlags::Scale );
+        return Scale.IsntZero() && Enabled.IsSet( gxTransFlags::Scale );
     }
     
     bool ScrollNeeded()
     {
-        return Scroll.IsntZero() && Enabled.IsSet( gxTransformFlags::Scroll );
+        return Scroll.IsntZero() && Enabled.IsSet( gxTransFlags::Scroll );
     }
     
     bool TranslateNeeded()
     {
-        return Translate.IsntZero() && Enabled.IsSet( gxTransformFlags::Translate );
+        return Translate.IsntZero() && Enabled.IsSet( gxTransFlags::Translate );
     }
     
     // What trasformations are enabled
-    gxTransformFlags Enabled;
+    gxTransFlags Enabled;
 };
 
 #endif // gxTransformations_h

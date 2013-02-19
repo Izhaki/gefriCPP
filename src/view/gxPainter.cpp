@@ -94,7 +94,7 @@ void gxPainter::SetClipArea( gxRect const &aRect )
     IntersectClipArea( iTransformedRect );
 }
 
-void gxPainter::SetTransformFlags( gxTransformFlags aFlags )
+void gxPainter::SetTransformFlags( gxTransFlags aFlags )
 {
     mTrans.Enabled = aFlags;
 }

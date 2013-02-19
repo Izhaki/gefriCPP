@@ -40,7 +40,7 @@ void gxRootViewElement::Invalidate()
   mLightweightSystem->QueueValidation();
 }
 
-void gxRootViewElement::TransformToAbsolute(gxRect &aRect, gxTransformFlags &aTransFlags)
+void gxRootViewElement::TransformToAbsolute(gxRect &aRect, gxTransFlags &aTransFlags)
 {
   // RootViewElement has no parent. So translation stops here.
 }

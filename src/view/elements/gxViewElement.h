@@ -95,7 +95,7 @@ protected:
      * @param aRect The rect to transform
      */
     virtual void TransformToAbsolute( gxRect           &aRect,
-                                      gxTransformFlags &aTransFlags );
+                                      gxTransFlags &aTransFlags );
 
     /**
      * @brief Transforms a rect (typically bounds) to the coordinates of this
@@ -105,7 +105,7 @@ protected:
      * @param aRect The rect to transform.
      */
     virtual void Transform( gxRect           &aRect,
-                            gxTransformFlags &aTransFlags );
+                            gxTransFlags &aTransFlags );
   
     /**
      * @brief Paints the children of this view element.
@@ -190,7 +190,7 @@ protected:
   
     gxFlags<gx8Flags> mFlags;
   
-    gxTransformFlags mTransformFlags;
+    gxTransFlags mTransformFlags;
 
     IMPLEMENT_COMPOSITE( gxViewElement )
 };

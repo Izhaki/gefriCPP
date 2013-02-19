@@ -50,7 +50,7 @@ public:
     void Paint( gxPainter &aPainter );
 
 protected:
-    virtual void Transform( gxRect &aRect, gxTransformFlags &aTransFlags );
+    virtual void Transform( gxRect &aRect, gxTransFlags &aTransFlags );
 
     void Validate();
 
