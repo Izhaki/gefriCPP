@@ -30,7 +30,6 @@ public:
     bool ScaleOff()     { return IsntSet( Scale ); }
     bool ScrollOff()    { return IsntSet( Scroll ); }
     bool TranslateOff() { return IsntSet( Translate ); }
-    
 };
 
 /**

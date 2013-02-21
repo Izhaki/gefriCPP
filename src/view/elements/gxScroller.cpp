@@ -76,9 +76,7 @@ void gxScroller::Validate()
 
 void gxScroller::Transform( gxRect &aRect, gxTransFlags &aTransFlags )
 {
-    // TODO - super long line to say:
-    // aTrans.ScrollEnabled()
-    if ( aTransFlags.IsntSet( gxTransFlags::Scroll ) )
+    if ( aTransFlags.ScrollOff() )
         return;
 
     if ( mScrollPosition.IsntZero() )
