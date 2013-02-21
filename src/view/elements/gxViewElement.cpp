@@ -50,7 +50,7 @@ void gxViewElement::Transform( gxRect           &aRect,
                                gxTransFlags &aTransFlags )
 {
     if ( aTransFlags.IsSet( gxTransFlags::Translate ) )
-        aRect.Offset( GetBounds().GetPosition() );
+        aRect.Translate( GetBounds().GetPosition() );
 }
 
 void gxViewElement::Erase()

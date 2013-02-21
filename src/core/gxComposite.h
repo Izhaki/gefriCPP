@@ -48,84 +48,94 @@ public:
     // won't be called.
     virtual ~gxComposite();
 
-  /**
-   * @brief Adds a new child to this object.
-   * @param aChild The child to be added
-   */
-  void AddChild(gxComposite *aChild);
+    /**
+     * @brief Adds a new child to this object.
+     * @param aChild The child to be added
+     */
+    void AddChild( gxComposite *aChild );
 
-  /**
-   * @brief Removes a child from this object.
-   * @param aChild The child to be deleted
-   * @param aAndDelete Whether or not the child object should be deleted and nulled
-   */
-  void RemoveChild(gxComposite *aChild, bool aAndDelete = false);
+    /**
+     * @brief Removes a child from this object.
+     * @param aChild The child to be deleted
+     * @param aAndDelete Whether or not the child object should be deleted and
+     * nulled.
+     */
+    void RemoveChild( gxComposite *aChild,
+                      bool        aAndDelete = false );
 
-  /**
-   * @brief Removes all object children.
-   * @param aAndDelete Whether or nor removed children are deleted and nulled
-   */
-  void RemoveAllChildren(bool aAndDelete = false);
+    /**
+     * @brief Removes all object children.
+     * @param aAndDelete Whether or nor removed children are deleted and nulled
+     */
+    void RemoveAllChildren( bool aAndDelete = false );
 
-  /**
-   * @brief Sets the parent of this object.
-   * @param aParent The parent object
-   * @param aAndRemoveFromParent Whether or not to call RemoveChild on the
-   *              parent. Default to True
-   */
-  void SetParent(gxComposite* aParent, bool aAndRemoveFromParent = true);
-  /**
-   * @brief Returns the parent of this object.
-   * @return The parent
-   */
-  gxComposite* GetParent() { return mParent; }
+    /**
+     * @brief Sets the parent of this object.
+     * @param aParent The parent object
+     * @param aAndRemoveFromParent Whether or not to call RemoveChild on the
+     * parent. Default to True
+     */
+    void SetParent( gxComposite* aParent,
+                    bool         aAndRemoveFromParent = true );
+    
+    /**
+     * @brief Returns the parent of this object.
+     * @return The parent
+     */
+    gxComposite* GetParent() { return mParent; }
 
-  /**
-   * @brief Returns the children of this object.
-   * @return An std::list representing the children
-   */
-  Children GetChildren() { return mChildren; }
+    /**
+     * @brief Returns the children of this object.
+     * @return An std::list representing the children
+     */
+    Children GetChildren() { return mChildren; }
+
+    /**
+     * @brief Returns true if this object has no children.
+     * @return ture if the object has no children
+     */
+    bool IsChildless() { return mChildren.empty(); }
 protected:
-  /**
-   * @brief A virtual method that will be called whenever a child is added.
-   *
-   * This method will be overriden by the IMPLEMENT_COMPOSITE macro, so
-   * when used, subclasses should not override this method, but implement
-   * the typecasted version instead; eg, OnAddChild(gxFigure* aChild).
-   * @param aChild The child that was added
-   */
-  virtual void OnAddChild(gxComposite* aChild) { }
-   /**
-   * @brief A virtual method that will be called whenever a child is about to
-   * be removed.
-   *
-   * This method will be overriden by the IMPLEMENT_COMPOSITE macro, so
-   * when used, subclasses should not override this method, but implement
-   * the typecasted version instead; eg, OnRemoveChild(gxFigure* aChild).
-   * @param aChild The child that was removed
-   */ 
-  virtual void OnBeforeChildRemoval(gxComposite* aChild) { }
+    /**
+     * @brief A virtual method that will be called whenever a child is added.
+     *
+     * This method will be overriden by the IMPLEMENT_COMPOSITE macro, so
+     * when used, subclasses should not override this method, but implement
+     * the typecasted version instead; eg, OnAddChild(gxFigure* aChild).
+     * @param aChild The child that was added
+     */
+    virtual void OnAddChild( gxComposite* aChild ) { }
+    /**
+     * @brief A virtual method that will be called whenever a child is about to
+     * be removed.
+     *
+     * This method will be overriden by the IMPLEMENT_COMPOSITE macro, so
+     * when used, subclasses should not override this method, but implement
+     * the typecasted version instead; eg, OnRemoveChild(gxFigure* aChild).
+     * @param aChild The child that was removed
+     */
+    virtual void OnBeforeChildRemoval( gxComposite* aChild ) { }
 
-  /**
-   * @brief A virtual method that will be called after a child has been removed.
-   * 
-   * This will give view elements a chance to, for example, revalidate
-   * themselves.
-   */
-  virtual void OnAfterChildRemoval() { }
+    /**
+     * @brief A virtual method that will be called after a child has been removed.
+     *
+     * This will give view elements a chance to, for example, revalidate
+     * themselves.
+     */
+    virtual void OnAfterChildRemoval() { }
 
-  /**
-   * @brief Convinience method for type casting. Subclasses will override this by using
-   * IMPLEMENT_COMPOSITE.
-   * @param it The iterator to be casted
-   * @return A typecasted child
-   */
-  gxComposite* Child(ChildIterator it) { return (*it); }
+    /**
+     * @brief Convinience method for type casting. Subclasses will override this by using
+     * IMPLEMENT_COMPOSITE.
+     * @param it The iterator to be casted
+     * @return A typecasted child
+     */
+    gxComposite* Child( ChildIterator it ) { return (*it); }
 
-  /// the children this object contains
-  Children          mChildren;
-  /// the parent of this object
-  gxComposite* mParent;
+    /// the children this object contains
+    Children mChildren;
+    /// the parent of this object
+    gxComposite* mParent;
 };
 
 #endif // gxComposite_h

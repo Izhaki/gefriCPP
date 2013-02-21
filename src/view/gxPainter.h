@@ -59,11 +59,9 @@ public:
      * As painters often draw view elements that are traversed recursively,
      * painters allow moving the painting origin so view element won't have
      * each to calculate their absolute position.
-     * @param dx The amout of pixels to shift paining origin by on the X axis.
-     * @param dy The amout of pixels to shift paining origin by on the Y axis.
+     * @param aDelta The X/Y pixels offset to shift painting origin by.
      */
-    virtual void SetTranslate( gxPix dx,
-                               gxPix dy );
+    virtual void SetTranslate( gxPoint aDelta );
 
     /**
      * @brief Sets the scroll value for all drawing operations.
@@ -146,7 +144,7 @@ public:
     
     /**
     * @brief This method is particularly to be used by rulers.
-    * @param aText The text to be drawns.
+    * @param aText The text to be drawn.
     * @param x The X position.
     * @param y The Y Position.
     * @param aPadX Padding to add to the X axis; Not subject to transformations.

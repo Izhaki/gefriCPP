@@ -83,7 +83,7 @@ void gxScroller::Transform( gxRect &aRect, gxTransFlags &aTransFlags )
 
     if ( mScrollPosition.IsntZero() )
     {
-        aRect.Offset( -mScrollPosition.X, -mScrollPosition.Y );
+        aRect.Translate( -mScrollPosition );
     }
 }
 

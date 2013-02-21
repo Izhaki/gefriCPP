@@ -6,19 +6,17 @@ gxPainter::gxPainter()
 {
 }
 
-void gxPainter::SetTranslate( gxPix dx,
-                              gxPix dy )
+void gxPainter::SetTranslate( gxPoint aDelta )
 {
     if ( ScaleNeeded() )
     {
         // Take into account any scaling that is in force.
         // Say the value given is (40,40), with a scale set to 2 the resultant
         // position will be (80,80). Makes sense innit?
-        mTrans.Translate.X += gxFloor( dx * mTrans.Scale.X );
-        mTrans.Translate.Y += gxFloor( dy * mTrans.Scale.Y );
+        mTrans.Translate.X += gxFloor( aDelta.X * mTrans.Scale.X );
+        mTrans.Translate.Y += gxFloor( aDelta.Y * mTrans.Scale.Y );
     } else {
-        mTrans.Translate.X += dx;
-        mTrans.Translate.Y += dy;
+        mTrans.Translate += aDelta;
     }
 }
 
@@ -40,6 +38,7 @@ void gxPainter::SetScroll( gxPix sx,
 
 void gxPainter::SetScale( gxScale const &aScale )
 {
+    // TODO: Unify to 1 line
     mTrans.Scale.X *= aScale.X;
     mTrans.Scale.Y *= aScale.Y;
 }
@@ -101,15 +100,15 @@ void gxPainter::SetTransformFlags( gxTransFlags aFlags )
 
 void gxPainter::Transform( gxRect &aRect )
 {
+    // TODO: Have a Scale method that simply takes scale (or coefficient)
     if ( ScaleNeeded() )
         aRect.Scale( mTrans.Scale.X, mTrans.Scale.Y );
 
-    // TODO - change to aRect += mTrans.Translate (ditto for scrolling)
     if ( TranslateNeeded() )
-        aRect.Offset( mTrans.Translate.X, mTrans.Translate.Y );
+        aRect.Translate( mTrans.Translate );
 
     if ( ScrollNeeded() )
-        aRect.Offset( -mTrans.Scroll.X, -mTrans.Scroll.Y );
+        aRect.Translate( -mTrans.Scroll );
 }
 
 void gxPainter::Transform( gxPoint &aPoint )
@@ -122,14 +121,12 @@ void gxPainter::Transform( gxPoint &aPoint )
 
     if ( TranslateNeeded() )
     {
-        aPoint.X += mTrans.Translate.X;
-        aPoint.Y += mTrans.Translate.Y;
+        aPoint += mTrans.Translate;
     }
 
     if ( ScrollNeeded() )
     {
-        aPoint.X -= mTrans.Scroll.X;
-        aPoint.Y -= mTrans.Scroll.Y;
+        aPoint -= mTrans.Scroll;
     }
 }
 

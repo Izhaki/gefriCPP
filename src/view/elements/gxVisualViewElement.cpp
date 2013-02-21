@@ -9,7 +9,7 @@ gxVisualViewElement::gxVisualViewElement()
 
 gxVisualViewElement::gxVisualViewElement( const gxRect &aBounds )
 {
-  mBounds = aBounds; 
+    mBounds = aBounds;
 }
 
 gxVisualViewElement::~gxVisualViewElement()
@@ -18,115 +18,112 @@ gxVisualViewElement::~gxVisualViewElement()
 
 void gxVisualViewElement::Paint( gxPainter &aPainter )
 {
-  if ( !IsVisible() )
-    return;
+    if ( !IsVisible() )
+        return;
 
-  // Push the painter state as the next line might change it.
-  aPainter.PushState();
-
-  // Sets the painter transform flags to my own transform flags.
-  aPainter.SetTransformFlags( mTransformFlags );
-
-  // Get the bounds
-  gxRect iBounds( GetBounds() );
-
-  // wxLogDebug(_T("Paint: %i, %i, %i, %i"), bounds.GetX(), bounds.GetY(), bounds.GetWidth(), bounds.GetHeight());
-
-  // Only paint if need to (intersect with the bounds of painting area and
-  // damaged areas).
-  if ( aPainter.NeedsPainting( iBounds ) )
-  {
-    // Push current painter state so it can be restored later on.
+    // Push the painter state as the next line might change it.
     aPainter.PushState();
 
-    // Sets the clip area of the painter to the bounds
-    if ( IsClippingChildren() )
-      aPainter.SetClipArea( iBounds );
+    // Sets the painter transform flags to my own transform flags.
+    // This is needed as we're soon to call NeedsPainting.
+    aPainter.SetTransformFlags( mTransformFlags );
 
-    PaintSelf( aPainter );
-    PaintChildren( aPainter );
-    PaintBorder( aPainter );
+    // Only paint if need to (intersect with the bounds of painting area and
+    // damaged areas).
+    if ( aPainter.NeedsPainting( mBounds ) )
+    {
+        // Push current painter state so it can be restored later on.
+        aPainter.PushState();
 
-    // Pop (will also restore) the painter state to before any painting was
-    // done.
-    aPainter.PopState();
-  }
+        // Sets the clip area of the painter to the bounds
+        if ( IsClippingChildren() )
+            aPainter.SetClipArea( mBounds );
+
+        PaintSelf( aPainter );
+        PaintChildren( aPainter );
+        PaintBorder( aPainter );
+
+        // Pop (will also restore) the painter state to before any painting was
+        // done.
+        aPainter.PopState();
+    }
   
-  aPainter.PopState();
+    aPainter.PopState();
 }
 
 void gxVisualViewElement::PaintChildren( gxPainter &aPainter )
 {
-  // Return if there are no children.
-  if ( mChildren.empty() )
-    return;
+    // Return if there are no children.
+    if ( IsChildless() )
+        return;
 
-  // Push current painter state so it can be poped after translate
-  aPainter.PushState();
+    // Push current painter state so it can be poped after translate
+    aPainter.PushState();
 
-  // Offset all paint operation by the top-left point of this elemet
-  aPainter.SetTranslate( mBounds.X, mBounds.Y );
+    // Offset all paint operation by the top-left point of this elemet
+    aPainter.SetTranslate( mBounds.GetPosition() );
 
-  for ( EACHCHILD )
-  {
-    // Paint the child
-    CHILD->Paint( aPainter );
-  }
+    for ( EACHCHILD )
+    {
+        // Paint the child
+        CHILD->Paint( aPainter );
+    }
 
-  // Pop (will also restore) the painter state to before translate.
-  aPainter.PopState();
+    // Pop (will also restore) the painter state to before translate.
+    aPainter.PopState();
 }
 
 void gxVisualViewElement::GetDescendantsBounds( gxRect &aBounds )
 {
-  // Union with my bounds.
-  aBounds.Union( GetBounds() );
+    // Union with my bounds.
+    aBounds.Union( GetBounds() );
   
-  // And then with those of all children (in case these are not clipped).
-  if ( !IsClippingChildren() )
-   gxViewElement::GetDescendantsBounds( aBounds );
+    // And then with those of all children (in case these are not clipped).
+    if ( !IsClippingChildren() )
+        gxViewElement::GetDescendantsBounds( aBounds );
 }
 
 gxRect gxVisualViewElement::GetBounds() const
 {
-  return mBounds;
+    return mBounds;
 }
 
 void gxVisualViewElement::SetBounds( const gxRect &aNewBounds )
 {
-  // Check if either translate or resize happened
-  bool iTranslate = ( aNewBounds.X != mBounds.X ) || ( aNewBounds.Y != mBounds.Y ); 
-  bool iResize    = ( aNewBounds.width != mBounds.width ) || ( aNewBounds.height != mBounds.height );
+    // Check if either translate or resize happened
+    bool iTranslate = aNewBounds.GetPosition() != mBounds.GetPosition();
+    bool iResize    = aNewBounds.GetSize()     != mBounds.GetSize();
+    bool iChanged   = iTranslate || iResize;
 
-  // Erase the view element if either happened
-  if ( iTranslate || iResize )
-    Erase();
+    // Erase the view element if either happened
+    if ( iChanged )
+        Erase();
 
-  // Preform translation
-  if ( iTranslate )
-  {
-    gxPix dx = aNewBounds.X - mBounds.X;
-    gxPix dy = aNewBounds.Y - mBounds.Y;
-    Translate( dx,dy );
-  }
+    // Preform translation
+    if ( iTranslate )
+    {
+        gxPoint iDelta = aNewBounds.GetPosition() - mBounds.GetPosition();
+        Translate( iDelta );
+    }
 
-  // Preform resize
-  if ( iResize )
-  {
-    mBounds.width  = aNewBounds.width;
-    mBounds.height = aNewBounds.height;
-  }
+    // Preform resize
+    if ( iResize )
+    {
+        mBounds.SetSize( aNewBounds.GetSize() );
+    }
 
-  // Repaint
-  if ( iTranslate || iResize )
-  {
-    Invalidate();
-    Repaint();
-  }
+    // Repaint
+    if ( iChanged )
+    {
+        Invalidate();
+        Repaint();
+    }
 }
 
-void gxVisualViewElement::Translate( gxPix dx, gxPix dy )
+void gxVisualViewElement::Translate( gxPoint aDelta )
 {
-  mBounds.X += dx;
-  mBounds.Y += dy;
+    mBounds.Translate( aDelta );
+    
+    // There will be additional handling here for absolute positioned figures,
+    // which will also need to translate all of its children.
 }

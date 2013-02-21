@@ -119,18 +119,11 @@ public:
     void SetBottom( gxPix aBottom ) { height = aBottom - Y + 1; }
 
     gxPoint GetTopLeft() const { return GetPosition(); }
-    gxPoint GetLeftTop() const { return GetTopLeft(); }
     void SetTopLeft( const gxPoint &aPoint ) { SetPosition( aPoint ); }
-    void SetLeftTop( const gxPoint &aPoint ) { SetTopLeft( aPoint ); }
 
     gxPoint GetBottomRight() const
     {
         return gxPoint( GetRight(), GetBottom() );
-    }
-    
-    gxPoint GetRightBottom() const
-    {
-        return GetBottomRight();
     }
     
     void SetBottomRight( const gxPoint &aPoint )
@@ -139,19 +132,9 @@ public:
         SetBottom( aPoint.Y );
     }
     
-    void SetRightBottom( const gxPoint &aPoint )
-    {
-        SetBottomRight(aPoint);
-    }
-
     gxPoint GetTopRight() const
     {
         return gxPoint( GetRight(), GetTop() );
-    }
-    
-    gxPoint GetRightTop() const
-    {
-        return GetTopRight();
     }
     
     void SetTopRight( const gxPoint &aPoint )
@@ -159,31 +142,18 @@ public:
         SetRight( aPoint.X );
         SetTop( aPoint.Y );
     }
-    void SetRightTop( const gxPoint &aPoint )
-    {
-        SetTopLeft(aPoint);
-    }
 
     gxPoint GetBottomLeft() const
     {
         return gxPoint( GetLeft(), GetBottom() );
     }
     
-    gxPoint GetLeftBottom() const
-    {
-        return GetBottomLeft();
-    }
-    
     void SetBottomLeft( const gxPoint &aPoint )
     {
-        SetLeft(aPoint.X); SetBottom(aPoint.Y);
+        SetLeft( aPoint.X );
+        SetBottom( aPoint.Y );
     }
     
-    void SetLeftBottom( const gxPoint &aPoint )
-    {
-        SetBottomLeft(aPoint);
-    }
-
     // operations with rect
     gxRect& Inflate( gxPix dx,
                      gxPix dy );
@@ -229,16 +199,17 @@ public:
         return r;
     }
 
-    void Offset( gxPix dx,
-                 gxPix dy )
+    void Translate( gxPix dx,
+                    gxPix dy )
     {
         X += dx;
         Y += dy;
     }
     
-    void Offset( const gxPoint& aPoint )
+    // Offsets the rect position
+    void Translate( const gxPoint& aPoint )
     {
-        Offset( aPoint.X, aPoint.Y );
+        Translate( aPoint.X, aPoint.Y );
     }
 
     gxRect& Intersect( const gxRect& aRect );

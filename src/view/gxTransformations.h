@@ -22,6 +22,15 @@ public:
         Scale     = 0x04,
         All       = Translate | Scroll | Scale
     };
+    
+    bool ScaleOn()     { return IsSet( Scale ); }
+    bool ScrollOn()    { return IsSet( Scroll ); }
+    bool TranslateOn() { return IsSet( Translate ); }
+    
+    bool ScaleOff()     { return IsntSet( Scale ); }
+    bool ScrollOff()    { return IsntSet( Scroll ); }
+    bool TranslateOff() { return IsntSet( Translate ); }
+    
 };
 
 /**
