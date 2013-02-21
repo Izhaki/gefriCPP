@@ -55,7 +55,7 @@ void gxScroller::Paint( gxPainter &aPainter )
     // scroll values
     aPainter.PushState();
 
-    aPainter.SetScroll( mScrollPosition.X, mScrollPosition.Y );
+    aPainter.SetScroll( mScrollPosition );
 
     PaintChildren( aPainter );
 

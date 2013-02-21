@@ -20,19 +20,17 @@ void gxPainter::SetTranslate( gxPoint aDelta )
     }
 }
 
-void gxPainter::SetScroll( gxPix sx,
-                           gxPix sy )
+void gxPainter::SetScroll( gxPoint aScroll )
 {
     if ( ScaleNeeded() )
     {
         // Take into account any scaling that is in force.
         // Say the value given is (40,40), with a scale set to 2 the resultant
         // position will be (80,80). Makes sense innit?
-        mTrans.Scroll.X += gxFloor( sx * mTrans.Scale.X );
-        mTrans.Scroll.Y += gxFloor( sy * mTrans.Scale.Y );
+        mTrans.Scroll.X += gxFloor( aScroll.X * mTrans.Scale.X );
+        mTrans.Scroll.Y += gxFloor( aScroll.Y * mTrans.Scale.Y );
     } else {
-        mTrans.Scroll.X += sx;
-        mTrans.Scroll.Y += sy;
+        mTrans.Scroll += aScroll;
     }
 }
 

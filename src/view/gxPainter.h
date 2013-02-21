@@ -65,11 +65,9 @@ public:
 
     /**
      * @brief Sets the scroll value for all drawing operations.
-     * @param sx The scroll value on the X axis.
-     * @param sy The scroll value on the Y axis.
+     * @param aScrollPosition The X/Y scroll position
      */
-    virtual void SetScroll( gxPix sx,
-                            gxPix sy );
+    virtual void SetScroll( gxPoint aScroll );
 
     /**
      * @brief Sets the scale (zoom) for all drawing operations.
