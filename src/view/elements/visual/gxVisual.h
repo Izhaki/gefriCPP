@@ -1,5 +1,5 @@
-#ifndef gxVisualViewElement_h
-#define gxVisualViewElement_h
+#ifndef gxVisual_h
+#define gxVisual_h
 
 #include "view/elements/gxViewElement.h"
 
@@ -7,12 +7,12 @@
  * @brief A view element that has visual representation and defined bounds,
  * like shapes.
  */
-class gxVisualViewElement: public gxViewElement
+class gxVisual: public gxViewElement
 {
 public:
-    gxVisualViewElement();
-    gxVisualViewElement( const gxRect &aBounds );
-    ~gxVisualViewElement();
+    gxVisual();
+    gxVisual( const gxRect &aBounds );
+    ~gxVisual();
 
     /**
      * @brief Paints the view element, by calling {@link
@@ -72,4 +72,4 @@ protected:
     gxRect mBounds;
 };
 
-#endif // gxVisualViewElement_h
+#endif // gxVisual_h

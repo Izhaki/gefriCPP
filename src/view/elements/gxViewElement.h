@@ -17,10 +17,10 @@ class gxLightweightSystem;
  * View elements are of two principle kinds (each represented by a
  * corresponding subclass):
  *
- * - {@link gxVisualViewElement Visual view element} - a view element that has
+ * - {@link gxVisual Visual view element} - a view element that has
  *    a visual representation (ie, it can be seen) and has defined bounds. For
  *    example, shapes like circles and rectangles. 
- * - {@link gxStructuralViewElement Structural view element} - a view
+ * - {@link gxStructural Structural view element} - a view
  *   element that is added to the hierarchy to preform a specific task. These
  *   by default behave as transparent objects that has the bounds of
  *   their parent. Examples are layers, scaler, or a {@link gxRootViewElement 

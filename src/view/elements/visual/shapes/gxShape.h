@@ -1,7 +1,7 @@
 #ifndef gxShape_h
 #define gxShape_h
 
-#include "view/elements/gxVisualViewElement.h"
+#include "view/elements/visual/gxVisual.h"
 
 /**
  * @brief A {@link gxViewElement visual element} that is drawn on screen
@@ -13,12 +13,12 @@
  * Subclasses should not override {@link gxShape::PaintSelf PaintSelf()},
  * but override {@link gxShape::PaintShape PaintShape()} instead.
  */
-class gxShape: public gxVisualViewElement
+class gxShape: public gxVisual
 {
 public:
   gxShape() {}
   gxShape(const gxRect &aBounds)
-    : gxVisualViewElement(aBounds) { }
+    : gxVisual(aBounds) { }
 protected:
   void PaintSelf(gxPainter &aPainter);
   /**

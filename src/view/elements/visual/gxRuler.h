@@ -1,7 +1,7 @@
 #ifndef gxRuler_h
 #define gxRuler_h
 
-#include "view/elements/gxVisualViewElement.h"
+#include "view/elements/visual/gxVisual.h"
 #include "core/observer/gxObserver.h"
 #include "view/managers/gxZoomManager.h"
 #include "view/managers/gxScrollManager.h"
@@ -19,7 +19,7 @@
  * - Key - a division with a line length longer than normal.
  * - Normal - a normal division (shortest line length).
  */
-class gxRuler: public gxVisualViewElement
+class gxRuler: public gxVisual
 {
     gxDeclareObserver( gxRuler )
 public:

@@ -1,9 +1,9 @@
-#include "view/elements/gxRuler.h"
+#include "view/elements/visual/gxRuler.h"
 #include "view/gxLightweightSystem.h"
 
 gxRuler::gxRuler( const gxRect  &aBounds,
                   gxDivProvider *aDivProvider )
-: gxVisualViewElement( aBounds ),
+: gxVisual( aBounds ),
   mZoomManager( NULL ),
   mScrollManager( NULL ),
   mIsHorizontal( aBounds.width > aBounds.height ),
@@ -67,7 +67,7 @@ void gxRuler::Validate()
 
     // Call the base class validate so children are also validated and this object
     // is marked as valid.
-    gxVisualViewElement::Validate();
+    gxVisual::Validate();
 
     Repaint();
 }
@@ -90,7 +90,7 @@ void gxRuler::SetScale( const float aScale )
 
 void gxRuler::SetBounds( const gxRect &aNewBounds )
 {
-    gxVisualViewElement::SetBounds( aNewBounds );
+    gxVisual::SetBounds( aNewBounds );
     mIsHorizontal = aNewBounds.width > aNewBounds.height;
 }
 

@@ -1,19 +1,19 @@
-#include "view/elements/gxStructuralViewElement.h"
+#include "view/elements/structural/gxStructural.h"
 #include "core/gxAssert.h"
 #include "core/gxLog.h"
 
-gxStructuralViewElement::gxStructuralViewElement()
+gxStructural::gxStructural()
 {
     // Structural view elements are not subject to any zoom or
     // scroll transformations.
     mTransformFlags.Unset( gxTransFlags::Scale | gxTransFlags::Scroll );
 }
 
-gxStructuralViewElement::~gxStructuralViewElement()
+gxStructural::~gxStructural()
 {
 }
 
-void gxStructuralViewElement::Paint(gxPainter &aPainter)
+void gxStructural::Paint(gxPainter &aPainter)
 {
     if ( !IsVisible() )
         return;
@@ -21,7 +21,7 @@ void gxStructuralViewElement::Paint(gxPainter &aPainter)
     PaintChildren(aPainter);
 }
 
-void gxStructuralViewElement::PaintChildren(gxPainter &aPainter)
+void gxStructural::PaintChildren(gxPainter &aPainter)
 {
     forEachChild( aChild )
     {
@@ -29,7 +29,7 @@ void gxStructuralViewElement::PaintChildren(gxPainter &aPainter)
     }
 }
 
-gxRect gxStructuralViewElement::GetBounds() const
+gxRect gxStructural::GetBounds() const
 {
     gxASSERT( GetParent() == NULL, "GetBounds() called but no parent." );
 

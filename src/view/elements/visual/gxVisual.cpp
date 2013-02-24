@@ -1,22 +1,22 @@
-#include "view/elements/gxVisualViewElement.h"
+#include "view/elements/visual/gxVisual.h"
 #include "view/gxLightweightSystem.h"
 #include "core/gxLog.h"
 
-gxVisualViewElement::gxVisualViewElement()
+gxVisual::gxVisual()
   : mBounds( 0, 0, 0, 0 )
 {
 }
 
-gxVisualViewElement::gxVisualViewElement( const gxRect &aBounds )
+gxVisual::gxVisual( const gxRect &aBounds )
 {
     mBounds = aBounds;
 }
 
-gxVisualViewElement::~gxVisualViewElement()
+gxVisual::~gxVisual()
 {
 }
 
-void gxVisualViewElement::Paint( gxPainter &aPainter )
+void gxVisual::Paint( gxPainter &aPainter )
 {
     if ( !IsVisible() )
         return;
@@ -51,7 +51,7 @@ void gxVisualViewElement::Paint( gxPainter &aPainter )
     aPainter.PopState();
 }
 
-void gxVisualViewElement::PaintChildren( gxPainter &aPainter )
+void gxVisual::PaintChildren( gxPainter &aPainter )
 {
     // Return if there are no children.
     if ( IsChildless() )
@@ -73,7 +73,7 @@ void gxVisualViewElement::PaintChildren( gxPainter &aPainter )
     aPainter.PopState();
 }
 
-void gxVisualViewElement::GetDescendantsBounds( gxRect &aBounds )
+void gxVisual::GetDescendantsBounds( gxRect &aBounds )
 {
     // Union with my bounds.
     aBounds.Union( GetBounds() );
@@ -83,12 +83,12 @@ void gxVisualViewElement::GetDescendantsBounds( gxRect &aBounds )
         gxViewElement::GetDescendantsBounds( aBounds );
 }
 
-gxRect gxVisualViewElement::GetBounds() const
+gxRect gxVisual::GetBounds() const
 {
     return mBounds;
 }
 
-void gxVisualViewElement::SetBounds( const gxRect &aNewBounds )
+void gxVisual::SetBounds( const gxRect &aNewBounds )
 {
     // Check if either translate or resize happened
     bool iTranslate = aNewBounds.GetPosition() != mBounds.GetPosition();
@@ -120,7 +120,7 @@ void gxVisualViewElement::SetBounds( const gxRect &aNewBounds )
     }
 }
 
-void gxVisualViewElement::Translate( gxPoint aDelta )
+void gxVisual::Translate( gxPoint aDelta )
 {
     mBounds.Translate( aDelta );
     

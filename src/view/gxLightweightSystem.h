@@ -4,7 +4,7 @@
 #include "core/gxObject.h"
 #include "core/gxPaintDC.h"
 #include "core/observer/gxObserver.h"
-#include "view/elements/gxRootViewElement.h"
+#include "view/elements/structural/gxRootViewElement.h"
 #include "view/managers/gxScrollManager.h"
 // forward declaration
 class gxLightweightControl;

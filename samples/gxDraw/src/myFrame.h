@@ -2,12 +2,12 @@
 
 #include "view/gxLightweightControl.h"
 #include "view/gxLightweightSystem.h"
-#include "view/elements/shapes/gxRectangle.h"
-#include "view/elements/gxScaler.h"
+#include "view/elements/visual/shapes/gxRectangle.h"
+#include "view/elements/structural/gxScaler.h"
 #include "view/managers/gxZoomManager.h"
-#include "view/elements/gxScroller.h"
+#include "view/elements/structural/gxScroller.h"
 #include "view/managers/gxScrollManager.h"
-#include "view/elements/gxRuler.h"
+#include "view/elements/visual/gxRuler.h"
 #include "view/gxDivProvider.h"
 #include "view/gxViewUnit.h"
 

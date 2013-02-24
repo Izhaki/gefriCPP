@@ -1,7 +1,7 @@
 #ifndef gxScroller_h
 #define gxScroller_h
 
-#include "view/elements/gxStructuralViewElement.h"
+#include "view/elements/structural/gxStructural.h"
 #include "core/observer/gxObserver.h"
 #include "view/managers/gxScrollManager.h"
 #include "view/gxTransformations.h"
@@ -12,7 +12,7 @@
  * Scrollers are inserted into the hierarchy of of view elements to facilitate
  * scrolling.
  */
-class gxScroller: public gxStructuralViewElement
+class gxScroller: public gxStructural
 {
     gxDeclareObserver( gxScroller )
 public:

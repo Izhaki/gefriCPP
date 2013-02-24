@@ -1,5 +1,5 @@
-#ifndef gxStructuralViewElement_h
-#define gxStructuralViewElement_h
+#ifndef gxStructural_h
+#define gxStructural_h
 
 #include "view/elements/gxViewElement.h"
 
@@ -13,11 +13,11 @@
  * Examples of structural view elements include layers, scalers, and
  * {@link gxRootViewElement root view element}.
  */
-class gxStructuralViewElement: public gxViewElement
+class gxStructural: public gxViewElement
 {
 public:
-    gxStructuralViewElement();
-    ~gxStructuralViewElement();
+    gxStructural();
+    ~gxStructural();
 
     /**
      * @brief Paints the view element by calling
@@ -49,4 +49,4 @@ protected:
                             gxTransFlags &aTransFlags ) {};
 };
 
-#endif // gxStructuralViewElement_h
+#endif // gxStructural_h

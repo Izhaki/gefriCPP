@@ -1,4 +1,4 @@
-#include "view/elements/gxScroller.h"
+#include "view/elements/structural/gxScroller.h"
 #include "core/gxAssert.h"
 #include "core/gxLog.h"
 
@@ -69,7 +69,7 @@ void gxScroller::Validate()
 
     // Call the base class validate so children are also validated and this
     // object is marked as valid.
-    gxStructuralViewElement::Validate();
+    gxStructural::Validate();
 
     Repaint();
 }

@@ -1,4 +1,4 @@
-#include "view/elements/gxRootViewElement.h"
+#include "view/elements/structural/gxRootViewElement.h"
 #include "view/gxLightweightSystem.h"
 #include "core/gxAssert.h"
 

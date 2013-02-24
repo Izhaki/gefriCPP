@@ -1,7 +1,7 @@
 #ifndef gxScaler_h
 #define gxScaler_h
 
-#include "view/elements/gxStructuralViewElement.h"
+#include "view/elements/structural/gxStructural.h"
 #include "core/observer/gxObserver.h"
 #include "view/managers/gxZoomManager.h"
 #include "view/gxTransformations.h"
@@ -17,7 +17,7 @@
  * @link gxZoomManager gxZoomManager} which provide additional methods for zoom
  * manipulation.
  */
-class gxScaler: public gxStructuralViewElement
+class gxScaler: public gxStructural
 {
     gxDeclareObserver( gxScaler )
 public:

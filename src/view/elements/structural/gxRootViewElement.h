@@ -1,7 +1,7 @@
 #ifndef gxRootViewElement_h
 #define gxRootViewElement_h
 
-#include "view/elements/gxStructuralViewElement.h"
+#include "view/elements/structural/gxStructural.h"
 
 /**
  * @brief The root view element in any {@link gxViewElement view element}
@@ -12,7 +12,7 @@
  * system, for example, by keeping a reference to it.
  * Created by the {@link gxLightweightSystem lightweight system}
  */
-class gxRootViewElement: public gxStructuralViewElement
+class gxRootViewElement: public gxStructural
 {
 public:
     /**
@@ -40,7 +40,7 @@ public:
     virtual gxRect GetBounds() const;
 
     // Validate is promoted to public as the lightweight system needs to call it.
-    virtual void Validate() { gxStructuralViewElement::Validate(); }
+    virtual void Validate() { gxStructural::Validate(); }
 protected:
     virtual void TransformToAbsolute( gxRect       &aRect,
                                       gxTransFlags &aTransFlags);

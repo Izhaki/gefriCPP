@@ -27,24 +27,6 @@
 		876C5D44164C73E60006CB61 /* gxObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D03164C73E60006CB61 /* gxObject.h */; };
 		876C5D45164C73E60006CB61 /* gxPaintDC.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D04164C73E60006CB61 /* gxPaintDC.h */; };
 		876C5D46164C73E60006CB61 /* gxString.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D05164C73E60006CB61 /* gxString.h */; };
-		876C5D4C164C73E60006CB61 /* gxRootViewElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D0E164C73E60006CB61 /* gxRootViewElement.cpp */; };
-		876C5D4D164C73E60006CB61 /* gxRootViewElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D0F164C73E60006CB61 /* gxRootViewElement.h */; };
-		876C5D4E164C73E60006CB61 /* gxRuler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D10164C73E60006CB61 /* gxRuler.cpp */; };
-		876C5D4F164C73E60006CB61 /* gxRuler.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D11164C73E60006CB61 /* gxRuler.h */; };
-		876C5D50164C73E60006CB61 /* gxScaler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D12164C73E60006CB61 /* gxScaler.cpp */; };
-		876C5D51164C73E60006CB61 /* gxScaler.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D13164C73E60006CB61 /* gxScaler.h */; };
-		876C5D52164C73E60006CB61 /* gxScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D14164C73E60006CB61 /* gxScroller.cpp */; };
-		876C5D53164C73E60006CB61 /* gxScroller.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D15164C73E60006CB61 /* gxScroller.h */; };
-		876C5D54164C73E60006CB61 /* gxStructuralViewElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D16164C73E60006CB61 /* gxStructuralViewElement.cpp */; };
-		876C5D55164C73E60006CB61 /* gxStructuralViewElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D17164C73E60006CB61 /* gxStructuralViewElement.h */; };
-		876C5D56164C73E60006CB61 /* gxViewElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D18164C73E60006CB61 /* gxViewElement.cpp */; };
-		876C5D57164C73E60006CB61 /* gxViewElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D19164C73E60006CB61 /* gxViewElement.h */; };
-		876C5D58164C73E60006CB61 /* gxVisualViewElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D1A164C73E60006CB61 /* gxVisualViewElement.cpp */; };
-		876C5D59164C73E60006CB61 /* gxVisualViewElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D1B164C73E60006CB61 /* gxVisualViewElement.h */; };
-		876C5D5A164C73E60006CB61 /* gxRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D1D164C73E60006CB61 /* gxRectangle.cpp */; };
-		876C5D5B164C73E60006CB61 /* gxRectangle.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D1E164C73E60006CB61 /* gxRectangle.h */; };
-		876C5D5C164C73E60006CB61 /* gxShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D1F164C73E60006CB61 /* gxShape.cpp */; };
-		876C5D5D164C73E60006CB61 /* gxShape.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D20164C73E60006CB61 /* gxShape.h */; };
 		876C5D5E164C73E60006CB61 /* gxDcPainter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D21164C73E60006CB61 /* gxDcPainter.cpp */; };
 		876C5D5F164C73E60006CB61 /* gxDcPainter.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D22164C73E60006CB61 /* gxDcPainter.h */; };
 		876C5D60164C73E60006CB61 /* gxDivProvider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D23164C73E60006CB61 /* gxDivProvider.cpp */; };
@@ -62,6 +44,24 @@
 		876C5D6C164C73E60006CB61 /* gxZoomManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D30164C73E60006CB61 /* gxZoomManager.cpp */; };
 		876C5D6D164C73E60006CB61 /* gxZoomManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D31164C73E60006CB61 /* gxZoomManager.h */; };
 		8795356616DA762A006D69FE /* gxScale.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795356516DA762A006D69FE /* gxScale.h */; };
+		8795358416DA8CD3006D69FE /* gxViewElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795356F16DA8CD3006D69FE /* gxViewElement.cpp */; };
+		8795358516DA8CD3006D69FE /* gxViewElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795357016DA8CD3006D69FE /* gxViewElement.h */; };
+		8795358616DA8CD3006D69FE /* gxRootViewElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795357216DA8CD3006D69FE /* gxRootViewElement.cpp */; };
+		8795358716DA8CD3006D69FE /* gxRootViewElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795357316DA8CD3006D69FE /* gxRootViewElement.h */; };
+		8795358A16DA8CD3006D69FE /* gxScaler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795357616DA8CD3006D69FE /* gxScaler.cpp */; };
+		8795358B16DA8CD3006D69FE /* gxScaler.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795357716DA8CD3006D69FE /* gxScaler.h */; };
+		8795358C16DA8CD3006D69FE /* gxScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795357816DA8CD3006D69FE /* gxScroller.cpp */; };
+		8795358D16DA8CD3006D69FE /* gxScroller.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795357916DA8CD3006D69FE /* gxScroller.h */; };
+		8795358E16DA8CD3006D69FE /* gxStructural.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795357A16DA8CD3006D69FE /* gxStructural.cpp */; };
+		8795358F16DA8CD3006D69FE /* gxStructural.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795357B16DA8CD3006D69FE /* gxStructural.h */; };
+		8795359016DA8CD3006D69FE /* gxVisual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795357D16DA8CD3006D69FE /* gxVisual.cpp */; };
+		8795359116DA8CD3006D69FE /* gxVisual.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795357E16DA8CD3006D69FE /* gxVisual.h */; };
+		8795359216DA8CD3006D69FE /* gxRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795358016DA8CD3006D69FE /* gxRectangle.cpp */; };
+		8795359316DA8CD3006D69FE /* gxRectangle.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795358116DA8CD3006D69FE /* gxRectangle.h */; };
+		8795359416DA8CD3006D69FE /* gxShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795358216DA8CD3006D69FE /* gxShape.cpp */; };
+		8795359516DA8CD3006D69FE /* gxShape.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795358316DA8CD3006D69FE /* gxShape.h */; };
+		8795359816DA8E02006D69FE /* gxRuler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795359616DA8DFE006D69FE /* gxRuler.cpp */; };
+		8795359916DA8E02006D69FE /* gxRuler.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795359716DA8DFF006D69FE /* gxRuler.h */; };
 		87C7BA7F167FE2F200BB7FE2 /* FastDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */; };
 		87C7BA80167FE2F200BB7FE2 /* gxEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */; };
 		87C7BA81167FE2F200BB7FE2 /* gxEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */; };
@@ -92,24 +92,6 @@
 		876C5D03164C73E60006CB61 /* gxObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxObject.h; sourceTree = "<group>"; };
 		876C5D04164C73E60006CB61 /* gxPaintDC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxPaintDC.h; sourceTree = "<group>"; };
 		876C5D05164C73E60006CB61 /* gxString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxString.h; sourceTree = "<group>"; };
-		876C5D0E164C73E60006CB61 /* gxRootViewElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxRootViewElement.cpp; sourceTree = "<group>"; };
-		876C5D0F164C73E60006CB61 /* gxRootViewElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxRootViewElement.h; sourceTree = "<group>"; };
-		876C5D10164C73E60006CB61 /* gxRuler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxRuler.cpp; sourceTree = "<group>"; };
-		876C5D11164C73E60006CB61 /* gxRuler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxRuler.h; sourceTree = "<group>"; };
-		876C5D12164C73E60006CB61 /* gxScaler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxScaler.cpp; sourceTree = "<group>"; };
-		876C5D13164C73E60006CB61 /* gxScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxScaler.h; sourceTree = "<group>"; };
-		876C5D14164C73E60006CB61 /* gxScroller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxScroller.cpp; sourceTree = "<group>"; };
-		876C5D15164C73E60006CB61 /* gxScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxScroller.h; sourceTree = "<group>"; };
-		876C5D16164C73E60006CB61 /* gxStructuralViewElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxStructuralViewElement.cpp; sourceTree = "<group>"; };
-		876C5D17164C73E60006CB61 /* gxStructuralViewElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxStructuralViewElement.h; sourceTree = "<group>"; };
-		876C5D18164C73E60006CB61 /* gxViewElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxViewElement.cpp; sourceTree = "<group>"; };
-		876C5D19164C73E60006CB61 /* gxViewElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxViewElement.h; sourceTree = "<group>"; };
-		876C5D1A164C73E60006CB61 /* gxVisualViewElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxVisualViewElement.cpp; sourceTree = "<group>"; };
-		876C5D1B164C73E60006CB61 /* gxVisualViewElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxVisualViewElement.h; sourceTree = "<group>"; };
-		876C5D1D164C73E60006CB61 /* gxRectangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxRectangle.cpp; sourceTree = "<group>"; };
-		876C5D1E164C73E60006CB61 /* gxRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxRectangle.h; sourceTree = "<group>"; };
-		876C5D1F164C73E60006CB61 /* gxShape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxShape.cpp; sourceTree = "<group>"; };
-		876C5D20164C73E60006CB61 /* gxShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxShape.h; sourceTree = "<group>"; };
 		876C5D21164C73E60006CB61 /* gxDcPainter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxDcPainter.cpp; sourceTree = "<group>"; };
 		876C5D22164C73E60006CB61 /* gxDcPainter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxDcPainter.h; sourceTree = "<group>"; };
 		876C5D23164C73E60006CB61 /* gxDivProvider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxDivProvider.cpp; sourceTree = "<group>"; };
@@ -128,6 +110,24 @@
 		876C5D31164C73E60006CB61 /* gxZoomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxZoomManager.h; sourceTree = "<group>"; };
 		876C5D6F164C74B30006CB61 /* wx2.9.4.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = wx2.9.4.xcconfig; sourceTree = "<group>"; };
 		8795356516DA762A006D69FE /* gxScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxScale.h; sourceTree = "<group>"; };
+		8795356F16DA8CD3006D69FE /* gxViewElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxViewElement.cpp; sourceTree = "<group>"; };
+		8795357016DA8CD3006D69FE /* gxViewElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxViewElement.h; sourceTree = "<group>"; };
+		8795357216DA8CD3006D69FE /* gxRootViewElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxRootViewElement.cpp; sourceTree = "<group>"; };
+		8795357316DA8CD3006D69FE /* gxRootViewElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxRootViewElement.h; sourceTree = "<group>"; };
+		8795357616DA8CD3006D69FE /* gxScaler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxScaler.cpp; sourceTree = "<group>"; };
+		8795357716DA8CD3006D69FE /* gxScaler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxScaler.h; sourceTree = "<group>"; };
+		8795357816DA8CD3006D69FE /* gxScroller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxScroller.cpp; sourceTree = "<group>"; };
+		8795357916DA8CD3006D69FE /* gxScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxScroller.h; sourceTree = "<group>"; };
+		8795357A16DA8CD3006D69FE /* gxStructural.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxStructural.cpp; sourceTree = "<group>"; };
+		8795357B16DA8CD3006D69FE /* gxStructural.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxStructural.h; sourceTree = "<group>"; };
+		8795357D16DA8CD3006D69FE /* gxVisual.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxVisual.cpp; sourceTree = "<group>"; };
+		8795357E16DA8CD3006D69FE /* gxVisual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxVisual.h; sourceTree = "<group>"; };
+		8795358016DA8CD3006D69FE /* gxRectangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxRectangle.cpp; sourceTree = "<group>"; };
+		8795358116DA8CD3006D69FE /* gxRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxRectangle.h; sourceTree = "<group>"; };
+		8795358216DA8CD3006D69FE /* gxShape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxShape.cpp; sourceTree = "<group>"; };
+		8795358316DA8CD3006D69FE /* gxShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxShape.h; sourceTree = "<group>"; };
+		8795359616DA8DFE006D69FE /* gxRuler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxRuler.cpp; sourceTree = "<group>"; };
+		8795359716DA8DFF006D69FE /* gxRuler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxRuler.h; sourceTree = "<group>"; };
 		87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastDelegate.h; sourceTree = "<group>"; };
 		87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxEvent.cpp; sourceTree = "<group>"; };
 		87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxEvent.h; sourceTree = "<group>"; };
@@ -253,34 +253,12 @@
 		876C5D0D164C73E60006CB61 /* elements */ = {
 			isa = PBXGroup;
 			children = (
-				876C5D0E164C73E60006CB61 /* gxRootViewElement.cpp */,
-				876C5D0F164C73E60006CB61 /* gxRootViewElement.h */,
-				876C5D10164C73E60006CB61 /* gxRuler.cpp */,
-				876C5D11164C73E60006CB61 /* gxRuler.h */,
-				876C5D12164C73E60006CB61 /* gxScaler.cpp */,
-				876C5D13164C73E60006CB61 /* gxScaler.h */,
-				876C5D14164C73E60006CB61 /* gxScroller.cpp */,
-				876C5D15164C73E60006CB61 /* gxScroller.h */,
-				876C5D16164C73E60006CB61 /* gxStructuralViewElement.cpp */,
-				876C5D17164C73E60006CB61 /* gxStructuralViewElement.h */,
-				876C5D18164C73E60006CB61 /* gxViewElement.cpp */,
-				876C5D19164C73E60006CB61 /* gxViewElement.h */,
-				876C5D1A164C73E60006CB61 /* gxVisualViewElement.cpp */,
-				876C5D1B164C73E60006CB61 /* gxVisualViewElement.h */,
-				876C5D1C164C73E60006CB61 /* shapes */,
+				8795356F16DA8CD3006D69FE /* gxViewElement.cpp */,
+				8795357016DA8CD3006D69FE /* gxViewElement.h */,
+				8795357116DA8CD3006D69FE /* structural */,
+				8795357C16DA8CD3006D69FE /* visual */,
 			);
 			path = elements;
-			sourceTree = "<group>";
-		};
-		876C5D1C164C73E60006CB61 /* shapes */ = {
-			isa = PBXGroup;
-			children = (
-				876C5D1D164C73E60006CB61 /* gxRectangle.cpp */,
-				876C5D1E164C73E60006CB61 /* gxRectangle.h */,
-				876C5D1F164C73E60006CB61 /* gxShape.cpp */,
-				876C5D20164C73E60006CB61 /* gxShape.h */,
-			);
-			path = shapes;
 			sourceTree = "<group>";
 		};
 		876C5D2D164C73E60006CB61 /* managers */ = {
@@ -300,6 +278,44 @@
 				876C5D6F164C74B30006CB61 /* wx2.9.4.xcconfig */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8795357116DA8CD3006D69FE /* structural */ = {
+			isa = PBXGroup;
+			children = (
+				8795357216DA8CD3006D69FE /* gxRootViewElement.cpp */,
+				8795357316DA8CD3006D69FE /* gxRootViewElement.h */,
+				8795357616DA8CD3006D69FE /* gxScaler.cpp */,
+				8795357716DA8CD3006D69FE /* gxScaler.h */,
+				8795357816DA8CD3006D69FE /* gxScroller.cpp */,
+				8795357916DA8CD3006D69FE /* gxScroller.h */,
+				8795357A16DA8CD3006D69FE /* gxStructural.cpp */,
+				8795357B16DA8CD3006D69FE /* gxStructural.h */,
+			);
+			path = structural;
+			sourceTree = "<group>";
+		};
+		8795357C16DA8CD3006D69FE /* visual */ = {
+			isa = PBXGroup;
+			children = (
+				8795359616DA8DFE006D69FE /* gxRuler.cpp */,
+				8795359716DA8DFF006D69FE /* gxRuler.h */,
+				8795357D16DA8CD3006D69FE /* gxVisual.cpp */,
+				8795357E16DA8CD3006D69FE /* gxVisual.h */,
+				8795357F16DA8CD3006D69FE /* shapes */,
+			);
+			path = visual;
+			sourceTree = "<group>";
+		};
+		8795357F16DA8CD3006D69FE /* shapes */ = {
+			isa = PBXGroup;
+			children = (
+				8795358016DA8CD3006D69FE /* gxRectangle.cpp */,
+				8795358116DA8CD3006D69FE /* gxRectangle.h */,
+				8795358216DA8CD3006D69FE /* gxShape.cpp */,
+				8795358316DA8CD3006D69FE /* gxShape.h */,
+			);
+			path = shapes;
 			sourceTree = "<group>";
 		};
 		87C7BA78167FE2F200BB7FE2 /* observer */ = {
@@ -340,15 +356,6 @@
 				876C5D44164C73E60006CB61 /* gxObject.h in Headers */,
 				876C5D45164C73E60006CB61 /* gxPaintDC.h in Headers */,
 				876C5D46164C73E60006CB61 /* gxString.h in Headers */,
-				876C5D4D164C73E60006CB61 /* gxRootViewElement.h in Headers */,
-				876C5D4F164C73E60006CB61 /* gxRuler.h in Headers */,
-				876C5D51164C73E60006CB61 /* gxScaler.h in Headers */,
-				876C5D53164C73E60006CB61 /* gxScroller.h in Headers */,
-				876C5D55164C73E60006CB61 /* gxStructuralViewElement.h in Headers */,
-				876C5D57164C73E60006CB61 /* gxViewElement.h in Headers */,
-				876C5D59164C73E60006CB61 /* gxVisualViewElement.h in Headers */,
-				876C5D5B164C73E60006CB61 /* gxRectangle.h in Headers */,
-				876C5D5D164C73E60006CB61 /* gxShape.h in Headers */,
 				876C5D5F164C73E60006CB61 /* gxDcPainter.h in Headers */,
 				876C5D61164C73E60006CB61 /* gxDivProvider.h in Headers */,
 				876C5D62164C73E60006CB61 /* gxLightweightControl.h in Headers */,
@@ -363,6 +370,15 @@
 				87C7BA82167FE2F200BB7FE2 /* gxObserver.h in Headers */,
 				87C7BA84167FE2F200BB7FE2 /* gxSubject.h in Headers */,
 				8795356616DA762A006D69FE /* gxScale.h in Headers */,
+				8795358516DA8CD3006D69FE /* gxViewElement.h in Headers */,
+				8795358716DA8CD3006D69FE /* gxRootViewElement.h in Headers */,
+				8795358B16DA8CD3006D69FE /* gxScaler.h in Headers */,
+				8795358D16DA8CD3006D69FE /* gxScroller.h in Headers */,
+				8795358F16DA8CD3006D69FE /* gxStructural.h in Headers */,
+				8795359116DA8CD3006D69FE /* gxVisual.h in Headers */,
+				8795359316DA8CD3006D69FE /* gxRectangle.h in Headers */,
+				8795359516DA8CD3006D69FE /* gxShape.h in Headers */,
+				8795359916DA8E02006D69FE /* gxRuler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,15 +435,6 @@
 			files = (
 				876C5D33164C73E60006CB61 /* gxLightweightControl.cpp in Sources */,
 				876C5D3C164C73E60006CB61 /* gxRect.cpp in Sources */,
-				876C5D4C164C73E60006CB61 /* gxRootViewElement.cpp in Sources */,
-				876C5D4E164C73E60006CB61 /* gxRuler.cpp in Sources */,
-				876C5D50164C73E60006CB61 /* gxScaler.cpp in Sources */,
-				876C5D52164C73E60006CB61 /* gxScroller.cpp in Sources */,
-				876C5D54164C73E60006CB61 /* gxStructuralViewElement.cpp in Sources */,
-				876C5D56164C73E60006CB61 /* gxViewElement.cpp in Sources */,
-				876C5D58164C73E60006CB61 /* gxVisualViewElement.cpp in Sources */,
-				876C5D5A164C73E60006CB61 /* gxRectangle.cpp in Sources */,
-				876C5D5C164C73E60006CB61 /* gxShape.cpp in Sources */,
 				876C5D5E164C73E60006CB61 /* gxDcPainter.cpp in Sources */,
 				876C5D60164C73E60006CB61 /* gxDivProvider.cpp in Sources */,
 				876C5D63164C73E60006CB61 /* gxLightweightSystem.cpp in Sources */,
@@ -437,6 +444,15 @@
 				876C5D6C164C73E60006CB61 /* gxZoomManager.cpp in Sources */,
 				87C7BA80167FE2F200BB7FE2 /* gxEvent.cpp in Sources */,
 				87C7BA83167FE2F200BB7FE2 /* gxSubject.cpp in Sources */,
+				8795358416DA8CD3006D69FE /* gxViewElement.cpp in Sources */,
+				8795358616DA8CD3006D69FE /* gxRootViewElement.cpp in Sources */,
+				8795358A16DA8CD3006D69FE /* gxScaler.cpp in Sources */,
+				8795358C16DA8CD3006D69FE /* gxScroller.cpp in Sources */,
+				8795358E16DA8CD3006D69FE /* gxStructural.cpp in Sources */,
+				8795359016DA8CD3006D69FE /* gxVisual.cpp in Sources */,
+				8795359216DA8CD3006D69FE /* gxRectangle.cpp in Sources */,
+				8795359416DA8CD3006D69FE /* gxShape.cpp in Sources */,
+				8795359816DA8E02006D69FE /* gxRuler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

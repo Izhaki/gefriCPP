@@ -1,4 +1,4 @@
-#include "view/elements/gxScaler.h"
+#include "view/elements/structural/gxScaler.h"
 #include "core/gxAssert.h"
 
 gxScaler::gxScaler()
