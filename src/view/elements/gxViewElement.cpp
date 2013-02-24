@@ -86,10 +86,10 @@ void gxViewElement::Repaint( gxRect &aBounds )
 
 void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
 {
-    for ( EACHCHILD )
+    forEachChild ( aChild )
     {
         gxRect iChildBounds;
-        CHILD->GetDescendantsBounds( iChildBounds );
+        aChild->GetDescendantsBounds( iChildBounds );
 
         // When getting the children bounds we want all transformations to be
         // done but scroll.
@@ -125,10 +125,10 @@ void gxViewElement::Validate()
     mFlags.Set( gxViewElement::Valid );
 
     // Ask all children to validate themselves.
-    for ( EACHCHILD )
+    forEachChild( aChild )
     {
-        CHILD->Validate();
-    }    
+        aChild->Validate();
+    }
 }
 
 bool gxViewElement::IsValid()

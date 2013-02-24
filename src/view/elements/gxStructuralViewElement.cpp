@@ -23,9 +23,9 @@ void gxStructuralViewElement::Paint(gxPainter &aPainter)
 
 void gxStructuralViewElement::PaintChildren(gxPainter &aPainter)
 {
-    for ( EACHCHILD )
+    forEachChild( aChild )
     {
-        CHILD->Paint( aPainter );
+        aChild->Paint( aPainter );
     }
 }
 

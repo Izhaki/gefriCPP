@@ -7,15 +7,12 @@
 #include <list>
 
 // A macro for looping all childrens
-#define EACHCHILD ChildIterator it = mChildren.begin(); it != mChildren.end(); ++it
-#define CHILD Child(it)
-
-//#define forEachChild(aIteratable,aItem) \
-//    compositeclass* aItem;
-//    for ( ChildIterator it = aIteratable.begin(), compositeclass* aItem; \
-//          it != aIteratable.end(), aItem = Child(it); \
-//          ++it )
-
+#define forEachChild( aItem ) \
+    ChildrenType* aItem; \
+    for ( ChildIterator it = mChildren.begin(); \
+          it != mChildren.end() && ( aItem = Child( it ) ); \
+          ++it \
+        )
 /**
  * @brief A generic class that can contain children of its own kind, therefore
  * allowing  data to be arranged in hierarchical structure, with all objects
@@ -29,6 +26,7 @@ template <class tComposite>
 class gxComposite: public gxObject
 {
 public:
+    typedef tComposite                  ChildrenType;
     typedef std::list< gxComposite* >   Children;
     typedef typename Children::iterator ChildIterator;
     
