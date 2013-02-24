@@ -67,6 +67,10 @@
 		879535EE16DAA689006D69FE /* gxBoxAnchor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535ED16DAA689006D69FE /* gxBoxAnchor.cpp */; };
 		879535F016DAB96A006D69FE /* gxLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535EF16DAB969006D69FE /* gxLine.h */; };
 		879535F216DABAA2006D69FE /* gxLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535F116DABAA2006D69FE /* gxLine.cpp */; };
+		879535F516DAC62E006D69FE /* gxLineConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535F416DAC62E006D69FE /* gxLineConnection.h */; };
+		879535F716DAC6EA006D69FE /* gxConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535F616DAC6EA006D69FE /* gxConnection.h */; };
+		879535F916DAC821006D69FE /* gxConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535F816DAC821006D69FE /* gxConnection.cpp */; };
+		879535FB16DAC9BE006D69FE /* gxLineConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535FA16DAC9BD006D69FE /* gxLineConnection.cpp */; };
 		87C7BA7F167FE2F200BB7FE2 /* FastDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */; };
 		87C7BA80167FE2F200BB7FE2 /* gxEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */; };
 		87C7BA81167FE2F200BB7FE2 /* gxEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */; };
@@ -138,6 +142,10 @@
 		879535ED16DAA689006D69FE /* gxBoxAnchor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxBoxAnchor.cpp; path = ../view/Connections/gxBoxAnchor.cpp; sourceTree = "<group>"; };
 		879535EF16DAB969006D69FE /* gxLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxLine.h; path = ../../../../view/Elements/Visual/Shapes/gxLine.h; sourceTree = "<group>"; };
 		879535F116DABAA2006D69FE /* gxLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxLine.cpp; path = ../../../../view/Elements/Visual/Shapes/gxLine.cpp; sourceTree = "<group>"; };
+		879535F416DAC62E006D69FE /* gxLineConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxLineConnection.h; path = ../view/Connections/gxLineConnection.h; sourceTree = "<group>"; };
+		879535F616DAC6EA006D69FE /* gxConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxConnection.h; path = ../view/Connections/gxConnection.h; sourceTree = "<group>"; };
+		879535F816DAC821006D69FE /* gxConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxConnection.cpp; path = ../view/Connections/gxConnection.cpp; sourceTree = "<group>"; };
+		879535FA16DAC9BD006D69FE /* gxLineConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxLineConnection.cpp; path = ../view/Connections/gxLineConnection.cpp; sourceTree = "<group>"; };
 		87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastDelegate.h; sourceTree = "<group>"; };
 		87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxEvent.cpp; sourceTree = "<group>"; };
 		87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxEvent.h; sourceTree = "<group>"; };
@@ -350,9 +358,13 @@
 		879535E816DAA2AA006D69FE /* Connections */ = {
 			isa = PBXGroup;
 			children = (
+				879535F416DAC62E006D69FE /* gxLineConnection.h */,
+				879535FA16DAC9BD006D69FE /* gxLineConnection.cpp */,
 				879535E916DAA2E0006D69FE /* gxAnchor.h */,
 				879535EB16DAA366006D69FE /* gxBoxAnchor.h */,
 				879535ED16DAA689006D69FE /* gxBoxAnchor.cpp */,
+				879535F616DAC6EA006D69FE /* gxConnection.h */,
+				879535F816DAC821006D69FE /* gxConnection.cpp */,
 			);
 			name = Connections;
 			sourceTree = "<group>";
@@ -421,6 +433,8 @@
 				879535EA16DAA2E0006D69FE /* gxAnchor.h in Headers */,
 				879535EC16DAA366006D69FE /* gxBoxAnchor.h in Headers */,
 				879535F016DAB96A006D69FE /* gxLine.h in Headers */,
+				879535F516DAC62E006D69FE /* gxLineConnection.h in Headers */,
+				879535F716DAC6EA006D69FE /* gxConnection.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +511,8 @@
 				879535E416DA8FC9006D69FE /* gxPainter.cpp in Sources */,
 				879535EE16DAA689006D69FE /* gxBoxAnchor.cpp in Sources */,
 				879535F216DABAA2006D69FE /* gxLine.cpp in Sources */,
+				879535F916DAC821006D69FE /* gxConnection.cpp in Sources */,
+				879535FB16DAC9BE006D69FE /* gxLineConnection.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

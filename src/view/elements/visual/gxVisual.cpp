@@ -18,6 +18,8 @@ gxVisual::~gxVisual()
 
 void gxVisual::Paint( gxPainter &aPainter )
 {
+    gxRect iBounds = GetBounds();
+    
     if ( !IsVisible() )
         return;
 
@@ -30,14 +32,14 @@ void gxVisual::Paint( gxPainter &aPainter )
 
     // Only paint if need to (intersect with the bounds of painting area and
     // damaged areas).
-    if ( aPainter.NeedsPainting( mBounds ) )
+    if ( aPainter.NeedsPainting( iBounds ) )
     {
         // Push current painter state so it can be restored later on.
         aPainter.PushState();
 
         // Sets the clip area of the painter to the bounds
         if ( IsClippingChildren() )
-            aPainter.SetClipArea( mBounds );
+            aPainter.SetClipArea( iBounds );
 
         PaintSelf( aPainter );
         PaintChildren( aPainter );
@@ -61,7 +63,7 @@ void gxVisual::PaintChildren( gxPainter &aPainter )
     aPainter.PushState();
 
     // Offset all paint operation by the top-left point of this elemet
-    aPainter.SetTranslate( mBounds.GetPosition() );
+    aPainter.SetTranslate( GetBounds().GetPosition() );
 
     forEachChild ( aChild )
     {

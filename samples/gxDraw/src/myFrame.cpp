@@ -83,10 +83,6 @@ void MyFrame::InitGefri()
 
     mDocument = new gxRectangle(gxRect(10, 10, 480, 480));
     
-    mLine = new gxLine( gxPoint(0,0), gxPoint( 300,300 ) );
-    
-    mDocument->AddChild(mLine);
-
     mZoomManager = new gxZoomManager();
     mZoom = new gxScaler(mZoomManager);
   
@@ -98,6 +94,12 @@ void MyFrame::InitGefri()
   
     mZoom->AddChild(mFace);
 
+    // Add Connection
+    mCon = new gxLineConnection();
+    mFaceAnchor = new gxBoxAnchor( mFace );
+    mCon->SetDestinationAnchor( mFaceAnchor );
+    mDocument->AddChild( mCon );
+    
     mViewUnit = new gxPixelUnit();
     mDivProvider = new gxDivProvider(mViewUnit);
     mRulerH = new gxRuler(gxRect(0, 0, 140, 20), mDivProvider);
@@ -114,10 +116,6 @@ void MyFrame::InitGefri()
     //mZoom->AddChild(mLeg);
 
     mLightweightSystem->SetContents(mDocument);
-    
-    mFaceAnchor = new gxBoxAnchor( mFace );
-    gxPoint iAnchor = mFaceAnchor->GetPosition();
-    
 }
 
 void MyFrame::Initialize()

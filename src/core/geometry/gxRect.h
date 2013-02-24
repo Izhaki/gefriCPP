@@ -115,13 +115,13 @@ public:
 
     gxPix GetLeft()   const { return X; }
     gxPix GetTop()    const { return Y; }
-    gxPix GetBottom() const { return Y + height - 1; }
-    gxPix GetRight()  const { return X + width - 1; }
+    gxPix GetBottom() const { return Y + height; }
+    gxPix GetRight()  const { return X + width; }
 
     void SetLeft( gxPix aLeft ) { X = aLeft; }
-    void SetRight( gxPix aRight ) { width = aRight - X + 1; }
+    void SetRight( gxPix aRight ) { width = aRight - X; }
     void SetTop( gxPix aTop ) { Y = aTop; }
-    void SetBottom( gxPix aBottom ) { height = aBottom - Y + 1; }
+    void SetBottom( gxPix aBottom ) { height = aBottom - Y; }
 
     gxPoint GetTopLeft() const { return GetPosition(); }
     void SetTopLeft( const gxPoint &aPoint ) { SetPosition( aPoint ); }

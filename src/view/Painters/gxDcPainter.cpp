@@ -58,22 +58,10 @@ void gxDcPainter::DrawRectangle( gxPix aX,
 
 void gxDcPainter::DrawRectangle( gxRect const &aRect )
 {
-    gxRect iRect(aRect);
-    Transform(iRect);
+    gxRect iRect( aRect );
+    Transform( iRect );
     mDc->DrawRectangle( iRect );
 }
-
-//void gxDcPainter::DrawLine( gxPix x1,
-//                            gxPix y1,
-//                            gxPix x2,
-//                            gxPix y2 )
-//{
-//    gxPoint iFrom = isHorizontal ? gxPoint( x1, y1 ) : gxPoint( y1, x1 );
-//    gxPoint iTo   = isHorizontal ? gxPoint( x2, y2 ) : gxPoint( y2, x2 );
-//    Transform( iFrom );
-//    Transform( iTo );
-//    mDc->DrawLine( iFrom.X, iFrom.Y, iTo.X, iTo.Y );
-//}
 
 void gxDcPainter::DrawLine( gxPoint aFrom,
                             gxPoint aTo )

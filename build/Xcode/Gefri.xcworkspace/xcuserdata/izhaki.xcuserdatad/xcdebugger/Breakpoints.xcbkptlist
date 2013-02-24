@@ -30,16 +30,42 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../../samples/gxDraw/src/myFrame.cpp"
-         timestampString = "383433997.64881"
+         filePath = "../../src/view/Connections/gxLineConnection.cpp"
+         timestampString = "383440647.400425"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "119"
-         endingLineNumber = "119"
-         landmarkName = "MyFrame::InitGefri()"
+         startingLineNumber = "18"
+         endingLineNumber = "18"
+         landmarkName = "gxLineConnection::Validate()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../src/view/Elements/Visual/Shapes/gxLine.cpp"
+         timestampString = "383438907.859985"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "5"
+         endingLineNumber = "5"
+         landmarkName = "gxLine::PaintShape( gxPainter &amp;aPainter )"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../src/view/Elements/Visual/Shapes/gxLine.cpp"
+         timestampString = "383438953.980419"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "6"
+         endingLineNumber = "6"
+         landmarkName = "gxLine::PaintShape( gxPainter &amp;aPainter )"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

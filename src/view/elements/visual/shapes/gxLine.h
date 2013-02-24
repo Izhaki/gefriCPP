@@ -5,21 +5,34 @@
 
 /**
  * @brief A line.
- *
- * This shape will draw a line from its top-left position and its bottom-right
- * position.
  */
 class gxLine: public gxShape
 {
 public:
-    gxLine() {}
+    gxLine()
+      : mFrom( 400, 0 ),
+        mTo  ( 400, 100 ),
+        gxShape( gxRect( gxPoint( 400, 0 ), gxPoint( 400, 100 ) ) )
+    { }
+    
     gxLine( const gxPoint &aStart, const gxPoint &aEnd )
-      : gxShape( gxRect( aStart, aEnd ) )  {}
+      : mFrom( aStart ),
+        mTo  ( aEnd ),
+        gxShape( gxRect( aStart, aEnd ) )
+    { }
+    
     gxLine( const gxRect &aBounds )
-      : gxShape( aBounds ) {}
+      : mFrom( aBounds.GetTopLeft() ),
+        mTo  ( aBounds.GetBottomRight() ),
+        gxShape( aBounds ) {}
+    
+    virtual gxRect GetBounds() const;    
     
 protected:
     virtual void PaintShape( gxPainter &aPainter );
+    
+    gxPoint mFrom;
+    gxPoint mTo;
 };
 
 #endif // gxLine_h
