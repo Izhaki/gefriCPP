@@ -21,7 +21,6 @@
 		876C5D3D164C73E60006CB61 /* gxRect.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CFC164C73E60006CB61 /* gxRect.h */; };
 		876C5D3E164C73E60006CB61 /* gxSize.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CFD164C73E60006CB61 /* gxSize.h */; };
 		876C5D3F164C73E60006CB61 /* gxAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CFE164C73E60006CB61 /* gxAssert.h */; };
-		876C5D40164C73E60006CB61 /* gxComposite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5CFF164C73E60006CB61 /* gxComposite.cpp */; };
 		876C5D41164C73E60006CB61 /* gxComposite.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D00164C73E60006CB61 /* gxComposite.h */; };
 		876C5D42164C73E60006CB61 /* gxFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D01164C73E60006CB61 /* gxFlags.h */; };
 		876C5D43164C73E60006CB61 /* gxLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D02164C73E60006CB61 /* gxLog.h */; };
@@ -86,7 +85,6 @@
 		876C5CFC164C73E60006CB61 /* gxRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxRect.h; sourceTree = "<group>"; };
 		876C5CFD164C73E60006CB61 /* gxSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxSize.h; sourceTree = "<group>"; };
 		876C5CFE164C73E60006CB61 /* gxAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxAssert.h; sourceTree = "<group>"; };
-		876C5CFF164C73E60006CB61 /* gxComposite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxComposite.cpp; sourceTree = "<group>"; };
 		876C5D00164C73E60006CB61 /* gxComposite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxComposite.h; sourceTree = "<group>"; };
 		876C5D01164C73E60006CB61 /* gxFlags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxFlags.h; sourceTree = "<group>"; };
 		876C5D02164C73E60006CB61 /* gxLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxLog.h; sourceTree = "<group>"; };
@@ -203,7 +201,6 @@
 				87C7BA78167FE2F200BB7FE2 /* observer */,
 				876C5CF7164C73E60006CB61 /* geometry */,
 				876C5CFE164C73E60006CB61 /* gxAssert.h */,
-				876C5CFF164C73E60006CB61 /* gxComposite.cpp */,
 				876C5D00164C73E60006CB61 /* gxComposite.h */,
 				876C5D01164C73E60006CB61 /* gxFlags.h */,
 				876C5D02164C73E60006CB61 /* gxLog.h */,
@@ -418,7 +415,6 @@
 			files = (
 				876C5D33164C73E60006CB61 /* gxLightweightControl.cpp in Sources */,
 				876C5D3C164C73E60006CB61 /* gxRect.cpp in Sources */,
-				876C5D40164C73E60006CB61 /* gxComposite.cpp in Sources */,
 				876C5D4C164C73E60006CB61 /* gxRootViewElement.cpp in Sources */,
 				876C5D4E164C73E60006CB61 /* gxRuler.cpp in Sources */,
 				876C5D50164C73E60006CB61 /* gxScaler.cpp in Sources */,

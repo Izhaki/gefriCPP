@@ -128,7 +128,7 @@ void gxViewElement::Validate()
     for ( EACHCHILD )
     {
         CHILD->Validate();
-    }
+    }    
 }
 
 bool gxViewElement::IsValid()

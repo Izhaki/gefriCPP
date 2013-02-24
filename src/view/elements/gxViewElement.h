@@ -26,7 +26,7 @@ class gxLightweightSystem;
  *   their parent. Examples are layers, scaler, or a {@link gxRootViewElement 
  *   root view element}.
  */
-class gxViewElement: public gxComposite
+class gxViewElement: public gxComposite<gxViewElement>
 {
 public:
     gxViewElement();
@@ -179,6 +179,9 @@ protected:
      */
     bool IsClippingChildren();
 
+    
+    virtual void OnAddChild( gxViewElement *aChild );
+    virtual void OnBeforeChildRemoval( gxViewElement *aChild );
     virtual void OnAfterChildRemoval();
 
     enum Flags
@@ -191,8 +194,6 @@ protected:
     gxFlags<gx8Flags> mFlags;
   
     gxTransFlags mTransformFlags;
-
-    IMPLEMENT_COMPOSITE( gxViewElement )
 };
 
 #endif // gxViewElement_h

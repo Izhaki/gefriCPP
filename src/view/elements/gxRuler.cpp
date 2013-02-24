@@ -148,4 +148,5 @@ gxPix gxRuler::GetMyVisibleSize()
         return gxMin( gxFloor( mBounds.width * mScale ), GetParent()->GetBounds().width );
     else
         return gxMin( gxFloor( mBounds.height * mScale ), GetParent()->GetBounds().height );
+    
 }

@@ -2,57 +2,76 @@
 #define gxComposite_h
 
 #include "core/gxObject.h"
+#include "core/gxAssert.h"
 
 #include <list>
-
-// forward decleration (for the list)
-class gxComposite;
-
-typedef std::list< gxComposite* > Children;
-typedef Children::iterator ChildIterator;
-
-// A macro with common implementation for direct descendants
-// Largly implementing typecasting.
-#define IMPLEMENT_COMPOSITE(compositeclass)                             \
-public:                                                                 \
-  compositeclass* GetParent() const { return (compositeclass*)mParent; } \
-protected:                                                              \
-  compositeclass* Child(ChildIterator it)                               \
-    { return ((compositeclass*)(*it)); }                                \
-  virtual void OnAddChild(gxComposite* aChild)                          \
-    { OnAddChild((compositeclass*)aChild); }                            \
-  virtual void OnAddChild(compositeclass* aChild);                      \
-  virtual void OnBeforeChildRemoval(gxComposite* aChild)                \
-    { OnBeforeChildRemoval( (compositeclass*)aChild ); }                \
-  virtual void OnBeforeChildRemoval(compositeclass* aChild);
 
 // A macro for looping all childrens
 #define EACHCHILD ChildIterator it = mChildren.begin(); it != mChildren.end(); ++it
 #define CHILD Child(it)
 
+//#define forEachChild(aIteratable,aItem) \
+//    compositeclass* aItem;
+//    for ( ChildIterator it = aIteratable.begin(), compositeclass* aItem; \
+//          it != aIteratable.end(), aItem = Child(it); \
+//          ++it )
+
 /**
- * @brief A generic class that can contain children of its own kind, therefore allowing 
- * data to be arranged in hierarchical structure, with all objects sharing the
- * same protocol.
+ * @brief A generic class that can contain children of its own kind, therefore
+ * allowing  data to be arranged in hierarchical structure, with all objects
+ * sharing the same protocol.
  * 
  * This class protocol only deals with parent-children operations. Direct
  * descendants will define more specific operations (eg, Paint).
  *
  */
+template <class tComposite>
 class gxComposite: public gxObject
 {
 public:
-    gxComposite();
+    typedef std::list< gxComposite* >   Children;
+    typedef typename Children::iterator ChildIterator;
+    
+    gxComposite()
+    {
+        mParent = NULL;
+    }
     
     // A virtual destructor is a must or a polymorphic derived class destructor
     // won't be called.
-    virtual ~gxComposite();
+    virtual ~gxComposite()
+    {
+        RemoveAllChildren( true );
+        
+        if ( GetParent() != NULL )
+            GetParent()->RemoveChild( this );
+    }
 
     /**
      * @brief Adds a new child to this object.
      * @param aChild The child to be added
      */
-    void AddChild( gxComposite *aChild );
+    void AddChild( gxComposite *aChild )
+    {
+        // Make sure child isn't null
+        gxASSERT( aChild == NULL, "Null paased to AddChild" );
+        
+        // Check for cycle in hierarchy
+        for ( gxComposite* f = this; f!= NULL; f = f->GetParent() )
+        {
+            gxASSERT( aChild == f,
+                     "Cycle in Hierarchy when trying to add a child" );
+        }
+        
+        // Set the child parent to this
+        aChild->SetParent( this );
+        
+        // Add to children list
+        mChildren.push_back( aChild );
+        
+        // Notify
+        OnAddChild( (tComposite*)aChild );
+    }
 
     /**
      * @brief Removes a child from this object.
@@ -60,15 +79,53 @@ public:
      * @param aAndDelete Whether or not the child object should be deleted and
      * nulled.
      */
-    void RemoveChild( gxComposite *aChild,
-                      bool        aAndDelete = false );
+    void RemoveChild( gxComposite* aChild,
+                      bool         aAndDelete = false )
+    {
+        // Make sure it is one of my children
+        gxASSERT( aChild->GetParent() != this,
+                 "RemoveChild is called on a wrong parent." );
+        
+        // Notify
+        OnBeforeChildRemoval( (tComposite*)aChild ) ;
+        
+        // Remove from children list
+        mChildren.remove( aChild );
+        
+        // Set child parent to NULL (but don't call again RemoveChild on this)
+        aChild->SetParent( NULL, false );
+        
+        // Delete if requested
+        if ( aAndDelete )
+        {
+            delete aChild;
+            aChild = NULL;
+        }
+        
+        OnAfterChildRemoval();
+    }
 
     /**
      * @brief Removes all object children.
      * @param aAndDelete Whether or nor removed children are deleted and nulled
      */
-    void RemoveAllChildren( bool aAndDelete = false );
+    void RemoveAllChildren( bool aAndDelete = false )
+    {
+        for ( ChildIterator it = mChildren.begin(); !mChildren.empty(); it = mChildren.begin() )
+        {
+            RemoveChild( *it, aAndDelete );
+        }
+    }
 
+    /**
+     * @brief Returns the parent of this object.
+     * @return The parent
+     */
+    tComposite* GetParent() const
+    {
+        return (tComposite*)mParent;
+    }
+    
     /**
      * @brief Sets the parent of this object.
      * @param aParent The parent object
@@ -76,14 +133,15 @@ public:
      * parent. Default to True
      */
     void SetParent( gxComposite* aParent,
-                    bool         aAndRemoveFromParent = true );
+                    bool         aAndRemoveFromParent = true )
+    {
+        // Detach from previous parent
+        if ( aAndRemoveFromParent && GetParent() != NULL )
+            GetParent()->RemoveChild( this );
+            
+            mParent = aParent;
+    }
     
-    /**
-     * @brief Returns the parent of this object.
-     * @return The parent
-     */
-    gxComposite* GetParent() { return mParent; }
-
     /**
      * @brief Returns the children of this object.
      * @return An std::list representing the children
@@ -98,23 +156,15 @@ public:
 protected:
     /**
      * @brief A virtual method that will be called whenever a child is added.
-     *
-     * This method will be overriden by the IMPLEMENT_COMPOSITE macro, so
-     * when used, subclasses should not override this method, but implement
-     * the typecasted version instead; eg, OnAddChild(gxFigure* aChild).
      * @param aChild The child that was added
      */
-    virtual void OnAddChild( gxComposite* aChild ) { }
+    virtual void OnAddChild( tComposite* aChild ) { }
     /**
      * @brief A virtual method that will be called whenever a child is about to
      * be removed.
-     *
-     * This method will be overriden by the IMPLEMENT_COMPOSITE macro, so
-     * when used, subclasses should not override this method, but implement
-     * the typecasted version instead; eg, OnRemoveChild(gxFigure* aChild).
      * @param aChild The child that was removed
      */
-    virtual void OnBeforeChildRemoval( gxComposite* aChild ) { }
+    virtual void OnBeforeChildRemoval( tComposite* aChild ) { }
 
     /**
      * @brief A virtual method that will be called after a child has been removed.
@@ -125,15 +175,14 @@ protected:
     virtual void OnAfterChildRemoval() { }
 
     /**
-     * @brief Convinience method for type casting. Subclasses will override this by using
-     * IMPLEMENT_COMPOSITE.
+     * @brief Convinience method for type casting.
      * @param it The iterator to be casted
      * @return A typecasted child
      */
-    gxComposite* Child( ChildIterator it ) { return (*it); }
+    tComposite* Child( ChildIterator it ) { return (tComposite*)(*it); }
 
     /// the children this object contains
-    Children mChildren;
+    Children     mChildren;
     /// the parent of this object
     gxComposite* mParent;
 };
