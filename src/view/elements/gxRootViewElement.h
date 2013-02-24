@@ -15,39 +15,40 @@
 class gxRootViewElement: public gxStructuralViewElement
 {
 public:
-  /**
-   * @brief The root view elemetn constructor
-   * @param aLightweightSystem The {@link gxLightweightSystem lightweight
-   * system} associated with the root view element.
-   */
-  gxRootViewElement(gxLightweightSystem *aLightweightSystem);
+    /**
+     * @brief The root view elemetn constructor
+     * @param aLightweightSystem The {@link gxLightweightSystem lightweight
+     * system} associated with the root view element.
+     */
+    gxRootViewElement( gxLightweightSystem *aLightweightSystem );
 
-  /**
-   * @brief Returns the {@link gxLightweightSystem lightweight system}
-   * associated with this view element (and all its children).
-   */
-  virtual gxLightweightSystem* GetLightweightSystem() const;
+    /**
+     * @brief Returns the {@link gxLightweightSystem lightweight system}
+     * associated with this view element (and all its children).
+     */
+    virtual gxLightweightSystem* GetLightweightSystem() const;
 
-  /**
-   * @brief Overrides the base class implementation to return itself. 
-   */
-  virtual const gxRootViewElement* GetRootViewElement() const;
+    /**
+     * @brief Overrides the base class implementation to return itself.
+     */
+    virtual const gxRootViewElement* GetRootViewElement() const;
 
-  /**
-   * @brief Returns the bounds of this view element by getting the bounds of the
-   * lightweight control, but with the origin set to (0,0).
-   */
-  virtual gxRect GetBounds() const;
+    /**
+     * @brief Returns the bounds of this view element by getting the bounds of the
+     * lightweight control, but with the origin set to (0,0).
+     */
+    virtual gxRect GetBounds() const;
 
-  // Validate is promoted to public as the lightweight system needs to call it.
-  virtual void Validate() { gxStructuralViewElement::Validate(); }
+    // Validate is promoted to public as the lightweight system needs to call it.
+    virtual void Validate() { gxStructuralViewElement::Validate(); }
 protected:
-  virtual void TransformToAbsolute(gxRect &aRect, gxTransFlags &aTransFlags);
-  virtual void Invalidate();
+    virtual void TransformToAbsolute( gxRect       &aRect,
+                                      gxTransFlags &aTransFlags);
+    virtual void Invalidate();
 private:
-  /// The {@link gxLightweightSystem lightweight system} associated with this
-  /// root view element.
-  gxLightweightSystem *mLightweightSystem;
+    /// The {@link gxLightweightSystem lightweight system} associated with this
+    /// root view element.
+    gxLightweightSystem *mLightweightSystem;
 };
 
 #endif // gxRootViewElement_h

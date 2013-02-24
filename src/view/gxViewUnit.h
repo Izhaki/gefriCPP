@@ -26,33 +26,33 @@
 class gxViewUnit
 {
 public:
-  /**
-   * @brief Coverts from a pixel value to unit value.
-   * @param aPixel The pixel value to convert.
-   * @return The unit value of the provided pixel.
-   */
-  virtual int PixelToUnit(const gxPix aPixel) = 0;
+    /**
+    * @brief Coverts from a pixel value to unit value.
+    * @param aPixel The pixel value to convert.
+    * @return The unit value of the provided pixel.
+    */
+    virtual int PixelToUnit( const gxPix aPixel ) = 0;
 
-  /**
-   * @brief Coverts from a unit value to pixel value.
-   * @param aUnit The unit value to convert.
-   * @return The unit value of the provided unit.
-   */
-  virtual gxPix UnitToPixel(const int aUnit) = 0;
-  
-  /**
-   * @brief Returns the label of a given pixel.
-   * @param aPixel The pixel value.
-   * @return The label for that pixel value.
-   */
-  virtual gxString GetLabelOfPixel(const gxPix aPixel);
+    /**
+    * @brief Coverts from a unit value to pixel value.
+    * @param aUnit The unit value to convert.
+    * @return The unit value of the provided unit.
+    */
+    virtual gxPix UnitToPixel( const int aUnit ) = 0;
 
-  /**
-   * @brief Returns the label of a given unit.
-   * @param aUnit The unit value.
-   * @return The label for the given unit value.
-   */
-  virtual gxString GetLabelOfUnit(const int aUnit);
+    /**
+    * @brief Returns the label of a given pixel.
+    * @param aPixel The pixel value.
+    * @return The label for that pixel value.
+    */
+    virtual gxString GetLabelOfPixel( const gxPix aPixel );
+
+    /**
+    * @brief Returns the label of a given unit.
+    * @param aUnit The unit value.
+    * @return The label for the given unit value.
+    */
+    virtual gxString GetLabelOfUnit( const int aUnit );
 };
 
 /**
@@ -60,8 +60,8 @@ public:
  */
 class gxPixelUnit : public gxViewUnit
 {
-  virtual int PixelToUnit(const gxPix aPixel);
-  virtual gxPix UnitToPixel(const int aUnit);
+    virtual int PixelToUnit( const gxPix aPixel );
+    virtual gxPix UnitToPixel( const int aUnit );
 };
 
 /**
@@ -73,14 +73,14 @@ class gxPixelUnit : public gxViewUnit
 class gxRationalViewUnit : public gxViewUnit
 {
 public:
-  gxRationalViewUnit(double aPixelsPerUnit)
-  : mPixelsPerUnit(aPixelsPerUnit)
-  { }
+    gxRationalViewUnit( double aPixelsPerUnit )
+    : mPixelsPerUnit( aPixelsPerUnit )
+    { }
 
-  virtual int PixelToUnit(const gxPix aPixel);
-  virtual gxPix UnitToPixel(const int aUnit);
+    virtual int PixelToUnit( const gxPix aPixel );
+    virtual gxPix UnitToPixel( const int aUnit );
 protected:
-  double mPixelsPerUnit;
+    double mPixelsPerUnit;
 };
 
 #endif // gxViewUnit_h

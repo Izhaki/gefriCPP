@@ -35,7 +35,7 @@ gxLightweightSystem* gxViewElement::GetLightweightSystem() const
     return iLws;
 }
 
-void gxViewElement::TransformToAbsolute( gxRect           &aRect,
+void gxViewElement::TransformToAbsolute( gxRect       &aRect,
                                          gxTransFlags &aTransFlags )
 {
     gxViewElement* iParent = GetParent();
@@ -94,7 +94,7 @@ void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
         // When getting the children bounds we want all transformations to be
         // done but scroll.
         gxTransFlags iFlags( gxTransFlags::All &
-                                ~gxTransFlags::Scroll );
+                             ~gxTransFlags::Scroll );
 
         Transform( iChildBounds, iFlags );
 

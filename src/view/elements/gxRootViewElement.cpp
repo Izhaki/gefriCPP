@@ -2,45 +2,46 @@
 #include "view/gxLightweightSystem.h"
 #include "core/gxAssert.h"
 
-gxRootViewElement::gxRootViewElement(gxLightweightSystem *aLightweightSystem)
-    : mLightweightSystem(aLightweightSystem)
+gxRootViewElement::gxRootViewElement( gxLightweightSystem *aLightweightSystem )
+    : mLightweightSystem( aLightweightSystem )
 {
 }
 
 const gxRootViewElement* gxRootViewElement::GetRootViewElement() const
 {
-  return this;
+    return this;
 }
 
 gxLightweightSystem* gxRootViewElement::GetLightweightSystem() const
 {
-  return mLightweightSystem;
+    return mLightweightSystem;
 }
 
 gxRect gxRootViewElement::GetBounds() const
 {
-  // This will return a rectangle at origin (0,0) with the size of the
-  // of the control bounds.
-  return gxRect(mLightweightSystem->GetControlBounds().GetSize());
+    // This will return a rectangle at origin (0,0) with the size of the
+    // of the control bounds.
+    return gxRect( mLightweightSystem->GetControlBounds().GetSize() );
 
 }
 
 void gxRootViewElement::Invalidate()
 {
-  mFlags.Unset(gxViewElement::Valid);
+    mFlags.Unset( gxViewElement::Valid );
 
-  // Since a single user action might lead to a multitude of objects becoming
-  // invalid (like the removal of 3 children), we don't want to validate the
-  // whole tree per object that changed. Instead, we queue some validation
-  // requests (in some event loop).
-  //
-  // What this means is that after all modified objects have been doing their
-  // marking of invalid objects, the queue validation request will be processed
-  // and will lead to Validate() on this class being called.
-  mLightweightSystem->QueueValidation();
+    // Since a single user action might lead to a multitude of objects becoming
+    // invalid (like the removal of 3 children), we don't want to validate the
+    // whole tree per object that changed. Instead, we queue some validation
+    // requests (in some event loop).
+    //
+    // What this means is that after all modified objects have been doing their
+    // marking of invalid objects, the queue validation request will be processed
+    // and will lead to Validate() on this class being called.
+    mLightweightSystem->QueueValidation();
 }
 
-void gxRootViewElement::TransformToAbsolute(gxRect &aRect, gxTransFlags &aTransFlags)
+void gxRootViewElement::TransformToAbsolute( gxRect       &aRect,
+                                             gxTransFlags &aTransFlags )
 {
-  // RootViewElement has no parent. So translation stops here.
+    // RootViewElement has no parent. So translation stops here.
 }

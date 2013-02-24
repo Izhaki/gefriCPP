@@ -74,7 +74,8 @@ void gxScroller::Validate()
     Repaint();
 }
 
-void gxScroller::Transform( gxRect &aRect, gxTransFlags &aTransFlags )
+void gxScroller::Transform( gxRect       &aRect,
+                            gxTransFlags &aTransFlags )
 {
     if ( aTransFlags.ScrollOff() )
         return;
@@ -94,7 +95,7 @@ void gxScroller::ReadjustScrollbars()
     GetDescendantsBounds( iBounds );
 
     gxSize iMySize = GetBounds().GetSize();
-    gxSize iRange( iBounds.X + iBounds.width, iBounds.Y + iBounds.height );
+    gxSize iRange( iBounds.GetRight(), iBounds.GetBottom() );
 
     mScrollManager->AdjustScrollbars( iMySize, iRange );
 }
