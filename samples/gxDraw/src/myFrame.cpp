@@ -78,38 +78,42 @@ MyFrame::~MyFrame()
 
 void MyFrame::InitGefri()
 {
-  mLightweightControl = new gxLightweightControl(this, wxID_HIGHEST + 1, wxPoint(10,10), wxSize(500,500), LightweightControlStyle | wxHSCROLL | wxVSCROLL);
-  mLightweightSystem = new gxLightweightSystem(mLightweightControl);
+    mLightweightControl = new gxLightweightControl(this, wxID_HIGHEST + 1, wxPoint(10,10), wxSize(500,500), LightweightControlStyle | wxHSCROLL | wxVSCROLL);
+    mLightweightSystem = new gxLightweightSystem(mLightweightControl);
 
-  mDocument = new gxRectangle(gxRect(10, 10, 480, 480));
+    mDocument = new gxRectangle(gxRect(10, 10, 480, 480));
 
-  mZoomManager = new gxZoomManager();
-  mZoom = new gxScaler(mZoomManager);
+    mZoomManager = new gxZoomManager();
+    mZoom = new gxScaler(mZoomManager);
   
-  mScrollManager = new gxScrollManager();
-  mLightweightSystem->SetScrollManager(mScrollManager);
+    mScrollManager = new gxScrollManager();
+    mLightweightSystem->SetScrollManager(mScrollManager);
   
-  mFace = new gxRectangle(gxRect(40, 40, 100, 100));
-  //mLeg = new gxRectangle(gxRect(410, 10, 10, 10));
+    mFace = new gxRectangle(gxRect(40, 40, 100, 100));
+    //mLeg = new gxRectangle(gxRect(410, 10, 10, 10));
   
-  mZoom->AddChild(mFace);
+    mZoom->AddChild(mFace);
 
-  mViewUnit = new gxPixelUnit();
-  mDivProvider = new gxDivProvider(mViewUnit);
-  mRulerH = new gxRuler(gxRect(0, 0, 140, 20), mDivProvider);
-  //mRulerH = new gxRuler(gxRect(0, 0, 20, 480),  mDivProvider, mViewUnit);
-  mRulerH->SetZoomManager(mZoomManager);
-  mRulerH->SetScrollManager(mScrollManager);
-  mZoom->AddChild(mRulerH);
+    mViewUnit = new gxPixelUnit();
+    mDivProvider = new gxDivProvider(mViewUnit);
+    mRulerH = new gxRuler(gxRect(0, 0, 140, 20), mDivProvider);
+    //mRulerH = new gxRuler(gxRect(0, 0, 20, 480),  mDivProvider, mViewUnit);
+    mRulerH->SetZoomManager(mZoomManager);
+    mRulerH->SetScrollManager(mScrollManager);
+    mZoom->AddChild(mRulerH);
 
-  mScroller = new gxScroller(mScrollManager);
-  mScroller->AddChild(mZoom);
+    mScroller = new gxScroller(mScrollManager);
+    mScroller->AddChild(mZoom);
 
-  mDocument->AddChild(mScroller);
+    mDocument->AddChild(mScroller);
+    
+    //mZoom->AddChild(mLeg);
 
-  //mZoom->AddChild(mLeg);
-
-  mLightweightSystem->SetContents(mDocument);
+    mLightweightSystem->SetContents(mDocument);
+    
+    mFaceAnchor = new gxBoxAnchor( mFace );
+    gxPoint iAnchor = mFaceAnchor->GetPosition();
+    
 }
 
 void MyFrame::Initialize()

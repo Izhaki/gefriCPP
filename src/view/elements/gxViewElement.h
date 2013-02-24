@@ -87,24 +87,28 @@ public:
      */
     void Hide();
     
-protected:
     /**
      * @brief Transforms a rect (typically bounds) to absolute coordinates.
      *
      * This is a recursive method that goes all the way up the parent tree.
-     * @param aRect The rect to transform
+     * @param aRect The rect to transform.
+     * @param aTransFlasg The transformations to account for.
      */
-    virtual void TransformToAbsolute( gxRect           &aRect,
+    virtual void TransformToAbsolute( gxRect       &aRect,
                                       gxTransFlags &aTransFlags );
 
+protected:
     /**
      * @brief Transforms a rect (typically bounds) to the coordinates of this
      * element. Normally called by children.
      *
+     * Subclasses will override this method to perform their own translations.
+     *
      * Used by TransformToAbsolute.
      * @param aRect The rect to transform.
+     * @param aTransFlasg The transformations to account for.     
      */
-    virtual void Transform( gxRect           &aRect,
+    virtual void Transform( gxRect       &aRect,
                             gxTransFlags &aTransFlags );
   
     /**

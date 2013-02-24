@@ -62,6 +62,9 @@
 		879535E316DA8FC9006D69FE /* gxDcPainter.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535C116DA8FC9006D69FE /* gxDcPainter.h */; };
 		879535E416DA8FC9006D69FE /* gxPainter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535C216DA8FC9006D69FE /* gxPainter.cpp */; };
 		879535E516DA8FC9006D69FE /* gxPainter.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535C316DA8FC9006D69FE /* gxPainter.h */; };
+		879535EA16DAA2E0006D69FE /* gxAnchor.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535E916DAA2E0006D69FE /* gxAnchor.h */; };
+		879535EC16DAA366006D69FE /* gxBoxAnchor.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535EB16DAA366006D69FE /* gxBoxAnchor.h */; };
+		879535EE16DAA689006D69FE /* gxBoxAnchor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535ED16DAA689006D69FE /* gxBoxAnchor.cpp */; };
 		87C7BA7F167FE2F200BB7FE2 /* FastDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */; };
 		87C7BA80167FE2F200BB7FE2 /* gxEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */; };
 		87C7BA81167FE2F200BB7FE2 /* gxEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */; };
@@ -128,6 +131,9 @@
 		879535C116DA8FC9006D69FE /* gxDcPainter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxDcPainter.h; sourceTree = "<group>"; };
 		879535C216DA8FC9006D69FE /* gxPainter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxPainter.cpp; sourceTree = "<group>"; };
 		879535C316DA8FC9006D69FE /* gxPainter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxPainter.h; sourceTree = "<group>"; };
+		879535E916DAA2E0006D69FE /* gxAnchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxAnchor.h; path = ../view/Connections/gxAnchor.h; sourceTree = "<group>"; };
+		879535EB16DAA366006D69FE /* gxBoxAnchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxBoxAnchor.h; path = ../view/Connections/gxBoxAnchor.h; sourceTree = "<group>"; };
+		879535ED16DAA689006D69FE /* gxBoxAnchor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxBoxAnchor.cpp; path = ../view/Connections/gxBoxAnchor.cpp; sourceTree = "<group>"; };
 		87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastDelegate.h; sourceTree = "<group>"; };
 		87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxEvent.cpp; sourceTree = "<group>"; };
 		87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxEvent.h; sourceTree = "<group>"; };
@@ -239,6 +245,7 @@
 		8795359A16DA8FC9006D69FE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				879535E816DAA2AA006D69FE /* Connections */,
 				8795359B16DA8FC9006D69FE /* DivProvider */,
 				879535A016DA8FC9006D69FE /* Elements */,
 				879535B616DA8FC9006D69FE /* gxLightweightControl.h */,
@@ -334,6 +341,16 @@
 			path = Painters;
 			sourceTree = "<group>";
 		};
+		879535E816DAA2AA006D69FE /* Connections */ = {
+			isa = PBXGroup;
+			children = (
+				879535E916DAA2E0006D69FE /* gxAnchor.h */,
+				879535EB16DAA366006D69FE /* gxBoxAnchor.h */,
+				879535ED16DAA689006D69FE /* gxBoxAnchor.cpp */,
+			);
+			name = Connections;
+			sourceTree = "<group>";
+		};
 		87C7BA78167FE2F200BB7FE2 /* observer */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,6 +412,8 @@
 				879535E116DA8FC9006D69FE /* gxZoomManager.h in Headers */,
 				879535E316DA8FC9006D69FE /* gxDcPainter.h in Headers */,
 				879535E516DA8FC9006D69FE /* gxPainter.h in Headers */,
+				879535EA16DAA2E0006D69FE /* gxAnchor.h in Headers */,
+				879535EC16DAA366006D69FE /* gxBoxAnchor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +488,7 @@
 				879535E016DA8FC9006D69FE /* gxZoomManager.cpp in Sources */,
 				879535E216DA8FC9006D69FE /* gxDcPainter.cpp in Sources */,
 				879535E416DA8FC9006D69FE /* gxPainter.cpp in Sources */,
+				879535EE16DAA689006D69FE /* gxBoxAnchor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

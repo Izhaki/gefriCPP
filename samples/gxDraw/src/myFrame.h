@@ -10,28 +10,31 @@
 #include "View/Elements/Visual/gxRuler.h"
 #include "View/DivProvider/gxDivProvider.h"
 #include "View/DivProvider/gxViewUnit.h"
+#include "View/Connections/gxBoxAnchor.h"
 
 #include "core/gxComposite.h"
 
 class MyFrame : public wxFrame {
 
 private:
-  void Initialize();
-  void CreateMenuBar();
-  void Test();
-  void InitGefri();
+    void Initialize();
+    void CreateMenuBar();
+    void Test();
+    void InitGefri();
   
-  gxLightweightControl *mLightweightControl;
-  gxLightweightSystem *mLightweightSystem;
-  gxRectangle *mDocument, *mFace, *mEyeL, *mEyeR, *Iris1, *Iris2, *mLeg;
-  gxScaler *mZoom;
-  gxZoomManager *mZoomManager;
-  gxScroller *mScroller;
-  gxScrollManager *mScrollManager;
+    gxLightweightControl *mLightweightControl;
+    gxLightweightSystem *mLightweightSystem;
+    gxRectangle *mDocument, *mFace, *mEyeL, *mEyeR, *Iris1, *Iris2, *mLeg;
+    gxScaler *mZoom;
+    gxZoomManager *mZoomManager;
+    gxScroller *mScroller;
+    gxScrollManager *mScrollManager;
+    
+    gxBoxAnchor *mFaceAnchor;
 
-  gxViewUnit    *mViewUnit;
-  gxDivProvider *mDivProvider;
-  gxRuler       *mRulerH;
+    gxViewUnit    *mViewUnit;
+    gxDivProvider *mDivProvider;
+    gxRuler       *mRulerH;
 public:
   MyFrame(wxWindow   *parent,
           wxWindowID id,
