@@ -16,16 +16,16 @@
 class gxShape: public gxVisual
 {
 public:
-  gxShape() {}
-  gxShape(const gxRect &aBounds)
-    : gxVisual(aBounds) { }
+    gxShape() {}
+    gxShape( const gxRect &aBounds )
+        : gxVisual( aBounds ) { }
 protected:
-  void PaintSelf(gxPainter &aPainter);
-  /**
-   * @brief Paints the shape 
-   * @param aPainter The painter used for drawing.
-   */
-  virtual void PaintShape(gxPainter &aPainter) = 0;
+    void PaintSelf( gxPainter &aPainter );
+    /**
+     * @brief Paints the shape
+     * @param aPainter The painter used for drawing.
+     */
+    virtual void PaintShape( gxPainter &aPainter ) = 0;
 };
 
 #endif // gxShape_h

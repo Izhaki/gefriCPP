@@ -14,6 +14,5 @@ gxPoint gxBoxAnchor::GetPosition()
     
     mOwner->TransformToAbsolute( iRect, iFlags );
     
-    // The anchor position is the X + half the width or Y + half the height.
-    return iRect.GetPosition() + iRect.GetSize().Scale( 0.5, 0.5 );
+    return iRect.GetCenter();
 }

@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../samples/gxDraw/src/myFrame.cpp"
-         timestampString = "383430340.473923"
+         timestampString = "383433997.64881"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "115"
-         endingLineNumber = "115"
+         startingLineNumber = "119"
+         endingLineNumber = "119"
          landmarkName = "MyFrame::InitGefri()"
          landmarkType = "5">
       </FileBreakpoint>

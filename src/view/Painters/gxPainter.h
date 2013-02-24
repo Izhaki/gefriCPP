@@ -133,8 +133,12 @@ public:
     virtual void DrawLine( gxPix x1,
                            gxPix y1,
                            gxPix x2,
-                           gxPix y2,
-                           bool  isHorizontal = true ) = 0;
+                           gxPix y2 );
+    
+    virtual void DrawLine( gxPoint aFrom,
+                           gxPoint aTo ) = 0 ;
+    
+    virtual void DrawLine( gxRect aRect );
   
     virtual void DrawText( gxString &aText,
                            gxPix    x,

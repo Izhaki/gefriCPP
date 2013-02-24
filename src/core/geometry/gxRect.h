@@ -102,6 +102,11 @@ public:
         width  = aSize.GetWidth();
         height = aSize.GetHeight();
     }
+    
+    gxPoint GetCenter() const
+    {
+        return GetPosition() + GetSize().Scale( 0.5, 0.5 );
+    }
 
     bool IsEmpty() const
     {

@@ -30,11 +30,8 @@ public:
     
     void DrawRectangle( gxRect const &aRect );
 
-    void DrawLine( gxPix x1,
-                   gxPix y1,
-                   gxPix x2,
-                   gxPix y2,
-                   bool  isHorizontal = true );
+    void DrawLine( gxPoint aFrom,
+                   gxPoint aTo );
   
     void DrawText( gxString &aText,
                    gxPix    aX,

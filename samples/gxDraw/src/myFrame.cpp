@@ -82,6 +82,10 @@ void MyFrame::InitGefri()
     mLightweightSystem = new gxLightweightSystem(mLightweightControl);
 
     mDocument = new gxRectangle(gxRect(10, 10, 480, 480));
+    
+    mLine = new gxLine( gxPoint(0,0), gxPoint( 300,300 ) );
+    
+    mDocument->AddChild(mLine);
 
     mZoomManager = new gxZoomManager();
     mZoom = new gxScaler(mZoomManager);

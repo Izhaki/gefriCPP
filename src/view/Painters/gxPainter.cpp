@@ -117,6 +117,20 @@ void gxPainter::Transform( gxPoint &aPoint )
         aPoint -= mTrans.Scroll;
 }
 
+void gxPainter::DrawLine( gxPix x1,
+                          gxPix y1,
+                          gxPix x2,
+                          gxPix y2 )
+{
+    DrawLine( gxPoint( x1, y1 ), gxPoint( x2, y2) );
+}
+
+
+void gxPainter::DrawLine( gxRect aRect )
+{
+    DrawLine( aRect.GetTopLeft(), aRect.GetBottomRight() );
+}
+
 bool gxPainter::TranslateNeeded()
 {
     return mTrans.TranslateNeeded();

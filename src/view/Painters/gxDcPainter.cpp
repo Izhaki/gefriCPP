@@ -63,18 +63,26 @@ void gxDcPainter::DrawRectangle( gxRect const &aRect )
     mDc->DrawRectangle( iRect );
 }
 
-void gxDcPainter::DrawLine( gxPix x1,
-                            gxPix y1,
-                            gxPix x2,
-                            gxPix y2,
-                            bool  isHorizontal )
+//void gxDcPainter::DrawLine( gxPix x1,
+//                            gxPix y1,
+//                            gxPix x2,
+//                            gxPix y2 )
+//{
+//    gxPoint iFrom = isHorizontal ? gxPoint( x1, y1 ) : gxPoint( y1, x1 );
+//    gxPoint iTo   = isHorizontal ? gxPoint( x2, y2 ) : gxPoint( y2, x2 );
+//    Transform( iFrom );
+//    Transform( iTo );
+//    mDc->DrawLine( iFrom.X, iFrom.Y, iTo.X, iTo.Y );
+//}
+
+void gxDcPainter::DrawLine( gxPoint aFrom,
+                            gxPoint aTo )
 {
-    gxPoint iFrom = isHorizontal ? gxPoint( x1, y1 ) : gxPoint( y1, x1 );
-    gxPoint iTo = isHorizontal ? gxPoint( x2, y2 ) : gxPoint( y2, x2 );
-    Transform( iFrom );
-    Transform( iTo );
-    mDc->DrawLine( iFrom.X, iFrom.Y, iTo.X, iTo.Y );
+    Transform( aFrom );
+    Transform( aTo );
+    mDc->DrawLine( aFrom.X, aFrom.Y, aTo.X, aTo.Y );
 }
+
 
 void gxDcPainter::DrawText( gxString &aText,
                             gxPix    aX,

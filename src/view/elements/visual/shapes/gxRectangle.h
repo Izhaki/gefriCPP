@@ -9,12 +9,12 @@
 class gxRectangle: public gxShape
 {
 public:
-  gxRectangle() {}
-  gxRectangle(const gxRect &aBounds)
-    : gxShape(aBounds) {}
+    gxRectangle() {}
+    gxRectangle( const gxRect &aBounds )
+      : gxShape( aBounds ) {}
 
 protected:
-  virtual void PaintShape(gxPainter &aPainter);
+    virtual void PaintShape( gxPainter &aPainter );
 };
 
 #endif // gxRectangle_h

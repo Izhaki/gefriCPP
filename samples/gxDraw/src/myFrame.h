@@ -3,6 +3,7 @@
 #include "View/gxLightweightControl.h"
 #include "View/gxLightweightSystem.h"
 #include "View/Elements/Visual/shapes/gxRectangle.h"
+#include "View/Elements/Visual/shapes/gxLine.h"
 #include "View/Elements/Structural/gxScaler.h"
 #include "View/Managers/gxZoomManager.h"
 #include "View/Elements/Structural/gxScroller.h"
@@ -29,6 +30,7 @@ private:
     gxZoomManager *mZoomManager;
     gxScroller *mScroller;
     gxScrollManager *mScrollManager;
+    gxLine *mLine;
     
     gxBoxAnchor *mFaceAnchor;
 

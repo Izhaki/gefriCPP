@@ -109,6 +109,8 @@ void gxRuler::PaintSelf( gxPainter &aPainter )
     gxPix iEndPixel =  mStartPixel + GetMyVisibleSize();
 
     gxString iLabel;
+    
+    gxPoint iFrom, iTo;
 
     // Start with the block at the start pixel
     gxViewDiv *iDiv = mDivProvider->BlockAtPixel( mStartPixel / mScale );
@@ -132,7 +134,13 @@ void gxRuler::PaintSelf( gxPainter &aPainter )
             break;
         }
         
-        aPainter.DrawLine( iPos, 0, iPos, iLineLength, mIsHorizontal );
+        iFrom = mIsHorizontal ? gxPoint( iPos, 0 ) : gxPoint( 0, iPos );
+        iTo   = mIsHorizontal ?
+                gxPoint( iPos, iLineLength ) :
+                gxPoint( iLineLength, iPos );
+        
+        
+        aPainter.DrawLine( iFrom, iTo );
 
         iDiv = mDivProvider->Next();
 
