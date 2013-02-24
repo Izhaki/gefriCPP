@@ -1,4 +1,4 @@
-#include "view/gxDivProvider.h"
+#include "View/DivProvider/gxDivProvider.h"
 
 #include <math.h>
 

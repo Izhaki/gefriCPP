@@ -1,4 +1,4 @@
-#include "view/elements/visual/shapes/gxShape.h"
+#include "View/Elements/Visual/shapes/gxShape.h"
 
 void gxShape::PaintSelf(gxPainter &aPainter)
 {

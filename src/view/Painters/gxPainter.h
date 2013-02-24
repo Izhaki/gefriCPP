@@ -4,7 +4,7 @@
 #include "core/gxObject.h"
 #include "core/gxString.h"
 #include "core/geometry/gxGeometry.h"
-#include "view/gxTransformations.h"
+#include "View/gxTransformations.h"
 
 #include <stack>
 

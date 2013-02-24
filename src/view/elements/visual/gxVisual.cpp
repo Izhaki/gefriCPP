@@ -1,5 +1,5 @@
-#include "view/elements/visual/gxVisual.h"
-#include "view/gxLightweightSystem.h"
+#include "View/Elements/Visual/gxVisual.h"
+#include "View/gxLightweightSystem.h"
 #include "core/gxLog.h"
 
 gxVisual::gxVisual()

@@ -1,4 +1,4 @@
-#include "view/elements/structural/gxScroller.h"
+#include "View/Elements/Structural/gxScroller.h"
 #include "core/gxAssert.h"
 #include "core/gxLog.h"
 

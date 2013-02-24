@@ -1,6 +1,6 @@
-#include "view/gxLightweightSystem.h"
+#include "View/gxLightweightSystem.h"
 #include "gxLightweightControl.h"
-#include "view/gxDcPainter.h"
+#include "View/Painters/gxDcPainter.h"
 
 gxLightweightSystem::gxLightweightSystem( gxLightweightControl *aControl )
 : mContents( NULL ),

@@ -1,4 +1,4 @@
-#include "view/gxPainter.h"
+#include "View/Painters/gxPainter.h"
 #include <math.h>
 #include "core/gxLog.h"
 

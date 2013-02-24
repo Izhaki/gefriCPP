@@ -1,5 +1,5 @@
-#include "view/elements/gxViewElement.h"
-#include "view/gxLightweightSystem.h"
+#include "View/Elements/gxViewElement.h"
+#include "View/gxLightweightSystem.h"
 #include "core/gxAssert.h"
 #include "core/gxLog.h"
 

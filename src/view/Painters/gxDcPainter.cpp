@@ -1,4 +1,4 @@
-#include "view/gxDcPainter.h"
+#include "View/Painters/gxDcPainter.h"
 
 gxDcPainter::gxDcPainter( gxPaintDC     *aDc,
                           gxRects const &aDamagedRects )

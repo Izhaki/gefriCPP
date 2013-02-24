@@ -1,4 +1,4 @@
-#include "view/elements/visual/shapes/gxRectangle.h"
+#include "View/Elements/Visual/shapes/gxRectangle.h"
 
 void gxRectangle::PaintShape(gxPainter &aPainter)
 {

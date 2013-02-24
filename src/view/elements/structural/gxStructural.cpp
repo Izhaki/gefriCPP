@@ -1,4 +1,4 @@
-#include "view/elements/structural/gxStructural.h"
+#include "View/Elements/Structural/gxStructural.h"
 #include "core/gxAssert.h"
 #include "core/gxLog.h"
 

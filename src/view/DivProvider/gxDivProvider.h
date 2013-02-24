@@ -1,7 +1,7 @@
 #ifndef gxDivProvider_h
 #define gxDivProvider_h
 
-#include "view/gxViewUnit.h"
+#include "View/DivProvider/gxViewUnit.h"
 
 /**
  * @brief A structure that holds information regarding a view block used by

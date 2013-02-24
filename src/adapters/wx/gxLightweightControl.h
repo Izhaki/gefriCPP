@@ -2,7 +2,7 @@
 #define gxLightweightControl_wx_h
 
 #include <wx/control.h>
-#include "view/gxLightweightSystem.h"
+#include "View/gxLightweightSystem.h"
 
 static const long LightweightControlStyle = wxNO_BORDER;// | wxVSCROLL;// | wxALWAYS_SHOW_SB; //| wxNO_FULL_REPAINT_ON_RESIZE | wxTRANSPARENT_WINDOW; // , //0x00000020L, //| wxCLIP_SIBLINGS, //| 0x00000020L, //0x00000008L
 

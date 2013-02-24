@@ -1,4 +1,4 @@
-#include "view/managers/gxScrollManager.h"
+#include "View/Managers/gxScrollManager.h"
 #include <math.h>
 
 gxScrollManager::gxScrollManager()

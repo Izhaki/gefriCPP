@@ -3,7 +3,7 @@
 
 #include "core/gxObject.h"
 #include "core/observer/gxSubject.h"
-#include "view/gxTransformations.h"
+#include "View/gxTransformations.h"
 #include "core/geometry/gxGeometry.h"
 
 struct gxScroll

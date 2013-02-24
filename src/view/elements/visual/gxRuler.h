@@ -1,11 +1,11 @@
 #ifndef gxRuler_h
 #define gxRuler_h
 
-#include "view/elements/visual/gxVisual.h"
+#include "View/elements/Visual/gxVisual.h"
 #include "core/observer/gxObserver.h"
-#include "view/managers/gxZoomManager.h"
-#include "view/managers/gxScrollManager.h"
-#include "view/gxDivProvider.h"
+#include "View/Managers/gxZoomManager.h"
+#include "View/Managers/gxScrollManager.h"
+#include "View/DivProvider/gxDivProvider.h"
 
 /**
  * @brief A ruler view element.

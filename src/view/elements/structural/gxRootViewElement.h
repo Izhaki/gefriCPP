@@ -1,7 +1,7 @@
 #ifndef gxRootViewElement_h
 #define gxRootViewElement_h
 
-#include "view/elements/structural/gxStructural.h"
+#include "View/Elements/Structural/gxStructural.h"
 
 /**
  * @brief The root view element in any {@link gxViewElement view element}

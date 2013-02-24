@@ -1,4 +1,4 @@
-#include "view/gxViewUnit.h"
+#include "View/DivProvider/gxViewUnit.h"
 #include <sstream>
 
 gxString gxViewUnit::GetLabelOfPixel( const gxPix aPixel )

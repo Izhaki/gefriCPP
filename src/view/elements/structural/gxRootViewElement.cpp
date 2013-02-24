@@ -1,5 +1,5 @@
-#include "view/elements/structural/gxRootViewElement.h"
-#include "view/gxLightweightSystem.h"
+#include "View/Elements/Structural/gxRootViewElement.h"
+#include "View/gxLightweightSystem.h"
 #include "core/gxAssert.h"
 
 gxRootViewElement::gxRootViewElement( gxLightweightSystem *aLightweightSystem )

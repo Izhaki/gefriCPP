@@ -3,7 +3,7 @@
 
 #include "core/gxObject.h"
 #include "core/observer/gxSubject.h"
-#include "view/gxTransformations.h"
+#include "View/gxTransformations.h"
 
 /**
  * @brief Manages zoom by providing clients advance zoom modification protocol

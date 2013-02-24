@@ -1,5 +1,5 @@
-#include "view/elements/visual/gxRuler.h"
-#include "view/gxLightweightSystem.h"
+#include "View/Elements/Visual/gxRuler.h"
+#include "View/gxLightweightSystem.h"
 
 gxRuler::gxRuler( const gxRect  &aBounds,
                   gxDivProvider *aDivProvider )
