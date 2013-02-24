@@ -284,6 +284,8 @@ public:
      */
     void Scale( float aScaleX,
                 float aScaleY );
+    
+    void Scale( const gxScale aScale );
 
 public:
     gxPix X, Y, width, height;

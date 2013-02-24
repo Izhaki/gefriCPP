@@ -33,37 +33,6 @@ public:
 };
 
 /**
- * @brief A structures containing the values for scale transformations
- */
-struct gxScale
-{
-    float X, Y;
-
-    gxScale() : X( 1.0 ), Y( 1.0 ) { }
-
-    bool operator==( const gxScale& aScale ) const
-    {
-        return X == aScale.X && Y == aScale.Y;
-    }
-    
-    bool operator!=( const gxScale& aScale ) const
-    {
-        return X != aScale.X || Y != aScale.Y;
-    }
-    
-    bool IsntZero()
-    {
-        return X != 1 || Y != 1;
-    }
-
-    bool IsZero()
-    {
-        return X == 1 && Y == 1;
-    }
-    
-};
-
-/**
  * @brief A structure containing the values of various transformations that
  * can be performed in the view layer.
  */

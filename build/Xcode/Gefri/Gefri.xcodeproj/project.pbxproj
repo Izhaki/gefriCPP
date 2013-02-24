@@ -61,6 +61,7 @@
 		876C5D6B164C73E60006CB61 /* gxScrollManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D2F164C73E60006CB61 /* gxScrollManager.h */; };
 		876C5D6C164C73E60006CB61 /* gxZoomManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5D30164C73E60006CB61 /* gxZoomManager.cpp */; };
 		876C5D6D164C73E60006CB61 /* gxZoomManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D31164C73E60006CB61 /* gxZoomManager.h */; };
+		8795356616DA762A006D69FE /* gxScale.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795356516DA762A006D69FE /* gxScale.h */; };
 		87C7BA7F167FE2F200BB7FE2 /* FastDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */; };
 		87C7BA80167FE2F200BB7FE2 /* gxEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */; };
 		87C7BA81167FE2F200BB7FE2 /* gxEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */; };
@@ -126,6 +127,7 @@
 		876C5D30164C73E60006CB61 /* gxZoomManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxZoomManager.cpp; sourceTree = "<group>"; };
 		876C5D31164C73E60006CB61 /* gxZoomManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxZoomManager.h; sourceTree = "<group>"; };
 		876C5D6F164C74B30006CB61 /* wx2.9.4.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = wx2.9.4.xcconfig; sourceTree = "<group>"; };
+		8795356516DA762A006D69FE /* gxScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxScale.h; sourceTree = "<group>"; };
 		87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastDelegate.h; sourceTree = "<group>"; };
 		87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxEvent.cpp; sourceTree = "<group>"; };
 		87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxEvent.h; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				876C5CFB164C73E60006CB61 /* gxRect.cpp */,
 				876C5CFC164C73E60006CB61 /* gxRect.h */,
 				876C5CFD164C73E60006CB61 /* gxSize.h */,
+				8795356516DA762A006D69FE /* gxScale.h */,
 			);
 			path = geometry;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				87C7BA81167FE2F200BB7FE2 /* gxEvent.h in Headers */,
 				87C7BA82167FE2F200BB7FE2 /* gxObserver.h in Headers */,
 				87C7BA84167FE2F200BB7FE2 /* gxSubject.h in Headers */,
+				8795356616DA762A006D69FE /* gxScale.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

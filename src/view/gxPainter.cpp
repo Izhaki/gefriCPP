@@ -13,8 +13,7 @@ void gxPainter::SetTranslate( gxPoint aDelta )
         // Take into account any scaling that is in force.
         // Say the value given is (40,40), with a scale set to 2 the resultant
         // position will be (80,80). Makes sense innit?
-        mTrans.Translate.X += gxFloor( aDelta.X * mTrans.Scale.X );
-        mTrans.Translate.Y += gxFloor( aDelta.Y * mTrans.Scale.Y );
+        mTrans.Translate += aDelta * mTrans.Scale;
     } else {
         mTrans.Translate += aDelta;
     }
@@ -27,8 +26,7 @@ void gxPainter::SetScroll( gxPoint aScroll )
         // Take into account any scaling that is in force.
         // Say the value given is (40,40), with a scale set to 2 the resultant
         // position will be (80,80). Makes sense innit?
-        mTrans.Scroll.X += gxFloor( aScroll.X * mTrans.Scale.X );
-        mTrans.Scroll.Y += gxFloor( aScroll.Y * mTrans.Scale.Y );
+        mTrans.Scroll += aScroll * mTrans.Scale;
     } else {
         mTrans.Scroll += aScroll;
     }
@@ -36,9 +34,8 @@ void gxPainter::SetScroll( gxPoint aScroll )
 
 void gxPainter::SetScale( gxScale const &aScale )
 {
-    // TODO: Unify to 1 line
-    mTrans.Scale.X *= aScale.X;
-    mTrans.Scale.Y *= aScale.Y;
+    // We multiply the current scale with the new one.
+    mTrans.Scale *= aScale;
 }
 
 void gxPainter::PushState()
@@ -46,7 +43,7 @@ void gxPainter::PushState()
     gxPainterState *iState = new gxPainterState();
 
     iState->transformations = mTrans;
-    iState->clipArea = GetClipRect();
+    iState->clipArea        = GetClipRect();
 
     mStateStack.push( iState );
 }
@@ -98,9 +95,8 @@ void gxPainter::SetTransformFlags( gxTransFlags aFlags )
 
 void gxPainter::Transform( gxRect &aRect )
 {
-    // TODO: Have a Scale method that simply takes scale (or coefficient)
     if ( ScaleNeeded() )
-        aRect.Scale( mTrans.Scale.X, mTrans.Scale.Y );
+        aRect.Scale( mTrans.Scale );
 
     if ( TranslateNeeded() )
         aRect.Translate( mTrans.Translate );
@@ -112,20 +108,13 @@ void gxPainter::Transform( gxRect &aRect )
 void gxPainter::Transform( gxPoint &aPoint )
 {
     if ( ScaleNeeded() )
-    {
-        aPoint.X = gxFloor( aPoint.X * mTrans.Scale.X );
-        aPoint.Y = gxFloor( aPoint.Y * mTrans.Scale.Y );
-    }
+        aPoint *= mTrans.Scale;
 
     if ( TranslateNeeded() )
-    {
         aPoint += mTrans.Translate;
-    }
 
     if ( ScrollNeeded() )
-    {
         aPoint -= mTrans.Scroll;
-    }
 }
 
 bool gxPainter::TranslateNeeded()

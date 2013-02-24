@@ -165,3 +165,8 @@ void gxRect::Scale( float aScaleX,
     width =  gxFloor( ( originalX + width  ) * aScaleX ) - X;
     height = gxFloor( ( originalY + height ) * aScaleY ) - Y;
 }
+
+void gxRect::Scale( const gxScale aScale )
+{
+    Scale( aScale.X, aScale.Y );
+}
