@@ -62,13 +62,8 @@ void gxScaler::Paint( gxPainter &aPainter )
     aPainter.PopState();
 }
 
-void gxScaler::Transform( gxRect       &aRect,
-                          gxTransFlags &aTransFlags )
+void gxScaler::Transform( gxRect &aRect )
 {
-    // Don't scale if the bounds reject it
-    if ( aTransFlags.ScaleOff() )
-        return;
-
     if ( mScale.IsntZero() )
     {
         aRect.Scale( mScale.X, mScale.Y );

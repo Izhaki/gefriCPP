@@ -8,11 +8,8 @@ gxBoxAnchor::gxBoxAnchor( gxVisual* aOwner )
 gxPoint gxBoxAnchor::GetPosition()
 {
     gxRect iRect = mOwner->GetBounds();
-    
-    // Will atomatically include all transform flags.
-    gxTransFlags iFlags;
-    
-    mOwner->TransformToAbsolute( iRect, iFlags );
+        
+    mOwner->TransformToAbsolute( iRect );
     
     return iRect.GetCenter();
 }

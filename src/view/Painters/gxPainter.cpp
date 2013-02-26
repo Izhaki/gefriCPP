@@ -88,11 +88,6 @@ void gxPainter::SetClipArea( gxRect const &aRect )
     IntersectClipArea( iTransformedRect );
 }
 
-void gxPainter::SetTransformFlags( gxTransFlags aFlags )
-{
-    mTrans.Enabled = aFlags;
-}
-
 void gxPainter::Transform( gxRect &aRect )
 {
     if ( ScaleNeeded() )

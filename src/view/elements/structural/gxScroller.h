@@ -48,10 +48,11 @@ public:
      * @param aPainter The {@link gxPainter painter} to be used for drawing.
      */
     void Paint( gxPainter &aPainter );
-
+    
+    
+    virtual void GetDescendantsBounds( gxRect &aBounds );
 protected:
-    virtual void Transform( gxRect       &aRect,
-                            gxTransFlags &aTransFlags );
+    virtual void Transform( gxRect &aRect );
 
     void Validate();
 

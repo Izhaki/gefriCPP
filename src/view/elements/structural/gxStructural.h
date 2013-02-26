@@ -49,8 +49,7 @@ protected:
     // The base class translate the bounds origins to those of the current
     // object, but as structural elements always start at (0,0) no point in
     // doing that.
-    virtual void Transform( gxRect           &aRect,
-                            gxTransFlags &aTransFlags ) {};
+    virtual void Transform( gxRect &aRect ) {};
 };
 
 #endif // gxStructural_h

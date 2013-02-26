@@ -74,12 +74,8 @@ void gxScroller::Validate()
     Repaint();
 }
 
-void gxScroller::Transform( gxRect       &aRect,
-                            gxTransFlags &aTransFlags )
+void gxScroller::Transform( gxRect &aRect )
 {
-    if ( aTransFlags.ScrollOff() )
-        return;
-
     if ( mScrollPosition.IsntZero() )
     {
         aRect.Translate( -mScrollPosition );
@@ -98,4 +94,18 @@ void gxScroller::ReadjustScrollbars()
     gxSize iRange( iBounds.GetRight(), iBounds.GetBottom() );
 
     mScrollManager->AdjustScrollbars( iMySize, iRange );
+}
+
+// Note: scrollers should not affect the bounds of decendents, or an item
+// within a scroller that starts at (0,0) will get bounds (-80,0) for a scroll
+// of (-80,0).
+void gxScroller::GetDescendantsBounds( gxRect &aBounds )
+{
+    forEachChild ( aChild )
+    {
+        gxRect iChildBounds;
+        aChild->GetDescendantsBounds( iChildBounds );
+        
+        aBounds.Union( iChildBounds );
+    }
 }

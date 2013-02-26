@@ -92,10 +92,8 @@ public:
      *
      * This is a recursive method that goes all the way up the parent tree.
      * @param aRect The rect to transform.
-     * @param aTransFlasg The transformations to account for.
      */
-    virtual void TransformToAbsolute( gxRect       &aRect,
-                                      gxTransFlags &aTransFlags );
+    virtual void TransformToAbsolute( gxRect &aRect );
     
     /**
      * @brief Called when the figure needs to be repainted
@@ -110,11 +108,9 @@ protected:
      * Subclasses will override this method to perform their own translations.
      *
      * Used by TransformToAbsolute.
-     * @param aRect The rect to transform.
-     * @param aTransFlasg The transformations to account for.     
+     * @param aRect The rect to transform.    
      */
-    virtual void Transform( gxRect       &aRect,
-                            gxTransFlags &aTransFlags );
+    virtual void Transform( gxRect &aRect );
   
     /**
      * @brief Paints the children of this view element.
@@ -190,8 +186,6 @@ protected:
     };
   
     gxFlags<gx8Flags> mFlags;
-  
-    gxTransFlags mTransformFlags;
 };
 
 #endif // gxViewElement_h

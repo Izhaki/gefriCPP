@@ -23,13 +23,6 @@ void gxVisual::Paint( gxPainter &aPainter )
     if ( !IsVisible() )
         return;
 
-    // Push the painter state as the next line might change it.
-    aPainter.PushState();
-
-    // Sets the painter transform flags to my own transform flags.
-    // This is needed as we're soon to call NeedsPainting.
-    aPainter.SetTransformFlags( mTransformFlags );
-
     // Only paint if need to (intersect with the bounds of painting area and
     // damaged areas).
     if ( aPainter.NeedsPainting( iBounds ) )
@@ -49,8 +42,7 @@ void gxVisual::Paint( gxPainter &aPainter )
         // done.
         aPainter.PopState();
     }
-  
-    aPainter.PopState();
+
 }
 
 void gxVisual::Repaint()
@@ -70,7 +62,7 @@ void gxVisual::Repaint( gxRect &aBounds )
         return;
     
     // Translate the bounds to absolute coordinates.
-    TransformToAbsolute( aBounds, mTransformFlags );
+    TransformToAbsolute( aBounds );
     
     // instruct the lightweight system to mark the bounds of this view element
     // as ones need repainting

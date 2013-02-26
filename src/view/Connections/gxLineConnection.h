@@ -11,7 +11,7 @@ public:
     // TODO: this should really be replace by absolute positioning
     gxLineConnection()
     {
-        mTransformFlags.Unset( gxTransFlags::Scale | gxTransFlags::Scroll | gxTransFlags::Translate );
+//        mTransformFlags.Unset( gxTransFlags::Scale | gxTransFlags::Scroll | gxTransFlags::Translate );
     }
 protected:
     virtual void Validate();

@@ -112,16 +112,6 @@ public:
     */
     virtual bool NeedsPainting( gxRect const &aRect ) = 0;
 
-    /**
-    * @brief Sets the transform flags for this painter, allowing clients to
-    * disable scale, scroll or translate.
-    * 
-    * As an example, view elements with absolute coordinates will disable
-    * translate.
-    * @param aFlags The new set of transform flags.
-    */
-    virtual void SetTransformFlags( gxTransFlags aFlags );
-
     // Drawing methods
     virtual void DrawRectangle( gxPix x,
                                 gxPix y,

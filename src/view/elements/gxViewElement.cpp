@@ -35,23 +35,19 @@ gxLightweightSystem* gxViewElement::GetLightweightSystem() const
     return iLws;
 }
 
-void gxViewElement::TransformToAbsolute( gxRect       &aRect,
-                                         gxTransFlags &aTransFlags )
+void gxViewElement::TransformToAbsolute( gxRect &aRect )
 {
     gxViewElement* iParent = GetParent();
     
     gxASSERT( iParent == NULL, "TransformToAbsolute called, but no parent" );
 
-    iParent->Transform( aRect, aTransFlags );
-    iParent->TransformToAbsolute( aRect, aTransFlags );
+    iParent->Transform( aRect );
+    iParent->TransformToAbsolute( aRect );
 }
 
-void gxViewElement::Transform( gxRect           &aRect,
-                               gxTransFlags &aTransFlags )
+void gxViewElement::Transform( gxRect &aRect )
 {
-    // TODO: What's the short version of this?
-    if ( aTransFlags.IsSet( gxTransFlags::Translate ) )
-        aRect.Translate( GetBounds().GetPosition() );
+    aRect.Translate( GetBounds().GetPosition() );
 }
 
 void gxViewElement::Erase()
@@ -67,13 +63,10 @@ void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
     {
         gxRect iChildBounds;
         aChild->GetDescendantsBounds( iChildBounds );
-
-        // When getting the children bounds we want all transformations to be
-        // done but scroll.
-        gxTransFlags iFlags( gxTransFlags::All &
-                             ~gxTransFlags::Scroll );
-
-        Transform( iChildBounds, iFlags );
+        
+        Transform( iChildBounds );
+        
+        gxLogRect( _T("Desc Bounds: "), iChildBounds );
 
         aBounds.Union( iChildBounds );
     }
