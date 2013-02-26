@@ -115,20 +115,6 @@ void gxPainter::Transform( gxPoint &aPoint )
         aPoint -= mTrans.Scroll;
 }
 
-void gxPainter::DrawLine( gxPix x1,
-                          gxPix y1,
-                          gxPix x2,
-                          gxPix y2 )
-{
-    DrawLine( gxPoint( x1, y1 ), gxPoint( x2, y2) );
-}
-
-
-void gxPainter::DrawLine( gxRect aRect )
-{
-    DrawLine( aRect.GetTopLeft(), aRect.GetBottomRight() );
-}
-
 bool gxPainter::IsRelative()
 {
     return mRelative;
@@ -160,4 +146,78 @@ bool gxPainter::ScaleNeeded()
 bool gxPainter::ScrollNeeded()
 {
     return mTrans.ScrollNeeded();    
+}
+
+// Drawing Methods
+
+void gxPainter::DrawRectangle( gxPix aX,
+                               gxPix aY,
+                               gxPix aW,
+                               gxPix aH )
+{
+    gxRect iRect( aX, aY, aW, aH );
+    DrawRectangle( iRect );
+}
+
+void gxPainter::DrawRectangle( gxRect aRect )
+{
+    Transform( aRect );
+    DoDrawRectangle( aRect );
+}
+
+void gxPainter::DrawLine( gxRect aRect )
+{
+    DrawLine( aRect.GetTopLeft(), aRect.GetBottomRight() );
+}
+
+void gxPainter::DrawLine( gxPix x1,
+                          gxPix y1,
+                          gxPix x2,
+                          gxPix y2 )
+{
+    DrawLine( gxPoint( x1, y1 ), gxPoint( x2, y2) );
+}
+
+void gxPainter::DrawLine( gxPoint aFrom,
+                          gxPoint aTo )
+{
+    Transform( aFrom );
+    Transform( aTo );
+    DoDrawLine( aFrom, aTo );
+}
+
+void gxPainter::DrawText( gxString &aText,
+                          gxPix    aX,
+                          gxPix    aY,
+                          double   aAngle )
+{
+    gxPoint iPoint( aX, aY );
+    Transform( iPoint );
+    DoDrawText( aText, iPoint.X , iPoint.Y, aAngle );
+}
+
+void gxPainter::DrawText( gxString &aText,
+                          gxPix    aX,
+                          gxPix    aY,
+                          gxPix    aPadX,
+                          gxPix    aPadY,
+                          bool     isHorizontal )
+{
+    gxPoint iPoint = isHorizontal ? gxPoint( aX, aY ) : gxPoint( aY, aX );
+    
+    Transform( iPoint );
+    
+    iPoint.X += aPadX;
+    iPoint.Y += aPadY;
+    
+    if ( isHorizontal )
+    {
+        DoDrawText( aText, iPoint.X , iPoint.Y );
+    } else {
+        // Text rotation is done with the top left point as origion,
+        // so make the old top right the new top left
+        iPoint.Y = iPoint.Y + GetTextSize( aText ).X;
+        iPoint.X += 3; //TODO: remove hack
+        DoDrawText( aText, iPoint.X , iPoint.Y, 90 );
+    }
 }

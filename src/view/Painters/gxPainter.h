@@ -114,27 +114,32 @@ public:
     virtual bool NeedsPainting( gxRect const &aRect ) = 0;
 
     // Drawing methods
-    virtual void DrawRectangle( gxPix x,
-                                gxPix y,
-                                gxPix w,
-                                gxPix h ) = 0;
     
-    virtual void DrawRectangle( gxRect const &aRect ) = 0;
+    // Rectangles
+    void DrawRectangle( gxPix x,
+                        gxPix y,
+                        gxPix w,
+                        gxPix h );
+    
+    void DrawRectangle( gxRect aRect );
 
-    virtual void DrawLine( gxPix x1,
-                           gxPix y1,
-                           gxPix x2,
-                           gxPix y2 );
+    // Lines
+    void DrawLine( gxPix x1,
+                   gxPix y1,
+                   gxPix x2,
+                   gxPix y2 );
     
-    virtual void DrawLine( gxPoint aFrom,
-                           gxPoint aTo ) = 0 ;
+    void DrawLine( gxPoint aFrom,
+                   gxPoint aTo );
     
-    virtual void DrawLine( gxRect aRect );
-  
-    virtual void DrawText( gxString &aText,
-                           gxPix    x,
-                           gxPix    y) = 0;
+    void DrawLine( gxRect aRect );
     
+    // Text
+    void DrawText( gxString &aText,
+                   gxPix    aX,
+                   gxPix    aY,
+                   double   aAngle = 0 );
+        
     /**
     * @brief This method is particularly to be used by rulers.
     * @param aText The text to be drawn.
@@ -145,18 +150,25 @@ public:
     * @param isHorizontal Whether the text to be drawn horizontally or 
     * vertically.
     */
-    virtual void DrawText( gxString &aText,
-                           gxPix    x,
-                           gxPix    y,
-                           gxPix    aPadX,
-                           gxPix    aPadY,
-                           bool     isHorizontal = true ) = 0;
+    void DrawText( gxString &aText,
+                   gxPix    aX,
+                   gxPix    aY,
+                   gxPix    aPadX,
+                   gxPix    aPadY,
+                   bool     isHorizontal = true );
     
-    virtual void DrawRotatedText( gxString &aText,
-                                  gxPix    x,
-                                  gxPix    y,
-                                  double   aAngle ) = 0;
-
+    // Abstract drawing methods.
+    // These should be implemented by subclasses.
+    virtual void DoDrawRectangle( gxRect const &aRect ) = 0;
+    
+    virtual void DoDrawLine( gxPoint &aFrom,
+                             gxPoint &aTo ) = 0;
+    
+    virtual void DoDrawText( gxString &aText,
+                             gxPix    &aX,
+                             gxPix    &aY,
+                             double   aAngle = 0 ) = 0;
+    
     /**
     * @brief Returns the size of the given text.
     * @param aText The text whose size we enquire.

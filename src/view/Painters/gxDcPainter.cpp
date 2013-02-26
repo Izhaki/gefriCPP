@@ -46,74 +46,26 @@ void gxDcPainter::SetAbsoluteClipArea( gxRect const &aRect )
     mDc->SetClippingRegion( aRect );
 }
 
-void gxDcPainter::DrawRectangle( gxPix aX,
-                                 gxPix aY,
-                                 gxPix aW,
-                                 gxPix aH )
+void gxDcPainter::DoDrawRectangle( gxRect const &aRect )
 {
-    gxRect iRect( aX, aY, aW, aH );
-    Transform( iRect );
-    mDc->DrawRectangle( iRect );
+    mDc->DrawRectangle( aRect );
 }
 
-void gxDcPainter::DrawRectangle( gxRect const &aRect )
+void gxDcPainter::DoDrawLine( gxPoint &aFrom,
+                              gxPoint &aTo )
 {
-    gxRect iRect( aRect );
-    Transform( iRect );
-    mDc->DrawRectangle( iRect );
-}
-
-void gxDcPainter::DrawLine( gxPoint aFrom,
-                            gxPoint aTo )
-{
-    Transform( aFrom );
-    Transform( aTo );
     mDc->DrawLine( aFrom.X, aFrom.Y, aTo.X, aTo.Y );
 }
 
-
-void gxDcPainter::DrawText( gxString &aText,
-                            gxPix    aX,
-                            gxPix    aY )
+void gxDcPainter::DoDrawText( gxString &aText,
+                              gxPix    &aX,
+                              gxPix    &aY,
+                              double   aAngle )
 {
-    gxPoint iPoint( aX, aY );
-    Transform( iPoint );
-    mDc->DrawText( aText, iPoint.X , iPoint.Y );
-}
-
-void gxDcPainter::DrawText( gxString &aText,
-                            gxPix    aX,
-                            gxPix    aY,
-                            gxPix    aPadX,
-                            gxPix    aPadY,
-                            bool     isHorizontal )
-{
-    gxPoint iPoint = isHorizontal ? gxPoint( aX, aY ) : gxPoint( aY, aX );
-
-    Transform(iPoint);
-  
-    iPoint.X += aPadX;
-    iPoint.Y += aPadY;
-
-    if ( isHorizontal )
-    {
-        mDc->DrawText( aText, iPoint.X , iPoint.Y );
-    } else {
-        // Text rotation is done with the top left point as origion,
-        // so make the old top right the new top left
-        iPoint.Y = iPoint.Y + GetTextSize( aText ).X;
-        mDc->DrawRotatedText( aText, iPoint.X, iPoint.Y, 90 );
-  }
-}
-
-void gxDcPainter::DrawRotatedText( gxString &aText,
-                                   gxPix    aX,
-                                   gxPix    aY,
-                                   double   aAngle )
-{
-    gxPoint iPoint( aX, aY );
-    Transform( iPoint );
-    mDc->DrawRotatedText( aText, iPoint.X + 3, iPoint.Y, aAngle );
+    if ( aAngle = 0 )
+        mDc->DrawText( aText, aX , aY );
+    else
+        mDc->DrawRotatedText( aText, aX, aY, aAngle );
 }
 
 gxSize gxDcPainter::GetTextSize( gxString &aText )

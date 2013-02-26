@@ -23,27 +23,18 @@ public:
 
     virtual bool NeedsPainting( gxRect const &aRect );
 
-    void DrawRectangle( gxPix aX,
-                        gxPix aY,
-                        gxPix aW,
-                        gxPix aH );
+    // Overridden draw methods.
+    virtual void DoDrawRectangle( gxRect const &aRect );
     
-    void DrawRectangle( gxRect const &aRect );
+    virtual void DoDrawLine( gxPoint &aFrom,
+                             gxPoint &aTo );
+    
+    virtual void DoDrawText( gxString &aText,
+                             gxPix    &aX,
+                             gxPix    &aY,
+                             double   aAngle = 0 );
 
-    void DrawLine( gxPoint aFrom,
-                   gxPoint aTo );
-  
-    void DrawText( gxString &aText,
-                   gxPix    aX,
-                   gxPix    aY);
-    
-    void DrawText( gxString &aText,
-                   gxPix    aX,
-                   gxPix    aY,
-                   gxPix    aPadX,
-                   gxPix    aPadY,
-                   bool     isHorizontal = true );
-    
+        
     void DrawRotatedText( gxString &aText,
                           gxPix  aX,
                           gxPix  aY,
