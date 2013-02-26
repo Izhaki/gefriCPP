@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../src/view/Connections/gxLineConnection.cpp"
-         timestampString = "383440647.400425"
+         timestampString = "383529995.410456"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "18"
-         endingLineNumber = "18"
+         startingLineNumber = "19"
+         endingLineNumber = "19"
          landmarkName = "gxLineConnection::Validate()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -46,26 +46,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../../src/view/Elements/Visual/Shapes/gxLine.cpp"
-         timestampString = "383438907.859985"
+         filePath = "../../src/View/Elements/Structural/gxStructural.cpp"
+         timestampString = "383532628.152225"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "5"
-         endingLineNumber = "5"
-         landmarkName = "gxLine::PaintShape( gxPainter &amp;aPainter )"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "../../src/view/Elements/Visual/Shapes/gxLine.cpp"
-         timestampString = "383438953.980419"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "6"
-         endingLineNumber = "6"
-         landmarkName = "gxLine::PaintShape( gxPainter &amp;aPainter )"
+         startingLineNumber = "48"
+         endingLineNumber = "48"
+         landmarkName = "gxStructural::GetBounds()"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

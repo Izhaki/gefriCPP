@@ -1,4 +1,5 @@
 #include "View/Connections/gxLineConnection.h"
+#include "core/gxLog.h"
 
 void gxLineConnection::Validate()
 {
@@ -16,6 +17,8 @@ void gxLineConnection::Validate()
     // Call the base class validate so children are also validated and this object
     // is marked as valid.
     gxLine::Validate();
+    
+//    gxLog("gxLineConnection::Validate");
     
     Repaint();
 }

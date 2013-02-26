@@ -96,6 +96,11 @@ public:
      */
     virtual void TransformToAbsolute( gxRect       &aRect,
                                       gxTransFlags &aTransFlags );
+    
+    /**
+     * @brief Called when the figure needs to be repainted
+     */
+    virtual void Repaint() = 0;
 
 protected:
     /**
@@ -131,17 +136,6 @@ protected:
      * by traversing up the hierarchy until hitting the root.
      */
     virtual const gxRootViewElement* GetRootViewElement() const;
-
-    /**
-     * @brief Repaints the view element making its bounds dirty.
-     */
-    virtual void Repaint();
-  
-    /**
-     * @brief Repaints part or the whole of the view element.
-     * @param aBounds The bounds of the area to be repainted.
-     */
-    virtual void Repaint( gxRect &aBounds );
 
     // Validation related methods
 

@@ -53,6 +53,30 @@ void gxVisual::Paint( gxPainter &aPainter )
     aPainter.PopState();
 }
 
+void gxVisual::Repaint()
+{
+    // No point repainting the figure if it is invalid.
+    if ( !IsValid() )
+        return;
+    
+    gxRect iBounds = GetBounds();
+    Repaint( iBounds );
+}
+
+void gxVisual::Repaint( gxRect &aBounds )
+{
+    // No point repainting the figure if it is invalid.
+    if ( !IsValid() )
+        return;
+    
+    // Translate the bounds to absolute coordinates.
+    TransformToAbsolute( aBounds, mTransformFlags );
+    
+    // instruct the lightweight system to mark the bounds of this view element
+    // as ones need repainting
+    GetLightweightSystem()->AddDirtyRegion( aBounds );
+}
+
 void gxVisual::PaintChildren( gxPainter &aPainter )
 {
     // Return if there are no children.
@@ -62,7 +86,7 @@ void gxVisual::PaintChildren( gxPainter &aPainter )
     // Push current painter state so it can be poped after translate
     aPainter.PushState();
 
-    // Offset all paint operation by the top-left point of this elemet
+    // Offset all paint operation by the top-left point of this element
     aPainter.SetTranslate( GetBounds().GetPosition() );
 
     forEachChild ( aChild )

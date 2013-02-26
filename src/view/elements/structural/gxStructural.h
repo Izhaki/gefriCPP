@@ -2,6 +2,7 @@
 #define gxStructural_h
 
 #include "View/Elements/gxViewElement.h"
+#include "core/gxLog.h"
 
 /**
  * @brief A view element that has no visual representation, but is inserted
@@ -27,6 +28,8 @@ public:
      */
     void Paint( gxPainter &aPainter );
 
+    virtual void Repaint();    
+    
     /**
      * @brief Returns the bounds of this view element.
      *
@@ -34,6 +37,7 @@ public:
      *  This way any structural element is covering the whole of its parent.
      */
     virtual gxRect GetBounds() const;
+    
 protected:
     /**
      * @brief Paints the children of this view element.

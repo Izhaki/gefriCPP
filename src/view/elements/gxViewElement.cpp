@@ -49,6 +49,7 @@ void gxViewElement::TransformToAbsolute( gxRect       &aRect,
 void gxViewElement::Transform( gxRect           &aRect,
                                gxTransFlags &aTransFlags )
 {
+    // TODO: What's the short version of this?
     if ( aTransFlags.IsSet( gxTransFlags::Translate ) )
         aRect.Translate( GetBounds().GetPosition() );
 }
@@ -58,30 +59,6 @@ void gxViewElement::Erase()
     // Repaint really does what we need - takes the element's bounds and adds
     // dirty region to queue repaint.
     Repaint();
-}
-
-void gxViewElement::Repaint()
-{
-    // No point repainting the figure if it is invalid.
-    if ( !IsValid() )
-        return;
-    
-    gxRect iBounds = GetBounds();
-    Repaint( iBounds );
-}
-
-void gxViewElement::Repaint( gxRect &aBounds )
-{
-    // No point repainting the figure if it is invalid.
-    if ( !IsValid() )
-        return;
-
-    // Translate the bounds to absolute coordinates.
-    TransformToAbsolute( aBounds, mTransformFlags );
-
-    // instruct the lightweight system to mark the bounds of this view element
-    // as ones need repainting
-    GetLightweightSystem()->AddDirtyRegion( aBounds );
 }
 
 void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
