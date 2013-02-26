@@ -19,6 +19,7 @@ struct gxPainterState
 public:
     gxRect            clipArea;
     gxTransformations transformations;
+    bool              relative;
 };
 
 /**
@@ -162,6 +163,15 @@ public:
     * @return The size of the given text.
     */
     virtual gxSize GetTextSize( gxString &aText ) = 0;
+    
+    /**
+     * @brief Returns whether or not the painter is using a relative rendering
+     * mode. In relative mode, all parent transformations are applied.
+     * @return True if in realtive rendering mode.
+     */
+    bool IsRelative();
+    
+    void SetRelative( bool aRelative );
 protected:
     /**
     * @brief Performs state restoration.  
@@ -195,6 +205,10 @@ protected:
     gxTransformations mTrans;
 
     StateStack        mStateStack;
+    
+    /// Whether or not painting is based on relative positioning (absolute
+    /// positioning otherwise.
+    bool              mRelative;
 };
 
 #endif // gxPainter_h

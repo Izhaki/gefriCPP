@@ -4,7 +4,9 @@
 #include "core/gxLog.h"
 
 gxViewElement::gxViewElement()
-: mFlags( gxViewElement::Visible | gxViewElement::ClipChildren )
+: mFlags( gxViewElement::Visible |
+          gxViewElement::ClipChildren |
+          gxViewElement::Relative )
 {
 }
 
@@ -66,7 +68,7 @@ void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
         
         Transform( iChildBounds );
         
-        gxLogRect( _T("Desc Bounds: "), iChildBounds );
+//        gxLogRect( _T("Desc Bounds: "), iChildBounds );
 
         aBounds.Union( iChildBounds );
     }
@@ -138,6 +140,11 @@ void gxViewElement::Hide()
 bool gxViewElement::IsClippingChildren()
 {
     return mFlags.IsSet( gxViewElement::ClipChildren );
+}
+
+bool gxViewElement::IsRelative()
+{
+    return mFlags.IsSet( gxViewElement::Relative );
 }
 
 void gxViewElement::OnAddChild( gxViewElement *aChild )

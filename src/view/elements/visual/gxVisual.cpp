@@ -18,11 +18,22 @@ gxVisual::~gxVisual()
 
 void gxVisual::Paint( gxPainter &aPainter )
 {
-    gxRect iBounds = GetBounds();
-    
     if ( !IsVisible() )
         return;
 
+    gxRect iBounds = GetBounds();
+    
+    // Check if the painter has a different positioning mode than the one we
+    // need.
+    bool iPositioningModeDifferent = aPainter.IsRelative() != IsRelative();
+    
+    // If it does, change its positioning mode
+    if ( iPositioningModeDifferent )
+    {
+        aPainter.PushState();
+        aPainter.SetRelative( IsRelative() );
+    }
+    
     // Only paint if need to (intersect with the bounds of painting area and
     // damaged areas).
     if ( aPainter.NeedsPainting( iBounds ) )
@@ -43,6 +54,11 @@ void gxVisual::Paint( gxPainter &aPainter )
         aPainter.PopState();
     }
 
+    if ( iPositioningModeDifferent )
+    {
+        aPainter.PopState();
+    }
+    
 }
 
 void gxVisual::Repaint()

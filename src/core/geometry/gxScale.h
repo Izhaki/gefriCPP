@@ -46,6 +46,11 @@ struct gxScale
         return X == 1 && Y == 1;
     }
     
+    void Reset()
+    {
+        X = 1;
+        Y = 1;
+    }
 };
 
 #endif // gxScale_h

@@ -37,6 +37,11 @@ public:
      * @param aPainter The {@link gxPainter painter} to be used for drawing.
      */
     virtual void Paint( gxPainter &aPainter ) = 0;
+    
+    /**
+     * @brief Called when the figure needs to be repainted
+     */
+    virtual void Repaint() = 0;
 
     /**
      * @brief Erases the view element from the view.
@@ -94,11 +99,6 @@ public:
      * @param aRect The rect to transform.
      */
     virtual void TransformToAbsolute( gxRect &aRect );
-    
-    /**
-     * @brief Called when the figure needs to be repainted
-     */
-    virtual void Repaint() = 0;
 
 protected:
     /**
@@ -172,6 +172,13 @@ protected:
      * @return Ture if it clips.
      */
     bool IsClippingChildren();
+    
+    /**
+     * @brief Returns whether or not the view element is positioned relative
+     * to its parent.
+     * @return Ture if it is relative.
+     */
+    bool IsRelative();
 
     
     virtual void OnAddChild( gxViewElement *aChild );
@@ -182,7 +189,8 @@ protected:
     {
         Valid        = 0x01,
         Visible      = 0x02,
-        ClipChildren = 0x04
+        ClipChildren = 0x04,
+        Relative     = 0x08
     };
   
     gxFlags<gx8Flags> mFlags;

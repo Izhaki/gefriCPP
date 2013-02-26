@@ -28,6 +28,13 @@ struct gxTransformations
     {
         return Translate.IsntZero();
     }
+    
+    void Reset()
+    {
+        Scale.Reset();
+        Scroll.Reset();
+        Translate.Reset();
+    }
 };
 
 #endif // gxTransformations_h

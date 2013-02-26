@@ -106,6 +106,12 @@ public:
     {
         return X != 0 || Y != 0;
     }
+    
+    void Reset()
+    {
+        X = 0;
+        Y = 0;
+    }
 };
 
 #endif // gxPoint_h

@@ -3,6 +3,7 @@
 #include "core/gxLog.h"
 
 gxPainter::gxPainter()
+  : mRelative(true)
 {
 }
 
@@ -44,6 +45,7 @@ void gxPainter::PushState()
 
     iState->transformations = mTrans;
     iState->clipArea        = GetClipRect();
+    iState->relative        = mRelative;
 
     mStateStack.push( iState );
 }
@@ -74,7 +76,8 @@ void gxPainter::RestoreState()
 
 void gxPainter::RestoreState( gxPainterState *aState )
 {
-    mTrans = aState->transformations;
+    mTrans    = aState->transformations;
+    mRelative = aState->relative;
 
     SetAbsoluteClipArea( aState->clipArea );
 }
@@ -124,6 +127,19 @@ void gxPainter::DrawLine( gxPix x1,
 void gxPainter::DrawLine( gxRect aRect )
 {
     DrawLine( aRect.GetTopLeft(), aRect.GetBottomRight() );
+}
+
+bool gxPainter::IsRelative()
+{
+    return mRelative;
+}
+
+void gxPainter::SetRelative( bool aRelative )
+{
+    if ( aRelative )
+        mTrans.Reset();
+
+    mRelative = aRelative;
 }
 
 bool gxPainter::TranslateNeeded()
