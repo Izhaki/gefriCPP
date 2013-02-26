@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		879535FD16DD6FBB006D69FE /* gxDraw.icns in Resources */ = {isa = PBXBuildFile; fileRef = 879535FC16DD6FBB006D69FE /* gxDraw.icns */; };
 		87C7ADDC164C8F6900894B8A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C7ADDB164C8F6900894B8A /* Cocoa.framework */; };
 		87C7ADE6164C8F6900894B8A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87C7ADE4164C8F6900894B8A /* InfoPlist.strings */; };
 		87C7ADFD164C927C00894B8A /* libGefri.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87C7ADFC164C927C00894B8A /* libGefri.a */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		879535FC16DD6FBB006D69FE /* gxDraw.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = gxDraw.icns; sourceTree = "<group>"; };
 		87C7ADD7164C8F6900894B8A /* gxDraw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gxDraw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87C7ADDB164C8F6900894B8A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		87C7ADDE164C8F6900894B8A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -46,6 +48,7 @@
 		87C7ADCC164C8F6900894B8A = {
 			isa = PBXGroup;
 			children = (
+				879535FC16DD6FBB006D69FE /* gxDraw.icns */,
 				87C7ADFC164C927C00894B8A /* libGefri.a */,
 				87C7ADE1164C8F6900894B8A /* gxDraw */,
 				87C7ADDA164C8F6900894B8A /* Frameworks */,
@@ -162,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87C7ADE6164C8F6900894B8A /* InfoPlist.strings in Resources */,
+				879535FD16DD6FBB006D69FE /* gxDraw.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

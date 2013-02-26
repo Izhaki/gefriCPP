@@ -94,11 +94,11 @@ void MyFrame::InitGefri()
   
     mZoom->AddChild(mFace);
 
-    // Add Connection
-    mCon = new gxLineConnection();
-    mFaceAnchor = new gxBoxAnchor( mFace );
-    mCon->SetDestinationAnchor( mFaceAnchor );
-    mDocument->AddChild( mCon );
+//    // Add Connection
+//    mCon = new gxLineConnection();
+//    mFaceAnchor = new gxBoxAnchor( mFace );
+//    mCon->SetDestinationAnchor( mFaceAnchor );
+//    mDocument->AddChild( mCon );
     
     mViewUnit = new gxPixelUnit();
     mDivProvider = new gxDivProvider(mViewUnit);
@@ -111,6 +111,13 @@ void MyFrame::InitGefri()
     mScroller = new gxScroller(mScrollManager);
     mScroller->AddChild(mZoom);
 
+    // Add Connection
+    mCon = new gxLineConnection();
+    mFaceAnchor = new gxBoxAnchor( mFace );
+    mCon->SetDestinationAnchor( mFaceAnchor );
+    mScroller->AddChild( mCon );
+    
+    
     mDocument->AddChild(mScroller);
     
     //mZoom->AddChild(mLeg);

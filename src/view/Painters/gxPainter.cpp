@@ -136,8 +136,13 @@ bool gxPainter::IsRelative()
 
 void gxPainter::SetRelative( bool aRelative )
 {
-    if ( aRelative )
-        mTrans.Reset();
+    // If we're using absolute positiong, reset both the scale and translate
+    // transformations.
+    if ( !aRelative )
+    {
+        mTrans.Scale.Reset();
+        mTrans.Translate.Reset();
+    }
 
     mRelative = aRelative;
 }
