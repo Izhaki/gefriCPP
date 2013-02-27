@@ -62,7 +62,7 @@ void gxDcPainter::DoDrawText( gxString &aText,
                               gxPix    &aY,
                               double   aAngle )
 {
-    if ( aAngle = 0 )
+    if ( aAngle == 0 )
         mDc->DrawText( aText, aX , aY );
     else
         mDc->DrawRotatedText( aText, aX, aY, aAngle );
