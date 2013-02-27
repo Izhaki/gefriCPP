@@ -28,7 +28,7 @@ void gxStructural::PaintChildren(gxPainter &aPainter)
 
 void gxStructural::Repaint()
 {
-    if ( !IsValid() )
+    if ( IsInvalid() )
         return;
 
     gxASSERT( GetParent() == NULL, "GetBounds() called but no parent." );

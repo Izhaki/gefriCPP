@@ -139,7 +139,7 @@ protected:
      * @brief Marks the view element and all of its parents as invalid.
      *
      * This method is called whenever the size or position of the element
-     * change, so to let parent objects a chance to respond to the change.
+     * changes, so to let parent objects a chance to respond to the change.
      *
      * For example, a layout will need to update all children if one changes
      * position; a Scroller might need to readjust the scrollbar range when a
@@ -167,6 +167,12 @@ protected:
      */
     bool IsValid();
 
+    /**
+     * @brief Returns whether or not the view element is invalid.
+     * @return True if the view element is invalid.
+     */
+    bool IsInvalid();
+    
     /**
      * @brief Returns whether or not the view element clips its children.
      * @return Ture if it clips.

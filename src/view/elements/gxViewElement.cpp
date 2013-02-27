@@ -90,16 +90,14 @@ void gxViewElement::Invalidate()
 
 void gxViewElement::Validate()
 {
-    if ( IsValid() )
-        return;
-  
-    // Set myself as Valid
+    // Mark myself as Valid
     mFlags.Set( gxViewElement::Valid );
 
-    // Ask all children to validate themselves.
+    // Ask all children to validate themselves in case they are invalid.
     forEachChild( aChild )
     {
-        aChild->Validate();
+        if ( aChild->IsInvalid() )
+            aChild->Validate();
     }
 }
 
@@ -107,6 +105,12 @@ bool gxViewElement::IsValid()
 {
     return mFlags.IsSet( gxViewElement::Valid );
 }
+
+bool gxViewElement::IsInvalid()
+{
+    return mFlags.IsntSet( gxViewElement::Valid );
+}
+
 
 bool gxViewElement::IsVisible()
 {

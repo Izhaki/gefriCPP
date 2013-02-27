@@ -64,7 +64,7 @@ void gxVisual::Paint( gxPainter &aPainter )
 void gxVisual::Repaint()
 {
     // No point repainting the figure if it is invalid.
-    if ( !IsValid() )
+    if ( IsInvalid() )
         return;
     
     gxRect iBounds = GetBounds();
@@ -74,7 +74,7 @@ void gxVisual::Repaint()
 void gxVisual::Repaint( gxRect &aBounds )
 {
     // No point repainting the figure if it is invalid.
-    if ( !IsValid() )
+    if ( IsInvalid() )
         return;
     
     // Translate the bounds to absolute coordinates.
