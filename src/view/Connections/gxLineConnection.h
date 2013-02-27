@@ -8,14 +8,12 @@ class gxLineConnection: public gxLine,
                         public gxConnection
 {
 public:
-    // TODO: this should really be replace by absolute positioning
     gxLineConnection()
     {
         mFlags.Unset( gxViewElement::Relative );
-//        mTransformFlags.Unset( gxTransFlags::Scale | gxTransFlags::Scroll | gxTransFlags::Translate );
     }
 protected:
-    virtual void Validate();
+    virtual void Validate();    
 };
 
 #endif // gxLineConnection_h
