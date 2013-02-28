@@ -184,6 +184,26 @@ protected:
     bool IsInvalid();
     
     /**
+     * @brief This method notifies all descendents that a change occured in
+     * one of its ancestor.
+     *
+     * This method will call the virtual OnAcnestorChanged() and then
+     * do the same for all descendents.
+     *
+     * Often view elements need to know if their ancestor change. For instance,
+     * when its parent has moved, a source figure for a connection will need
+     * to update the connection anchor position.
+     */
+    void AncestorChanged();
+
+    /**
+     * @brief A virtual method to handle changes in ancestors.
+     *
+     * Called by AncestorChanged().
+     */
+    virtual void OnAncestorChanged() {}
+    
+    /**
      * @brief Returns whether or not the view element clips its children.
      * @return Ture if it clips.
      */
