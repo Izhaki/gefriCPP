@@ -162,6 +162,16 @@ protected:
     virtual void Validate();
 
     /**
+     * @brief Marks this view element as invalid (sets th valid flag to false);
+     */
+    void MarkInvalid();
+
+    /**
+     * @brief Marks this view element as valid (sets th valid flag to true);
+     */
+    void MarkValid();
+
+    /**
      * @brief Returns whether or not the view element is valid.
      * @return True if the view element is valid.
      */

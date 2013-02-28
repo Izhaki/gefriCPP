@@ -76,7 +76,7 @@ void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
 
 void gxViewElement::Invalidate()
 {
-    mFlags.Unset( gxViewElement::Valid );
+    MarkInvalid();
 
     // View elements parent might be null before all elements are inserted to
     // the hierarchy tree (when they are still created and added to their
@@ -90,8 +90,7 @@ void gxViewElement::Invalidate()
 
 void gxViewElement::Validate()
 {
-    // Mark myself as Valid
-    mFlags.Set( gxViewElement::Valid );
+    MarkValid();
 
     // Ask all children to validate themselves in case they are invalid.
     forEachChild( aChild )
@@ -99,6 +98,16 @@ void gxViewElement::Validate()
         if ( aChild->IsInvalid() )
             aChild->Validate();
     }
+}
+
+void gxViewElement::MarkInvalid()
+{
+    mFlags.Unset( gxViewElement::Valid );    
+}
+
+void gxViewElement::MarkValid()
+{
+    mFlags.Set( gxViewElement::Valid );
 }
 
 bool gxViewElement::IsValid()
