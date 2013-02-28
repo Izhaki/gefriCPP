@@ -101,6 +101,9 @@ void gxScroller::ReadjustScrollbars()
 // of (-80,0).
 void gxScroller::GetDescendantsBounds( gxRect &aBounds )
 {
+    if ( IsChildless() )
+        return;
+    
     forEachChild ( aChild )
     {
         gxRect iChildBounds;

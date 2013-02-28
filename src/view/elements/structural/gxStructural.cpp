@@ -20,6 +20,9 @@ void gxStructural::Paint(gxPainter &aPainter)
 
 void gxStructural::PaintChildren(gxPainter &aPainter)
 {
+    if ( IsChildless() )
+        return;
+    
     forEachChild( aChild )
     {
         aChild->Paint( aPainter );
