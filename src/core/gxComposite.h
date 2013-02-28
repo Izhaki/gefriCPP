@@ -151,6 +151,12 @@ public:
      * @return ture if the object has no children
      */
     bool IsChildless() { return mChildren.empty(); }
+
+    /**
+     * @brief Returns true if this object has children.
+     * @return ture if the object has children
+     */
+    bool HasChildren() { return !mChildren.empty(); }
 protected:
     /**
      * @brief A virtual method that will be called whenever a child is added.

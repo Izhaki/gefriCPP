@@ -61,7 +61,10 @@ void gxViewElement::Erase()
 
 void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
 {
-    forEachChild ( aChild )
+    if ( IsChildless() )
+        return;
+    
+    forEachChild( aChild )
     {
         gxRect iChildBounds;
         aChild->GetDescendantsBounds( iChildBounds );
@@ -92,6 +95,9 @@ void gxViewElement::Validate()
 {
     MarkValid();
 
+    if ( IsChildless() )
+        return;
+    
     // Ask all children to validate themselves in case they are invalid.
     forEachChild( aChild )
     {
