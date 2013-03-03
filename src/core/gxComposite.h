@@ -96,6 +96,9 @@ public:
         // Delete if requested
         if ( aAndDelete )
         {
+            //TODO: shouldn't the child also delete all its children?
+            // Or is it the application that should do so?
+            
             delete aChild;
             aChild = NULL;
         }

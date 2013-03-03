@@ -1,15 +1,15 @@
 #include "view/Connections/gxBoxAnchor.h"
 
 gxBoxAnchor::gxBoxAnchor( gxVisual* aOwner )
-  : mOwner( aOwner )
+  : gxAnchor( aOwner )
 {
 }
 
 gxPoint gxBoxAnchor::GetPosition()
 {
-    gxRect iRect = mOwner->GetBounds();
+    gxRect iRect = mVisual->GetBounds();
         
-    mOwner->TransformToAbsolute( iRect );
+    mVisual->TransformToAbsolute( iRect );
     
     return iRect.GetCenter();
 }

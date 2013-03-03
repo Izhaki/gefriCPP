@@ -126,15 +126,17 @@ bool gxViewElement::IsInvalid()
     return mFlags.IsntSet( gxViewElement::Valid );
 }
 
-void gxViewElement::AncestorChanged()
+void gxViewElement::AncestorChanged( bool aDeleted )
 {
+    OnAncestorChanged( aDeleted );
+    
     if ( IsChildless() )
         return;
     
     // Notify all children that their ancestor has changed.
     forEachChild( aChild )
     {
-        aChild->AncestorChanged();
+        aChild->AncestorChanged( aDeleted );
     }
 }
 

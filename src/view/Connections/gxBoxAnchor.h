@@ -1,17 +1,14 @@
-#include "view/Connections/gxAnchor.h"
-#include "view/Elements/Visual/gxVisual.h"
-
 #ifndef gxBoxAnchor_h
 #define gxBoxAnchor_h
 
+#include "view/Connections/gxAnchor.h"
+
 class gxBoxAnchor: public gxAnchor
 {
-public:    
+public:
     gxBoxAnchor( gxVisual* aOwner );
     
     virtual gxPoint GetPosition();
-private:
-    gxVisual* mOwner;
 };
 
 

@@ -71,6 +71,8 @@
 		879535F716DAC6EA006D69FE /* gxConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535F616DAC6EA006D69FE /* gxConnection.h */; };
 		879535F916DAC821006D69FE /* gxConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535F816DAC821006D69FE /* gxConnection.cpp */; };
 		879535FB16DAC9BE006D69FE /* gxLineConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535FA16DAC9BD006D69FE /* gxLineConnection.cpp */; };
+		879535FF16E01DFF006D69FE /* gxChangeNotifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535FE16E01DFE006D69FE /* gxChangeNotifier.h */; };
+		8795360116E0204F006D69FE /* gxAnchor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795360016E0204E006D69FE /* gxAnchor.cpp */; };
 		87C7BA7F167FE2F200BB7FE2 /* FastDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */; };
 		87C7BA80167FE2F200BB7FE2 /* gxEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */; };
 		87C7BA81167FE2F200BB7FE2 /* gxEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */; };
@@ -146,6 +148,8 @@
 		879535F616DAC6EA006D69FE /* gxConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxConnection.h; path = ../view/Connections/gxConnection.h; sourceTree = "<group>"; };
 		879535F816DAC821006D69FE /* gxConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxConnection.cpp; path = ../view/Connections/gxConnection.cpp; sourceTree = "<group>"; };
 		879535FA16DAC9BD006D69FE /* gxLineConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxLineConnection.cpp; path = ../view/Connections/gxLineConnection.cpp; sourceTree = "<group>"; };
+		879535FE16E01DFE006D69FE /* gxChangeNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxChangeNotifier.h; path = ../../../view/Elements/Structural/gxChangeNotifier.h; sourceTree = "<group>"; };
+		8795360016E0204E006D69FE /* gxAnchor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxAnchor.cpp; path = ../view/Connections/gxAnchor.cpp; sourceTree = "<group>"; };
 		87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastDelegate.h; sourceTree = "<group>"; };
 		87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxEvent.cpp; sourceTree = "<group>"; };
 		87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxEvent.h; sourceTree = "<group>"; };
@@ -304,6 +308,7 @@
 				879535A916DA8FC9006D69FE /* gxScroller.h */,
 				879535AA16DA8FC9006D69FE /* gxStructural.cpp */,
 				879535AB16DA8FC9006D69FE /* gxStructural.h */,
+				879535FE16E01DFE006D69FE /* gxChangeNotifier.h */,
 			);
 			path = Structural;
 			sourceTree = "<group>";
@@ -358,13 +363,14 @@
 		879535E816DAA2AA006D69FE /* Connections */ = {
 			isa = PBXGroup;
 			children = (
-				879535F416DAC62E006D69FE /* gxLineConnection.h */,
-				879535FA16DAC9BD006D69FE /* gxLineConnection.cpp */,
 				879535E916DAA2E0006D69FE /* gxAnchor.h */,
+				8795360016E0204E006D69FE /* gxAnchor.cpp */,
 				879535EB16DAA366006D69FE /* gxBoxAnchor.h */,
 				879535ED16DAA689006D69FE /* gxBoxAnchor.cpp */,
 				879535F616DAC6EA006D69FE /* gxConnection.h */,
 				879535F816DAC821006D69FE /* gxConnection.cpp */,
+				879535F416DAC62E006D69FE /* gxLineConnection.h */,
+				879535FA16DAC9BD006D69FE /* gxLineConnection.cpp */,
 			);
 			name = Connections;
 			sourceTree = "<group>";
@@ -435,6 +441,7 @@
 				879535F016DAB96A006D69FE /* gxLine.h in Headers */,
 				879535F516DAC62E006D69FE /* gxLineConnection.h in Headers */,
 				879535F716DAC6EA006D69FE /* gxConnection.h in Headers */,
+				879535FF16E01DFF006D69FE /* gxChangeNotifier.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +520,7 @@
 				879535F216DABAA2006D69FE /* gxLine.cpp in Sources */,
 				879535F916DAC821006D69FE /* gxConnection.cpp in Sources */,
 				879535FB16DAC9BE006D69FE /* gxLineConnection.cpp in Sources */,
+				8795360116E0204F006D69FE /* gxAnchor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

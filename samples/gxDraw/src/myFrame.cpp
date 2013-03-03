@@ -117,7 +117,6 @@ void MyFrame::InitGefri()
     mCon->SetDestinationAnchor( mFaceAnchor );
     mScroller->AddChild( mCon );
     
-    
     mDocument->AddChild(mScroller);
     
     //mZoom->AddChild(mLeg);

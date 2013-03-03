@@ -12,6 +12,11 @@ public:
     {
         mFlags.Unset( gxViewElement::Relative );
     }
+    
+    virtual void InvalidateConnection()
+    {
+        gxLine::Invalidate();
+    }
 protected:
     virtual void Validate();    
 };

@@ -2,12 +2,14 @@
 
 void gxConnection::SetSourceAnchor( gxAnchor* aAnchor )
 {
-    // TODO: this should invalidate the figure
     mSource = aAnchor;
+    mSource->SetConnection( this );
+    InvalidateConnection();
 }
 
 void gxConnection::SetDestinationAnchor( gxAnchor* aAnchor )
 {
-    // TODO: this should invalidate the figure    
     mDestination = aAnchor;
+    mDestination->SetConnection( this );
+    InvalidateConnection();
 }

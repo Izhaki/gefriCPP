@@ -13,6 +13,8 @@ public:
     
     void SetSourceAnchor( gxAnchor* aAnchor );
     void SetDestinationAnchor( gxAnchor* aAnchor );
+    
+    virtual void InvalidateConnection() = 0;
 protected:
     gxAnchor* mSource;
     gxAnchor* mDestination;

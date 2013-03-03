@@ -194,14 +194,14 @@ protected:
      * when its parent has moved, a source figure for a connection will need
      * to update the connection anchor position.
      */
-    void AncestorChanged();
+    void AncestorChanged( bool aDeleted = false );
 
     /**
      * @brief A virtual method to handle changes in ancestors.
      *
      * Called by AncestorChanged().
      */
-    virtual void OnAncestorChanged() {}
+    virtual void OnAncestorChanged( bool aDeleted = false ) {}
     
     /**
      * @brief Returns whether or not the view element clips its children.
