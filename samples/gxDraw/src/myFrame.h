@@ -34,6 +34,7 @@ private:
     gxLineConnection *mCon;
     
     gxBoxAnchor *mFaceAnchor;
+    gxBoxAnchor *mRulerAnchor;
 
     gxViewUnit    *mViewUnit;
     gxDivProvider *mDivProvider;

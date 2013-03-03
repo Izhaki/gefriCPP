@@ -8,7 +8,8 @@ class gxBoxAnchor: public gxAnchor
 public:
     gxBoxAnchor();
     
-    virtual gxPoint GetPosition();
+    virtual gxPoint GetPosition( const gxPoint& aReference );
+    virtual gxPoint GetReference();    
 };
 
 

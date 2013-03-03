@@ -114,10 +114,13 @@ void MyFrame::InitGefri()
     // Add the anchor
     mFaceAnchor = new gxBoxAnchor();
     mFace->AddChild( mFaceAnchor );
+    mRulerAnchor = new gxBoxAnchor();
+    mRulerH->AddChild( mRulerAnchor );
     
     // Add Connection
     mCon = new gxLineConnection();
     mCon->SetDestinationAnchor( mFaceAnchor );
+    mCon->SetSourceAnchor( mRulerAnchor );
     mScroller->AddChild( mCon );
     
     mDocument->AddChild(mScroller);
