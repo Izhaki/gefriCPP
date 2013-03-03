@@ -1,16 +1,16 @@
-#ifndef gxBoxAnchor_h
-#define gxBoxAnchor_h
+#ifndef gxRectAnchor_h
+#define gxRectAnchor_h
 
 #include "View/Elements/Structural/Anchors/gxAnchor.h"
 
-class gxBoxAnchor: public gxAnchor
+class gxRectAnchor: public gxAnchor
 {
 public:
-    gxBoxAnchor();
+    gxRectAnchor();
     
     virtual gxPoint GetPosition( const gxPoint& aReference );
     virtual gxPoint GetReference();    
 };
 
 
-#endif // gxBoxAnchor_h
+#endif // gxRectAnchor_h

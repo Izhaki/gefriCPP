@@ -96,7 +96,7 @@ void MyFrame::InitGefri()
 
 //    // Add Connection
 //    mCon = new gxLineConnection();
-//    mFaceAnchor = new gxBoxAnchor( mFace );
+//    mFaceAnchor = new gxRectAnchor( mFace );
 //    mCon->SetDestinationAnchor( mFaceAnchor );
 //    mDocument->AddChild( mCon );
     
@@ -112,9 +112,9 @@ void MyFrame::InitGefri()
     mScroller->AddChild(mZoom);
 
     // Add the anchor
-    mFaceAnchor = new gxBoxAnchor();
+    mFaceAnchor = new gxRectAnchor();
     mFace->AddChild( mFaceAnchor );
-    mRulerAnchor = new gxBoxAnchor();
+    mRulerAnchor = new gxRectAnchor();
     mRulerH->AddChild( mRulerAnchor );
     
     // Add Connection

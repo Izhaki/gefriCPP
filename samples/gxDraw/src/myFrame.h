@@ -11,7 +11,7 @@
 #include "View/Elements/Visual/gxRuler.h"
 #include "View/DivProvider/gxDivProvider.h"
 #include "View/DivProvider/gxViewUnit.h"
-#include "View/Elements/Structural/Anchors/gxBoxAnchor.h"
+#include "View/Elements/Structural/Anchors/gxRectAnchor.h"
 #include "View/Connections/gxLineConnection.h"
 
 #include "core/gxComposite.h"
@@ -33,8 +33,8 @@ private:
     gxScrollManager *mScrollManager;
     gxLineConnection *mCon;
     
-    gxBoxAnchor *mFaceAnchor;
-    gxBoxAnchor *mRulerAnchor;
+    gxRectAnchor *mFaceAnchor;
+    gxRectAnchor *mRulerAnchor;
 
     gxViewUnit    *mViewUnit;
     gxDivProvider *mDivProvider;

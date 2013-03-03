@@ -1,11 +1,11 @@
-#include "View/Elements/Structural/Anchors/gxBoxAnchor.h"
+#include "View/Elements/Structural/Anchors/gxRectAnchor.h"
 
-gxBoxAnchor::gxBoxAnchor()
+gxRectAnchor::gxRectAnchor()
   : gxAnchor()
 {
 }
 
-gxPoint gxBoxAnchor::GetReference()
+gxPoint gxRectAnchor::GetReference()
 {
     gxRect iRect = GetParent()->GetBounds();
     
@@ -16,7 +16,7 @@ gxPoint gxBoxAnchor::GetReference()
     return iRect.GetCenter();
 }
 
-gxPoint gxBoxAnchor::GetPosition( const gxPoint& aReference )
+gxPoint gxRectAnchor::GetPosition( const gxPoint& aReference )
 {
     gxRect iRect = GetParent()->GetBounds();
     

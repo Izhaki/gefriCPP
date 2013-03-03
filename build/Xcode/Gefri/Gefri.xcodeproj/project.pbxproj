@@ -71,8 +71,8 @@
 		879535FF16E01DFF006D69FE /* gxChangeNotifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535FE16E01DFE006D69FE /* gxChangeNotifier.h */; };
 		8795360516E3A6F3006D69FE /* gxAnchor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795360416E3A6F2006D69FE /* gxAnchor.h */; };
 		8795360816E3A73D006D69FE /* gxAnchor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795360716E3A73D006D69FE /* gxAnchor.cpp */; };
-		8795360F16E3A7FF006D69FE /* gxBoxAnchor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795360D16E3A7FE006D69FE /* gxBoxAnchor.cpp */; };
-		8795361016E3A7FF006D69FE /* gxBoxAnchor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795360E16E3A7FE006D69FE /* gxBoxAnchor.h */; };
+		8795360F16E3A7FF006D69FE /* gxRectAnchor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795360D16E3A7FE006D69FE /* gxRectAnchor.cpp */; };
+		8795361016E3A7FF006D69FE /* gxRectAnchor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795360E16E3A7FE006D69FE /* gxRectAnchor.h */; };
 		87C7BA7F167FE2F200BB7FE2 /* FastDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */; };
 		87C7BA80167FE2F200BB7FE2 /* gxEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */; };
 		87C7BA81167FE2F200BB7FE2 /* gxEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */; };
@@ -148,8 +148,8 @@
 		879535FE16E01DFE006D69FE /* gxChangeNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxChangeNotifier.h; path = ../../../view/Elements/Structural/gxChangeNotifier.h; sourceTree = "<group>"; };
 		8795360416E3A6F2006D69FE /* gxAnchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxAnchor.h; path = ../../../view/Elements/Structural/Anchors/gxAnchor.h; sourceTree = "<group>"; };
 		8795360716E3A73D006D69FE /* gxAnchor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxAnchor.cpp; path = ../../../view/Elements/Structural/Anchors/gxAnchor.cpp; sourceTree = "<group>"; };
-		8795360D16E3A7FE006D69FE /* gxBoxAnchor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxBoxAnchor.cpp; path = ../../../view/Elements/Structural/Anchors/gxBoxAnchor.cpp; sourceTree = "<group>"; };
-		8795360E16E3A7FE006D69FE /* gxBoxAnchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxBoxAnchor.h; path = ../../../view/Elements/Structural/Anchors/gxBoxAnchor.h; sourceTree = "<group>"; };
+		8795360D16E3A7FE006D69FE /* gxRectAnchor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxRectAnchor.cpp; path = ../../../view/Elements/Structural/Anchors/gxRectAnchor.cpp; sourceTree = "<group>"; };
+		8795360E16E3A7FE006D69FE /* gxRectAnchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxRectAnchor.h; path = ../../../view/Elements/Structural/Anchors/gxRectAnchor.h; sourceTree = "<group>"; };
 		87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastDelegate.h; sourceTree = "<group>"; };
 		87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxEvent.cpp; sourceTree = "<group>"; };
 		87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxEvent.h; sourceTree = "<group>"; };
@@ -375,8 +375,8 @@
 		8795360616E3A6F8006D69FE /* Anchors */ = {
 			isa = PBXGroup;
 			children = (
-				8795360D16E3A7FE006D69FE /* gxBoxAnchor.cpp */,
-				8795360E16E3A7FE006D69FE /* gxBoxAnchor.h */,
+				8795360D16E3A7FE006D69FE /* gxRectAnchor.cpp */,
+				8795360E16E3A7FE006D69FE /* gxRectAnchor.h */,
 				8795360716E3A73D006D69FE /* gxAnchor.cpp */,
 				8795360416E3A6F2006D69FE /* gxAnchor.h */,
 			);
@@ -449,7 +449,7 @@
 				879535F716DAC6EA006D69FE /* gxConnection.h in Headers */,
 				879535FF16E01DFF006D69FE /* gxChangeNotifier.h in Headers */,
 				8795360516E3A6F3006D69FE /* gxAnchor.h in Headers */,
-				8795361016E3A7FF006D69FE /* gxBoxAnchor.h in Headers */,
+				8795361016E3A7FF006D69FE /* gxRectAnchor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,7 +528,7 @@
 				879535F916DAC821006D69FE /* gxConnection.cpp in Sources */,
 				879535FB16DAC9BE006D69FE /* gxLineConnection.cpp in Sources */,
 				8795360816E3A73D006D69FE /* gxAnchor.cpp in Sources */,
-				8795360F16E3A7FF006D69FE /* gxBoxAnchor.cpp in Sources */,
+				8795360F16E3A7FF006D69FE /* gxRectAnchor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
