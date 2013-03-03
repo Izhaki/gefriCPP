@@ -8,15 +8,9 @@ class gxLineConnection: public gxLine,
                         public gxConnection
 {
 public:
-    gxLineConnection()
-    {
-        mFlags.Unset( gxViewElement::Relative );
-    }
+    gxLineConnection();
     
-    virtual void InvalidateConnection()
-    {
-        gxLine::Invalidate();
-    }
+    virtual void InvalidateConnection();
 protected:
     virtual void Validate();    
 };

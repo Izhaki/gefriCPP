@@ -1,6 +1,17 @@
 #include "View/Connections/gxLineConnection.h"
 #include "core/gxLog.h"
 
+gxLineConnection::gxLineConnection()
+{
+    // Connections are always positioned in absolute coordinates.
+    mFlags.Unset( gxViewElement::Relative );
+}
+
+void gxLineConnection::InvalidateConnection()
+{
+    gxLine::Invalidate();
+}
+
 void gxLineConnection::Validate()
 {
     if ( !mSource || !mDestination )

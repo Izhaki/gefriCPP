@@ -8,13 +8,25 @@
 // Forward declaration
 class gxConnection;
 
+//TODO: Anchors should account for the deletation of ancestors and connections.
+//      As well as unsetting of connection or reseting of connections.
+
 class gxAnchor: public gxStructural
 {
 public:
     gxAnchor();
     ~gxAnchor();
-    
+
+    /*
+     * @brief Sets the connection for this anchor.
+     * @param aConnection The connection.
+     */
     void SetConnection( gxConnection* aConnection );
+
+    /*
+     * @brief Unsets the connection for this anchor.
+     */
+    void UnsetConnection();
     
     /*
      * @brief Returns the position of the connection anchor in absolute
@@ -40,7 +52,12 @@ public:
     virtual gxPoint GetReference() = 0;
 protected:
     gxConnection* mConnection;
-    
+
+    /*
+     * @brief A handler called when an ancestor of this anchor becomes invalid.
+     *
+     * By default, the anchor invalidates its connection.
+     */
     virtual void OnAncestorInvalid();
 };
 

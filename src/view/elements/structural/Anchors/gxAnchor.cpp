@@ -15,6 +15,11 @@ void gxAnchor::SetConnection( gxConnection* aConnection )
     mConnection = aConnection;
 }
 
+void gxAnchor::UnsetConnection()
+{
+    mConnection = NULL;
+}
+
 void gxAnchor::OnAncestorInvalid()
 {
     if ( mConnection )
