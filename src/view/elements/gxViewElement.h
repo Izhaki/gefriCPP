@@ -136,10 +136,13 @@ protected:
     // Validation related methods
 
     /**
-     * @brief Marks the view element and all of its parents as invalid.
+     * @brief Marks the view element and all of its parents as invalid, and 
+     * notifies all descendents that their ancestor is now invalid. But calling
+     * InvalidateUp() and InvalidateDown().
      *
      * This method is called whenever the size or position of the element
-     * changes, so to let parent objects a chance to respond to the change.
+     * changes, so to let ancestors and descendents a chance to respond to the
+     * change.
      *
      * For example, a layout will need to update all children if one changes
      * position; a Scroller might need to readjust the scrollbar range when a
@@ -149,8 +152,35 @@ protected:
      * validation request in the event loop, which once processed will validate
      * all invalid figures.
      */
-    virtual void Invalidate();
+    void Invalidate();
 
+    /**
+     * @brief Marks the view element and all of its parents as invalid.
+     *
+     * Once invalidation reaches the root view element, it will queue a
+     * validation request in the event loop, which once processed will validate
+     * all invalid figures.
+     */
+    virtual void InvalidateUp();    
+
+    /**
+     * @brief This method notifies all descendents that one of their ancestors
+     * is invalid.
+     *
+     * Often view elements need to know if their ancestor change. For instance,
+     * when its parent has moved, a source figure for a connection will need
+     * to update the connection anchor position.
+     */
+    void InvalidateDown();
+    
+    /**
+     * @brief A virtual method to handle changes in ancestors.
+     *
+     * Called by AncestorChanged().
+     */
+    virtual void OnAncestorInvalid() {}
+    
+    
     /**
      * @brief Asks the view element to perform any operations that are needed
      * to make it valid. Also validates all children.
@@ -182,27 +212,7 @@ protected:
      * @return True if the view element is invalid.
      */
     bool IsInvalid();
-    
-    /**
-     * @brief This method notifies all descendents that a change occured in
-     * one of its ancestor.
-     *
-     * This method will call the virtual OnAcnestorChanged() and then
-     * do the same for all descendents.
-     *
-     * Often view elements need to know if their ancestor change. For instance,
-     * when its parent has moved, a source figure for a connection will need
-     * to update the connection anchor position.
-     */
-    void AncestorChanged( bool aDeleted = false );
-
-    /**
-     * @brief A virtual method to handle changes in ancestors.
-     *
-     * Called by AncestorChanged().
-     */
-    virtual void OnAncestorChanged( bool aDeleted = false ) {}
-    
+        
     /**
      * @brief Returns whether or not the view element clips its children.
      * @return Ture if it clips.

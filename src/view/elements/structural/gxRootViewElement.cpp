@@ -25,7 +25,7 @@ gxRect gxRootViewElement::GetBounds() const
 
 }
 
-void gxRootViewElement::Invalidate()
+void gxRootViewElement::InvalidateUp()
 {
     MarkInvalid();
 

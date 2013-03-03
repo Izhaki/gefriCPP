@@ -79,15 +79,35 @@ void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
 
 void gxViewElement::Invalidate()
 {
-    MarkInvalid();
+    InvalidateUp();
+    InvalidateDown();
+}
 
+void gxViewElement::InvalidateUp()
+{
+    MarkInvalid();
+    
     // View elements parent might be null before all elements are inserted to
     // the hierarchy tree (when they are still created and added to their
     // parents).
     if ( GetParent() != NULL )
     {
         // Invalidate further up the hierarchy tree.
-        GetParent()->Invalidate();
+        GetParent()->InvalidateUp();
+    }
+}
+
+void gxViewElement::InvalidateDown()
+{
+    OnAncestorInvalid();
+    
+    if ( IsChildless() )
+        return;
+    
+    // Notify all children that their ancestor has changed.
+    forEachChild( aChild )
+    {
+        aChild->InvalidateDown();
     }
 }
 
@@ -124,20 +144,6 @@ bool gxViewElement::IsValid()
 bool gxViewElement::IsInvalid()
 {
     return mFlags.IsntSet( gxViewElement::Valid );
-}
-
-void gxViewElement::AncestorChanged( bool aDeleted )
-{
-    OnAncestorChanged( aDeleted );
-    
-    if ( IsChildless() )
-        return;
-    
-    // Notify all children that their ancestor has changed.
-    forEachChild( aChild )
-    {
-        aChild->AncestorChanged( aDeleted );
-    }
 }
 
 bool gxViewElement::IsVisible()

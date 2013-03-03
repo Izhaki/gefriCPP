@@ -24,9 +24,9 @@ public:
      */
     virtual gxPoint GetPosition() = 0;
 protected:
-    gxConnection*     mConnection;
+    gxConnection* mConnection;
     
-    virtual void OnAncestorChanged(  bool aDeleted = false  );
+    virtual void OnAncestorInvalid();
 };
 
 #endif // gxAnchor_h

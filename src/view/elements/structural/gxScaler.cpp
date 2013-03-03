@@ -40,9 +40,6 @@ void gxScaler::SetScale( gxScale const &aScale )
         // example so a Scroller parent can readjust the scrollbars).
         Invalidate();
         
-        // Notify descendents I has changed
-        AncestorChanged();
-        
         Repaint();
     }
 }
