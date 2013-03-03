@@ -5,10 +5,10 @@
 #include "core/observer/gxSubject.h"
 
 /**
- * @brief A view element that scrolls all its children.
+ * @brief A view element thtat fires notification whenever its ancestor has
+ * changed.
  *
- * Scrollers are inserted into the hierarchy of of view elements to facilitate
- * scrolling.
+ * Used before anchors were structural elements, but no longer needed really.
  */
 class gxChangeNotifier: public gxStructural,
                         public virtual gxSubject

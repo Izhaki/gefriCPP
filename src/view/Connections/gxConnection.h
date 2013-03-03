@@ -2,7 +2,7 @@
 #define gxConnection_h
 
 #include "core/gxObject.h"
-#include "view/Connections/gxAnchor.h"
+#include "View/Elements/Structural/Anchors/gxAnchor.h"
 
 class gxConnection : public gxObject
 {

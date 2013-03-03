@@ -111,9 +111,12 @@ void MyFrame::InitGefri()
     mScroller = new gxScroller(mScrollManager);
     mScroller->AddChild(mZoom);
 
+    // Add the anchor
+    mFaceAnchor = new gxBoxAnchor();
+    mFace->AddChild( mFaceAnchor );
+    
     // Add Connection
     mCon = new gxLineConnection();
-    mFaceAnchor = new gxBoxAnchor( mFace );
     mCon->SetDestinationAnchor( mFaceAnchor );
     mScroller->AddChild( mCon );
     

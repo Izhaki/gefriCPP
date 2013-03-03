@@ -11,7 +11,7 @@
 #include "View/Elements/Visual/gxRuler.h"
 #include "View/DivProvider/gxDivProvider.h"
 #include "View/DivProvider/gxViewUnit.h"
-#include "View/Connections/gxBoxAnchor.h"
+#include "View/Elements/Structural/Anchors/gxBoxAnchor.h"
 #include "View/Connections/gxLineConnection.h"
 
 #include "core/gxComposite.h"

@@ -1,37 +1,32 @@
 #ifndef gxAnchor_h
 #define gxAnchor_h
 
-#include "core/gxObject.h"
-#include "core/observer/gxObserver.h"
+#include "View/Elements/Structural/gxStructural.h"
 #include "core/geometry/gxGeometry.h"
 #include "view/Elements/Visual/gxVisual.h"
-#include "View/Elements/Structural/gxChangeNotifier.h"
 
 // Forward declaration
 class gxConnection;
 
-class gxAnchor: public gxObject
+class gxAnchor: public gxStructural
 {
-    gxDeclareObserver( gxAnchor )
 public:
-    gxAnchor( gxVisual* aVisual );
+    gxAnchor();
     ~gxAnchor();
     
     void SetConnection( gxConnection* aConnection );
     
     /*
-     * @brief Returns the position of the connection anchor in absolute 
+     * @brief Returns the position of the connection anchor in absolute
      * coordinates.
      *
      * @return The anchor's position
      */
     virtual gxPoint GetPosition() = 0;
 protected:
-    gxVisual*         mVisual;
-    gxChangeNotifier* mNotifier;
     gxConnection*     mConnection;
     
-    virtual void OnVisualChanged( bool aDeleted );
+    virtual void OnAncestorChanged(  bool aDeleted = false  );
 };
 
 #endif // gxAnchor_h
