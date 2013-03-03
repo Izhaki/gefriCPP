@@ -81,37 +81,44 @@ void MyFrame::InitGefri()
     mLightweightControl = new gxLightweightControl(this, wxID_HIGHEST + 1, wxPoint(10,10), wxSize(500,500), LightweightControlStyle | wxHSCROLL | wxVSCROLL);
     mLightweightSystem = new gxLightweightSystem(mLightweightControl);
 
-    mDocument = new gxRectangle(gxRect(50, 50, 480, 480));
+    mDocument = new gxRectangle(gxRect( 50, 50, 480, 480 ));
     
-    mZoomManager = new gxZoomManager();
-    mZoom = new gxScaler(mZoomManager);
-  
+    // Scoll Manager and scroller
     mScrollManager = new gxScrollManager();
     mLightweightSystem->SetScrollManager(mScrollManager);
-  
+    mScroller = new gxScroller( mScrollManager );
+    mDocument->AddChild( mScroller );
+
+    // Zoom manager and scaler
+    mZoomManager = new gxZoomManager();
+    mZoom = new gxScaler(mZoomManager);
+    mScroller->AddChild(mZoom);
+    
+    // Layers
+    mLayers          = new gxLayers();
+    mConnectionLayer = new gxLayer();
+    mPrimaryLayer    = new gxLayer();
+    
+    mLayers->AddChild( mPrimaryLayer );
+    mLayers->AddChild( mConnectionLayer );
+    
+    mZoom->AddChild( mLayers );
+    
+    // Face
     mFace = new gxRectangle(gxRect(40, 40, 100, 100));
     //mLeg = new gxRectangle(gxRect(410, 10, 10, 10));
-  
-    mZoom->AddChild(mFace);
-
-//    // Add Connection
-//    mCon = new gxLineConnection();
-//    mFaceAnchor = new gxRectAnchor( mFace );
-//    mCon->SetDestinationAnchor( mFaceAnchor );
-//    mDocument->AddChild( mCon );
+    mPrimaryLayer->AddChild(mFace);
     
+    // Ruler
     mViewUnit = new gxPixelUnit();
     mDivProvider = new gxDivProvider(mViewUnit);
     mRulerH = new gxRuler(gxRect(0, 0, 140, 20), mDivProvider);
     //mRulerH = new gxRuler(gxRect(0, 0, 20, 480),  mDivProvider, mViewUnit);
-    mRulerH->SetZoomManager(mZoomManager);
-    mRulerH->SetScrollManager(mScrollManager);
-    mZoom->AddChild(mRulerH);
+    mRulerH->SetZoomManager( mZoomManager );
+    mRulerH->SetScrollManager( mScrollManager );
+    mPrimaryLayer->AddChild( mRulerH );
 
-    mScroller = new gxScroller(mScrollManager);
-    mScroller->AddChild(mZoom);
-
-    // Add the anchor
+    // Add the anchors
     mFaceAnchor = new gxRectAnchor();
     mFace->AddChild( mFaceAnchor );
     mRulerAnchor = new gxRectAnchor();
@@ -121,9 +128,7 @@ void MyFrame::InitGefri()
     mCon = new gxLineConnection();
     mCon->SetDestinationAnchor( mFaceAnchor );
     mCon->SetSourceAnchor( mRulerAnchor );
-    mScroller->AddChild( mCon );
-    
-    mDocument->AddChild(mScroller);
+    mConnectionLayer->AddChild( mCon );
     
     //mZoom->AddChild(mLeg);
 

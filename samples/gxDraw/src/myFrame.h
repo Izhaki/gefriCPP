@@ -13,6 +13,8 @@
 #include "View/DivProvider/gxViewUnit.h"
 #include "View/Elements/Structural/Anchors/gxRectAnchor.h"
 #include "View/Connections/gxLineConnection.h"
+#include "View/Elements/Structural/Layers/gxLayers.h"
+#include "View/Elements/Structural/Layers/gxLayer.h"
 
 #include "core/gxComposite.h"
 
@@ -35,6 +37,11 @@ private:
     
     gxRectAnchor *mFaceAnchor;
     gxRectAnchor *mRulerAnchor;
+    
+    gxLayers* mLayers;
+    gxLayer*  mConnectionLayer;
+    gxLayer*  mPrimaryLayer;
+    
 
     gxViewUnit    *mViewUnit;
     gxDivProvider *mDivProvider;
