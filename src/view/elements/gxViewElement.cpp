@@ -6,7 +6,8 @@
 gxViewElement::gxViewElement()
 : mFlags( gxViewElement::Visible |
           gxViewElement::ClipChildren |
-          gxViewElement::Relative )
+          gxViewElement::Relative ),
+  mLayout( NULL )
 {
 }
 
@@ -114,6 +115,8 @@ void gxViewElement::InvalidateDown()
 void gxViewElement::Validate()
 {
     MarkValid();
+    
+    Layout();
 
     if ( IsChildless() )
         return;
@@ -205,4 +208,15 @@ void gxViewElement::OnAfterChildRemoval()
 {
     // We need revalidation as an addition of a child might affect layouts etc.
     Invalidate();
+}
+
+void gxViewElement::SetLayout( gxLayout* aLayout )
+{
+    mLayout = aLayout;
+}
+
+void gxViewElement::Layout()
+{
+    if ( mLayout )
+        mLayout->Layout( this );
 }

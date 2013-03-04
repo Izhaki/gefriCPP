@@ -75,6 +75,8 @@
 		8795361016E3A7FF006D69FE /* gxRectAnchor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795360E16E3A7FE006D69FE /* gxRectAnchor.h */; };
 		8795361316E3D5D6006D69FE /* gxLayers.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795361216E3D5D6006D69FE /* gxLayers.h */; };
 		8795361516E3D660006D69FE /* gxLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795361416E3D660006D69FE /* gxLayer.h */; };
+		8795361816E40913006D69FE /* gxLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795361716E40913006D69FE /* gxLayout.h */; };
+		8795361A16E40F1F006D69FE /* gxLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795361916E40F1F006D69FE /* gxLayout.cpp */; };
 		87C7BA7F167FE2F200BB7FE2 /* FastDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */; };
 		87C7BA80167FE2F200BB7FE2 /* gxEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */; };
 		87C7BA81167FE2F200BB7FE2 /* gxEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */; };
@@ -154,6 +156,8 @@
 		8795360E16E3A7FE006D69FE /* gxRectAnchor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxRectAnchor.h; path = ../../../view/Elements/Structural/Anchors/gxRectAnchor.h; sourceTree = "<group>"; };
 		8795361216E3D5D6006D69FE /* gxLayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxLayers.h; path = ../../../view/Elements/Structural/Layers/gxLayers.h; sourceTree = "<group>"; };
 		8795361416E3D660006D69FE /* gxLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxLayer.h; path = ../../../view/Elements/Structural/Layers/gxLayer.h; sourceTree = "<group>"; };
+		8795361716E40913006D69FE /* gxLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxLayout.h; path = Layouts/gxLayout.h; sourceTree = "<group>"; };
+		8795361916E40F1F006D69FE /* gxLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxLayout.cpp; path = Layouts/gxLayout.cpp; sourceTree = "<group>"; };
 		87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastDelegate.h; sourceTree = "<group>"; };
 		87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxEvent.cpp; sourceTree = "<group>"; };
 		87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxEvent.h; sourceTree = "<group>"; };
@@ -265,6 +269,7 @@
 		8795359A16DA8FC9006D69FE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8795361616E400F4006D69FE /* Layouts */,
 				879535E816DAA2AA006D69FE /* Connections */,
 				8795359B16DA8FC9006D69FE /* DivProvider */,
 				879535A016DA8FC9006D69FE /* Elements */,
@@ -397,6 +402,15 @@
 			name = Layers;
 			sourceTree = "<group>";
 		};
+		8795361616E400F4006D69FE /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				8795361716E40913006D69FE /* gxLayout.h */,
+				8795361916E40F1F006D69FE /* gxLayout.cpp */,
+			);
+			name = Layouts;
+			sourceTree = "<group>";
+		};
 		87C7BA78167FE2F200BB7FE2 /* observer */ = {
 			isa = PBXGroup;
 			children = (
@@ -466,6 +480,7 @@
 				8795361016E3A7FF006D69FE /* gxRectAnchor.h in Headers */,
 				8795361316E3D5D6006D69FE /* gxLayers.h in Headers */,
 				8795361516E3D660006D69FE /* gxLayer.h in Headers */,
+				8795361816E40913006D69FE /* gxLayout.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +560,7 @@
 				879535FB16DAC9BE006D69FE /* gxLineConnection.cpp in Sources */,
 				8795360816E3A73D006D69FE /* gxAnchor.cpp in Sources */,
 				8795360F16E3A7FF006D69FE /* gxRectAnchor.cpp in Sources */,
+				8795361A16E40F1F006D69FE /* gxLayout.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

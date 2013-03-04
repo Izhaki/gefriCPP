@@ -6,13 +6,22 @@
 
 #include <list>
 
-// A macro for looping all childrens
+// A macro for looping all childrens (used from within the composite itself)
 #define forEachChild( aItem ) \
     ChildrenType* aItem; \
     for ( ChildIterator it = mChildren.begin(); \
           it != mChildren.end() && ( aItem = Child( it ) ); \
           ++it \
         )
+// A macro allowing looping all children of a particular composite
+#define forEachChildOf( aComposite, aItem ) \
+    gxViewElement* aItem; \
+    gxViewElement::Children iChildren = aComposite->GetChildren(); \
+    for ( gxViewElement::ChildIterator it = iChildren.begin(); \
+         it != iChildren.end() && ( aItem = aComposite->Child( it ) ); \
+         ++it \
+    )
+
 /**
  * @brief A generic class that can contain children of its own kind, therefore
  * allowing  data to be arranged in hierarchical structure, with all objects
@@ -160,6 +169,13 @@ public:
      * @return ture if the object has children
      */
     bool HasChildren() { return !mChildren.empty(); }
+    
+    /**
+     * @brief Convinience method for type casting.
+     * @param it The iterator to be casted
+     * @return A typecasted child
+     */
+    tComposite* Child( ChildIterator it ) { return (tComposite*)(*it); }    
 protected:
     /**
      * @brief A virtual method that will be called whenever a child is added.
@@ -180,13 +196,6 @@ protected:
      * themselves.
      */
     virtual void OnAfterChildRemoval() { }
-
-    /**
-     * @brief Convinience method for type casting.
-     * @param it The iterator to be casted
-     * @return A typecasted child
-     */
-    tComposite* Child( ChildIterator it ) { return (tComposite*)(*it); }
 
     /// the children this object contains
     Children     mChildren;

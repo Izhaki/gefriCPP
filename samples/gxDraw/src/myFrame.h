@@ -15,6 +15,7 @@
 #include "View/Connections/gxLineConnection.h"
 #include "View/Elements/Structural/Layers/gxLayers.h"
 #include "View/Elements/Structural/Layers/gxLayer.h"
+#include "View/Layouts/gxLayout.h"
 
 #include "core/gxComposite.h"
 
@@ -27,12 +28,12 @@ private:
     void InitGefri();
   
     gxLightweightControl *mLightweightControl;
-    gxLightweightSystem *mLightweightSystem;
-    gxRectangle *mDocument, *mFace, *mEyeL, *mEyeR, *Iris1, *Iris2, *mLeg;
-    gxScaler *mZoom;
-    gxZoomManager *mZoomManager;
-    gxScroller *mScroller;
-    gxScrollManager *mScrollManager;
+    gxLightweightSystem  *mLightweightSystem;
+    gxRectangle      *mDocument, *mFace, *mEyeL, *mEyeR, *Iris1, *Iris2, *mLeg;
+    gxScaler         *mZoom;
+    gxZoomManager    *mZoomManager;
+    gxScroller       *mScroller;
+    gxScrollManager  *mScrollManager;
     gxLineConnection *mCon;
     
     gxRectAnchor *mFaceAnchor;
@@ -46,6 +47,10 @@ private:
     gxViewUnit    *mViewUnit;
     gxDivProvider *mDivProvider;
     gxRuler       *mRulerH;
+    
+    // Layout related figures
+    gxRectangle *mHBox, *mF1, *mF2, *mF3;
+    gxLayout    *mLayout;
 public:
   MyFrame(wxWindow   *parent,
           wxWindowID id,

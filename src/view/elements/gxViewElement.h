@@ -5,6 +5,7 @@
 #include "core/gxComposite.h"
 #include "View/Painters/gxPainter.h"
 #include "View/gxTransformations.h"
+#include "View/Layouts/gxLayout.h"
 
 // Forward declarations
 class gxRootViewElement;
@@ -60,7 +61,13 @@ public:
      * This abstract method is implemented by subclasses.
      */
     virtual gxRect GetBounds() const = 0;
-  
+
+    /**
+     * @brief Sets new bounds to this view element.
+     * @param aNewBounds The new bounds
+     */
+    virtual void SetBounds( const gxRect &aNewBounds ) = 0;
+    
     /**
      * @brief Returns the union of all descendant bounds.
      *
@@ -99,7 +106,15 @@ public:
      * @param aRect The rect to transform.
      */
     virtual void TransformToAbsolute( gxRect &aRect );
-
+    
+    // Layout related methods
+    
+    void SetLayout( gxLayout* aLayout );
+    
+    /**
+     * @brief Layouts the children of this view element.
+     */
+    void Layout();
 protected:
     /**
      * @brief Transforms a rect (typically bounds) to the coordinates of this
@@ -240,6 +255,8 @@ protected:
     };
   
     gxFlags<gx8Flags> mFlags;
+    
+    gxLayout*         mLayout;
 };
 
 #endif // gxViewElement_h

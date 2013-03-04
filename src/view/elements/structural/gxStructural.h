@@ -38,6 +38,13 @@ public:
      */
     virtual gxRect GetBounds() const;
     
+    /**
+     * @brief Sets new bounds to this view element.
+     * @param aNewBounds The new bounds
+     */
+    virtual void SetBounds( const gxRect &aNewBounds );
+    
+    
 protected:
     /**
      * @brief Paints the children of this view element.

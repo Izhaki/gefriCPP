@@ -105,7 +105,7 @@ void MyFrame::InitGefri()
     mZoom->AddChild( mLayers );
     
     // Face
-    mFace = new gxRectangle(gxRect(40, 40, 100, 100));
+    mFace = new gxRectangle( gxRect( 40, 40, 100, 100 ) );
     //mLeg = new gxRectangle(gxRect(410, 10, 10, 10));
     mPrimaryLayer->AddChild(mFace);
     
@@ -132,6 +132,26 @@ void MyFrame::InitGefri()
     
     //mZoom->AddChild(mLeg);
 
+    // Layout figures
+    mHBox   = new gxRectangle( gxRect( 0, 300, 480, 100 ) );
+    mLayout = new gxLayout();
+    
+    mHBox->SetLayout( mLayout );
+    
+    mF1     = new gxRectangle();
+    mF2     = new gxRectangle();
+    mF3     = new gxRectangle();
+    
+    mLayout->SetRect( mF1, gxRect( 0, 0, 10, 10 ) );
+    mLayout->SetRect( mF2, gxRect( 30, 30, 10, 10 ) );
+    
+    mHBox->AddChild( mF1 );
+    mHBox->AddChild( mF2 );
+    mHBox->AddChild( mF3 );
+    
+    mPrimaryLayer->AddChild( mHBox );
+//    mF1, *mF2, *mF3;
+    
     mLightweightSystem->SetContents(mDocument);
 }
 

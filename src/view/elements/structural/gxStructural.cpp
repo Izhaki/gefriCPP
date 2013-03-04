@@ -48,3 +48,8 @@ gxRect gxStructural::GetBounds() const
 
     return GetParent()->GetBounds();
 }
+
+void gxStructural::SetBounds( const gxRect &aNewBounds )
+{
+    gxASSERT( true, "SetBounds Called on Structural Element" );
+}
