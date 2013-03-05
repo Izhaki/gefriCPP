@@ -87,27 +87,27 @@ void MyFrame::InitGefri()
     mScrollManager = new gxScrollManager();
     mLightweightSystem->SetScrollManager(mScrollManager);
     mScroller = new gxScroller( mScrollManager );
-    mDocument->AddChild( mScroller );
+    mDocument->Add( mScroller );
 
     // Zoom manager and scaler
     mZoomManager = new gxZoomManager();
     mZoom = new gxScaler(mZoomManager);
-    mScroller->AddChild(mZoom);
+    mScroller->Add(mZoom);
     
     // Layers
     mLayers          = new gxLayers();
     mConnectionLayer = new gxLayer();
     mPrimaryLayer    = new gxLayer();
     
-    mLayers->AddChild( mPrimaryLayer );
-    mLayers->AddChild( mConnectionLayer );
+    mLayers->Add( mPrimaryLayer );
+    mLayers->Add( mConnectionLayer );
     
-    mZoom->AddChild( mLayers );
+    mZoom->Add( mLayers );
     
     // Face
     mFace = new gxRectangle( gxRect( 40, 40, 100, 100 ) );
     //mLeg = new gxRectangle(gxRect(410, 10, 10, 10));
-    mPrimaryLayer->AddChild(mFace);
+    mPrimaryLayer->Add(mFace);
     
     // Ruler
     mViewUnit = new gxPixelUnit();
@@ -116,21 +116,21 @@ void MyFrame::InitGefri()
     //mRulerH = new gxRuler(gxRect(0, 0, 20, 480),  mDivProvider, mViewUnit);
     mRulerH->SetZoomManager( mZoomManager );
     mRulerH->SetScrollManager( mScrollManager );
-    mPrimaryLayer->AddChild( mRulerH );
+    mPrimaryLayer->Add( mRulerH );
 
     // Add the anchors
     mFaceAnchor = new gxRectAnchor();
-    mFace->AddChild( mFaceAnchor );
+    mFace->Add( mFaceAnchor );
     mRulerAnchor = new gxRectAnchor();
-    mRulerH->AddChild( mRulerAnchor );
+    mRulerH->Add( mRulerAnchor );
     
     // Add Connection
     mCon = new gxLineConnection();
     mCon->SetDestinationAnchor( mFaceAnchor );
     mCon->SetSourceAnchor( mRulerAnchor );
-    mConnectionLayer->AddChild( mCon );
+    mConnectionLayer->Add( mCon );
     
-    //mZoom->AddChild(mLeg);
+    //mZoom->Add(mLeg);
 
     // Layout figures
     mHBox   = new gxRectangle( gxRect( 0, 300, 480, 100 ) );
@@ -145,11 +145,11 @@ void MyFrame::InitGefri()
     mLayout->SetRect( mF1, gxRect( 0, 0, 10, 10 ) );
     mLayout->SetRect( mF2, gxRect( 30, 30, 10, 10 ) );
     
-    mHBox->AddChild( mF1 );
-    mHBox->AddChild( mF2 );
-    mHBox->AddChild( mF3 );
+    mHBox->Add( mF1 );
+    mHBox->Add( mF2 );
+    mHBox->Add( mF3 );
     
-    mPrimaryLayer->AddChild( mHBox );
+    mPrimaryLayer->Add( mHBox );
 //    mF1, *mF2, *mF3;
     
     mLightweightSystem->SetContents(mDocument);
@@ -206,18 +206,18 @@ void MyFrame::OnAction2(wxCommandEvent &e)
 
 //  Iris1 = new gxRectangle(gxRect(3, 3, 2, 2));
 //  Iris2 = new gxRectangle(gxRect(7, 7, 2, 2));
-//  mEyeL->AddChild(Iris1);
-//  mEyeL->AddChild(Iris2);
+//  mEyeL->Add(Iris1);
+//  mEyeL->Add(Iris2);
 
-  mFace->AddChild(mEyeL);
-  mFace->AddChild(mEyeR);
+  mFace->Add(mEyeL);
+  mFace->Add(mEyeR);
 }
 
 void MyFrame::OnAction3(wxCommandEvent &e)
 {
   wxUnusedVar(e);
-  mFace->RemoveChild(mEyeL);
-  mFace->RemoveChild(mEyeR);
+  mFace->Remove(mEyeL);
+  mFace->Remove(mEyeR);
   delete mEyeL;
   delete mEyeR;
   mEyeL = NULL;

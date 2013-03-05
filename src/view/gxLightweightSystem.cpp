@@ -36,11 +36,11 @@ void gxLightweightSystem::SetContents( gxViewElement *aViewElement )
 {
     // Remove any view element already set.
     if ( mContents != NULL )
-        mRootViewElement->RemoveChild( mContents );
+        mRootViewElement->Remove( mContents );
 
     // Add the new view element as a child to the root view element.
     mContents = aViewElement;
-    mRootViewElement->AddChild( mContents );
+    mRootViewElement->Add( mContents );
 }
 
 void gxLightweightSystem::SetScrollManager( gxScrollManager *aScrollManager )

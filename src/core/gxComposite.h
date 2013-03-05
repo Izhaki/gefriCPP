@@ -49,7 +49,7 @@ public:
         RemoveAllChildren( true );
         
         if ( GetParent() != NULL )
-            GetParent()->RemoveChild( This() );
+            GetParent()->Remove( This() );
     }
     
     
@@ -58,10 +58,10 @@ public:
      * @brief Adds a new child to this object.
      * @param aChild The child to be added
      */
-    void AddChild( tComposite* aChild )
+    void Add( tComposite* aChild )
     {
         // Make sure child isn't null
-        gxASSERT( aChild == NULL, "Null paased to AddChild" );
+        gxASSERT( aChild == NULL, "Null paased to Add" );
         
         // Check for cycle in hierarchy
         for ( tComposite* f = This();
@@ -88,12 +88,12 @@ public:
      * @param aAndDelete Whether or not the child object should be deleted and
      * nulled.
      */
-    void RemoveChild( tComposite* aChild,
+    void Remove( tComposite* aChild,
                       bool        aAndDelete = false )
     {
         // Make sure it is one of my children
         gxASSERT( aChild->GetParent() != this,
-                 "RemoveChild is called on a wrong parent." );
+                 "Remove is called on a wrong parent." );
         
         // Notify
         OnBeforeChildRemoval( ( tComposite* )aChild ) ;
@@ -101,7 +101,7 @@ public:
         // Remove from children list
         mChildren.remove( aChild );
         
-        // Set child parent to NULL (but don't call again RemoveChild on this)
+        // Set child parent to NULL (but don't call again Remove on this)
         aChild->SetParent( NULL, false );
         
         // Delete if requested
@@ -127,7 +127,7 @@ public:
               !mChildren.empty();
               it = mChildren.begin() )
         {
-            RemoveChild( *it, aAndDelete );
+            Remove( *it, aAndDelete );
         }
     }
 
@@ -143,7 +143,7 @@ public:
     /**
      * @brief Sets the parent of this object.
      * @param aParent The parent object
-     * @param aAndRemoveFromParent Whether or not to call RemoveChild on the
+     * @param aAndRemoveFromParent Whether or not to call Remove on the
      * parent. Default to True
      */
     void SetParent( tComposite* aParent,
@@ -151,7 +151,7 @@ public:
     {
         // Detach from previous parent
         if ( aAndRemoveFromParent && GetParent() != NULL )
-            GetParent()->RemoveChild( This() );
+            GetParent()->Remove( This() );
             
             mParent = aParent;
     }
