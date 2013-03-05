@@ -1,7 +1,6 @@
 #ifndef gxComposite_h
 #define gxComposite_h
 
-#include "core/gxObject.h"
 #include "core/gxAssert.h"
 
 #include <list>
@@ -10,7 +9,7 @@
 #define forEachChild( aItem ) \
     ChildrenType* aItem; \
     for ( ChildIterator it = mChildren.begin(); \
-          it != mChildren.end() && ( aItem = Child( it ) ); \
+          it != mChildren.end() && ( aItem = *it ); \
           ++it \
         )
 // A macro allowing looping all children of a particular composite
@@ -18,7 +17,7 @@
     gxViewElement* aItem; \
     gxViewElement::Children iChildren = aComposite->GetChildren(); \
     for ( gxViewElement::ChildIterator it = iChildren.begin(); \
-         it != iChildren.end() && ( aItem = aComposite->Child( it ) ); \
+         it != iChildren.end() && ( aItem = *it ); \
          ++it \
     )
 
@@ -32,17 +31,16 @@
  *
  */
 template <class tComposite>
-class gxComposite: public gxObject
+class gxComposite
 {
 public:
     typedef tComposite                  ChildrenType;
-    typedef std::list< gxComposite* >   Children;
+    typedef std::list< tComposite* >    Children;
     typedef typename Children::iterator ChildIterator;
     
     gxComposite()
-    {
-        mParent = NULL;
-    }
+    : mParent(NULL)
+    { }
     
     // A virtual destructor is a must or a polymorphic derived class destructor
     // won't be called.
@@ -51,33 +49,37 @@ public:
         RemoveAllChildren( true );
         
         if ( GetParent() != NULL )
-            GetParent()->RemoveChild( this );
+            GetParent()->RemoveChild( This() );
     }
+    
+    
 
     /**
      * @brief Adds a new child to this object.
      * @param aChild The child to be added
      */
-    void AddChild( gxComposite *aChild )
+    void AddChild( tComposite* aChild )
     {
         // Make sure child isn't null
         gxASSERT( aChild == NULL, "Null paased to AddChild" );
         
         // Check for cycle in hierarchy
-        for ( gxComposite* f = this; f!= NULL; f = f->GetParent() )
+        for ( tComposite* f = This();
+              f != NULL;
+              f  = f->GetParent() )
         {
             gxASSERT( aChild == f,
                      "Cycle in Hierarchy when trying to add a child" );
         }
         
         // Set the child parent to this
-        aChild->SetParent( this );
+        aChild->SetParent( This() );
         
         // Add to children list
         mChildren.push_back( aChild );
         
         // Notify
-        OnAddChild( (tComposite*)aChild );
+        OnAddChild( ( tComposite* )aChild );
     }
 
     /**
@@ -86,15 +88,15 @@ public:
      * @param aAndDelete Whether or not the child object should be deleted and
      * nulled.
      */
-    void RemoveChild( gxComposite* aChild,
-                      bool         aAndDelete = false )
+    void RemoveChild( tComposite* aChild,
+                      bool        aAndDelete = false )
     {
         // Make sure it is one of my children
         gxASSERT( aChild->GetParent() != this,
                  "RemoveChild is called on a wrong parent." );
         
         // Notify
-        OnBeforeChildRemoval( (tComposite*)aChild ) ;
+        OnBeforeChildRemoval( ( tComposite* )aChild ) ;
         
         // Remove from children list
         mChildren.remove( aChild );
@@ -121,7 +123,9 @@ public:
      */
     void RemoveAllChildren( bool aAndDelete = false )
     {
-        for ( ChildIterator it = mChildren.begin(); !mChildren.empty(); it = mChildren.begin() )
+        for ( ChildIterator it = mChildren.begin();
+              !mChildren.empty();
+              it = mChildren.begin() )
         {
             RemoveChild( *it, aAndDelete );
         }
@@ -133,7 +137,7 @@ public:
      */
     tComposite* GetParent() const
     {
-        return (tComposite*)mParent;
+        return mParent;
     }
     
     /**
@@ -142,12 +146,12 @@ public:
      * @param aAndRemoveFromParent Whether or not to call RemoveChild on the
      * parent. Default to True
      */
-    void SetParent( gxComposite* aParent,
-                    bool         aAndRemoveFromParent = true )
+    void SetParent( tComposite* aParent,
+                    bool        aAndRemoveFromParent = true )
     {
         // Detach from previous parent
         if ( aAndRemoveFromParent && GetParent() != NULL )
-            GetParent()->RemoveChild( this );
+            GetParent()->RemoveChild( This() );
             
             mParent = aParent;
     }
@@ -170,12 +174,6 @@ public:
      */
     bool HasChildren() { return !mChildren.empty(); }
     
-    /**
-     * @brief Convinience method for type casting.
-     * @param it The iterator to be casted
-     * @return A typecasted child
-     */
-    tComposite* Child( ChildIterator it ) { return (tComposite*)(*it); }    
 protected:
     /**
      * @brief A virtual method that will be called whenever a child is added.
@@ -198,9 +196,14 @@ protected:
     virtual void OnAfterChildRemoval() { }
 
     /// the children this object contains
-    Children     mChildren;
+    Children    mChildren;
     /// the parent of this object
-    gxComposite* mParent;
+    tComposite* mParent;
+private:
+    inline tComposite* This()
+    {
+        return static_cast<tComposite*>(this);
+    }
 };
 
 #endif // gxComposite_h

@@ -6,7 +6,6 @@ void gxLayout::Layout( gxViewElement* aViewElement )
     {
         if ( gxFoundInMap( mRects, aChild ) )
         {
-            gxLog("Layout Request" );
             aChild->SetBounds( mRects[ aChild ] );
         }
     }
