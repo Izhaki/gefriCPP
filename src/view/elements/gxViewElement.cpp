@@ -80,12 +80,21 @@ void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
 
 void gxViewElement::Invalidate()
 {
+    // No point invalidating if I'm already invalid.
+    if ( IsInvalid() )
+        return;
+    
     InvalidateUp();
     InvalidateDown();
 }
 
 void gxViewElement::InvalidateUp()
 {
+    // No point invalidating if I'm already invalid (this can happed when
+    // layouting children - their setbound with invalidate their parents.
+    if ( IsInvalid() )
+        return;
+    
     MarkInvalid();
     
     // View elements parent might be null before all elements are inserted to
@@ -114,9 +123,11 @@ void gxViewElement::InvalidateDown()
 
 void gxViewElement::Validate()
 {
-    MarkValid();
-    
+    // TODO: does layout must come before BarkValid? - Layout will invalidate
+    // The children.
     Layout();
+    
+    MarkValid();
 
     if ( IsChildless() )
         return;
@@ -213,10 +224,11 @@ void gxViewElement::OnAfterChildRemoval()
 void gxViewElement::SetLayout( gxLayout* aLayout )
 {
     mLayout = aLayout;
+    mLayout->SetViewElement( this );
 }
 
 void gxViewElement::Layout()
 {
     if ( mLayout )
-        mLayout->Layout( this );
+        mLayout->Layout();
 }

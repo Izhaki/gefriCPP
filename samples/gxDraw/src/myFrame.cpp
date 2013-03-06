@@ -143,14 +143,15 @@ void MyFrame::InitGefri()
     mF3     = new gxRectangle();
     
     mLayout->SetRect( mF1, gxRect( 0, 0, 10, 10 ) );
-    mLayout->SetRect( mF2, gxRect( 30, 30, 10, 10 ) );
+    mLayout->SetRect( mF2, gxRect( 30, 30, 20, 20 ) );
+    mLayout->SetRect( mF3, gxRect( 130, 30, 30, 30 ) );
+    
     
     mHBox->Add( mF1 );
     mHBox->Add( mF2 );
     mHBox->Add( mF3 );
     
     mPrimaryLayer->Add( mHBox );
-//    mF1, *mF2, *mF3;
     
     mLightweightSystem->SetContents(mDocument);
 }

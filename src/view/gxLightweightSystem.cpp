@@ -41,6 +41,10 @@ void gxLightweightSystem::SetContents( gxViewElement *aViewElement )
     // Add the new view element as a child to the root view element.
     mContents = aViewElement;
     mRootViewElement->Add( mContents );
+    
+    // Composition should start with all view elements invalid, so validate them
+    // Now
+    mRootViewElement->Validate();
 }
 
 void gxLightweightSystem::SetScrollManager( gxScrollManager *aScrollManager )

@@ -18,16 +18,42 @@ class gxLayout : public gxObject
 public:
     typedef std::pair< gxViewElement*, gxRect > tRectsPair;
     typedef std::map< gxViewElement*, gxRect >  tRects;
+    typedef typename tRects::iterator           tRectsIterator;
         
-    gxLayout() {}
+    gxLayout();
     
-    void Layout( gxViewElement* aViewElement );
+    void SetViewElement( gxViewElement* aViewElement );
+    
+    void Layout();
+    
+    // Layout data setters
     
     void SetRect( gxViewElement* aViewElement,
                   gxRect         aRect );
     
-protected:
+protected:    
+    gxViewElement* mViewElement;
+    
     tRects mRects;
+    
+    // TODO: sort out these enums to something else
+    enum {
+        Original,
+        Max,
+        Full
+    } mMinorSize;
+    
+    enum {
+        NoChange,
+        Start,
+        Middle,
+        End
+    } mMinorPosition;
+
+private:
+    void ResetRects();
+    void DoMinorSize();
+    void DoMinorPosition();
 };
 
 #endif //gxLayout_h
