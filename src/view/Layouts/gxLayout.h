@@ -86,7 +86,7 @@ protected:
     
     gxLayoutData* GetDataOf( gxViewElement* aElement );
 private:
-    void Initialize();
+    void Init();
     void DoMajorDistribution();
     void DoMinorSize();
     void DoMinorPosition();

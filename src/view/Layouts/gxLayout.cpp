@@ -21,7 +21,7 @@ void gxLayout::Layout()
     // TODO: Suspend Validation, or use temp rects
     // Also, shall we cache?
     
-    Initialize();
+    Init();
     
     DoMajorDistribution();
     DoMinorSize();
@@ -33,7 +33,7 @@ bool IndexCompare( gxLayoutData* aL, gxLayoutData* aR )
     return aL->Element->GetIndex() < aR->Element->GetIndex();
 }
 
-void gxLayout::Initialize()
+void gxLayout::Init()
 {
     DataIterator   iData;
     gxRect         iRect;
