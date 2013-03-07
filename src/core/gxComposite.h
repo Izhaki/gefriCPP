@@ -163,6 +163,29 @@ public:
     Children GetChildren() { return mChildren; }
 
     /**
+     * @brief Returns index of this view element within its parent list of
+     * children.
+     * @return The index of this element.
+     */
+    int GetIndex()
+    {
+        gxASSERT( GetParent() == NULL,
+                 "GetIndex called with no parent." );
+        
+        return GetParent()->GetChildIndex( this );
+    }
+    
+    /**
+     * @brief Returns the index of a child within the list of children.
+     * @return The index of the child.
+     */
+    int GetChildIndex( gxComposite* aChild )
+    {
+        return distance( mChildren.begin(),
+                         find( mChildren.begin(), mChildren.end(), aChild ) );
+    }
+
+    /**
      * @brief Returns true if this object has no children.
      * @return ture if the object has no children
      */
