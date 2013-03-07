@@ -48,11 +48,9 @@ public:
     {
         RemoveAllChildren( true );
         
-        if ( GetParent() != NULL )
+        if ( HasParent() )
             GetParent()->Remove( This() );
     }
-    
-    
 
     /**
      * @brief Adds a new child to this object.
@@ -140,6 +138,16 @@ public:
         return mParent;
     }
     
+    bool HasParent() const
+    {
+        return mParent != NULL;
+    }
+    
+    bool Parentless() const
+    {
+        return !HasParent();
+    }
+    
     /**
      * @brief Sets the parent of this object.
      * @param aParent The parent object
@@ -150,7 +158,7 @@ public:
                     bool        aAndRemoveFromParent = true )
     {
         // Detach from previous parent
-        if ( aAndRemoveFromParent && GetParent() != NULL )
+        if ( aAndRemoveFromParent && HasParent() )
             GetParent()->Remove( This() );
             
             mParent = aParent;
@@ -167,19 +175,19 @@ public:
      * children.
      * @return The index of this element.
      */
-    int GetIndex()
+    int GetIndex() const
     {
-        gxASSERT( GetParent() == NULL,
-                 "GetIndex called with no parent." );
+        gxASSERT( Parentless(),
+                  "GetIndex called with no parent." );
         
-        return GetParent()->GetChildIndex( this );
+        return HasParent() ? GetParent()->GetChildIndex( this ) : -1 ;
     }
     
     /**
      * @brief Returns the index of a child within the list of children.
      * @return The index of the child.
      */
-    int GetChildIndex( gxComposite* aChild )
+    int GetChildIndex( const gxComposite* aChild ) const
     {
         return distance( mChildren.begin(),
                          find( mChildren.begin(), mChildren.end(), aChild ) );
@@ -228,5 +236,15 @@ private:
         return static_cast<tComposite*>(this);
     }
 };
+
+template< class T >
+struct CompositeIndexCompare
+{
+    bool operator()( gxComposite<T>* const& aL, gxComposite<T>* const& aR)
+    {
+        return aL->GetIndex() < aR->GetIndex();
+    }
+};
+
 
 #endif // gxComposite_h

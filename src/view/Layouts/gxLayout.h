@@ -13,12 +13,43 @@
 // Forward Declaration
 class gxViewElement;
 
+struct gxLayoutData
+{
+    int    Index;
+    gxRect Rect;    
+};
+        
 class gxLayout : public gxObject
 {
 public:
-    typedef std::pair< gxViewElement*, gxRect > tRectsPair;
-    typedef std::map< gxViewElement*, gxRect >  tRects;
-    typedef typename tRects::iterator           tRectsIterator;
+    typedef std::pair< gxViewElement*, gxLayoutData > DataPair;
+    typedef std::map < gxViewElement*, gxLayoutData > Data;
+    typedef typename Data::iterator                   DataIterator;
+
+    enum MajorDistribution
+    {
+        mdElement,
+        mdFull,
+        mdEqual,
+        mdStart,
+        mdMiddle,
+        mdEnd
+    };
+    
+    enum MinorSize
+    {
+        msElement,
+        msMax,
+        msFull
+    };
+    
+    enum MinorPosition
+    {
+        mpElement,
+        mpStart,
+        mpMiddle,
+        mpEnd
+    };
         
     gxLayout();
     
@@ -34,24 +65,14 @@ public:
 protected:    
     gxViewElement* mViewElement;
     
-    tRects mRects;
+    Data mData;
     
-    // TODO: sort out these enums to something else
-    enum {
-        Original,
-        Max,
-        Full
-    } mMinorSize;
-    
-    enum {
-        NoChange,
-        Start,
-        Middle,
-        End
-    } mMinorPosition;
-
+    MinorSize         mMinorSize;
+    MinorPosition     mMinorPosition;
+    MajorDistribution mMajorDistribution;    
 private:
     void ResetRects();
+    void DoMajorDistribution();
     void DoMinorSize();
     void DoMinorPosition();
 };

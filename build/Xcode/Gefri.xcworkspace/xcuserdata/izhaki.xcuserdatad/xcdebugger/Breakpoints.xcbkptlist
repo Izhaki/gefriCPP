@@ -30,7 +30,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../src/view/Elements/Structural/Anchors/gxBoxAnchor.cpp"
@@ -43,42 +43,16 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "../../src/View/Layouts/gxLayout.cpp"
-         timestampString = "384374044.210778"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "73"
-         endingLineNumber = "73"
-         landmarkName = "gxLayout::DoMajorDistribution()"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../src/View/Layouts/gxLayout.cpp"
-         timestampString = "384374044.210778"
+         timestampString = "384382173.871054"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "165"
-         endingLineNumber = "165"
-         landmarkName = "gxLayout::SetRect( gxViewElement* aViewElement, gxRect aRect )"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "../../src/View/Layouts/gxLayout.cpp"
-         timestampString = "384373867.312259"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "44"
-         endingLineNumber = "44"
-         landmarkName = "gxLayout::ResetRects()"
+         startingLineNumber = "75"
+         endingLineNumber = "75"
+         landmarkName = "gxLayout::DoMajorDistribution()"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

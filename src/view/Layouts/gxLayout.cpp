@@ -1,9 +1,10 @@
 #include "View/Elements/gxViewElement.h"
 
 gxLayout::gxLayout()
-  : mViewElement( NULL ),
-    mMinorSize( Original ),
-    mMinorPosition ( Middle )
+  : mViewElement       ( NULL      ),
+    mMajorDistribution ( mdStart   ),
+    mMinorSize         ( msElement ),
+    mMinorPosition     ( mpMiddle  )
 {
 }
 
@@ -18,48 +19,102 @@ void gxLayout::Layout()
         return;
 
     // TODO: Suspend Validation, or use temp rects
+    // Also, shall we cache?
     
     ResetRects();
+    
+    DoMajorDistribution();
     DoMinorSize();
     DoMinorPosition();
 }
 
+bool IndexCompare( gxViewElement* aL, gxViewElement* aR )
+{
+    return aL->GetIndex() < aR->GetIndex();
+}
+
 void gxLayout::ResetRects()
 {
-    tRectsIterator iPair;
+    DataIterator   iPair;
     gxRect         iRect;
     gxViewElement* iChild;
     
-    for ( iPair = mRects.begin(); iPair != mRects.end(); ++iPair )
+    std::sort( mData.begin(), mData.end(), IndexCompare );
+    
+    for ( iPair = mData.begin(); iPair != mData.end(); ++iPair )
+    {
+        gxLayoutData& iData = iPair->second;
+        
+        iChild = iPair->first;
+        
+        iRect  = iData.Rect;
+        iChild->SetBounds( iRect );
+    }
+    
+//    std::sort( mData.begin(), mData.end() );
+}
+
+void gxLayout::DoMajorDistribution()
+{
+    DataIterator   iPair;
+    gxRect         iRect;    
+    gxViewElement* iChild;
+    gxPix          iChildWidth;
+
+//    int   iElementCount = mData.size();
+    int   iTotalWidth   = 0;
+    gxPix iPosition     = 0;
+    
+    for ( iPair = mData.begin(); iPair != mData.end(); ++iPair )
     {
         iChild = iPair->first;
-        iRect  = iPair->second;
         
+        iTotalWidth += iChild->GetBounds().GetWidth();
+    }
+    
+    for ( iPair = mData.begin(); iPair != mData.end(); ++iPair )
+    {
+        iChild = iPair->first;
+        
+        iRect       = iChild->GetBounds();
+        iChildWidth = iRect.GetWidth();
+        
+        iRect.SetX( iPosition );
         iChild->SetBounds( iRect );
+        
+        switch ( mMajorDistribution )
+        {
+            case mdStart:
+            case mdMiddle:
+            case mdEnd:
+                iPosition += iChildWidth;
+            default:
+                break;
+        }
     }
 }
 
 void gxLayout::DoMinorSize()
 {
-    if ( mMinorSize == Original )
+    if ( mMinorSize == msElement )
         return;
     
-    tRectsIterator iPair;
+    DataIterator   iPair;
     gxRect         iRect;
     gxViewElement* iChild;
     gxPix          iHeight = 0;
     
-    if ( mMinorSize == Full )
+    if ( mMinorSize == msFull )
     {
         
         iHeight = mViewElement->GetBounds().GetSize().GetHeight();
         
-    } else if ( mMinorSize == Max ) {
+    } else if ( mMinorSize == msMax ) {
         
         gxPix iChildHeight;
         
         // Find the maximum height
-        for ( iPair = mRects.begin(); iPair != mRects.end(); ++iPair )
+        for ( iPair = mData.begin(); iPair != mData.end(); ++iPair )
         {
             iChild = iPair->first;
             
@@ -69,7 +124,7 @@ void gxLayout::DoMinorSize()
         
     }
         
-    for ( iPair = mRects.begin(); iPair != mRects.end(); ++iPair )
+    for ( iPair = mData.begin(); iPair != mData.end(); ++iPair )
     {
         iChild = iPair->first;
         
@@ -82,10 +137,10 @@ void gxLayout::DoMinorSize()
 
 void gxLayout::DoMinorPosition()
 {
-    if ( mMinorPosition == NoChange )
+    if ( mMinorPosition == mpElement )
         return;
     
-    tRectsIterator iPair;
+    DataIterator   iPair;
     gxRect         iRect;
     gxViewElement* iChild;
     gxPix          iPosition = 0;
@@ -93,17 +148,17 @@ void gxLayout::DoMinorPosition()
     // TODO: would be nice to have a GetHeight() from ViewElement
     gxPix          iContainerHeight = mViewElement->GetBounds().GetSize().GetHeight();
 
-    for ( iPair = mRects.begin(); iPair != mRects.end(); ++iPair )
+    for ( iPair = mData.begin(); iPair != mData.end(); ++iPair )
     {
         iChild = iPair->first;
         
         iRect = iChild->GetBounds();
         
-        if ( mMinorSize == Full || mMinorPosition == Start )
+        if ( mMinorSize == msFull || mMinorPosition == mpStart )
             iPosition = 0;
-        else if ( mMinorPosition == Middle )
+        else if ( mMinorPosition == mpMiddle )
             iPosition = ( iContainerHeight - iRect.GetHeight() ) / 2;
-        else if ( mMinorPosition == End )
+        else if ( mMinorPosition == mpEnd )
             iPosition = iContainerHeight - iRect.GetHeight();
         
         // TODO: won't be easier if view element had setHeight?
@@ -115,6 +170,7 @@ void gxLayout::DoMinorPosition()
 void gxLayout::SetRect( gxViewElement* aViewElement,
                         gxRect         aRect )
 {
-    mRects[ aViewElement ] = aRect;
+    mData[ aViewElement ].Rect = aRect;
+    
 }
 
