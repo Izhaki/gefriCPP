@@ -63,6 +63,18 @@ public:
     virtual gxRect GetBounds() const = 0;
 
     /**
+     * @brief Returns the inner bounds of this view element, accounting for
+     * border and insets if any.
+     */
+    virtual gxRect GetInnerBounds() { return GetBounds(); }
+    
+    /**
+     * @brief Returns the outer bounds of this view element, accounting for
+     * shadows.
+     */
+    virtual gxRect GetOuterBounds() { return GetBounds(); }
+
+    /**
      * @brief Sets new bounds to this view element.
      * @param aNewBounds The new bounds
      */

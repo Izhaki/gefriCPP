@@ -67,14 +67,14 @@ void gxLayout::DoMajorDistribution()
     {
         iChild = (*iData)->Element;
         
-        iTotalWidth += iChild->GetBounds().GetWidth();
+        iTotalWidth += iChild->GetInnerBounds().GetWidth();
     }
     
     for ( iData = mData.begin(); iData != mData.end(); ++iData )
     {
         iChild = (*iData)->Element;
         
-        iRect       = iChild->GetBounds();
+        iRect       = iChild->GetInnerBounds();
         iChildWidth = iRect.GetWidth();
         
         iRect.SetX( iPosition );
@@ -105,7 +105,7 @@ void gxLayout::DoMinorSize()
     if ( mMinorSize == msFull )
     {
         
-        iHeight = mViewElement->GetBounds().GetSize().GetHeight();
+        iHeight = mViewElement->GetInnerBounds().GetHeight();
         
     } else if ( mMinorSize == msMax ) {
         
@@ -116,7 +116,7 @@ void gxLayout::DoMinorSize()
         {
             iChild = (*iData)->Element;
             
-            iChildHeight = iChild->GetBounds().GetHeight();
+            iChildHeight = iChild->GetInnerBounds().GetHeight();
             iHeight = gxMax( iHeight, iChildHeight );
         }
         
@@ -127,7 +127,7 @@ void gxLayout::DoMinorSize()
         iChild = (*iData)->Element;
         
         // TODO: won't be easier if view element had setHeight?
-        iRect = iChild->GetBounds();
+        iRect = iChild->GetInnerBounds();
         iRect.SetHeight( iHeight );
         iChild->SetBounds( iRect );
     }
@@ -143,14 +143,13 @@ void gxLayout::DoMinorPosition()
     gxViewElement* iChild;
     gxPix          iPosition = 0;
     
-    // TODO: would be nice to have a GetHeight() from ViewElement
-    gxPix          iContainerHeight = mViewElement->GetBounds().GetSize().GetHeight();
+    gxPix          iContainerHeight = mViewElement->GetInnerBounds().GetHeight();
 
     for ( iData = mData.begin(); iData != mData.end(); ++iData )
     {
         iChild = (*iData)->Element;
         
-        iRect = iChild->GetBounds();
+        iRect = iChild->GetInnerBounds();
         
         if ( mMinorSize == msFull || mMinorPosition == mpStart )
             iPosition = 0;

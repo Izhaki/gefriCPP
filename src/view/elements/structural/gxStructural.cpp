@@ -34,7 +34,7 @@ void gxStructural::Repaint()
     if ( IsInvalid() )
         return;
 
-    gxASSERT( GetParent() == NULL, "GetBounds() called but no parent." );
+    gxASSERT( Parentless(), "GetBounds() called but no parent." );
     
     // Simply call repaint on my parent.
     return GetParent()->Repaint();
@@ -44,7 +44,7 @@ void gxStructural::Repaint()
 
 gxRect gxStructural::GetBounds() const
 {
-    gxASSERT( GetParent() == NULL, "GetBounds() called but no parent." );
+    gxASSERT( Parentless(), "GetBounds() called but no parent." );
 
     return GetParent()->GetBounds();
 }
