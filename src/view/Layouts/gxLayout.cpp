@@ -2,7 +2,7 @@
 
 gxLayout::gxLayout()
   : mViewElement       ( NULL      ),
-    mMajorDistribution ( mdStart   ),
+    mMajorDistribution ( mdEqual   ),
     mMinorSize         ( msElement ),
     mMinorPosition     ( mpMiddle  )
 {
@@ -59,15 +59,53 @@ void gxLayout::DoMajorDistribution()
     gxViewElement* iChild;
     gxPix          iChildWidth;
 
-//    int   iElementCount = mData.size();
-    int   iTotalWidth   = 0;
-    gxPix iPosition     = 0;
+    int   iCount         = mData.size();
+    int   iElementsWidth = 0;
+    gxPix iPosition      = 0;
+    gxPix iSpacing       = 0;
     
+    // Calulate the total width of all elements
     for ( iData = mData.begin(); iData != mData.end(); ++iData )
     {
         iChild = (*iData)->Element;
+        iElementsWidth += iChild->GetInnerBounds().GetWidth();
+    }
+    
+    if ( mMajorDistribution == mdMiddle || mMajorDistribution == mdEnd )
+    {
+        gxPix iContainerWidth = mViewElement->GetInnerBounds().GetWidth();
+
+        // This is right for mdEnd
+        iPosition = iContainerWidth - iElementsWidth;
         
-        iTotalWidth += iChild->GetInnerBounds().GetWidth();
+        if ( mMajorDistribution == mdMiddle )
+            // and that's for mdMiddle
+            iPosition = iPosition / 2;
+    }
+    
+    if ( mMajorDistribution == mdFull || mMajorDistribution == mdEqual )
+    {
+        gxPix iContainerWidth = mViewElement->GetInnerBounds().GetWidth();
+        int iSpaceCount;
+        
+        if ( mMajorDistribution == mdFull )
+        {
+            // If we're on full distribution the space count is one less than
+            // the elements count ( 3 elements get 2 space).
+            iSpaceCount = iCount - 1;
+            
+            // ensure there's at least 1 space.
+            if ( iSpaceCount < 1 ) iSpaceCount = 1;
+        } else {
+            // If we're on equal distribution the space count is one more than
+            // the elements count ( 3 elements get 4 space).
+            iSpaceCount = iCount + 1;
+        }
+
+        iSpacing = ( iContainerWidth - iElementsWidth ) / iSpaceCount;
+        
+        if ( mMajorDistribution == mdEqual )
+            iPosition += iSpacing;
     }
     
     for ( iData = mData.begin(); iData != mData.end(); ++iData )
@@ -86,6 +124,11 @@ void gxLayout::DoMajorDistribution()
             case mdMiddle:
             case mdEnd:
                 iPosition += iChildWidth;
+                break;
+            case mdFull:
+            case mdEqual:
+                iPosition += iChildWidth + iSpacing;
+                break;
             default:
                 break;
         }

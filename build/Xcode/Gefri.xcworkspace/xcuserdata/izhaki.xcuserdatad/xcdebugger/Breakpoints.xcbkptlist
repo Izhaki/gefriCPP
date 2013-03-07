@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../src/View/Layouts/gxLayout.cpp"
-         timestampString = "384388142.439274"
+         timestampString = "384393314.20642"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "80"
-         endingLineNumber = "80"
+         startingLineNumber = "118"
+         endingLineNumber = "118"
          landmarkName = "gxLayout::DoMajorDistribution()"
          landmarkType = "5">
       </FileBreakpoint>
