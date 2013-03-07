@@ -7,25 +7,38 @@
 
 #include "core/gxLog.h"
 
-#define gxFoundInMap( aMap, aItem ) \
-    !( aMap.find( aItem ) == aMap.end() )
-
 // Forward Declaration
 class gxViewElement;
 
+// TODO: should this be public as it is at the moment? Shouldn't it be private?
 struct gxLayoutData
 {
-    int    Index;
-    gxRect Rect;    
+    gxLayoutData( gxViewElement* aElement) : Element( aElement ) { }
+    gxViewElement* Element;
+    gxRect         Rect;
 };
-        
+
+
 class gxLayout : public gxObject
 {
 public:
-    typedef std::pair< gxViewElement*, gxLayoutData > DataPair;
-    typedef std::map < gxViewElement*, gxLayoutData > Data;
-    typedef typename Data::iterator                   DataIterator;
+    typedef std::list< gxLayoutData* > Data;
+    typedef typename Data::iterator    DataIterator;
 
+    // A helper class to find elements in the data list.
+    class ElementFinder
+    {
+    public:
+        ElementFinder( gxViewElement* aElement ) : mElement( aElement ) {}
+        bool operator() ( const gxLayoutData* aData ) const
+        {
+            return aData->Element == mElement;
+        }
+    private:
+        gxViewElement* mElement;
+    };
+    
+    
     enum MajorDistribution
     {
         mdElement,
@@ -69,7 +82,9 @@ protected:
     
     MinorSize         mMinorSize;
     MinorPosition     mMinorPosition;
-    MajorDistribution mMajorDistribution;    
+    MajorDistribution mMajorDistribution;
+    
+    gxLayoutData* GetDataOf( gxViewElement* aElement );
 private:
     void ResetRects();
     void DoMajorDistribution();

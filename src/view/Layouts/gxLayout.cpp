@@ -28,35 +28,32 @@ void gxLayout::Layout()
     DoMinorPosition();
 }
 
-bool IndexCompare( gxViewElement* aL, gxViewElement* aR )
+bool IndexCompare( gxLayoutData* aL, gxLayoutData* aR )
 {
-    return aL->GetIndex() < aR->GetIndex();
+    return aL->Element->GetIndex() < aR->Element->GetIndex();
 }
 
 void gxLayout::ResetRects()
 {
-    DataIterator   iPair;
+    DataIterator   iData;
     gxRect         iRect;
     gxViewElement* iChild;
     
-    std::sort( mData.begin(), mData.end(), IndexCompare );
+    // Sort the layout data list based on the element index
+    mData.sort( IndexCompare );
     
-    for ( iPair = mData.begin(); iPair != mData.end(); ++iPair )
+    for ( iData = mData.begin(); iData != mData.end(); ++iData )
     {
-        gxLayoutData& iData = iPair->second;
+        iChild = (*iData)->Element;
+        iRect  = (*iData)->Rect;
         
-        iChild = iPair->first;
-        
-        iRect  = iData.Rect;
         iChild->SetBounds( iRect );
     }
-    
-//    std::sort( mData.begin(), mData.end() );
 }
 
 void gxLayout::DoMajorDistribution()
 {
-    DataIterator   iPair;
+    DataIterator   iData;
     gxRect         iRect;    
     gxViewElement* iChild;
     gxPix          iChildWidth;
@@ -65,16 +62,16 @@ void gxLayout::DoMajorDistribution()
     int   iTotalWidth   = 0;
     gxPix iPosition     = 0;
     
-    for ( iPair = mData.begin(); iPair != mData.end(); ++iPair )
+    for ( iData = mData.begin(); iData != mData.end(); ++iData )
     {
-        iChild = iPair->first;
+        iChild = (*iData)->Element;
         
         iTotalWidth += iChild->GetBounds().GetWidth();
     }
     
-    for ( iPair = mData.begin(); iPair != mData.end(); ++iPair )
+    for ( iData = mData.begin(); iData != mData.end(); ++iData )
     {
-        iChild = iPair->first;
+        iChild = (*iData)->Element;
         
         iRect       = iChild->GetBounds();
         iChildWidth = iRect.GetWidth();
@@ -99,7 +96,7 @@ void gxLayout::DoMinorSize()
     if ( mMinorSize == msElement )
         return;
     
-    DataIterator   iPair;
+    DataIterator   iData;
     gxRect         iRect;
     gxViewElement* iChild;
     gxPix          iHeight = 0;
@@ -114,9 +111,9 @@ void gxLayout::DoMinorSize()
         gxPix iChildHeight;
         
         // Find the maximum height
-        for ( iPair = mData.begin(); iPair != mData.end(); ++iPair )
+        for ( iData = mData.begin(); iData != mData.end(); ++iData )
         {
-            iChild = iPair->first;
+            iChild = (*iData)->Element;
             
             iChildHeight = iChild->GetBounds().GetHeight();
             iHeight = gxMax( iHeight, iChildHeight );
@@ -124,9 +121,9 @@ void gxLayout::DoMinorSize()
         
     }
         
-    for ( iPair = mData.begin(); iPair != mData.end(); ++iPair )
+    for ( iData = mData.begin(); iData != mData.end(); ++iData )
     {
-        iChild = iPair->first;
+        iChild = (*iData)->Element;
         
         // TODO: won't be easier if view element had setHeight?
         iRect = iChild->GetBounds();
@@ -140,7 +137,7 @@ void gxLayout::DoMinorPosition()
     if ( mMinorPosition == mpElement )
         return;
     
-    DataIterator   iPair;
+    DataIterator   iData;
     gxRect         iRect;
     gxViewElement* iChild;
     gxPix          iPosition = 0;
@@ -148,9 +145,9 @@ void gxLayout::DoMinorPosition()
     // TODO: would be nice to have a GetHeight() from ViewElement
     gxPix          iContainerHeight = mViewElement->GetBounds().GetSize().GetHeight();
 
-    for ( iPair = mData.begin(); iPair != mData.end(); ++iPair )
+    for ( iData = mData.begin(); iData != mData.end(); ++iData )
     {
-        iChild = iPair->first;
+        iChild = (*iData)->Element;
         
         iRect = iChild->GetBounds();
         
@@ -167,10 +164,33 @@ void gxLayout::DoMinorPosition()
     }
 }
 
+
+gxLayoutData* gxLayout::GetDataOf( gxViewElement* aElement )
+{
+    // Search for the element in our list.
+    DataIterator  iIter = std::find_if( mData.begin(),
+                                        mData.end(),
+                                        ElementFinder( aElement ) );
+    
+    bool          iFound = iIter != mData.end();
+    gxLayoutData* iData;
+    
+    if ( iFound )
+    {
+        iData = *iIter;
+    } else {
+        // TODO: we need to delete this when destroying the layout.
+        iData = new gxLayoutData( aElement );
+        mData.push_back( iData );
+    }
+
+    return iData;
+}
+
 void gxLayout::SetRect( gxViewElement* aViewElement,
                         gxRect         aRect )
 {
-    mData[ aViewElement ].Rect = aRect;
-    
+    gxLayoutData* iData = GetDataOf( aViewElement );
+    iData->Rect    = aRect;
 }
 
