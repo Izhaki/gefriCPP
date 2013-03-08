@@ -46,13 +46,13 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../../src/View/Layouts/gxLayout.cpp"
-         timestampString = "384476991.31513"
+         filePath = "../../samples/gxDraw/src/myFrame.cpp"
+         timestampString = "384477378.362829"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "126"
-         endingLineNumber = "126"
-         landmarkName = "gxLayout::DoMajorDistribution()"
+         startingLineNumber = "213"
+         endingLineNumber = "213"
+         landmarkName = "MyFrame::OnAction2(wxCommandEvent &amp;e)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

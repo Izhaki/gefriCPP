@@ -12,6 +12,7 @@ class gxViewElement;
 #include "View/Layouts/gxLayoutData.h"
 #include "View/Layouts/Layouters/gxAlign.h"
 #include "View/Layouts/Layouters/gxStretch.h"
+#include "View/Layouts/Layouters/gxDistribute.h"
 
 class gxLayout : public gxObject
 {
@@ -27,24 +28,6 @@ public:
         }
     private:
         gxViewElement* mElement;
-    };
-    
-    
-    enum MajorDistribution
-    {
-        mdElement,
-        mdFull,
-        mdEqual,
-        mdStart,
-        mdMiddle,
-        mdEnd
-    };
-    
-    enum MinorSize
-    {
-        msElement,
-        msMax,
-        msFull
     };
         
     gxLayout();
@@ -65,13 +48,11 @@ protected:
     
     gxStretch::Type    mStretch;
     gxAlign::Type      mAlign;
-    MajorDistribution  mMajorDistribution;
+    gxDistribute::Type mDistribute;
     
     gxLayoutData* GetDataOf( gxViewElement* aElement );
 private:
     void Init();
-    void DoMajorDistribution();
-//    void DoMinorSize();
 };
 
 #endif //gxLayout_h
