@@ -66,13 +66,13 @@ public:
      * @brief Returns the inner bounds of this view element, accounting for
      * border and insets if any.
      */
-    virtual gxRect GetInnerBounds() { return GetBounds(); }
+    virtual gxRect GetInnerBounds() const { return GetBounds(); }
     
     /**
      * @brief Returns the outer bounds of this view element, accounting for
      * shadows.
      */
-    virtual gxRect GetOuterBounds() { return GetBounds(); }
+    virtual gxRect GetOuterBounds() const { return GetBounds(); }
 
     /**
      * @brief Sets new bounds to this view element.
