@@ -7,82 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		876C5D32164C73E60006CB61 /* gxAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CEF164C73E60006CB61 /* gxAssert.h */; };
 		876C5D33164C73E60006CB61 /* gxLightweightControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5CF0164C73E60006CB61 /* gxLightweightControl.cpp */; };
-		876C5D34164C73E60006CB61 /* gxLightweightControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF1164C73E60006CB61 /* gxLightweightControl.h */; };
-		876C5D35164C73E60006CB61 /* gxLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF2164C73E60006CB61 /* gxLog.h */; };
-		876C5D36164C73E60006CB61 /* gxObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF3164C73E60006CB61 /* gxObject.h */; };
-		876C5D37164C73E60006CB61 /* gxPaintDC.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF4164C73E60006CB61 /* gxPaintDC.h */; };
-		876C5D38164C73E60006CB61 /* gxString.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF5164C73E60006CB61 /* gxString.h */; };
-		876C5D39164C73E60006CB61 /* gxGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF8164C73E60006CB61 /* gxGeometry.h */; };
-		876C5D3A164C73E60006CB61 /* gxGeometryDefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CF9164C73E60006CB61 /* gxGeometryDefs.h */; };
-		876C5D3B164C73E60006CB61 /* gxPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CFA164C73E60006CB61 /* gxPoint.h */; };
 		876C5D3C164C73E60006CB61 /* gxRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5CFB164C73E60006CB61 /* gxRect.cpp */; };
-		876C5D3D164C73E60006CB61 /* gxRect.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CFC164C73E60006CB61 /* gxRect.h */; };
-		876C5D3E164C73E60006CB61 /* gxSize.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CFD164C73E60006CB61 /* gxSize.h */; };
-		876C5D3F164C73E60006CB61 /* gxAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5CFE164C73E60006CB61 /* gxAssert.h */; };
-		876C5D41164C73E60006CB61 /* gxComposite.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D00164C73E60006CB61 /* gxComposite.h */; };
-		876C5D42164C73E60006CB61 /* gxFlags.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D01164C73E60006CB61 /* gxFlags.h */; };
-		876C5D43164C73E60006CB61 /* gxLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D02164C73E60006CB61 /* gxLog.h */; };
-		876C5D44164C73E60006CB61 /* gxObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D03164C73E60006CB61 /* gxObject.h */; };
-		876C5D45164C73E60006CB61 /* gxPaintDC.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D04164C73E60006CB61 /* gxPaintDC.h */; };
-		876C5D46164C73E60006CB61 /* gxString.h in Headers */ = {isa = PBXBuildFile; fileRef = 876C5D05164C73E60006CB61 /* gxString.h */; };
-		8795356616DA762A006D69FE /* gxScale.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795356516DA762A006D69FE /* gxScale.h */; };
 		879535C416DA8FC9006D69FE /* gxDivProvider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795359C16DA8FC9006D69FE /* gxDivProvider.cpp */; };
-		879535C516DA8FC9006D69FE /* gxDivProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795359D16DA8FC9006D69FE /* gxDivProvider.h */; };
 		879535C616DA8FC9006D69FE /* gxViewUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795359E16DA8FC9006D69FE /* gxViewUnit.cpp */; };
-		879535C716DA8FC9006D69FE /* gxViewUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795359F16DA8FC9006D69FE /* gxViewUnit.h */; };
 		879535C816DA8FC9006D69FE /* gxViewElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535A116DA8FC9006D69FE /* gxViewElement.cpp */; };
-		879535C916DA8FC9006D69FE /* gxViewElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535A216DA8FC9006D69FE /* gxViewElement.h */; };
 		879535CA16DA8FC9006D69FE /* gxRootViewElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535A416DA8FC9006D69FE /* gxRootViewElement.cpp */; };
-		879535CB16DA8FC9006D69FE /* gxRootViewElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535A516DA8FC9006D69FE /* gxRootViewElement.h */; };
 		879535CC16DA8FC9006D69FE /* gxScaler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535A616DA8FC9006D69FE /* gxScaler.cpp */; };
-		879535CD16DA8FC9006D69FE /* gxScaler.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535A716DA8FC9006D69FE /* gxScaler.h */; };
 		879535CE16DA8FC9006D69FE /* gxScroller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535A816DA8FC9006D69FE /* gxScroller.cpp */; };
-		879535CF16DA8FC9006D69FE /* gxScroller.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535A916DA8FC9006D69FE /* gxScroller.h */; };
 		879535D016DA8FC9006D69FE /* gxStructural.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535AA16DA8FC9006D69FE /* gxStructural.cpp */; };
-		879535D116DA8FC9006D69FE /* gxStructural.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535AB16DA8FC9006D69FE /* gxStructural.h */; };
 		879535D216DA8FC9006D69FE /* gxRuler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535AD16DA8FC9006D69FE /* gxRuler.cpp */; };
-		879535D316DA8FC9006D69FE /* gxRuler.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535AE16DA8FC9006D69FE /* gxRuler.h */; };
 		879535D416DA8FC9006D69FE /* gxVisual.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535AF16DA8FC9006D69FE /* gxVisual.cpp */; };
-		879535D516DA8FC9006D69FE /* gxVisual.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535B016DA8FC9006D69FE /* gxVisual.h */; };
 		879535D616DA8FC9006D69FE /* gxRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535B216DA8FC9006D69FE /* gxRectangle.cpp */; };
-		879535D716DA8FC9006D69FE /* gxRectangle.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535B316DA8FC9006D69FE /* gxRectangle.h */; };
 		879535D816DA8FC9006D69FE /* gxShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535B416DA8FC9006D69FE /* gxShape.cpp */; };
-		879535D916DA8FC9006D69FE /* gxShape.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535B516DA8FC9006D69FE /* gxShape.h */; };
-		879535DA16DA8FC9006D69FE /* gxLightweightControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535B616DA8FC9006D69FE /* gxLightweightControl.h */; };
 		879535DB16DA8FC9006D69FE /* gxLightweightSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535B716DA8FC9006D69FE /* gxLightweightSystem.cpp */; };
-		879535DC16DA8FC9006D69FE /* gxLightweightSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535B816DA8FC9006D69FE /* gxLightweightSystem.h */; };
-		879535DD16DA8FC9006D69FE /* gxTransformations.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535B916DA8FC9006D69FE /* gxTransformations.h */; };
 		879535DE16DA8FC9006D69FE /* gxScrollManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535BB16DA8FC9006D69FE /* gxScrollManager.cpp */; };
-		879535DF16DA8FC9006D69FE /* gxScrollManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535BC16DA8FC9006D69FE /* gxScrollManager.h */; };
 		879535E016DA8FC9006D69FE /* gxZoomManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535BD16DA8FC9006D69FE /* gxZoomManager.cpp */; };
-		879535E116DA8FC9006D69FE /* gxZoomManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535BE16DA8FC9006D69FE /* gxZoomManager.h */; };
 		879535E216DA8FC9006D69FE /* gxDcPainter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535C016DA8FC9006D69FE /* gxDcPainter.cpp */; };
-		879535E316DA8FC9006D69FE /* gxDcPainter.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535C116DA8FC9006D69FE /* gxDcPainter.h */; };
 		879535E416DA8FC9006D69FE /* gxPainter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535C216DA8FC9006D69FE /* gxPainter.cpp */; };
-		879535E516DA8FC9006D69FE /* gxPainter.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535C316DA8FC9006D69FE /* gxPainter.h */; };
-		879535F016DAB96A006D69FE /* gxLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535EF16DAB969006D69FE /* gxLine.h */; };
 		879535F216DABAA2006D69FE /* gxLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535F116DABAA2006D69FE /* gxLine.cpp */; };
-		879535F516DAC62E006D69FE /* gxLineConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535F416DAC62E006D69FE /* gxLineConnection.h */; };
-		879535F716DAC6EA006D69FE /* gxConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535F616DAC6EA006D69FE /* gxConnection.h */; };
 		879535F916DAC821006D69FE /* gxConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535F816DAC821006D69FE /* gxConnection.cpp */; };
 		879535FB16DAC9BE006D69FE /* gxLineConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 879535FA16DAC9BD006D69FE /* gxLineConnection.cpp */; };
-		879535FF16E01DFF006D69FE /* gxChangeNotifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 879535FE16E01DFE006D69FE /* gxChangeNotifier.h */; };
-		8795360516E3A6F3006D69FE /* gxAnchor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795360416E3A6F2006D69FE /* gxAnchor.h */; };
 		8795360816E3A73D006D69FE /* gxAnchor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795360716E3A73D006D69FE /* gxAnchor.cpp */; };
 		8795360F16E3A7FF006D69FE /* gxRectAnchor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795360D16E3A7FE006D69FE /* gxRectAnchor.cpp */; };
-		8795361016E3A7FF006D69FE /* gxRectAnchor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795360E16E3A7FE006D69FE /* gxRectAnchor.h */; };
-		8795361316E3D5D6006D69FE /* gxLayers.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795361216E3D5D6006D69FE /* gxLayers.h */; };
-		8795361516E3D660006D69FE /* gxLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795361416E3D660006D69FE /* gxLayer.h */; };
-		8795361816E40913006D69FE /* gxLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 8795361716E40913006D69FE /* gxLayout.h */; };
 		8795361A16E40F1F006D69FE /* gxLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795361916E40F1F006D69FE /* gxLayout.cpp */; };
-		87C7BA7F167FE2F200BB7FE2 /* FastDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */; };
+		87ABC02316EA9B5000B77D8D /* gxAlign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87ABC02216EA9B5000B77D8D /* gxAlign.cpp */; };
+		87ABC02816EAA57D00B77D8D /* gxStretch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87ABC02716EAA57D00B77D8D /* gxStretch.cpp */; };
 		87C7BA80167FE2F200BB7FE2 /* gxEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */; };
-		87C7BA81167FE2F200BB7FE2 /* gxEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */; };
-		87C7BA82167FE2F200BB7FE2 /* gxObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA7C167FE2F200BB7FE2 /* gxObserver.h */; };
 		87C7BA83167FE2F200BB7FE2 /* gxSubject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7D167FE2F200BB7FE2 /* gxSubject.cpp */; };
-		87C7BA84167FE2F200BB7FE2 /* gxSubject.h in Headers */ = {isa = PBXBuildFile; fileRef = 87C7BA7E167FE2F200BB7FE2 /* gxSubject.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -158,6 +110,11 @@
 		8795361416E3D660006D69FE /* gxLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxLayer.h; path = ../../../view/Elements/Structural/Layers/gxLayer.h; sourceTree = "<group>"; };
 		8795361716E40913006D69FE /* gxLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxLayout.h; path = Layouts/gxLayout.h; sourceTree = "<group>"; };
 		8795361916E40F1F006D69FE /* gxLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxLayout.cpp; path = Layouts/gxLayout.cpp; sourceTree = "<group>"; };
+		8795363116E966F2006D69FE /* gxAlign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxAlign.h; path = Layouts/Layouters/gxAlign.h; sourceTree = "<group>"; };
+		87ABC02216EA9B5000B77D8D /* gxAlign.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxAlign.cpp; path = Layouts/Layouters/gxAlign.cpp; sourceTree = "<group>"; };
+		87ABC02416EA9C7D00B77D8D /* gxLayoutData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxLayoutData.h; path = Layouts/gxLayoutData.h; sourceTree = "<group>"; };
+		87ABC02616EAA46700B77D8D /* gxStretch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxStretch.h; path = Layouts/Layouters/gxStretch.h; sourceTree = "<group>"; };
+		87ABC02716EAA57D00B77D8D /* gxStretch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxStretch.cpp; path = Layouts/Layouters/gxStretch.cpp; sourceTree = "<group>"; };
 		87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastDelegate.h; sourceTree = "<group>"; };
 		87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxEvent.cpp; sourceTree = "<group>"; };
 		87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxEvent.h; sourceTree = "<group>"; };
@@ -405,10 +362,23 @@
 		8795361616E400F4006D69FE /* Layouts */ = {
 			isa = PBXGroup;
 			children = (
+				8795363016E966B1006D69FE /* Layouters */,
 				8795361716E40913006D69FE /* gxLayout.h */,
 				8795361916E40F1F006D69FE /* gxLayout.cpp */,
+				87ABC02416EA9C7D00B77D8D /* gxLayoutData.h */,
 			);
 			name = Layouts;
+			sourceTree = "<group>";
+		};
+		8795363016E966B1006D69FE /* Layouters */ = {
+			isa = PBXGroup;
+			children = (
+				8795363116E966F2006D69FE /* gxAlign.h */,
+				87ABC02216EA9B5000B77D8D /* gxAlign.cpp */,
+				87ABC02616EAA46700B77D8D /* gxStretch.h */,
+				87ABC02716EAA57D00B77D8D /* gxStretch.cpp */,
+			);
+			name = Layouters;
 			sourceTree = "<group>";
 		};
 		87C7BA78167FE2F200BB7FE2 /* observer */ = {
@@ -431,56 +401,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				876C5D32164C73E60006CB61 /* gxAssert.h in Headers */,
-				876C5D34164C73E60006CB61 /* gxLightweightControl.h in Headers */,
-				876C5D35164C73E60006CB61 /* gxLog.h in Headers */,
-				876C5D36164C73E60006CB61 /* gxObject.h in Headers */,
-				876C5D37164C73E60006CB61 /* gxPaintDC.h in Headers */,
-				876C5D38164C73E60006CB61 /* gxString.h in Headers */,
-				876C5D39164C73E60006CB61 /* gxGeometry.h in Headers */,
-				876C5D3A164C73E60006CB61 /* gxGeometryDefs.h in Headers */,
-				876C5D3B164C73E60006CB61 /* gxPoint.h in Headers */,
-				876C5D3D164C73E60006CB61 /* gxRect.h in Headers */,
-				876C5D3E164C73E60006CB61 /* gxSize.h in Headers */,
-				876C5D3F164C73E60006CB61 /* gxAssert.h in Headers */,
-				876C5D41164C73E60006CB61 /* gxComposite.h in Headers */,
-				876C5D42164C73E60006CB61 /* gxFlags.h in Headers */,
-				876C5D43164C73E60006CB61 /* gxLog.h in Headers */,
-				876C5D44164C73E60006CB61 /* gxObject.h in Headers */,
-				876C5D45164C73E60006CB61 /* gxPaintDC.h in Headers */,
-				876C5D46164C73E60006CB61 /* gxString.h in Headers */,
-				87C7BA7F167FE2F200BB7FE2 /* FastDelegate.h in Headers */,
-				87C7BA81167FE2F200BB7FE2 /* gxEvent.h in Headers */,
-				87C7BA82167FE2F200BB7FE2 /* gxObserver.h in Headers */,
-				87C7BA84167FE2F200BB7FE2 /* gxSubject.h in Headers */,
-				8795356616DA762A006D69FE /* gxScale.h in Headers */,
-				879535C516DA8FC9006D69FE /* gxDivProvider.h in Headers */,
-				879535C716DA8FC9006D69FE /* gxViewUnit.h in Headers */,
-				879535C916DA8FC9006D69FE /* gxViewElement.h in Headers */,
-				879535CB16DA8FC9006D69FE /* gxRootViewElement.h in Headers */,
-				879535CD16DA8FC9006D69FE /* gxScaler.h in Headers */,
-				879535CF16DA8FC9006D69FE /* gxScroller.h in Headers */,
-				879535D116DA8FC9006D69FE /* gxStructural.h in Headers */,
-				879535D316DA8FC9006D69FE /* gxRuler.h in Headers */,
-				879535D516DA8FC9006D69FE /* gxVisual.h in Headers */,
-				879535D716DA8FC9006D69FE /* gxRectangle.h in Headers */,
-				879535D916DA8FC9006D69FE /* gxShape.h in Headers */,
-				879535DA16DA8FC9006D69FE /* gxLightweightControl.h in Headers */,
-				879535DC16DA8FC9006D69FE /* gxLightweightSystem.h in Headers */,
-				879535DD16DA8FC9006D69FE /* gxTransformations.h in Headers */,
-				879535DF16DA8FC9006D69FE /* gxScrollManager.h in Headers */,
-				879535E116DA8FC9006D69FE /* gxZoomManager.h in Headers */,
-				879535E316DA8FC9006D69FE /* gxDcPainter.h in Headers */,
-				879535E516DA8FC9006D69FE /* gxPainter.h in Headers */,
-				879535F016DAB96A006D69FE /* gxLine.h in Headers */,
-				879535F516DAC62E006D69FE /* gxLineConnection.h in Headers */,
-				879535F716DAC6EA006D69FE /* gxConnection.h in Headers */,
-				879535FF16E01DFF006D69FE /* gxChangeNotifier.h in Headers */,
-				8795360516E3A6F3006D69FE /* gxAnchor.h in Headers */,
-				8795361016E3A7FF006D69FE /* gxRectAnchor.h in Headers */,
-				8795361316E3D5D6006D69FE /* gxLayers.h in Headers */,
-				8795361516E3D660006D69FE /* gxLayer.h in Headers */,
-				8795361816E40913006D69FE /* gxLayout.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +481,8 @@
 				8795360816E3A73D006D69FE /* gxAnchor.cpp in Sources */,
 				8795360F16E3A7FF006D69FE /* gxRectAnchor.cpp in Sources */,
 				8795361A16E40F1F006D69FE /* gxLayout.cpp in Sources */,
+				87ABC02316EA9B5000B77D8D /* gxAlign.cpp in Sources */,
+				87ABC02816EAA57D00B77D8D /* gxStretch.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

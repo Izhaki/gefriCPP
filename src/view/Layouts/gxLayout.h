@@ -3,28 +3,19 @@
 
 #include "core/gxObject.h"
 #include "core/geometry/gxGeometry.h"
-#include <map>
 
 #include "core/gxLog.h"
 
-// Forward Declaration
+// Forward Declarations
 class gxViewElement;
 
-// TODO: should this be public as it is at the moment? Shouldn't it be private?
-struct gxLayoutData
-{
-    gxLayoutData( gxViewElement* aElement) : Element( aElement ) { }
-    gxViewElement* Element;
-    gxRect         Rect;
-};
-
+#include "View/Layouts/gxLayoutData.h"
+#include "View/Layouts/Layouters/gxAlign.h"
+#include "View/Layouts/Layouters/gxStretch.h"
 
 class gxLayout : public gxObject
 {
 public:
-    typedef std::list< gxLayoutData* > Data;
-    typedef typename Data::iterator    DataIterator;
-
     // A helper class to find elements in the data list.
     class ElementFinder
     {
@@ -55,14 +46,6 @@ public:
         msMax,
         msFull
     };
-    
-    enum MinorPosition
-    {
-        mpElement,
-        mpStart,
-        mpMiddle,
-        mpEnd
-    };
         
     gxLayout();
     
@@ -78,18 +61,17 @@ public:
 protected:    
     gxViewElement* mViewElement;
     
-    Data mData;
+    gxLayoutData::List mData;
     
-    MinorSize         mMinorSize;
-    MinorPosition     mMinorPosition;
-    MajorDistribution mMajorDistribution;
+    gxStretch::Type    mStretch;
+    gxAlign::Type      mAlign;
+    MajorDistribution  mMajorDistribution;
     
     gxLayoutData* GetDataOf( gxViewElement* aElement );
 private:
     void Init();
     void DoMajorDistribution();
-    void DoMinorSize();
-    void DoMinorPosition();
+//    void DoMinorSize();
 };
 
 #endif //gxLayout_h
