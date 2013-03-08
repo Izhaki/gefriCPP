@@ -151,10 +151,10 @@ void gxLayout::DoMinorSize()
         iHeight = mViewElement->GetInnerBounds().GetHeight();
         
     } else if ( mMinorSize == msMax ) {
+        // Work out the biggest height
         
         gxPix iChildHeight;
         
-        // Find the maximum height
         for ( iData = mData.begin(); iData != mData.end(); ++iData )
         {
             iChild = (*iData)->Element;
@@ -234,6 +234,8 @@ void gxLayout::SetRect( gxViewElement* aViewElement,
                         gxRect         aRect )
 {
     gxLayoutData* iData = GetDataOf( aViewElement );
-    iData->Rect    = aRect;
+    iData->Rect = aRect;
+    
+    aViewElement->Invalidate();
 }
 

@@ -119,6 +119,25 @@ public:
      */
     virtual void TransformToAbsolute( gxRect &aRect );
     
+    /**
+     * @brief Marks the view element and all of its parents as invalid, and
+     * notifies all descendents that their ancestor is now invalid. But calling
+     * InvalidateUp() and InvalidateDown().
+     *
+     * This method is called whenever the size or position of the element
+     * changes, so to let ancestors and descendents a chance to respond to the
+     * change.
+     *
+     * For example, a layout will need to update all children if one changes
+     * position; a Scroller might need to readjust the scrollbar range when a
+     * child grows in size.
+     *
+     * Once invalidation reaches the root view element, it will queue a
+     * validation request in the event loop, which once processed will validate
+     * all invalid figures.
+     */
+    void Invalidate();
+    
     // Layout related methods
     
     void SetLayout( gxLayout* aLayout );
@@ -161,25 +180,6 @@ protected:
     virtual const gxRootViewElement* GetRootViewElement() const;
 
     // Validation related methods
-
-    /**
-     * @brief Marks the view element and all of its parents as invalid, and 
-     * notifies all descendents that their ancestor is now invalid. But calling
-     * InvalidateUp() and InvalidateDown().
-     *
-     * This method is called whenever the size or position of the element
-     * changes, so to let ancestors and descendents a chance to respond to the
-     * change.
-     *
-     * For example, a layout will need to update all children if one changes
-     * position; a Scroller might need to readjust the scrollbar range when a
-     * child grows in size.
-     *
-     * Once invalidation reaches the root view element, it will queue a
-     * validation request in the event loop, which once processed will validate
-     * all invalid figures.
-     */
-    void Invalidate();
 
     /**
      * @brief Marks the view element and all of its parents as invalid.
