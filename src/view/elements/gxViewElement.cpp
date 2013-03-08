@@ -201,12 +201,12 @@ bool gxViewElement::IsRelative()
 
 void gxViewElement::OnAddChild( gxViewElement *aChild )
 {
-    // Newly created children are invalid. So once a child is added try to
-    // revalidate it. If the child is not inserted into a composition which
+    // Newly created children are invalid. So once a child is added, invalidate
+    // the parent. If the child is not inserted into a composition which
     // has root view element at the very top of the hierarchy tree, the view
     // element will remain invalid and therefore will not be repainted as
     // Repaint will return.
-    aChild->Invalidate();
+    Invalidate();
     aChild->Repaint();
 }
 

@@ -67,7 +67,7 @@ void gxVisual::Repaint()
     if ( IsInvalid() )
         return;
     
-    gxRect iBounds = GetBounds();
+    gxRect iBounds = GetOuterBounds();
     Repaint( iBounds );
 }
 
