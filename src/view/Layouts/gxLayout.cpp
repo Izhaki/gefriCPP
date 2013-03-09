@@ -24,17 +24,22 @@ void gxLayout::Layout()
     
     Init();
     
+    bool onMajorAxis = true;
+    
     gxDistribute( mDistribute,
                   mData,
-                  mViewElement->GetInnerBounds() );
+                  mViewElement->GetInnerBounds(),
+                  onMajorAxis );
     
     gxStretch( mStretch,
                mData,
-               mViewElement->GetInnerBounds() );
+               mViewElement->GetInnerBounds(),
+               !onMajorAxis );
     
     gxAlign( mAlign,
              mData,
-             mViewElement->GetInnerBounds() );
+             mViewElement->GetInnerBounds(),
+             !onMajorAxis );
     
 }
 

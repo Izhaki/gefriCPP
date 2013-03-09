@@ -1,9 +1,10 @@
 #include "View/Layouts/Layouters/gxAlign.h"
 #include "View/Elements/gxViewElement.h"
 
-gxAlign::gxAlign( Type               aType,
+gxAlign::gxAlign( const Type         aType,
                   gxLayoutData::List aData,
-                  const gxRect&      aBounds )
+                  const gxRect&      aBounds,
+                  const bool         onMajorAxis )
 {
     if ( aType == None )
         return;
@@ -12,7 +13,7 @@ gxAlign::gxAlign( Type               aType,
     gxRect                   iRect;
     gxViewElement*           iChild;
     gxPix                    iPosition = 0;
-    gxPix                    iContainerHeight = aBounds.GetHeight();
+    gxPix                    iContainerSize = aBounds.GetSize( onMajorAxis );
     
     for ( iData = aData.begin(); iData != aData.end(); ++iData )
     {
@@ -23,11 +24,11 @@ gxAlign::gxAlign( Type               aType,
         if ( aType == Start )
             iPosition = 0;
         else if ( aType == Middle )
-            iPosition = ( iContainerHeight - iRect.GetHeight() ) / 2;
+            iPosition = ( iContainerSize - iRect.GetSize( onMajorAxis ) ) / 2;
         else if ( aType == End )
-            iPosition = iContainerHeight - iRect.GetHeight();
+            iPosition = iContainerSize - iRect.GetSize( onMajorAxis );
                     
-        iRect.SetY( iPosition );
+        iRect.SetPosition( iPosition, onMajorAxis );
         iChild->SetBounds( iRect );
     }
 }

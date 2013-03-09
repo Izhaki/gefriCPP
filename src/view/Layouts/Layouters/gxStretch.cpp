@@ -1,9 +1,10 @@
 #include "View/Layouts/Layouters/gxStretch.h"
 #include "View/Elements/gxViewElement.h"
 
-gxStretch::gxStretch( Type               aType,
+gxStretch::gxStretch( const Type         aType,
                       gxLayoutData::List aData,
-                      const gxRect&      aBounds )
+                      const gxRect&      aBounds,
+                      const bool         onMajorAxis )
 {
     if ( aType == None )
         return;
@@ -11,24 +12,23 @@ gxStretch::gxStretch( Type               aType,
     gxLayoutData::Iterator iData;
     gxRect                 iRect;
     gxViewElement*         iChild;
-    gxPix                  iHeight = 0;
+    gxPix                  iSize = 0;
     
     if ( aType == Full )
     {
         
-        iHeight = aBounds.GetHeight();
+        iSize = aBounds.GetSize( onMajorAxis );
         
     } else if ( aType == Max ) {
-        // Work out the biggest height
+        // Work out the biggest Size
         
-        gxPix iChildHeight;
+        gxPix iChildSize;
         
         for ( iData = aData.begin(); iData != aData.end(); ++iData )
         {
-            iChild = (*iData)->Element;
-            
-            iChildHeight = iChild->GetBounds().GetHeight();
-            iHeight = gxMax( iHeight, iChildHeight );
+            iChild     = (*iData)->Element;            
+            iChildSize = iChild->GetBounds().GetSize( onMajorAxis );
+            iSize      = gxMax( iSize, iChildSize );
         }
         
     }
@@ -37,9 +37,9 @@ gxStretch::gxStretch( Type               aType,
     {
         iChild = (*iData)->Element;
         
-        // TODO: won't be easier if view element had setHeight?
+        // TODO: won't be easier if view element had setSize?
         iRect = iChild->GetBounds();
-        iRect.SetHeight( iHeight );
+        iRect.SetSize( iSize, onMajorAxis );
         iChild->SetBounds( iRect );
     }
     

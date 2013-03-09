@@ -12,9 +12,10 @@ struct gxStretch
         Full
     };
     
-    gxStretch( Type               aType,
+    gxStretch( const Type         aType,
                gxLayoutData::List aData,
-               const gxRect&      aBounds );
+               const gxRect&      aBounds,
+               const bool         onMajorAxis );
 };
 
 #endif //gxStretch_h

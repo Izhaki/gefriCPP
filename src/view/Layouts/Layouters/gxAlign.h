@@ -13,9 +13,10 @@ struct gxAlign
         End
     };
     
-    gxAlign( Type               aType,
+    gxAlign( const Type         aType,
              gxLayoutData::List aData,
-             const gxRect&      aBounds );
+             const gxRect&      aBounds,
+             const bool         onMajorAxis );
 };
 
 #endif //gxAlign_h

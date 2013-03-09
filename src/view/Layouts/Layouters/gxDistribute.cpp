@@ -1,33 +1,34 @@
 #include "View/Layouts/Layouters/gxDistribute.h"
 #include "View/Elements/gxViewElement.h"
 
-gxDistribute::gxDistribute( Type               aType,
+gxDistribute::gxDistribute( const Type         aType,
                             gxLayoutData::List aData,
-                            const gxRect&      aBounds )
+                            const gxRect&      aBounds,
+                            const bool         onMajorAxis )
 {
     gxLayoutData::Iterator iData;
     gxRect                 iRect;
     gxViewElement*         iChild;
-    gxPix                  iChildWidth;
+    gxPix                  iChildSize;
     
-    int   iCount         = aData.size();
-    int   iElementsWidth = 0;
-    gxPix iPosition      = 0;
-    gxPix iSpacing       = 0;
+    int   iCount        = aData.size();
+    int   iElementsSize = 0;
+    gxPix iPosition     = 0;
+    gxPix iSpacing      = 0;
     
-    // Calulate the total width of all elements
+    // Calulate the total size of all elements
     for ( iData = aData.begin(); iData != aData.end(); ++iData )
     {
         iChild = (*iData)->Element;
-        iElementsWidth += iChild->GetBounds().GetWidth();
+        iElementsSize += iChild->GetBounds().GetSize( onMajorAxis );
     }
     
     if ( aType == Middle || aType == End )
     {
-        gxPix iContainerWidth = aBounds.GetWidth();
+        gxPix iContainerSize = aBounds.GetSize( onMajorAxis );
         
         // This is right for mdEnd
-        iPosition = iContainerWidth - iElementsWidth;
+        iPosition = iContainerSize - iElementsSize;
         
         if ( aType == Middle )
             // and that's for mdMiddle
@@ -36,7 +37,7 @@ gxDistribute::gxDistribute( Type               aType,
     
     if ( aType == Full || aType == Equal )
     {
-        gxPix iContainerWidth = aBounds.GetWidth();
+        gxPix iContainerSize = aBounds.GetSize( onMajorAxis );
         int iSpaceCount;
         
         if ( aType == Full )
@@ -53,7 +54,7 @@ gxDistribute::gxDistribute( Type               aType,
             iSpaceCount = iCount + 1;
         }
         
-        iSpacing = ( iContainerWidth - iElementsWidth ) / iSpaceCount;
+        iSpacing = ( iContainerSize - iElementsSize ) / iSpaceCount;
         
         if ( aType == Equal )
             iPosition += iSpacing;
@@ -63,10 +64,10 @@ gxDistribute::gxDistribute( Type               aType,
     {
         iChild = (*iData)->Element;
         
-        iRect       = iChild->GetBounds();
-        iChildWidth = iRect.GetWidth();
+        iRect      = iChild->GetBounds();
+        iChildSize = iRect.GetSize( onMajorAxis );
         
-        iRect.SetX( iPosition );
+        iRect.SetPosition( iPosition, onMajorAxis );
         iChild->SetBounds( iRect );
         
         switch ( aType )
@@ -74,11 +75,11 @@ gxDistribute::gxDistribute( Type               aType,
             case Start:
             case Middle:
             case End:
-                iPosition += iChildWidth;
+                iPosition += iChildSize;
                 break;
             case Full:
             case Equal:
-                iPosition += iChildWidth + iSpacing;
+                iPosition += iChildSize + iSpacing;
                 break;
             default:
                 break;

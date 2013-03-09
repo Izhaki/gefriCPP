@@ -15,9 +15,10 @@ struct gxDistribute
         End
     };
     
-    gxDistribute( Type               aType,
+    gxDistribute( const Type         aType,
                   gxLayoutData::List aData,
-                  const gxRect&      aBounds );
+                  const gxRect&      aBounds,
+                  const bool         onMajorAxis );
 };
 
 #endif //gxDistribute_h

@@ -86,21 +86,47 @@ public:
         return gxPoint(X, Y);
     }
     
+    gxPix GetPosition( bool onMajorAxis )
+    {
+        return onMajorAxis ? GetX() : GetY();
+    }
+    
     void SetPosition( const gxPoint &aPoint )
     {
         X = aPoint.X;
         Y = aPoint.Y;
     }
-
+    
+    void SetPosition( const gxPix aPosition, bool onMajorAxis )
+    {
+        if ( onMajorAxis )
+            X = aPosition;
+        else
+            Y = aPosition;
+    }
+    
     gxSize GetSize() const
     {
         return gxSize( width, height );
+    }
+    
+    gxPix GetSize( bool onMajorAxis ) const
+    {
+        return onMajorAxis ? GetWidth() : GetHeight();
     }
     
     void SetSize( const gxSize &aSize )
     {
         width  = aSize.GetWidth();
         height = aSize.GetHeight();
+    }
+
+    void SetSize( const gxPix aSize, bool onMajorAxis )
+    {
+        if ( onMajorAxis )
+            width  = aSize;
+        else
+            height = aSize;
     }
     
     gxPoint GetCenter() const
