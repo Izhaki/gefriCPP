@@ -1,14 +1,14 @@
 #include "View/Layouts/Layouters/gxAlign.h"
 
 gxAlign::gxAlign( const Type         aType,
-                  gxLayoutData::List aData,
+                  gxConstraints::List aData,
                   const gxRect&      aContainer,
                   const bool         onMajorAxis )
 {
     if ( aType == None )
         return;
     
-    gxLayoutData::Iterator iData;
+    gxConstraints::Iterator iData;
     gxPix                  iPosition = 0;
     gxPix                  iContainerSize = aContainer.GetSize( onMajorAxis );
     

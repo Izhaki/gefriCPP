@@ -6,14 +6,14 @@ class gxViewElement;
 
 #include <list>
 #include "core/geometry/gxGeometry.h"
-#include "View/Layouts/gxRatio.h"
+#include "View/Layouts/Constraints/gxRatio.h"
 
-struct gxLayoutData
+struct gxConstraints
 {
-    typedef std::list< gxLayoutData* > List;
+    typedef std::list< gxConstraints* > List;
     typedef typename List::iterator    Iterator;
     
-    gxLayoutData( gxViewElement* aElement) : Element( aElement ) { }
+    gxConstraints( gxViewElement* aElement) : Element( aElement ) { }
     gxViewElement* Element;
     gxRect         Rect;
     gxRatio        Ratio;

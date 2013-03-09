@@ -1,7 +1,7 @@
 #include "View/Layouts/Layouters/gxDistribute.h"
 
 gxDistribute::gxDistribute( const Type         aType,
-                            gxLayoutData::List aData,
+                            gxConstraints::List aData,
                             const gxRect&      aContainer,
                             const bool         onMajorAxis )
 {
@@ -17,7 +17,7 @@ gxDistribute::gxDistribute( const Type         aType,
     DoDistribute( iType, aData, aContainer, onMajorAxis );
 }
 
-bool gxDistribute::DoSize( gxLayoutData::List aData,
+bool gxDistribute::DoSize( gxConstraints::List aData,
                            const gxRect&      aContainer,
                            const bool         onMajorAxis )
 {
@@ -25,7 +25,7 @@ bool gxDistribute::DoSize( gxLayoutData::List aData,
     int   iTotalPercent = 0;
     int   iTotalFlex    = 0;
     
-    gxLayoutData::Iterator iData;
+    gxConstraints::Iterator iData;
     
     // Work out how much there is from each type of size:
     // Pixels, Percent, Flex
@@ -74,11 +74,11 @@ bool gxDistribute::DoSize( gxLayoutData::List aData,
 
 
 void gxDistribute::DoDistribute( const Type         aType,
-                                 gxLayoutData::List aData,
+                                 gxConstraints::List aData,
                                  const gxRect&      aContainer,
                                  const bool         onMajorAxis )
 {
-    gxLayoutData::Iterator iData;
+    gxConstraints::Iterator iData;
     
     gxPix iPosition = 0;
     gxPix iSpacing  = 0;

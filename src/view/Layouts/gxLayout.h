@@ -9,7 +9,7 @@
 // Forward Declarations
 class gxViewElement;
 
-#include "View/Layouts/gxLayoutData.h"
+#include "View/Layouts/Constraints/gxConstraints.h"
 #include "View/Layouts/Layouters/gxAlign.h"
 #include "View/Layouts/Layouters/gxStretch.h"
 #include "View/Layouts/Layouters/gxDistribute.h"
@@ -42,7 +42,7 @@ public:
     {
     public:
         ElementFinder( gxViewElement* aElement ) : mElement( aElement ) {}
-        bool operator() ( const gxLayoutData* aData ) const
+        bool operator() ( const gxConstraints* aData ) const
         {
             return aData->Element == mElement;
         }
@@ -53,13 +53,13 @@ public:
 protected:    
     gxViewElement* mViewElement;
     
-    gxLayoutData::List mData;
+    gxConstraints::List mData;
     
     gxStretch::Type    mStretch;
     gxAlign::Type      mAlign;
     gxDistribute::Type mDistribute;
     
-    gxLayoutData* GetDataOf( gxViewElement* aElement );
+    gxConstraints* GetDataOf( gxViewElement* aElement );
 
     void Init();
     

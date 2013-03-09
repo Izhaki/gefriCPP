@@ -1,7 +1,7 @@
 #ifndef gxStretch_h
 #define gxStretch_h
 
-#include "View/Layouts/gxLayoutData.h"
+#include "View/Layouts/Constraints/gxConstraints.h"
 
 struct gxStretch
 {
@@ -13,11 +13,11 @@ struct gxStretch
     };
     
     gxStretch( const Type         aType,
-               gxLayoutData::List aData,
+               gxConstraints::List aData,
                const gxRect&      aContainer,
                const bool         onMajorAxis );
     
-    gxPix GetMaxSize( gxLayoutData::List aData,
+    gxPix GetMaxSize( gxConstraints::List aData,
                       const bool         onMajorAxis );
 };
 

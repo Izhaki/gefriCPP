@@ -1,7 +1,7 @@
 #ifndef gxAlign_h
 #define gxAlign_h
 
-#include "View/Layouts/gxLayoutData.h"
+#include "View/Layouts/Constraints/gxConstraints.h"
 
 struct gxAlign
 {
@@ -14,7 +14,7 @@ struct gxAlign
     };
     
     gxAlign( const Type         aType,
-             gxLayoutData::List aData,
+             gxConstraints::List aData,
              const gxRect&      aContainer,
              const bool         onMajorAxis );
 };

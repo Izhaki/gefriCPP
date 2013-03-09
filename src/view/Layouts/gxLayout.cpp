@@ -50,7 +50,7 @@ void gxLayout::Layout()
     
 }
 
-bool IndexCompare( gxLayoutData* aL, gxLayoutData* aR )
+bool IndexCompare( gxConstraints* aL, gxConstraints* aR )
 {
     return aL->Element->GetIndex() < aR->Element->GetIndex();
 }
@@ -62,7 +62,7 @@ void gxLayout::SortElements()
 
 void gxLayout::Init()
 {
-    gxLayoutData::Iterator iData;
+    gxConstraints::Iterator iData;
     
     SortElements();
     
@@ -74,7 +74,7 @@ void gxLayout::Init()
 
 void gxLayout::Apply()
 {
-    gxLayoutData::Iterator iData;
+    gxConstraints::Iterator iData;
     
     for ( iData = mData.begin(); iData != mData.end(); ++iData )
     {
@@ -82,22 +82,22 @@ void gxLayout::Apply()
     }
 }
 
-gxLayoutData* gxLayout::GetDataOf( gxViewElement* aElement )
+gxConstraints* gxLayout::GetDataOf( gxViewElement* aElement )
 {
     // Search for the element in our list.
-    gxLayoutData::Iterator iIter = std::find_if( mData.begin(),
+    gxConstraints::Iterator iIter = std::find_if( mData.begin(),
                                                  mData.end(),
                                                  ElementFinder( aElement ) );
     
     bool          iFound = iIter != mData.end();
-    gxLayoutData* iData;
+    gxConstraints* iData;
     
     if ( iFound )
     {
         iData = *iIter;
     } else {
         // If layout data was not found, create one
-        iData = new gxLayoutData( aElement );
+        iData = new gxConstraints( aElement );
         
         // An initiate the rect using the element's bounds
         iData->Rect = aElement->GetBounds();
@@ -118,7 +118,7 @@ void gxLayout::Add( gxViewElement* aViewElement )
 void gxLayout::SetRect( gxViewElement* aViewElement,
                         gxRect         aRect )
 {
-    gxLayoutData* iData = GetDataOf( aViewElement );
+    gxConstraints* iData = GetDataOf( aViewElement );
     iData->Rect = aRect;
     
     aViewElement->Invalidate();
@@ -127,7 +127,7 @@ void gxLayout::SetRect( gxViewElement* aViewElement,
 void gxLayout::SetPercent( gxViewElement* aViewElement,
                            short          aPercent )
 {
-    gxLayoutData* iData = GetDataOf( aViewElement );
+    gxConstraints* iData = GetDataOf( aViewElement );
     
     iData->Ratio.SetPercent( aPercent );
     
@@ -137,7 +137,7 @@ void gxLayout::SetPercent( gxViewElement* aViewElement,
 void gxLayout::SetFlex( gxViewElement* aViewElement,
                         short          aFlex )
 {
-    gxLayoutData* iData = GetDataOf( aViewElement );
+    gxConstraints* iData = GetDataOf( aViewElement );
     
     iData->Ratio.SetFlex( aFlex );
     

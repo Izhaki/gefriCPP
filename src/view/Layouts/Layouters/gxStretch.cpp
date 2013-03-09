@@ -1,14 +1,14 @@
 #include "View/Layouts/Layouters/gxStretch.h"
 
 gxStretch::gxStretch( const Type         aType,
-                      gxLayoutData::List aData,
+                      gxConstraints::List aData,
                       const gxRect&      aContainer,
                       const bool         onMajorAxis )
 {
     if ( aType == None )
         return;
     
-    gxLayoutData::Iterator iData;
+    gxConstraints::Iterator iData;
     gxRect                 iRect;
     gxPix                  iSize = 0;
     
@@ -26,10 +26,10 @@ gxStretch::gxStretch( const Type         aType,
     
 }
 
-gxPix gxStretch::GetMaxSize( gxLayoutData::List aData,
+gxPix gxStretch::GetMaxSize( gxConstraints::List aData,
                              const bool         onMajorAxis )
 {
-    gxLayoutData::Iterator iData;
+    gxConstraints::Iterator iData;
     gxPix                  iChildSize;    
     gxPix                  iSize = 0;    
     
