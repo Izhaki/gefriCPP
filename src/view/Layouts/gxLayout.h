@@ -26,6 +26,8 @@ public:
     
     // Layout data setters
     
+    void Add( gxViewElement* aViewElement );
+    
     void SetRect( gxViewElement* aViewElement,
                  gxRect         aRect );
     

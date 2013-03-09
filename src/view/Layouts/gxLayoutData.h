@@ -7,6 +7,16 @@ class gxViewElement;
 #include <list>
 #include "core/geometry/gxGeometry.h"
 
+struct gxRationalSize
+{
+    int  Size;
+    
+    enum Unit {
+        Percentage,
+        Flex
+    } mUnit;
+};
+
 struct gxLayoutData
 {
     typedef std::list< gxLayoutData* > List;

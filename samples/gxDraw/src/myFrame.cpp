@@ -138,11 +138,12 @@ void MyFrame::InitGefri()
     
     mHBox->SetLayout( mLayout );
     
-    mF1     = new gxRectangle();
+    mF1     = new gxRectangle( gxRect( 0, 0, 10, 10 ) );
     mF2     = new gxRectangle();
     mF3     = new gxRectangle();
     
-    mLayout->SetRect( mF1, gxRect( 0, 0, 10, 10 ) );
+//    mLayout->SetRect( mF1, gxRect( 0, 0, 10, 10 ) );
+    mLayout->Add( mF1 );
     mLayout->SetRect( mF2, gxRect( 30, 30, 20, 20 ) );
     mLayout->SetRect( mF3, gxRect( 130, 30, 30, 30 ) );
     

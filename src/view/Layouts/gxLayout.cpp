@@ -88,11 +88,23 @@ gxLayoutData* gxLayout::GetDataOf( gxViewElement* aElement )
     {
         iData = *iIter;
     } else {
+        // If layout data was not found, create one
         iData = new gxLayoutData( aElement );
+        
+        // An initiate the rect using the element's bounds
+        iData->Rect = aElement->GetBounds();
+        
+        // Add it to our data list
         mData.push_back( iData );
     }
 
     return iData;
+}
+
+void gxLayout::Add( gxViewElement* aViewElement )
+{
+    // This will do the job - just add the element if it aint already there.
+    GetDataOf( aViewElement );
 }
 
 void gxLayout::SetRect( gxViewElement* aViewElement,
