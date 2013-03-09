@@ -9,6 +9,14 @@ gxLayout::gxLayout()
 {
 }
 
+gxLayout::~gxLayout()
+{
+    // Empty the layout data list
+    while( !mData.empty() ) delete mData.front(), mData.pop_front();
+}
+
+//while(!foo.empty()) delete foo.front(), foo.pop_front();
+
 void gxLayout::SetViewElement( gxViewElement* aViewElement )
 {
     mViewElement = aViewElement;
@@ -20,7 +28,6 @@ void gxLayout::Layout()
         return;
 
     // TODO: Suspend Validation, or use temp rects
-    // Also, shall we cache?
     
     Init();
     
@@ -81,7 +88,6 @@ gxLayoutData* gxLayout::GetDataOf( gxViewElement* aElement )
     {
         iData = *iIter;
     } else {
-        // TODO: we need to delete this when destroying the layout.
         iData = new gxLayoutData( aElement );
         mData.push_back( iData );
     }

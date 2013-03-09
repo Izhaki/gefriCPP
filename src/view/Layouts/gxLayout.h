@@ -17,6 +17,18 @@ class gxViewElement;
 class gxLayout : public gxObject
 {
 public:
+    gxLayout();
+    ~gxLayout();
+    
+    void SetViewElement( gxViewElement* aViewElement );
+    
+    void Layout();
+    
+    // Layout data setters
+    
+    void SetRect( gxViewElement* aViewElement,
+                 gxRect         aRect );
+    
     // A helper class to find elements in the data list.
     class ElementFinder
     {
@@ -29,17 +41,6 @@ public:
     private:
         gxViewElement* mElement;
     };
-        
-    gxLayout();
-    
-    void SetViewElement( gxViewElement* aViewElement );
-    
-    void Layout();
-    
-    // Layout data setters
-    
-    void SetRect( gxViewElement* aViewElement,
-                  gxRect         aRect );
     
 protected:    
     gxViewElement* mViewElement;
