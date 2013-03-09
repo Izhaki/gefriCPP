@@ -65,6 +65,7 @@ protected:
     
     // Sorts the layout data list based on the element index
     void SortElements();
+    void DoLayout();
     void Apply();
 };
 

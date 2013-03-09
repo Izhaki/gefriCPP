@@ -29,25 +29,30 @@ void gxLayout::Layout()
     
     Init();
     
-    bool onMajorAxis = true;
-    
-    gxDistribute( mDistribute,
-                  mData,
-                  mViewElement->GetInnerBounds(),
-                  onMajorAxis );
-    
-    gxStretch( mStretch,
-               mData,
-               mViewElement->GetInnerBounds(),
-               !onMajorAxis );
-    
-    gxAlign( mAlign,
-             mData,
-             mViewElement->GetInnerBounds(),
-             !onMajorAxis );
+    DoLayout();
     
     Apply();
     
+}
+
+void gxLayout::DoLayout()
+{
+    bool onMajorAxis = true;
+    
+    gxDistribute( mDistribute,
+                 mData,
+                 mViewElement->GetInnerBounds(),
+                 onMajorAxis );
+    
+    gxStretch( mStretch,
+              mData,
+              mViewElement->GetInnerBounds(),
+              !onMajorAxis );
+    
+    gxAlign( mAlign,
+            mData,
+            mViewElement->GetInnerBounds(),
+            !onMajorAxis );
 }
 
 bool IndexCompare( gxConstraints* aL, gxConstraints* aR )
