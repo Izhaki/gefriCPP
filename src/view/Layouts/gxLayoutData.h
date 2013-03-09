@@ -6,16 +6,7 @@ class gxViewElement;
 
 #include <list>
 #include "core/geometry/gxGeometry.h"
-
-struct gxRationalSize
-{
-    int  Size;
-    
-    enum Unit {
-        Percentage,
-        Flex
-    } mUnit;
-};
+#include "View/Layouts/gxRatio.h"
 
 struct gxLayoutData
 {
@@ -25,6 +16,8 @@ struct gxLayoutData
     gxLayoutData( gxViewElement* aElement) : Element( aElement ) { }
     gxViewElement* Element;
     gxRect         Rect;
+    gxRatio        Ratio;
+    
     
     // A helper variable for when the layout is calculated/
     gxRect         Bounds;
@@ -32,6 +25,14 @@ struct gxLayoutData
     // Sets the CalcRect to the original rect
     void Reset();
     void Apply();
+    
+    bool  IsPixels()   { return Ratio.IsEmpty(); }
+    bool  IsntPixels() { return Ratio.IsntEmpty(); }
+    bool  IsPercent()  { return Ratio.IsntEmpty() && Ratio.IsPercent(); }
+    bool  IsFlex()     { return Ratio.IsntEmpty() && Ratio.IsFlex(); }
+    gxPix GetFlex()    { return Ratio.GetFlex(); }
+    gxPix GetPercent() { return Ratio.GetPercent(); }
+    
 };
 
 #endif // gxLayoutData_h

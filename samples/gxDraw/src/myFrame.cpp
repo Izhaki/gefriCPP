@@ -146,6 +146,12 @@ void MyFrame::InitGefri()
     mLayout->Add( mF1 );
     mLayout->SetRect( mF2, gxRect( 30, 30, 20, 20 ) );
     mLayout->SetRect( mF3, gxRect( 130, 30, 30, 30 ) );
+
+    mLayout->SetFlex( mF1, 1 );
+//    mLayout->SetFlex( mF2, 1 );
+//    mLayout->SetFlex( mF3, 6 );
+    
+    mLayout->SetPercent( mF3, 50 );
     
     
     mHBox->Add( mF1 );

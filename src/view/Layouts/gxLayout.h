@@ -29,8 +29,14 @@ public:
     void Add( gxViewElement* aViewElement );
     
     void SetRect( gxViewElement* aViewElement,
-                 gxRect         aRect );
+                  gxRect         aRect );
     
+    void SetPercent( gxViewElement* aViewElement,
+                     short          aPercent );
+    
+    void SetFlex( gxViewElement* aViewElement,
+                  short          aFlex );
+        
     // A helper class to find elements in the data list.
     class ElementFinder
     {

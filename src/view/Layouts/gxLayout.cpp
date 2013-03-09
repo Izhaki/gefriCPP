@@ -4,7 +4,7 @@
 gxLayout::gxLayout()
   : mViewElement ( NULL      ),
     mDistribute  ( gxDistribute::Equal ),
-    mStretch     ( gxStretch::Max     ),
+    mStretch     ( gxStretch::None     ),
     mAlign       ( gxAlign::Middle     )
 {
 }
@@ -124,3 +124,22 @@ void gxLayout::SetRect( gxViewElement* aViewElement,
     aViewElement->Invalidate();
 }
 
+void gxLayout::SetPercent( gxViewElement* aViewElement,
+                           short          aPercent )
+{
+    gxLayoutData* iData = GetDataOf( aViewElement );
+    
+    iData->Ratio.SetPercent( aPercent );
+    
+    aViewElement->Invalidate();
+}
+
+void gxLayout::SetFlex( gxViewElement* aViewElement,
+                        short          aFlex )
+{
+    gxLayoutData* iData = GetDataOf( aViewElement );
+    
+    iData->Ratio.SetFlex( aFlex );
+    
+    aViewElement->Invalidate();
+}

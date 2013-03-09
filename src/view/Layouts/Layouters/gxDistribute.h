@@ -19,6 +19,16 @@ struct gxDistribute
                   gxLayoutData::List aData,
                   const gxRect&      aContainer,
                   const bool         onMajorAxis );
+    
+    bool DoSize( gxLayoutData::List aData,
+                 const gxRect&      aContainer,
+                 const bool         onMajorAxis );
+
+    void DoDistribute( const Type         aType,
+                       gxLayoutData::List aData,
+                       const gxRect&      aContainer,
+                       const bool         onMajorAxis );
+    
 };
 
 #endif //gxDistribute_h
