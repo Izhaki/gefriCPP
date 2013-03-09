@@ -25,7 +25,11 @@ private:
     void Initialize();
     void CreateMenuBar();
     void Test();
+    
     void InitGefri();
+    void CreateFaceAndRuller();
+    void CreateBoxLayout();    
+    void CreateBorderLayout();
   
     gxLightweightControl *mLightweightControl;
     gxLightweightSystem  *mLightweightSystem;
@@ -34,23 +38,11 @@ private:
     gxZoomManager    *mZoomManager;
     gxScroller       *mScroller;
     gxScrollManager  *mScrollManager;
-    gxLineConnection *mCon;
-    
-    gxRectAnchor *mFaceAnchor;
-    gxRectAnchor *mRulerAnchor;
     
     gxLayers* mLayers;
     gxLayer*  mConnectionLayer;
     gxLayer*  mPrimaryLayer;
     
-
-    gxViewUnit    *mViewUnit;
-    gxDivProvider *mDivProvider;
-    gxRuler       *mRulerH;
-    
-    // Layout related figures
-    gxRectangle *mHBox, *mF1, *mF2, *mF3;
-    gxBoxLayout *mLayout;
 public:
   MyFrame(wxWindow   *parent,
           wxWindowID id,

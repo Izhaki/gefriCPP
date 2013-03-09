@@ -104,6 +104,26 @@ void MyFrame::InitGefri()
     
     mZoom->Add( mLayers );
     
+    CreateFaceAndRuller();
+//    CreateBoxLayout();
+    CreateBorderLayout();
+    
+    mLightweightSystem->SetContents(mDocument);
+}
+
+void MyFrame::CreateFaceAndRuller()
+{
+    gxViewUnit    *mViewUnit;
+    gxDivProvider *mDivProvider;
+    gxRuler       *mRulerH;
+
+    
+    gxLineConnection *mCon;
+    
+    gxRectAnchor *mFaceAnchor;
+    gxRectAnchor *mRulerAnchor;
+    
+    
     // Face
     mFace = new gxRectangle( gxRect( 40, 40, 100, 100 ) );
     //mLeg = new gxRectangle(gxRect(410, 10, 10, 10));
@@ -117,7 +137,7 @@ void MyFrame::InitGefri()
     mRulerH->SetZoomManager( mZoomManager );
     mRulerH->SetScrollManager( mScrollManager );
     mPrimaryLayer->Add( mRulerH );
-
+    
     // Add the anchors
     mFaceAnchor = new gxRectAnchor();
     mFace->Add( mFaceAnchor );
@@ -129,16 +149,20 @@ void MyFrame::InitGefri()
     mCon->SetDestinationAnchor( mFaceAnchor );
     mCon->SetSourceAnchor( mRulerAnchor );
     mConnectionLayer->Add( mCon );
-    
-    //mZoom->Add(mLeg);
+}
 
-    // Layout figures
+void MyFrame::CreateBoxLayout()
+{
+    // Layout related figures
+    gxRectangle *mHBox, *mF1, *mF2, *mF3;
+    gxBoxLayout *mLayout;
+        
     mHBox   = new gxRectangle( gxRect( 0, 300, 480, 100 ) );
     
     mLayout = new gxBoxLayout( gxDistribute::Equal,
-                               gxStretch::None,
-                               gxAlign::Middle,
-                               true );
+                              gxStretch::None,
+                              gxAlign::Middle,
+                              true );
     
     mHBox->SetLayout( mLayout );
     
@@ -146,14 +170,14 @@ void MyFrame::InitGefri()
     mF2     = new gxRectangle();
     mF3     = new gxRectangle();
     
-//    mLayout->SetRect( mF1, gxRect( 0, 0, 10, 10 ) );
+    //    mLayout->SetRect( mF1, gxRect( 0, 0, 10, 10 ) );
     mLayout->Add( mF1 );
     mLayout->SetRect( mF2, gxRect( 30, 30, 20, 20 ) );
     mLayout->SetRect( mF3, gxRect( 130, 30, 30, 30 ) );
-
+    
     mLayout->SetFlex( mF1, 1 );
-//    mLayout->SetFlex( mF2, 1 );
-//    mLayout->SetFlex( mF3, 6 );
+    //    mLayout->SetFlex( mF2, 1 );
+    //    mLayout->SetFlex( mF3, 6 );
     
     mLayout->SetPercent( mF3, 70 );
     
@@ -163,8 +187,15 @@ void MyFrame::InitGefri()
     mHBox->Add( mF3 );
     
     mPrimaryLayer->Add( mHBox );
+}
+
+void MyFrame::CreateBorderLayout()
+{
+    gxRectangle *mContainer, *mWest, *mCenter, *mEast;
     
-    mLightweightSystem->SetContents(mDocument);
+    mContainer = new gxRectangle( gxRect( 10, 300, 460, 100 ) );
+    
+    mPrimaryLayer->Add( mContainer );
 }
 
 void MyFrame::Initialize()

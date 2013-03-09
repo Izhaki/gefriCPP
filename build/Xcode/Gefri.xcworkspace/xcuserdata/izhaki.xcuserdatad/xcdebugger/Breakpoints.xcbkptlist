@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../samples/gxDraw/src/myFrame.cpp"
-         timestampString = "384554330.164521"
+         timestampString = "384559928.699523"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "224"
-         endingLineNumber = "224"
+         startingLineNumber = "255"
+         endingLineNumber = "255"
          landmarkName = "MyFrame::OnAction2(wxCommandEvent &amp;e)"
          landmarkType = "5">
       </FileBreakpoint>
