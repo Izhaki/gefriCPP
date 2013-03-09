@@ -34,6 +34,7 @@
 		87ABC02316EA9B5000B77D8D /* gxAlign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87ABC02216EA9B5000B77D8D /* gxAlign.cpp */; };
 		87ABC02816EAA57D00B77D8D /* gxStretch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87ABC02716EAA57D00B77D8D /* gxStretch.cpp */; };
 		87ABC02B16EAAE2100B77D8D /* gxDistribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87ABC02A16EAAE2100B77D8D /* gxDistribute.cpp */; };
+		87ABC02D16EB8C8500B77D8D /* gxLayoutData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87ABC02C16EB8C8500B77D8D /* gxLayoutData.cpp */; };
 		87C7BA80167FE2F200BB7FE2 /* gxEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */; };
 		87C7BA83167FE2F200BB7FE2 /* gxSubject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7D167FE2F200BB7FE2 /* gxSubject.cpp */; };
 /* End PBXBuildFile section */
@@ -118,6 +119,7 @@
 		87ABC02716EAA57D00B77D8D /* gxStretch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxStretch.cpp; path = Layouts/Layouters/gxStretch.cpp; sourceTree = "<group>"; };
 		87ABC02916EAAD8800B77D8D /* gxDistribute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxDistribute.h; path = Layouts/Layouters/gxDistribute.h; sourceTree = "<group>"; };
 		87ABC02A16EAAE2100B77D8D /* gxDistribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxDistribute.cpp; path = Layouts/Layouters/gxDistribute.cpp; sourceTree = "<group>"; };
+		87ABC02C16EB8C8500B77D8D /* gxLayoutData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxLayoutData.cpp; path = Layouts/gxLayoutData.cpp; sourceTree = "<group>"; };
 		87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastDelegate.h; sourceTree = "<group>"; };
 		87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxEvent.cpp; sourceTree = "<group>"; };
 		87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxEvent.h; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				8795361716E40913006D69FE /* gxLayout.h */,
 				8795361916E40F1F006D69FE /* gxLayout.cpp */,
 				87ABC02416EA9C7D00B77D8D /* gxLayoutData.h */,
+				87ABC02C16EB8C8500B77D8D /* gxLayoutData.cpp */,
 			);
 			name = Layouts;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				87ABC02316EA9B5000B77D8D /* gxAlign.cpp in Sources */,
 				87ABC02816EAA57D00B77D8D /* gxStretch.cpp in Sources */,
 				87ABC02B16EAAE2100B77D8D /* gxDistribute.cpp in Sources */,
+				87ABC02D16EB8C8500B77D8D /* gxLayoutData.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

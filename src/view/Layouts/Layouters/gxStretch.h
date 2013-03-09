@@ -14,8 +14,11 @@ struct gxStretch
     
     gxStretch( const Type         aType,
                gxLayoutData::List aData,
-               const gxRect&      aBounds,
+               const gxRect&      aContainer,
                const bool         onMajorAxis );
+    
+    gxPix GetMaxSize( gxLayoutData::List aData,
+                      const bool         onMajorAxis );
 };
 
 #endif //gxStretch_h

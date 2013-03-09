@@ -17,7 +17,7 @@ struct gxDistribute
     
     gxDistribute( const Type         aType,
                   gxLayoutData::List aData,
-                  const gxRect&      aBounds,
+                  const gxRect&      aContainer,
                   const bool         onMajorAxis );
 };
 

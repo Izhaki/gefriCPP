@@ -3,12 +3,11 @@
 
 gxDistribute::gxDistribute( const Type         aType,
                             gxLayoutData::List aData,
-                            const gxRect&      aBounds,
+                            const gxRect&      aContainer,
                             const bool         onMajorAxis )
 {
     gxLayoutData::Iterator iData;
     gxRect                 iRect;
-    gxViewElement*         iChild;
     gxPix                  iChildSize;
     
     int   iCount        = aData.size();
@@ -19,13 +18,12 @@ gxDistribute::gxDistribute( const Type         aType,
     // Calulate the total size of all elements
     for ( iData = aData.begin(); iData != aData.end(); ++iData )
     {
-        iChild = (*iData)->Element;
-        iElementsSize += iChild->GetBounds().GetSize( onMajorAxis );
+        iElementsSize += (*iData)->Bounds.GetSize( onMajorAxis );
     }
     
     if ( aType == Middle || aType == End )
     {
-        gxPix iContainerSize = aBounds.GetSize( onMajorAxis );
+        gxPix iContainerSize = aContainer.GetSize( onMajorAxis );
         
         // This is right for mdEnd
         iPosition = iContainerSize - iElementsSize;
@@ -37,20 +35,21 @@ gxDistribute::gxDistribute( const Type         aType,
     
     if ( aType == Full || aType == Equal )
     {
-        gxPix iContainerSize = aBounds.GetSize( onMajorAxis );
+        gxPix iContainerSize = aContainer.GetSize( onMajorAxis );
+        
         int iSpaceCount;
         
         if ( aType == Full )
         {
             // If we're on full distribution the space count is one less than
-            // the elements count ( 3 elements get 2 space).
+            // the elements count (3 elements get 2 space).
             iSpaceCount = iCount - 1;
             
             // ensure there's at least 1 space.
             if ( iSpaceCount < 1 ) iSpaceCount = 1;
         } else {
             // If we're on equal distribution the space count is one more than
-            // the elements count ( 3 elements get 4 space).
+            // the elements count (3 elements get 4 space).
             iSpaceCount = iCount + 1;
         }
         
@@ -62,13 +61,9 @@ gxDistribute::gxDistribute( const Type         aType,
     
     for ( iData = aData.begin(); iData != aData.end(); ++iData )
     {
-        iChild = (*iData)->Element;
+        (*iData)->Bounds.SetPosition( iPosition, onMajorAxis );
         
-        iRect      = iChild->GetBounds();
-        iChildSize = iRect.GetSize( onMajorAxis );
-        
-        iRect.SetPosition( iPosition, onMajorAxis );
-        iChild->SetBounds( iRect );
+        iChildSize = (*iData)->Bounds.GetSize( onMajorAxis );
         
         switch ( aType )
         {

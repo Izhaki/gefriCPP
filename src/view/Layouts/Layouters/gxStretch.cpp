@@ -1,9 +1,8 @@
 #include "View/Layouts/Layouters/gxStretch.h"
-#include "View/Elements/gxViewElement.h"
 
 gxStretch::gxStretch( const Type         aType,
                       gxLayoutData::List aData,
-                      const gxRect&      aBounds,
+                      const gxRect&      aContainer,
                       const bool         onMajorAxis )
 {
     if ( aType == None )
@@ -11,36 +10,34 @@ gxStretch::gxStretch( const Type         aType,
     
     gxLayoutData::Iterator iData;
     gxRect                 iRect;
-    gxViewElement*         iChild;
     gxPix                  iSize = 0;
     
-    if ( aType == Full )
+    switch ( aType )
     {
-        
-        iSize = aBounds.GetSize( onMajorAxis );
-        
-    } else if ( aType == Max ) {
-        // Work out the biggest Size
-        
-        gxPix iChildSize;
-        
-        for ( iData = aData.begin(); iData != aData.end(); ++iData )
-        {
-            iChild     = (*iData)->Element;            
-            iChildSize = iChild->GetBounds().GetSize( onMajorAxis );
-            iSize      = gxMax( iSize, iChildSize );
-        }
-        
-    }
+        case None:                                            break;
+        case Full: iSize = aContainer.GetSize( onMajorAxis ); break;
+        case Max:  iSize = GetMaxSize( aData, onMajorAxis );  break;
+    }    
     
     for ( iData = aData.begin(); iData != aData.end(); ++iData )
     {
-        iChild = (*iData)->Element;
-        
-        // TODO: won't be easier if view element had setSize?
-        iRect = iChild->GetBounds();
-        iRect.SetSize( iSize, onMajorAxis );
-        iChild->SetBounds( iRect );
+        (*iData)->Bounds.SetSize( iSize, onMajorAxis );
     }
     
+}
+
+gxPix gxStretch::GetMaxSize( gxLayoutData::List aData,
+                             const bool         onMajorAxis )
+{
+    gxLayoutData::Iterator iData;
+    gxPix                  iChildSize;    
+    gxPix                  iSize = 0;    
+    
+    for ( iData = aData.begin(); iData != aData.end(); ++iData )
+    {
+        iChildSize = (*iData)->Bounds.GetSize( onMajorAxis );
+        iSize      = gxMax( iSize, iChildSize );
+    }
+    
+    return iSize;
 }

@@ -54,8 +54,12 @@ protected:
     gxDistribute::Type mDistribute;
     
     gxLayoutData* GetDataOf( gxViewElement* aElement );
-private:
+
     void Init();
+    
+    // Sorts the layout data list based on the element index
+    void SortElements();
+    void Apply();
 };
 
 #endif //gxLayout_h

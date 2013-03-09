@@ -4,7 +4,7 @@
 gxLayout::gxLayout()
   : mViewElement ( NULL      ),
     mDistribute  ( gxDistribute::Equal ),
-    mStretch     ( gxStretch::None     ),
+    mStretch     ( gxStretch::Max     ),
     mAlign       ( gxAlign::Middle     )
 {
 }
@@ -26,8 +26,6 @@ void gxLayout::Layout()
 {
     if ( !mViewElement )
         return;
-
-    // TODO: Suspend Validation, or use temp rects
     
     Init();
     
@@ -48,6 +46,8 @@ void gxLayout::Layout()
              mViewElement->GetInnerBounds(),
              !onMajorAxis );
     
+    Apply();
+    
 }
 
 bool IndexCompare( gxLayoutData* aL, gxLayoutData* aR )
@@ -55,22 +55,30 @@ bool IndexCompare( gxLayoutData* aL, gxLayoutData* aR )
     return aL->Element->GetIndex() < aR->Element->GetIndex();
 }
 
+void gxLayout::SortElements()
+{
+    mData.sort( IndexCompare );
+}
+
 void gxLayout::Init()
 {
     gxLayoutData::Iterator iData;
-    gxRect                 iRect;
-    gxViewElement*         iChild;
     
-    // Sort the layout data list based on the element index
-    mData.sort( IndexCompare );
+    SortElements();
     
     for ( iData = mData.begin(); iData != mData.end(); ++iData )
     {
-        iChild = (*iData)->Element;
-        iRect  = (*iData)->Rect;
-        
-        // Reset the elements' rects
-        iChild->SetBounds( iRect );
+        (*iData)->Reset();
+    }
+}
+
+void gxLayout::Apply()
+{
+    gxLayoutData::Iterator iData;
+    
+    for ( iData = mData.begin(); iData != mData.end(); ++iData )
+    {
+        (*iData)->Apply();
     }
 }
 

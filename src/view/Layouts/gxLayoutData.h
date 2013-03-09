@@ -25,6 +25,13 @@ struct gxLayoutData
     gxLayoutData( gxViewElement* aElement) : Element( aElement ) { }
     gxViewElement* Element;
     gxRect         Rect;
+    
+    // A helper variable for when the layout is calculated/
+    gxRect         Bounds;
+    
+    // Sets the CalcRect to the original rect
+    void Reset();
+    void Apply();
 };
 
 #endif // gxLayoutData_h
