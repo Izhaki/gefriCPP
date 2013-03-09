@@ -134,7 +134,11 @@ void MyFrame::InitGefri()
 
     // Layout figures
     mHBox   = new gxRectangle( gxRect( 0, 300, 480, 100 ) );
-    mLayout = new gxLayout();
+    
+    mLayout = new gxBoxLayout( gxDistribute::Equal,
+                               gxStretch::None,
+                               gxAlign::Middle,
+                               true );
     
     mHBox->SetLayout( mLayout );
     
@@ -151,7 +155,7 @@ void MyFrame::InitGefri()
 //    mLayout->SetFlex( mF2, 1 );
 //    mLayout->SetFlex( mF3, 6 );
     
-    mLayout->SetPercent( mF3, 50 );
+    mLayout->SetPercent( mF3, 70 );
     
     
     mHBox->Add( mF1 );

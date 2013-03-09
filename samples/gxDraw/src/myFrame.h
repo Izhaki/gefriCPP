@@ -15,7 +15,7 @@
 #include "View/Connections/gxLineConnection.h"
 #include "View/Elements/Structural/Layers/gxLayers.h"
 #include "View/Elements/Structural/Layers/gxLayer.h"
-#include "View/Layouts/gxLayout.h"
+#include "View/Layouts/gxBoxLayout.h"
 
 #include "core/gxComposite.h"
 
@@ -50,7 +50,7 @@ private:
     
     // Layout related figures
     gxRectangle *mHBox, *mF1, *mF2, *mF3;
-    gxLayout    *mLayout;
+    gxBoxLayout *mLayout;
 public:
   MyFrame(wxWindow   *parent,
           wxWindowID id,

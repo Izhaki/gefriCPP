@@ -2,10 +2,14 @@
 #include "View/Layouts/gxLayout.h"
 
 gxLayout::gxLayout()
-  : mViewElement ( NULL      ),
-    mDistribute  ( gxDistribute::Equal ),
-    mStretch     ( gxStretch::None     ),
-    mAlign       ( gxAlign::Middle     )
+  : mViewElement ( NULL ),
+    mOnMajorAxis ( true )
+{
+}
+
+gxLayout::gxLayout( bool aOnMajorAxis )
+: mViewElement ( NULL         ),
+  mOnMajorAxis ( aOnMajorAxis )
 {
 }
 
@@ -14,8 +18,6 @@ gxLayout::~gxLayout()
     // Empty the layout data list
     while( !mData.empty() ) delete mData.front(), mData.pop_front();
 }
-
-//while(!foo.empty()) delete foo.front(), foo.pop_front();
 
 void gxLayout::SetViewElement( gxViewElement* aViewElement )
 {
@@ -33,26 +35,6 @@ void gxLayout::Layout()
     
     Apply();
     
-}
-
-void gxLayout::DoLayout()
-{
-    bool onMajorAxis = true;
-    
-    gxDistribute( mDistribute,
-                 mData,
-                 mViewElement->GetInnerBounds(),
-                 onMajorAxis );
-    
-    gxStretch( mStretch,
-              mData,
-              mViewElement->GetInnerBounds(),
-              !onMajorAxis );
-    
-    gxAlign( mAlign,
-            mData,
-            mViewElement->GetInnerBounds(),
-            !onMajorAxis );
 }
 
 bool IndexCompare( gxConstraints* aL, gxConstraints* aR )
