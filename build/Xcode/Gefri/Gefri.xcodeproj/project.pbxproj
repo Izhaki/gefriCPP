@@ -36,6 +36,7 @@
 		87ABC02B16EAAE2100B77D8D /* gxDistribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87ABC02A16EAAE2100B77D8D /* gxDistribute.cpp */; };
 		87ABC03116EBC8D200B77D8D /* gxConstraints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87ABC03016EBC8D200B77D8D /* gxConstraints.cpp */; };
 		87ABC03616EBCCC300B77D8D /* gxBoxLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87ABC03516EBCCC200B77D8D /* gxBoxLayout.cpp */; };
+		87ABC03916EBEBDD00B77D8D /* gxBorderLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87ABC03816EBEBDD00B77D8D /* gxBorderLayout.cpp */; };
 		87C7BA80167FE2F200BB7FE2 /* gxEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */; };
 		87C7BA83167FE2F200BB7FE2 /* gxSubject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7D167FE2F200BB7FE2 /* gxSubject.cpp */; };
 /* End PBXBuildFile section */
@@ -124,6 +125,9 @@
 		87ABC03316EBC8ED00B77D8D /* gxRatio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxRatio.h; path = Layouts/Constraints/gxRatio.h; sourceTree = "<group>"; };
 		87ABC03416EBCCAE00B77D8D /* gxBoxLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxBoxLayout.h; path = Layouts/gxBoxLayout.h; sourceTree = "<group>"; };
 		87ABC03516EBCCC200B77D8D /* gxBoxLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxBoxLayout.cpp; path = Layouts/gxBoxLayout.cpp; sourceTree = "<group>"; };
+		87ABC03716EBEB8000B77D8D /* gxBorderLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxBorderLayout.h; path = Layouts/gxBorderLayout.h; sourceTree = "<group>"; };
+		87ABC03816EBEBDD00B77D8D /* gxBorderLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxBorderLayout.cpp; path = Layouts/gxBorderLayout.cpp; sourceTree = "<group>"; };
+		87ABC03A16EBEE0100B77D8D /* gxRegion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxRegion.h; path = Layouts/Constraints/gxRegion.h; sourceTree = "<group>"; };
 		87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastDelegate.h; sourceTree = "<group>"; };
 		87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxEvent.cpp; sourceTree = "<group>"; };
 		87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxEvent.h; sourceTree = "<group>"; };
@@ -377,6 +381,8 @@
 				8795361916E40F1F006D69FE /* gxLayout.cpp */,
 				87ABC03416EBCCAE00B77D8D /* gxBoxLayout.h */,
 				87ABC03516EBCCC200B77D8D /* gxBoxLayout.cpp */,
+				87ABC03716EBEB8000B77D8D /* gxBorderLayout.h */,
+				87ABC03816EBEBDD00B77D8D /* gxBorderLayout.cpp */,
 			);
 			name = Layouts;
 			sourceTree = "<group>";
@@ -400,6 +406,7 @@
 				87ABC03216EBC8ED00B77D8D /* gxConstraints.h */,
 				87ABC03016EBC8D200B77D8D /* gxConstraints.cpp */,
 				87ABC03316EBC8ED00B77D8D /* gxRatio.h */,
+				87ABC03A16EBEE0100B77D8D /* gxRegion.h */,
 			);
 			name = Constraints;
 			sourceTree = "<group>";
@@ -509,6 +516,7 @@
 				87ABC02B16EAAE2100B77D8D /* gxDistribute.cpp in Sources */,
 				87ABC03116EBC8D200B77D8D /* gxConstraints.cpp in Sources */,
 				87ABC03616EBCCC300B77D8D /* gxBoxLayout.cpp in Sources */,
+				87ABC03916EBEBDD00B77D8D /* gxBorderLayout.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

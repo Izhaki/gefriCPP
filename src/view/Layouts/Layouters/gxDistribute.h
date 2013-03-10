@@ -15,19 +15,19 @@ struct gxDistribute
         End
     };
     
-    gxDistribute( const Type         aType,
+    gxDistribute( const Type          aType,
                   gxConstraints::List aData,
-                  const gxRect&      aContainer,
-                  const bool         onMajorAxis );
+                  const gxRect&       aContainer,
+                  const bool          onMajorAxis );
     
     bool DoSize( gxConstraints::List aData,
-                 const gxRect&      aContainer,
-                 const bool         onMajorAxis );
+                 const gxRect&       aContainer,
+                 const bool          onMajorAxis );
 
-    void DoDistribute( const Type         aType,
+    void DoDistribute( const Type          aType,
                        gxConstraints::List aData,
-                       const gxRect&      aContainer,
-                       const bool         onMajorAxis );
+                       const gxRect&       aContainer,
+                       const bool          onMajorAxis );
     
 };
 

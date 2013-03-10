@@ -97,6 +97,12 @@ protected:
     gxConstraints* GetDataOf( gxViewElement* aElement );
 
     /**
+     * @brief Performs the actual layout. An abstract method that subclasses
+     * will implement.
+     */
+    virtual void DoLayout() = 0;
+    
+    /**
      * @brief Initialize the contstaint list, by sorting all view elements to
      * be laid out and applying the initial constraint rect.
      *
@@ -109,13 +115,6 @@ protected:
      */
     void SortElements();
     
-    /**
-     * @brief Performs the actual layout. An abstract method that subclasses
-     * will implement.
-     *
-     */
-    virtual void DoLayout() = 0;
-
     /**
      * @brief Applies the calculated bounds to the various view elements.
      * Called when all layout operations are completed.

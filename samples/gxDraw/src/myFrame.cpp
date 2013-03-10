@@ -191,9 +191,30 @@ void MyFrame::CreateBoxLayout()
 
 void MyFrame::CreateBorderLayout()
 {
-    gxRectangle *mContainer, *mWest, *mCenter, *mEast;
+    gxRectangle *mContainer, *mCenter, *mNorth, *mSouth, *mWest, *mEast;
+    gxBorderLayout *mBorderLayout;
     
     mContainer = new gxRectangle( gxRect( 10, 300, 460, 100 ) );
+    mBorderLayout = new gxBorderLayout( false );
+    mContainer->SetLayout( mBorderLayout );
+    
+    mNorth  = new gxRectangle( gxSize( 50,20 ) );
+    mCenter = new gxRectangle();
+    mSouth  = new gxRectangle( gxSize( 50,20 ) );
+    mWest   = new gxRectangle( gxSize( 50,20 ) );
+    mEast   = new gxRectangle( gxSize( 50,20 ) );
+    
+    mBorderLayout->SetRegion( mNorth,  gxRegion::North );
+    mBorderLayout->SetRegion( mCenter, gxRegion::Center );
+    mBorderLayout->SetRegion( mSouth,  gxRegion::South );
+    mBorderLayout->SetRegion( mWest,   gxRegion::West );
+    mBorderLayout->SetRegion( mEast,   gxRegion::East );
+    
+    mContainer->Add( mNorth );
+    mContainer->Add( mCenter );
+    mContainer->Add( mSouth );
+    mContainer->Add( mWest );
+    mContainer->Add( mEast );
     
     mPrimaryLayer->Add( mContainer );
 }

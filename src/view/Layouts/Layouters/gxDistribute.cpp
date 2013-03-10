@@ -73,10 +73,10 @@ bool gxDistribute::DoSize( gxConstraints::List aData,
 }
 
 
-void gxDistribute::DoDistribute( const Type         aType,
+void gxDistribute::DoDistribute( const Type          aType,
                                  gxConstraints::List aData,
-                                 const gxRect&      aContainer,
-                                 const bool         onMajorAxis )
+                                 const gxRect&       aContainer,
+                                 const bool          onMajorAxis )
 {
     gxConstraints::Iterator iData;
     

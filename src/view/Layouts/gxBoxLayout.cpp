@@ -5,16 +5,22 @@ gxBoxLayout::gxBoxLayout()
   : mDistribute ( gxDistribute::Element ),
     mStretch    ( gxStretch::None       ),
     mAlign      ( gxAlign::None         )
-{
-}
+{}
 
 gxBoxLayout::gxBoxLayout( bool aOnMajorAxis )
   : gxLayout    ( aOnMajorAxis ),
     mDistribute ( gxDistribute::Element ),
     mStretch    ( gxStretch::None       ),
     mAlign      ( gxAlign::None         )
-{
-}
+{}
+
+gxBoxLayout::gxBoxLayout( gxDistribute::Type aDistribute,
+                         gxStretch::Type    aStretch,
+                         gxAlign::Type      aAlign )
+  : mDistribute ( aDistribute  ),
+    mStretch    ( aStretch     ),
+    mAlign      ( aAlign       )
+{}
 
 gxBoxLayout::gxBoxLayout( gxDistribute::Type aDistribute,
                           gxStretch::Type    aStretch,
@@ -24,28 +30,32 @@ gxBoxLayout::gxBoxLayout( gxDistribute::Type aDistribute,
     mStretch    ( aStretch     ),
     mAlign      ( aAlign       ),
     gxLayout    ( aOnMajorAxis )
-{
-    
-}
-
-
+{}
 
 void gxBoxLayout::DoLayout()
 {
-    bool onMajorAxis = true;
+    gxRect iContainerBounds = mViewElement->GetInnerBounds();
     
+    DoLayout( iContainerBounds, mData, mOnMajorAxis );
+}
+
+void gxBoxLayout::DoLayout( gxRect&             aContainer,
+                            gxConstraints::List aConstraints,
+                            bool                aOnMajorAxis  )
+{
+
     gxDistribute( mDistribute,
-                  mData,
-                  mViewElement->GetInnerBounds(),
-                  onMajorAxis );
+                  aConstraints,
+                  aContainer,
+                  aOnMajorAxis );
     
     gxStretch( mStretch,
-               mData,
-               mViewElement->GetInnerBounds(),
-               !onMajorAxis );
+               aConstraints,
+               aContainer,
+               !aOnMajorAxis );
     
     gxAlign( mAlign,
-             mData,
-             mViewElement->GetInnerBounds(),
-             !onMajorAxis );
+             aConstraints,
+             aContainer,
+             !aOnMajorAxis );
 }

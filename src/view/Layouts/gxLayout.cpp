@@ -1,5 +1,5 @@
-#include "View/Elements/gxViewElement.h"
 #include "View/Layouts/gxLayout.h"
+#include "View/Elements/gxViewElement.h"
 
 gxLayout::gxLayout()
   : mViewElement ( NULL ),
@@ -73,10 +73,10 @@ gxConstraints* gxLayout::GetDataOf( gxViewElement* aElement )
 {
     // Search for the element in our list.
     gxConstraints::Iterator iIter = std::find_if( mData.begin(),
-                                                 mData.end(),
-                                                 ElementFinder( aElement ) );
+                                                  mData.end(),
+                                                  ElementFinder( aElement ) );
     
-    bool          iFound = iIter != mData.end();
+    bool           iFound = iIter != mData.end();
     gxConstraints* iData;
     
     if ( iFound )
@@ -116,7 +116,7 @@ void gxLayout::SetPercent( gxViewElement* aViewElement,
 {
     gxConstraints* iData = GetDataOf( aViewElement );
     
-    iData->Ratio.SetPercent( aPercent );
+    iData->SetPercent( aPercent );
     
     aViewElement->Invalidate();
 }
@@ -126,7 +126,7 @@ void gxLayout::SetFlex( gxViewElement* aViewElement,
 {
     gxConstraints* iData = GetDataOf( aViewElement );
     
-    iData->Ratio.SetFlex( aFlex );
+    iData->SetFlex( aFlex );
     
     aViewElement->Invalidate();
 }

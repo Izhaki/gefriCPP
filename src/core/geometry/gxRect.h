@@ -86,7 +86,7 @@ public:
         return gxPoint(X, Y);
     }
     
-    gxPix GetPosition( bool onMajorAxis )
+    gxPix GetPosition( const bool onMajorAxis ) const
     {
         return onMajorAxis ? GetX() : GetY();
     }
@@ -230,6 +230,13 @@ public:
         return r;
     }
 
+    void Translate( gxPix d,
+                    bool  onMajorAxis )
+    {
+        onMajorAxis ? X += d : Y += d;
+    }
+    
+    
     void Translate( gxPix dx,
                     gxPix dy )
     {

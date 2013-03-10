@@ -16,6 +16,7 @@
 #include "View/Elements/Structural/Layers/gxLayers.h"
 #include "View/Elements/Structural/Layers/gxLayer.h"
 #include "View/Layouts/gxBoxLayout.h"
+#include "View/Layouts/gxBorderLayout.h"
 
 #include "core/gxComposite.h"
 

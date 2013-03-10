@@ -7,6 +7,7 @@ class gxViewElement;
 #include <list>
 #include "core/geometry/gxGeometry.h"
 #include "View/Layouts/Constraints/gxRatio.h"
+#include "View/Layouts/Constraints/gxRegion.h"
 
 /**
  * @brief A class representing extra details needed to layout view elements.
@@ -32,6 +33,8 @@ struct gxConstraints
     // The size of the element in percent or flex.
     gxRatio        Ratio;
     
+    // The region of the element in a border layout
+    gxRegion       Region;
     
     // A helper variable for used when the layout is being calculated.
     // Layouts only change the bounds of the view element when all layout
@@ -57,6 +60,9 @@ struct gxConstraints
     bool  IsFlex()     { return Ratio.IsntEmpty() && Ratio.IsFlex(); }
     gxPix GetFlex()    { return Ratio.GetFlex(); }
     gxPix GetPercent() { return Ratio.GetPercent(); }
+    
+    void  SetFlex   ( short aFlex    ) { Ratio.SetFlex   ( aFlex );    }
+    void  SetPercent( short aPercent ) { Ratio.SetPercent( aPercent ); }
     
 };
 
