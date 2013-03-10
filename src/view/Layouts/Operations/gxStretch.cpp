@@ -1,4 +1,4 @@
-#include "View/Layouts/Layouters/gxStretch.h"
+#include "View/Layouts/Operations/gxStretch.h"
 
 gxStretch::gxStretch( const Type          aType,
                       gxConstraints::List aConstraints,
@@ -13,8 +13,8 @@ gxStretch::gxStretch( const Type          aType,
     
     switch ( aType )
     {
-        case None:                                            break;
-        case Full: iSize = aContainer.GetSize( onMajorAxis ); break;
+        case None:                                                   break;
+        case Full: iSize = aContainer.GetSize( onMajorAxis );        break;
         case Max:  iSize = GetMaxSize( aConstraints, onMajorAxis );  break;
     }
     

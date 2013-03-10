@@ -1,4 +1,4 @@
-#include "View/Layouts/Layouters/gxAlign.h"
+#include "View/Layouts/Operations/gxAlign.h"
 
 gxAlign::gxAlign( const Type          aType,
                   gxConstraints::List aConstraints,

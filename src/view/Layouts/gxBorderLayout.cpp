@@ -1,8 +1,6 @@
 #include "View/Layouts/gxBorderLayout.h"
 #include "View/Elements/gxViewElement.h"
-#include "View/Layouts/Layouters/gxDistribute.h"
-#include "View/Layouts/Layouters/gxStretch.h"
-#include "View/Layouts/Layouters/gxAlign.h"
+#include "View/Layouts/Operations/gxLayoutOperations.h"
 #include "View/Layouts/gxBoxLayout.h"
 
 gxBorderLayout::gxBorderLayout()

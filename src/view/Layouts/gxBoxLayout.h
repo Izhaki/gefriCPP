@@ -2,9 +2,7 @@
 #define gxBoxLayout_h
 
 #include "View/Layouts/gxLayout.h"
-#include "View/Layouts/Layouters/gxDistribute.h"
-#include "View/Layouts/Layouters/gxStretch.h"
-#include "View/Layouts/Layouters/gxAlign.h"
+#include "View/Layouts/Operations/gxLayoutOperations.h"
 
 class gxBoxLayout : public gxLayout
 {

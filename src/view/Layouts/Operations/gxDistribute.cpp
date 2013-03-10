@@ -1,4 +1,4 @@
-#include "View/Layouts/Layouters/gxDistribute.h"
+#include "View/Layouts/Operations/gxDistribute.h"
 
 gxDistribute::gxDistribute( const Type          aType,
                             gxConstraints::List aConstraints,
