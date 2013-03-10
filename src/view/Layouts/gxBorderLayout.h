@@ -17,11 +17,15 @@ public:
 protected:
     virtual void DoLayout();
 private:
-    void AddConstraints( gxConstraints::List &aFiltered,
-                         bool aOnMajorAxis );
+    void AddConstraints( gxConstraints::List& aFiltered,
+                         bool                 aOnMajorAxis );
         
-    void AddRegionConstraints( gxRegion aRegion,
-                               gxConstraints::List &aFiltered );
+    void AddRegionConstraints( gxRegion             aRegion,
+                               gxConstraints::List& aFiltered );
+    
+    void LayoutAxis( gxConstraints::List& aFiltered,
+                     gxRect&              aBounds,
+                     bool                 aOnMajorAxis );
     
     gxConstraints* GetCenterConstraints();
 };
