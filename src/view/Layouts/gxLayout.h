@@ -90,11 +90,11 @@ public:
     
 protected:    
     gxViewElement*      mViewElement;
-    gxConstraints::List mData;
+    gxConstraints::List mConstraints;
     bool                mOnMajorAxis;
     
         
-    gxConstraints* GetDataOf( gxViewElement* aElement );
+    gxConstraints* GetConstraints( gxViewElement* aElement );
 
     /**
      * @brief Performs the actual layout. An abstract method that subclasses
@@ -113,7 +113,7 @@ protected:
      * @brief Sorts the constraint list based on the elements' index.
      *
      */
-    void SortElements();
+    void SortConstraints();
     
     /**
      * @brief Applies the calculated bounds to the various view elements.

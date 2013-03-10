@@ -36,7 +36,7 @@ void gxBoxLayout::DoLayout()
 {
     gxRect iContainerBounds = mViewElement->GetInnerBounds();
     
-    DoLayout( iContainerBounds, mData, mOnMajorAxis );
+    DoLayout( iContainerBounds, mConstraints, mOnMajorAxis );
 }
 
 void gxBoxLayout::DoLayout( gxRect&             aContainer,

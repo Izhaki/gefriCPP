@@ -16,7 +16,10 @@ gxLayout::gxLayout( bool aOnMajorAxis )
 gxLayout::~gxLayout()
 {
     // Empty the layout data list
-    while( !mData.empty() ) delete mData.front(), mData.pop_front();
+    while( !mConstraints.empty() )
+    {
+        delete mConstraints.front(), mConstraints.pop_front();
+    }
 }
 
 void gxLayout::SetViewElement( gxViewElement* aViewElement )
@@ -42,71 +45,75 @@ bool IndexCompare( gxConstraints* aL, gxConstraints* aR )
     return aL->Element->GetIndex() < aR->Element->GetIndex();
 }
 
-void gxLayout::SortElements()
+void gxLayout::SortConstraints()
 {
-    mData.sort( IndexCompare );
+    mConstraints.sort( IndexCompare );
 }
 
 void gxLayout::Init()
 {
-    gxConstraints::Iterator iData;
+    gxConstraints::Iterator iConstraints;
     
-    SortElements();
+    SortConstraints();
     
-    for ( iData = mData.begin(); iData != mData.end(); ++iData )
+    for ( iConstraints = mConstraints.begin();
+          iConstraints != mConstraints.end();
+          ++iConstraints )
     {
-        (*iData)->Reset();
+        (*iConstraints)->Reset();
     }
 }
 
 void gxLayout::Apply()
 {
-    gxConstraints::Iterator iData;
+    gxConstraints::Iterator iConstraints;
     
-    for ( iData = mData.begin(); iData != mData.end(); ++iData )
+    for ( iConstraints = mConstraints.begin();
+          iConstraints != mConstraints.end();
+          ++iConstraints )
     {
-        (*iData)->Apply();
+        (*iConstraints)->Apply();
     }
 }
 
-gxConstraints* gxLayout::GetDataOf( gxViewElement* aElement )
+gxConstraints* gxLayout::GetConstraints( gxViewElement* aElement )
 {
     // Search for the element in our list.
-    gxConstraints::Iterator iIter = std::find_if( mData.begin(),
-                                                  mData.end(),
+    gxConstraints::Iterator iIter = std::find_if( mConstraints.begin(),
+                                                  mConstraints.end(),
                                                   ElementFinder( aElement ) );
     
-    bool           iFound = iIter != mData.end();
-    gxConstraints* iData;
+    bool           iFound = iIter != mConstraints.end();
+    gxConstraints* iConstraints;
     
     if ( iFound )
     {
-        iData = *iIter;
+        iConstraints = *iIter;
     } else {
         // If layout data was not found, create one
-        iData = new gxConstraints( aElement );
+        iConstraints = new gxConstraints( aElement );
         
         // An initiate the rect using the element's bounds
-        iData->Rect = aElement->GetBounds();
+        iConstraints->Rect = aElement->GetBounds();
         
         // Add it to our data list
-        mData.push_back( iData );
+        mConstraints.push_back( iConstraints );
     }
 
-    return iData;
+    return iConstraints;
 }
 
 void gxLayout::Add( gxViewElement* aViewElement )
 {
     // This will do the job - just add the element if it aint already there.
-    GetDataOf( aViewElement );
+    GetConstraints( aViewElement );
 }
 
 void gxLayout::SetRect( gxViewElement* aViewElement,
                         gxRect         aRect )
 {
-    gxConstraints* iData = GetDataOf( aViewElement );
-    iData->Rect = aRect;
+    gxConstraints* iConstraints = GetConstraints( aViewElement );
+    iConstraints->Rect = aRect;
     
     aViewElement->Invalidate();
 }
@@ -114,9 +121,9 @@ void gxLayout::SetRect( gxViewElement* aViewElement,
 void gxLayout::SetPercent( gxViewElement* aViewElement,
                            short          aPercent )
 {
-    gxConstraints* iData = GetDataOf( aViewElement );
+    gxConstraints* iConstraints = GetConstraints( aViewElement );
     
-    iData->SetPercent( aPercent );
+    iConstraints->SetPercent( aPercent );
     
     aViewElement->Invalidate();
 }
@@ -124,9 +131,9 @@ void gxLayout::SetPercent( gxViewElement* aViewElement,
 void gxLayout::SetFlex( gxViewElement* aViewElement,
                         short          aFlex )
 {
-    gxConstraints* iData = GetDataOf( aViewElement );
+    gxConstraints* iConstraints = GetConstraints( aViewElement );
     
-    iData->SetFlex( aFlex );
+    iConstraints->SetFlex( aFlex );
     
     aViewElement->Invalidate();
 }

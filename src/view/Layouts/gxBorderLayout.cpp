@@ -15,12 +15,19 @@ gxBorderLayout::gxBorderLayout( bool aOnMajorAxis )
 
 void gxBorderLayout::DoLayout()
 {
-    // TODO: ensure there's a center region and only 1.
+    // Get the center constrainst. This will also raise assertion if there
+    // isn't one, or if there's more than 1.
     gxConstraints* iCenterConstraints = GetCenterConstraints();
     
     if ( !iCenterConstraints )
         return;
     
+    // The center is always flex 1, unless the user has set it higher
+    if ( iCenterConstraints->GetFlex() == 0 )
+        iCenterConstraints->SetFlex( 1 );
+    
+    
+    // We'll be using this box layout to help with the layouting
     gxBoxLayout iBoxLayout( gxDistribute::Start,
                             gxStretch::Full,
                             gxAlign::Start );
@@ -32,7 +39,7 @@ void gxBorderLayout::DoLayout()
 
     // First do major axis layout
     {
-        AddMajorElements( iFiltered );
+        AddConstraints( iFiltered, mOnMajorAxis );
     
         iBounds = mViewElement->GetInnerBounds();
     
@@ -44,7 +51,7 @@ void gxBorderLayout::DoLayout()
     
     // Do the minor axis layout
     {
-        AddMinorElements( iFiltered );
+        AddConstraints( iFiltered, !mOnMajorAxis );
     
         iBounds = iCenterConstraints->Bounds;
     
@@ -58,27 +65,28 @@ void gxBorderLayout::DoLayout()
         // Layout, we can use it to find the correct offset
         gxPix iOldCenterPosition = iBounds.GetPosition( mOnMajorAxis );
     
-        gxConstraints::Iterator iData;
+        gxConstraints::Iterator iConstraints;
     
-        for ( iData = iFiltered.begin(); iData != iFiltered.end(); ++iData )
+        for ( iConstraints = iFiltered.begin(); iConstraints != iFiltered.end(); ++iConstraints )
         {
-            (*iData)->Bounds.Translate( iOldCenterPosition, mOnMajorAxis );
+            (*iConstraints)->Bounds.Translate( iOldCenterPosition, mOnMajorAxis );
         }
     }
- 
 }
 
 gxConstraints* gxBorderLayout::GetCenterConstraints()
 {
-    gxConstraints::Iterator iData;
+    gxConstraints::Iterator iConstraints;
     gxConstraints*          iResult = NULL;
     short                   iFound  = 0;
     
-    for ( iData = mData.begin(); iData != mData.end(); ++iData )
+    for ( iConstraints = mConstraints.begin();
+          iConstraints != mConstraints.end();
+          ++iConstraints )
     {
-        if ( (*iData)->Region == gxRegion::Center )
+        if ( (*iConstraints)->Region == gxRegion::Center )
         {
-            iResult = *iData;
+            iResult = *iConstraints;
             iFound++;
         }
     }
@@ -89,55 +97,34 @@ gxConstraints* gxBorderLayout::GetCenterConstraints()
     return iResult;
 }
 
-void gxBorderLayout::AddMajorElements( gxConstraints::List &aFiltered )
+void gxBorderLayout::AddConstraints( gxConstraints::List &aFiltered,
+                                     bool aOnMajorAxis )
 {
     // Add the start regions
-    gxRegion iStartRegion = mOnMajorAxis ? gxRegion::West : gxRegion::North;
-    AddRegionElements( iStartRegion, aFiltered );
+    gxRegion iStartRegion = aOnMajorAxis ? gxRegion::West : gxRegion::North;
+    AddRegionConstraints( iStartRegion, aFiltered );
     
-    // Now add the center region
-    {
-        AddRegionElements( gxRegion::Center, aFiltered );
-    
-        // TODO: move this to Center dealing
-        // Get the center constraints
-        gxConstraints* iCenter = aFiltered.back();
-        
-        // The center is always flex 1, unless the user has set it to higher
-        if ( iCenter->GetFlex() == 0 )
-            iCenter->SetFlex( 1 );
-    }
+    // Add the center
+    AddRegionConstraints( gxRegion::Center, aFiltered );
     
     // Add the end regions
-    gxRegion iEndRegion = mOnMajorAxis ? gxRegion::East : gxRegion::South;
-    AddRegionElements( iEndRegion, aFiltered );
-}
-
-void gxBorderLayout::AddMinorElements( gxConstraints::List &aFiltered )
-{
-    // Add the start regions
-    gxRegion iStartRegion = !mOnMajorAxis ? gxRegion::West : gxRegion::North;
-    AddRegionElements( iStartRegion, aFiltered );
-    
-    // Now add the center region
-    AddRegionElements( gxRegion::Center, aFiltered );
-            
-    // Add the end regions
-    gxRegion iEndRegion = !mOnMajorAxis ? gxRegion::East : gxRegion::South;
-    AddRegionElements( iEndRegion, aFiltered );    
+    gxRegion iEndRegion = aOnMajorAxis ? gxRegion::East : gxRegion::South;
+    AddRegionConstraints( iEndRegion, aFiltered );    
 }
 
 
-void gxBorderLayout::AddRegionElements( gxRegion aRegion,
-                                        gxConstraints::List &aFiltered )
+void gxBorderLayout::AddRegionConstraints( gxRegion aRegion,
+                                           gxConstraints::List &aFiltered )
 {
-    gxConstraints::Iterator iData;
+    gxConstraints::Iterator iConstraints;
     
-    for ( iData = mData.begin(); iData != mData.end(); ++iData )
+    for ( iConstraints = mConstraints.begin();
+          iConstraints != mConstraints.end();
+          ++iConstraints )
     {
-        if ( (*iData)->Region == aRegion )
+        if ( (*iConstraints)->Region == aRegion )
         {
-            aFiltered.push_back( *iData );
+            aFiltered.push_back( *iConstraints );
         }
     }    
 }
@@ -145,9 +132,9 @@ void gxBorderLayout::AddRegionElements( gxRegion aRegion,
 void gxBorderLayout::SetRegion( gxViewElement* aViewElement,
                                 gxRegion       aRegion )
 {
-    gxConstraints* iData = GetDataOf( aViewElement );
+    gxConstraints* iConstraints = GetConstraints( aViewElement );
     
-    iData->Region = aRegion;
+    iConstraints->Region = aRegion;
     
     aViewElement->Invalidate();
     

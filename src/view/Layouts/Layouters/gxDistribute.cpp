@@ -25,19 +25,21 @@ bool gxDistribute::DoSize( gxConstraints::List aData,
     int   iTotalPercent = 0;
     int   iTotalFlex    = 0;
     
-    gxConstraints::Iterator iData;
+    gxConstraints::Iterator iConstraints;
     
     // Work out how much there is from each type of size:
     // Pixels, Percent, Flex
-    for ( iData = aData.begin(); iData != aData.end(); ++iData )
+    for ( iConstraints = aData.begin();
+          iConstraints != aData.end();
+          ++iConstraints )
     {
-        if ( (*iData)->IsPixels() )
+        if ( (*iConstraints)->IsPixels() )
         {
-            iTotalPixels += (*iData)->Bounds.GetSize( onMajorAxis );
-        } else if ( (*iData)->IsPercent() ) {
-            iTotalPercent += (*iData)->GetPercent();
+            iTotalPixels += (*iConstraints)->Bounds.GetSize( onMajorAxis );
+        } else if ( (*iConstraints)->IsPercent() ) {
+            iTotalPercent += (*iConstraints)->GetPercent();
         } else {
-            iTotalFlex += (*iData)->GetFlex();
+            iTotalFlex += (*iConstraints)->GetFlex();
         }
     }
     
@@ -52,19 +54,21 @@ bool gxDistribute::DoSize( gxConstraints::List aData,
     gxPix iFlexLeft      = iPixelsLeft - iPixelsLeft * iTotalPercent / 100;
     gxPix iSize;
     
-    for ( iData = aData.begin(); iData != aData.end(); ++iData )
+    for ( iConstraints = aData.begin();
+          iConstraints != aData.end();
+          ++iConstraints )
     {
-        if ( (*iData)->IsntPixels() )
+        if ( (*iConstraints)->IsntPixels() )
         {
-            if ( (*iData)->IsPercent() )
+            if ( (*iConstraints)->IsPercent() )
             {
                 // Percent
-                iSize = iPixelsLeft * (*iData)->GetPercent() / 100;
+                iSize = iPixelsLeft * (*iConstraints)->GetPercent() / 100;
             } else {
                 // Flex
-                iSize = iFlexLeft * (*iData)->GetFlex() / iTotalFlex ;
+                iSize = iFlexLeft * (*iConstraints)->GetFlex() / iTotalFlex ;
             }
-            (*iData)->Bounds.SetSize( iSize, onMajorAxis );
+            (*iConstraints)->Bounds.SetSize( iSize, onMajorAxis );
         }
     }
     
@@ -78,7 +82,7 @@ void gxDistribute::DoDistribute( const Type          aType,
                                  const gxRect&       aContainer,
                                  const bool          onMajorAxis )
 {
-    gxConstraints::Iterator iData;
+    gxConstraints::Iterator iConstraints;
     
     gxPix iPosition = 0;
     gxPix iSpacing  = 0;
@@ -91,9 +95,11 @@ void gxDistribute::DoDistribute( const Type          aType,
         int   iElementsSize = 0;
         
         // Calulate the total size of all elements
-        for ( iData = aData.begin(); iData != aData.end(); ++iData )
+        for ( iConstraints = aData.begin();
+              iConstraints != aData.end();
+              ++iConstraints )
         {
-            iElementsSize += (*iData)->Bounds.GetSize( onMajorAxis );
+            iElementsSize += (*iConstraints)->Bounds.GetSize( onMajorAxis );
         }
         
         if ( aType == Middle || aType == End )
@@ -138,11 +144,13 @@ void gxDistribute::DoDistribute( const Type          aType,
     gxPix iChildSize;
     
     // Now apply position and spacing
-    for ( iData = aData.begin(); iData != aData.end(); ++iData )
+    for ( iConstraints = aData.begin();
+          iConstraints != aData.end();
+          ++iConstraints )
     {
-        (*iData)->Bounds.SetPosition( iPosition, onMajorAxis );
+        (*iConstraints)->Bounds.SetPosition( iPosition, onMajorAxis );
         
-        iChildSize = (*iData)->Bounds.GetSize( onMajorAxis );
+        iChildSize = (*iConstraints)->Bounds.GetSize( onMajorAxis );
         
         switch ( aType )
         {

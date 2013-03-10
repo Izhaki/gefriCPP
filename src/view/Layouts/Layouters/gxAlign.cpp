@@ -8,13 +8,15 @@ gxAlign::gxAlign( const Type         aType,
     if ( aType == None )
         return;
     
-    gxConstraints::Iterator iData;
-    gxPix                  iPosition = 0;
-    gxPix                  iContainerSize = aContainer.GetSize( onMajorAxis );
+    gxConstraints::Iterator iConstraints;
+    gxPix                   iPosition = 0;
+    gxPix                   iContainerSize = aContainer.GetSize( onMajorAxis );
     
-    for ( iData = aData.begin(); iData != aData.end(); ++iData )
+    for ( iConstraints = aData.begin();
+          iConstraints != aData.end();
+          ++iConstraints )
     {
-        gxPix iSize = (*iData)->Bounds.GetSize( onMajorAxis );
+        gxPix iSize = (*iConstraints)->Bounds.GetSize( onMajorAxis );
         
         switch ( aType )
         {
@@ -24,6 +26,6 @@ gxAlign::gxAlign( const Type         aType,
             case End:    iPosition = ( iContainerSize - iSize );     break;
         }
         
-        (*iData)->Bounds.SetPosition( iPosition, onMajorAxis );
+        (*iConstraints)->Bounds.SetPosition( iPosition, onMajorAxis );
     }
 }

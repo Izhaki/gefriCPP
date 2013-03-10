@@ -8,7 +8,7 @@ gxStretch::gxStretch( const Type         aType,
     if ( aType == None )
         return;
     
-    gxConstraints::Iterator iData;
+    gxConstraints::Iterator iConstraints;
     gxRect                 iRect;
     gxPix                  iSize = 0;
     
@@ -19,9 +19,11 @@ gxStretch::gxStretch( const Type         aType,
         case Max:  iSize = GetMaxSize( aData, onMajorAxis );  break;
     }    
     
-    for ( iData = aData.begin(); iData != aData.end(); ++iData )
+    for ( iConstraints = aData.begin();
+          iConstraints != aData.end();
+          ++iConstraints )
     {
-        (*iData)->Bounds.SetSize( iSize, onMajorAxis );
+        (*iConstraints)->Bounds.SetSize( iSize, onMajorAxis );
     }
     
 }
@@ -29,13 +31,15 @@ gxStretch::gxStretch( const Type         aType,
 gxPix gxStretch::GetMaxSize( gxConstraints::List aData,
                              const bool         onMajorAxis )
 {
-    gxConstraints::Iterator iData;
+    gxConstraints::Iterator iConstraints;
     gxPix                  iChildSize;    
     gxPix                  iSize = 0;    
     
-    for ( iData = aData.begin(); iData != aData.end(); ++iData )
+    for ( iConstraints = aData.begin();
+          iConstraints != aData.end();
+          ++iConstraints )
     {
-        iChildSize = (*iData)->Bounds.GetSize( onMajorAxis );
+        iChildSize = (*iConstraints)->Bounds.GetSize( onMajorAxis );
         iSize      = gxMax( iSize, iChildSize );
     }
     
