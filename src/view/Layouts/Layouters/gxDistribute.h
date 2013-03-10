@@ -16,16 +16,16 @@ struct gxDistribute
     };
     
     gxDistribute( const Type          aType,
-                  gxConstraints::List aData,
+                  gxConstraints::List aConstraints,
                   const gxRect&       aContainer,
                   const bool          onMajorAxis );
     
-    bool DoSize( gxConstraints::List aData,
+    bool DoSize( gxConstraints::List aConstraints,
                  const gxRect&       aContainer,
                  const bool          onMajorAxis );
 
     void DoDistribute( const Type          aType,
-                       gxConstraints::List aData,
+                       gxConstraints::List aConstraints,
                        const gxRect&       aContainer,
                        const bool          onMajorAxis );
     

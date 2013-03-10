@@ -80,9 +80,9 @@ public:
     {
     public:
         ElementFinder( gxViewElement* aElement ) : mElement( aElement ) {}
-        bool operator() ( const gxConstraints* aData ) const
+        bool operator() ( const gxConstraints* aConstraints ) const
         {
-            return aData->Element == mElement;
+            return aConstraints->Element == mElement;
         }
     private:
         gxViewElement* mElement;

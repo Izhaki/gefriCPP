@@ -13,10 +13,10 @@ struct gxAlign
         End
     };
     
-    gxAlign( const Type         aType,
-             gxConstraints::List aData,
-             const gxRect&      aContainer,
-             const bool         onMajorAxis );
+    gxAlign( const Type          aType,
+             gxConstraints::List aConstraints,
+             const gxRect&       aContainer,
+             const bool          onMajorAxis );
 };
 
 #endif //gxAlign_h

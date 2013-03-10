@@ -9,6 +9,20 @@ class gxViewElement;
 #include "View/Layouts/Constraints/gxRatio.h"
 #include "View/Layouts/Constraints/gxRegion.h"
 
+
+// A macro for looping all childrens (used from within the composite itself)
+#define forEachConstraint( aConstraints ) \
+    for ( gxConstraints::Iterator aConstraints = mConstraints.begin(); \
+          aConstraints != mConstraints.end(); \
+          ++aConstraints )
+
+// A macro for looping all childrens (used from within the composite itself)
+#define forEachConstraintOf( aList, aConstraints ) \
+    for ( gxConstraints::Iterator aConstraints = aList.begin(); \
+    aConstraints != aList.end(); \
+    ++aConstraints )
+
+
 /**
  * @brief A class representing extra details needed to layout view elements.
  *

@@ -1,20 +1,17 @@
 #include "View/Layouts/Layouters/gxAlign.h"
 
-gxAlign::gxAlign( const Type         aType,
-                  gxConstraints::List aData,
-                  const gxRect&      aContainer,
-                  const bool         onMajorAxis )
+gxAlign::gxAlign( const Type          aType,
+                  gxConstraints::List aConstraints,
+                  const gxRect&       aContainer,
+                  const bool          onMajorAxis )
 {
     if ( aType == None )
         return;
     
-    gxConstraints::Iterator iConstraints;
     gxPix                   iPosition = 0;
     gxPix                   iContainerSize = aContainer.GetSize( onMajorAxis );
     
-    for ( iConstraints = aData.begin();
-          iConstraints != aData.end();
-          ++iConstraints )
+    forEachConstraintOf( aConstraints, iConstraints )
     {
         gxPix iSize = (*iConstraints)->Bounds.GetSize( onMajorAxis );
         

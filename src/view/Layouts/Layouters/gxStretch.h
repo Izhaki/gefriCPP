@@ -12,13 +12,13 @@ struct gxStretch
         Full
     };
     
-    gxStretch( const Type         aType,
-               gxConstraints::List aData,
-               const gxRect&      aContainer,
-               const bool         onMajorAxis );
+    gxStretch( const Type          aType,
+               gxConstraints::List aConstraints,
+               const gxRect&       aContainer,
+               const bool          onMajorAxis );
     
-    gxPix GetMaxSize( gxConstraints::List aData,
-                      const bool         onMajorAxis );
+    gxPix GetMaxSize( gxConstraints::List aConstraints,
+                      const bool          onMajorAxis );
 };
 
 #endif //gxStretch_h

@@ -65,9 +65,7 @@ void gxBorderLayout::DoLayout()
         // Layout, we can use it to find the correct offset
         gxPix iOldCenterPosition = iBounds.GetPosition( mOnMajorAxis );
     
-        gxConstraints::Iterator iConstraints;
-    
-        for ( iConstraints = iFiltered.begin(); iConstraints != iFiltered.end(); ++iConstraints )
+        forEachConstraint( iConstraints )
         {
             (*iConstraints)->Bounds.Translate( iOldCenterPosition, mOnMajorAxis );
         }
@@ -76,13 +74,10 @@ void gxBorderLayout::DoLayout()
 
 gxConstraints* gxBorderLayout::GetCenterConstraints()
 {
-    gxConstraints::Iterator iConstraints;
     gxConstraints*          iResult = NULL;
     short                   iFound  = 0;
     
-    for ( iConstraints = mConstraints.begin();
-          iConstraints != mConstraints.end();
-          ++iConstraints )
+    forEachConstraint( iConstraints )
     {
         if ( (*iConstraints)->Region == gxRegion::Center )
         {
@@ -116,11 +111,7 @@ void gxBorderLayout::AddConstraints( gxConstraints::List &aFiltered,
 void gxBorderLayout::AddRegionConstraints( gxRegion aRegion,
                                            gxConstraints::List &aFiltered )
 {
-    gxConstraints::Iterator iConstraints;
-    
-    for ( iConstraints = mConstraints.begin();
-          iConstraints != mConstraints.end();
-          ++iConstraints )
+    forEachConstraint( iConstraints )
     {
         if ( (*iConstraints)->Region == aRegion )
         {

@@ -1,12 +1,12 @@
 #include "View/Layouts/Layouters/gxDistribute.h"
 
-gxDistribute::gxDistribute( const Type         aType,
-                            gxConstraints::List aData,
-                            const gxRect&      aContainer,
-                            const bool         onMajorAxis )
+gxDistribute::gxDistribute( const Type          aType,
+                            gxConstraints::List aConstraints,
+                            const gxRect&       aContainer,
+                            const bool          onMajorAxis )
 {
     // First Set the size of the elements.
-    bool iHasFlex = DoSize( aData, aContainer, onMajorAxis );
+    bool iHasFlex = DoSize( aConstraints, aContainer, onMajorAxis );
     
     // If any of the elements has flex, the elements will take the full size
     // of the container. Thus it makes little sense to distribute items in any
@@ -14,24 +14,22 @@ gxDistribute::gxDistribute( const Type         aType,
     Type iType = iHasFlex ? Start : aType;
     
     // Now distribute the elements
-    DoDistribute( iType, aData, aContainer, onMajorAxis );
+    DoDistribute( iType, aConstraints, aContainer, onMajorAxis );
 }
 
-bool gxDistribute::DoSize( gxConstraints::List aData,
-                           const gxRect&      aContainer,
-                           const bool         onMajorAxis )
+bool gxDistribute::DoSize( gxConstraints::List aConstraints,
+                           const gxRect&       aContainer,
+                           const bool          onMajorAxis )
 {
     gxPix iTotalPixels  = 0;
     int   iTotalPercent = 0;
     int   iTotalFlex    = 0;
     
-    gxConstraints::Iterator iConstraints;
+
     
     // Work out how much there is from each type of size:
     // Pixels, Percent, Flex
-    for ( iConstraints = aData.begin();
-          iConstraints != aData.end();
-          ++iConstraints )
+    forEachConstraintOf( aConstraints, iConstraints )
     {
         if ( (*iConstraints)->IsPixels() )
         {
@@ -53,10 +51,8 @@ bool gxDistribute::DoSize( gxConstraints::List aData,
     // left minus the pixels that will be taken by percentage sized elements.
     gxPix iFlexLeft      = iPixelsLeft - iPixelsLeft * iTotalPercent / 100;
     gxPix iSize;
-    
-    for ( iConstraints = aData.begin();
-          iConstraints != aData.end();
-          ++iConstraints )
+
+    forEachConstraintOf( aConstraints, iConstraints )
     {
         if ( (*iConstraints)->IsntPixels() )
         {
@@ -78,12 +74,10 @@ bool gxDistribute::DoSize( gxConstraints::List aData,
 
 
 void gxDistribute::DoDistribute( const Type          aType,
-                                 gxConstraints::List aData,
+                                 gxConstraints::List aConstraints,
                                  const gxRect&       aContainer,
                                  const bool          onMajorAxis )
 {
-    gxConstraints::Iterator iConstraints;
-    
     gxPix iPosition = 0;
     gxPix iSpacing  = 0;
     
@@ -91,13 +85,11 @@ void gxDistribute::DoDistribute( const Type          aType,
     // between them
     if ( aType != Start )
     {
-        int   iCount        = aData.size();
+        int   iCount        = aConstraints.size();
         int   iElementsSize = 0;
         
         // Calulate the total size of all elements
-        for ( iConstraints = aData.begin();
-              iConstraints != aData.end();
-              ++iConstraints )
+        forEachConstraintOf( aConstraints, iConstraints )
         {
             iElementsSize += (*iConstraints)->Bounds.GetSize( onMajorAxis );
         }
@@ -144,9 +136,7 @@ void gxDistribute::DoDistribute( const Type          aType,
     gxPix iChildSize;
     
     // Now apply position and spacing
-    for ( iConstraints = aData.begin();
-          iConstraints != aData.end();
-          ++iConstraints )
+    forEachConstraintOf( aConstraints, iConstraints )
     {
         (*iConstraints)->Bounds.SetPosition( iPosition, onMajorAxis );
         

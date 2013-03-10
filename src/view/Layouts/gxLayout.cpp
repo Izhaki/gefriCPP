@@ -52,13 +52,9 @@ void gxLayout::SortConstraints()
 
 void gxLayout::Init()
 {
-    gxConstraints::Iterator iConstraints;
-    
     SortConstraints();
     
-    for ( iConstraints = mConstraints.begin();
-          iConstraints != mConstraints.end();
-          ++iConstraints )
+    forEachConstraint( iConstraints )
     {
         (*iConstraints)->Reset();
     }
@@ -66,11 +62,7 @@ void gxLayout::Init()
 
 void gxLayout::Apply()
 {
-    gxConstraints::Iterator iConstraints;
-    
-    for ( iConstraints = mConstraints.begin();
-          iConstraints != mConstraints.end();
-          ++iConstraints )
+    forEachConstraint( iConstraints )
     {
         (*iConstraints)->Apply();
     }

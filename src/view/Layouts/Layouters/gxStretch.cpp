@@ -1,14 +1,13 @@
 #include "View/Layouts/Layouters/gxStretch.h"
 
-gxStretch::gxStretch( const Type         aType,
-                      gxConstraints::List aData,
-                      const gxRect&      aContainer,
-                      const bool         onMajorAxis )
+gxStretch::gxStretch( const Type          aType,
+                      gxConstraints::List aConstraints,
+                      const gxRect&       aContainer,
+                      const bool          onMajorAxis )
 {
     if ( aType == None )
         return;
     
-    gxConstraints::Iterator iConstraints;
     gxRect                 iRect;
     gxPix                  iSize = 0;
     
@@ -16,28 +15,23 @@ gxStretch::gxStretch( const Type         aType,
     {
         case None:                                            break;
         case Full: iSize = aContainer.GetSize( onMajorAxis ); break;
-        case Max:  iSize = GetMaxSize( aData, onMajorAxis );  break;
-    }    
+        case Max:  iSize = GetMaxSize( aConstraints, onMajorAxis );  break;
+    }
     
-    for ( iConstraints = aData.begin();
-          iConstraints != aData.end();
-          ++iConstraints )
+    forEachConstraintOf( aConstraints, iConstraints )
     {
         (*iConstraints)->Bounds.SetSize( iSize, onMajorAxis );
     }
     
 }
 
-gxPix gxStretch::GetMaxSize( gxConstraints::List aData,
-                             const bool         onMajorAxis )
+gxPix gxStretch::GetMaxSize( gxConstraints::List aConstraints,
+                             const bool          onMajorAxis )
 {
-    gxConstraints::Iterator iConstraints;
     gxPix                  iChildSize;    
     gxPix                  iSize = 0;    
-    
-    for ( iConstraints = aData.begin();
-          iConstraints != aData.end();
-          ++iConstraints )
+
+    forEachConstraintOf( aConstraints, iConstraints )
     {
         iChildSize = (*iConstraints)->Bounds.GetSize( onMajorAxis );
         iSize      = gxMax( iSize, iChildSize );
