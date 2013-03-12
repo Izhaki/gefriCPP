@@ -96,9 +96,12 @@ void gxScroller::ReadjustScrollbars()
     mScrollManager->AdjustScrollbars( iMySize, iRange );
 }
 
-// Note: scrollers should not affect the bounds of decendents, or an item
-// within a scroller that starts at (0,0) will get bounds (-80,0) for a scroll
-// of (-80,0).
+// Note: The scroll position should not affect the bounds of decendents, or an
+// item within a scroller that starts at (0,0) will get bounds (-80,0) for a
+// scroll of (-80,0).
+//
+// That's why unlike gxViewElement the scroller does not transform the bounds
+// of its children.
 void gxScroller::GetDescendantsBounds( gxRect &aBounds )
 {
     if ( IsChildless() )

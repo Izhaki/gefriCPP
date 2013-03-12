@@ -70,6 +70,10 @@ void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
         gxRect iChildBounds;
         aChild->GetDescendantsBounds( iChildBounds );
         
+        // Consider the caller is at (0, 0); this view element is its child and
+        // located at (20, 20); The child bounds return (30, 30); But relative
+        // to the caller these are really (50, 50) - not (30, 30). So we have
+        // to transform the children bounds.
         Transform( iChildBounds );
         
 //        gxLogRect( _T("Desc Bounds: "), iChildBounds );

@@ -84,7 +84,9 @@ public:
      * @brief Returns the union of all descendant bounds.
      *
      * This is a recursive method that travels down the composition tree to
-     * all children and their childrean and so on...
+     * all children and their childrean and so on, but only if needed. So for
+     * instance, a visual that clips its children wouldn't traverse them.
+     *
      * @param aBounds The bounds to union all children with.
      */
     virtual void GetDescendantsBounds( gxRect &aBounds );
