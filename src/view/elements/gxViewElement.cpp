@@ -127,7 +127,7 @@ void gxViewElement::InvalidateDown()
 
 void gxViewElement::Validate()
 {
-    // TODO: does layout must come before BarkValid? - Layout will invalidate
+    // TODO: does layout must come before MarkValid? - Layout will invalidate
     // The children.
     Layout();
     

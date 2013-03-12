@@ -37,7 +37,7 @@ void gxStructural::Repaint()
     gxASSERT( Parentless(), "GetBounds() called but no parent." );
     
     // Simply call repaint on my parent.
-    return GetParent()->Repaint();
+    GetParent()->Repaint();
 
 }
 

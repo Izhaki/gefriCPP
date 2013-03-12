@@ -59,6 +59,8 @@ void gxRuler::OnScrollChanged( const gxScroll *aScroll )
     mStartPixel = mIsHorizontal ? aScroll->mPosition.X : aScroll->mPosition.Y;
 }
 
+
+// TODO: Is this right? It is only being called once.
 void gxRuler::Validate()
 {
     // To calculate the minimum block size we need the lightweight
@@ -75,7 +77,7 @@ void gxRuler::Validate()
 void gxRuler::CalcMinBlockSize()
 {
     // Find the maximum text size.
-    gxString iBiggestLabel = mDivProvider->GetLabelOfPixel( mIsHorizontal ? mBounds.width : mBounds.height );
+    gxString iBiggestLabel = mDivProvider->GetLabelOfPixel( mBounds.GetSize( mIsHorizontal ) );
     gxSize iMaxTextSize = GetLightweightSystem()->GetTextSize( iBiggestLabel );
 
     // Take into account the ratio of the text for the block.

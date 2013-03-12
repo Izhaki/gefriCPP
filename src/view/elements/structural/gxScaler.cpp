@@ -37,7 +37,9 @@ void gxScaler::SetScale( gxScale const &aScale )
         mScale = aScale;
     
         // As the scale changed we need to revalidate the hierarcy tree (for
-        // example so a Scroller parent can readjust the scrollbars).
+        // example so a Scroller parent can readjust the scrollbars, or for
+        // decendent anchors to invalidate their connections - which are based
+        // on absolute coordinates).
         Invalidate();
         
         Repaint();
