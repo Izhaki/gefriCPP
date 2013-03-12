@@ -58,7 +58,7 @@ public:
   void OnClose(wxCloseEvent &e);
 
   void OnQuit(wxCommandEvent &e);
-  void OnAction1(wxCommandEvent &e);
+  void OnMoveFace(wxCommandEvent &e);
   void OnAction2(wxCommandEvent &e);
   void OnAction3(wxCommandEvent &e);
   void OnHideFace(wxCommandEvent &e);

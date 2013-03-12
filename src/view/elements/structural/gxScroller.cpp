@@ -71,7 +71,7 @@ void gxScroller::Validate()
     // object is marked as valid.
     gxStructural::Validate();
 
-    Repaint();
+//    Repaint();
 }
 
 void gxScroller::Transform( gxRect &aRect )

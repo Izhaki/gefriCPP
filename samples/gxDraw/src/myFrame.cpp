@@ -26,7 +26,7 @@ BEGIN_EVENT_TABLE(MyFrame, wxFrame)
   EVT_CLOSE(MyFrame::OnClose)
 
   EVT_MENU(wxID_EXIT, MyFrame::OnQuit)
-  EVT_MENU(wxID_ACTION1, MyFrame::OnAction1)
+  EVT_MENU(wxID_ACTION1, MyFrame::OnMoveFace)
   EVT_MENU(wxID_ACTION2, MyFrame::OnAction2)
   EVT_MENU(wxID_ACTION3, MyFrame::OnAction3)
   EVT_MENU(wxID_HIDE_FACE, MyFrame::OnHideFace)
@@ -106,7 +106,7 @@ void MyFrame::InitGefri()
     
     CreateFaceAndRuller();
 //    CreateBoxLayout();
-    CreateBorderLayout();
+//    CreateBorderLayout();
     
     mLightweightSystem->SetContents(mDocument);
 }
@@ -145,10 +145,10 @@ void MyFrame::CreateFaceAndRuller()
     mRulerH->Add( mRulerAnchor );
     
     // Add Connection
-    mCon = new gxLineConnection();
-    mCon->SetDestinationAnchor( mFaceAnchor );
-    mCon->SetSourceAnchor( mRulerAnchor );
-    mConnectionLayer->Add( mCon );
+//    mCon = new gxLineConnection();
+//    mCon->SetDestinationAnchor( mFaceAnchor );
+//    mCon->SetSourceAnchor( mRulerAnchor );
+//    mConnectionLayer->Add( mCon );
 }
 
 void MyFrame::CreateBoxLayout()
@@ -255,7 +255,7 @@ void MyFrame::OnQuit(wxCommandEvent &e)
   Close();
 }
 
-void MyFrame::OnAction1(wxCommandEvent &e)
+void MyFrame::OnMoveFace(wxCommandEvent &e)
 {
   wxUnusedVar(e);
   gxRect newBounds = gxRect(120, 120, 100, 100);
