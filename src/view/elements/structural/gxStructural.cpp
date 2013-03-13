@@ -31,13 +31,13 @@ void gxStructural::PaintChildren(gxPainter &aPainter)
 
 void gxStructural::Repaint()
 {
-    if ( IsInvalid() )
-        return;
-
-    gxASSERT( Parentless(), "Repaint() on structural called but no parent." );
+    gxViewElement* iParent = GetParent();
     
-    // Simply call repaint on my parent.
-    GetParent()->Repaint();
+    if ( iParent != NULL )
+    {
+        // Simply repaint on my parent.
+        iParent->Repaint();
+    }
 }
 
 

@@ -94,5 +94,18 @@
          landmarkName = "MyFrame::OnMoveFace(wxCommandEvent &amp;e)"
          landmarkType = "5">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../src/View/Elements/gxViewElement.cpp"
+         timestampString = "384827208.428964"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "233"
+         endingLineNumber = "233"
+         landmarkName = "gxViewElement::OnAddChild( gxViewElement *aChild )"
+         landmarkType = "5">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

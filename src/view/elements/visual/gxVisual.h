@@ -30,12 +30,6 @@ public:
      * @brief Repaints the view element making its bounds dirty.
      */
     virtual void Repaint();
-    
-    /**
-     * @brief Repaints part or the whole of the view element.
-     * @param aBounds The bounds of the area to be repainted.
-     */
-    virtual void Repaint( gxRect &aBounds );
 
     /**
      * @brief Returns the bounds of this view element.

@@ -39,6 +39,13 @@ public:
      */
     virtual gxRect GetBounds() const;
 
+    /**
+     * @brief This simply adds the bounds as a dirty region (which in turn will
+     * queue a paint event.
+     */
+    virtual void Repaint( gxRect &aBounds );
+    
+
     // Validate is promoted to public as the lightweight system needs to call it.
     virtual void Validate() { gxStructural::Validate(); }
 protected:

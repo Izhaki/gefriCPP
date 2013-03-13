@@ -25,6 +25,12 @@ gxRect gxRootViewElement::GetBounds() const
 
 }
 
+void gxRootViewElement::Repaint( gxRect &aBounds )
+{
+    if ( mLightweightSystem )
+        mLightweightSystem->AddDirtyRegion( aBounds );
+}
+
 void gxRootViewElement::InvalidateUp()
 {
     MarkInvalid();

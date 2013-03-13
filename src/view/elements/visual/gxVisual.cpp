@@ -63,26 +63,8 @@ void gxVisual::Paint( gxPainter &aPainter )
 
 void gxVisual::Repaint()
 {
-    // No point repainting the figure if it is invalid.
-    if ( IsInvalid() )
-        return;
-    
     gxRect iBounds = GetOuterBounds();
-    Repaint( iBounds );
-}
-
-void gxVisual::Repaint( gxRect &aBounds )
-{
-    // No point repainting the figure if it is invalid.
-    if ( IsInvalid() )
-        return;
-    
-    // Translate the bounds to absolute coordinates.
-    TransformToAbsolute( aBounds );
-    
-    // instruct the lightweight system to mark the bounds of this view element
-    // as ones need repainting
-    GetLightweightSystem()->AddDirtyRegion( aBounds );
+    gxViewElement::Repaint( iBounds );
 }
 
 void gxVisual::PaintChildren( gxPainter &aPainter )

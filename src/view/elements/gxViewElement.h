@@ -45,6 +45,12 @@ public:
     virtual void Repaint() = 0;
 
     /**
+     * @brief Repaints part or the whole of the view element.
+     * @param aBounds The bounds of the area to be repainted.
+     */
+    virtual void Repaint( gxRect &aBounds );
+    
+    /**
      * @brief Erases the view element from the view.
      *
      * Erase() achieves its task by requesting a repaint of the view element
@@ -112,6 +118,17 @@ public:
      * @brief Hides the view element (marking it as invisible).
      */
     void Hide();
+
+    /**
+     * @brief Transforms a rect (typically bounds) to the coordinates of this
+     * element. Normally called by children.
+     *
+     * Subclasses will override this method to perform their own translations.
+     *
+     * Used by TransformToAbsolute.
+     * @param aRect The rect to transform.
+     */
+    virtual void Transform( gxRect &aRect );
     
     /**
      * @brief Transforms a rect (typically bounds) to absolute coordinates.
@@ -149,17 +166,6 @@ public:
      */
     void Layout();
 protected:
-    /**
-     * @brief Transforms a rect (typically bounds) to the coordinates of this
-     * element. Normally called by children.
-     *
-     * Subclasses will override this method to perform their own translations.
-     *
-     * Used by TransformToAbsolute.
-     * @param aRect The rect to transform.    
-     */
-    virtual void Transform( gxRect &aRect );
-  
     /**
      * @brief Paints the children of this view element.
      *

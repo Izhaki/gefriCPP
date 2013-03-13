@@ -60,6 +60,18 @@ void gxViewElement::Erase()
     Repaint();
 }
 
+
+void gxViewElement::Repaint( gxRect &aBounds )
+{
+    gxViewElement* iParent = GetParent();
+    
+    if ( iParent != NULL )
+    {
+        iParent->Transform( aBounds );
+        iParent->Repaint( aBounds );
+    }
+}
+
 void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
 {
     if ( IsChildless() )
