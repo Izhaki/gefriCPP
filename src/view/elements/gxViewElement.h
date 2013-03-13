@@ -139,6 +139,9 @@ public:
      */
     virtual void TransformToAbsolute( gxRect &aRect );
     
+    
+    virtual void TransformToLocal( gxRect &aRect );
+    
     /**
      * @brief Marks the view element and all of its parents as invalid, and
      * notifies all descendents that their ancestor is now invalid. But calling

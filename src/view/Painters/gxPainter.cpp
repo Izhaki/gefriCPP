@@ -97,10 +97,10 @@ void gxPainter::Transform( gxRect &aRect )
         aRect.Scale( mTrans.Scale );
 
     if ( TranslateNeeded() )
-        aRect.Translate( mTrans.Translate );
+        aRect += mTrans.Translate;
 
     if ( ScrollNeeded() )
-        aRect.Translate( -mTrans.Scroll );
+        aRect -= mTrans.Scroll;
 }
 
 void gxPainter::Transform( gxPoint &aPoint )

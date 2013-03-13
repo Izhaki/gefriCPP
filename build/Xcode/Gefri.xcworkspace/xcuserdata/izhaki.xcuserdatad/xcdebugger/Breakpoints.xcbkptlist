@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../src/View/Elements/Structural/gxScroller.cpp"
-         timestampString = "384748691.8722"
+         timestampString = "384829984.60465"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "96"
-         endingLineNumber = "96"
+         startingLineNumber = "94"
+         endingLineNumber = "94"
          landmarkName = "gxScroller::ReadjustScrollbars()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../src/View/Elements/Structural/gxScroller.cpp"
-         timestampString = "384748990.72892"
+         timestampString = "384829984.60465"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "91"
-         endingLineNumber = "91"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
          landmarkName = "gxScroller::ReadjustScrollbars()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -99,11 +99,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../src/View/Elements/gxViewElement.cpp"
-         timestampString = "384828978.080587"
+         timestampString = "384836487.885165"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "230"
-         endingLineNumber = "230"
+         startingLineNumber = "258"
+         endingLineNumber = "258"
          landmarkName = "gxViewElement::OnAddChild( gxViewElement *aChild )"
          landmarkType = "5">
       </FileBreakpoint>
@@ -118,6 +118,32 @@
          startingLineNumber = "12"
          endingLineNumber = "12"
          landmarkName = "gxLineConnection::InvalidateConnection()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../src/view/Connections/gxLineConnection.h"
+         timestampString = "384829320.679622"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "19"
+         endingLineNumber = "19"
+         landmarkName = "GetDescendantsBounds( gxRect&amp; aBounds )"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../src/view/Connections/gxLineConnection.cpp"
+         timestampString = "384829984.60465"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "25"
+         endingLineNumber = "25"
+         landmarkName = "gxLineConnection::Validate()"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

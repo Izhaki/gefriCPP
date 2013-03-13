@@ -44,13 +44,29 @@ void gxViewElement::TransformToAbsolute( gxRect &aRect )
     
     gxASSERT( iParent == NULL, "TransformToAbsolute called, but no parent" );
 
+    // TODO: we shouldn't really carry on doing this if the current element
+    // is using absolute positioning.
+    
     iParent->Transform( aRect );
     iParent->TransformToAbsolute( aRect );
 }
 
+void gxViewElement::TransformToLocal( gxRect &aRect )
+{
+    // A hackish way of doing transform to local:
+    //     Start with a rect at (0, 0).
+    //     Transform to absolute.
+    //     Then substruct for the rect in question.
+    gxRect iOffset(0, 0, 0, 0);
+    
+    TransformToAbsolute( iOffset );
+    
+    aRect -= iOffset.GetPosition();
+}
+
 void gxViewElement::Transform( gxRect &aRect )
 {
-    aRect.Translate( GetBounds().GetPosition() );
+    aRect += GetBounds().GetPosition();
 }
 
 void gxViewElement::Erase()
@@ -85,15 +101,29 @@ void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
         gxRect iChildBounds;
         aChild->GetDescendantsBounds( iChildBounds );
         
-        // Consider the caller is at (0, 0); this view element is its child and
+        // Consider the caller is at (0, 0); this view element is
         // located at (20, 20); The child bounds return (30, 30); But relative
         // to the caller these are really (50, 50) - not (30, 30). So we have
         // to transform the children bounds.
-        Transform( iChildBounds );
+        if ( aChild->IsRelative() )
+        {
+            Transform( iChildBounds );
+            aBounds.Union( iChildBounds );
+        } else {
+            // TODO: currently we don't account for absolute elements with
+            // GetDescendantBounds. Reason is that there isn't really a reason
+            // to. Anyhow, if we would, we'd have to translate these to local
+            // coordinates, but more importantly, prevent scalers from scaling
+            // these, which currently there's no way to do - most likely the
+            // solution for this would involve splitting The parameters given
+            // To GetDescendantsBounds into relative bounds and absolute bounds.
+            //TransformToLocal( iChildBounds );
+        }
+        
         
 //        gxLogRect( _T("Desc Bounds: "), iChildBounds );
 
-        aBounds.Union( iChildBounds );
+        
     }
 }
 
@@ -142,21 +172,18 @@ void gxViewElement::InvalidateDown()
 
 void gxViewElement::Validate()
 {
-    // TODO: does layout must come before MarkValid? - Layout will invalidate
-    // The children.
-    Layout();
-    
-    MarkValid();
-
-    if ( IsChildless() )
-        return;
-    
     // Ask all children to validate themselves in case they are invalid.
     forEachChild( aChild )
     {
         if ( aChild->IsInvalid() )
             aChild->Validate();
     }
+    
+    // TODO: does layout must come before MarkValid? - Layout will invalidate
+    // The children.
+    Layout();
+    
+    MarkValid();
 }
 
 void gxViewElement::MarkInvalid()

@@ -65,20 +65,18 @@ void gxScroller::Paint( gxPainter &aPainter )
 
 void gxScroller::Validate()
 {
-    ReadjustScrollbars();
-
     // Call the base class validate so children are also validated and this
     // object is marked as valid.
     gxStructural::Validate();
-
-//    Repaint();
+    
+    ReadjustScrollbars();
 }
 
 void gxScroller::Transform( gxRect &aRect )
 {
     if ( mScrollPosition.IsntZero() )
     {
-        aRect.Translate( -mScrollPosition );
+        aRect -= mScrollPosition;
     }
 }
 

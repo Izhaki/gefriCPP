@@ -249,7 +249,19 @@ public:
     {
         Translate( aPoint.X, aPoint.Y );
     }
+    
+    gxRect& operator+=( const gxPoint& aPoint )
+    {
+        this->Translate( aPoint );
+        return *this;
+    }
 
+    gxRect& operator-=( const gxPoint& aPoint )
+    {
+        this->Translate( -aPoint );
+        return *this;
+    }
+    
     gxRect& Intersect( const gxRect& aRect );
     
     gxRect Intersect( const gxRect& aRect ) const

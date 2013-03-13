@@ -138,7 +138,7 @@ void gxVisual::SetBounds( const gxRect &aNewBounds )
 
 void gxVisual::Translate( gxPoint aDelta )
 {
-    mBounds.Translate( aDelta );
+    mBounds += aDelta;
     
     // There will be additional handling here for absolute positioned figures,
     // which will also need to translate all of its children.
