@@ -61,14 +61,17 @@ void gxViewElement::Erase()
 }
 
 
-void gxViewElement::Repaint( gxRect &aBounds )
+void gxViewElement::Repaint( gxRect& aBounds,
+                             bool    areRelative )
 {
     gxViewElement* iParent = GetParent();
     
     if ( iParent != NULL )
     {
-        iParent->Transform( aBounds );
-        iParent->Repaint( aBounds );
+        if ( areRelative )
+            iParent->Transform( aBounds );
+        
+        iParent->Repaint( aBounds, areRelative );
     }
 }
 

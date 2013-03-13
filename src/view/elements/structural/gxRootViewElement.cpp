@@ -25,7 +25,8 @@ gxRect gxRootViewElement::GetBounds() const
 
 }
 
-void gxRootViewElement::Repaint( gxRect &aBounds )
+void gxRootViewElement::Repaint( gxRect& aBounds,
+                                 bool    areRelative )
 {
     if ( mLightweightSystem )
         mLightweightSystem->AddDirtyRegion( aBounds );

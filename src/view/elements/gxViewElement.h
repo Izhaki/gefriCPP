@@ -37,7 +37,7 @@ public:
      * @brief Paints the view element and its children.
      * @param aPainter The {@link gxPainter painter} to be used for drawing.
      */
-    virtual void Paint( gxPainter &aPainter ) = 0;
+    virtual void Paint( gxPainter& aPainter ) = 0;
     
     /**
      * @brief Called when the figure needs to be repainted
@@ -48,7 +48,8 @@ public:
      * @brief Repaints part or the whole of the view element.
      * @param aBounds The bounds of the area to be repainted.
      */
-    virtual void Repaint( gxRect &aBounds );
+    virtual void Repaint( gxRect& aBounds,
+                          bool    areRelative );
     
     /**
      * @brief Erases the view element from the view.
@@ -84,7 +85,7 @@ public:
      * @brief Sets new bounds to this view element.
      * @param aNewBounds The new bounds
      */
-    virtual void SetBounds( const gxRect &aNewBounds ) = 0;
+    virtual void SetBounds( const gxRect& aNewBounds ) = 0;
     
     /**
      * @brief Returns the union of all descendant bounds.
@@ -95,7 +96,7 @@ public:
      *
      * @param aBounds The bounds to union all children with.
      */
-    virtual void GetDescendantsBounds( gxRect &aBounds );
+    virtual void GetDescendantsBounds( gxRect& aBounds );
 
     /**
      * @brief Returns whether or not the view element is visible.

@@ -99,12 +99,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../src/View/Elements/gxViewElement.cpp"
-         timestampString = "384827208.428964"
+         timestampString = "384828978.080587"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "233"
-         endingLineNumber = "233"
+         startingLineNumber = "230"
+         endingLineNumber = "230"
          landmarkName = "gxViewElement::OnAddChild( gxViewElement *aChild )"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../src/view/Connections/gxLineConnection.cpp"
+         timestampString = "384828075.439356"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "12"
+         endingLineNumber = "12"
+         landmarkName = "gxLineConnection::InvalidateConnection()"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

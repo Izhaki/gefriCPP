@@ -43,7 +43,8 @@ public:
      * @brief This simply adds the bounds as a dirty region (which in turn will
      * queue a paint event.
      */
-    virtual void Repaint( gxRect &aBounds );
+    virtual void Repaint( gxRect& aBounds,
+                          bool    areRelative );
     
 
     // Validate is promoted to public as the lightweight system needs to call it.

@@ -145,10 +145,10 @@ void MyFrame::CreateFaceAndRuller()
     mRulerH->Add( mRulerAnchor );
     
     // Add Connection
-//    mCon = new gxLineConnection();
-//    mCon->SetDestinationAnchor( mFaceAnchor );
-//    mCon->SetSourceAnchor( mRulerAnchor );
-//    mConnectionLayer->Add( mCon );
+    mCon = new gxLineConnection();
+    mCon->SetDestinationAnchor( mFaceAnchor );
+    mCon->SetSourceAnchor( mRulerAnchor );
+    mConnectionLayer->Add( mCon );
 }
 
 void MyFrame::CreateBoxLayout()

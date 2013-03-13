@@ -64,7 +64,7 @@ void gxVisual::Paint( gxPainter &aPainter )
 void gxVisual::Repaint()
 {
     gxRect iBounds = GetOuterBounds();
-    gxViewElement::Repaint( iBounds );
+    gxViewElement::Repaint( iBounds, IsRelative() );
 }
 
 void gxVisual::PaintChildren( gxPainter &aPainter )

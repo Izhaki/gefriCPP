@@ -9,6 +9,7 @@ gxLineConnection::gxLineConnection()
 
 void gxLineConnection::InvalidateConnection()
 {
+    Erase();
     gxLine::Invalidate();
 }
 
