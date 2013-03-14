@@ -2,10 +2,7 @@
 #include "core/gxLog.h"
 
 gxLineConnection::gxLineConnection()
-{
-    // Connections are always positioned in absolute coordinates.
-    mFlags.Unset( gxViewElement::Relative );
-}
+{ }
 
 void gxLineConnection::InvalidateConnection()
 {

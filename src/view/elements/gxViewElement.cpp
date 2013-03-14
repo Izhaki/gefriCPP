@@ -5,8 +5,7 @@
 
 gxViewElement::gxViewElement()
 : mFlags( gxViewElement::Visible |
-          gxViewElement::ClipChildren |
-          gxViewElement::Relative ),
+          gxViewElement::ClipChildren ),
   mLayout( NULL )
 {
 }
@@ -240,11 +239,6 @@ void gxViewElement::Hide()
 bool gxViewElement::IsClippingChildren()
 {
     return mFlags.IsSet( gxViewElement::ClipChildren );
-}
-
-bool gxViewElement::IsRelative()
-{
-    return mFlags.IsSet( gxViewElement::Relative );
 }
 
 void gxViewElement::OnAddChild( gxViewElement *aChild )

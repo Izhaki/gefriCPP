@@ -264,10 +264,10 @@ protected:
     
     /**
      * @brief Returns whether or not the view element is positioned relative
-     * to its parent.
-     * @return Ture if it is relative.
+     * to its parent top-left position.
+     * @return True (default) if it is relative.
      */
-    bool IsRelative();
+    virtual bool IsRelative() { return true; }
 
     
     virtual void OnAddChild( gxViewElement *aChild );
@@ -279,7 +279,6 @@ protected:
         Valid        = 0x01,
         Visible      = 0x02,
         ClipChildren = 0x04,
-        Relative     = 0x08
     };
   
     gxFlags<gx8Flags> mFlags;

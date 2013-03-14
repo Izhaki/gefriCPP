@@ -13,6 +13,9 @@ public:
     virtual void InvalidateConnection();
 protected:
     virtual void DoValidate();
+    
+    // Connections use absolute positioning
+    virtual bool IsRelative() { return false; }
 };
 
 #endif // gxLineConnection_h
