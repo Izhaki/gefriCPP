@@ -4,6 +4,11 @@
 
 gxStructural::gxStructural()
 {
+    // structural bounds are virtual, so we don't really regard them as children
+    // clippers. Also, A scaler child of a scroller will mark the scroller as
+    // Trace rather than Invalid during invalidation if the former would clip
+    // children
+    mFlags.Unset( gxViewElement::ClipChildren );
 }
 
 gxStructural::~gxStructural()

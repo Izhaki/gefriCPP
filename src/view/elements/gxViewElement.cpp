@@ -137,14 +137,22 @@ void gxViewElement::Invalidate()
     InvalidateDown();
 }
 
-void gxViewElement::InvalidateUp()
+void gxViewElement::InvalidateUp( ValidState aValid )
 {
     // No point invalidating if I'm already invalid (this can happed when
     // layouting children - their setbound with invalidate their parents.
-    if ( IsInvalid() )
+    if ( mValid == aValid )
         return;
     
-    MarkInvalid();
+    if ( mValid != Invalid )
+        mValid = aValid;
+    
+    // If I'm clipping my children change the valid state to Trace (in case it
+    // was Invalid).
+    if ( IsClippingChildren() )
+    {
+        aValid = Trace;
+    }
     
     // View elements parent might be null before all elements are inserted to
     // the hierarchy tree (when they are still created and added to their
@@ -152,7 +160,7 @@ void gxViewElement::InvalidateUp()
     if ( GetParent() != NULL )
     {
         // Invalidate further up the hierarchy tree.
-        GetParent()->InvalidateUp();
+        GetParent()->InvalidateUp( aValid );
     }
 }
 
@@ -175,11 +183,13 @@ void gxViewElement::Validate()
     // Ask all children to validate themselves in case they are invalid.
     forEachChild( aChild )
     {
-        if ( aChild->IsInvalid() )
+        if ( aChild->IsntValid() )
             aChild->Validate();
     }
 
-    DoValidate();
+    // Only validate if the valid state is Invalid (but not if it's Trace).
+    if ( IsInvalid() )
+        DoValidate();
     
     // TODO: does layout must come before MarkValid? - Layout will invalidate
     // The children.
@@ -201,6 +211,11 @@ void gxViewElement::MarkValid()
 bool gxViewElement::IsValid()
 {
     return mValid == Valid;
+}
+
+bool gxViewElement::IsntValid()
+{
+    return mValid != Valid;
 }
 
 bool gxViewElement::IsInvalid()

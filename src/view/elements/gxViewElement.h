@@ -170,6 +170,30 @@ public:
      */
     void Layout();
 protected:
+    
+    enum Flags
+    {
+        Visible      = 0x01,
+        ClipChildren = 0x02,
+    };
+    
+    // Valid stands for whether the view elements position or size changed.
+    // An invalid element is one which position or size has changed, or one
+    // whose descendents position and size changed in a way that may affect
+    // it.
+    //
+    // For instance, an element that clips its children will not be marked as
+    // invalid when its descendents changed, nor would its ancestors will be.
+    enum ValidState
+    {
+        // The view element is valid
+        Valid,
+        // The view element isn't invalid, but one of its descendants is
+        Trace,
+        // The view element is invalid and need validation
+        Invalid
+    } mValid;
+    
     /**
      * @brief Paints the children of this view element.
      *
@@ -200,7 +224,7 @@ protected:
      * validation request in the event loop, which once processed will validate
      * all invalid figures.
      */
-    virtual void InvalidateUp();    
+    virtual void InvalidateUp( ValidState aValid = Invalid );
 
     /**
      * @brief This method notifies all descendents that one of their ancestors
@@ -251,11 +275,21 @@ protected:
     bool IsValid();
 
     /**
+     * @brief Returns whether or not the view element is anything but valid.
+     * @return True if the view element isn't valid (invalid or trace).
+     *
+     * **Note:** this method is different from IsInvalid().
+     */
+    bool IsntValid();
+    
+    /**
      * @brief Returns whether or not the view element is invalid.
      * @return True if the view element is invalid.
+     *
+     * **Note:** this method is different from IsntValid().
      */
     bool IsInvalid();
-        
+    
     /**
      * @brief Returns whether or not the view element clips its children.
      * @return Ture if it clips.
@@ -273,30 +307,6 @@ protected:
     virtual void OnAddChild( gxViewElement *aChild );
     virtual void OnBeforeChildRemoval( gxViewElement *aChild );
     virtual void OnAfterChildRemoval();
-
-    enum Flags
-    {
-//        Valid        = 0x01,
-        Visible      = 0x02,
-        ClipChildren = 0x04,
-    };
-    
-    // Valid stands for whether the view elements position or size changed.
-    // An invalid element is one which position or size has changed, or one
-    // whose descendents position and size changed in a way that may affect
-    // it.
-    //
-    // For instance, an element that clips its children will not be marked as
-    // invalid when its descendents changed, nor would its ancestors will be.
-    enum
-    {
-        // The view element is valid
-        Valid,
-        // The view element isn't invalid, but one of its descendants is
-        Trace,
-        // The view element is invalid and need validation
-        Invalid
-    } mValid;
   
     gxFlags<gx8Flags> mFlags;
     

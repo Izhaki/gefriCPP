@@ -65,6 +65,7 @@ void gxScroller::Paint( gxPainter &aPainter )
 
 void gxScroller::DoValidate()
 {
+    gxLog( "gxScroller::DoValidate()" );
     ReadjustScrollbars();
 }
 
