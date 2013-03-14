@@ -54,7 +54,7 @@ public:
 protected:
     virtual void Transform( gxRect &aRect );
 
-    void Validate();
+    void DoValidate();
 
     /**
      * @brief This method is called when the scroller needs to readjust the

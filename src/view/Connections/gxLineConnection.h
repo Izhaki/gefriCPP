@@ -12,7 +12,7 @@ public:
     
     virtual void InvalidateConnection();
 protected:
-    virtual void Validate();    
+    virtual void DoValidate();
 };
 
 #endif // gxLineConnection_h

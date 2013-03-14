@@ -13,12 +13,8 @@ void gxLineConnection::InvalidateConnection()
     gxLine::Invalidate();
 }
 
-void gxLineConnection::Validate()
+void gxLineConnection::DoValidate()
 {
-    // Call the base class validate so children are also validated and this object
-    // is marked as valid.
-    gxLine::Validate();
-    
     if ( !mSource || !mDestination )
         return;
     
@@ -26,5 +22,4 @@ void gxLineConnection::Validate()
     mTo =   mDestination->GetPosition( mSource->GetReference() );
     
     Repaint();
-    
 }

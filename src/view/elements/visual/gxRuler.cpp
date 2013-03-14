@@ -60,13 +60,9 @@ void gxRuler::OnScrollChanged( const gxScroll *aScroll )
 }
 
 
-// TODO: Is this right? It is only being called once.
-void gxRuler::Validate()
+// TODO: It is only being called once. Is this right?
+void gxRuler::DoValidate()
 {
-    // Call the base class validate so children are also validated and this object
-    // is marked as valid.
-    gxVisual::Validate();
-    
     // To calculate the minimum block size we need the lightweight
     // system, which will only be available when Validate is called.
     CalcMinBlockSize();

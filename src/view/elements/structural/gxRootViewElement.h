@@ -48,7 +48,7 @@ public:
     
 
     // Validate is promoted to public as the lightweight system needs to call it.
-    virtual void Validate() { gxStructural::Validate(); }
+    using gxStructural::Validate;
 protected:
     virtual void TransformToAbsolute( gxRect &aRect );
     virtual void InvalidateUp();

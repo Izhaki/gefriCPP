@@ -178,6 +178,8 @@ void gxViewElement::Validate()
         if ( aChild->IsInvalid() )
             aChild->Validate();
     }
+
+    DoValidate();
     
     // TODO: does layout must come before MarkValid? - Layout will invalidate
     // The children.

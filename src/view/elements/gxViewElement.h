@@ -221,14 +221,18 @@ protected:
     
     
     /**
-     * @brief Asks the view element to perform any operations that are needed
-     * to make it valid. Also validates all children.
-     *
-     * Note that subclasses are likely to need to call the base class
-     * validate, so chilren are also validated and the view element is marked as
-     * valid.
+     * @brief Provides the general validation logic (validating children,
+     * layouting, mark as valid). The element-specific validation is done by
+     * DoValidate, which is called by this method.
      */
-    virtual void Validate();
+    void Validate();
+
+    /**
+     * @brief Performs the actual element-specific validation.
+     *
+     * Called by Validate()
+     */
+    virtual void DoValidate() {};
 
     /**
      * @brief Marks this view element as invalid (sets th valid flag to false);
