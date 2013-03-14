@@ -6,7 +6,8 @@
 gxViewElement::gxViewElement()
 : mFlags( gxViewElement::Visible |
           gxViewElement::ClipChildren ),
-  mLayout( NULL )
+  mLayout( NULL ),
+  mValid( Invalid )
 {
 }
 
@@ -189,22 +190,22 @@ void gxViewElement::Validate()
 
 void gxViewElement::MarkInvalid()
 {
-    mFlags.Unset( gxViewElement::Valid );    
+    mValid = Invalid;
 }
 
 void gxViewElement::MarkValid()
 {
-    mFlags.Set( gxViewElement::Valid );
+    mValid = Valid;
 }
 
 bool gxViewElement::IsValid()
 {
-    return mFlags.IsSet( gxViewElement::Valid );
+    return mValid == Valid;
 }
 
 bool gxViewElement::IsInvalid()
 {
-    return mFlags.IsntSet( gxViewElement::Valid );
+    return mValid == Invalid;
 }
 
 bool gxViewElement::IsVisible()

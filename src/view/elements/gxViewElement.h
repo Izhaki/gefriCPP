@@ -276,10 +276,27 @@ protected:
 
     enum Flags
     {
-        Valid        = 0x01,
+//        Valid        = 0x01,
         Visible      = 0x02,
         ClipChildren = 0x04,
     };
+    
+    // Valid stands for whether the view elements position or size changed.
+    // An invalid element is one which position or size has changed, or one
+    // whose descendents position and size changed in a way that may affect
+    // it.
+    //
+    // For instance, an element that clips its children will not be marked as
+    // invalid when its descendents changed, nor would its ancestors will be.
+    enum
+    {
+        // The view element is valid
+        Valid,
+        // The view element isn't invalid, but one of its descendants is
+        Trace,
+        // The view element is invalid and need validation
+        Invalid
+    } mValid;
   
     gxFlags<gx8Flags> mFlags;
     
