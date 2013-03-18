@@ -81,7 +81,7 @@ void MyFrame::InitGefri()
     mLightweightControl = new gxLightweightControl(this, wxID_HIGHEST + 1, wxPoint(10,10), wxSize(500,500), LightweightControlStyle | wxHSCROLL | wxVSCROLL);
     mLightweightSystem = new gxLightweightSystem(mLightweightControl);
 
-    mDocument = new gxRectangle(gxRect( 50, 50, 480, 480 ));
+    mDocument = new gxRectangle(gxRect( 50, 50, 400, 480 ));
     
     // Scoll Manager and scroller
     mScrollManager = new gxScrollManager();

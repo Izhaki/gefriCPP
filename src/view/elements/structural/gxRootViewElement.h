@@ -51,7 +51,8 @@ public:
     using gxStructural::Validate;
 protected:
     virtual void TransformToAbsolute( gxRect &aRect );
-    virtual void InvalidateUp( ValidState aValid = Invalid );
+    virtual void InvalidateUp( gxViewElement* aTrigger,
+                               ValidState     aValid = Invalid );
 private:
     /// The {@link gxLightweightSystem lightweight system} associated with this
     /// root view element.

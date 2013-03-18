@@ -32,7 +32,8 @@ void gxRootViewElement::Repaint( gxRect& aBounds,
         mLightweightSystem->AddDirtyRegion( aBounds );
 }
 
-void gxRootViewElement::InvalidateUp( ValidState aValid )
+void gxRootViewElement::InvalidateUp( gxViewElement* aTrigger,
+                                      ValidState     aValid )
 {
     mValid = aValid;
 

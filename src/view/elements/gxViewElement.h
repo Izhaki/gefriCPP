@@ -223,8 +223,12 @@ protected:
      * Once invalidation reaches the root view element, it will queue a
      * validation request in the event loop, which once processed will validate
      * all invalid figures.
+     *
+     * @param aTrigger The view element that triggered the invalidation.
+     * @param aValid The InvalidState to change to - either Invalid or Trace
      */
-    virtual void InvalidateUp( ValidState aValid = Invalid );
+    virtual void InvalidateUp( gxViewElement* aTrigger,
+                               ValidState     aValid = Invalid );
 
     /**
      * @brief This method notifies all descendents that one of their ancestors
@@ -289,6 +293,14 @@ protected:
      * **Note:** this method is different from IsntValid().
      */
     bool IsInvalid();
+
+    /**
+     * @brief Returns whether or not the view element is invalid.
+     * @return True if the view element isn't invalid.
+     *
+     * **Note:** this method is different from IsValid().
+     */
+    bool IsntInvalid();
     
     /**
      * @brief Returns whether or not the view element clips its children.

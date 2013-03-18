@@ -46,19 +46,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../../samples/gxDraw/src/myFrame.cpp"
-         timestampString = "384565932.823357"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "276"
-         endingLineNumber = "276"
-         landmarkName = "MyFrame::OnAction2(wxCommandEvent &amp;e)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "../../src/View/Elements/Structural/gxScroller.cpp"
          timestampString = "384916441.128933"
          startingColumnNumber = "9223372036854775807"
@@ -99,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../src/View/Elements/gxViewElement.cpp"
-         timestampString = "384917988.17304"
+         timestampString = "385339254.806663"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "269"
-         endingLineNumber = "269"
+         startingLineNumber = "282"
+         endingLineNumber = "282"
          landmarkName = "gxViewElement::OnAddChild( gxViewElement *aChild )"
          landmarkType = "5">
       </FileBreakpoint>
@@ -162,11 +149,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../src/View/Elements/gxViewElement.cpp"
-         timestampString = "384917988.17304"
+         timestampString = "385339254.806663"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "191"
-         endingLineNumber = "191"
+         startingLineNumber = "199"
+         endingLineNumber = "199"
          landmarkName = "gxViewElement::Validate()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -174,13 +161,13 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../../src/View/Elements/gxViewElement.cpp"
-         timestampString = "384917988.17304"
+         filePath = "../../samples/gxDraw/src/myFrame.cpp"
+         timestampString = "385004868.534119"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "154"
-         endingLineNumber = "154"
-         landmarkName = "gxViewElement::InvalidateUp( ValidState aValid )"
+         startingLineNumber = "276"
+         endingLineNumber = "276"
+         landmarkName = "MyFrame::OnAction2(wxCommandEvent &amp;e)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

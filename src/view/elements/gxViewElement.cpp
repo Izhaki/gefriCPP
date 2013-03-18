@@ -133,34 +133,44 @@ void gxViewElement::Invalidate()
     if ( IsInvalid() )
         return;
     
-    InvalidateUp();
-    InvalidateDown();
-}
-
-void gxViewElement::InvalidateUp( ValidState aValid )
-{
-    // No point invalidating if I'm already invalid (this can happed when
-    // layouting children - their setbound with invalidate their parents.
-    if ( mValid == aValid )
-        return;
+    MarkInvalid();
     
-    if ( mValid != Invalid )
-        mValid = aValid;
-    
-    // If I'm clipping my children change the valid state to Trace (in case it
-    // was Invalid).
-    if ( IsClippingChildren() )
-    {
-        aValid = Trace;
-    }
-    
-    // View elements parent might be null before all elements are inserted to
-    // the hierarchy tree (when they are still created and added to their
-    // parents).
     if ( GetParent() != NULL )
     {
         // Invalidate further up the hierarchy tree.
-        GetParent()->InvalidateUp( aValid );
+        GetParent()->InvalidateUp( this );
+    }
+
+    InvalidateDown();
+}
+
+void gxViewElement::InvalidateUp( gxViewElement* aTrigger,
+                                  ValidState     aValid )
+{
+    // If the new valid state and mine are the same - not point doing anything.
+    if ( mValid == aValid )
+        return;
+    
+    // If this element is Invalid, don't change it (to Trace).
+    if ( IsntInvalid() )
+        mValid = aValid;
+    
+    
+    if ( GetParent() != NULL )
+    {
+        // If this view element is clipping its children, its size and position
+        // wouldn't change as far as ancestors are concerned, if such is the
+        // case, invalidate the parent with Trace. This means ancestors won't be
+        // in invalid state (thus they won't require validation), but validation
+        // starting from the root element can still travel down the hierarchy.
+        if ( IsClippingChildren() )
+        {
+            GetParent()->InvalidateUp( this, Trace );
+        } else {
+            GetParent()->InvalidateUp( this, Invalid );
+        }
+        
+        
     }
 }
 
@@ -223,6 +233,11 @@ bool gxViewElement::IsInvalid()
     return mValid == Invalid;
 }
 
+bool gxViewElement::IsntInvalid()
+{
+    return mValid != Invalid;
+}
+
 bool gxViewElement::IsVisible()
 {
     return mFlags.IsSet( gxViewElement::Visible );
@@ -264,19 +279,22 @@ void gxViewElement::OnAddChild( gxViewElement *aChild )
     // has root view element at the very top of the hierarchy tree, the view
     // element will remain invalid and therefore will not be repainted as
     // Repaint will return.
-    Invalidate();
+    aChild->Invalidate();
     aChild->Repaint();
 }
 
 void gxViewElement::OnBeforeChildRemoval( gxViewElement *aChild )
 {
+
+    // We need revalidation as an addition of a child might affect layouts etc.
+    aChild->Invalidate();
+    
+    // TODO: We need to move the child from the layout.
     aChild->Erase();
 }
 
 void gxViewElement::OnAfterChildRemoval()
 {
-    // We need revalidation as an addition of a child might affect layouts etc.
-    Invalidate();
 }
 
 void gxViewElement::SetLayout( gxLayout* aLayout )
