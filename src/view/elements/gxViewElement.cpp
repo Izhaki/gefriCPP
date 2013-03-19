@@ -144,12 +144,19 @@ void gxViewElement::Invalidate()
     InvalidateDown();
 }
 
-void gxViewElement::InvalidateUp( gxViewElement* aTrigger,
+void gxViewElement::InvalidateUp( gxViewElement* aChild,
                                   ValidState     aValid )
 {
     // If the new valid state and mine are the same - not point doing anything.
     if ( mValid == aValid )
         return;
+    
+    if ( aValid == Invalid )
+    {
+        // Invalidate the layout.
+        if ( mLayout )
+            mLayout->Invalidate( aChild );
+    }
     
     // If this element is Invalid, don't change it (to Trace).
     if ( IsntInvalid() )
@@ -165,11 +172,10 @@ void gxViewElement::InvalidateUp( gxViewElement* aTrigger,
         // starting from the root element can still travel down the hierarchy.
         if ( IsClippingChildren() )
         {
-            GetParent()->InvalidateUp( this, Trace );
-        } else {
-            GetParent()->InvalidateUp( this, Invalid );
-        }
+            aValid = Trace;
+        }	
         
+        GetParent()->InvalidateUp( this, aValid );
         
     }
 }
@@ -190,22 +196,31 @@ void gxViewElement::InvalidateDown()
 
 void gxViewElement::Validate()
 {
+    // Keep whether I was invalid before validating children.
+    bool iWasInvalid = IsInvalid();
+    
+    // Mark me as valid - notice the comment below. If MarkValid() would come
+    // after the validation of the descendants, it would override them possibly
+    // setting this view element to invalid.
+    MarkValid();
+    
     // Ask all children to validate themselves in case they are invalid.
+    // Notice that validate on descendants may trigger invalidate and will
+    // mark this view element as invalid again.
     forEachChild( aChild )
     {
         if ( aChild->IsntValid() )
             aChild->Validate();
     }
 
-    // Only validate if the valid state is Invalid (but not if it's Trace).
-    if ( IsInvalid() )
+    // If I was invalid before validating the descendants, and if I'm not
+    // invalid now (because my descendants have marked me as such) - validate
+    // me and perform the layout
+    if ( iWasInvalid && IsntInvalid() )
+    {
         DoValidate();
-    
-    // TODO: does layout must come before MarkValid? - Layout will invalidate
-    // The children.
-    Layout();
-    
-    MarkValid();
+        Layout();
+    }
 }
 
 void gxViewElement::MarkInvalid()

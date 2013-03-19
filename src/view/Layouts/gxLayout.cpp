@@ -3,13 +3,15 @@
 
 gxLayout::gxLayout()
   : mViewElement ( NULL ),
-    mOnMajorAxis ( true )
+    mOnMajorAxis ( true ),
+    mLayoutStatus( Invalid )
 {
 }
 
 gxLayout::gxLayout( bool aOnMajorAxis )
 : mViewElement ( NULL         ),
-  mOnMajorAxis ( aOnMajorAxis )
+  mOnMajorAxis ( aOnMajorAxis ),
+  mLayoutStatus( Invalid )
 {
 }
 
@@ -29,8 +31,13 @@ void gxLayout::SetViewElement( gxViewElement* aViewElement )
 
 void gxLayout::Layout()
 {
-    if ( !mViewElement )
+    // No point doing a layout if the element was not set or if the layout
+    // is already valid.
+    if ( !mViewElement || mLayoutStatus == Valid )
         return;
+    
+    // Mark the layout as in progress
+    mLayoutStatus = InProgress;
     
     Init();
     
@@ -38,6 +45,22 @@ void gxLayout::Layout()
     
     Apply();
     
+    // Mark the layout as valid
+    mLayoutStatus = Valid;
+    
+}
+
+void gxLayout::Invalidate( gxViewElement* aViewElement )
+{
+    // If the layout is in progress or already marked as invalid, do nothing.
+    if ( mLayoutStatus != Valid )
+        return;
+    
+    bool iElementPartOfLayout = FindConstraints( aViewElement );
+    
+    // If the view element is part of my layout, mark me as invalid
+    if ( iElementPartOfLayout )
+        mLayoutStatus = Invalid;
 }
 
 bool IndexCompare( gxConstraints* aL, gxConstraints* aR )
@@ -68,20 +91,29 @@ void gxLayout::Apply()
     }
 }
 
-gxConstraints* gxLayout::GetConstraints( gxViewElement* aElement )
+
+gxConstraints* gxLayout::FindConstraints( gxViewElement* aElement )
 {
     // Search for the element in our list.
     gxConstraints::Iterator iIter = std::find_if( mConstraints.begin(),
                                                   mConstraints.end(),
                                                   ElementFinder( aElement ) );
-    
-    bool           iFound = iIter != mConstraints.end();
-    gxConstraints* iConstraints;
-    
-    if ( iFound )
+
+    if ( iIter == mConstraints.end() )
     {
-        iConstraints = *iIter;
+        return NULL;
     } else {
+        return *iIter;
+    }
+}
+
+gxConstraints* gxLayout::GetConstraints( gxViewElement* aElement )
+{
+
+    gxConstraints* iConstraints = FindConstraints( aElement );
+    
+    if ( iConstraints == NULL )
+    {
         // If layout data was not found, create one
         iConstraints = new gxConstraints( aElement );
         

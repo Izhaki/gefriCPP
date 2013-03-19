@@ -43,6 +43,9 @@ public:
      */
     void Layout();
     
+    void Invalidate( gxViewElement* aViewElement );
+    
+    
     // Constraint setters
     
     /**
@@ -93,7 +96,27 @@ protected:
     gxConstraints::List mConstraints;
     bool                mOnMajorAxis;
     
-        
+    enum LayoutStatus {
+        Valid,
+        InProgress,
+        Invalid,
+    } mLayoutStatus;
+
+    /**
+     * @brief Finds the constraints of the provided view element.
+     *
+     * @return The constraints of the provided view element, or NULL if none was
+     * found.
+     */
+    
+    gxConstraints* FindConstraints( gxViewElement* aElement );
+    
+    /**
+     * @brief Gets the constraints for the provided view element, or create
+     * new constraints if no such exit.
+     *
+     * @return The constraints of the provided view element.
+     */
     gxConstraints* GetConstraints( gxViewElement* aElement );
 
     /**

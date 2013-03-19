@@ -72,25 +72,12 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../../samples/gxDraw/src/myFrame.cpp"
-         timestampString = "384820906.895315"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "262"
-         endingLineNumber = "262"
-         landmarkName = "MyFrame::OnMoveFace(wxCommandEvent &amp;e)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "../../src/View/Elements/gxViewElement.cpp"
-         timestampString = "385339254.806663"
+         timestampString = "385351307.906934"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "282"
-         endingLineNumber = "282"
+         startingLineNumber = "299"
+         endingLineNumber = "299"
          landmarkName = "gxViewElement::OnAddChild( gxViewElement *aChild )"
          landmarkType = "5">
       </FileBreakpoint>
@@ -148,12 +135,51 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../../src/View/Elements/gxViewElement.cpp"
-         timestampString = "385339254.806663"
+         filePath = "../../src/View/Layouts/gxLayout.cpp"
+         timestampString = "385351307.906934"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "199"
-         endingLineNumber = "199"
+         startingLineNumber = "62"
+         endingLineNumber = "62"
+         landmarkName = "gxLayout::Invalidate( gxViewElement* aViewElement )"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../src/View/Layouts/Constraints/gxConstraints.cpp"
+         timestampString = "385342690.086349"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "11"
+         endingLineNumber = "11"
+         landmarkName = "gxConstraints::Apply()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../src/View/Elements/Structural/gxRootViewElement.cpp"
+         timestampString = "385343933.089566"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "38"
+         endingLineNumber = "38"
+         landmarkName = "gxRootViewElement::InvalidateUp( gxViewElement* aTrigger, ValidState aValid )"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../src/View/Elements/gxViewElement.cpp"
+         timestampString = "385351307.906934"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "212"
+         endingLineNumber = "212"
          landmarkName = "gxViewElement::Validate()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -161,13 +187,52 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../../samples/gxDraw/src/myFrame.cpp"
-         timestampString = "385004868.534119"
+         filePath = "../../src/View/Elements/gxViewElement.cpp"
+         timestampString = "385345467.900623"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "276"
-         endingLineNumber = "276"
-         landmarkName = "MyFrame::OnAction2(wxCommandEvent &amp;e)"
+         startingLineNumber = "154"
+         endingLineNumber = "154"
+         landmarkName = "gxViewElement::InvalidateUp( gxViewElement* aChild, ValidState aValid )"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../src/View/Layouts/gxLayout.cpp"
+         timestampString = "385351307.906934"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "44"
+         endingLineNumber = "44"
+         landmarkName = "gxLayout::Layout()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../src/View/Elements/Visual/gxVisual.cpp"
+         timestampString = "385347600.523934"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "115"
+         endingLineNumber = "115"
+         landmarkName = "gxVisual::SetBounds( const gxRect &amp;aNewBounds )"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../src/View/Layouts/gxLayout.cpp"
+         timestampString = "385351307.906934"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "56"
+         endingLineNumber = "56"
+         landmarkName = "gxLayout::Invalidate( gxViewElement* aViewElement )"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

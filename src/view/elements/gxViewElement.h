@@ -224,10 +224,10 @@ protected:
      * validation request in the event loop, which once processed will validate
      * all invalid figures.
      *
-     * @param aTrigger The view element that triggered the invalidation.
+     * @param aChild Indicates which child was invalidated.
      * @param aValid The InvalidState to change to - either Invalid or Trace
      */
-    virtual void InvalidateUp( gxViewElement* aTrigger,
+    virtual void InvalidateUp( gxViewElement* aChild,
                                ValidState     aValid = Invalid );
 
     /**

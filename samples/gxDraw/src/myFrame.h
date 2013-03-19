@@ -44,6 +44,9 @@ private:
     gxLayer*  mConnectionLayer;
     gxLayer*  mPrimaryLayer;
     
+    gxBorderLayout *mBorderLayout;    
+    gxRectangle *mContainer, *mCenter, *mNorth, *mSouth, *mWest, *mEast;    
+    
 public:
   MyFrame(wxWindow   *parent,
           wxWindowID id,
@@ -63,6 +66,8 @@ public:
   void OnAction3(wxCommandEvent &e);
   void OnHideFace(wxCommandEvent &e);
   void OnShowFace(wxCommandEvent &e);
+    
+  void OnModifyLayout(wxCommandEvent &e);
   
   void OnZoomIn(wxCommandEvent &e);
   void OnZoomOut(wxCommandEvent &e);
