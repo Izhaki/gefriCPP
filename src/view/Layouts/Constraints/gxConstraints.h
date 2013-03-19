@@ -31,8 +31,9 @@ class gxViewElement;
  * position and size the element. For example, the initial rect of the element,
  * its (possibly rational) size, its region in a border layout, and so forth.
  */
-struct gxConstraints
+class gxConstraints
 {
+public:
     gxConstraints( gxViewElement* aElement) : Element( aElement ) { }
     
     typedef std::list< gxConstraints* > List;
@@ -46,9 +47,6 @@ struct gxConstraints
     
     // The size of the element in percent or flex.
     gxRatio        Ratio;
-    
-    // The region of the element in a border layout
-    gxRegion       Region;
     
     // A helper variable for used when the layout is being calculated.
     // Layouts only change the bounds of the view element when all layout
@@ -78,6 +76,13 @@ struct gxConstraints
     void  SetFlex   ( short aFlex    ) { Ratio.SetFlex   ( aFlex );    }
     void  SetPercent( short aPercent ) { Ratio.SetPercent( aPercent ); }
     
+    gxRegion GetRegion() { return mRegion; }
+    void     SetRegion( gxRegion aRegion ) { mRegion = aRegion; }
+    
+private:
+    // The region of the element in a border layout
+    gxRegion       mRegion;
+
 };
 
 #endif // gxLayoutData_h
