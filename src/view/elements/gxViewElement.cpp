@@ -4,8 +4,7 @@
 #include "core/gxLog.h"
 
 gxViewElement::gxViewElement()
-: mFlags( gxViewElement::Visible |
-          gxViewElement::ClipChildren ),
+: mFlags( Visible | ClipChildren ),
   mLayout( NULL ),
   mValid( Invalid )
 {
@@ -151,6 +150,7 @@ void gxViewElement::InvalidateUp( gxViewElement* aChild,
     if ( mValid == aValid )
         return;
     
+    // Only in the valid state is invalid (not trace)
     if ( aValid == Invalid )
     {
         // Invalidate the layout.
@@ -158,7 +158,9 @@ void gxViewElement::InvalidateUp( gxViewElement* aChild,
             mLayout->Invalidate( aChild );
     }
     
-    // If this element is Invalid, don't change it (to Trace).
+    // If this element is already Invalid, don't change it (particularly
+    // not to trace - it is possible to one descendant to bubble up invalid,
+    // while a later one will bubble up trace).
     if ( IsntInvalid() )
         mValid = aValid;
     
@@ -167,9 +169,10 @@ void gxViewElement::InvalidateUp( gxViewElement* aChild,
     {
         // If this view element is clipping its children, its size and position
         // wouldn't change as far as ancestors are concerned, if such is the
-        // case, invalidate the parent with Trace. This means ancestors won't be
-        // in invalid state (thus they won't require validation), but validation
-        // starting from the root element can still travel down the hierarchy.
+        // case, then from this element upward we mark all ancestors as Trace.
+        // This means ancestors won't be in invalid state (thus they won't
+        // require validation), but validation starting from the root element
+        // can still travel down the hierarchy.
         if ( IsClippingChildren() )
         {
             aValid = Trace;
@@ -255,7 +258,7 @@ bool gxViewElement::IsntInvalid()
 
 bool gxViewElement::IsVisible()
 {
-    return mFlags.IsSet( gxViewElement::Visible );
+    return mFlags.IsSet( Visible );
 }
 
 void gxViewElement::SetVisible( bool const aVisible )
@@ -264,9 +267,9 @@ void gxViewElement::SetVisible( bool const aVisible )
         return;
 
     if ( aVisible )
-        mFlags.Set( gxViewElement::Visible );
+        mFlags.Set( Visible );
     else
-        mFlags.Unset( gxViewElement::Visible );
+        mFlags.Unset( Visible );
 
     Invalidate();
     Repaint();
@@ -284,7 +287,7 @@ void gxViewElement::Hide()
 
 bool gxViewElement::IsClippingChildren()
 {
-    return mFlags.IsSet( gxViewElement::ClipChildren );
+    return mFlags.IsSet( ClipChildren );
 }
 
 void gxViewElement::OnAddChild( gxViewElement *aChild )

@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../src/View/Elements/gxViewElement.cpp"
-         timestampString = "385351307.906934"
+         timestampString = "385351838.172558"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "299"
-         endingLineNumber = "299"
+         startingLineNumber = "298"
+         endingLineNumber = "298"
          landmarkName = "gxViewElement::OnAddChild( gxViewElement *aChild )"
          landmarkType = "5">
       </FileBreakpoint>
@@ -175,11 +175,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../src/View/Elements/gxViewElement.cpp"
-         timestampString = "385351307.906934"
+         timestampString = "385351838.172558"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "212"
-         endingLineNumber = "212"
+         startingLineNumber = "211"
+         endingLineNumber = "211"
          landmarkName = "gxViewElement::Validate()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -188,11 +188,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../src/View/Elements/gxViewElement.cpp"
-         timestampString = "385345467.900623"
+         timestampString = "385351838.172558"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "154"
-         endingLineNumber = "154"
+         startingLineNumber = "153"
+         endingLineNumber = "153"
          landmarkName = "gxViewElement::InvalidateUp( gxViewElement* aChild, ValidState aValid )"
          landmarkType = "5">
       </FileBreakpoint>
