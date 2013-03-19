@@ -199,7 +199,7 @@ void gxViewElement::InvalidateDown()
 
 void gxViewElement::Validate()
 {
-    // Keep whether I was invalid before validating children.
+    // Keep whether I was invalid before validating the children.
     bool iWasInvalid = IsInvalid();
     
     // Mark me as valid - notice the comment below. If MarkValid() would come
@@ -208,7 +208,7 @@ void gxViewElement::Validate()
     MarkValid();
     
     // Ask all children to validate themselves in case they are invalid.
-    // Notice that validate on descendants may trigger invalidate and will
+    // Notice that validate on descendants may trigger invalidation and will
     // mark this view element as invalid again.
     forEachChild( aChild )
     {
@@ -218,7 +218,8 @@ void gxViewElement::Validate()
 
     // If I was invalid before validating the descendants, and if I'm not
     // invalid now (because my descendants have marked me as such) - validate
-    // me and perform the layout
+    // me and perform the layout. (If I am invalid now, then the next validation
+    // event will lead to my validation.
     if ( iWasInvalid && IsntInvalid() )
     {
         DoValidate();
@@ -292,19 +293,13 @@ bool gxViewElement::IsClippingChildren()
 
 void gxViewElement::OnAddChild( gxViewElement *aChild )
 {
-    // Newly created children are invalid. So once a child is added, invalidate
-    // the parent. If the child is not inserted into a composition which
-    // has root view element at the very top of the hierarchy tree, the view
-    // element will remain invalid and therefore will not be repainted as
-    // Repaint will return.
     aChild->Invalidate();
     aChild->Repaint();
 }
 
 void gxViewElement::OnBeforeChildRemoval( gxViewElement *aChild )
 {
-
-    // We need revalidation as an addition of a child might affect layouts etc.
+    // We need revalidation as the deletion of a child might affect layouts etc.
     aChild->Invalidate();
     
     // TODO: We need to move the child from the layout.
