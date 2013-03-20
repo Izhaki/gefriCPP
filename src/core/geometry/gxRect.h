@@ -341,4 +341,9 @@ public:
     gxPix X, Y, width, height;
 };
 
+
+// Just a static dummy rect for methods returning a reference to rect that may
+// need something like null return
+static gxRect gxDummyRect;
+
 #endif // gxRect_h

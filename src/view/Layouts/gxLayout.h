@@ -102,13 +102,15 @@ protected:
         Invalid,
     } mLayoutStatus;
 
+    
+    virtual gxConstraints* CreateConstraints( gxViewElement* aElement ) = 0;
+    
     /**
      * @brief Finds the constraints of the provided view element.
      *
      * @return The constraints of the provided view element, or NULL if none was
      * found.
      */
-    
     gxConstraints* FindConstraints( gxViewElement* aElement );
     
     /**

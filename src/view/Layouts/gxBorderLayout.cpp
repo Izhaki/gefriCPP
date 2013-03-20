@@ -11,6 +11,12 @@ gxBorderLayout::gxBorderLayout( bool aOnMajorAxis )
 {}
 
 
+gxConstraints* gxBorderLayout::CreateConstraints( gxViewElement* aElement )
+{
+    return new Constraints( aElement );
+}
+
+
 void gxBorderLayout::DoLayout()
 {
     // Get the center constrainst. This will also raise assertion if there

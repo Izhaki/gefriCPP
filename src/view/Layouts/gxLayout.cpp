@@ -115,7 +115,7 @@ gxConstraints* gxLayout::GetConstraints( gxViewElement* aElement )
     if ( iConstraints == NULL )
     {
         // If layout data was not found, create one
-        iConstraints = new gxConstraints( aElement );
+        iConstraints = CreateConstraints( aElement );
         
         // An initiate the rect using the element's bounds
         iConstraints->Rect = aElement->GetBounds();

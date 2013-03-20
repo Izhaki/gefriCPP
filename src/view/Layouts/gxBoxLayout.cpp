@@ -32,6 +32,11 @@ gxBoxLayout::gxBoxLayout( gxDistribute::Type aDistribute,
     gxLayout    ( aOnMajorAxis )
 {}
 
+gxConstraints* gxBoxLayout::CreateConstraints( gxViewElement* aElement )
+{
+    return new Constraints( aElement );
+}
+
 void gxBoxLayout::DoLayout()
 {
     gxRect iContainerBounds = mViewElement->GetInnerBounds();
