@@ -30,16 +30,13 @@ public:
     virtual void SetPercent( short aValue ) { Assert(); }
     virtual void SetFlex   ( short aValue ) { Assert(); }
     
-    virtual bool IsEmpty()   { Assert(); return true; }
-    virtual bool IsntEmpty() { Assert(); return false; }
-    
     virtual bool IsPercent() { Assert(); return false; }
     virtual bool IsFlex()    { Assert(); return false; }
     
     
     // Readability methods related to Percent and Flex ratios.
-    bool  IsPixels()   { return IsEmpty(); }
-    bool  IsntPixels() { return IsntEmpty(); }
+    virtual bool IsPixels()   { Assert(); return true; }
+    virtual bool IsntPixels() { Assert(); return false; }
 private:
     void Assert()
     {
@@ -65,11 +62,11 @@ public:
     virtual void SetPercent( short aValue ) { mRatio = aValue; }
     virtual void SetFlex   ( short aValue ) { mRatio = -aValue; }
     
-    virtual bool IsEmpty()   { return mRatio == 0; }
-    virtual bool IsntEmpty() { return mRatio != 0; }
-    
     virtual bool IsPercent() { return mRatio > 0; }
     virtual bool IsFlex()    { return mRatio < 0; }
+    
+    virtual bool IsPixels()   { return mRatio == 0; }
+    virtual bool IsntPixels() { return mRatio != 0; }    
 private:
     short mRatio;
 };
