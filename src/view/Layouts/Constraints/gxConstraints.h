@@ -27,8 +27,13 @@ class gxViewElement;
  *
  * Constraints are used by {@link gxLayout layouts}. Each constraint is
  * linked to a view element and includes extra information to help the layout
- * position and size the element. For example, the initial rect of the element,
- * its (possibly rational) size, its region in a border layout, and so forth.
+ * position and size the element.
+ *
+ * By means of multiple inheritance, this class interface includes abstract
+ * getters and setters of all possible constraints (to save memory, these
+ * abstract constraints do not include any member variables). Individual layouts
+ * will pick and mix the implemented constraints (with member variables)
+ * related to them.
  */
 class gxConstraints: virtual public gxAbstractRegionConstraint,
                      virtual public gxAbstractRatioConstraint

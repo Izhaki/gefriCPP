@@ -208,6 +208,7 @@ void MyFrame::CreateBorderLayout()
     mBorderLayout->SetRegion( mCenter, gxRegion::Center );
     mBorderLayout->SetRegion( mSouth,  gxRegion::South );
     mBorderLayout->SetRegion( mWest,   gxRegion::West );
+//    mBorderLayout->SetPercent( mWest, 50 );
     mBorderLayout->SetRegion( mEast,   gxRegion::East );
     
     mContainer->Add( mNorth );

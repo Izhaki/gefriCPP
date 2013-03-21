@@ -67,6 +67,10 @@ public:
      *
      * If the element is not yet in the list of constraints, it will be added.
      */
+    // TODO: given we have RatioConstraint, does SetPercent really belong to
+    // gxLayout? Would all layouts have this? Or shall we move this to the
+    // individual layouts that do? And if we do move it, shouldn't we create
+    // an interface?
     void SetPercent( gxViewElement* aViewElement,
                      short          aPercent );
 
