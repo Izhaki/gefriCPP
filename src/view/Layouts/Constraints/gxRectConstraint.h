@@ -19,7 +19,7 @@ public:
 private:
     void Assert()
     {
-        gxASSERT( true, "No rect constraints for this layout" );
+        gxAssert( true, "No rect constraints for this layout" );
     }
 };
 

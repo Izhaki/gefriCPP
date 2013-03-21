@@ -40,7 +40,7 @@ public:
 private:
     void Assert()
     {
-        gxASSERT( true, "No ratio constraints for this layout" );
+        gxAssert( true, "No ratio constraints for this layout" );
     }
 };
 

@@ -72,8 +72,8 @@ gxConstraints* gxBorderLayout::GetCenterConstraints()
         }
     }
     
-    gxASSERT( iFound > 1,  "More than one center region defined in layout" );
-    gxASSERT( iFound == 0, "No center region defined in layout" );
+    gxAssert( iFound > 1,  "More than one center region defined in layout" );
+    gxAssert( iFound == 0, "No center region defined in layout" );
     
     return iResult;
 }

@@ -20,7 +20,7 @@ public:
 private:
     void Assert()
     {
-        gxASSERT( true, "No region constraints for this layout" );
+        gxAssert( true, "No region constraints for this layout" );
     }
 };
 

@@ -28,11 +28,11 @@ gxLightweightSystem* gxViewElement::GetLightweightSystem() const
 {
     // Get root view element and return if no such found.
     const gxRootViewElement *iRoot = GetRootViewElement();
-    gxASSERT( iRoot == NULL, "Could not find root element" );
+    gxAssert( iRoot == NULL, "Could not find root element" );
 
     // Get the lightweight system and return if no such found.
     gxLightweightSystem *iLws = iRoot->GetLightweightSystem();
-    gxASSERT( iLws == NULL, "Could not find the lightweight system" );
+    gxAssert( iLws == NULL, "Could not find the lightweight system" );
 
     return iLws;
 }
@@ -41,7 +41,7 @@ void gxViewElement::TransformToAbsolute( gxRect &aRect )
 {
     gxViewElement* iParent = GetParent();
     
-    gxASSERT( iParent == NULL, "TransformToAbsolute called, but no parent" );
+    gxAssert( iParent == NULL, "TransformToAbsolute called, but no parent" );
 
     // TODO: we shouldn't really carry on doing this if the current element
     // is using absolute positioning.

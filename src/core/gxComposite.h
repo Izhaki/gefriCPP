@@ -59,14 +59,14 @@ public:
     void Add( tComposite* aChild )
     {
         // Make sure child isn't null
-        gxASSERT( aChild == NULL, "Null paased to Add" );
+        gxAssert( aChild == NULL, "Null paased to Add" );
         
         // Check for cycle in hierarchy
         for ( tComposite* f = This();
               f != NULL;
               f  = f->GetParent() )
         {
-            gxASSERT( aChild == f,
+            gxAssert( aChild == f,
                      "Cycle in Hierarchy when trying to add a child" );
         }
         
@@ -90,7 +90,7 @@ public:
                       bool        aAndDelete = false )
     {
         // Make sure it is one of my children
-        gxASSERT( aChild->GetParent() != this,
+        gxAssert( aChild->GetParent() != this,
                  "Remove is called on a wrong parent." );
         
         // Notify
@@ -177,7 +177,7 @@ public:
      */
     int GetIndex() const
     {
-        gxASSERT( Parentless(),
+        gxAssert( Parentless(),
                   "GetIndex called with no parent." );
         
         return HasParent() ? GetParent()->GetChildIndex( this ) : -1 ;
