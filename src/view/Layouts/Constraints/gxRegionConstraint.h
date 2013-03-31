@@ -14,6 +14,15 @@ enum gxRegion
     West
 };
 
+class gxRegionConstraint: public gxConstraint<gxRegion>
+{
+public:
+    gxRegionConstraint( gxRegion aRegion ) :
+        gxConstraint( aRegion )
+    {}
+};
+
+/*
 class gxRegionConstraint: public gxConstraint
 {
 public:
@@ -28,6 +37,7 @@ public:
 private:
     gxRegion mRegion;
 };
+*/
 
 
 

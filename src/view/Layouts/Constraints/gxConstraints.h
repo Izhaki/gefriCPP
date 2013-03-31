@@ -25,10 +25,28 @@ class gxViewElement;
 
 typedef short ConstriantId;
 
-class gxConstraint
+class gxConstraintBase
 {
 public:
+    virtual ~gxConstraintBase() {}
+};
+
+template< class Type >
+class gxConstraint : public gxConstraintBase
+{
+public:
+    gxConstraint( Type aValue ) :
+        mValue( aValue )
+    {}
+    
+    Type GetValue()
+    {
+        return mValue;
+    }
+    
     virtual ~gxConstraint() {}
+protected:
+    Type mValue;
 };
 
 // TODO
@@ -51,11 +69,11 @@ public:
 class gxConstraints: virtual public gxAbstractRatioConstraint
 {
 protected:
-    typedef std::map< ConstriantId, gxConstraint* >  ConstraintMap;
+    typedef std::map< ConstriantId, gxConstraintBase* >  ConstraintMap;
 private:
     ConstraintMap mConstraintMap;
     
-    gxConstraint* GetConstraint( ConstriantId aId );
+    gxConstraintBase* GetConstraint( ConstriantId aId );
 public:
     gxConstraints( gxViewElement* aElement) : Element( aElement ) { }
     

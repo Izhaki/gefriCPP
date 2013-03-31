@@ -11,7 +11,7 @@ void gxConstraints::Apply()
     Element->SetBounds( Bounds );
 }
 
-gxConstraint* gxConstraints::GetConstraint( ConstriantId aId )
+gxConstraintBase* gxConstraints::GetConstraint( ConstriantId aId )
 {
     ConstraintMap::iterator iConstraint = mConstraintMap.find( aId );
     
@@ -39,7 +39,7 @@ gxConstraint* gxConstraints::Get( const char* aConstraintName )
 
 gxRegion gxConstraints::GetRegion()
 {
-    gxConstraint* iConstraint = GetConstraint( gxRegionConstraintId );
+    gxConstraintBase* iConstraint = GetConstraint( gxRegionConstraintId );
     if ( iConstraint )
     {
         gxRegionConstraint* iRegionConstraint;
