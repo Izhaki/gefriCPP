@@ -60,8 +60,8 @@ void gxBorderLayout::DoLayout()
 
 gxConstraints* gxBorderLayout::GetCenterConstraints()
 {
-    gxConstraints*          iResult = NULL;
-    short                   iFound  = 0;
+    gxConstraints*      iResult = NULL;
+    short               iFound  = 0;
     
     forEachConstraint( iConstraints )
     {
@@ -111,22 +111,11 @@ void gxBorderLayout::AddConstraints( gxConstraints::List& aFiltered,
 void gxBorderLayout::AddRegionConstraints( gxRegion             aRegion,
                                            gxConstraints::List& aFiltered )
 {
-    forEachConstraint( iConstraints )
+    forEachConstraint( iConstraint )
     {
-        if ( (*iConstraints)->GetRegion() == aRegion )
+        if ( (*iConstraint)->GetRegion() == aRegion )
         {
-            aFiltered.push_back( *iConstraints );
+            aFiltered.push_back( *iConstraint );
         }
     }    
-}
-
-void gxBorderLayout::SetRegion( gxViewElement* aViewElement,
-                                gxRegion       aRegion )
-{
-    gxConstraints* iConstraints = GetConstraints( aViewElement );
-    
-    iConstraints->SetRegion( aRegion );
-    
-    aViewElement->Invalidate();
-    
 }

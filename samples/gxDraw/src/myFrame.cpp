@@ -204,13 +204,12 @@ void MyFrame::CreateBorderLayout()
     mWest   = new gxRectangle( gxSize( 50,20 ) );
     mEast   = new gxRectangle( gxSize( 50,20 ) );
     
-    mBorderLayout->SetRegion( mNorth,  gxRegion::North );
-    mBorderLayout->SetRegion( mCenter, gxRegion::Center );
-    mBorderLayout->SetRegion( mSouth,  gxRegion::South );
-    mBorderLayout->SetRegion( mWest,   gxRegion::West );
-//    mBorderLayout->SetPercent( mWest, 50 );
-    mBorderLayout->SetRegion( mEast,   gxRegion::East );
-    
+    mBorderLayout->SetConstraint( mNorth,  gxRegion::North);
+    mBorderLayout->SetConstraint( mCenter, gxRegion::Center);
+    mBorderLayout->SetConstraint( mSouth,  gxRegion::South);
+    mBorderLayout->SetConstraint( mWest,   gxRegion::West);
+    mBorderLayout->SetConstraint( mEast,   gxRegion::East);
+        
     mContainer->Add( mNorth );
     mContainer->Add( mCenter );
     mContainer->Add( mSouth );

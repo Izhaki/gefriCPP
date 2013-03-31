@@ -9,14 +9,8 @@ public:
     gxBorderLayout();
     
     gxBorderLayout( bool aOnMajorAxis );
-    
-    
-    void SetRegion( gxViewElement* aViewElement,
-                    gxRegion       aRegion );
-
 protected:
     class Constraints: public gxConstraints,
-                       public gxRegionConstraint,
                        public gxRatioConstraint
     {
     public:

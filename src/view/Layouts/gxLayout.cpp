@@ -161,3 +161,8 @@ void gxLayout::SetFlex( gxViewElement* aViewElement,
     
     aViewElement->Invalidate();
 }
+
+void gxLayout::InvalidateElement( gxViewElement* aViewElement )
+{
+    aViewElement->Invalidate();
+}

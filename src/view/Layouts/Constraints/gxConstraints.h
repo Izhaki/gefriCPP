@@ -5,9 +5,8 @@
 class gxViewElement;
 
 #include <list>
+#include <map>
 #include "core/geometry/gxGeometry.h"
-#include "View/Layouts/Constraints/gxRatioConstraint.h"
-#include "View/Layouts/Constraints/gxRegionConstraint.h"
 
 // A macro for looping all childrens (used from within the composite itself)
 #define forEachConstraint( aConstraints ) \
@@ -21,6 +20,20 @@ class gxViewElement;
     aConstraints != aList.end(); \
     ++aConstraints )
 
+// A list of all possible constraint IDs
+#define gxRegionConstraintId 1
+
+typedef short ConstriantId;
+
+class gxConstraint
+{
+public:
+    virtual ~gxConstraint() {}
+};
+
+// TODO
+#include "View/Layouts/Constraints/gxRatioConstraint.h"
+#include "View/Layouts/Constraints/gxRegionConstraint.h"
 
 /**
  * @brief A class representing extra details needed to layout view elements.
@@ -35,12 +48,19 @@ class gxViewElement;
  * will pick and mix the implemented constraints (with member variables)
  * related to them.
  */
-class gxConstraints: virtual public gxAbstractRegionConstraint,
-                     virtual public gxAbstractRatioConstraint
+class gxConstraints: virtual public gxAbstractRatioConstraint
 {
+protected:
+    typedef std::map< ConstriantId, gxConstraint* >  ConstraintMap;
+private:
+    ConstraintMap mConstraintMap;
+    
+    gxConstraint* GetConstraint( ConstriantId aId );
 public:
     gxConstraints( gxViewElement* aElement) : Element( aElement ) { }
     
+    // Just typedefs to help iteration
+    // TODO - not needed?
     typedef std::list< gxConstraints* > List;
     typedef typename List::iterator     Iterator;
     
@@ -56,6 +76,12 @@ public:
     // store what will become the bounds of the view element once Apply() is
     // called.
     gxRect         Bounds;
+    
+    void Set( gxRegion    aRegion );
+    
+//    gxConstraint* Get( const char* aConstraintName );
+    
+    gxRegion GetRegion();    
     
     /**
      * @brief Sets the bounds of the element to its initial rect.

@@ -2,9 +2,11 @@
 #define gxRegionConstraint_h
 
 #include "core/gxAssert.h"
+#include "View/Layouts/Constraints/gxConstraints.h"
 
 enum gxRegion
 {
+    Undefined,
     Center,
     North,
     East,
@@ -12,30 +14,17 @@ enum gxRegion
     West
 };
 
-class gxAbstractRegionConstraint
+class gxRegionConstraint: public gxConstraint
 {
 public:
-    virtual gxRegion GetRegion() { Assert(); return gxRegion::Center; }    
-    virtual void SetRegion( gxRegion aRegion ) { Assert(); }
-private:
-    void Assert()
-    {
-        gxAssert( true, "No region constraints for this layout" );
-    }
-};
-
-class gxRegionConstraint: virtual public gxAbstractRegionConstraint
-{
-public:
-    virtual gxRegion GetRegion()
+    gxRegionConstraint( gxRegion aRegion ) :
+        mRegion( aRegion )
+    {}
+    
+    gxRegion GetValue()
     {
         return mRegion;
-    }
-    
-    virtual void SetRegion( gxRegion aRegion )
-    {
-        mRegion = aRegion;
-    }
+    }    
 private:
     gxRegion mRegion;
 };

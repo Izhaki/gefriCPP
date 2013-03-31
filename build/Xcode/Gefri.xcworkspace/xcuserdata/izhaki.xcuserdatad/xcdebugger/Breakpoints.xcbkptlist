@@ -135,19 +135,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../../src/View/Layouts/Constraints/gxConstraints.cpp"
-         timestampString = "385342690.086349"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "11"
-         endingLineNumber = "11"
-         landmarkName = "gxConstraints::Apply()"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "../../src/View/Elements/Structural/gxRootViewElement.cpp"
          timestampString = "385343933.089566"
          startingColumnNumber = "9223372036854775807"
@@ -221,6 +208,17 @@
          endingLineNumber = "56"
          landmarkName = "gxLayout::Invalidate( gxViewElement* aViewElement )"
          landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../src/View/Layouts/Constraints/gxRatioConstraint.h"
+         timestampString = "385606688.918428"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "92"
+         endingLineNumber = "92">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

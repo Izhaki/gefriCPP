@@ -81,7 +81,30 @@ public:
      */
     void SetFlex( gxViewElement* aViewElement,
                   short          aFlex );
-        
+    
+    void InvalidateElement( gxViewElement* aViewElement );
+    
+    // For Constraints that don't have a unique value type
+    template< typename Type>
+    void SetConstraint( gxViewElement* aViewElement,
+                        const char*    aConstraintName,
+                        Type           aValue)
+    {
+        gxConstraints* iConstraints = GetConstraints( aViewElement );        
+        iConstraints->Set( aConstraintName, aValue );
+        InvalidateElement( aViewElement );
+    }
+
+    // For Constraints that have a unique value type
+    template< typename Type>
+    void SetConstraint( gxViewElement* aViewElement,
+                       Type            aValue)
+    {
+        gxConstraints* iConstraints = GetConstraints( aViewElement );
+        iConstraints->Set( aValue );
+        InvalidateElement( aViewElement );
+    }
+    
     // A helper class to find elements in the data list.
     class ElementFinder
     {
