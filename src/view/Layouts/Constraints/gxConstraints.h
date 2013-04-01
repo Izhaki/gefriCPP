@@ -52,23 +52,11 @@ protected:
         Locked,
         Resizable,
         SpanMajor,
-        SpanMinor
+        SpanMinor,
+        Undefined
     };
     
     typedef std::map< ID, gxConstraint* >  ConstraintMap;
-private:
-    ConstraintMap mConstraintMap;
-    
-    gxConstraint* GetConstraint( ID aId );
-    
-    template < class Type >
-    void GetConstraint( ID aId, Type& aConstraint )
-    {
-        aConstraint = static_cast<Type>( GetConstraint( aId ) );
-    }
-    
-    void AddConstraint( ID                aId,
-                        gxConstraint* aConstraint );
 public:
     gxConstraints( gxViewElement* aElement) : mElement( aElement ) { }
     
@@ -111,6 +99,22 @@ public:
     
     // Region getter
     gxRegion GetRegion();
+private:
+    ConstraintMap mConstraintMap;
+    
+    gxConstraint* GetConstraint( ID aId );
+    
+    template < class Type >
+    void GetConstraint( ID aId, Type& aConstraint )
+    {
+        aConstraint = static_cast<Type>( GetConstraint( aId ) );
+    }
+    
+    void AddConstraint( ID                aId,
+                        gxConstraint* aConstraint );
+    
+    ID GetId( gxString aConstraintName,
+              bool     aOnMajorAxis = true );
     
 };
 

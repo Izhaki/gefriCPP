@@ -31,24 +31,34 @@ void gxConstraints::AddConstraint( ID                aId,
     mConstraintMap[ aId ] = aConstraint;
 }
 
+gxConstraints::ID gxConstraints::GetId( gxString aConstraintName,
+                                        bool     aOnMajorAxis  )
+{
+    if ( aConstraintName == "Pixels" )  return aOnMajorAxis ? SizeMajor : SizeMinor;
+    if ( aConstraintName == "Percent" ) return aOnMajorAxis ? SizeMajor : SizeMinor;
+    if ( aConstraintName == "Flex" )    return SizeMajor;
+    
+    return Undefined;
+}
+
 void gxConstraints::Set( gxString aConstraintName,
                          int      aValue )
 {
-    if ( aConstraintName == "Pixels"  ||
-         aConstraintName == "Percent" ||
-         aConstraintName == "Flex" ) {
-        gxSizeConstraint::Type iType;
-
-        if ( aConstraintName == "Pixels" ) {
-            iType = gxSizeConstraint::Pixels;
-        } else if ( aConstraintName == "Flex" ) {
-            iType = gxSizeConstraint::Flex;
-        } else if ( aConstraintName == "Percent" ) {
-            iType = gxSizeConstraint::Percent;
-        }
-        
-        AddConstraint( SizeMajor, new gxSizeConstraint( iType, aValue ) );
+    ID            iId         = GetId( aConstraintName );
+    gxConstraint* iConstraint = NULL;
+    
+    switch ( iId ) {
+            
+        case SizeMajor:
+        case SizeMinor:
+            iConstraint = new gxSizeConstraint( aConstraintName, aValue );
+            break;
+            
+        default:
+            break;
     }
+    
+    AddConstraint( iId, iConstraint );
 }
 
 void gxConstraints::Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis )

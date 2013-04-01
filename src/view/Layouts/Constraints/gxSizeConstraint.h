@@ -2,6 +2,7 @@
 #define gxSizeConstraint_h
 
 #include "View/Layouts/Constraints/gxConstraint.h"
+#include "Core/gxString.h"
 
 /**
  * @brief A class representing a layout size that can be:
@@ -29,10 +30,14 @@ public:
         Flex
     };
     
-    gxSizeConstraint( Type aType, int aValue ) :
-        mType( aType ),
+    gxSizeConstraint( gxString aConstraintName,
+                      int      aValue ) :
         mValue( aValue )
-    {}
+    {
+        if      ( aConstraintName == "Pixels" )  { mType = Pixels;  }
+        else if ( aConstraintName == "Flex" )    { mType = Flex;    }
+        else if ( aConstraintName == "Percent" ) { mType = Percent; }
+    }
     
     Type GetType()
     {
