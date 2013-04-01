@@ -57,7 +57,7 @@ void gxConstraints::Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis )
     GetConstraint( SizeMajor, iConstraint );
     
     // If it isn't a flex, then search based on the actual requested axis
-    if ( iConstraint && iConstraint->GetType() != gxSizeConstraint::Flex )
+    if ( ! (iConstraint && iConstraint->GetType() == gxSizeConstraint::Flex ) )
     {
         GetConstraint( aOnMajorAxis ? SizeMajor : SizeMinor, iConstraint );
     }

@@ -62,7 +62,8 @@ private:
     gxConstraint* GetConstraint( ID aId );
     
     template < class Type >
-    void GetConstraint( ID aId, Type& aConstraint ) {
+    void GetConstraint( ID aId, Type& aConstraint )
+    {
         aConstraint = static_cast<Type>( GetConstraint( aId ) );
     }
     
@@ -86,14 +87,6 @@ public:
     // called.
     gxRect         Bounds;
     
-    void Set( gxString aConstraintName,
-              int      aValue );
-    
-    void Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis = true );
-    
-    void Set( gxRegion aRegion );
-    gxRegion GetRegion();
-    
     /**
      * @brief Sets the bounds of the element to its initial rect.
      */
@@ -103,6 +96,22 @@ public:
      * @brief Applies the bounds to the view element.
      */
     void Apply();
+public:
+    // Getters and Setters
+
+    // Integer based constraint setter
+    void Set( gxString aConstraintName,
+             int      aValue );
+    
+    // Region bases constraint setter
+    void Set( gxRegion aRegion );
+    
+    // Size getter
+    void Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis = true );
+    
+    // Region getter
+    gxRegion GetRegion();
+    
 };
 
 #endif // gxLayoutData_h

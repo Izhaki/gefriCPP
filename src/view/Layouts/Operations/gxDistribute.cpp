@@ -25,6 +25,11 @@ bool gxDistribute::DoSize( gxConstraints::List aConstraints,
     int   iTotalPercent = 0;
     int   iTotalFlex    = 0;
     
+    // For readability sake
+    using gxSizeConstraint::Type::Pixels;
+    using gxSizeConstraint::Type::Percent;
+    using gxSizeConstraint::Type::Flex;
+    
     gxSizeConstraint* iSizeConstraint = NULL;
     
     // Work out how much there is from each type of size:
@@ -37,17 +42,11 @@ bool gxDistribute::DoSize( gxConstraints::List aConstraints,
         {
             int iValue = iSizeConstraint->GetValue();
             
-            switch ( iSizeConstraint->GetType() ) {
-                case gxSizeConstraint::Pixels:
-                    iTotalPixels  += iValue;
-                    break;
-                case gxSizeConstraint::Percent:
-                    iTotalPercent += iValue;
-                    break;
-                case gxSizeConstraint::Flex:
-                    iTotalFlex    += iValue;
-                default:
-                    break;
+            switch ( iSizeConstraint->GetType() )
+            {
+                case Pixels:  iTotalPixels  += iValue;                    break;
+                case Percent: iTotalPercent += iValue;                    break;
+                case Flex:    iTotalFlex    += iValue;                    break;
             }
         } else {
             iTotalPixels += (*iConstraints)->Bounds.GetSize( onMajorAxis );
@@ -65,23 +64,16 @@ bool gxDistribute::DoSize( gxConstraints::List aConstraints,
     gxPix iFlexLeft      = iPixelsLeft - iPixelsLeft * iTotalPercent / 100;
     gxPix iSize;
 
-    forEachConstraintOf( aConstraints, iConstraints )
-    {
+    forEachConstraintOf( aConstraints, iConstraints ) {
         (*iConstraints)->Get( iSizeConstraint, onMajorAxis );
         
-        if ( iSizeConstraint )
-        {
+        if ( iSizeConstraint ) {
+            int iValue = iSizeConstraint->GetValue();
+                        
             switch ( iSizeConstraint->GetType() ) {
-                case gxSizeConstraint::Pixels:
-                    iSize = iSizeConstraint->GetValue();
-                    break;
-                case gxSizeConstraint::Percent:
-                    iSize = iPixelsLeft * iSizeConstraint->GetValue() / 100;
-                    break;
-                case gxSizeConstraint::Flex:
-                    iSize = iFlexLeft * iSizeConstraint->GetValue() / iTotalFlex ;
-                default:
-                    break;
+                case Pixels:  iSize = iValue;                             break;
+                case Percent: iSize = iPixelsLeft * iValue / 100;         break;
+                case Flex:    iSize = iFlexLeft * iValue / iTotalFlex ;   break;
             }
             (*iConstraints)->Bounds.SetSize( iSize, onMajorAxis );            
         }
