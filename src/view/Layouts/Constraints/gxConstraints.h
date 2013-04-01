@@ -95,11 +95,41 @@ public:
     // called.
     gxRect         Bounds;
     
+    // TODO: shouldn't this move the the layouts that do set region? ie, border
     void Set( gxRegion    aRegion );
-    
+
+/*
+    template < class Type >
+    void Set( Type aValue )
+    {
+        // If already set, delete the previous
+        if ( GetConstraint( Type::id ) )
+            delete mConstraintMap[ Type::id ];
+        
+        mConstraintMap[ Type::id ] = new typename Type::Constraint( aValue );
+    }
+*/
+ 
 //    gxConstraint* Get( const char* aConstraintName );
     
-    gxRegion GetRegion();    
+//    gxRegion GetRegion();
+
+    template < class Type >
+    Type Get()
+    {
+        // TODO: change gxRegionConstraintId
+        gxConstraintBase* iConstraint = GetConstraint( Type::id );
+        if ( iConstraint )
+        {
+            typename Type::Constraint* iRegionConstraint;
+            iRegionConstraint = static_cast<typename Type::Constraint*>( iConstraint );
+            return iRegionConstraint->GetValue();
+        } else {
+            // TODO
+            return Type::Undefined;
+        }
+    }
+    
     
     /**
      * @brief Sets the bounds of the element to its initial rect.

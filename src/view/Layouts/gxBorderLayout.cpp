@@ -63,11 +63,11 @@ gxConstraints* gxBorderLayout::GetCenterConstraints()
     gxConstraints*      iResult = NULL;
     short               iFound  = 0;
     
-    forEachConstraint( iConstraints )
+    forEachConstraint( iConstraint )
     {
-        if ( (*iConstraints)->GetRegion() == gxRegion::Center )
+        if ( (*iConstraint)->Get<gxRegion>() == gxRegion::Center )
         {
-            iResult = *iConstraints;
+            iResult = *iConstraint;
             iFound++;
         }
     }
@@ -113,7 +113,8 @@ void gxBorderLayout::AddRegionConstraints( gxRegion             aRegion,
 {
     forEachConstraint( iConstraint )
     {
-        if ( (*iConstraint)->GetRegion() == aRegion )
+        if ( (*iConstraint)->Get<gxRegion>() == aRegion )
+//        if ( (*iConstraint)->GetRegion() == aRegion )
         {
             aFiltered.push_back( *iConstraint );
         }
