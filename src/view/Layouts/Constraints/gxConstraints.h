@@ -112,8 +112,9 @@ public:
  
 //    gxConstraint* Get( const char* aConstraintName );
     
-//    gxRegion GetRegion();
+    gxRegion GetRegion();
 
+/*
     template < class Type >
     Type Get()
     {
@@ -129,7 +130,7 @@ public:
             return Type::Undefined;
         }
     }
-    
+*/    
     
     /**
      * @brief Sets the bounds of the element to its initial rect.

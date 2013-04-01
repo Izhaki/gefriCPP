@@ -27,7 +27,7 @@ void gxConstraints::Set( gxRegion aRegion )
     if ( GetConstraint( gxRegionConstraintId ) )
         delete mConstraintMap[ gxRegionConstraintId ];
         
-    mConstraintMap[ gxRegionConstraintId ] = new gxRegion::Constraint( aRegion );
+    mConstraintMap[ gxRegionConstraintId ] = new gxRegionConstraint( aRegion );
 }
 
 /*
@@ -37,17 +37,16 @@ gxConstraint* gxConstraints::Get( const char* aConstraintName )
 }
 */
 
-/*
+
 gxRegion gxConstraints::GetRegion()
 {
     gxConstraintBase* iConstraint = GetConstraint( gxRegionConstraintId );
     if ( iConstraint )
     {
-        gxRegion::Constraint* iRegionConstraint;
-        iRegionConstraint = static_cast<gxRegion::Constraint*>( iConstraint );
+        gxRegionConstraint* iRegionConstraint;
+        iRegionConstraint = static_cast<gxRegionConstraint*>( iConstraint );
         return iRegionConstraint->GetValue();
     } else {
         return gxRegion::Undefined;
     }
 }
-*/

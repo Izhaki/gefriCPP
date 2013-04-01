@@ -3,7 +3,7 @@
 
 #include "core/gxAssert.h"
 #include "View/Layouts/Constraints/gxConstraints.h"
-
+/*
 class gxRegion
 {
 public:
@@ -32,8 +32,9 @@ public:
     
     typedef gxConstraint<gxRegion> Constraint;
 };
+ */
 
-/*
+
 enum gxRegion
 {
     Undefined,
@@ -43,7 +44,9 @@ enum gxRegion
     South,
     West
 };
-*/
+
+typedef gxConstraint<gxRegion> gxRegionConstraint;
+
 
 /*
 class gxRegionConstraint: public gxConstraint
