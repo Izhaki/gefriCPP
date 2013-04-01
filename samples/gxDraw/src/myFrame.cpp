@@ -108,8 +108,8 @@ void MyFrame::InitGefri()
     mZoom->Add( mLayers );
     
     CreateFaceAndRuller();
-//    CreateBoxLayout();
-    CreateBorderLayout();
+    CreateBoxLayout();
+//    CreateBorderLayout();
     
     mLightweightSystem->SetContents(mDocument);
 }
@@ -160,7 +160,7 @@ void MyFrame::CreateBoxLayout()
     gxRectangle *mHBox, *mF1, *mF2, *mF3;
     gxBoxLayout *mLayout;
         
-    mHBox   = new gxRectangle( gxRect( 0, 300, 480, 100 ) );
+    mHBox   = new gxRectangle( gxRect( 0, 300, 400, 100 ) );
     
     mLayout = new gxBoxLayout( gxDistribute::Equal,
                                gxStretch::None,
@@ -169,9 +169,9 @@ void MyFrame::CreateBoxLayout()
     
     mHBox->SetLayout( mLayout );
     
-    mF1     = new gxRectangle( gxRect( 0, 0, 10, 10 ) );
-    mF2     = new gxRectangle( gxRect( 30, 30, 20, 20 ) );
-    mF3     = new gxRectangle( gxRect( 130, 30, 30, 30 ) );
+    mF1 = new gxRectangle( gxRect( 0, 0, 10, 10 ) );
+    mF2 = new gxRectangle( gxRect( 30, 30, 20, 20 ) );
+    mF3 = new gxRectangle( gxRect( 130, 30, 30, 30 ) );
     
     //    mLayout->SetRect( mF1, gxRect( 0, 0, 10, 10 ) );
     mLayout->Add( mF1 );
@@ -181,6 +181,7 @@ void MyFrame::CreateBoxLayout()
 //    mLayout->SetRect( mF3, gxRect( 130, 30, 30, 30 ) );
     
     mLayout->SetFlex( mF1, 1 );
+    mLayout->SetConstraint( mF1, "Flex", 1);
     //    mLayout->SetFlex( mF2, 1 );
     //    mLayout->SetFlex( mF3, 6 );
     

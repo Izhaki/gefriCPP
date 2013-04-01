@@ -3,6 +3,24 @@
 
 #include "core/gxAssert.h"
 
+class gxSizeConstraint : public gxConstraintBase
+{
+public:
+    enum Type {
+        Pixels,
+        Percent,
+        Flex
+    };
+    
+    gxSizeConstraint( Type aType, int aValue ) :
+        mType( aType ),
+        mValue( aValue )
+    {}
+protected:
+    int mValue;
+    Type mType;
+};
+
 /**
  * @brief A class representing a rational size that can be either percentages
  * or flex units.

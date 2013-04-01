@@ -3,6 +3,7 @@
 
 #include "core/gxObject.h"
 #include "core/geometry/gxGeometry.h"
+#include "core/gxString.h"
 
 #include "core/gxLog.h"
 
@@ -87,7 +88,7 @@ public:
     // For Constraints that don't have a unique value type
     template< typename Type>
     void SetConstraint( gxViewElement* aViewElement,
-                        const char*    aConstraintName,
+                        gxString       aConstraintName,
                         Type           aValue)
     {
         gxConstraints* iConstraints = GetConstraints( aViewElement );        

@@ -24,6 +24,20 @@ gxConstraintBase* gxConstraints::GetConstraint( ConstriantId aId )
         return NULL;
 }
 
+void gxConstraints::Set( gxString aConstraintName,
+                         int      aValue )
+{
+    if ( aConstraintName == "Flex" )
+    {
+        // If already set, delete the previous
+        if ( GetConstraint( gxFlexConstraintId ) )
+            delete mConstraintMap[ gxFlexConstraintId ];
+        
+        mConstraintMap[ gxFlexConstraintId ] = new gxSizeConstraint( gxSizeConstraint::Flex, aValue );
+    }
+}
+
+
 void gxConstraints::Set( gxRegion aRegion )
 {
     // If already set, delete the previous

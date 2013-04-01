@@ -4,8 +4,7 @@
 #include "core/gxAssert.h"
 #include "View/Layouts/Constraints/gxConstraints.h"
 
-enum gxRegion
-{
+enum gxRegion {
     Undefined,
     Center,
     North,

@@ -7,6 +7,7 @@ class gxViewElement;
 #include <list>
 #include <map>
 #include "core/geometry/gxGeometry.h"
+#include "core/gxString.h"
 
 // A macro for looping all childrens (used from within the composite itself)
 #define forEachConstraint( aConstraints ) \
@@ -21,7 +22,8 @@ class gxViewElement;
     ++aConstraints )
 
 // A list of all possible constraint IDs
-#define gxRegionConstraintId 1
+#define gxFlexConstraintId   1
+#define gxRegionConstraintId 2
 
 typedef short ConstriantId;
 
@@ -94,6 +96,9 @@ public:
     // store what will become the bounds of the view element once Apply() is
     // called.
     gxRect         Bounds;
+    
+    void Set( gxString aConstraintName,
+              int      aValue );
     
     void Set( gxRegion aRegion );
     gxRegion GetRegion();
