@@ -14,13 +14,7 @@ enum gxRegion
     West
 };
 
-class gxRegionConstraint: public gxConstraint<gxRegion>
-{
-public:
-    gxRegionConstraint( gxRegion aRegion ) :
-        gxConstraint( aRegion )
-    {}
-};
+typedef gxConstraint<gxRegion> gxRegionConstraint;
 
 /*
 class gxRegionConstraint: public gxConstraint
