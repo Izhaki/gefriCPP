@@ -10,15 +10,6 @@ public:
     
     gxBorderLayout( bool aOnMajorAxis );
 protected:
-    class Constraints: public gxConstraints,
-                       public gxRatioConstraint
-    {
-    public:
-        Constraints( gxViewElement* aElement) :
-            gxConstraints( aElement ) {}
-    };
-    
-    virtual gxConstraints* CreateConstraints( gxViewElement* aElement );
     virtual void DoLayout();
 private:
     void AddConstraints( gxConstraints::List& aFiltered,

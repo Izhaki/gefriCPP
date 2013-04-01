@@ -115,11 +115,8 @@ gxConstraints* gxLayout::GetConstraints( gxViewElement* aElement )
     if ( iConstraints == NULL )
     {
         // If layout data was not found, create one
-        iConstraints = CreateConstraints( aElement );
-        
-        // An initiate the rect using the element's bounds
-//        iConstraints->Rect = aElement->GetBounds();
-        
+        iConstraints = new gxConstraints( aElement );
+                
         // Add it to our data list
         mConstraints.push_back( iConstraints );
     }
@@ -131,38 +128,6 @@ void gxLayout::Add( gxViewElement* aViewElement )
 {
     // This will do the job - just add the element if it aint already there.
     GetConstraints( aViewElement );
-}
-
-/*
-//!
-void gxLayout::SetRect( gxViewElement* aViewElement,
-                        gxRect         aRect )
-{
-    gxConstraints* iConstraints = GetConstraints( aViewElement );
-    iConstraints->Rect = aRect;
-    
-    aViewElement->Invalidate();
-}
-*/
-
-void gxLayout::SetPercent( gxViewElement* aViewElement,
-                           short          aPercent )
-{
-    gxConstraints* iConstraints = GetConstraints( aViewElement );
-    
-    iConstraints->SetPercent( aPercent );
-    
-    aViewElement->Invalidate();
-}
-
-void gxLayout::SetFlex( gxViewElement* aViewElement,
-                        short          aFlex )
-{
-    gxConstraints* iConstraints = GetConstraints( aViewElement );
-    
-    iConstraints->SetFlex( aFlex );
-    
-    aViewElement->Invalidate();
 }
 
 void gxLayout::InvalidateElement( gxViewElement* aViewElement )

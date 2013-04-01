@@ -21,32 +21,8 @@ class gxViewElement;
     aConstraints != aList.end(); \
     ++aConstraints )
 
-class gxConstraintBase
-{
-public:
-    virtual ~gxConstraintBase() {}
-};
-
-template< class Type >
-class gxConstraint : public gxConstraintBase
-{
-public:
-    virtual ~gxConstraint() {}
-    
-    gxConstraint( Type aValue ) :
-        mValue( aValue )
-    {}
-    
-    Type GetValue()
-    {
-        return mValue;
-    }
-protected:
-    Type mValue;
-};
-
-// TODO
-#include "View/Layouts/Constraints/gxRatioConstraint.h"
+#include "View/Layouts/Constraints/gxConstraint.h"
+#include "View/Layouts/Constraints/gxSizeConstraint.h"
 #include "View/Layouts/Constraints/gxRegionConstraint.h"
 
 /**
@@ -62,7 +38,7 @@ protected:
  * will pick and mix the implemented constraints (with member variables)
  * related to them.
  */
-class gxConstraints: virtual public gxAbstractRatioConstraint
+class gxConstraints
 {
 protected:
     enum ID {
@@ -79,13 +55,19 @@ protected:
         SpanMinor
     };
     
-    typedef std::map< ID, gxConstraintBase* >  ConstraintMap;
+    typedef std::map< ID, gxConstraint* >  ConstraintMap;
 private:
     ConstraintMap mConstraintMap;
     
-    gxConstraintBase* GetConstraint( ID aId );
+    gxConstraint* GetConstraint( ID aId );
+    
+    template < class Type >
+    void GetConstraint( ID aId, Type& aConstraint ) {
+        aConstraint = static_cast<Type>( GetConstraint( aId ) );
+    }
+    
     void AddConstraint( ID                aId,
-                        gxConstraintBase* aConstraint );
+                        gxConstraint* aConstraint );
 public:
     gxConstraints( gxViewElement* aElement) : mElement( aElement ) { }
     
@@ -96,10 +78,7 @@ public:
     
     // The element this constraint applies to
     gxViewElement* mElement;
-    
-    // The initial position and size of the element
-//!    gxRect         Rect;
-        
+            
     // A helper variable for used when the layout is being calculated.
     // Layouts only change the bounds of the view element when all layout
     // operations have completed. Until then, the layout used this variable to
@@ -109,6 +88,8 @@ public:
     
     void Set( gxString aConstraintName,
               int      aValue );
+    
+    void Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis = true );
     
     void Set( gxRegion aRegion );
     gxRegion GetRegion();

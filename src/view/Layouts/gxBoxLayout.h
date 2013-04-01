@@ -32,15 +32,6 @@ protected:
     gxAlign::Type      mAlign;
     gxDistribute::Type mDistribute;
     
-    class Constraints: public gxConstraints,
-                       public gxRatioConstraint
-    {
-    public:
-        Constraints( gxViewElement* aElement) :
-        gxConstraints( aElement ) {}
-    };
-    
-    virtual gxConstraints* CreateConstraints( gxViewElement* aElement );
     virtual void DoLayout();
 };
 

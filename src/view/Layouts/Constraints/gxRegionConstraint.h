@@ -2,7 +2,7 @@
 #define gxRegionConstraint_h
 
 #include "core/gxAssert.h"
-#include "View/Layouts/Constraints/gxConstraints.h"
+#include "View/Layouts/Constraints/gxPrimitiveConstraint.h"
 
 enum gxRegion {
     Undefined,
@@ -13,6 +13,6 @@ enum gxRegion {
     West
 };
 
-typedef gxConstraint<gxRegion> gxRegionConstraint;
+typedef gxPrimitiveConstraint<gxRegion> gxRegionConstraint;
 
 #endif //gxRegionConstraint_h

@@ -214,11 +214,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../src/View/Layouts/Constraints/gxRatioConstraint.h"
-         timestampString = "386524770.830118"
+         timestampString = "386535020.933034"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "110"
-         endingLineNumber = "110">
+         startingLineNumber = "70"
+         endingLineNumber = "70">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../src/View/Layouts/Operations/gxDistribute.cpp"
+         timestampString = "386531016.140537"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "34"
+         endingLineNumber = "34"
+         landmarkName = "gxDistribute::DoSize( gxConstraints::List aConstraints, const gxRect&amp; aContainer, const bool onMajorAxis )"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

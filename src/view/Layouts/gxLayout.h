@@ -60,28 +60,6 @@ public:
      *
      * If the element is not yet in the list of constraints, it will be added.
      */
-//!    void SetRect( gxViewElement* aViewElement,
-//!                  gxRect         aRect );
-
-    /**
-     * @brief Sets the size constraint of the given view element in percetages.
-     *
-     * If the element is not yet in the list of constraints, it will be added.
-     */
-    // TODO: given we have RatioConstraint, does SetPercent really belong to
-    // gxLayout? Would all layouts have this? Or shall we move this to the
-    // individual layouts that do? And if we do move it, shouldn't we create
-    // an interface?
-    void SetPercent( gxViewElement* aViewElement,
-                     short          aPercent );
-
-    /**
-     * @brief Sets the size constraint of the given view element in flex units.
-     *
-     * If the element is not yet in the list of constraints, it will be added.
-     */
-    void SetFlex( gxViewElement* aViewElement,
-                  short          aFlex );
     
     void InvalidateElement( gxViewElement* aViewElement );
     
@@ -129,9 +107,6 @@ protected:
         InProgress,
         Invalid,
     } mLayoutStatus;
-
-    
-    virtual gxConstraints* CreateConstraints( gxViewElement* aElement ) = 0;
     
     /**
      * @brief Finds the constraints of the provided view element.

@@ -10,13 +10,6 @@ gxBorderLayout::gxBorderLayout( bool aOnMajorAxis )
   : gxLayout ( aOnMajorAxis )
 {}
 
-
-gxConstraints* gxBorderLayout::CreateConstraints( gxViewElement* aElement )
-{
-    return new Constraints( aElement );
-}
-
-
 void gxBorderLayout::DoLayout()
 {
     // Get the center constrainst. This will also raise assertion if there
@@ -26,10 +19,16 @@ void gxBorderLayout::DoLayout()
     if ( !iCenterConstraints )
         return;
     
-    // The center is always flex 1, unless the user has set it higher
-    if ( iCenterConstraints->GetFlex() == 0 )
-        iCenterConstraints->SetFlex( 1 );
+    gxSizeConstraint* iSizeConstraint = NULL;
+    iCenterConstraints->Get( iSizeConstraint, true );
     
+    // The center is always flex 1, unless the user has set it higher
+    if ( !( iSizeConstraint &&
+            iSizeConstraint->GetType() == gxSizeConstraint::Flex &&
+            iSizeConstraint->GetValue() > 0 ) )
+    {
+        iCenterConstraints->Set( "Flex", 1 );
+    }
     
     // A filtered list of constaints.
     gxConstraints::List iFiltered;
