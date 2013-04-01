@@ -14,7 +14,7 @@ void gxConstraints::Apply()
     mElement->SetBounds( Bounds );
 }
 
-gxConstraintBase* gxConstraints::GetConstraint( ConstriantId aId )
+gxConstraintBase* gxConstraints::GetConstraint( ID aId )
 {
     ConstraintMap::iterator iConstraint = mConstraintMap.find( aId );
     
@@ -24,32 +24,33 @@ gxConstraintBase* gxConstraints::GetConstraint( ConstriantId aId )
         return NULL;
 }
 
+void gxConstraints::AddConstraint( ID                aId,
+                                   gxConstraintBase* aConstraint )
+{
+    if ( GetConstraint( aId ) )
+        delete mConstraintMap[ aId ];
+    
+    mConstraintMap[ aId ] = aConstraint;
+}
+
 void gxConstraints::Set( gxString aConstraintName,
                          int      aValue )
 {
     if ( aConstraintName == "Flex" )
     {
-        // If already set, delete the previous
-        if ( GetConstraint( gxFlexConstraintId ) )
-            delete mConstraintMap[ gxFlexConstraintId ];
-        
-        mConstraintMap[ gxFlexConstraintId ] = new gxSizeConstraint( gxSizeConstraint::Flex, aValue );
+        AddConstraint( SizeMajor, new gxSizeConstraint( gxSizeConstraint::Flex, aValue ) );
     }
 }
 
 
 void gxConstraints::Set( gxRegion aRegion )
 {
-    // If already set, delete the previous
-    if ( GetConstraint( gxRegionConstraintId ) )
-        delete mConstraintMap[ gxRegionConstraintId ];
-        
-    mConstraintMap[ gxRegionConstraintId ] = new gxRegionConstraint( aRegion );
+    AddConstraint( Region, new gxRegionConstraint( aRegion ) );
 }
 
 gxRegion gxConstraints::GetRegion()
 {
-    gxConstraintBase* iConstraint = GetConstraint( gxRegionConstraintId );
+    gxConstraintBase* iConstraint = GetConstraint( Region );
     if ( iConstraint )
     {
         gxRegionConstraint* iRegionConstraint;

@@ -21,12 +21,6 @@ class gxViewElement;
     aConstraints != aList.end(); \
     ++aConstraints )
 
-// A list of all possible constraint IDs
-#define gxFlexConstraintId   1
-#define gxRegionConstraintId 2
-
-typedef short ConstriantId;
-
 class gxConstraintBase
 {
 public:
@@ -37,6 +31,8 @@ template< class Type >
 class gxConstraint : public gxConstraintBase
 {
 public:
+    virtual ~gxConstraint() {}
+    
     gxConstraint( Type aValue ) :
         mValue( aValue )
     {}
@@ -45,8 +41,6 @@ public:
     {
         return mValue;
     }
-    
-    virtual ~gxConstraint() {}
 protected:
     Type mValue;
 };
@@ -71,11 +65,27 @@ protected:
 class gxConstraints: virtual public gxAbstractRatioConstraint
 {
 protected:
-    typedef std::map< ConstriantId, gxConstraintBase* >  ConstraintMap;
+    enum ID {
+        SizeMajor,
+        SizeMinor,
+        AlignMajor,
+        AlignMinor,
+        Region,
+        Split,
+        Collapse,
+        Locked,
+        Resizable,
+        SpanMajor,
+        SpanMinor
+    };
+    
+    typedef std::map< ID, gxConstraintBase* >  ConstraintMap;
 private:
     ConstraintMap mConstraintMap;
     
-    gxConstraintBase* GetConstraint( ConstriantId aId );
+    gxConstraintBase* GetConstraint( ID aId );
+    void AddConstraint( ID                aId,
+                        gxConstraintBase* aConstraint );
 public:
     gxConstraints( gxViewElement* aElement) : mElement( aElement ) { }
     
