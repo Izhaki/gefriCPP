@@ -170,13 +170,15 @@ void MyFrame::CreateBoxLayout()
     mHBox->SetLayout( mLayout );
     
     mF1     = new gxRectangle( gxRect( 0, 0, 10, 10 ) );
-    mF2     = new gxRectangle();
-    mF3     = new gxRectangle();
+    mF2     = new gxRectangle( gxRect( 30, 30, 20, 20 ) );
+    mF3     = new gxRectangle( gxRect( 130, 30, 30, 30 ) );
     
     //    mLayout->SetRect( mF1, gxRect( 0, 0, 10, 10 ) );
     mLayout->Add( mF1 );
-    mLayout->SetRect( mF2, gxRect( 30, 30, 20, 20 ) );
-    mLayout->SetRect( mF3, gxRect( 130, 30, 30, 30 ) );
+    mLayout->Add( mF2 );
+    mLayout->Add( mF3 );
+//    mLayout->SetRect( mF2, gxRect( 30, 30, 20, 20 ) );
+//    mLayout->SetRect( mF3, gxRect( 130, 30, 30, 30 ) );
     
     mLayout->SetFlex( mF1, 1 );
     //    mLayout->SetFlex( mF2, 1 );
@@ -264,7 +266,7 @@ void MyFrame::OnMoveFace(wxCommandEvent &e)
 
 void MyFrame::OnModifyLayout(wxCommandEvent &e)
 {
-    mBorderLayout->SetRect( mWest, gxRect( 0, 0, 100, 40 ) );
+//TODO    mBorderLayout->SetRect( mWest, gxRect( 0, 0, 100, 40 ) );
 }
 
 

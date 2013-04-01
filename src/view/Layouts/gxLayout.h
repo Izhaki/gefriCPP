@@ -59,8 +59,8 @@ public:
      *
      * If the element is not yet in the list of constraints, it will be added.
      */
-    void SetRect( gxViewElement* aViewElement,
-                  gxRect         aRect );
+//!    void SetRect( gxViewElement* aViewElement,
+//!                  gxRect         aRect );
 
     /**
      * @brief Sets the size constraint of the given view element in percetages.
@@ -112,7 +112,7 @@ public:
         ElementFinder( gxViewElement* aElement ) : mElement( aElement ) {}
         bool operator() ( const gxConstraints* aConstraints ) const
         {
-            return aConstraints->Element == mElement;
+            return aConstraints->mElement == mElement;
         }
     private:
         gxViewElement* mElement;

@@ -65,7 +65,7 @@ void gxLayout::Invalidate( gxViewElement* aViewElement )
 
 bool IndexCompare( gxConstraints* aL, gxConstraints* aR )
 {
-    return aL->Element->GetIndex() < aR->Element->GetIndex();
+    return aL->mElement->GetIndex() < aR->mElement->GetIndex();
 }
 
 void gxLayout::SortConstraints()
@@ -118,7 +118,7 @@ gxConstraints* gxLayout::GetConstraints( gxViewElement* aElement )
         iConstraints = CreateConstraints( aElement );
         
         // An initiate the rect using the element's bounds
-        iConstraints->Rect = aElement->GetBounds();
+//        iConstraints->Rect = aElement->GetBounds();
         
         // Add it to our data list
         mConstraints.push_back( iConstraints );
@@ -133,6 +133,8 @@ void gxLayout::Add( gxViewElement* aViewElement )
     GetConstraints( aViewElement );
 }
 
+/*
+//!
 void gxLayout::SetRect( gxViewElement* aViewElement,
                         gxRect         aRect )
 {
@@ -141,6 +143,7 @@ void gxLayout::SetRect( gxViewElement* aViewElement,
     
     aViewElement->Invalidate();
 }
+*/
 
 void gxLayout::SetPercent( gxViewElement* aViewElement,
                            short          aPercent )

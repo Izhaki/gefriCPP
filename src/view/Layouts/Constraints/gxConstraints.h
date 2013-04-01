@@ -75,7 +75,7 @@ private:
     
     gxConstraintBase* GetConstraint( ConstriantId aId );
 public:
-    gxConstraints( gxViewElement* aElement) : Element( aElement ) { }
+    gxConstraints( gxViewElement* aElement) : mElement( aElement ) { }
     
     // Just typedefs to help iteration
     // TODO - not needed?
@@ -83,10 +83,10 @@ public:
     typedef typename List::iterator     Iterator;
     
     // The element this constraint applies to
-    gxViewElement* Element;
+    gxViewElement* mElement;
     
     // The initial position and size of the element
-    gxRect         Rect;
+//!    gxRect         Rect;
         
     // A helper variable for used when the layout is being calculated.
     // Layouts only change the bounds of the view element when all layout
@@ -95,42 +95,8 @@ public:
     // called.
     gxRect         Bounds;
     
-    // TODO: shouldn't this move the the layouts that do set region? ie, border
-    void Set( gxRegion    aRegion );
-
-/*
-    template < class Type >
-    void Set( Type aValue )
-    {
-        // If already set, delete the previous
-        if ( GetConstraint( Type::id ) )
-            delete mConstraintMap[ Type::id ];
-        
-        mConstraintMap[ Type::id ] = new typename Type::Constraint( aValue );
-    }
-*/
- 
-//    gxConstraint* Get( const char* aConstraintName );
-    
+    void Set( gxRegion aRegion );
     gxRegion GetRegion();
-
-/*
-    template < class Type >
-    Type Get()
-    {
-        // TODO: change gxRegionConstraintId
-        gxConstraintBase* iConstraint = GetConstraint( Type::id );
-        if ( iConstraint )
-        {
-            typename Type::Constraint* iRegionConstraint;
-            iRegionConstraint = static_cast<typename Type::Constraint*>( iConstraint );
-            return iRegionConstraint->GetValue();
-        } else {
-            // TODO
-            return Type::Undefined;
-        }
-    }
-*/    
     
     /**
      * @brief Sets the bounds of the element to its initial rect.

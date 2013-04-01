@@ -1,14 +1,17 @@
 #include "View/Layouts/Constraints/gxConstraints.h"
 #include "View/Elements/gxViewElement.h"
 
+//TODO: Destructor
+
 void gxConstraints::Reset()
 {
-    Bounds = Rect;
+//!    Bounds = Rect;
+    Bounds = mElement->GetBounds();
 }
 
 void gxConstraints::Apply()
 {
-    Element->SetBounds( Bounds );
+    mElement->SetBounds( Bounds );
 }
 
 gxConstraintBase* gxConstraints::GetConstraint( ConstriantId aId )
@@ -29,14 +32,6 @@ void gxConstraints::Set( gxRegion aRegion )
         
     mConstraintMap[ gxRegionConstraintId ] = new gxRegionConstraint( aRegion );
 }
-
-/*
-gxConstraint* gxConstraints::Get( const char* aConstraintName )
-{
-    return mConstraintMap[1];
-}
-*/
-
 
 gxRegion gxConstraints::GetRegion()
 {
