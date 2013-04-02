@@ -9,13 +9,13 @@ class gxViewElement;
 #include "core/geometry/gxGeometry.h"
 #include "core/gxString.h"
 
-// A macro for looping all childrens (used from within the composite itself)
+// A macro for looping all childrens (used from within the constraints class)
 #define forEachConstraint( aConstraints ) \
     for ( gxConstraints::Iterator aConstraints = mConstraints.begin(); \
           aConstraints != mConstraints.end(); \
           ++aConstraints )
 
-// A macro for looping all childrens (used from within the composite itself)
+// A macro for looping all childrens (used from outside the constraints class)
 #define forEachConstraintOf( aList, aConstraints ) \
     for ( gxConstraints::Iterator aConstraints = aList.begin(); \
     aConstraints != aList.end(); \
@@ -40,7 +40,7 @@ class gxViewElement;
  */
 class gxConstraints
 {
-protected:
+private:
     enum ID {
         SizeMajor,
         SizeMinor,
@@ -55,15 +55,8 @@ protected:
         SpanMinor,
         Undefined
     };
-    
-    typedef std::map< ID, gxConstraint* >  ConstraintMap;
 public:
     gxConstraints( gxViewElement* aElement) : mElement( aElement ) { }
-    
-    // Just typedefs to help iteration
-    // TODO - not needed?
-    typedef std::list< gxConstraints* > List;
-    typedef typename List::iterator     Iterator;
     
     // The element this constraint applies to
     gxViewElement* mElement;
@@ -84,6 +77,7 @@ public:
      * @brief Applies the bounds to the view element.
      */
     void Apply();
+    
 public:
     // Getters and Setters
 
@@ -99,7 +93,15 @@ public:
     
     // Region getter
     gxRegion GetRegion();
+    
+public:
+    // A couple of readability typedefs
+    typedef std::list< gxConstraints* > List;
+    typedef typename List::iterator     Iterator;
+    
 private:
+    typedef std::map< ID, gxConstraint* >  ConstraintMap;
+    
     ConstraintMap mConstraintMap;
     
     gxConstraint* GetConstraint( ID aId );
@@ -110,7 +112,7 @@ private:
         aConstraint = static_cast<Type>( GetConstraint( aId ) );
     }
     
-    void AddConstraint( ID                aId,
+    void AddConstraint( ID            aId,
                         gxConstraint* aConstraint );
     
     ID GetId( gxString aConstraintName,
