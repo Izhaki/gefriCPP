@@ -225,11 +225,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../../src/View/Layouts/Operations/gxDistribute.cpp"
-         timestampString = "386550553.399305"
+         timestampString = "386643129.622665"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "39"
-         endingLineNumber = "39"
+         startingLineNumber = "34"
+         endingLineNumber = "34"
          landmarkName = "gxDistribute::DoSize( gxConstraints::List aConstraints, const gxRect&amp; aContainer, const bool onMajorAxis )"
          landmarkType = "5">
       </FileBreakpoint>

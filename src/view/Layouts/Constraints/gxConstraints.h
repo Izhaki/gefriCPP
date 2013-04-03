@@ -85,15 +85,10 @@ public:
     void Set( gxString aConstraintName,
              int      aValue );
     
-    // Region bases constraint setter
-    void Set( gxRegion aRegion );
-    
     // Size getter
+    // TODO: merge to template method
     void Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis = true );
-    
-    // Region getter
-    gxRegion GetRegion();
-    
+    void Get( gxRegionConstraint*& iConstraint );
 public:
     // A couple of readability typedefs
     typedef std::list< gxConstraints* > List;

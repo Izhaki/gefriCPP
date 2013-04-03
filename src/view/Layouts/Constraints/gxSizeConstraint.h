@@ -21,36 +21,56 @@
  * first element will get 25% (1/4) and the second 75% (3/4).
  */
 
+//TODO: Docs
+
+typedef char gxSizeUnit;
+
+gxSizeUnit const GxPixels  = 1;
+gxSizeUnit const GxPercent = 2;
+gxSizeUnit const GxFlex    = 3;
+
 class gxSizeConstraint : public gxConstraint
 {
 public:
-    enum Type {
-        Pixels,
-        Percent,
-        Flex
-    };
     
     gxSizeConstraint( gxString aConstraintName,
                       int      aValue ) :
         mValue( aValue )
     {
-        if      ( aConstraintName == "Pixels" )  { mType = Pixels;  }
-        else if ( aConstraintName == "Flex" )    { mType = Flex;    }
-        else if ( aConstraintName == "Percent" ) { mType = Percent; }
+        if      ( aConstraintName == "Pixels" )  { mUnit = GxPixels;  }
+        else if ( aConstraintName == "Flex" )    { mUnit = GxFlex;    }
+        else if ( aConstraintName == "Percent" ) { mUnit = GxPercent; }
     }
     
-    Type GetType()
+    gxSizeUnit GetUnit()
     {
-        return mType;
+        return mUnit;
     }
     
     int GetValue()
     {
         return mValue;
     }
+    
+    bool IsPixels()
+    {
+        return mUnit = GxPixels;
+    }
+    
+    bool IsPercent()
+    {
+        return mUnit = GxPercent;
+    }
+    
+    bool IsFlex()
+    {
+        return mUnit = GxFlex;
+    }
+    
+    
 protected:
-    int mValue;
-    Type mType;
+    int        mValue;
+    gxSizeUnit mUnit;
 };
 
 #endif // gxSizeConstraint_h

@@ -37,6 +37,7 @@ gxConstraints::ID gxConstraints::GetId( gxString aConstraintName,
     if ( aConstraintName == "Pixels" )  return aOnMajorAxis ? SizeMajor : SizeMinor;
     if ( aConstraintName == "Percent" ) return aOnMajorAxis ? SizeMajor : SizeMinor;
     if ( aConstraintName == "Flex" )    return SizeMajor;
+    if ( aConstraintName == "Region" )  return Region;    
     
     return Undefined;
 }
@@ -53,6 +54,8 @@ void gxConstraints::Set( gxString aConstraintName,
         case SizeMinor:
             iConstraint = new gxSizeConstraint( aConstraintName, aValue );
             break;
+        case Region:
+            iConstraint = new gxRegionConstraint( aValue );
             
         default:
             break;
@@ -67,21 +70,13 @@ void gxConstraints::Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis )
     GetConstraint( SizeMajor, iConstraint );
     
     // If it isn't a flex, then search based on the actual requested axis
-    if ( ! (iConstraint && iConstraint->GetType() == gxSizeConstraint::Flex ) )
+    if ( ! ( iConstraint && iConstraint->IsFlex() ) )
     {
         GetConstraint( aOnMajorAxis ? SizeMajor : SizeMinor, iConstraint );
     }
 }
 
-void gxConstraints::Set( gxRegion aRegion )
+void gxConstraints::Get( gxRegionConstraint*& iConstraint )
 {
-    AddConstraint( Region, new gxRegionConstraint( aRegion ) );
-}
-
-gxRegion gxConstraints::GetRegion()
-{
-    gxRegionConstraint* iConstraint = NULL;
     GetConstraint( Region, iConstraint );
-    
-    return iConstraint ? iConstraint->GetValue() : gxRegion::Undefined;    
 }

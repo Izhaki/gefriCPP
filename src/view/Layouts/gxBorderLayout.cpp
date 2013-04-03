@@ -24,7 +24,7 @@ void gxBorderLayout::DoLayout()
     
     // The center is always flex 1, unless the user has set it higher
     if ( !( iSizeConstraint &&
-            iSizeConstraint->GetType() == gxSizeConstraint::Flex &&
+            iSizeConstraint->IsFlex() &&
             iSizeConstraint->GetValue() > 0 ) )
     {
         iCenterConstraints->Set( "Flex", 1 );
@@ -59,14 +59,16 @@ void gxBorderLayout::DoLayout()
 
 gxConstraints* gxBorderLayout::GetCenterConstraints()
 {
-    gxConstraints*      iResult = NULL;
-    short               iFound  = 0;
+    gxConstraints*      iResult           = NULL;
+    gxRegionConstraint* iRegionConstraint = NULL;
+    short               iFound            = 0;
     
-    forEachConstraint( iConstraint )
+    forEachConstraint( iConstraints )
     {
-        if ( (*iConstraint)->GetRegion() == gxRegion::Center )
+        (*iConstraints)->Get( iRegionConstraint );
+        if ( iRegionConstraint && iRegionConstraint->GetValue() == GxCenter )
         {
-            iResult = *iConstraint;
+            iResult = *iConstraints;
             iFound++;
         }
     }
@@ -95,25 +97,28 @@ void gxBorderLayout::AddConstraints( gxConstraints::List& aFiltered,
                                      bool                 aOnMajorAxis )
 {
     // Add the start regions
-    gxRegion iStartRegion = aOnMajorAxis ? gxRegion::West : gxRegion::North;
+    gxLayoutRegion iStartRegion = aOnMajorAxis ? GxWest : GxNorth;
     AddRegionConstraints( iStartRegion, aFiltered );
     
     // Add the center
-    AddRegionConstraints( gxRegion::Center, aFiltered );
+    AddRegionConstraints( GxCenter, aFiltered );
     
     // Add the end regions
-    gxRegion iEndRegion = aOnMajorAxis ? gxRegion::East : gxRegion::South;
+    gxLayoutRegion iEndRegion = aOnMajorAxis ? GxEast : GxSouth;
     AddRegionConstraints( iEndRegion, aFiltered );    
 }
 
 
-void gxBorderLayout::AddRegionConstraints( gxRegion             aRegion,
+void gxBorderLayout::AddRegionConstraints( gxLayoutRegion       aRegion,
                                            gxConstraints::List& aFiltered )
 {
+    gxRegionConstraint* iRegionConstraint = NULL;
+    //TODO: is it iConstraints or iConstraint?
     forEachConstraint( iConstraint )
     {
-//        if ( (*iConstraint)->Get<gxRegion>() == aRegion )
-        if ( (*iConstraint)->GetRegion() == aRegion )
+        (*iConstraint)->Get( iRegionConstraint );
+
+        if ( iRegionConstraint && iRegionConstraint->GetValue() == aRegion )
         {
             aFiltered.push_back( *iConstraint );
         }

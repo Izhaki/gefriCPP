@@ -63,7 +63,6 @@ public:
     
     void InvalidateElement( gxViewElement* aViewElement );
     
-    // For Constraints that don't have a unique value type
     template< typename Type>
     void SetConstraint( gxViewElement* aViewElement,
                         gxString       aConstraintName,
@@ -71,16 +70,6 @@ public:
     {
         gxConstraints* iConstraints = GetConstraints( aViewElement );        
         iConstraints->Set( aConstraintName, aValue );
-        InvalidateElement( aViewElement );
-    }
-
-    // For Constraints that have a unique value type
-    template< typename Type>
-    void SetConstraint( gxViewElement* aViewElement,
-                       Type            aValue)
-    {
-        gxConstraints* iConstraints = GetConstraints( aViewElement );
-        iConstraints->Set( aValue );
         InvalidateElement( aViewElement );
     }
     

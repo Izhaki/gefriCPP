@@ -15,7 +15,7 @@ private:
     void AddConstraints( gxConstraints::List& aFiltered,
                          bool                 aOnMajorAxis );
         
-    void AddRegionConstraints( gxRegion             aRegion,
+    void AddRegionConstraints( gxLayoutRegion       aRegion,
                                gxConstraints::List& aFiltered );
     
     void LayoutAxis( gxConstraints::List& aFiltered,
