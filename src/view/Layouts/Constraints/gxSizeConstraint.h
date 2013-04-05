@@ -23,11 +23,12 @@
 
 //TODO: Docs
 
-typedef char gxSizeUnit;
-
-gxSizeUnit const GxPixels  = 1;
-gxSizeUnit const GxPercent = 2;
-gxSizeUnit const GxFlex    = 3;
+enum gxSizeUnit
+{
+    gsPixels,
+    gsPercent,
+    gsFlex
+};
 
 class gxSizeConstraint : public gxConstraint
 {
@@ -37,9 +38,9 @@ public:
                       int      aValue ) :
         mValue( aValue )
     {
-        if      ( aConstraintName == "Pixels" )  { mUnit = GxPixels;  }
-        else if ( aConstraintName == "Flex" )    { mUnit = GxFlex;    }
-        else if ( aConstraintName == "Percent" ) { mUnit = GxPercent; }
+        if      ( aConstraintName == "Pixels" )  { mUnit = gsPixels;  }
+        else if ( aConstraintName == "Flex" )    { mUnit = gsFlex;    }
+        else if ( aConstraintName == "Percent" ) { mUnit = gsPercent; }
     }
     
     gxSizeUnit GetUnit()
@@ -54,17 +55,17 @@ public:
     
     bool IsPixels()
     {
-        return mUnit = GxPixels;
+        return mUnit = gsPixels;
     }
     
     bool IsPercent()
     {
-        return mUnit = GxPercent;
+        return mUnit = gsPercent;
     }
     
     bool IsFlex()
     {
-        return mUnit = GxFlex;
+        return mUnit = gsFlex;
     }
     
     

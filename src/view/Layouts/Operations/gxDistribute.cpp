@@ -39,9 +39,9 @@ bool gxDistribute::DoSize( gxConstraints::List aConstraints,
             
             switch ( iSizeConstraint->GetUnit() )
             {
-                case GxPixels:  iTotalPixels  += iValue;                  break;
-                case GxPercent: iTotalPercent += iValue;                  break;
-                case GxFlex:    iTotalFlex    += iValue;                  break;
+                case gsPixels:  iTotalPixels  += iValue;                  break;
+                case gsPercent: iTotalPercent += iValue;                  break;
+                case gsFlex:    iTotalFlex    += iValue;                  break;
             }
         } else {
             iTotalPixels += (*iConstraints)->Bounds.GetSize( onMajorAxis );
@@ -66,9 +66,9 @@ bool gxDistribute::DoSize( gxConstraints::List aConstraints,
             int iValue = iSizeConstraint->GetValue();
                         
             switch ( iSizeConstraint->GetUnit() ) {
-                case GxPixels:  iSize = iValue;                           break;
-                case GxPercent: iSize = iPixelsLeft * iValue / 100;       break;
-                case GxFlex:    iSize = iFlexLeft * iValue / iTotalFlex ; break;
+                case gsPixels:  iSize = iValue;                           break;
+                case gsPercent: iSize = iPixelsLeft * iValue / 100;       break;
+                case gsFlex:    iSize = iFlexLeft * iValue / iTotalFlex ; break;
             }
             (*iConstraints)->Bounds.SetSize( iSize, onMajorAxis );            
         }

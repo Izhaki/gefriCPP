@@ -5,11 +5,11 @@
 #include "View/Layouts/Constraints/gxPrimitiveConstraint.h"
 
 enum gxLayoutRegion {
-    GrCenter,
-    GrNorth,
-    GrEast,
-    GrSouth,
-    GrWest
+    grCenter,
+    grNorth,
+    grEast,
+    grSouth,
+    grWest
 };
 
 typedef gxPrimitiveConstraint<gxLayoutRegion> gxRegionConstraint;

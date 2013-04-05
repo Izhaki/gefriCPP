@@ -66,7 +66,7 @@ gxConstraints* gxBorderLayout::GetCenterConstraints()
     forEachConstraint( iConstraints )
     {
         (*iConstraints)->Get( iRegionConstraint );
-        if ( iRegionConstraint && iRegionConstraint->GetValue() == GrCenter )
+        if ( iRegionConstraint && iRegionConstraint->GetValue() == grCenter )
         {
             iResult = *iConstraints;
             iFound++;
@@ -97,14 +97,14 @@ void gxBorderLayout::AddConstraints( gxConstraints::List& aFiltered,
                                      bool                 aOnMajorAxis )
 {
     // Add the start regions
-    gxLayoutRegion iStartRegion = aOnMajorAxis ? GrWest : GrNorth;
+    gxLayoutRegion iStartRegion = aOnMajorAxis ? grWest : grNorth;
     AddRegionConstraints( iStartRegion, aFiltered );
     
     // Add the center
-    AddRegionConstraints( GrCenter, aFiltered );
+    AddRegionConstraints( grCenter, aFiltered );
     
     // Add the end regions
-    gxLayoutRegion iEndRegion = aOnMajorAxis ? GrEast : GrSouth;
+    gxLayoutRegion iEndRegion = aOnMajorAxis ? grEast : grSouth;
     AddRegionConstraints( iEndRegion, aFiltered );    
 }
 
