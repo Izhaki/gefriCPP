@@ -64,12 +64,12 @@ public:
     void InvalidateElement( gxViewElement* aViewElement );
     
     template< typename Type>
-    void SetConstraint( gxViewElement* aViewElement,
-                        gxString       aConstraintName,
-                        Type           aValue)
+    void SetConstraint( gxViewElement*   aViewElement,
+                        gxConstraintType aType,
+                        Type             aValue)
     {
         gxConstraints* iConstraints = GetConstraints( aViewElement );        
-        iConstraints->Set( aConstraintName, aValue );
+        iConstraints->Set( aType, aValue );
         InvalidateElement( aViewElement );
     }
     

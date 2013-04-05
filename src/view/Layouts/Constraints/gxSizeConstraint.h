@@ -21,6 +21,8 @@
  * first element will get 25% (1/4) and the second 75% (3/4).
  */
 
+#include "View/Layouts/Constraints/gxConstraints.h"
+
 //TODO: Docs
 
 enum gxSizeUnit
@@ -34,13 +36,18 @@ class gxSizeConstraint : public gxConstraint
 {
 public:
     
-    gxSizeConstraint( gxString aConstraintName,
-                      int      aValue ) :
+    gxSizeConstraint( gxConstraintType aType,
+                      int              aValue ) :
         mValue( aValue )
     {
-        if      ( aConstraintName == "Pixels" )  { mUnit = gsPixels;  }
-        else if ( aConstraintName == "Flex" )    { mUnit = gsFlex;    }
-        else if ( aConstraintName == "Percent" ) { mUnit = gsPercent; }
+        switch ( aType )
+        {
+            case gcPixels:  mUnit = gsPixels;  break;
+            case gcPercent: mUnit = gsPercent; break;
+            case gcFlex:    mUnit = gsFlex;    break;
+            default:
+                break;
+        }        
     }
     
     gxSizeUnit GetUnit()

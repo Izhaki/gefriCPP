@@ -21,10 +21,6 @@ class gxViewElement;
     aConstraints != aList.end(); \
     ++aConstraints )
 
-#include "View/Layouts/Constraints/gxConstraint.h"
-#include "View/Layouts/Constraints/gxSizeConstraint.h"
-#include "View/Layouts/Constraints/gxRegionConstraint.h"
-
 /**
  * @brief A class representing extra details needed to layout view elements.
  *
@@ -38,23 +34,37 @@ class gxViewElement;
  * will pick and mix the implemented constraints (with member variables)
  * related to them.
  */
+
+enum gxConstraintType
+{
+    gcPixels,
+    gcPercent,
+    gcFlex,
+    gcRegion,
+    gcSplit,
+    gcCollapse,
+    gcLocked,
+    gcResizable,
+    gcSpan,
+    gcAlign,
+    
+    // Internal Constraints
+    // TODO, can't we just store X/Y ? Can the map key be a pair?
+    // Or alternatively have one map for major, one for minor?
+    gcSizeX,
+    gcSizeY,
+    gcAlignX,
+    gcAlignY,
+    gcSpanX,
+    gcSpanY
+};
+
+#include "View/Layouts/Constraints/gxConstraint.h"
+#include "View/Layouts/Constraints/gxSizeConstraint.h"
+#include "View/Layouts/Constraints/gxRegionConstraint.h"
+
 class gxConstraints
 {
-private:
-    enum ID {
-        SizeMajor,
-        SizeMinor,
-        AlignMajor,
-        AlignMinor,
-        Region,
-        Split,
-        Collapse,
-        Locked,
-        Resizable,
-        SpanMajor,
-        SpanMinor,
-        Undefined
-    };
 public:
     gxConstraints( gxViewElement* aElement) : mElement( aElement ) { }
     
@@ -81,8 +91,8 @@ public:
 public:
     // Getters and Setters
     
-    void Set( gxString aConstraintName,
-              int      aValue );
+    void Set( gxConstraintType aType,
+              int              aValue );
     
     // Size getter
     // TODO: merge to template method
@@ -94,23 +104,24 @@ public:
     typedef typename List::iterator     Iterator;
     
 private:
-    typedef std::map< ID, gxConstraint* >  ConstraintMap;
+    typedef std::map< gxConstraintType, gxConstraint* >  ConstraintMap;
     
     ConstraintMap mConstraintMap;
     
-    gxConstraint* GetConstraint( ID aId );
+    gxConstraint* GetConstraint( gxConstraintType aType );
     
     template < class Type >
-    void GetConstraint( ID aId, Type& aConstraint )
+    void GetConstraint( gxConstraintType aType,
+                        Type&            aConstraint )
     {
-        aConstraint = static_cast<Type>( GetConstraint( aId ) );
+        aConstraint = static_cast<Type>( GetConstraint( aType ) );
     }
     
-    void AddConstraint( ID            aId,
-                        gxConstraint* aConstraint );
+    void AddConstraint( gxConstraintType aType,
+                        gxConstraint*    aConstraint );
     
-    ID GetId( gxString aConstraintName,
-              bool     aOnMajorAxis = true );
+    gxConstraintType GetInternalType( gxConstraintType aType,
+                                      bool             aOnMajorAxis = true );
     
 };
 

@@ -27,7 +27,7 @@ void gxBorderLayout::DoLayout()
             iSizeConstraint->IsFlex() &&
             iSizeConstraint->GetValue() > 0 ) )
     {
-        iCenterConstraints->Set( "Flex", 1 );
+        iCenterConstraints->Set( gcFlex, 1 );
     }
     
     // A filtered list of constaints.
