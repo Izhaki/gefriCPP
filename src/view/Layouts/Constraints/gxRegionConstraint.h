@@ -4,13 +4,13 @@
 #include "core/gxAssert.h"
 #include "View/Layouts/Constraints/gxPrimitiveConstraint.h"
 
-typedef char gxLayoutRegion;
-
-gxLayoutRegion const GxCenter    = 1;
-gxLayoutRegion const GxNorth     = 2;
-gxLayoutRegion const GxEast      = 3;
-gxLayoutRegion const GxSouth     = 4;
-gxLayoutRegion const GxWest      = 5;
+enum gxLayoutRegion {
+    GrCenter,
+    GrNorth,
+    GrEast,
+    GrSouth,
+    GrWest
+};
 
 typedef gxPrimitiveConstraint<gxLayoutRegion> gxRegionConstraint;
 

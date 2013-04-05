@@ -42,8 +42,8 @@ gxConstraints::ID gxConstraints::GetId( gxString aConstraintName,
     return Undefined;
 }
 
-void gxConstraints::Set( gxString aConstraintName,
-                         int      aValue )
+void gxConstraints::Set( gxString  aConstraintName,
+                         int       aValue )
 {
     ID            iId         = GetId( aConstraintName );
     gxConstraint* iConstraint = NULL;
@@ -55,7 +55,7 @@ void gxConstraints::Set( gxString aConstraintName,
             iConstraint = new gxSizeConstraint( aConstraintName, aValue );
             break;
         case Region:
-            iConstraint = new gxRegionConstraint( aValue );
+            iConstraint = new gxRegionConstraint( (gxLayoutRegion)aValue );
             
         default:
             break;

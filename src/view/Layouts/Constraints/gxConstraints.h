@@ -80,10 +80,9 @@ public:
     
 public:
     // Getters and Setters
-
-    // Integer based constraint setter
+    
     void Set( gxString aConstraintName,
-             int      aValue );
+              int      aValue );
     
     // Size getter
     // TODO: merge to template method
