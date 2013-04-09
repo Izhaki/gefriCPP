@@ -64,9 +64,9 @@ public:
     void InvalidateElement( gxViewElement* aViewElement );
     
     template< typename Type>
-    void SetConstraint( gxViewElement*   aViewElement,
-                        gxConstraintType aType,
-                        Type             aValue)
+    void SetConstraint( gxViewElement*     aViewElement,
+                        gxConstraint::Type aType,
+                        Type               aValue)
     {
         gxConstraints* iConstraints = GetConstraints( aViewElement );        
         iConstraints->Set( aType, aValue );

@@ -3,22 +3,22 @@
 
 #include "View/Layouts/Constraints/gxConstraint.h"
 
-template< class Type >
+template< class PrimitiveType >
 class gxPrimitiveConstraint : public gxConstraint
 {
 public:
     virtual ~gxPrimitiveConstraint() {}
     
-    gxPrimitiveConstraint( Type aValue ) :
+    gxPrimitiveConstraint( PrimitiveType aValue ) :
     mValue( aValue )
     {}
     
-    Type GetValue()
+    PrimitiveType GetValue()
     {
         return mValue;
     }
 protected:
-    Type mValue;
+    PrimitiveType mValue;
 };
 
 #endif //gxPrimitiveConstraint_h

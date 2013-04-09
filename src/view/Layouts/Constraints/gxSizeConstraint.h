@@ -36,15 +36,15 @@ class gxSizeConstraint : public gxConstraint
 {
 public:
     
-    gxSizeConstraint( gxConstraintType aType,
-                      int              aValue ) :
+    gxSizeConstraint( gxConstraint::Type aType,
+                      int                aValue ) :
         mValue( aValue )
     {
         switch ( aType )
         {
-            case gcPixels:  mUnit = gsPixels;  break;
-            case gcPercent: mUnit = gsPercent; break;
-            case gcFlex:    mUnit = gsFlex;    break;
+            case gxConstraint::Pixels:  mUnit = gsPixels;  break;
+            case gxConstraint::Percent: mUnit = gsPercent; break;
+            case gxConstraint::Flex:    mUnit = gsFlex;    break;
             default:
                 break;
         }        

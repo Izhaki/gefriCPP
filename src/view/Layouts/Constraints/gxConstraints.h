@@ -35,30 +35,6 @@ class gxViewElement;
  * related to them.
  */
 
-enum gxConstraintType
-{
-    gcPixels,
-    gcPercent,
-    gcFlex,
-    gcRegion,
-    gcSplit,
-    gcCollapse,
-    gcLocked,
-    gcResizable,
-    gcSpan,
-    gcAlign,
-    
-    // Internal Constraints
-    // TODO, can't we just store X/Y ? Can the map key be a pair?
-    // Or alternatively have one map for major, one for minor?
-    gcSizeX,
-    gcSizeY,
-    gcAlignX,
-    gcAlignY,
-    gcSpanX,
-    gcSpanY
-};
-
 #include "View/Layouts/Constraints/gxConstraint.h"
 #include "View/Layouts/Constraints/gxSizeConstraint.h"
 #include "View/Layouts/Constraints/gxRegionConstraint.h"
@@ -91,8 +67,8 @@ public:
 public:
     // Getters and Setters
     
-    void Set( gxConstraintType aType,
-              int              aValue );
+    void Set( gxConstraint::Type aType,
+              int                aValue );
     
     // Size getter
     // TODO: merge to template method
@@ -104,24 +80,24 @@ public:
     typedef typename List::iterator     Iterator;
     
 private:
-    typedef std::map< gxConstraintType, gxConstraint* >  ConstraintMap;
+    typedef std::map< gxConstraint::Type, gxConstraint* >  ConstraintMap;
     
     ConstraintMap mConstraintMap;
     
-    gxConstraint* GetConstraint( gxConstraintType aType );
+    gxConstraint* GetConstraint( gxConstraint::Type aType );
     
     template < class Type >
-    void GetConstraint( gxConstraintType aType,
-                        Type&            aConstraint )
+    void GetConstraint( gxConstraint::Type aType,
+                        Type&              aConstraint )
     {
         aConstraint = static_cast<Type>( GetConstraint( aType ) );
     }
     
-    void AddConstraint( gxConstraintType aType,
-                        gxConstraint*    aConstraint );
+    void AddConstraint( gxConstraint::Type aType,
+                        gxConstraint*      aConstraint );
     
-    gxConstraintType GetInternalType( gxConstraintType aType,
-                                      bool             aOnMajorAxis = true );
+    gxConstraint::Type GetInternalType( gxConstraint::Type aType,
+                                        bool               aOnMajorAxis = true );
     
 };
 

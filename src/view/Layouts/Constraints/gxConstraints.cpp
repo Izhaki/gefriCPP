@@ -13,7 +13,7 @@ void gxConstraints::Apply()
     mElement->SetBounds( Bounds );
 }
 
-gxConstraint* gxConstraints::GetConstraint( gxConstraintType aType )
+gxConstraint* gxConstraints::GetConstraint( gxConstraint::Type aType )
 {
     ConstraintMap::iterator iConstraint = mConstraintMap.find( aType );
     bool iConstraintFound = iConstraint != mConstraintMap.end();
@@ -21,8 +21,8 @@ gxConstraint* gxConstraints::GetConstraint( gxConstraintType aType )
     return iConstraintFound ? iConstraint->second : NULL;
 }
 
-void gxConstraints::AddConstraint( gxConstraintType aType,
-                                   gxConstraint*    aConstraint )
+void gxConstraints::AddConstraint( gxConstraint::Type aType,
+                                   gxConstraint*      aConstraint )
 {
     // If there's already a constraint, delete its contents.
     if ( GetConstraint( aType ) )
@@ -31,33 +31,33 @@ void gxConstraints::AddConstraint( gxConstraintType aType,
     mConstraintMap[ aType ] = aConstraint;
 }
 
-gxConstraintType gxConstraints::GetInternalType( gxConstraintType aType,
-                                                 bool             aOnMajorAxis )
+gxConstraint::Type gxConstraints::GetInternalType( gxConstraint::Type aType,
+                                                   bool               aOnMajorAxis )
 {
     switch ( aType )
     {
-        case gcPixels:
-        case gcPercent: return aOnMajorAxis ? gcSizeX : gcSizeY;
-        case gcFlex:    return gcSizeX;
+        case gxConstraint::Pixels:
+        case gxConstraint::Percent: return aOnMajorAxis ? gxConstraint::SizeX : gxConstraint::SizeY;
+        case gxConstraint::Flex:    return gxConstraint::SizeX;
             
         default:        return aType;
             
     }
 }
 
-void gxConstraints::Set( gxConstraintType aType,
-                         int              aValue )
+void gxConstraints::Set( gxConstraint::Type aType,
+                         int                aValue )
 {
-    gxConstraintType iType       = GetInternalType( aType );
-    gxConstraint*    iConstraint = NULL;
+    gxConstraint::Type iType       = GetInternalType( aType );
+    gxConstraint*      iConstraint = NULL;
     
     switch ( iType ) {
             
-        case gcSizeX:
-        case gcSizeY:
+        case gxConstraint::SizeX:
+        case gxConstraint::SizeY:
             iConstraint = new gxSizeConstraint( aType, aValue );
             break;
-        case gcRegion:
+        case gxConstraint::Region:
             iConstraint = new gxRegionConstraint( (gxLayoutRegion::Type)aValue );
             
         default:
@@ -70,16 +70,16 @@ void gxConstraints::Set( gxConstraintType aType,
 void gxConstraints::Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis )
 {
     // Flex can only exist on major axis, so first search the major axis size
-    GetConstraint( gcSizeX, iConstraint );
+    GetConstraint( gxConstraint::SizeX, iConstraint );
     
     // If it isn't a flex, then search based on the actual requested axis
     if ( ! ( iConstraint && iConstraint->IsFlex() ) )
     {
-        GetConstraint( aOnMajorAxis ? gcSizeX : gcSizeY, iConstraint );
+        GetConstraint( aOnMajorAxis ? gxConstraint::SizeX : gxConstraint::SizeY, iConstraint );
     }
 }
 
 void gxConstraints::Get( gxRegionConstraint*& iConstraint )
 {
-    GetConstraint( gcRegion, iConstraint );
+    GetConstraint( gxConstraint::Region, iConstraint );
 }
