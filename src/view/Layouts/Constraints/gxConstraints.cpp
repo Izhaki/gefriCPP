@@ -58,7 +58,7 @@ void gxConstraints::Set( gxConstraintType aType,
             iConstraint = new gxSizeConstraint( aType, aValue );
             break;
         case gcRegion:
-            iConstraint = new gxRegionConstraint( (gxLayoutRegion)aValue );
+            iConstraint = new gxRegionConstraint( (gxLayoutRegion::Type)aValue );
             
         default:
             break;

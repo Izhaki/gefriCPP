@@ -4,14 +4,16 @@
 #include "core/gxAssert.h"
 #include "View/Layouts/Constraints/gxPrimitiveConstraint.h"
 
-enum gxLayoutRegion {
-    grCenter,
-    grNorth,
-    grEast,
-    grSouth,
-    grWest
-};
+namespace gxLayoutRegion {
+    enum Type {
+        Center,
+        North,
+        East,
+        South,
+        West
+    };
+}
 
-typedef gxPrimitiveConstraint<gxLayoutRegion> gxRegionConstraint;
+typedef gxPrimitiveConstraint< gxLayoutRegion::Type > gxRegionConstraint;
 
 #endif //gxRegionConstraint_h
