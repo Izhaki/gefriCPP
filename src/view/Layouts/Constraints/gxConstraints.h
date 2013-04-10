@@ -80,24 +80,32 @@ public:
     typedef typename List::iterator     Iterator;
     
 private:
-    typedef std::map< gxConstraint::Type, gxConstraint* >  ConstraintMap;
+    typedef int MapId;
+    typedef std::map< MapId, gxConstraint* >  ConstraintMap;
     
     ConstraintMap mConstraintMap;
-    
-    gxConstraint* GetConstraint( gxConstraint::Type aType );
-    
-    template < class Type >
-    void GetConstraint( gxConstraint::Type aType,
-                        Type&              aConstraint )
-    {
-        aConstraint = static_cast<Type>( GetConstraint( aType ) );
-    }
-    
-    void AddConstraint( gxConstraint::Type aType,
-                        gxConstraint*      aConstraint );
-    
+
     gxConstraint::Type GetInternalType( gxConstraint::Type aType,
                                         bool               aOnMajorAxis = true );
+
+    MapId TypeToMapId( gxConstraint::Type aType,
+                       bool               aOnMajorAxis = true );
+    
+    
+    gxConstraint* CreateConstraint( gxConstraint::Type aType,
+                                    int                aValue );
+    
+    gxConstraint* GetConstraint( MapId aId );
+    
+    template < class Type >
+    void GetConstraint( MapId aId,
+                        Type& aConstraint )
+    {
+        aConstraint = static_cast<Type>( GetConstraint( aId ) );
+    }
+    
+    void AddConstraint( MapId         aId,
+                        gxConstraint* aConstraint );
     
 };
 

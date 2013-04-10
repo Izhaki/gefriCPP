@@ -6,7 +6,7 @@ class gxConstraint
 public:
     enum Type
     {
-        Pixels,
+        Pixels = 1,
         Percent,
         Flex,
         Region,
@@ -20,12 +20,7 @@ public:
         // Internal Constraints
         // TODO, can't we just store X/Y ? Can the map key be a pair?
         // Or alternatively have one map for major, one for minor?
-        SizeX,
-        SizeY,
-        AlignX,
-        AlignY,
-        SpanX,
-        SpanY
+        Size,
     };
     
     virtual ~gxConstraint() {}

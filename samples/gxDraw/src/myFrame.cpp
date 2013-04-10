@@ -108,8 +108,8 @@ void MyFrame::InitGefri()
     mZoom->Add( mLayers );
     
     CreateFaceAndRuller();
-//    CreateBoxLayout();
-    CreateBorderLayout();
+    CreateBoxLayout();
+//    CreateBorderLayout();
     
     mLightweightSystem->SetContents(mDocument);
 }
@@ -185,7 +185,7 @@ void MyFrame::CreateBoxLayout()
     //    mLayout->SetFlex( mF2, 1 );
     //    mLayout->SetFlex( mF3, 6 );
     
-    mLayout->SetConstraint( mF3, gxConstraint::Percent, 70 );
+    mLayout->SetConstraint( mF3, gxConstraint::Percent, 10 );
     
     mHBox->Add( mF1 );
     mHBox->Add( mF2 );

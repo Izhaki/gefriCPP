@@ -13,22 +13,22 @@ void gxConstraints::Apply()
     mElement->SetBounds( Bounds );
 }
 
-gxConstraint* gxConstraints::GetConstraint( gxConstraint::Type aType )
+gxConstraint* gxConstraints::GetConstraint( MapId aId )
 {
-    ConstraintMap::iterator iConstraint = mConstraintMap.find( aType );
+    ConstraintMap::iterator iConstraint = mConstraintMap.find( aId );
     bool iConstraintFound = iConstraint != mConstraintMap.end();
     
     return iConstraintFound ? iConstraint->second : NULL;
 }
 
-void gxConstraints::AddConstraint( gxConstraint::Type aType,
-                                   gxConstraint*      aConstraint )
+void gxConstraints::AddConstraint( MapId         aId,
+                                   gxConstraint* aConstraint )
 {
     // If there's already a constraint, delete its contents.
-    if ( GetConstraint( aType ) )
-        delete mConstraintMap[ aType ];
+    if ( GetConstraint( aId ) )
+        delete mConstraintMap[ aId ];
     
-    mConstraintMap[ aType ] = aConstraint;
+    mConstraintMap[ aId ] = aConstraint;
 }
 
 gxConstraint::Type gxConstraints::GetInternalType( gxConstraint::Type aType,
@@ -37,45 +37,68 @@ gxConstraint::Type gxConstraints::GetInternalType( gxConstraint::Type aType,
     switch ( aType )
     {
         case gxConstraint::Pixels:
-        case gxConstraint::Percent: return aOnMajorAxis ? gxConstraint::SizeX : gxConstraint::SizeY;
-        case gxConstraint::Flex:    return gxConstraint::SizeX;
+        case gxConstraint::Percent:
+        case gxConstraint::Flex:    return gxConstraint::Size;
             
         default:        return aType;
             
     }
 }
 
-void gxConstraints::Set( gxConstraint::Type aType,
-                         int                aValue )
+gxConstraints::MapId gxConstraints::TypeToMapId( gxConstraint::Type aType,
+                                                 bool               aOnMajorAxis)
+{
+    return aOnMajorAxis ? aType : -aType;
+}
+
+gxConstraint* gxConstraints::CreateConstraint( gxConstraint::Type aType,
+                                               int                aValue )
 {
     gxConstraint::Type iType       = GetInternalType( aType );
-    gxConstraint*      iConstraint = NULL;
     
     switch ( iType ) {
             
-        case gxConstraint::SizeX:
-        case gxConstraint::SizeY:
-            iConstraint = new gxSizeConstraint( aType, aValue );
-            break;
+        case gxConstraint::Size:
+            return new gxSizeConstraint( aType, aValue );
         case gxConstraint::Region:
-            iConstraint = new gxRegionConstraint( (gxLayoutRegion::Type)aValue );
+            return new gxRegionConstraint( (gxLayoutRegion::Type)aValue );
             
         default:
-            break;
+            // TODO: Assert
+            return NULL;
     }
+}
+
+
+void gxConstraints::Set( gxConstraint::Type aType,
+                         int                aValue )
+{
+    //TODO: Flex is always added on major axis
     
-    AddConstraint( iType, iConstraint );
+    gxConstraint*      iConstraint = CreateConstraint( aType, aValue );
+    
+    gxConstraint::Type iType = GetInternalType( aType );
+    
+    // TODO change true to aOnMajorAxis
+    MapId              aId   = TypeToMapId( iType, true );
+    
+    AddConstraint( aId, iConstraint );
 }
 
 void gxConstraints::Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis )
 {
-    // Flex can only exist on major axis, so first search the major axis size
-    GetConstraint( gxConstraint::SizeX, iConstraint );
+    // First search the major axis (flex can only be on major axis).
+    MapId aId = TypeToMapId( gxConstraint::Size, true );
+    GetConstraint( aId, iConstraint );
     
-    // If it isn't a flex, then search based on the actual requested axis
-    if ( ! ( iConstraint && iConstraint->IsFlex() ) )
+    bool iFlexFound = iConstraint && iConstraint->IsFlex();
+    
+    // If no flex was found an we are required to search the minor axis
+    if ( !iFlexFound && !aOnMajorAxis )
     {
-        GetConstraint( aOnMajorAxis ? gxConstraint::SizeX : gxConstraint::SizeY, iConstraint );
+        // Search the minor axis
+        aId = TypeToMapId( gxConstraint::Size, false );
+        GetConstraint( aId, iConstraint );
     }
 }
 

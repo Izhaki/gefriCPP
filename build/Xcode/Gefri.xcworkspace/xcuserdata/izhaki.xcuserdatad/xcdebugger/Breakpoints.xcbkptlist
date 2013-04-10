@@ -233,5 +233,31 @@
          landmarkName = "gxDistribute::DoSize( gxConstraints::List aConstraints, const gxRect&amp; aContainer, const bool onMajorAxis )"
          landmarkType = "5">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../samples/gxDraw/src/myFrame.cpp"
+         timestampString = "387248637.189163"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "184"
+         endingLineNumber = "184"
+         landmarkName = "MyFrame::CreateBoxLayout()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../../src/View/Layouts/Constraints/gxSizeConstraint.h"
+         timestampString = "387249030.437073"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "43"
+         endingLineNumber = "43"
+         landmarkName = "gxSizeConstraint( gxConstraint::Type aType, int aValue )"
+         landmarkType = "5">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
