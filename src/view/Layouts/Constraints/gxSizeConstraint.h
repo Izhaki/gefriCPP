@@ -62,17 +62,17 @@ public:
     
     bool IsPixels()
     {
-        return mUnit = gsPixels;
+        return mUnit == gsPixels;
     }
     
     bool IsPercent()
     {
-        return mUnit = gsPercent;
+        return mUnit == gsPercent;
     }
     
     bool IsFlex()
     {
-        return mUnit = gsFlex;
+        return mUnit == gsFlex;
     }
     
     
