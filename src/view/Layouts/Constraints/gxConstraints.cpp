@@ -31,17 +31,17 @@ void gxConstraints::AddConstraint( MapId         aId,
     mConstraintMap[ aId ] = aConstraint;
 }
 
-gxConstraint::Type gxConstraints::GetInternalType( gxConstraint::Type aType,
-                                                   bool               aOnMajorAxis )
+gxConstraint::Type gxConstraints::GetInternalType( gxConstraint::Type aType )
 {
     switch ( aType )
     {
         case gxConstraint::Pixels:
         case gxConstraint::Percent:
-        case gxConstraint::Flex:    return gxConstraint::Size;
+        case gxConstraint::Flex:
+            return gxConstraint::Size;
             
-        default:        return aType;
-            
+        default:
+            return aType;
     }
 }
 
@@ -54,7 +54,7 @@ gxConstraints::MapId gxConstraints::TypeToMapId( gxConstraint::Type aType,
 gxConstraint* gxConstraints::CreateConstraint( gxConstraint::Type aType,
                                                int                aValue )
 {
-    gxConstraint::Type iType       = GetInternalType( aType );
+    gxConstraint::Type iType = GetInternalType( aType );
     
     switch ( iType ) {
             
@@ -77,16 +77,19 @@ void gxConstraints::Set( gxConstraint::Type aType,
     
     gxConstraint*      iConstraint = CreateConstraint( aType, aValue );
     
-    gxConstraint::Type iType = GetInternalType( aType );
+    gxConstraint::Type iType       = GetInternalType( aType );
     
     // TODO change true to aOnMajorAxis
-    MapId              aId   = TypeToMapId( iType, true );
+    MapId              aMapId      = TypeToMapId( iType, true );
     
-    AddConstraint( aId, iConstraint );
+    AddConstraint( aMapId, iConstraint );
 }
 
+/*
 void gxConstraints::Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis )
 {
+    gxConstraint::Type iType = gxSizeConstraint::Id;
+    
     // First search the major axis (flex can only be on major axis).
     MapId aId = TypeToMapId( gxConstraint::Size, true );
     GetConstraint( aId, iConstraint );
@@ -106,3 +109,4 @@ void gxConstraints::Get( gxRegionConstraint*& iConstraint )
 {
     GetConstraint( gxConstraint::Region, iConstraint );
 }
+*/

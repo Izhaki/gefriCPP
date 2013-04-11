@@ -35,6 +35,7 @@ enum gxSizeUnit
 class gxSizeConstraint : public gxConstraint
 {
 public:
+    static const gxConstraint::Type Id = Size;
     
     gxSizeConstraint( gxConstraint::Type aType,
                       int                aValue ) :

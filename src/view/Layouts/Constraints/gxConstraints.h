@@ -27,12 +27,6 @@ class gxViewElement;
  * Constraints are used by {@link gxLayout layouts}. Each constraint is
  * linked to a view element and includes extra information to help the layout
  * position and size the element.
- *
- * By means of multiple inheritance, this class interface includes abstract
- * getters and setters of all possible constraints (to save memory, these
- * abstract constraints do not include any member variables). Individual layouts
- * will pick and mix the implemented constraints (with member variables)
- * related to them.
  */
 
 #include "View/Layouts/Constraints/gxConstraint.h"
@@ -72,8 +66,15 @@ public:
     
     // Size getter
     // TODO: merge to template method
-    void Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis = true );
-    void Get( gxRegionConstraint*& iConstraint );
+//    void Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis = true );
+//    void Get( gxRegionConstraint*& iConstraint );
+    
+    template < typename ConstraintType >
+    void Get( ConstraintType& aConstraint, bool aOnMajorAxis = true )
+    {
+        MapId aId   = TypeToMapId( aConstraint->Id, aOnMajorAxis );
+        aConstraint = static_cast<ConstraintType>( GetConstraint( aId ) );
+    }
 public:
     // A couple of readability typedefs
     typedef std::list< gxConstraints* > List;
@@ -85,8 +86,7 @@ private:
     
     ConstraintMap mConstraintMap;
 
-    gxConstraint::Type GetInternalType( gxConstraint::Type aType,
-                                        bool               aOnMajorAxis = true );
+    gxConstraint::Type GetInternalType( gxConstraint::Type aType );
 
     MapId TypeToMapId( gxConstraint::Type aType,
                        bool               aOnMajorAxis = true );
@@ -96,13 +96,6 @@ private:
                                     int                aValue );
     
     gxConstraint* GetConstraint( MapId aId );
-    
-    template < class Type >
-    void GetConstraint( MapId aId,
-                        Type& aConstraint )
-    {
-        aConstraint = static_cast<Type>( GetConstraint( aId ) );
-    }
     
     void AddConstraint( MapId         aId,
                         gxConstraint* aConstraint );
