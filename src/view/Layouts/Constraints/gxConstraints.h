@@ -62,7 +62,8 @@ public:
     // Getters and Setters
     
     void Set( gxConstraint::Type aType,
-              int                aValue );
+              int                aValue,
+              bool               aOnMajorAxis = true );
     
     // Size getter
     // TODO: merge to template method

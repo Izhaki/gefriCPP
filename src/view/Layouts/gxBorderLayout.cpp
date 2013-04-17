@@ -20,8 +20,10 @@ void gxBorderLayout::DoLayout()
         return;
     
     gxSizeConstraint* iSizeConstraint = NULL;
+
+    // Major axis flex check
     iCenterConstraints->Get( iSizeConstraint, true );
-    
+
     // The center is always flex 1, unless the user has set it higher
     if ( !( iSizeConstraint &&
             iSizeConstraint->IsFlex() &&
@@ -29,6 +31,18 @@ void gxBorderLayout::DoLayout()
     {
         iCenterConstraints->Set( gxConstraint::Flex, 1 );
     }
+    
+    // Minor axis flex check
+    iCenterConstraints->Get( iSizeConstraint, false );
+    
+    // The center is always flex 1, unless the user has set it higher
+    if ( !( iSizeConstraint &&
+           iSizeConstraint->IsFlex() &&
+           iSizeConstraint->GetValue() > 0 ) )
+    {
+        iCenterConstraints->Set( gxConstraint::Flex, 1, false );
+    }
+    
     
     // A filtered list of constaints.
     gxConstraints::List iFiltered;

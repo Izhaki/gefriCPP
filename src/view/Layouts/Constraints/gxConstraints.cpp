@@ -71,16 +71,14 @@ gxConstraint* gxConstraints::CreateConstraint( gxConstraint::Type aType,
 
 
 void gxConstraints::Set( gxConstraint::Type aType,
-                         int                aValue )
+                         int                aValue,
+                         bool               aOnMajorAxis )
 {
-    //TODO: Flex is always added on major axis
-    
     gxConstraint*      iConstraint = CreateConstraint( aType, aValue );
     
     gxConstraint::Type iType       = GetInternalType( aType );
     
-    // TODO change true to aOnMajorAxis
-    MapId              aMapId      = TypeToMapId( iType, true );
+    MapId              aMapId      = TypeToMapId( iType, aOnMajorAxis );
     
     AddConstraint( aMapId, iConstraint );
 }
