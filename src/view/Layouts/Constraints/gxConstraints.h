@@ -82,6 +82,12 @@ public:
      * @return The flex value or 0 if none is found
      */
     int GetFlex( bool aOnMajorAxis );
+
+    /**
+     * @brief Returns the region constraint.
+     * @return The region type.
+     */
+    gxLayoutRegion::Type GetRegion();
 public:
     // A couple of readability typedefs
     typedef std::list< gxConstraints* > List;

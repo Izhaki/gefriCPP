@@ -97,6 +97,21 @@ int gxConstraints::GetFlex( bool aOnMajorAxis )
     }
 }
 
+gxLayoutRegion::Type gxConstraints::GetRegion()
+{
+    gxRegionConstraint* iRegionConstraint = NULL;
+    
+    Get( iRegionConstraint );
+    
+    if ( iRegionConstraint )
+    {
+        return iRegionConstraint->GetValue();
+    } else {
+        gxAssert( true, "No region constraint found");
+        return gxLayoutRegion::Center;
+    }
+}
+
 /*
 void gxConstraints::Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis )
 {
