@@ -1,6 +1,7 @@
 #include "View/Elements/Visual/gxVisual.h"
 #include "View/gxLightweightSystem.h"
 #include "core/gxLog.h"
+#include "core/gxAssert.h"
 
 gxVisual::gxVisual()
   : mBounds( 0, 0, 0, 0 )
@@ -134,6 +135,23 @@ void gxVisual::SetBounds( const gxRect &aNewBounds )
         Invalidate();
         Repaint();
     }
+}
+
+void gxVisual::SetConstraint( gxConstraint::Type  aType,
+                              gxConstraint::Value aValue )
+{
+    // Get the parent
+    gxViewElement* iParent = GetParent();
+    
+    gxAssert( iParent == NULL, "No parent found" );
+    
+    // Get the parent layout
+    gxLayout* iLayout = iParent->GetLayout();
+    
+    gxAssert( iParent == NULL, "No layout found" );
+    
+    // Set the constraint
+    iLayout->SetConstraint( this, aType, aValue );
 }
 
 void gxVisual::Translate( gxPoint aDelta )

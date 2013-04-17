@@ -21,6 +21,8 @@ public:
         Size,
     };
     
+    typedef int Value;
+    
     virtual ~gxConstraint() {}
 };
 

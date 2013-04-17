@@ -162,8 +162,16 @@ public:
     void Invalidate();
     
     // Layout related methods
-    
+
+    /**
+     * @brief Sets the Layout for this view element
+     */
     void SetLayout( gxLayout* aLayout );
+
+    /**
+     * @brief Returns the Layout for this view element
+     */
+    virtual gxLayout* GetLayout();
     
     /**
      * @brief Layouts the children of this view element.

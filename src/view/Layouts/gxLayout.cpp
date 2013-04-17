@@ -91,6 +91,15 @@ void gxLayout::Apply()
     }
 }
 
+void gxLayout::SetConstraint( gxViewElement*      aViewElement,
+                              gxConstraint::Type  aType,
+                              gxConstraint::Value aValue)
+{
+    gxConstraints* iConstraints = GetConstraints( aViewElement );
+    iConstraints->Set( aType, aValue );
+    InvalidateElement( aViewElement );
+}
+
 
 gxConstraints* gxLayout::FindConstraints( gxViewElement* aElement )
 {

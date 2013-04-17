@@ -316,6 +316,11 @@ void gxViewElement::SetLayout( gxLayout* aLayout )
     mLayout->SetViewElement( this );
 }
 
+gxLayout* gxViewElement::GetLayout()
+{
+    return mLayout;
+}
+
 void gxViewElement::Layout()
 {
     if ( mLayout )

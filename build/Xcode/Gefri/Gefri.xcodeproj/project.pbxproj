@@ -274,8 +274,8 @@
 		879535A016DA8FC9006D69FE /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				879535A116DA8FC9006D69FE /* gxViewElement.cpp */,
 				879535A216DA8FC9006D69FE /* gxViewElement.h */,
+				879535A116DA8FC9006D69FE /* gxViewElement.cpp */,
 				879535A316DA8FC9006D69FE /* Structural */,
 				879535AC16DA8FC9006D69FE /* Visual */,
 			);
@@ -303,10 +303,10 @@
 		879535AC16DA8FC9006D69FE /* Visual */ = {
 			isa = PBXGroup;
 			children = (
-				879535AD16DA8FC9006D69FE /* gxRuler.cpp */,
 				879535AE16DA8FC9006D69FE /* gxRuler.h */,
-				879535AF16DA8FC9006D69FE /* gxVisual.cpp */,
+				879535AD16DA8FC9006D69FE /* gxRuler.cpp */,
 				879535B016DA8FC9006D69FE /* gxVisual.h */,
+				879535AF16DA8FC9006D69FE /* gxVisual.cpp */,
 				879535B116DA8FC9006D69FE /* Shapes */,
 			);
 			path = Visual;
@@ -602,6 +602,24 @@
 				HEADER_SEARCH_PATHS = "../../../src/**";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
+				"OTHER_CPLUSPLUSFLAGS[arch=*64*]" = (
+					"-I/Volumes/Blackstore/Development/wx/wx2.9.4/build-debug-mac-64-10.7/lib/wx/include/osx_cocoa-unicode-static-2.9",
+					"-I/Volumes/Blackstore/Development/wx/wx2.9.4/include",
+					"-D_FILE_OFFSET_BITS=64",
+					"-D__WXMAC__",
+					"-D__WXOSX__",
+					"-D__WXOSX_COCOA__",
+					"-D__WXDEBUG__",
+				);
+				"OTHER_CPLUSPLUSFLAGS[arch=i386]" = (
+					"-I/Volumes/Blackstore/Development/wx/wx2.9.4/build-debug-mac-32-10.7/lib/wx/include/osx_cocoa-unicode-static-2.9",
+					"-I/Volumes/Blackstore/Development/wx/wx2.9.4/include",
+					"-D_FILE_OFFSET_BITS=64",
+					"-D__WXMAC__",
+					"-D__WXOSX__",
+					"-D__WXOSX_COCOA__",
+					"-D__WXDEBUG__",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;

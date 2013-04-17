@@ -63,15 +63,9 @@ public:
     
     void InvalidateElement( gxViewElement* aViewElement );
     
-    template< typename Type>
-    void SetConstraint( gxViewElement*     aViewElement,
-                        gxConstraint::Type aType,
-                        Type               aValue)
-    {
-        gxConstraints* iConstraints = GetConstraints( aViewElement );        
-        iConstraints->Set( aType, aValue );
-        InvalidateElement( aViewElement );
-    }
+    void SetConstraint( gxViewElement*      aViewElement,
+                        gxConstraint::Type  aType,
+                        gxConstraint::Value aValue);
     
     // A helper class to find elements in the data list.
     class ElementFinder

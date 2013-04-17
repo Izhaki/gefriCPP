@@ -2,6 +2,7 @@
 #define gxVisual_h
 
 #include "View/Elements/gxViewElement.h"
+#include "View/Layouts/Constraints/gxConstraints.h"
 
 /**
  * @brief A view element that has visual representation and defined bounds,
@@ -44,6 +45,16 @@ public:
   
     // TODO: Docs
     virtual void GetDescendantsBounds( gxRect &aBounds );
+
+    /**
+     * @brief Sets the constraint for this view element.
+     *
+     * This method simply delegates the call to the parent's layout.
+     * @param aType The constraint to set
+     * @param aValue The constraint value
+     */
+    void SetConstraint( gxConstraint::Type  aType,
+                        gxConstraint::Value aValue );
 protected:
     /**
      * @brief Paints graphics related to this view element.
