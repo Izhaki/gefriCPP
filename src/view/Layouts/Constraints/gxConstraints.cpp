@@ -83,6 +83,20 @@ void gxConstraints::Set( gxConstraint::Type aType,
     AddConstraint( aMapId, iConstraint );
 }
 
+int gxConstraints::GetFlex( bool aOnMajorAxis )
+{
+    gxSizeConstraint* iSizeConstraint = NULL;
+    
+    Get( iSizeConstraint, aOnMajorAxis );
+    
+    if ( iSizeConstraint && iSizeConstraint->IsFlex() )
+    {
+        return iSizeConstraint->GetValue();
+    } else {
+        return 0;
+    }
+}
+
 /*
 void gxConstraints::Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis )
 {

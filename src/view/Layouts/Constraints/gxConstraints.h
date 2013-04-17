@@ -76,6 +76,12 @@ public:
         MapId aId   = TypeToMapId( aConstraint->Id, aOnMajorAxis );
         aConstraint = static_cast<ConstraintType>( GetConstraint( aId ) );
     }
+    
+    /**
+     * @brief Returns the flex constraint value.
+     * @return The flex value or 0 if none is found
+     */
+    int GetFlex( bool aOnMajorAxis );
 public:
     // A couple of readability typedefs
     typedef std::list< gxConstraints* > List;
