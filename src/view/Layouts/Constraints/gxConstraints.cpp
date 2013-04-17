@@ -111,29 +111,3 @@ gxLayoutRegion::Type gxConstraints::GetRegion()
         return gxLayoutRegion::Center;
     }
 }
-
-/*
-void gxConstraints::Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis )
-{
-    gxConstraint::Type iType = gxSizeConstraint::Id;
-    
-    // First search the major axis (flex can only be on major axis).
-    MapId aId = TypeToMapId( gxConstraint::Size, true );
-    GetConstraint( aId, iConstraint );
-    
-    bool iFlexFound = iConstraint && iConstraint->IsFlex();
-    
-    // If no flex was found an we are required to search the minor axis
-    if ( !iFlexFound && !aOnMajorAxis )
-    {
-        // Search the minor axis
-        aId = TypeToMapId( gxConstraint::Size, false );
-        GetConstraint( aId, iConstraint );
-    }
-}
-
-void gxConstraints::Get( gxRegionConstraint*& iConstraint )
-{
-    GetConstraint( gxConstraint::Region, iConstraint );
-}
-*/

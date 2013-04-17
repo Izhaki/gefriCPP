@@ -8,8 +8,8 @@ gxAlign::gxAlign( const Type          aType,
     if ( aType == None )
         return;
     
-    gxPix                   iPosition = 0;
-    gxPix                   iContainerSize = aContainer.GetSize( onMajorAxis );
+    gxPix iPosition = 0;
+    gxPix iContainerSize = aContainer.GetSize( onMajorAxis );
     
     forEachConstraintOf( aConstraints, iConstraints )
     {

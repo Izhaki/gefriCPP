@@ -1,5 +1,5 @@
-#ifndef gxLayoutData_h
-#define gxLayoutData_h
+#ifndef gxConstraints_h
+#define gxConstraints_h
 
 // Forward Dec
 class gxViewElement;
@@ -36,7 +36,9 @@ class gxViewElement;
 class gxConstraints
 {
 public:
-    gxConstraints( gxViewElement* aElement) : mElement( aElement ) { }
+    gxConstraints( gxViewElement* aElement) :
+        mElement( aElement )
+    {}
     
     // The element this constraint applies to
     gxViewElement* mElement;
@@ -64,11 +66,6 @@ public:
     void Set( gxConstraint::Type aType,
               int                aValue,
               bool               aOnMajorAxis = true );
-    
-    // Size getter
-    // TODO: merge to template method
-//    void Get( gxSizeConstraint*& iConstraint, bool aOnMajorAxis = true );
-//    void Get( gxRegionConstraint*& iConstraint );
     
     template < typename ConstraintType >
     void Get( ConstraintType& aConstraint, bool aOnMajorAxis = true )
@@ -115,4 +112,4 @@ private:
     
 };
 
-#endif // gxLayoutData_h
+#endif // gxConstraints_h
