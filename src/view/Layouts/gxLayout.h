@@ -53,19 +53,19 @@ public:
      * @brief Adds the view element to the constraints list.
      */
     void Add( gxViewElement* aViewElement );
-
-    /**
-     * @brief Sets the initial rect constraints used for layouting for the
-     * given element.
-     *
-     * If the element is not yet in the list of constraints, it will be added.
-     */
     
     void InvalidateElement( gxViewElement* aViewElement );
-    
+
+    /**
+     * @brief Sets a constraint for the given view element.
+     *
+     * @param aViewElement The view element for which the constraints is set
+     * @param aType The constraint type to set
+     * @param aValue The constraint value
+     */
     void SetConstraint( gxViewElement*      aViewElement,
                         gxConstraint::Type  aType,
-                        gxConstraint::Value aValue);
+                        gxConstraint::Value aValue );
     
     // A helper class to find elements in the data list.
     class ElementFinder
@@ -94,6 +94,8 @@ protected:
     /**
      * @brief Finds the constraints of the provided view element.
      *
+     * @param aViewElement The view element the constraints of which we're 
+     * after.
      * @return The constraints of the provided view element, or NULL if none was
      * found.
      */
@@ -103,10 +105,20 @@ protected:
      * @brief Gets the constraints for the provided view element, or create
      * new constraints if no such exit.
      *
+     * @param aViewElement The view element for which we retrieve the 
+     * constraints.
      * @return The constraints of the provided view element.
      */
     gxConstraints* GetConstraints( gxViewElement* aElement );
 
+    /**
+     * @brief Checks if the constraint type is supported by the layout
+     *
+     * @param aType The constraint type
+     * @return True is the constraint is accepted by the layout
+     */
+    virtual bool IsSupportedConstraint( gxConstraint::Type  aType ) = 0;
+    
     /**
      * @brief Performs the actual layout. An abstract method that subclasses
      * will implement.

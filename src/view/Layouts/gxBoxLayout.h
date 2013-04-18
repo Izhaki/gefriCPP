@@ -33,6 +33,7 @@ protected:
     gxDistribute::Type mDistribute;
     
     virtual void DoLayout();
+    virtual bool IsSupportedConstraint( gxConstraint::Type  aType );    
 };
 
 #endif // gxBoxLayout_h

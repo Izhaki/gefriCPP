@@ -10,6 +10,23 @@ gxBorderLayout::gxBorderLayout( bool aOnMajorAxis )
   : gxLayout ( aOnMajorAxis )
 {}
 
+bool gxBorderLayout::IsSupportedConstraint( gxConstraint::Type  aType )
+{
+    switch ( aType )
+    {
+        case gxConstraint::Percent:
+        case gxConstraint::Flex:
+        case gxConstraint::Pixels:
+        case gxConstraint::Region:
+        case gxConstraint::Split:
+        case gxConstraint::Resizable:
+            return true;
+            
+        default:
+            return false;
+    }
+}
+
 void gxBorderLayout::DoLayout()
 {
     // Get the center constrainst. This will also raise assertion if there

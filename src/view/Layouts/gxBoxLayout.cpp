@@ -32,6 +32,20 @@ gxBoxLayout::gxBoxLayout( gxDistribute::Type aDistribute,
     gxLayout    ( aOnMajorAxis )
 {}
 
+bool gxBoxLayout::IsSupportedConstraint( gxConstraint::Type  aType )
+{
+    switch ( aType )
+    {
+        case gxConstraint::Percent:
+        case gxConstraint::Flex:
+        case gxConstraint::Pixels:
+            return true;
+            
+        default:
+            return false;
+    }
+}
+
 void gxBoxLayout::DoLayout()
 {
     gxRect iContainerBounds = mViewElement->GetInnerBounds();

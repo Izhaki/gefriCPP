@@ -10,6 +10,7 @@ public:
     
     gxBorderLayout( bool aOnMajorAxis );
 protected:
+    virtual bool IsSupportedConstraint( gxConstraint::Type  aType );    
     virtual void DoLayout();
 private:
     void AddConstraints( gxConstraints::List& aFiltered,

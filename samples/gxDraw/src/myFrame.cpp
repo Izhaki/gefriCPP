@@ -102,8 +102,7 @@ void MyFrame::InitGefri()
     mConnectionLayer = new gxLayer();
     mPrimaryLayer    = new gxLayer();
     
-    mLayers->Add( mPrimaryLayer );
-    mLayers->Add( mConnectionLayer );
+    mLayers->Add( mPrimaryLayer, mConnectionLayer );
     
     mZoom->Add( mLayers );
     
@@ -209,11 +208,11 @@ void MyFrame::CreateBorderLayout()
 
     mContainer->Add( mNorth, mCenter, mSouth, mWest, mEast  );
     
-    mNorth->SetConstraint(  gxConstraint::Region, gxLayoutRegion::North);
-    mCenter->SetConstraint( gxConstraint::Region, gxLayoutRegion::Center);
-    mSouth->SetConstraint(  gxConstraint::Region, gxLayoutRegion::South);
-    mWest->SetConstraint(   gxConstraint::Region, gxLayoutRegion::West);
-    mEast->SetConstraint(   gxConstraint::Region, gxLayoutRegion::East);
+    mNorth->SetConstraint(  gxConstraint::Region, gxLayoutRegion::North );
+    mCenter->SetConstraint( gxConstraint::Region, gxLayoutRegion::Center );
+    mSouth->SetConstraint(  gxConstraint::Region, gxLayoutRegion::South );
+    mWest->SetConstraint(   gxConstraint::Region, gxLayoutRegion::West );
+    mEast->SetConstraint(   gxConstraint::Region, gxLayoutRegion::East );
     
     mPrimaryLayer->Add( mContainer );
 }

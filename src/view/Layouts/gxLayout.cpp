@@ -95,8 +95,13 @@ void gxLayout::SetConstraint( gxViewElement*      aViewElement,
                               gxConstraint::Type  aType,
                               gxConstraint::Value aValue)
 {
-    gxConstraints* iConstraints = GetConstraints( aViewElement );
-    iConstraints->Set( aType, aValue );
+    // Warn if the layout does not accepts the provided constraint type
+    gxAssert( !IsSupportedConstraint( aType ) , "Constraint type is not accepted by this layout" );
+    
+    // Get the constrainst of the view element and set the new constraint
+    GetConstraints( aViewElement )->Set( aType, aValue );
+    
+    // Now invalidate the element
     InvalidateElement( aViewElement );
 }
 
@@ -107,13 +112,10 @@ gxConstraints* gxLayout::FindConstraints( gxViewElement* aElement )
     gxConstraints::Iterator iIter = std::find_if( mConstraints.begin(),
                                                   mConstraints.end(),
                                                   ElementFinder( aElement ) );
-
-    if ( iIter == mConstraints.end() )
-    {
-        return NULL;
-    } else {
-        return *iIter;
-    }
+    
+    bool iFound = iIter != mConstraints.end();
+    
+    return iFound ? *iIter : NULL;
 }
 
 gxConstraints* gxLayout::GetConstraints( gxViewElement* aElement )
