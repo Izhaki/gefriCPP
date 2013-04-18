@@ -143,12 +143,12 @@ void gxVisual::SetConstraint( gxConstraint::Type  aType,
     // Get the parent
     gxViewElement* iParent = GetParent();
     
-    gxAssert( iParent == NULL, "No parent found" );
+    gxWarnIf( iParent == NULL, "No parent found" );
     
     // Get the parent layout
     gxLayout* iLayout = iParent->GetLayout();
     
-    gxAssert( iParent == NULL, "No layout found" );
+    gxWarnIf( iParent == NULL, "No layout found" );
     
     // Set the constraint
     iLayout->SetConstraint( this, aType, aValue );

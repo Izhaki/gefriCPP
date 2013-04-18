@@ -107,7 +107,7 @@ gxLayoutRegion::Type gxConstraints::GetRegion()
     {
         return iRegionConstraint->GetValue();
     } else {
-        gxAssert( true, "No region constraint found");
+        gxWarn( "No region constraint found" );
         return gxLayoutRegion::Center;
     }
 }

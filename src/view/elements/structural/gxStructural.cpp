@@ -48,12 +48,12 @@ void gxStructural::Repaint()
 
 gxRect gxStructural::GetBounds() const
 {
-    gxAssert( Parentless(), "GetBounds() called but no parent." );
+    gxWarnIf( Parentless(), "GetBounds() called but no parent." );
 
     return GetParent()->GetBounds();
 }
 
 void gxStructural::SetBounds( const gxRect &aNewBounds )
 {
-    gxAssert( true, "SetBounds Called on Structural Element" );
+    gxWarn( "SetBounds Called on Structural Element" );
 }

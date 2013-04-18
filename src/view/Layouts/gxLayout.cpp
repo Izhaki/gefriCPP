@@ -96,7 +96,7 @@ void gxLayout::SetConstraint( gxViewElement*      aViewElement,
                               gxConstraint::Value aValue)
 {
     // Warn if the layout does not accepts the provided constraint type
-    gxAssert( !IsSupportedConstraint( aType ) , "Constraint type is not accepted by this layout" );
+    gxAssert( IsSupportedConstraint( aType ) , "Constraint type is not accepted by this layout" );
     
     // Get the constrainst of the view element and set the new constraint
     GetConstraints( aViewElement )->Set( aType, aValue );
