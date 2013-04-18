@@ -79,6 +79,14 @@ public:
         // Notify
         OnAddChild( ( tComposite* )aChild );
     }
+    
+    void Add( tComposite* aChildren[] )
+    {
+        for ( int i = 0; aChildren[i] != NULL ; ++i )
+        {
+            Add( aChildren[i] );
+        }
+    }
 
     /**
      * @brief Removes a child from this object.

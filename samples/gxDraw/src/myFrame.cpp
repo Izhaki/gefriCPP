@@ -177,11 +177,12 @@ void MyFrame::CreateBoxLayout()
     mLayout->Add( mF1 );
     mLayout->Add( mF2 );
     mLayout->Add( mF3 );
+  
+    mHBox->Add( gxViewElementsArray( mF1, mF2, mF3) );
     
-    
-    mHBox->Add( mF1 );
-    mHBox->Add( mF2 );
-    mHBox->Add( mF3 );
+//    mHBox->Add( mF1 );
+//    mHBox->Add( mF2 );
+//    mHBox->Add( mF3 );
     
 //    mLayout->SetRect( mF2, gxRect( 30, 30, 20, 20 ) );
 //    mLayout->SetRect( mF3, gxRect( 130, 30, 30, 30 ) );
