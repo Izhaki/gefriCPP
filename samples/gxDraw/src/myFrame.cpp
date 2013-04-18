@@ -108,8 +108,8 @@ void MyFrame::InitGefri()
     mZoom->Add( mLayers );
     
     CreateFaceAndRuller();
-    CreateBoxLayout();
-//    CreateBorderLayout();
+//    CreateBoxLayout();
+    CreateBorderLayout();
     
     mLightweightSystem->SetContents(mDocument);
 }
@@ -178,12 +178,8 @@ void MyFrame::CreateBoxLayout()
     mLayout->Add( mF2 );
     mLayout->Add( mF3 );
   
-    mHBox->Add( gxViewElementsArray( mF1, mF2, mF3) );
-    
-//    mHBox->Add( mF1 );
-//    mHBox->Add( mF2 );
-//    mHBox->Add( mF3 );
-    
+    mHBox->Add( mF1, mF2, mF3 );
+       
 //    mLayout->SetRect( mF2, gxRect( 30, 30, 20, 20 ) );
 //    mLayout->SetRect( mF3, gxRect( 130, 30, 30, 30 ) );
     
@@ -211,11 +207,7 @@ void MyFrame::CreateBorderLayout()
     mWest   = new gxRectangle( gxSize( 50,20 ) );
     mEast   = new gxRectangle( gxSize( 50,20 ) );
 
-    mContainer->Add( mNorth );
-    mContainer->Add( mCenter );
-    mContainer->Add( mSouth );
-    mContainer->Add( mWest );
-    mContainer->Add( mEast );
+    mContainer->Add( mNorth, mCenter, mSouth, mWest, mEast  );
     
     mNorth->SetConstraint(  gxConstraint::Region, gxLayoutRegion::North);
     mCenter->SetConstraint( gxConstraint::Region, gxLayoutRegion::Center);

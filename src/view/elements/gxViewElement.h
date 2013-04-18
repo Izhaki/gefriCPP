@@ -11,8 +11,6 @@
 class gxRootViewElement;
 class gxLightweightSystem;
 
-#define gxViewElementsArray( ... ) (gxViewElement*[]) { __VA_ARGS__, NULL }
-
 /**
  * @brief A class representing a lightweight object that is part of the view
  * layer.

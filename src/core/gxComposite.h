@@ -56,7 +56,7 @@ public:
      * @brief Adds a new child to this object.
      * @param aChild The child to be added
      */
-    void Add( tComposite* aChild )
+    void DoAdd( tComposite* aChild )
     {
         // Make sure child isn't null
         gxAssert( aChild == NULL, "Null paased to Add" );
@@ -80,12 +80,27 @@ public:
         OnAddChild( ( tComposite* )aChild );
     }
     
-    void Add( tComposite* aChildren[] )
+    /**
+     * @brief Allows adding up to 8 different children to this object.
+     * @param aChild1-8 The children to be added
+     */
+    void Add( tComposite* aChild1,
+              tComposite* aChild2 = NULL,
+              tComposite* aChild3 = NULL,
+              tComposite* aChild4 = NULL,
+              tComposite* aChild5 = NULL,
+              tComposite* aChild6 = NULL,
+              tComposite* aChild7 = NULL,
+              tComposite* aChild8 = NULL )
     {
-        for ( int i = 0; aChildren[i] != NULL ; ++i )
-        {
-            Add( aChildren[i] );
-        }
+        DoAdd( aChild1 );
+        if ( aChild2 ) DoAdd( aChild2 );
+        if ( aChild3 ) DoAdd( aChild3 );
+        if ( aChild4 ) DoAdd( aChild4 );
+        if ( aChild5 ) DoAdd( aChild5 );
+        if ( aChild6 ) DoAdd( aChild6 );
+        if ( aChild7 ) DoAdd( aChild7 );
+        if ( aChild8 ) DoAdd( aChild8 );
     }
 
     /**
