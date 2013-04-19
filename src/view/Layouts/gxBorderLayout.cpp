@@ -38,16 +38,16 @@ void gxBorderLayout::DoLayout( gxViewElement* aLayouter )
     
     // Major axis flex check; The center is always flex 1, unless the user has
     // set it higher.
-    if ( iCenterConstraints->GetFlex( true ) == 0 )
+    if ( iCenterConstraints->GetFlex( gxMajorAxis ) == 0 )
     {
-        iCenterConstraints->Set( gxConstraint::Flex, 1 );
+        iCenterConstraints->Set( gxConstraint::Flex, 1, gxMajorAxis );
     }
     
     // Minor axis flex check; The center is always flex 1, unless the user has
     // set it higher.
-    if ( iCenterConstraints->GetFlex( false ) == 0 )
+    if ( iCenterConstraints->GetFlex( gxMinorAxis ) == 0 )
     {
-        iCenterConstraints->Set( gxConstraint::Flex, 1, false );
+        iCenterConstraints->Set( gxConstraint::Flex, 1, gxMinorAxis );
     }
         
     // A filtered list of constaints.

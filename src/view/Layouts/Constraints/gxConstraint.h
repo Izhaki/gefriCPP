@@ -1,6 +1,9 @@
 #ifndef gxConstraint_h
 #define gxConstraint_h
 
+#define gxMajorAxis true
+#define gxMinorAxis false
+
 class gxConstraint
 {
 public:
