@@ -35,18 +35,20 @@ public:
         
     /**
      * @brief Performs the layouting.
+     * @param aLayouter The parent view element whose children are being laid 
+     * out.
      */
     void Layout( gxViewElement* aLayouter );
 
     /**
      * @brief Invalidates the layout if the view element is part of it
      */    
-    void Invalidate( gxViewElement* aViewElement );
+    void Invalidate( gxViewElement* aLayoutee );
     
     /**
      * @brief Adds the view element to the constraints list.
      */
-    void Add( gxViewElement* aViewElement );
+    void Add( gxViewElement* aLayoutee );
 
     /**
      * @brief Sets a constraint for the given view element.
@@ -55,18 +57,19 @@ public:
      * @param aType The constraint type to set
      * @param aValue The constraint value
      */
-    void SetConstraint( gxViewElement*      aViewElement,
+    void SetConstraint( gxViewElement*      aLayoutee,
                         gxConstraint::Type  aType,
                         gxConstraint::Value aValue );
     
     // A helper class to find elements in the data list.
+    // TODO: ElementFinder or LayouteeFinder
     class ElementFinder
     {
     public:
         ElementFinder( gxViewElement* aElement ) : mElement( aElement ) {}
         bool operator() ( const gxConstraints* aConstraints ) const
         {
-            return aConstraints->mElement == mElement;
+            return aConstraints->mLayoutee == mElement;
         }
     private:
         gxViewElement* mElement;
@@ -90,7 +93,7 @@ protected:
      * @return The constraints of the provided view element, or NULL if none was
      * found.
      */
-    gxConstraints* FindConstraints( gxViewElement* aElement );
+    gxConstraints* FindConstraints( gxViewElement* aLayoutee );
     
     /**
      * @brief Gets the constraints for the provided view element, or create
@@ -100,7 +103,7 @@ protected:
      * constraints.
      * @return The constraints of the provided view element.
      */
-    gxConstraints* GetConstraints( gxViewElement* aElement );
+    gxConstraints* GetConstraints( gxViewElement* aLayoutee );
 
     /**
      * @brief Checks if the constraint type is supported by the layout
@@ -108,7 +111,7 @@ protected:
      * @param aType The constraint type
      * @return True is the constraint is accepted by the layout
      */
-    virtual bool IsSupportedConstraint( gxConstraint::Type  aType ) = 0;
+    virtual bool IsSupportedConstraint( gxConstraint::Type aType ) = 0;
     
     /**
      * @brief Performs the actual layout. An abstract method that subclasses

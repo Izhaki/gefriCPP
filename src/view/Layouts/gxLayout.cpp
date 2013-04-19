@@ -44,13 +44,13 @@ void gxLayout::Layout( gxViewElement* aLayouter )
     
 }
 
-void gxLayout::Invalidate( gxViewElement* aViewElement )
+void gxLayout::Invalidate( gxViewElement* aLayoutee )
 {
     // If the layout is in progress or already marked as invalid, do nothing.
     if ( mLayoutStatus != Valid )
         return;
     
-    bool iElementPartOfLayout = FindConstraints( aViewElement );
+    bool iElementPartOfLayout = FindConstraints( aLayoutee );
     
     // If the view element is part of my layout, mark me as invalid
     if ( iElementPartOfLayout )
@@ -59,7 +59,7 @@ void gxLayout::Invalidate( gxViewElement* aViewElement )
 
 bool IndexCompare( gxConstraints* aL, gxConstraints* aR )
 {
-    return aL->mElement->GetIndex() < aR->mElement->GetIndex();
+    return aL->mLayoutee->GetIndex() < aR->mLayoutee->GetIndex();
 }
 
 void gxLayout::SortConstraints()
@@ -85,7 +85,7 @@ void gxLayout::Apply()
     }
 }
 
-void gxLayout::SetConstraint( gxViewElement*      aViewElement,
+void gxLayout::SetConstraint( gxViewElement*      aLayoutee,
                               gxConstraint::Type  aType,
                               gxConstraint::Value aValue)
 {
@@ -93,34 +93,34 @@ void gxLayout::SetConstraint( gxViewElement*      aViewElement,
     gxAssert( IsSupportedConstraint( aType ) , "Constraint type is not accepted by this layout" );
     
     // Get the constrainst of the view element and set the new constraint
-    GetConstraints( aViewElement )->Set( aType, aValue );
+    GetConstraints( aLayoutee )->Set( aType, aValue );
     
     // Now invalidate the element
-    aViewElement->Invalidate();
+    aLayoutee->Invalidate();
 }
 
 
-gxConstraints* gxLayout::FindConstraints( gxViewElement* aElement )
+gxConstraints* gxLayout::FindConstraints( gxViewElement* aLayoutee )
 {
     // Search for the element in our list.
     gxConstraints::Iterator iIter = std::find_if( mConstraints.begin(),
                                                   mConstraints.end(),
-                                                  ElementFinder( aElement ) );
+                                                  ElementFinder( aLayoutee ) );
     
     bool iFound = iIter != mConstraints.end();
     
     return iFound ? *iIter : NULL;
 }
 
-gxConstraints* gxLayout::GetConstraints( gxViewElement* aElement )
+gxConstraints* gxLayout::GetConstraints( gxViewElement* aLayoutee )
 {
 
-    gxConstraints* iConstraints = FindConstraints( aElement );
+    gxConstraints* iConstraints = FindConstraints( aLayoutee );
     
     if ( iConstraints == NULL )
     {
         // If layout data was not found, create one
-        iConstraints = new gxConstraints( aElement );
+        iConstraints = new gxConstraints( aLayoutee );
                 
         // Add it to our data list
         mConstraints.push_back( iConstraints );
@@ -129,8 +129,8 @@ gxConstraints* gxLayout::GetConstraints( gxViewElement* aElement )
     return iConstraints;
 }
 
-void gxLayout::Add( gxViewElement* aViewElement )
+void gxLayout::Add( gxViewElement* aLayoutee )
 {
     // This will do the job - just add the element if it aint already there.
-    GetConstraints( aViewElement );
+    GetConstraints( aLayoutee );
 }

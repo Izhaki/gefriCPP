@@ -5,12 +5,12 @@
 
 void gxConstraints::Reset()
 {
-    Bounds = mElement->GetBounds();
+    Bounds = mLayoutee->GetBounds();
 }
 
 void gxConstraints::Apply()
 {
-    mElement->SetBounds( Bounds );
+    mLayoutee->SetBounds( Bounds );
 }
 
 gxConstraint* gxConstraints::GetConstraint( MapId aId )

@@ -35,12 +35,12 @@ class gxViewElement;
 class gxConstraints
 {
 public:
-    gxConstraints( gxViewElement* aElement) :
-        mElement( aElement )
+    gxConstraints( gxViewElement* aLayoutee) :
+        mLayoutee( aLayoutee )
     {}
     
-    // The element this constraint applies to
-    gxViewElement* mElement;
+    // The element this constraints applies to
+    gxViewElement* mLayoutee;
             
     // A helper variable for used when the layout is being calculated.
     // Layouts only change the bounds of the view element when all layout
