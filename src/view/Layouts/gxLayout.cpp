@@ -2,15 +2,13 @@
 #include "View/Elements/gxViewElement.h"
 
 gxLayout::gxLayout()
-  : mViewElement ( NULL ),
-    mOnMajorAxis ( true ),
+  : mOnMajorAxis ( true ),
     mLayoutStatus( Invalid )
 {
 }
 
 gxLayout::gxLayout( bool aOnMajorAxis )
-: mViewElement ( NULL         ),
-  mOnMajorAxis ( aOnMajorAxis ),
+: mOnMajorAxis ( aOnMajorAxis ),
   mLayoutStatus( Invalid )
 {
 }
@@ -24,16 +22,12 @@ gxLayout::~gxLayout()
     }
 }
 
-void gxLayout::SetViewElement( gxViewElement* aViewElement )
+void gxLayout::Layout( gxViewElement* aLayouter )
 {
-    mViewElement = aViewElement;
-}
-
-void gxLayout::Layout()
-{
-    // No point doing a layout if the element was not set or if the layout
-    // is already valid.
-    if ( !mViewElement || mLayoutStatus == Valid )
+    gxWarnIf( aLayouter == NULL, "No layouter provided" );
+    
+    // No point doing a layout if the layout is already valid.
+    if ( mLayoutStatus == Valid )
         return;
     
     // Mark the layout as in progress
@@ -41,7 +35,7 @@ void gxLayout::Layout()
     
     Init();
     
-    DoLayout();
+    DoLayout( aLayouter );
     
     Apply();
     
@@ -102,7 +96,7 @@ void gxLayout::SetConstraint( gxViewElement*      aViewElement,
     GetConstraints( aViewElement )->Set( aType, aValue );
     
     // Now invalidate the element
-    InvalidateElement( aViewElement );
+    aViewElement->Invalidate();
 }
 
 
@@ -139,9 +133,4 @@ void gxLayout::Add( gxViewElement* aViewElement )
 {
     // This will do the job - just add the element if it aint already there.
     GetConstraints( aViewElement );
-}
-
-void gxLayout::InvalidateElement( gxViewElement* aViewElement )
-{
-    aViewElement->Invalidate();
 }

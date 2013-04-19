@@ -11,7 +11,7 @@ public:
     gxBorderLayout( bool aOnMajorAxis );
 protected:
     virtual bool IsSupportedConstraint( gxConstraint::Type  aType );    
-    virtual void DoLayout();
+    virtual void DoLayout( gxViewElement* aLayouter );
 private:
     void AddConstraints( gxConstraints::List& aFiltered,
                          bool                 aOnMajorAxis );

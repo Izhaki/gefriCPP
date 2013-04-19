@@ -32,7 +32,7 @@ protected:
     gxAlign::Type      mAlign;
     gxDistribute::Type mDistribute;
     
-    virtual void DoLayout();
+    virtual void DoLayout( gxViewElement* aLayouter );
     virtual bool IsSupportedConstraint( gxConstraint::Type  aType );    
 };
 

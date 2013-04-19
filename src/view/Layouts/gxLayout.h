@@ -32,29 +32,21 @@ public:
     gxLayout( bool aOnMajorAxis );
     
     ~gxLayout();
-    
-    /**
-     * @brief Sets the view element for which this layout apply. Typically it
-     * is the parent view element, and its children are the ones being laid out.
-     */
-    void SetViewElement( gxViewElement* aViewElement );
-    
+        
     /**
      * @brief Performs the layouting.
      */
-    void Layout();
-    
+    void Layout( gxViewElement* aLayouter );
+
+    /**
+     * @brief Invalidates the layout if the view element is part of it
+     */    
     void Invalidate( gxViewElement* aViewElement );
-    
-    
-    // Constraint setters
     
     /**
      * @brief Adds the view element to the constraints list.
      */
     void Add( gxViewElement* aViewElement );
-    
-    void InvalidateElement( gxViewElement* aViewElement );
 
     /**
      * @brief Sets a constraint for the given view element.
@@ -81,7 +73,6 @@ public:
     };
     
 protected:    
-    gxViewElement*      mViewElement;
     gxConstraints::List mConstraints;
     bool                mOnMajorAxis;
     
@@ -123,7 +114,7 @@ protected:
      * @brief Performs the actual layout. An abstract method that subclasses
      * will implement.
      */
-    virtual void DoLayout() = 0;
+    virtual void DoLayout( gxViewElement* aLayouter ) = 0;
     
     /**
      * @brief Initialize the contstaint list, by sorting all view elements to

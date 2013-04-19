@@ -313,7 +313,6 @@ void gxViewElement::OnAfterChildRemoval()
 void gxViewElement::SetLayout( gxLayout* aLayout )
 {
     mLayout = aLayout;
-    mLayout->SetViewElement( this );
 }
 
 gxLayout* gxViewElement::GetLayout()
@@ -324,5 +323,5 @@ gxLayout* gxViewElement::GetLayout()
 void gxViewElement::Layout()
 {
     if ( mLayout )
-        mLayout->Layout();
+        mLayout->Layout( this );
 }

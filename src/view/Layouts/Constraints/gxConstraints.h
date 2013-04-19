@@ -21,6 +21,10 @@ class gxViewElement;
     aConstraints != aList.end(); \
     ++aConstraints )
 
+#include "View/Layouts/Constraints/gxConstraint.h"
+#include "View/Layouts/Constraints/gxSizeConstraint.h"
+#include "View/Layouts/Constraints/gxRegionConstraint.h"
+
 /**
  * @brief A class representing extra details needed to layout view elements.
  *
@@ -28,11 +32,6 @@ class gxViewElement;
  * linked to a view element and includes extra information to help the layout
  * position and size the element.
  */
-
-#include "View/Layouts/Constraints/gxConstraint.h"
-#include "View/Layouts/Constraints/gxSizeConstraint.h"
-#include "View/Layouts/Constraints/gxRegionConstraint.h"
-
 class gxConstraints
 {
 public:

@@ -46,9 +46,9 @@ bool gxBoxLayout::IsSupportedConstraint( gxConstraint::Type  aType )
     }
 }
 
-void gxBoxLayout::DoLayout()
+void gxBoxLayout::DoLayout( gxViewElement* aLayouter )
 {
-    gxRect iContainerBounds = mViewElement->GetInnerBounds();
+    gxRect iContainerBounds = aLayouter->GetInnerBounds();
     
     DoLayout( iContainerBounds, mConstraints, mOnMajorAxis );
 }

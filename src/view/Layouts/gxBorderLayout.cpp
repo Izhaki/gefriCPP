@@ -27,7 +27,7 @@ bool gxBorderLayout::IsSupportedConstraint( gxConstraint::Type  aType )
     }
 }
 
-void gxBorderLayout::DoLayout()
+void gxBorderLayout::DoLayout( gxViewElement* aLayouter )
 {
     // Get the center constrainst. This will also raise assertion if there
     // isn't one, or if there's more than 1.
@@ -55,7 +55,7 @@ void gxBorderLayout::DoLayout()
     gxRect              iBounds;
 
     // First do major axis layout
-    iBounds = mViewElement->GetInnerBounds();
+    iBounds = aLayouter->GetInnerBounds();
     LayoutAxis( iFiltered, iBounds, mOnMajorAxis );
     
     // Now clear the filtered list so we can add the minor elements to it
