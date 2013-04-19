@@ -1,8 +1,9 @@
 #ifndef gxSizeConstraint_h
 #define gxSizeConstraint_h
 
+#include "Core/gxAssert.h"
 #include "View/Layouts/Constraints/gxConstraint.h"
-#include "Core/gxString.h"
+#include "View/Layouts/Constraints/gxConstraints.h"
 
 /**
  * @brief A class representing a layout size that can be:
@@ -21,33 +22,26 @@
  * first element will get 25% (1/4) and the second 75% (3/4).
  */
 
-#include "View/Layouts/Constraints/gxConstraints.h"
-
-//TODO: Docs
-
-enum gxSizeUnit
-{
-    gsPixels,
-    gsPercent,
-    gsFlex
-};
-
 class gxSizeConstraint : public gxConstraint
 {
+private:
+    typedef gxConstraint::Type gxSizeUnit;
 public:
     static const gxConstraint::Type Id = Size;
     
     gxSizeConstraint( gxConstraint::Type aType,
                       int                aValue ) :
+        mUnit(  aType ),
         mValue( aValue )
     {
         switch ( aType )
         {
-            case gxConstraint::Pixels:  mUnit = gsPixels;  break;
-            case gxConstraint::Percent: mUnit = gsPercent; break;
-            case gxConstraint::Flex:    mUnit = gsFlex;    break;
-            default:
+            case gxConstraint::Pixels:
+            case gxConstraint::Percent:
+            case gxConstraint::Flex:
                 break;
+            default:
+                gxWarn( "Invalid unit" );
         }        
     }
     
@@ -63,17 +57,17 @@ public:
     
     bool IsPixels()
     {
-        return mUnit == gsPixels;
+        return mUnit == gxConstraint::Pixels;
     }
     
     bool IsPercent()
     {
-        return mUnit == gsPercent;
+        return mUnit == gxConstraint::Percent;
     }
     
     bool IsFlex()
     {
-        return mUnit == gsFlex;
+        return mUnit == gxConstraint::Flex;
     }
     
     

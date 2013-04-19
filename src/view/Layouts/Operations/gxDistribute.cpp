@@ -24,7 +24,12 @@ bool gxDistribute::DoSize( gxConstraints::List aConstraints,
     gxPix iTotalPixels  = 0;
     int   iTotalPercent = 0;
     int   iTotalFlex    = 0;
-        
+    
+    // for readability sake (we used these in the switch statements)
+    using gxConstraint::Type::Pixels;
+    using gxConstraint::Type::Percent;
+    using gxConstraint::Type::Flex;
+    
     gxSizeConstraint* iSizeConstraint = NULL;
     
     // Work out how much there is from each type of size:
@@ -39,9 +44,10 @@ bool gxDistribute::DoSize( gxConstraints::List aConstraints,
             
             switch ( iSizeConstraint->GetUnit() )
             {
-                case gsPixels:  iTotalPixels  += iValue;                  break;
-                case gsPercent: iTotalPercent += iValue;                  break;
-                case gsFlex:    iTotalFlex    += iValue;                  break;
+                case Pixels:  iTotalPixels  += iValue;      break;
+                case Percent: iTotalPercent += iValue;      break;
+                case Flex:    iTotalFlex    += iValue;      break;
+                default: break;
             }
         } else {
             iTotalPixels += (*iConstraints)->Bounds.GetSize( onMajorAxis );
@@ -66,9 +72,10 @@ bool gxDistribute::DoSize( gxConstraints::List aConstraints,
             int iValue = iSizeConstraint->GetValue();
                         
             switch ( iSizeConstraint->GetUnit() ) {
-                case gsPixels:  iSize = iValue;                           break;
-                case gsPercent: iSize = iPixelsLeft * iValue / 100;       break;
-                case gsFlex:    iSize = iFlexLeft * iValue / iTotalFlex ; break;
+                case Pixels:  iSize = iValue;                           break;
+                case Percent: iSize = iPixelsLeft * iValue / 100;       break;
+                case Flex:    iSize = iFlexLeft * iValue / iTotalFlex ; break;
+                default: break;
             }
             (*iConstraints)->Bounds.SetSize( iSize, onMajorAxis );            
         }
