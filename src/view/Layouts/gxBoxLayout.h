@@ -24,7 +24,7 @@ public:
      * @brief BoxLayout kindly offers this method to BorderLayout.
      */
     virtual void DoLayout( gxRect&             aContainer,
-                           gxConstraints::List aConstraints,
+                           gxConstrained::List aConstraineds,
                            bool                aOnMajorAxis  );
     
 protected:

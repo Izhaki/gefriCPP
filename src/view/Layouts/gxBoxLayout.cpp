@@ -50,26 +50,26 @@ void gxBoxLayout::DoLayout( gxViewElement* aLayouter )
 {
     gxRect iContainerBounds = aLayouter->GetInnerBounds();
     
-    DoLayout( iContainerBounds, mConstraints, mOnMajorAxis );
+    DoLayout( iContainerBounds, mConstraineds, mOnMajorAxis );
 }
 
 void gxBoxLayout::DoLayout( gxRect&             aContainer,
-                            gxConstraints::List aConstraints,
+                            gxConstrained::List aConstraineds,
                             bool                aOnMajorAxis  )
 {
 
     gxDistribute( mDistribute,
-                  aConstraints,
+                  aConstraineds,
                   aContainer,
                   aOnMajorAxis );
     
     gxStretch( mStretch,
-               aConstraints,
+               aConstraineds,
                aContainer,
                !aOnMajorAxis );
     
     gxAlign( mAlign,
-             aConstraints,
+             aConstraineds,
              aContainer,
              !aOnMajorAxis );
 }

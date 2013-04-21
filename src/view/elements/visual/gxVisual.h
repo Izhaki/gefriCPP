@@ -2,7 +2,7 @@
 #define gxVisual_h
 
 #include "View/Elements/gxViewElement.h"
-#include "View/Layouts/Constraints/gxConstraints.h"
+#include "View/Layouts/Constraints/gxConstrained.h"
 
 /**
  * @brief A view element that has visual representation and defined bounds,

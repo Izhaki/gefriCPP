@@ -10,19 +10,19 @@
 // Forward Declarations
 class gxViewElement;
 
-#include "View/Layouts/Constraints/gxConstraints.h"
+#include "View/Layouts/Constraints/gxConstrained.h"
 
 /**
  * @brief A base class for various layouts.
  *
  * Layouts are composed into view elements so to layout their decendents.
  * 
- * Each layout contains a list of constraints, each includes a view elements
+ * Each layout contains a list of constraineds, each includes a view elements
  * and some additional data to help the layout perform its task.
  * 
  * Layouts don't modify view elements whilst the various layout operations are
  * being performed. Instead, they work on temp bounds that are part of the
- * constraints data. When all layout operations are completed, the layout then
+ * constraineds data. When all layout operations are completed, the layout then
  * applies these temp bounds to the view elements.
  */
 class gxLayout : public gxObject
@@ -46,7 +46,7 @@ public:
     void Invalidate( gxViewElement* aLayoutee );
     
     /**
-     * @brief Adds the view element to the constraints list.
+     * @brief Adds the view element to the constraineds list.
      */
     void Add( gxViewElement* aLayoutee );
 
@@ -67,16 +67,16 @@ public:
     {
     public:
         ElementFinder( gxViewElement* aElement ) : mElement( aElement ) {}
-        bool operator() ( const gxConstraints* aConstraints ) const
+        bool operator() ( const gxConstrained* aConstrained ) const
         {
-            return aConstraints->mLayoutee == mElement;
+            return aConstrained->mLayoutee == mElement;
         }
     private:
         gxViewElement* mElement;
     };
     
 protected:    
-    gxConstraints::List mConstraints;
+    gxConstrained::List mConstraineds;
     bool                mOnMajorAxis;
     
     enum LayoutStatus {
@@ -86,24 +86,24 @@ protected:
     } mLayoutStatus;
     
     /**
-     * @brief Finds the constraints of the provided view element.
+     * @brief Finds the constrained of the provided view element.
      *
-     * @param aViewElement The view element the constraints of which we're 
+     * @param aLayoutee The view element the constrained of which we're
      * after.
-     * @return The constraints of the provided view element, or NULL if none was
+     * @return The constrained of the provided view element, or NULL if none was
      * found.
      */
-    gxConstraints* FindConstraints( gxViewElement* aLayoutee );
+    gxConstrained* FindConstrained( gxViewElement* aLayoutee );
     
     /**
-     * @brief Gets the constraints for the provided view element, or create
-     * new constraints if no such exit.
+     * @brief Gets the constrained for the provided view element, or creates
+     * new constrained if no such exits.
      *
-     * @param aViewElement The view element for which we retrieve the 
-     * constraints.
-     * @return The constraints of the provided view element.
+     * @param aLayoutee The view element for which we retrieve the 
+     * constrained.
+     * @return The constrained of the provided view element.
      */
-    gxConstraints* GetConstraints( gxViewElement* aLayoutee );
+    gxConstrained* GetConstrained( gxViewElement* aLayoutee );
 
     /**
      * @brief Checks if the constraint type is supported by the layout
@@ -120,17 +120,16 @@ protected:
     virtual void DoLayout( gxViewElement* aLayouter ) = 0;
     
     /**
-     * @brief Initialize the contstaint list, by sorting all view elements to
-     * be laid out and applying the initial constraint rect.
+     * @brief Initializes the contstaineds list.
      *
      */
     void Init();
     
     /**
-     * @brief Sorts the constraint list based on the elements' index.
+     * @brief Sorts the constraineds list based on the elements' index.
      *
      */
-    void SortConstraints();
+    void SortConstraineds();
     
     /**
      * @brief Applies the calculated bounds to the various view elements.

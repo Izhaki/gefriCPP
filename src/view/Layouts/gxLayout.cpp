@@ -16,9 +16,9 @@ gxLayout::gxLayout( bool aOnMajorAxis )
 gxLayout::~gxLayout()
 {
     // Empty the layout data list
-    while( !mConstraints.empty() )
+    while( !mConstraineds.empty() )
     {
-        delete mConstraints.front(), mConstraints.pop_front();
+        delete mConstraineds.front(), mConstraineds.pop_front();
     }
 }
 
@@ -50,38 +50,36 @@ void gxLayout::Invalidate( gxViewElement* aLayoutee )
     if ( mLayoutStatus != Valid )
         return;
     
-    bool iElementPartOfLayout = FindConstraints( aLayoutee );
+    bool iElementPartOfLayout = FindConstrained( aLayoutee );
     
     // If the view element is part of my layout, mark me as invalid
     if ( iElementPartOfLayout )
         mLayoutStatus = Invalid;
 }
 
-bool IndexCompare( gxConstraints* aL, gxConstraints* aR )
+bool IndexCompare( gxConstrained* aL, gxConstrained* aR )
 {
     return aL->mLayoutee->GetIndex() < aR->mLayoutee->GetIndex();
 }
 
-void gxLayout::SortConstraints()
+void gxLayout::SortConstraineds()
 {
-    mConstraints.sort( IndexCompare );
+    mConstraineds.sort( IndexCompare );
 }
 
 void gxLayout::Init()
 {
-    SortConstraints();
-    
-    forEachConstraint( iConstraints )
+    forEachConstrained( iConstrained )
     {
-        (*iConstraints)->Reset();
+        (*iConstrained)->ResetBounds();
     }
 }
 
 void gxLayout::Apply()
 {
-    forEachConstraint( iConstraints )
+    forEachConstrained( iConstrained )
     {
-        (*iConstraints)->Apply();
+        (*iConstrained)->ApplyBounds();
     }
 }
 
@@ -93,44 +91,48 @@ void gxLayout::SetConstraint( gxViewElement*      aLayoutee,
     gxAssert( IsSupportedConstraint( aType ) , "Constraint type is not accepted by this layout" );
     
     // Get the constrainst of the view element and set the new constraint
-    GetConstraints( aLayoutee )->Set( aType, aValue );
+    GetConstrained( aLayoutee )->Set( aType, aValue );
     
     // Now invalidate the element
     aLayoutee->Invalidate();
 }
 
 
-gxConstraints* gxLayout::FindConstraints( gxViewElement* aLayoutee )
+gxConstrained* gxLayout::FindConstrained( gxViewElement* aLayoutee )
 {
     // Search for the element in our list.
-    gxConstraints::Iterator iIter = std::find_if( mConstraints.begin(),
-                                                  mConstraints.end(),
+    gxConstrained::Iterator iIter = std::find_if( mConstraineds.begin(),
+                                                  mConstraineds.end(),
                                                   ElementFinder( aLayoutee ) );
     
-    bool iFound = iIter != mConstraints.end();
+    bool iFound = iIter != mConstraineds.end();
     
     return iFound ? *iIter : NULL;
 }
 
-gxConstraints* gxLayout::GetConstraints( gxViewElement* aLayoutee )
+gxConstrained* gxLayout::GetConstrained( gxViewElement* aLayoutee )
 {
 
-    gxConstraints* iConstraints = FindConstraints( aLayoutee );
+    gxConstrained* iConstrained = FindConstrained( aLayoutee );
     
-    if ( iConstraints == NULL )
+    // If the constrained was not found
+    if ( iConstrained == NULL )
     {
-        // If layout data was not found, create one
-        iConstraints = new gxConstraints( aLayoutee );
+        // Create one a new constrained
+        iConstrained = new gxConstrained( aLayoutee );
                 
         // Add it to our data list
-        mConstraints.push_back( iConstraints );
+        mConstraineds.push_back( iConstrained );
+        
+        // Now sort the constraineds
+        SortConstraineds();
     }
 
-    return iConstraints;
+    return iConstrained;
 }
 
 void gxLayout::Add( gxViewElement* aLayoutee )
 {
     // This will do the job - just add the element if it aint already there.
-    GetConstraints( aLayoutee );
+    GetConstrained( aLayoutee );
 }

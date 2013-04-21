@@ -1,19 +1,19 @@
-#include "View/Layouts/Constraints/gxConstraints.h"
+#include "View/Layouts/Constraints/gxConstrained.h"
 #include "View/Elements/gxViewElement.h"
 
 //TODO: Destructor
 
-void gxConstraints::Reset()
+void gxConstrained::ResetBounds()
 {
     Bounds = mLayoutee->GetBounds();
 }
 
-void gxConstraints::Apply()
+void gxConstrained::ApplyBounds()
 {
     mLayoutee->SetBounds( Bounds );
 }
 
-gxConstraint* gxConstraints::GetConstraint( MapId aId )
+gxConstraint* gxConstrained::GetConstraint( MapId aId )
 {
     ConstraintMap::iterator iConstraint = mConstraintMap.find( aId );
     bool iConstraintFound = iConstraint != mConstraintMap.end();
@@ -21,7 +21,7 @@ gxConstraint* gxConstraints::GetConstraint( MapId aId )
     return iConstraintFound ? iConstraint->second : NULL;
 }
 
-void gxConstraints::AddConstraint( MapId         aId,
+void gxConstrained::AddConstraint( MapId         aId,
                                    gxConstraint* aConstraint )
 {
     // If there's already a constraint, delete its contents.
@@ -31,7 +31,7 @@ void gxConstraints::AddConstraint( MapId         aId,
     mConstraintMap[ aId ] = aConstraint;
 }
 
-gxConstraint::Type gxConstraints::GetInternalType( gxConstraint::Type aType )
+gxConstraint::Type gxConstrained::GetInternalType( gxConstraint::Type aType )
 {
     switch ( aType )
     {
@@ -45,13 +45,13 @@ gxConstraint::Type gxConstraints::GetInternalType( gxConstraint::Type aType )
     }
 }
 
-gxConstraints::MapId gxConstraints::TypeToMapId( gxConstraint::Type aType,
+gxConstrained::MapId gxConstrained::TypeToMapId( gxConstraint::Type aType,
                                                  bool               aOnMajorAxis)
 {
     return aOnMajorAxis ? aType : -aType;
 }
 
-gxConstraint* gxConstraints::CreateConstraint( gxConstraint::Type aType,
+gxConstraint* gxConstrained::CreateConstraint( gxConstraint::Type aType,
                                                int                aValue )
 {
     gxConstraint::Type iType = GetInternalType( aType );
@@ -70,7 +70,7 @@ gxConstraint* gxConstraints::CreateConstraint( gxConstraint::Type aType,
 }
 
 
-void gxConstraints::Set( gxConstraint::Type aType,
+void gxConstrained::Set( gxConstraint::Type aType,
                          int                aValue,
                          bool               aOnMajorAxis )
 {
@@ -83,7 +83,7 @@ void gxConstraints::Set( gxConstraint::Type aType,
     AddConstraint( aMapId, iConstraint );
 }
 
-int gxConstraints::GetFlex( bool aOnMajorAxis )
+int gxConstrained::GetFlex( bool aOnMajorAxis )
 {
     gxSizeConstraint* iSizeConstraint = NULL;
     
@@ -97,7 +97,7 @@ int gxConstraints::GetFlex( bool aOnMajorAxis )
     }
 }
 
-gxLayoutRegion::Type gxConstraints::GetRegion()
+gxLayoutRegion::Type gxConstrained::GetRegion()
 {
     gxRegionConstraint* iRegionConstraint = NULL;
     

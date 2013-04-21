@@ -9,37 +9,40 @@ class gxViewElement;
 #include "core/geometry/gxGeometry.h"
 #include "core/gxString.h"
 
-// A macro for looping all childrens (used from within the constraints class)
-#define forEachConstraint( aConstraints ) \
-    for ( gxConstraints::Iterator aConstraints = mConstraints.begin(); \
-          aConstraints != mConstraints.end(); \
-          ++aConstraints )
+// A macro for looping all constraineds (used from within the constrained class)
+#define forEachConstrained( aConstrained ) \
+    for ( gxConstrained::Iterator aConstrained = mConstraineds.begin(); \
+          aConstrained != mConstraineds.end(); \
+          ++aConstrained )
 
-// A macro for looping all childrens (used from outside the constraints class)
-#define forEachConstraintOf( aList, aConstraints ) \
-    for ( gxConstraints::Iterator aConstraints = aList.begin(); \
-    aConstraints != aList.end(); \
-    ++aConstraints )
+// A macro for looping all constraineds (used from outside the constrained
+// class)
+#define forEachConstrainedOf( aList, aConstrained ) \
+    for ( gxConstrained::Iterator aConstrained = aList.begin(); \
+    aConstrained != aList.end(); \
+    ++aConstrained )
 
 #include "View/Layouts/Constraints/gxConstraint.h"
 #include "View/Layouts/Constraints/gxSizeConstraint.h"
 #include "View/Layouts/Constraints/gxRegionConstraint.h"
 
 /**
- * @brief A class representing extra details needed to layout view elements.
+ * @brief A class that wraps a view layoutee that is a layoutee with 
+ * constrainsts.
  *
- * Constraints are used by {@link gxLayout layouts}. Each constraint is
- * linked to a view element and includes extra information to help the layout
- * position and size the element.
+ * gxConstrained keeps a reference to the view element it wraps and a list
+ * of constraints this view element has. In addition, as some layouts achieve
+ * their task in steps, gxConstrained also has a helper bounds member to which
+ * the intermidate bounds are stored (before being applied to the view element).
  */
-class gxConstraints
+class gxConstrained
 {
 public:
-    gxConstraints( gxViewElement* aLayoutee) :
+    gxConstrained( gxViewElement* aLayoutee) :
         mLayoutee( aLayoutee )
     {}
     
-    // The element this constraints applies to
+    // The view element this constrained wraps
     gxViewElement* mLayoutee;
             
     // A helper variable for used when the layout is being calculated.
@@ -52,12 +55,12 @@ public:
     /**
      * @brief Sets the bounds of the element to its initial rect.
      */
-    void Reset();
+    void ResetBounds();
     
     /**
      * @brief Applies the bounds to the view element.
      */
-    void Apply();
+    void ApplyBounds();
     
 public:
     // Getters and Setters
@@ -86,7 +89,7 @@ public:
     gxLayoutRegion::Type GetRegion();
 public:
     // A couple of readability typedefs
-    typedef std::list< gxConstraints* > List;
+    typedef std::list< gxConstrained* > List;
     typedef typename List::iterator     Iterator;
     
 private:

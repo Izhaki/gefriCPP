@@ -13,17 +13,17 @@ protected:
     virtual bool IsSupportedConstraint( gxConstraint::Type  aType );    
     virtual void DoLayout( gxViewElement* aLayouter );
 private:
-    void AddConstraints( gxConstraints::List& aFiltered,
-                         bool                 aOnMajorAxis );
+    void AddConstraineds( gxConstrained::List& aFiltered,
+                          bool                 aOnMajorAxis );
         
-    void AddRegionConstraints( gxLayoutRegion::Type aRegion,
-                               gxConstraints::List& aFiltered );
+    void AddRegionConstraineds( gxLayoutRegion::Type aRegion,
+                                gxConstrained::List& aFiltered );
     
-    void LayoutAxis( gxConstraints::List& aFiltered,
+    void LayoutAxis( gxConstrained::List& aFiltered,
                      gxRect&              aBounds,
                      bool                 aOnMajorAxis );
     
-    gxConstraints* GetCenterConstraints();
+    gxConstrained* GetCenterConstrained();
 };
 
 

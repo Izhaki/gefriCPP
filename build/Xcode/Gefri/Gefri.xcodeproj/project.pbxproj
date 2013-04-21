@@ -31,7 +31,6 @@
 		8795360816E3A73D006D69FE /* gxAnchor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795360716E3A73D006D69FE /* gxAnchor.cpp */; };
 		8795360F16E3A7FF006D69FE /* gxRectAnchor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795360D16E3A7FE006D69FE /* gxRectAnchor.cpp */; };
 		8795361A16E40F1F006D69FE /* gxLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795361916E40F1F006D69FE /* gxLayout.cpp */; };
-		87ABC03116EBC8D200B77D8D /* gxConstraints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87ABC03016EBC8D200B77D8D /* gxConstraints.cpp */; };
 		87ABC03616EBCCC300B77D8D /* gxBoxLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87ABC03516EBCCC200B77D8D /* gxBoxLayout.cpp */; };
 		87ABC03916EBEBDD00B77D8D /* gxBorderLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87ABC03816EBEBDD00B77D8D /* gxBorderLayout.cpp */; };
 		87ABC04216ECEE9300B77D8D /* gxAlign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87ABC03C16ECEE9300B77D8D /* gxAlign.cpp */; };
@@ -40,6 +39,7 @@
 		87ABC04516ECEE9300B77D8D /* gxDistribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 87ABC03F16ECEE9300B77D8D /* gxDistribute.h */; };
 		87ABC04616ECEE9300B77D8D /* gxStretch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87ABC04016ECEE9300B77D8D /* gxStretch.cpp */; };
 		87ABC04716ECEE9300B77D8D /* gxStretch.h in Headers */ = {isa = PBXBuildFile; fileRef = 87ABC04116ECEE9300B77D8D /* gxStretch.h */; };
+		87B5BE2A1724A70300A33AD8 /* gxConstrained.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87B5BE291724A70300A33AD8 /* gxConstrained.cpp */; };
 		87C7BA80167FE2F200BB7FE2 /* gxEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */; };
 		87C7BA83167FE2F200BB7FE2 /* gxSubject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87C7BA7D167FE2F200BB7FE2 /* gxSubject.cpp */; };
 /* End PBXBuildFile section */
@@ -120,8 +120,6 @@
 		8795361416E3D660006D69FE /* gxLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxLayer.h; path = ../../../view/Elements/Structural/Layers/gxLayer.h; sourceTree = "<group>"; };
 		8795361716E40913006D69FE /* gxLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxLayout.h; path = Layouts/gxLayout.h; sourceTree = "<group>"; };
 		8795361916E40F1F006D69FE /* gxLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxLayout.cpp; path = Layouts/gxLayout.cpp; sourceTree = "<group>"; };
-		87ABC03016EBC8D200B77D8D /* gxConstraints.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxConstraints.cpp; path = Layouts/Constraints/gxConstraints.cpp; sourceTree = "<group>"; };
-		87ABC03216EBC8ED00B77D8D /* gxConstraints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxConstraints.h; path = Layouts/Constraints/gxConstraints.h; sourceTree = "<group>"; };
 		87ABC03316EBC8ED00B77D8D /* gxSizeConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxSizeConstraint.h; path = Layouts/Constraints/gxSizeConstraint.h; sourceTree = "<group>"; };
 		87ABC03416EBCCAE00B77D8D /* gxBoxLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxBoxLayout.h; path = Layouts/gxBoxLayout.h; sourceTree = "<group>"; };
 		87ABC03516EBCCC200B77D8D /* gxBoxLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxBoxLayout.cpp; path = Layouts/gxBoxLayout.cpp; sourceTree = "<group>"; };
@@ -134,6 +132,8 @@
 		87ABC04016ECEE9300B77D8D /* gxStretch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxStretch.cpp; path = Layouts/Operations/gxStretch.cpp; sourceTree = "<group>"; };
 		87ABC04116ECEE9300B77D8D /* gxStretch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxStretch.h; path = Layouts/Operations/gxStretch.h; sourceTree = "<group>"; };
 		87ABC04816ECEEB600B77D8D /* gxLayoutOperations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxLayoutOperations.h; path = Layouts/Operations/gxLayoutOperations.h; sourceTree = "<group>"; };
+		87B5BE291724A70300A33AD8 /* gxConstrained.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxConstrained.cpp; path = Layouts/Constraints/gxConstrained.cpp; sourceTree = "<group>"; };
+		87B5BE2B1724A70D00A33AD8 /* gxConstrained.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxConstrained.h; path = Layouts/Constraints/gxConstrained.h; sourceTree = "<group>"; };
 		87C7BA79167FE2F200BB7FE2 /* FastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastDelegate.h; sourceTree = "<group>"; };
 		87C7BA7A167FE2F200BB7FE2 /* gxEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxEvent.cpp; sourceTree = "<group>"; };
 		87C7BA7B167FE2F200BB7FE2 /* gxEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxEvent.h; sourceTree = "<group>"; };
@@ -396,8 +396,8 @@
 		87ABC02F16EBC8A500B77D8D /* Constraints */ = {
 			isa = PBXGroup;
 			children = (
-				87ABC03216EBC8ED00B77D8D /* gxConstraints.h */,
-				87ABC03016EBC8D200B77D8D /* gxConstraints.cpp */,
+				87B5BE2B1724A70D00A33AD8 /* gxConstrained.h */,
+				87B5BE291724A70300A33AD8 /* gxConstrained.cpp */,
 				876182F7170A15CE001ACBDB /* gxConstraint.h */,
 				876182F8170A1663001ACBDB /* gxPrimitiveConstraint.h */,
 				87ABC03316EBC8ED00B77D8D /* gxSizeConstraint.h */,
@@ -523,12 +523,12 @@
 				8795360816E3A73D006D69FE /* gxAnchor.cpp in Sources */,
 				8795360F16E3A7FF006D69FE /* gxRectAnchor.cpp in Sources */,
 				8795361A16E40F1F006D69FE /* gxLayout.cpp in Sources */,
-				87ABC03116EBC8D200B77D8D /* gxConstraints.cpp in Sources */,
 				87ABC03616EBCCC300B77D8D /* gxBoxLayout.cpp in Sources */,
 				87ABC03916EBEBDD00B77D8D /* gxBorderLayout.cpp in Sources */,
 				87ABC04216ECEE9300B77D8D /* gxAlign.cpp in Sources */,
 				87ABC04416ECEE9300B77D8D /* gxDistribute.cpp in Sources */,
 				87ABC04616ECEE9300B77D8D /* gxStretch.cpp in Sources */,
+				87B5BE2A1724A70300A33AD8 /* gxConstrained.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

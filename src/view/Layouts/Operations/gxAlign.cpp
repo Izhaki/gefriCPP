@@ -1,7 +1,7 @@
 #include "View/Layouts/Operations/gxAlign.h"
 
 gxAlign::gxAlign( const Type          aType,
-                  gxConstraints::List aConstraints,
+                  gxConstrained::List aConstraineds,
                   const gxRect&       aContainer,
                   const bool          onMajorAxis )
 {
@@ -11,9 +11,9 @@ gxAlign::gxAlign( const Type          aType,
     gxPix iPosition = 0;
     gxPix iContainerSize = aContainer.GetSize( onMajorAxis );
     
-    forEachConstraintOf( aConstraints, iConstraints )
+    forEachConstrainedOf( aConstraineds, iConstrained )
     {
-        gxPix iSize = (*iConstraints)->Bounds.GetSize( onMajorAxis );
+        gxPix iSize = (*iConstrained)->Bounds.GetSize( onMajorAxis );
         
         switch ( aType )
         {
@@ -23,6 +23,6 @@ gxAlign::gxAlign( const Type          aType,
             case End:    iPosition = ( iContainerSize - iSize );     break;
         }
         
-        (*iConstraints)->Bounds.SetPosition( iPosition, onMajorAxis );
+        (*iConstrained)->Bounds.SetPosition( iPosition, onMajorAxis );
     }
 }
