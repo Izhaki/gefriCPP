@@ -5,7 +5,6 @@
 class gxViewElement;
 
 #include <list>
-#include <map>
 #include "core/geometry/gxGeometry.h"
 #include "core/gxString.h"
 
@@ -23,6 +22,8 @@ class gxViewElement;
     ++aConstrained )
 
 #include "View/Layouts/Constraints/gxConstraint.h"
+#include "View/Layouts/Constraints/gxConstraintMap.h"
+
 #include "View/Layouts/Constraints/gxSizeConstraint.h"
 #include "View/Layouts/Constraints/gxRegionConstraint.h"
 
@@ -74,8 +75,7 @@ public:
     template < typename ConstraintType >
     void Get( ConstraintType& aConstraint, bool aOnMajorAxis = true )
     {
-        MapId aId   = TypeToMapId( aConstraint->Id, aOnMajorAxis );
-        aConstraint = static_cast<ConstraintType>( GetConstraint( aId ) );
+        aConstraint = static_cast<ConstraintType>( mConstraintMap.Get( aConstraint->Id, aOnMajorAxis ) );
     }
     
     /**
@@ -93,27 +93,8 @@ public:
     // A couple of readability typedefs
     typedef std::list< gxConstrained* > List;
     typedef typename List::iterator     Iterator;
-    
-private:
-    typedef int MapId;
-    typedef std::map< MapId, gxConstraint* >  ConstraintMap;
-    
-    ConstraintMap mConstraintMap;
-
-    gxConstraint::Type GetInternalType( gxConstraint::Type aType );
-
-    MapId TypeToMapId( gxConstraint::Type aType,
-                       bool               aOnMajorAxis = true );
-    
-    
-    gxConstraint* CreateConstraint( gxConstraint::Type aType,
-                                    int                aValue );
-    
-    gxConstraint* GetConstraint( MapId aId );
-    
-    void AddConstraint( MapId         aId,
-                        gxConstraint* aConstraint );
-    
+protected:
+    gxConstraintMap mConstraintMap;
 };
 
 #endif // gxConstraints_h
