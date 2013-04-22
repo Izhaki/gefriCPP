@@ -78,7 +78,7 @@ gxConstraint* gxConstrained::CreateConstraint( gxConstraint::Type aType,
             return new gxRegionConstraint( (gxLayoutRegion::Type)aValue );
             
         default:
-            // TODO: Assert
+            gxWarn( "No constraint of this type found" );
             return NULL;
     }
 }
