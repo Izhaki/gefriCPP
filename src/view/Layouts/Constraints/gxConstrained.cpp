@@ -1,7 +1,21 @@
 #include "View/Layouts/Constraints/gxConstrained.h"
 #include "View/Elements/gxViewElement.h"
 
-//TODO: Destructor
+// TODO: Move somewhere else?
+template <typename MapType>
+void ClearMap( MapType& aMap )
+{
+    for ( typename MapType::iterator it = aMap.begin(); it != aMap.end(); ++it )
+    {
+        delete it->second;
+    }
+    aMap.clear();
+}
+
+gxConstrained::~gxConstrained()
+{
+    ClearMap( mConstraintMap );
+}
 
 void gxConstrained::ResetBounds()
 {

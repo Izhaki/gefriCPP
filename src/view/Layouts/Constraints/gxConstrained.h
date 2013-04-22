@@ -42,6 +42,8 @@ public:
         mLayoutee( aLayoutee )
     {}
     
+    virtual ~gxConstrained();
+    
     // The view element this constrained wraps
     gxViewElement* mLayoutee;
             
