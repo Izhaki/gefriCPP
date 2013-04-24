@@ -14,24 +14,22 @@ public:
     gxConstraint* Get( gxConstraint::Type aType, bool aOnMajorAxis );
     gxConstraint* Get( MapId aId );
     
-    void Set( gxConstraint::Type aType,
-             int                aValue,
-             bool               aOnMajorAxis = true );
-    
-    gxConstraint* CreateConstraint( gxConstraint::Type aType,
-                                   int                aValue );
-    
-    void AddConstraint( MapId         aId,
-                       gxConstraint* aConstraint );
+    void Add( gxConstraint::Type aType,
+              int                aValue,
+              bool               aOnMajorAxis = true );
 private:
     typedef std::map< MapId, gxConstraint* >  ConstraintMap;
     
     ConstraintMap mConstraintMap;
     
-    gxConstraint::Type GetInternalType( gxConstraint::Type aType );
-    
     MapId TypeToMapId( gxConstraint::Type aType,
-                      bool               aOnMajorAxis = true );
+                       bool               aOnMajorAxis = true );
+    
+    gxConstraint* CreateConstraint( gxConstraint::Type aType,
+                                    int                aValue );    
+    
+    void Add( MapId         aId,
+              gxConstraint* aConstraint );    
 };
 
 

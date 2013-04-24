@@ -19,7 +19,7 @@ void gxConstrained::Set( gxConstraint::Type aType,
                          int                aValue,
                          bool               aOnMajorAxis )
 {
-    mConstraintMap.Set( aType, aValue, aOnMajorAxis );
+    mConstraintMap.Add( aType, aValue, aOnMajorAxis );
 }
 
 int gxConstrained::GetFlex( bool aOnMajorAxis )
