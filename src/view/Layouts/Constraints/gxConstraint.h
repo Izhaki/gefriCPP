@@ -1,7 +1,6 @@
 #ifndef gxConstraint_h
 #define gxConstraint_h
 
-typedef bool gxAxis;
 #define gxMajorAxis true
 #define gxMinorAxis false
 
@@ -26,6 +25,9 @@ public:
     };
     
     typedef int Value;
+    
+    static gxConstraint* Create ( Type  aType,
+                                  Value aValue );
     
     virtual ~gxConstraint() {}
     

@@ -19,27 +19,27 @@ gxConstraintMap::~gxConstraintMap()
     ClearMap( mConstraintMap );
 }
 
-gxConstraintMap::MapId gxConstraintMap::TypeToMapId( gxConstraint::Type aType,
-                                                     bool               aOnMajorAxis)
+gxConstraintMap::MapId gxConstraintMap::GetMapId( gxConstraint::Type aType,
+                                                  bool               aOnMajorAxis)
 {
     return aOnMajorAxis ? aType : -aType;
 }
 
-void gxConstraintMap::Add( gxConstraint::Type aType,
-                          int                aValue,
-                          bool               aOnMajorAxis )
+void gxConstraintMap::Add( gxConstraint::Type  aType,
+                           gxConstraint::Value aValue,
+                           bool                aOnMajorAxis )
 {
-    gxConstraint* iConstraint = CreateConstraint( aType, aValue );
+    gxConstraint* iConstraint = gxConstraint::Create( aType, aValue );
     
-    MapId         aMapId      = TypeToMapId( iConstraint->GetType(), aOnMajorAxis );
+    MapId         iMapId      = GetMapId( iConstraint->GetType(), aOnMajorAxis );
     
-    Add( aMapId, iConstraint );
+    Add( iMapId, iConstraint );
 }
 
 gxConstraint* gxConstraintMap::Get( gxConstraint::Type aType,
                                     bool aOnMajorAxis )
 {
-    MapId aMapId = TypeToMapId( aType, aOnMajorAxis );
+    MapId aMapId = GetMapId( aType, aOnMajorAxis );
     return Get( aMapId );
 }
 
@@ -59,22 +59,4 @@ void gxConstraintMap::Add( MapId         aId,
         delete mConstraintMap[ aId ];
     
     mConstraintMap[ aId ] = aConstraint;
-}
-
-gxConstraint* gxConstraintMap::CreateConstraint( gxConstraint::Type aType,
-                                                 int                aValue )
-{
-    switch ( aType )
-    {
-        case gxConstraint::Pixels:
-        case gxConstraint::Percent:
-        case gxConstraint::Flex:
-            return new gxSizeConstraint( aType, aValue );
-        case gxConstraint::Region:
-            return new gxRegionConstraint( (gxLayoutRegion::Type)aValue );
-            
-        default:
-            gxWarn( "No constraint of this type found" );
-            return NULL;
-    }
 }
