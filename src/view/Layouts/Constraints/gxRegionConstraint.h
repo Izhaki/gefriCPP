@@ -20,9 +20,14 @@ public:
     static const gxConstraint::Type Id = Region;
     virtual gxConstraint::Type GetType() { return Region; }
     
-    gxRegionConstraint( gxLayoutRegion::Type aType) :
-        gxPrimitiveConstraint< gxLayoutRegion::Type >( aType )
+    gxRegionConstraint( gxLayoutRegion::Type aRegion ) :
+        gxPrimitiveConstraint< gxLayoutRegion::Type >( aRegion )
     {}
+    
+    gxRegionConstraint( gxConstraint::Value aRegion ) :
+        gxPrimitiveConstraint< gxLayoutRegion::Type >( (gxLayoutRegion::Type)aRegion )
+    {}
+    
 };
 
 #endif //gxRegionConstraint_h

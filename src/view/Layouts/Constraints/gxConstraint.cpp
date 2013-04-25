@@ -13,8 +13,7 @@ gxConstraint* gxConstraint::Create( gxConstraint::Type  aType,
         case gxConstraint::Flex:
             return new gxSizeConstraint( aType, aValue );
         case gxConstraint::Region:
-            // TODO: move cast to region constraint
-            return new gxRegionConstraint( (gxLayoutRegion::Type)aValue );
+            return new gxRegionConstraint( aValue );
             
         default:
             gxWarn( "No constraint of this type found" );
