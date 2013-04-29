@@ -3,12 +3,14 @@
 #include "core/gxLog.h"
 #include "core/gxAssert.h"
 
-gxVisual::gxVisual()
-  : mBounds( 0, 0, 0, 0 )
+gxVisual::gxVisual() :
+    mBounds( 0, 0, 0, 0 ),
+    mLayout( NULL )
 {
 }
 
-gxVisual::gxVisual( const gxRect &aBounds )
+gxVisual::gxVisual( const gxRect &aBounds ) :
+    mLayout( NULL )
 {
     mBounds = aBounds;
 }
@@ -135,6 +137,28 @@ void gxVisual::SetBounds( const gxRect &aNewBounds )
         Invalidate();
         Repaint();
     }
+}
+
+void gxVisual::SetLayout( gxLayout* aLayout )
+{
+    mLayout = aLayout;
+}
+
+gxLayout* gxVisual::GetLayout()
+{
+    return mLayout;
+}
+
+void gxVisual::InvalidateLayout( gxViewElement* aChild )
+{
+    if ( mLayout )
+        mLayout->Invalidate( aChild );
+}
+
+void gxVisual::Layout()
+{
+    if ( mLayout )
+        mLayout->Layout( this );
 }
 
 void gxVisual::SetConstraint( gxConstraint::Type  aType,

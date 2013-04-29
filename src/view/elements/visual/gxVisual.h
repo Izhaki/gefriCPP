@@ -45,7 +45,18 @@ public:
   
     // TODO: Docs
     virtual void GetDescendantsBounds( gxRect &aBounds );
+    
+    
+    // Layout related methods
 
+    void SetLayout( gxLayout* aLayout );    
+    
+    virtual gxLayout* GetLayout();
+    
+    virtual void InvalidateLayout( gxViewElement* aChild );    
+    
+    virtual void Layout();    
+    
     /**
      * @brief Sets the constraint for this view element.
      *
@@ -85,7 +96,9 @@ protected:
     void Translate( gxPoint aDelta );
 
     /// The bounds of this view element
-    gxRect mBounds;
+    gxRect    mBounds;
+    
+    gxLayout* mLayout;
 };
 
 #endif // gxVisual_h

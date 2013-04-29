@@ -165,19 +165,21 @@ public:
     // Layout related methods
 
     /**
-     * @brief Sets the Layout for this view element
-     */
-    void SetLayout( gxLayout* aLayout );
-
-    /**
      * @brief Returns the Layout for this view element
      */
     virtual gxLayout* GetLayout();
+
+    /**
+     * @brief Invalidates the layout
+     *
+     * @param aChild The view element that triggered invalidation.     
+     */
+    virtual void InvalidateLayout( gxViewElement* aChild );
     
     /**
      * @brief Layouts the children of this view element.
      */
-    void Layout();
+    virtual void Layout();
 protected:
     
     enum Flags
@@ -330,8 +332,6 @@ protected:
     virtual void OnAfterChildRemoval();
   
     gxFlags<gx8Flags> mFlags;
-    
-    gxLayout*         mLayout;
 };
 
 #endif // gxViewElement_h

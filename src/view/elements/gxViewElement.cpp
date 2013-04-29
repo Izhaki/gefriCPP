@@ -3,10 +3,9 @@
 #include "core/gxAssert.h"
 #include "core/gxLog.h"
 
-gxViewElement::gxViewElement()
-: mFlags( Visible | ClipChildren ),
-  mLayout( NULL ),
-  mValid( Invalid )
+gxViewElement::gxViewElement():
+    mFlags( Visible | ClipChildren ),
+    mValid( Invalid )
 {
 }
 
@@ -154,8 +153,7 @@ void gxViewElement::InvalidateUp( gxViewElement* aChild,
     if ( aValid == Invalid )
     {
         // Invalidate the layout.
-        if ( mLayout )
-            mLayout->Invalidate( aChild );
+        InvalidateLayout( aChild );
     }
     
     // If this element is already Invalid, don't change it (particularly
@@ -310,18 +308,21 @@ void gxViewElement::OnAfterChildRemoval()
 {
 }
 
-void gxViewElement::SetLayout( gxLayout* aLayout )
-{
-    mLayout = aLayout;
-}
-
 gxLayout* gxViewElement::GetLayout()
 {
-    return mLayout;
+    // As only gxVisual has layouts, this returns NULL by default.
+    // gxVisual will override this.    
+    return NULL;
+}
+
+void gxViewElement::InvalidateLayout( gxViewElement* aChild )
+{
+    // As only gxVisual has layouts, this does nothing by default.
+    // gxVisual will override this.
 }
 
 void gxViewElement::Layout()
 {
-    if ( mLayout )
-        mLayout->Layout( this );
+    // As only gxVisual has layouts, this does nothing by default.
+    // gxVisual will override this.
 }
