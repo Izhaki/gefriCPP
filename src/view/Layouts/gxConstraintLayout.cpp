@@ -37,7 +37,8 @@ void gxConstraintLayout::Apply()
 
 void gxConstraintLayout::SetConstraint( gxViewElement*      aLayoutee,
                                         gxConstraint::Type  aType,
-                                        gxConstraint::Value aValue )
+                                        gxConstraint::Value aValue,
+                                        bool                aOnMajorAxis )
 {
     // Warn if the layout does not accepts the provided constraint type
     gxAssert( IsSupportedConstraint( aType ) , "Constraint type is not accepted by this layout" );
@@ -45,16 +46,27 @@ void gxConstraintLayout::SetConstraint( gxViewElement*      aLayoutee,
     // Get the constrainst of the view element and set the new constraint
     GetConstrained( aLayoutee )->Set( aType, aValue );
     
+    gxConstraint* iConstraint = gxConstraint::Create( aType, aValue );
+    
+    SetConstraint( aLayoutee, iConstraint, aOnMajorAxis );
+    
     // Now invalidate the element
     aLayoutee->Invalidate();
+}
+
+void gxConstraintLayout::SetConstraint( gxViewElement* aLayoutee,
+                                        gxConstraint*  aConstraint,
+                                        bool           aOnMajorAxis )
+{
+    mConstraints.Set( aLayoutee, aConstraint, aOnMajorAxis );
 }
 
 gxConstrained* gxConstraintLayout::FindConstrained( gxViewElement* aLayoutee )
 {
     // Search for the element in our list.
     gxConstrained::Iterator iIter = std::find_if( mConstraineds.begin(),
-                                                 mConstraineds.end(),
-                                                 ElementFinder( aLayoutee ) );
+                                                  mConstraineds.end(),
+                                                  ElementFinder( aLayoutee ) );
     
     bool iFound = iIter != mConstraineds.end();
     

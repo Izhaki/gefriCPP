@@ -1,5 +1,5 @@
-#ifndef gxConstraints_h
-#define gxConstraints_h
+#ifndef gxConstrained_h
+#define gxConstrained_h
 
 // Forward Dec
 class gxViewElement;
@@ -97,4 +97,4 @@ protected:
     gxConstraintMap mConstraintMap;
 };
 
-#endif // gxConstraints_h
+#endif // gxConstrained_h

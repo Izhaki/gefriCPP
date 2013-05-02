@@ -1,7 +1,8 @@
-#include "View/Layouts/gxLayout.h"
-
 #ifndef gxConstraintLayout_h
 #define gxConstraintLayout_h
+
+#include "View/Layouts/gxLayout.h"
+#include "View/Layouts/Constraints/gxConstraints.h"
 
 class gxConstraintLayout : public gxLayout
 {
@@ -18,8 +19,13 @@ public:
      * @param aValue The constraint value
      */
     void SetConstraint( gxViewElement*      aLayoutee,
-                       gxConstraint::Type  aType,
-                       gxConstraint::Value aValue );
+                        gxConstraint::Type  aType,
+                        gxConstraint::Value aValue,
+                        bool                aOnMajorAxis = true );
+
+    void SetConstraint( gxViewElement* aLayoutee,
+                        gxConstraint*  aConstraint,
+                        bool           aOnMajorAxis = true );
     
     /**
      * @brief Adds the view element to the constraineds list.
@@ -45,6 +51,7 @@ public:
     };
 protected:
     gxConstrained::List mConstraineds;
+    gxConstraints mConstraints;
     
     /**
      * @brief Initializes the contstaineds list.
