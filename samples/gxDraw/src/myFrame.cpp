@@ -184,12 +184,12 @@ void MyFrame::CreateBoxLayout()
     
 //    mLayout->SetFlex( mF1, 1 );
 //    mLayout->SetConstraint( mF1, gxConstraint::Flex, 1);
-    mF1->SetConstraint( gxConstraint::Flex, 1);
+    mLayout->SetConstraint( mF1, gxConstraint::Flex, 1);
     
     //    mLayout->SetFlex( mF2, 1 );
     //    mLayout->SetFlex( mF3, 6 );
     
-    mF3->SetConstraint( gxConstraint::Percent, 50 );
+    mLayout->SetConstraint( mF3, gxConstraint::Percent, 50 );
     
     mPrimaryLayer->Add( mHBox );
 }
@@ -208,11 +208,11 @@ void MyFrame::CreateBorderLayout()
 
     mContainer->Add( mNorth, mCenter, mSouth, mWest, mEast  );
     
-    mNorth->SetConstraint(  gxConstraint::Region, gxLayoutRegion::North );
-    mCenter->SetConstraint( gxConstraint::Region, gxLayoutRegion::Center );
-    mSouth->SetConstraint(  gxConstraint::Region, gxLayoutRegion::South );
-    mWest->SetConstraint(   gxConstraint::Region, gxLayoutRegion::West );
-    mEast->SetConstraint(   gxConstraint::Region, gxLayoutRegion::East );
+    mBorderLayout->SetConstraint( mNorth,  gxConstraint::Region, gxLayoutRegion::North );
+    mBorderLayout->SetConstraint( mCenter, gxConstraint::Region, gxLayoutRegion::Center );
+    mBorderLayout->SetConstraint( mSouth,  gxConstraint::Region, gxLayoutRegion::South );
+    mBorderLayout->SetConstraint( mWest,   gxConstraint::Region, gxLayoutRegion::West );
+    mBorderLayout->SetConstraint( mEast,   gxConstraint::Region, gxLayoutRegion::East );
     
     mPrimaryLayer->Add( mContainer );
 }

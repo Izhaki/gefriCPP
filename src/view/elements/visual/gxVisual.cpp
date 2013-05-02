@@ -161,23 +161,6 @@ void gxVisual::Layout()
         mLayout->Layout( this );
 }
 
-void gxVisual::SetConstraint( gxConstraint::Type  aType,
-                              gxConstraint::Value aValue )
-{
-    // Get the parent
-    gxViewElement* iParent = GetParent();
-    
-    gxWarnIf( iParent == NULL, "No parent found" );
-    
-    // Get the parent layout
-    gxLayout* iLayout = iParent->GetLayout();
-    
-    gxWarnIf( iParent == NULL, "No layout found" );
-    
-    // Set the constraint
-    iLayout->SetConstraint( this, aType, aValue );
-}
-
 void gxVisual::Translate( gxPoint aDelta )
 {
     mBounds += aDelta;
