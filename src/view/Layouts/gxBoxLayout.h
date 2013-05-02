@@ -23,7 +23,7 @@ public:
     /**
      * @brief BoxLayout kindly offers this method to BorderLayout.
      */
-    virtual void DoLayout( gxRect&             aContainer,
+    virtual void DoLayout( gxRect&             aRect,
                            gxConstrained::List aConstraineds,
                            bool                aOnMajorAxis  );
     

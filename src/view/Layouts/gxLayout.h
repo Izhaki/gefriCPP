@@ -5,8 +5,6 @@
 #include "core/geometry/gxGeometry.h"
 #include "core/gxString.h"
 
-#include "core/gxLog.h"
-
 // Forward Declarations
 class gxViewElement;
 

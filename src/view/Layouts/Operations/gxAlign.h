@@ -15,7 +15,7 @@ struct gxAlign
     
     gxAlign( const Type          aType,
              gxConstrained::List aConstraineds,
-             const gxRect&       aContainer,
+             const gxRect&       aRect,
              const bool          onMajorAxis );
 };
 

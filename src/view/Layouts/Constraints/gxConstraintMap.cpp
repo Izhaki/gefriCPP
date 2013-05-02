@@ -46,9 +46,9 @@ gxConstraint* gxConstraintMap::Get( gxConstraint::Type aType,
 gxConstraint* gxConstraintMap::Get( MapId aId )
 {
     ConstraintMap::iterator iConstraint = mConstraintMap.find( aId );
-    bool iConstraintFound = iConstraint != mConstraintMap.end();
+    bool iFound = iConstraint != mConstraintMap.end();
     
-    return iConstraintFound ? iConstraint->second : NULL;
+    return iFound ? iConstraint->second : NULL;
 }
 
 void gxConstraintMap::Add( MapId         aId,

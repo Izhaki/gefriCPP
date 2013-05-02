@@ -14,7 +14,7 @@ struct gxStretch
     
     gxStretch( const Type          aType,
                gxConstrained::List aConstraineds,
-               const gxRect&       aContainer,
+               const gxRect&       aRect,
                const bool          onMajorAxis );
     
     gxPix GetMaxSize( gxConstrained::List aConstraineds,

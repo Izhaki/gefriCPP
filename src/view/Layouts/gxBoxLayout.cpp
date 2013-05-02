@@ -53,23 +53,23 @@ void gxBoxLayout::DoLayout( gxViewElement* aLayouter )
     DoLayout( iContainerBounds, mConstraineds, mOnMajorAxis );
 }
 
-void gxBoxLayout::DoLayout( gxRect&             aContainer,
+void gxBoxLayout::DoLayout( gxRect&             aRect,
                             gxConstrained::List aConstraineds,
                             bool                aOnMajorAxis  )
 {
 
     gxDistribute( mDistribute,
                   aConstraineds,
-                  aContainer,
+                  aRect,
                   aOnMajorAxis );
     
     gxStretch( mStretch,
                aConstraineds,
-               aContainer,
+               aRect,
                !aOnMajorAxis );
     
     gxAlign( mAlign,
              aConstraineds,
-             aContainer,
+             aRect,
              !aOnMajorAxis );
 }

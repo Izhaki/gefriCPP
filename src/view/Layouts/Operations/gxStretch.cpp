@@ -2,7 +2,7 @@
 
 gxStretch::gxStretch( const Type          aType,
                       gxConstrained::List aConstraineds,
-                      const gxRect&       aContainer,
+                      const gxRect&       aRect,
                       const bool          onMajorAxis )
 {
     if ( aType == None )
@@ -14,8 +14,8 @@ gxStretch::gxStretch( const Type          aType,
     switch ( aType )
     {
         case None:                                                   break;
-        case Full: iSize = aContainer.GetSize( onMajorAxis );        break;
-        case Max:  iSize = GetMaxSize( aConstraineds, onMajorAxis );  break;
+        case Full: iSize = aRect.GetSize( onMajorAxis );             break;
+        case Max:  iSize = GetMaxSize( aConstraineds, onMajorAxis ); break;
     }
     
     forEachConstrainedOf( aConstraineds, iConstrained )

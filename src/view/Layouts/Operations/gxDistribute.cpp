@@ -2,11 +2,11 @@
 
 gxDistribute::gxDistribute( const Type          aType,
                             gxConstrained::List aConstraineds,
-                            const gxRect&       aContainer,
+                            const gxRect&       aRect,
                             const bool          onMajorAxis )
 {
     // First Set the size of the elements.
-    bool iHasFlex = DoSize( aConstraineds, aContainer, onMajorAxis );
+    bool iHasFlex = DoSize( aConstraineds, aRect, onMajorAxis );
     
     // If any of the elements has flex, the elements will take the full size
     // of the container. Thus it makes little sense to distribute items in any
@@ -14,11 +14,11 @@ gxDistribute::gxDistribute( const Type          aType,
     Type iType = iHasFlex ? Start : aType;
     
     // Now distribute the elements
-    DoDistribute( iType, aConstraineds, aContainer, onMajorAxis );
+    DoDistribute( iType, aConstraineds, aRect, onMajorAxis );
 }
 
 bool gxDistribute::DoSize( gxConstrained::List aConstraineds,
-                           const gxRect&       aContainer,
+                           const gxRect&       aRect,
                            const bool          onMajorAxis )
 {
     gxPix iTotalPixels  = 0;
@@ -54,7 +54,7 @@ bool gxDistribute::DoSize( gxConstrained::List aConstraineds,
         }
     }
     
-    gxPix iContainerSize = aContainer.GetSize( onMajorAxis );
+    gxPix iContainerSize = aRect.GetSize( onMajorAxis );
     
     // The amount of pixels left is the container size minus the total pixels
     // used by figures which size is pixel-based.
@@ -87,7 +87,7 @@ bool gxDistribute::DoSize( gxConstrained::List aConstraineds,
 
 void gxDistribute::DoDistribute( const Type          aType,
                                  gxConstrained::List aConstraineds,
-                                 const gxRect&       aContainer,
+                                 const gxRect&       aRect,
                                  const bool          onMajorAxis )
 {
     gxPix iPosition = 0;
@@ -108,7 +108,7 @@ void gxDistribute::DoDistribute( const Type          aType,
         
         if ( aType == Middle || aType == End )
         {
-            gxPix iContainerSize = aContainer.GetSize( onMajorAxis );
+            gxPix iContainerSize = aRect.GetSize( onMajorAxis );
             
             // This is right for mdEnd
             iPosition = iContainerSize - iElementsSize;
@@ -120,7 +120,7 @@ void gxDistribute::DoDistribute( const Type          aType,
         
         if ( aType == Full || aType == Equal )
         {
-            gxPix iContainerSize = aContainer.GetSize( onMajorAxis );
+            gxPix iContainerSize = aRect.GetSize( onMajorAxis );
             
             int iSpaceCount;
             

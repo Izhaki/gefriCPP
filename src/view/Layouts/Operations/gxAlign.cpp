@@ -2,14 +2,14 @@
 
 gxAlign::gxAlign( const Type          aType,
                   gxConstrained::List aConstraineds,
-                  const gxRect&       aContainer,
+                  const gxRect&       aRect,
                   const bool          onMajorAxis )
 {
     if ( aType == None )
         return;
     
     gxPix iPosition = 0;
-    gxPix iContainerSize = aContainer.GetSize( onMajorAxis );
+    gxPix iContainerSize = aRect.GetSize( onMajorAxis );
     
     forEachConstrainedOf( aConstraineds, iConstrained )
     {

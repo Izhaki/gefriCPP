@@ -30,7 +30,7 @@ bool gxBorderLayout::IsSupportedConstraint( gxConstraint::Type  aType )
 void gxBorderLayout::DoLayout( gxViewElement* aLayouter )
 {
     // Get the center constrainst. This will also raise assertion if there
-    // isn't one, or if there's more than 1.
+    // isn't one, or if there's more than one.
     gxConstrained* iCenterConstrained = GetCenterConstrained();
     
     if ( !iCenterConstrained )

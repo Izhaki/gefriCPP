@@ -417,12 +417,12 @@
 		87ABC03B16ECEE6400B77D8D /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				87ABC03C16ECEE9300B77D8D /* gxAlign.cpp */,
 				87ABC03D16ECEE9300B77D8D /* gxAlign.h */,
-				87ABC03E16ECEE9300B77D8D /* gxDistribute.cpp */,
+				87ABC03C16ECEE9300B77D8D /* gxAlign.cpp */,
 				87ABC03F16ECEE9300B77D8D /* gxDistribute.h */,
-				87ABC04016ECEE9300B77D8D /* gxStretch.cpp */,
+				87ABC03E16ECEE9300B77D8D /* gxDistribute.cpp */,
 				87ABC04116ECEE9300B77D8D /* gxStretch.h */,
+				87ABC04016ECEE9300B77D8D /* gxStretch.cpp */,
 				87ABC04816ECEEB600B77D8D /* gxLayoutOperations.h */,
 			);
 			name = Operations;
