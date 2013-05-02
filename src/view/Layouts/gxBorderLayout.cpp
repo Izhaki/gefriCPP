@@ -6,8 +6,8 @@
 gxBorderLayout::gxBorderLayout()
 {}
 
-gxBorderLayout::gxBorderLayout( bool aOnMajorAxis )
-  : gxLayout ( aOnMajorAxis )
+gxBorderLayout::gxBorderLayout( bool aOnMajorAxis ):
+    gxConstraintLayout ( aOnMajorAxis )
 {}
 
 bool gxBorderLayout::IsSupportedConstraint( gxConstraint::Type  aType )

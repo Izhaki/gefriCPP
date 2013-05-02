@@ -1,9 +1,9 @@
 #ifndef gxBorderLayout_h
 #define gxBorderLayout_h
 
-#include "View/Layouts/gxLayout.h"
+#include "View/Layouts/gxConstraintLayout.h"
 
-class gxBorderLayout : public gxLayout
+class gxBorderLayout : public gxConstraintLayout
 {
 public:
     gxBorderLayout();

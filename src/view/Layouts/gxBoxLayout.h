@@ -1,10 +1,10 @@
 #ifndef gxBoxLayout_h
 #define gxBoxLayout_h
 
-#include "View/Layouts/gxLayout.h"
+#include "View/Layouts/gxConstraintLayout.h"
 #include "View/Layouts/Operations/gxLayoutOperations.h"
 
-class gxBoxLayout : public gxLayout
+class gxBoxLayout : public gxConstraintLayout
 {
 public:
     gxBoxLayout();
