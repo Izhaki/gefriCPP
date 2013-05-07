@@ -10,20 +10,21 @@ public:
     
     gxBorderLayout( bool aOnMajorAxis );
 protected:
-    virtual bool IsSupportedConstraint( gxConstraint::Type  aType );    
+    virtual bool IsSupportedConstraint( gxConstraint::Type  aType );
+    
     virtual void DoLayout( gxViewElement* aLayouter );
 private:
-    void AddConstraineds( gxConstrained::List& aFiltered,
+    void AddAxisElements( gxViewElement::List& aFiltered,
                           bool                 aOnMajorAxis );
         
-    void AddRegionConstraineds( gxLayoutRegion::Type aRegion,
-                                gxConstrained::List& aFiltered );
+    void AddRegionElements( gxLayoutRegion::Type aRegion,
+                            gxViewElement::List& aFiltered );
     
-    void LayoutAxis( gxConstrained::List& aFiltered,
+    void LayoutAxis( gxViewElement::List& aFiltered,
                      gxRect&              aBounds,
                      bool                 aOnMajorAxis );
     
-    gxConstrained* GetCenterConstrained();
+    gxViewElement* GetCenterElement( gxViewElement::List aLayoutees );
 };
 
 

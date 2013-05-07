@@ -23,9 +23,10 @@ public:
     /**
      * @brief BoxLayout kindly offers this method to BorderLayout.
      */
-    virtual void DoLayout( gxRect&             aRect,
-                           gxConstrained::List aConstraineds,
-                           bool                aOnMajorAxis  );
+    void DoLayout( const gxRect&              aRect,
+                   const gxViewElement::List& aLayoutees,
+                   const gxConstraints&       aConstraints,
+                   const bool                 aOnMajorAxis );
     
 protected:
     gxStretch::Type    mStretch;

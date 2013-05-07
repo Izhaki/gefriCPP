@@ -118,7 +118,6 @@ void MyFrame::CreateFaceAndRuller()
     gxViewUnit    *mViewUnit;
     gxDivProvider *mDivProvider;
     gxRuler       *mRulerH;
-
     
     gxLineConnection *mCon;
     
@@ -171,24 +170,10 @@ void MyFrame::CreateBoxLayout()
     mF1 = new gxRectangle( gxRect( 0, 0, 10, 10 ) );
     mF2 = new gxRectangle( gxRect( 30, 30, 20, 20 ) );
     mF3 = new gxRectangle( gxRect( 130, 30, 40, 30 ) );
-    
-    //    mLayout->SetRect( mF1, gxRect( 0, 0, 10, 10 ) );
-    mLayout->Add( mF1 );
-    mLayout->Add( mF2 );
-    mLayout->Add( mF3 );
-  
+
     mHBox->Add( mF1, mF2, mF3 );
-       
-//    mLayout->SetRect( mF2, gxRect( 30, 30, 20, 20 ) );
-//    mLayout->SetRect( mF3, gxRect( 130, 30, 30, 30 ) );
     
-//    mLayout->SetFlex( mF1, 1 );
-//    mLayout->SetConstraint( mF1, gxConstraint::Flex, 1);
-    mLayout->SetConstraint( mF1, gxConstraint::Flex, 1);
-    
-    //    mLayout->SetFlex( mF2, 1 );
-    //    mLayout->SetFlex( mF3, 6 );
-    
+    mLayout->SetConstraint( mF1, gxConstraint::Flex, 1);    
     mLayout->SetConstraint( mF3, gxConstraint::Percent, 50 );
     
     mPrimaryLayer->Add( mHBox );

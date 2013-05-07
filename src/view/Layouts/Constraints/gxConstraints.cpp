@@ -16,6 +16,16 @@ gxConstraints::~gxConstraints()
     EmptyMap( mConstraints );
 }
 
+void gxConstraints::Set( gxViewElement*      aLayoutee,
+                         gxConstraint::Type  aType,
+                         gxConstraint::Value aValue,
+                         bool                aOnMajorAxis )
+{
+    gxConstraint* iConstraint = gxConstraint::Create( aType, aValue );
+    
+    Set( aLayoutee, iConstraint, aOnMajorAxis );    
+}
+
 void gxConstraints::Set( gxViewElement* aLayoutee,
                          gxConstraint*  aConstraint,
                          bool           aOnMajorAxis)
@@ -35,10 +45,53 @@ void gxConstraints::Set( gxConstraintKey& aKey,
     mConstraints[ aKey ] = aConstraint;
 }
 
-gxConstraint* gxConstraints::Get( gxConstraintKey& aKey )
+gxConstraint* gxConstraints::Get( const gxConstraintKey& aKey ) const
 {
-    Constraints::iterator iConstraint = mConstraints.find( aKey );
+    ConstIterator iConstraint = mConstraints.find( aKey );
     bool iFound = iConstraint != mConstraints.end();
     
     return iFound ? iConstraint->second : NULL;
+}
+
+gxConstraints::Map gxConstraints::Get( gxConstraint::Type aType )
+{
+    Map iFiltered;
+    forEachConstraint( mConstraints, iConstraint )
+    {
+        if ( iConstraint->first.mConstraintType == aType )
+        {
+            iFiltered[iConstraint->first] = iConstraint->second;
+        }
+    }
+    return iFiltered;
+}
+
+gxLayoutRegion::Type gxConstraints::GetRegion( gxViewElement* aLayoutee )
+{
+    gxRegionConstraint* iRegionConstraint = NULL;
+    
+    Get( aLayoutee, iRegionConstraint );
+    
+    if ( iRegionConstraint )
+    {
+        return iRegionConstraint->GetValue();
+    } else {
+        gxWarn( "No region constraint found" );
+        return gxLayoutRegion::Center;
+    }
+}
+
+int gxConstraints::GetFlex( gxViewElement* aLayoutee,
+                            bool           aOnMajorAxis )
+{
+    gxSizeConstraint* iSizeConstraint = NULL;
+    
+    Get( aLayoutee, iSizeConstraint, aOnMajorAxis );
+    
+    if ( iSizeConstraint && iSizeConstraint->IsFlex() )
+    {
+        return iSizeConstraint->GetValue();
+    } else {
+        return 0;
+    }
 }

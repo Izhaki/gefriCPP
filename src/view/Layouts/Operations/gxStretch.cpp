@@ -1,40 +1,36 @@
 #include "View/Layouts/Operations/gxStretch.h"
 
-gxStretch::gxStretch( const Type          aType,
-                      gxConstrained::List aConstraineds,
-                      const gxRect&       aRect,
-                      const bool          onMajorAxis )
+gxStretch::gxStretch( const Type                 aType,
+                      const gxRect&              aRect,
+                      const gxViewElement::List& aLayoutees,
+                      const bool                 onMajorAxis )
 {
-    if ( aType == None )
-        return;
-    
-    gxRect                 iRect;
-    gxPix                  iSize = 0;
+    gxPix  iSize = 0;
     
     switch ( aType )
     {
-        case None:                                                   break;
+        case None: return;                                           break;
         case Full: iSize = aRect.GetSize( onMajorAxis );             break;
-        case Max:  iSize = GetMaxSize( aConstraineds, onMajorAxis ); break;
+        case Max:  iSize = GetMaxSize( aLayoutees, onMajorAxis );    break;
     }
     
-    forEachConstrainedOf( aConstraineds, iConstrained )
+    forEachElement( aLayoutees, iLayoutee )
     {
-        (*iConstrained)->Bounds.SetSize( iSize, onMajorAxis );
+        (*iLayoutee)->SetSize( iSize, onMajorAxis );
     }
     
 }
 
-gxPix gxStretch::GetMaxSize( gxConstrained::List aConstraineds,
-                             const bool          onMajorAxis )
+gxPix gxStretch::GetMaxSize( const gxViewElement::List& aLayoutees,
+                             const bool                 onMajorAxis )
 {
-    gxPix                  iLayouteedSize;    
-    gxPix                  iSize = 0;    
+    gxPix iLayouteeSize;
+    gxPix iSize = 0;
 
-    forEachConstrainedOf( aConstraineds, iConstrained )
+    forEachElement( aLayoutees, iLayoutee )
     {
-        iLayouteedSize = (*iConstrained)->Bounds.GetSize( onMajorAxis );
-        iSize      = gxMax( iSize, iLayouteedSize );
+        iLayouteeSize = (*iLayoutee)->GetSize( onMajorAxis );
+        iSize          = gxMax( iSize, iLayouteeSize );
     }
     
     return iSize;

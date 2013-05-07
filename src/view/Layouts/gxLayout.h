@@ -8,8 +8,6 @@
 // Forward Declarations
 class gxViewElement;
 
-#include "View/Layouts/Constraints/gxConstrained.h"
-
 /**
  * @brief A base class for various layouts.
  *

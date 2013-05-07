@@ -1,7 +1,7 @@
 #ifndef gxDistribute_h
 #define gxDistribute_h
 
-#include "View/Layouts/Constraints/gxConstrained.h"
+#include "View/Layouts/Constraints/gxConstraints.h"
 
 struct gxDistribute
 {
@@ -15,19 +15,22 @@ struct gxDistribute
         End
     };
     
-    gxDistribute( const Type          aType,
-                  gxConstrained::List aConstraineds,
-                  const gxRect&       aRect,
-                  const bool          onMajorAxis );
-    
-    bool DoSize( gxConstrained::List aConstraineds,
-                 const gxRect&       aRect,
-                 const bool          onMajorAxis );
+    gxDistribute( const Type                 aType,
+                  const gxRect&              aRect,
+                  const gxViewElement::List& aLayoutees,
+                  const gxConstraints&       aConstraints,
+                  const bool                 onMajorAxis );
 
-    void DoDistribute( const Type          aType,
-                       gxConstrained::List aConstraineds,
-                       const gxRect&       aRect,
-                       const bool          onMajorAxis );
+    bool DoSize( const gxRect&              aRect,
+                 const gxViewElement::List& aLayoutees,
+                 const gxConstraints&       aConstraints,
+                 const bool                 onMajorAxis );
+    
+    void DoDistribute( const Type                 aType,
+                       const gxRect&              aRect,
+                       const gxViewElement::List& aLayoutees,
+                       const gxConstraints&       aConstraints,
+                       const bool                 onMajorAxis );
     
 };
 

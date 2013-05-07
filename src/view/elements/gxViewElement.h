@@ -7,6 +7,24 @@
 #include "View/gxTransformations.h"
 #include "View/Layouts/gxLayout.h"
 
+
+// A macro allowing looping all children of a particular composite
+#define forEachChildOf( aComposite, aItem ) \
+    gxViewElement* aItem; \
+    gxViewElement::List iChildren = aComposite->GetChildren(); \
+    for ( gxViewElement::Iterator it = iChildren.begin(); \
+        it != iChildren.end() && ( aItem = *it ); \
+        ++it \
+    )
+
+// A macro allowing looping all children of a particular composite
+#define forEachElement( aElements, aElement ) \
+    for ( gxViewElement::ConstIterator aElement = aElements.begin(); \
+        aElement != aElements.end(); \
+        ++aElement \
+    )
+
+
 // Forward declarations
 class gxRootViewElement;
 class gxLightweightSystem;
@@ -83,10 +101,47 @@ public:
     virtual gxRect GetOuterBounds() const { return GetBounds(); }
 
     /**
+     * @brief a Helper/Readbility method to retrieve the view element bounds
+     * size.
+     */
+    virtual gxSize GetSize() const { return GetBounds().GetSize(); }
+    
+    /**
+     * @brief a Helper/Readbility method to retrieve the view element bounds
+     * size on one axis.
+     */
+    virtual gxPix GetSize( bool aOnMajorAxis ) const { return GetBounds().GetSize( aOnMajorAxis ); }
+
+    /**
      * @brief Sets new bounds to this view element.
      * @param aNewBounds The new bounds
      */
     virtual void SetBounds( const gxRect& aNewBounds ) = 0;
+
+    /**
+     * @brief a Helper/Readbility method to set the view element bounds
+     * size.
+     */
+    virtual void SetSize( const gxSize& aNewSize );
+
+    /**
+     * @brief a Helper/Readbility method to set the view element bounds
+     * size on one axis.
+     */
+    virtual void SetSize( const gxPix aNewSize, bool aOnMajorAxis );
+
+    /**
+     * @brief a Helper/Readbility method to set the view element bounds
+     * size.
+     */
+    virtual void SetPosition( const gxPoint& aNewPosition );
+    
+    /**
+     * @brief a Helper/Readbility method to set the view element bounds
+     * size on one axis.
+     */
+    virtual void SetPosition( const gxPix aNewPosition, bool aOnMajorAxis );
+    
     
     /**
      * @brief Returns the union of all descendant bounds.

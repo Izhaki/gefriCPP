@@ -3,7 +3,6 @@
 
 #include "Core/gxAssert.h"
 #include "View/Layouts/Constraints/gxConstraint.h"
-#include "View/Layouts/Constraints/gxConstrained.h"
 
 /**
  * @brief A class representing a layout size that can be:

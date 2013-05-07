@@ -89,6 +89,34 @@ void gxViewElement::Repaint( gxRect& aBounds,
     }
 }
 
+void gxViewElement::SetSize( const gxSize& aNewSize )
+{
+    gxRect iBounds = GetBounds();
+    iBounds.SetSize( aNewSize );
+    SetBounds( iBounds );
+}
+
+void gxViewElement::SetSize( const gxPix aNewSize, bool aOnMajorAxis )
+{
+    gxRect iBounds = GetBounds();
+    iBounds.SetSize( aNewSize, aOnMajorAxis );
+    SetBounds( iBounds );
+}
+
+void gxViewElement::SetPosition( const gxPoint& aNewPosition )
+{
+    gxRect iBounds = GetBounds();
+    iBounds.SetPosition( aNewPosition );
+    SetBounds( iBounds );
+}
+
+void gxViewElement::SetPosition( const gxPix aNewPosition, bool aOnMajorAxis )
+{
+    gxRect iBounds = GetBounds();
+    iBounds.SetPosition( aNewPosition, aOnMajorAxis );
+    SetBounds( iBounds );
+}
+
 void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
 {
     if ( IsChildless() )

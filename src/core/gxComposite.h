@@ -6,20 +6,13 @@
 #include <list>
 
 // A macro for looping all childrens (used from within the composite itself)
+// TODO: Pretty sure that now composite is class template, it doesn't need the aItem
 #define forEachChild( aItem ) \
     ChildrenType* aItem; \
-    for ( ChildIterator it = mChildren.begin(); \
+    for ( Iterator it = mChildren.begin(); \
           it != mChildren.end() && ( aItem = *it ); \
           ++it \
         )
-// A macro allowing looping all children of a particular composite
-#define forEachChildOf( aComposite, aItem ) \
-    gxViewElement* aItem; \
-    gxViewElement::Children iChildren = aComposite->GetChildren(); \
-    for ( gxViewElement::ChildIterator it = iChildren.begin(); \
-         it != iChildren.end() && ( aItem = *it ); \
-         ++it \
-    )
 
 /**
  * @brief A generic class that can contain children of its own kind, therefore
@@ -34,9 +27,10 @@ template <class tComposite>
 class gxComposite
 {
 public:
-    typedef tComposite                  ChildrenType;
-    typedef std::list< tComposite* >    Children;
-    typedef typename Children::iterator ChildIterator;
+    typedef tComposite                    ChildrenType;
+    typedef std::list< tComposite* >      List;
+    typedef typename List::iterator       Iterator;
+    typedef typename List::const_iterator ConstIterator;
     
     gxComposite()
     : mParent(NULL)
@@ -110,7 +104,7 @@ public:
      * nulled.
      */
     void Remove( tComposite* aChild,
-                      bool        aAndDelete = false )
+                 bool        aAndDelete = false )
     {
         // Make sure it is one of my children
         gxWarnIf( aChild->GetParent() != this,
@@ -144,7 +138,7 @@ public:
      */
     void RemoveAllChildren( bool aAndDelete = false )
     {
-        for ( ChildIterator it = mChildren.begin();
+        for ( Iterator it = mChildren.begin();
               !mChildren.empty();
               it = mChildren.begin() )
         {
@@ -191,7 +185,7 @@ public:
      * @brief Returns the children of this object.
      * @return An std::list representing the children
      */
-    Children GetChildren() { return mChildren; }
+    List GetChildren() { return mChildren; }
 
     /**
      * @brief Returns index of this view element within its parent list of
@@ -250,7 +244,7 @@ protected:
     virtual void OnAfterChildRemoval() { }
 
     /// the children this object contains
-    Children    mChildren;
+    List        mChildren;
     /// the parent of this object
     tComposite* mParent;
 private:

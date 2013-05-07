@@ -1,5 +1,6 @@
 #include "View/Layouts/gxBoxLayout.h"
 #include "View/Elements/gxViewElement.h"
+#include "core/gxComposite.h"
 
 gxBoxLayout::gxBoxLayout():
     mDistribute ( gxDistribute::Element ),
@@ -50,26 +51,28 @@ void gxBoxLayout::DoLayout( gxViewElement* aLayouter )
 {
     gxRect iContainerBounds = aLayouter->GetInnerBounds();
     
-    DoLayout( iContainerBounds, mConstraineds, mOnMajorAxis );
+    DoLayout( iContainerBounds, aLayouter->GetChildren(), mConstraints, mOnMajorAxis );
 }
 
-void gxBoxLayout::DoLayout( gxRect&             aRect,
-                            gxConstrained::List aConstraineds,
-                            bool                aOnMajorAxis  )
+void gxBoxLayout::DoLayout( const gxRect&              aRect,
+                            const gxViewElement::List& aLayoutees,
+                            const gxConstraints&       aConstraints,
+                            const bool                 aOnMajorAxis )
 {
-
     gxDistribute( mDistribute,
-                  aConstraineds,
-                  aRect,
+                  aRect,                 
+                  aLayoutees,
+                  aConstraints,
                   aOnMajorAxis );
     
     gxStretch( mStretch,
-               aConstraineds,
                aRect,
+               aLayoutees,
                !aOnMajorAxis );
-    
+
     gxAlign( mAlign,
-             aConstraineds,
              aRect,
+             aLayoutees,
+             aConstraints,
              !aOnMajorAxis );
 }

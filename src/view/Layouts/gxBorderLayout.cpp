@@ -10,7 +10,7 @@ gxBorderLayout::gxBorderLayout( bool aOnMajorAxis ):
     gxConstraintLayout ( aOnMajorAxis )
 {}
 
-bool gxBorderLayout::IsSupportedConstraint( gxConstraint::Type  aType )
+bool gxBorderLayout::IsSupportedConstraint( gxConstraint::Type aType )
 {
     switch ( aType )
     {
@@ -29,29 +29,30 @@ bool gxBorderLayout::IsSupportedConstraint( gxConstraint::Type  aType )
 
 void gxBorderLayout::DoLayout( gxViewElement* aLayouter )
 {
+    gxViewElement::List iLayoutees = aLayouter->GetChildren();
     // Get the center constrainst. This will also raise assertion if there
     // isn't one, or if there's more than one.
-    gxConstrained* iCenterConstrained = GetCenterConstrained();
+    gxViewElement* iCenterElement = GetCenterElement( iLayoutees );
     
-    if ( !iCenterConstrained )
+    if ( !iCenterElement )
         return;
     
     // Major axis flex check; The center is always flex 1, unless the user has
     // set it higher.
-    if ( iCenterConstrained->GetFlex( gxMajorAxis ) == 0 )
+    if ( mConstraints.GetFlex( iCenterElement, gxMajorAxis ) == 0 )
     {
-        iCenterConstrained->Set( gxConstraint::Flex, 1, gxMajorAxis );
+        mConstraints.Set( iCenterElement, gxConstraint::Flex, 1, gxMajorAxis );
     }
     
     // Minor axis flex check; The center is always flex 1, unless the user has
     // set it higher.
-    if ( iCenterConstrained->GetFlex( gxMinorAxis ) == 0 )
+    if ( mConstraints.GetFlex( iCenterElement, gxMinorAxis ) == 0 )
     {
-        iCenterConstrained->Set( gxConstraint::Flex, 1, gxMinorAxis );
+        mConstraints.Set( iCenterElement, gxConstraint::Flex, 1, gxMinorAxis );
     }
         
     // A filtered list of constaints.
-    gxConstrained::List iFiltered;
+    gxViewElement::List iFiltered;
     gxRect              iBounds;
 
     // First do major axis layout
@@ -63,30 +64,37 @@ void gxBorderLayout::DoLayout( gxViewElement* aLayouter )
 
     // Do the minor axis layout - it is done with reference to the current
     // bounds of the center region.
-    iBounds = iCenterConstrained->Bounds;
+    iBounds = iCenterElement->GetBounds();
     LayoutAxis( iFiltered, iBounds, !mOnMajorAxis );
     
     // Now offset the minor elements to the previous position of the center
     // region /As iBounds still contains the bounds of the center region before
     // Layout, we can use it to find the correct offset
     gxPix iOldCenterPosition = iBounds.GetPosition( mOnMajorAxis );
-    
-    forEachConstrainedOf( iFiltered, iConstrained )
+
+    forEachElement( iFiltered, iLayoutee )
     {
-        (*iConstrained)->Bounds.Translate( iOldCenterPosition, mOnMajorAxis );
+        // Get the previous bounds
+        iBounds = (*iLayoutee)->GetBounds();
+        
+        // Translate them
+        iBounds.Translate( iOldCenterPosition, mOnMajorAxis );
+        
+        // And set
+        (*iLayoutee)->SetBounds( iBounds );
     }
 }
 
-gxConstrained* gxBorderLayout::GetCenterConstrained()
+gxViewElement* gxBorderLayout::GetCenterElement( gxViewElement::List aLayoutees )
 {
-    gxConstrained*      iResult           = NULL;
-    short               iFound            = 0;
+    gxViewElement* iResult = NULL;
+    short          iFound  = 0;
     
-    forEachConstrained( iConstrained )
+    forEachElement( aLayoutees, iLayoutee )
     {
-        if ( (*iConstrained)->GetRegion() == gxLayoutRegion::Center )
+        if ( mConstraints.GetRegion( *iLayoutee ) == gxLayoutRegion::Center )
         {
-            iResult = *iConstrained;
+            iResult = *iLayoutee;
             iFound++;
         }
     }
@@ -97,7 +105,7 @@ gxConstrained* gxBorderLayout::GetCenterConstrained()
     return iResult;
 }
 
-void gxBorderLayout::LayoutAxis( gxConstrained::List& aFiltered,
+void gxBorderLayout::LayoutAxis( gxViewElement::List& aFiltered,
                                  gxRect&              aBounds,
                                  bool                 aOnMajorAxis )
 {
@@ -106,36 +114,42 @@ void gxBorderLayout::LayoutAxis( gxConstrained::List& aFiltered,
                             gxStretch::Full,
                             gxAlign::Start );
     
-    AddConstraineds( aFiltered, aOnMajorAxis );
-    iBoxLayout.DoLayout( aBounds, aFiltered, aOnMajorAxis );    
+    AddAxisElements( aFiltered, aOnMajorAxis );
+    
+    iBoxLayout.DoLayout( aBounds, aFiltered, mConstraints, aOnMajorAxis );
 }
 
 
-void gxBorderLayout::AddConstraineds( gxConstrained::List& aFiltered,
+void gxBorderLayout::AddAxisElements( gxViewElement::List& aFiltered,
                                       bool                 aOnMajorAxis )
 {
     using namespace gxLayoutRegion;
+    
     // Add the start regions
     Type iStartRegion = aOnMajorAxis ? West : North;
-    AddRegionConstraineds( iStartRegion, aFiltered );
+    AddRegionElements( iStartRegion, aFiltered );
     
     // Add the center
-    AddRegionConstraineds( Center, aFiltered );
+    AddRegionElements( Center, aFiltered );
     
     // Add the end regions
     Type iEndRegion = aOnMajorAxis ? East : South;
-    AddRegionConstraineds( iEndRegion, aFiltered );
+    AddRegionElements( iEndRegion, aFiltered );
 }
 
-
-void gxBorderLayout::AddRegionConstraineds( gxLayoutRegion::Type aRegion,
-                                            gxConstrained::List& aFiltered )
+void gxBorderLayout::AddRegionElements( gxLayoutRegion::Type aRegion,
+                                        gxViewElement::List& aFiltered )
 {
-    forEachConstrained( iConstrained )
+    gxConstraints::Map iRegionConstraints =  mConstraints.Get( gxConstraint::Region );
+    
+    gxViewElement* iLayoutee = NULL;
+    
+    forEachConstraint( iRegionConstraints, iConstraint )
     {
-        if ( (*iConstrained)->GetRegion() == aRegion )
+        iLayoutee = iConstraint->first.mLayoutee;
+        if ( mConstraints.GetRegion( iLayoutee ) == aRegion )
         {
-            aFiltered.push_back( *iConstrained );
+            aFiltered.push_back( iLayoutee );
         }
-    }    
+    }
 }

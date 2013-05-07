@@ -1,9 +1,10 @@
 #include "View/Layouts/Operations/gxAlign.h"
 
-gxAlign::gxAlign( const Type          aType,
-                  gxConstrained::List aConstraineds,
-                  const gxRect&       aRect,
-                  const bool          onMajorAxis )
+gxAlign::gxAlign( const Type                 aType,
+                  const gxRect&              aRect,
+                  const gxViewElement::List& aLayoutees,
+                  const gxConstraints&       aConstraints,
+                  const bool                 onMajorAxis )
 {
     if ( aType == None )
         return;
@@ -11,9 +12,9 @@ gxAlign::gxAlign( const Type          aType,
     gxPix iPosition = 0;
     gxPix iContainerSize = aRect.GetSize( onMajorAxis );
     
-    forEachConstrainedOf( aConstraineds, iConstrained )
+    forEachElement( aLayoutees, iLayoutee )
     {
-        gxPix iSize = (*iConstrained)->Bounds.GetSize( onMajorAxis );
+        gxPix iSize = (*iLayoutee)->GetSize( onMajorAxis );
         
         switch ( aType )
         {
@@ -23,6 +24,6 @@ gxAlign::gxAlign( const Type          aType,
             case End:    iPosition = ( iContainerSize - iSize );     break;
         }
         
-        (*iConstrained)->Bounds.SetPosition( iPosition, onMajorAxis );
+        (*iLayoutee)->SetPosition( iPosition, onMajorAxis );
     }
 }
