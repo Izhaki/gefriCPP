@@ -15,13 +15,23 @@ public:
      * @brief Sets a constraint for the given view element.
      *
      * @param aViewElement The view element for which the constraints is set
-     * @param aType The constraint type to set
-     * @param aValue The constraint value
+     * @param aConstraint The constraint to set
+     * @param aOnMajorAxis Whether or not the constraint is on the major axis
      */
-    void SetConstraint( gxViewElement*      aLayoutee,
-                        gxConstraint::Type  aType,
-                        gxConstraint::Value aValue,
-                        bool                aOnMajorAxis = true );
+
+    template < typename ConstraintType >
+    void SetConstraint( gxViewElement* aLayoutee,
+                        ConstraintType aConstraint,
+                        bool           aOnMajorAxis = true )
+    {
+        // Warn if the layout does not accepts the provided constraint type
+        gxAssert( IsSupportedConstraint( gxTypeId( ConstraintType ) ) , "Constraint type is not accepted by this layout" );
+        
+        mConstraints.Set( aLayoutee, aConstraint, aOnMajorAxis );
+        
+        // Now invalidate the element
+        aLayoutee->Invalidate();
+    }
     
 protected:
     gxConstraints mConstraints;
@@ -44,7 +54,7 @@ protected:
      * @param aType The constraint type
      * @return True is the constraint is accepted by the layout
      */
-    virtual bool IsSupportedConstraint( gxConstraint::Type aType ) = 0;
+    virtual bool IsSupportedConstraint( const gxConstraintId aId ) = 0;
 };
 
 #endif //gxConstraintLayout_h

@@ -34,7 +34,7 @@ protected:
     gxDistribute::Type mDistribute;
     
     virtual void DoLayout( gxViewElement* aLayouter );
-    virtual bool IsSupportedConstraint( gxConstraint::Type  aType );    
+    virtual bool IsSupportedConstraint( const gxConstraintId aId );
 };
 
 #endif // gxBoxLayout_h

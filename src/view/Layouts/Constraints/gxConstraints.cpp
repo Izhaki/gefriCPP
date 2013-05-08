@@ -16,25 +16,6 @@ gxConstraints::~gxConstraints()
     EmptyMap( mConstraints );
 }
 
-void gxConstraints::Set( gxViewElement*      aLayoutee,
-                         gxConstraint::Type  aType,
-                         gxConstraint::Value aValue,
-                         bool                aOnMajorAxis )
-{
-    gxConstraint* iConstraint = gxConstraint::Create( aType, aValue );
-    
-    Set( aLayoutee, iConstraint, aOnMajorAxis );    
-}
-
-void gxConstraints::Set( gxViewElement* aLayoutee,
-                         gxConstraint*  aConstraint,
-                         bool           aOnMajorAxis)
-{
-    gxConstraintKey iKey( aLayoutee, &typeid( *aConstraint ), aOnMajorAxis );
-    Set( iKey, aConstraint );
-}
-
-
 void gxConstraints::Set( gxConstraintKey& aKey,
                          gxConstraint*    aConstraint  )
 {

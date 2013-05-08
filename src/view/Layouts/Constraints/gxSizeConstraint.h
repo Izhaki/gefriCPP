@@ -23,26 +23,21 @@
 
 class gxSizeConstraint : public gxConstraint
 {
-private:
-    typedef gxConstraint::Type gxSizeUnit;
 public:
-    gxSizeConstraint( gxConstraint::Type aType,
-                      int                aValue ) :
-        mUnit(  aType ),
-        mValue( aValue )
+    enum Unit
     {
-        switch ( aType )
-        {
-            case gxConstraint::Pixels:
-            case gxConstraint::Percent:
-            case gxConstraint::Flex:
-                break;
-            default:
-                gxWarn( "Invalid unit" );
-        }        
-    }
+        Pixels = 1,
+        Percent,
+        Flex,
+    };
     
-    gxSizeUnit GetUnit()
+    gxSizeConstraint( Unit aUnit,
+                      int  aValue ) :
+        mUnit(  aUnit ),
+        mValue( aValue )
+    {}
+    
+    Unit GetUnit()
     {
         return mUnit;
     }
@@ -54,23 +49,23 @@ public:
     
     bool IsPixels()
     {
-        return mUnit == gxConstraint::Pixels;
+        return mUnit == Pixels;
     }
     
     bool IsPercent()
     {
-        return mUnit == gxConstraint::Percent;
+        return mUnit == Percent;
     }
     
     bool IsFlex()
     {
-        return mUnit == gxConstraint::Flex;
+        return mUnit == Flex;
     }
     
     
 protected:
-    int        mValue;
-    gxSizeUnit mUnit;
+    int  mValue;
+    Unit mUnit;
 };
 
 #endif // gxSizeConstraint_h

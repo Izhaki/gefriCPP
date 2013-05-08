@@ -10,21 +10,10 @@ gxBorderLayout::gxBorderLayout( bool aOnMajorAxis ):
     gxConstraintLayout ( aOnMajorAxis )
 {}
 
-bool gxBorderLayout::IsSupportedConstraint( gxConstraint::Type aType )
+bool gxBorderLayout::IsSupportedConstraint( const gxConstraintId aId )
 {
-    switch ( aType )
-    {
-        case gxConstraint::Percent:
-        case gxConstraint::Flex:
-        case gxConstraint::Pixels:
-        case gxConstraint::Region:
-        case gxConstraint::Split:
-        case gxConstraint::Resizable:
-            return true;
-            
-        default:
-            return false;
-    }
+    return aId == gxTypeId( gxSizeConstraint* ) ||
+           aId == gxTypeId( gxRegionConstraint* );
 }
 
 void gxBorderLayout::DoLayout( gxViewElement* aLayouter )
@@ -41,14 +30,14 @@ void gxBorderLayout::DoLayout( gxViewElement* aLayouter )
     // set it higher.
     if ( mConstraints.GetFlex( iCenterElement, gxMajorAxis ) == 0 )
     {
-        mConstraints.Set( iCenterElement, gxConstraint::Flex, 1, gxMajorAxis );
+        mConstraints.Set( iCenterElement, new gxSizeConstraint( gxSizeConstraint::Flex, 1), gxMajorAxis );
     }
     
     // Minor axis flex check; The center is always flex 1, unless the user has
     // set it higher.
     if ( mConstraints.GetFlex( iCenterElement, gxMinorAxis ) == 0 )
     {
-        mConstraints.Set( iCenterElement, gxConstraint::Flex, 1, gxMinorAxis );
+        mConstraints.Set( iCenterElement, new gxSizeConstraint( gxSizeConstraint::Flex, 1), gxMinorAxis );
     }
         
     // A filtered list of constaints.
@@ -140,7 +129,7 @@ void gxBorderLayout::AddAxisElements( gxViewElement::List& aFiltered,
 void gxBorderLayout::AddRegionElements( gxLayoutRegion::Type aRegion,
                                         gxViewElement::List& aFiltered )
 {
-    gxConstraints::Map iRegionConstraints =  mConstraints.Get( &typeid( gxRegionConstraint ) );
+    gxConstraints::Map iRegionConstraints =  mConstraints.Get( gxTypeId( gxRegionConstraint* ) );
     
     gxViewElement* iLayoutee = NULL;
     

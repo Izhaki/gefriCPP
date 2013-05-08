@@ -20,11 +20,6 @@ public:
     gxRegionConstraint( gxLayoutRegion::Type aRegion ) :
         gxPrimitiveConstraint< gxLayoutRegion::Type >( aRegion )
     {}
-    
-    gxRegionConstraint( gxConstraint::Value aRegion ) :
-        gxPrimitiveConstraint< gxLayoutRegion::Type >( (gxLayoutRegion::Type)aRegion )
-    {}
-    
 };
 
 #endif //gxRegionConstraint_h

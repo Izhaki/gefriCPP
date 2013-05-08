@@ -8,35 +8,12 @@
 
 typedef const std::type_info* gxConstraintId;
 
+#define gxTypeId( aType ) &typeid( aType )
+
 class gxConstraint
 {
 public:
-    enum Type
-    {
-        Pixels = 1,
-        Percent,
-        Flex,
-        Region,
-        Split,
-        Collapse,
-        Locked,
-        Resizable,
-        Span,
-        Align,
-        
-        // Internal Constraints
-        Size,
-    };
-    
-    typedef int Value;
-    
-    static gxConstraint* Create ( Type  aType,
-                                  Value aValue );
-    
     virtual ~gxConstraint() {}
-    
-//!    gxConstraintId GetId() { return &typeid( *this ); }
-    
 };
 
 #endif //gxConstraint_h

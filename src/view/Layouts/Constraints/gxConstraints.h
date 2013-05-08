@@ -27,25 +27,25 @@ public:
      * @brief Sets a constraint for the given view element.
      *
      * @param aViewElement The view element for which the constraints is set
-     * @param aType The constraint type to set
-     * @param aValue The constraint value
+     * @param aConstraint The constraint to set
      * @param aOnMajorAxis Whether the constraint is on the major or minor axis.
-     */
-    void Set( gxViewElement*      aLayoutee,
-              gxConstraint::Type  aType,
-              gxConstraint::Value aValue,
-              bool                aOnMajorAxis = true );
-    
+     */    
+    template < typename ConstraintType >
     void Set( gxViewElement* aLayoutee,
-              gxConstraint*  aConstraint,
-              bool           aOnMajorAxis = true );
+              ConstraintType aConstraint,
+              bool           aOnMajorAxis = true )
+    {
+        gxConstraintKey iKey( aLayoutee, gxTypeId( ConstraintType ), aOnMajorAxis );
+        Set( iKey, aConstraint );
+    }
+    
     
     template < typename ConstraintType >
     void Get( const gxViewElement*  aLayoutee,
               ConstraintType&       aConstraint,
               const bool            aOnMajorAxis = true ) const
     {
-        gxConstraintKey iKey( aLayoutee, &typeid( ConstraintType ), aOnMajorAxis );
+        gxConstraintKey iKey( aLayoutee, gxTypeId( ConstraintType ), aOnMajorAxis );
         aConstraint = static_cast<ConstraintType>( Get( iKey ) );
     }
     
@@ -65,16 +65,11 @@ public:
      */
     int GetFlex( gxViewElement* aLayoutee,
                  bool           aOnMajorAxis );
-    
 protected:
     Map mConstraints;
     
     void Set( gxConstraintKey& aKey,
               gxConstraint*    aConstraint );
-    
-    void Get( gxViewElement*     aLayoutee,
-              gxConstraint::Type aConstraintType,
-              bool               aOnMajorAxis = true );
     
     gxConstraint* Get( const gxConstraintKey& aKey ) const;
 };

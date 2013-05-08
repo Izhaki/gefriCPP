@@ -28,9 +28,9 @@ bool gxDistribute::DoSize( const gxRect&              aRect,
     int   iTotalFlex    = 0;
     
     // For readability sake (we used these in the switch statements)
-    using gxConstraint::Type::Pixels;
-    using gxConstraint::Type::Percent;
-    using gxConstraint::Type::Flex;
+    using gxSizeConstraint::Unit::Pixels;
+    using gxSizeConstraint::Unit::Percent;
+    using gxSizeConstraint::Unit::Flex;
     
     gxSizeConstraint* iSizeConstraint = NULL;
     

@@ -33,18 +33,9 @@ gxBoxLayout::gxBoxLayout( gxDistribute::Type aDistribute,
     gxConstraintLayout ( aOnMajorAxis )
 {}
 
-bool gxBoxLayout::IsSupportedConstraint( gxConstraint::Type  aType )
+bool gxBoxLayout::IsSupportedConstraint( const gxConstraintId aId )
 {
-    switch ( aType )
-    {
-        case gxConstraint::Percent:
-        case gxConstraint::Flex:
-        case gxConstraint::Pixels:
-            return true;
-            
-        default:
-            return false;
-    }
+    return aId == gxTypeId( gxSizeConstraint* );
 }
 
 void gxBoxLayout::DoLayout( gxViewElement* aLayouter )
