@@ -192,6 +192,9 @@ void MyFrame::CreateBorderLayout()
     mEast   = new gxRectangle( gxSize( 50,20 ) );
 
     mContainer->Add( mNorth, mCenter, mSouth, mWest, mEast  );
+
+    
+//  mBorderLayout->SetConstraint( mNorth, new gxRegionConstraint( gxLayoutRegion::North ) );
     
     mBorderLayout->SetConstraint( mNorth,  gxConstraint::Region, gxLayoutRegion::North );
     mBorderLayout->SetConstraint( mCenter, gxConstraint::Region, gxLayoutRegion::Center );

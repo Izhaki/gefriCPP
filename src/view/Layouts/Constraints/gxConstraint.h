@@ -4,6 +4,10 @@
 #define gxMajorAxis true
 #define gxMinorAxis false
 
+#include <typeinfo>
+
+typedef const std::type_info* gxConstraintId;
+
 class gxConstraint
 {
 public:
@@ -31,7 +35,8 @@ public:
     
     virtual ~gxConstraint() {}
     
-    virtual Type GetType() = 0;
+//!    gxConstraintId GetId() { return &typeid( *this ); }
+    
 };
 
 #endif //gxConstraint_h

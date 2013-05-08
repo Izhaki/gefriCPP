@@ -140,7 +140,7 @@ void gxBorderLayout::AddAxisElements( gxViewElement::List& aFiltered,
 void gxBorderLayout::AddRegionElements( gxLayoutRegion::Type aRegion,
                                         gxViewElement::List& aFiltered )
 {
-    gxConstraints::Map iRegionConstraints =  mConstraints.Get( gxConstraint::Region );
+    gxConstraints::Map iRegionConstraints =  mConstraints.Get( &typeid( gxRegionConstraint ) );
     
     gxViewElement* iLayoutee = NULL;
     

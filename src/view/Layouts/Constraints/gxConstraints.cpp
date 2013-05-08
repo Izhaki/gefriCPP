@@ -30,7 +30,7 @@ void gxConstraints::Set( gxViewElement* aLayoutee,
                          gxConstraint*  aConstraint,
                          bool           aOnMajorAxis)
 {
-    gxConstraintKey iKey( aLayoutee, aConstraint->GetType(), aOnMajorAxis );
+    gxConstraintKey iKey( aLayoutee, &typeid( *aConstraint ), aOnMajorAxis );
     Set( iKey, aConstraint );
 }
 
@@ -53,12 +53,12 @@ gxConstraint* gxConstraints::Get( const gxConstraintKey& aKey ) const
     return iFound ? iConstraint->second : NULL;
 }
 
-gxConstraints::Map gxConstraints::Get( gxConstraint::Type aType )
+gxConstraints::Map gxConstraints::Get( gxConstraintId aId )
 {
     Map iFiltered;
     forEachConstraint( mConstraints, iConstraint )
     {
-        if ( iConstraint->first.mConstraintType == aType )
+        if ( iConstraint->first.mConstraintId == aId )
         {
             iFiltered[iConstraint->first] = iConstraint->second;
         }

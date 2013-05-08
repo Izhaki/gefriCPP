@@ -45,11 +45,11 @@ public:
               ConstraintType&       aConstraint,
               const bool            aOnMajorAxis = true ) const
     {
-        gxConstraintKey iKey( aLayoutee, aConstraint->Id, aOnMajorAxis );
+        gxConstraintKey iKey( aLayoutee, &typeid( ConstraintType ), aOnMajorAxis );
         aConstraint = static_cast<ConstraintType>( Get( iKey ) );
     }
     
-    Map Get( gxConstraint::Type aType );
+    Map Get( gxConstraintId aId );
     
     // Helper methods
     

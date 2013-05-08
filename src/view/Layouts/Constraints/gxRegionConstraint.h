@@ -17,9 +17,6 @@ namespace gxLayoutRegion {
 class gxRegionConstraint : public gxPrimitiveConstraint< gxLayoutRegion::Type >
 {
 public:
-    static const gxConstraint::Type Id = Region;
-    virtual gxConstraint::Type GetType() { return Region; }
-    
     gxRegionConstraint( gxLayoutRegion::Type aRegion ) :
         gxPrimitiveConstraint< gxLayoutRegion::Type >( aRegion )
     {}

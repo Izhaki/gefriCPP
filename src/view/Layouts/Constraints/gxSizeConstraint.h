@@ -26,9 +26,6 @@ class gxSizeConstraint : public gxConstraint
 private:
     typedef gxConstraint::Type gxSizeUnit;
 public:
-    static const gxConstraint::Type Id = Size;
-    virtual gxConstraint::Type GetType() { return Size; }
-    
     gxSizeConstraint( gxConstraint::Type aType,
                       int                aValue ) :
         mUnit(  aType ),
