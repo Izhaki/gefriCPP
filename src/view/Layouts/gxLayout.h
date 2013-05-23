@@ -9,17 +9,10 @@
 class gxViewElement;
 
 /**
- * @brief A base class for various layouts.
+ * @brief A base class for the various layouts.
  *
- * Layouts are composed into view elements so to layout their decendents.
- * 
- * Each layout contains a list of constraineds, each includes a view elements
- * and some additional data to help the layout perform its task.
- * 
- * Layouts don't modify view elements whilst the various layout operations are
- * being performed. Instead, they work on temp bounds that are part of the
- * constraineds data. When all layout operations are completed, the layout then
- * applies these temp bounds to the view elements.
+ * Layouts are composed into view elements to layout their children.
+ *
  */
 class gxLayout : public gxObject
 {
@@ -42,7 +35,7 @@ public:
     void Invalidate( gxViewElement* aLayoutee );
     
 protected:
-    bool                mOnMajorAxis;
+    bool mOnMajorAxis;
     
     enum LayoutStatus {
         Valid,

@@ -1,6 +1,5 @@
 #include "View/Layouts/gxBoxLayout.h"
 #include "View/Elements/gxViewElement.h"
-#include "core/gxComposite.h"
 
 gxBoxLayout::gxBoxLayout():
     mDistribute ( gxDistribute::Element ),

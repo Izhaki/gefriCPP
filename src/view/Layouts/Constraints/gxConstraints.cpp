@@ -19,10 +19,12 @@ gxConstraints::~gxConstraints()
 void gxConstraints::Set( gxConstraintKey& aKey,
                          gxConstraint*    aConstraint  )
 {
-    // Delete any previous constraint with this key
+    // Delete any previous constraint with this key (this will work fine if the
+    // key does not exist as the defualt value will be null, which delete
+    // handles well.
     delete mConstraints[ aKey ];
     
-    // Set a new one
+    // Set the new one
     mConstraints[ aKey ] = aConstraint;
 }
 
@@ -36,15 +38,17 @@ gxConstraint* gxConstraints::Get( const gxConstraintKey& aKey ) const
 
 gxConstraints::Map gxConstraints::Get( gxConstraintId aId )
 {
-    Map iFiltered;
+    Map iResult;
     forEachConstraint( mConstraints, iConstraint )
     {
+        // If the constraint has the same id as the requested one...
         if ( iConstraint->first.mConstraintId == aId )
         {
-            iFiltered[iConstraint->first] = iConstraint->second;
+            // And it to the result
+            iResult[ iConstraint->first ] = iConstraint->second;
         }
     }
-    return iFiltered;
+    return iResult;
 }
 
 gxLayoutRegion::Type gxConstraints::GetRegion( gxViewElement* aLayoutee )

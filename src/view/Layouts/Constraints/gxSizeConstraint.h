@@ -1,7 +1,6 @@
 #ifndef gxSizeConstraint_h
 #define gxSizeConstraint_h
 
-#include "Core/gxAssert.h"
 #include "View/Layouts/Constraints/gxConstraint.h"
 
 /**

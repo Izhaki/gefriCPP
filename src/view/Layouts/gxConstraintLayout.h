@@ -4,6 +4,10 @@
 #include "View/Layouts/gxLayout.h"
 #include "View/Layouts/Constraints/gxConstraints.h"
 
+
+/**
+ * @brief Base class for the layouts that allow layoutees to have constraints.
+ */
 class gxConstraintLayout : public gxLayout
 {
 public:
@@ -11,6 +15,7 @@ public:
     gxConstraintLayout( bool aOnMajorAxis );
     
     ~gxConstraintLayout();
+    
     /**
      * @brief Sets a constraint for the given view element.
      *
@@ -18,7 +23,6 @@ public:
      * @param aConstraint The constraint to set
      * @param aOnMajorAxis Whether or not the constraint is on the major axis
      */
-
     template < typename ConstraintType >
     void SetConstraint( gxViewElement* aLayoutee,
                         ConstraintType aConstraint,
@@ -36,16 +40,8 @@ public:
 protected:
     gxConstraints mConstraints;
     
-    /**
-     * @brief Initializes the contstaineds list.
-     *
-     */
     virtual void Init();
     
-    /**
-     * @brief Applies the calculated bounds to the various view elements.
-     * Called when all layout operations are completed.
-     */
     virtual void Apply();
     
     /**

@@ -10,10 +10,6 @@ typedef const std::type_info* gxConstraintId;
 
 #define gxTypeId( aType ) &typeid( aType )
 
-class gxConstraint
-{
-public:
-    virtual ~gxConstraint() {}
-};
+class gxConstraint {};
 
 #endif //gxConstraint_h
