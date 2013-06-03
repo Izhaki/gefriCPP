@@ -2,6 +2,7 @@
 #include "View/Elements/gxViewElement.h"
 #include "View/Layouts/Operations/gxLayoutOperations.h"
 #include "View/Layouts/gxBoxLayout.h"
+#include "gxLog.h"
 
 gxBorderLayout::gxBorderLayout()
 {}
@@ -18,7 +19,9 @@ bool gxBorderLayout::IsSupportedConstraint( const gxConstraintId aId )
 
 void gxBorderLayout::DoLayout( gxViewElement* aLayouter )
 {
-    gxViewElement::List iLayoutees = aLayouter->GetChildren();
+
+    gxViewElement::Iterator iLayoutees( aLayouter->GetChildren() );
+
     // Get the center constrainst. This will also raise assertion if there
     // isn't one, or if there's more than one.
     gxViewElement* iCenterElement = GetCenterElement( iLayoutees );
@@ -61,29 +64,31 @@ void gxBorderLayout::DoLayout( gxViewElement* aLayouter )
     // Layout, we can use it to find the correct offset
     gxPix iOldCenterPosition = iBounds.GetPosition( mOnMajorAxis );
 
-    forEachElement( iFiltered, iLayoutee )
+    gxViewElement::Iterator iMinorElements( &iFiltered );
+    
+    for ( iMinorElements.First(); iMinorElements.Current(); iMinorElements.Next() )
     {
         // Get the previous bounds
-        iBounds = (*iLayoutee)->GetBounds();
+        iBounds = iMinorElements.Current()->GetBounds();
         
         // Translate them
         iBounds.Translate( iOldCenterPosition, mOnMajorAxis );
         
         // And set
-        (*iLayoutee)->SetBounds( iBounds );
+        iMinorElements.Current()->SetBounds( iBounds );
     }
 }
 
-gxViewElement* gxBorderLayout::GetCenterElement( gxViewElement::List aLayoutees )
+gxViewElement* gxBorderLayout::GetCenterElement( gxViewElement::Iterator& aLayoutees )
 {
     gxViewElement* iResult = NULL;
     short          iFound  = 0;
     
-    forEachElement( aLayoutees, iLayoutee )
+    for ( aLayoutees.First(); aLayoutees.Current(); aLayoutees.Next() )
     {
-        if ( mConstraints.GetRegion( *iLayoutee ) == gxLayoutRegion::Center )
+        if ( mConstraints.GetRegion( aLayoutees.Current() ) == gxLayoutRegion::Center )
         {
-            iResult = *iLayoutee;
+            iResult = aLayoutees.Current();
             iFound++;
         }
     }
@@ -105,7 +110,9 @@ void gxBorderLayout::LayoutAxis( gxViewElement::List& aFiltered,
     
     AddAxisElements( aFiltered, aOnMajorAxis );
     
-    iBoxLayout.DoLayout( aBounds, aFiltered, mConstraints, aOnMajorAxis );
+    gxViewElement::Iterator iLayoutees( &aFiltered );
+    
+    iBoxLayout.DoLayout( aBounds, iLayoutees, mConstraints, aOnMajorAxis );
 }
 
 

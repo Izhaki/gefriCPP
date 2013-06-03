@@ -1,10 +1,10 @@
 #include "View/Layouts/Operations/gxDistribute.h"
 
-gxDistribute::gxDistribute( const Type                 aType,
-                            const gxRect&              aRect,
-                            const gxViewElement::List& aLayoutees,
-                            const gxConstraints&       aConstraints,
-                            const bool                 onMajorAxis )
+gxDistribute::gxDistribute( const Type                     aType,
+                            const gxRect&                  aRect,
+                                  gxViewElement::Iterator& aLayoutees,
+                            const gxConstraints&           aConstraints,
+                            const bool                     onMajorAxis )
 {
     // First Set the size of the elements.
     bool iHasFlex = DoSize( aRect, aLayoutees, aConstraints, onMajorAxis );
@@ -18,10 +18,10 @@ gxDistribute::gxDistribute( const Type                 aType,
     DoDistribute( iType, aRect, aLayoutees, aConstraints, onMajorAxis );
 }
 
-bool gxDistribute::DoSize( const gxRect&              aRect,
-                           const gxViewElement::List& aLayoutees,
-                           const gxConstraints&       aConstraints,
-                           const bool                 onMajorAxis )
+bool gxDistribute::DoSize( const gxRect&                  aRect,
+                                 gxViewElement::Iterator& aLayoutees,
+                           const gxConstraints&           aConstraints,
+                           const bool                     onMajorAxis )
 {
     gxPix iTotalPixels  = 0;
     int   iTotalPercent = 0;
@@ -36,9 +36,9 @@ bool gxDistribute::DoSize( const gxRect&              aRect,
     
     // Work out how much there is from each type of size:
     // Pixels, Percent, Flex
-    forEachElement( aLayoutees, iLayoutee )
+    for ( aLayoutees.First(); aLayoutees.Current(); aLayoutees.Next() )
     {
-        aConstraints.Get( *iLayoutee, iSizeConstraint, onMajorAxis );
+        aConstraints.Get( aLayoutees.Current(), iSizeConstraint, onMajorAxis );
         
         if ( iSizeConstraint )
         {
@@ -52,7 +52,7 @@ bool gxDistribute::DoSize( const gxRect&              aRect,
                 default: break;
             }
         } else {
-            iTotalPixels += (*iLayoutee)->GetSize( onMajorAxis );
+            iTotalPixels += aLayoutees.Current()->GetSize( onMajorAxis );
         }
     }
     
@@ -67,8 +67,9 @@ bool gxDistribute::DoSize( const gxRect&              aRect,
     gxPix iFlexLeft      = iPixelsLeft - iPixelsLeft * iTotalPercent / 100;
     gxPix iSize;
     
-    forEachElement( aLayoutees, iLayoutee ) {
-        aConstraints.Get( *iLayoutee, iSizeConstraint, onMajorAxis );
+    for ( aLayoutees.First(); aLayoutees.Current(); aLayoutees.Next() )
+    {
+        aConstraints.Get( aLayoutees.Current(), iSizeConstraint, onMajorAxis );
         
         if ( iSizeConstraint ) {
             int iValue = iSizeConstraint->GetValue();
@@ -79,18 +80,18 @@ bool gxDistribute::DoSize( const gxRect&              aRect,
                 case Flex:    iSize = iFlexLeft * iValue / iTotalFlex ; break;
                 default: break;
             }
-            (*iLayoutee)->SetSize( iSize, onMajorAxis );
+            aLayoutees.Current()->SetSize( iSize, onMajorAxis );
         }
     }
     
     return iTotalFlex != 0;
 }
 
-void gxDistribute::DoDistribute( const Type                 aType,
-                                 const gxRect&              aRect,
-                                 const gxViewElement::List& aLayoutees,
-                                 const gxConstraints&       aConstraints,
-                                 const bool                 onMajorAxis )
+void gxDistribute::DoDistribute( const Type                     aType,
+                                 const gxRect&                  aRect,
+                                       gxViewElement::Iterator& aLayoutees,
+                                 const gxConstraints&           aConstraints,
+                                 const bool                     onMajorAxis )
 {
     gxPix iPosition = 0;
     gxPix iSpacing  = 0;
@@ -99,13 +100,13 @@ void gxDistribute::DoDistribute( const Type                 aType,
     // between them
     if ( aType != Start )
     {
-        int   iCount        = aLayoutees.size();
+        int   iCount        = aLayoutees.Count();
         int   iElementsSize = 0;
         
         // Calulate the total size of all elements
-        forEachElement( aLayoutees, iLayoutee )
+        for ( aLayoutees.First(); aLayoutees.Current(); aLayoutees.Next() )
         {
-            iElementsSize += (*iLayoutee)->GetSize( onMajorAxis );
+            iElementsSize += aLayoutees.Current()->GetSize( onMajorAxis );
         }
         
         if ( aType == Middle || aType == End )
@@ -150,11 +151,11 @@ void gxDistribute::DoDistribute( const Type                 aType,
     gxPix iLayouteeSize;
     
     // Now apply position and spacing
-    forEachElement( aLayoutees, iLayoutee )
+    for ( aLayoutees.First(); aLayoutees.Current(); aLayoutees.Next() )
     {
-        (*iLayoutee)->SetPosition( iPosition, onMajorAxis );
+        aLayoutees.Current()->SetPosition( iPosition, onMajorAxis );
         
-        iLayouteeSize = (*iLayoutee)->GetSize( onMajorAxis );
+        iLayouteeSize = aLayoutees.Current()->GetSize( onMajorAxis );
         
         switch ( aType )
         {

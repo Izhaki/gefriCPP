@@ -73,6 +73,7 @@
 		876C5D04164C73E60006CB61 /* gxPaintDC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxPaintDC.h; sourceTree = "<group>"; };
 		876C5D05164C73E60006CB61 /* gxString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxString.h; sourceTree = "<group>"; };
 		876C5D6F164C74B30006CB61 /* wx2.9.4.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = wx2.9.4.xcconfig; sourceTree = "<group>"; };
+		877892DF175D4D9E001DACA2 /* gxIterator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gxIterator.h; sourceTree = "<group>"; };
 		8795356516DA762A006D69FE /* gxScale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxScale.h; sourceTree = "<group>"; };
 		8795359C16DA8FC9006D69FE /* gxDivProvider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gxDivProvider.cpp; sourceTree = "<group>"; };
 		8795359D16DA8FC9006D69FE /* gxDivProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gxDivProvider.h; sourceTree = "<group>"; };
@@ -215,6 +216,7 @@
 				87C7BA78167FE2F200BB7FE2 /* observer */,
 				876C5CF7164C73E60006CB61 /* geometry */,
 				876C5CFE164C73E60006CB61 /* gxAssert.h */,
+				877892DF175D4D9E001DACA2 /* gxIterator.h */,
 				876C5D00164C73E60006CB61 /* gxComposite.h */,
 				876C5D01164C73E60006CB61 /* gxFlags.h */,
 				876C5D02164C73E60006CB61 /* gxLog.h */,

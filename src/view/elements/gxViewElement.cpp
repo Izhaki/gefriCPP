@@ -122,16 +122,17 @@ void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
     if ( IsChildless() )
         return;
     
-    forEachChild( aChild )
+    Iterator iChildren( GetChildren() );
+    for ( iChildren.First(); iChildren.Current(); iChildren.Next() )
     {
         gxRect iChildBounds;
-        aChild->GetDescendantsBounds( iChildBounds );
+        iChildren.Current()->GetDescendantsBounds( iChildBounds );
         
         // Consider the caller is at (0, 0); this view element is
         // located at (20, 20); The child bounds return (30, 30); But relative
         // to the caller these are really (50, 50) - not (30, 30). So we have
         // to transform the children bounds.
-        if ( aChild->IsRelative() )
+        if ( iChildren.Current()->IsRelative() )
         {
             Transform( iChildBounds );
             aBounds.Union( iChildBounds );
@@ -216,10 +217,12 @@ void gxViewElement::InvalidateDown()
     if ( IsChildless() )
         return;
     
+    Iterator iChildren( GetChildren() );
+    
     // Notify all children that their ancestor has changed.
-    forEachChild( aChild )
+    for ( iChildren.First(); iChildren.Current(); iChildren.Next() )
     {
-        aChild->InvalidateDown();
+        iChildren.Current()->InvalidateDown();
     }
 }
 
@@ -233,13 +236,16 @@ void gxViewElement::Validate()
     // setting this view element to invalid.
     MarkValid();
     
+    
+    Iterator iChildren( GetChildren() );
+    
     // Ask all children to validate themselves in case they are invalid.
     // Notice that validate on descendants may trigger invalidation and will
     // mark this view element as invalid again.
-    forEachChild( aChild )
+    for ( iChildren.First(); iChildren.Current(); iChildren.Next() )
     {
-        if ( aChild->IsntValid() )
-            aChild->Validate();
+        if ( iChildren.Current()->IsntValid() )
+            iChildren.Current()->Validate();
     }
 
     // If I was invalid before validating the descendants, and if I'm not

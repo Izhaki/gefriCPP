@@ -41,13 +41,15 @@ void gxBoxLayout::DoLayout( gxViewElement* aLayouter )
 {
     gxRect iContainerBounds = aLayouter->GetInnerBounds();
     
-    DoLayout( iContainerBounds, aLayouter->GetChildren(), mConstraints, mOnMajorAxis );
+    gxViewElement::Iterator iLayoutees( aLayouter->GetChildren() );
+    
+    DoLayout( iContainerBounds, iLayoutees, mConstraints, mOnMajorAxis );
 }
 
-void gxBoxLayout::DoLayout( const gxRect&              aRect,
-                            const gxViewElement::List& aLayoutees,
-                            const gxConstraints&       aConstraints,
-                            const bool                 aOnMajorAxis )
+void gxBoxLayout::DoLayout( const gxRect&                  aRect,
+                                  gxViewElement::Iterator& aLayoutees,
+                            const gxConstraints&           aConstraints,
+                            const bool                     aOnMajorAxis )
 {
     gxDistribute( mDistribute,
                   aRect,                 

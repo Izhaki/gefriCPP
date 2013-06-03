@@ -102,10 +102,12 @@ void gxScroller::GetDescendantsBounds( gxRect &aBounds )
     if ( IsChildless() )
         return;
     
-    forEachChild ( aChild )
+    
+    Iterator iChildren( GetChildren() );
+    for ( iChildren.First(); iChildren.Current(); iChildren.Next() )
     {
         gxRect iChildBounds;
-        aChild->GetDescendantsBounds( iChildBounds );
+        iChildren.Current()->GetDescendantsBounds( iChildBounds );
         
         aBounds.Union( iChildBounds );
     }

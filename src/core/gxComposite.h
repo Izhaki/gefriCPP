@@ -2,17 +2,9 @@
 #define gxComposite_h
 
 #include "core/gxAssert.h"
+#include "core/gxIterator.h"
 
 #include <list>
-
-// A macro for looping all childrens (used from within the composite itself)
-// TODO: Pretty sure that now composite is class template, it doesn't need the aItem
-#define forEachChild( aItem ) \
-    ChildrenType* aItem; \
-    for ( Iterator it = mChildren.begin(); \
-          it != mChildren.end() && ( aItem = *it ); \
-          ++it \
-        )
 
 /**
  * @brief A generic class that can contain children of its own kind, therefore
@@ -29,7 +21,7 @@ class gxComposite
 public:
     typedef tComposite                    ChildrenType;
     typedef std::list< tComposite* >      List;
-    typedef typename List::iterator       Iterator;
+//    typedef typename List::iterator       Eterator;
     typedef typename List::const_iterator ConstIterator;
     
     gxComposite()
@@ -45,7 +37,13 @@ public:
         if ( HasParent() )
             GetParent()->Remove( This() );
     }
-
+    
+    class Iterator: public gxIterator<List>
+    {
+    public:
+        Iterator( List* aList ): gxIterator<List>( aList ) { }
+    };
+    
     /**
      * @brief Adds a new child to this object.
      * @param aChild The child to be added
@@ -138,7 +136,8 @@ public:
      */
     void RemoveAllChildren( bool aAndDelete = false )
     {
-        for ( Iterator it = mChildren.begin();
+        typename List::iterator it;
+        for ( it = mChildren.begin();
               !mChildren.empty();
               it = mChildren.begin() )
         {
@@ -183,9 +182,9 @@ public:
     
     /**
      * @brief Returns the children of this object.
-     * @return An std::list representing the children
+     * @return A pointer to an std::list representing the children
      */
-    List GetChildren() { return mChildren; }
+    List* GetChildren() { return &mChildren; }
 
     /**
      * @brief Returns index of this view element within its parent list of

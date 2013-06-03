@@ -7,14 +7,6 @@
 #include "View/gxTransformations.h"
 #include "View/Layouts/gxLayout.h"
 
-// A macro allowing looping all children of a particular composite
-#define forEachElement( aElements, aElement ) \
-    for ( gxViewElement::ConstIterator aElement = aElements.begin(); \
-        aElement != aElements.end(); \
-        ++aElement \
-    )
-
-
 // Forward declarations
 class gxRootViewElement;
 class gxLightweightSystem;

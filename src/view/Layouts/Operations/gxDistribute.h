@@ -15,22 +15,22 @@ struct gxDistribute
         End
     };
     
-    gxDistribute( const Type                 aType,
-                  const gxRect&              aRect,
-                  const gxViewElement::List& aLayoutees,
-                  const gxConstraints&       aConstraints,
-                  const bool                 onMajorAxis );
+    gxDistribute( const Type                     aType,
+                  const gxRect&                  aRect,
+                        gxViewElement::Iterator& aLayoutees,
+                  const gxConstraints&           aConstraints,
+                  const bool                     onMajorAxis );
 
-    bool DoSize( const gxRect&              aRect,
-                 const gxViewElement::List& aLayoutees,
-                 const gxConstraints&       aConstraints,
-                 const bool                 onMajorAxis );
+    bool DoSize( const gxRect&                  aRect,
+                       gxViewElement::Iterator& aLayoutees,
+                 const gxConstraints&           aConstraints,
+                 const bool                     onMajorAxis );
     
-    void DoDistribute( const Type                 aType,
-                       const gxRect&              aRect,
-                       const gxViewElement::List& aLayoutees,
-                       const gxConstraints&       aConstraints,
-                       const bool                 onMajorAxis );
+    void DoDistribute( const Type                     aType,
+                       const gxRect&                  aRect,
+                             gxViewElement::Iterator& aLayoutees,
+                       const gxConstraints&           aConstraints,
+                       const bool                     onMajorAxis );
     
 };
 

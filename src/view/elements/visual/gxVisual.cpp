@@ -82,10 +82,11 @@ void gxVisual::PaintChildren( gxPainter &aPainter )
     // Offset all paint operation by the top-left point of this element
     aPainter.SetTranslate( GetBounds().GetPosition() );
 
-    forEachChild ( aChild )
+    Iterator iChildren( GetChildren() );
+    for ( iChildren.First(); iChildren.Current(); iChildren.Next() )
     {
         // Paint the child
-        aChild->Paint( aPainter );
+        iChildren.Current()->Paint( aPainter );
     }
 
     // Pop (will also restore) the painter state to before translate.

@@ -24,7 +24,7 @@ private:
                      gxRect&              aBounds,
                      bool                 aOnMajorAxis );
     
-    gxViewElement* GetCenterElement( gxViewElement::List aLayoutees );
+    gxViewElement* GetCenterElement( gxViewElement::Iterator& aLayoutees );
 };
 
 

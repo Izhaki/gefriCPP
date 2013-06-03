@@ -13,11 +13,11 @@ struct gxAlign
         End
     };
     
-    gxAlign( const Type                 aType,
-             const gxRect&              aRect,
-             const gxViewElement::List& aLayoutees,
-             const gxConstraints&       aConstraints,
-             const bool                 onMajorAxis );
+    gxAlign( const Type                     aType,
+             const gxRect&                  aRect,
+                   gxViewElement::Iterator& aLayoutees,
+             const gxConstraints&           aConstraints,
+             const bool                     onMajorAxis );
 };
 
 #endif //gxAlign_h

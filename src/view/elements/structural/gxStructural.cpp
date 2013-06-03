@@ -28,9 +28,11 @@ void gxStructural::PaintChildren(gxPainter &aPainter)
     if ( IsChildless() )
         return;
     
-    forEachChild( aChild )
+    
+    Iterator iChildren( GetChildren() );
+    for ( iChildren.First(); iChildren.Current(); iChildren.Next() )
     {
-        aChild->Paint( aPainter );
+        iChildren.Current()->Paint( aPainter );
     }
 }
 

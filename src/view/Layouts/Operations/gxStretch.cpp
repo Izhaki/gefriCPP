@@ -1,9 +1,9 @@
 #include "View/Layouts/Operations/gxStretch.h"
 
-gxStretch::gxStretch( const Type                 aType,
-                      const gxRect&              aRect,
-                      const gxViewElement::List& aLayoutees,
-                      const bool                 onMajorAxis )
+gxStretch::gxStretch( const Type                     aType,
+                      const gxRect&                  aRect,
+                            gxViewElement::Iterator& aLayoutees,
+                      const bool                     onMajorAxis )
 {
     gxPix  iSize = 0;
     
@@ -14,22 +14,22 @@ gxStretch::gxStretch( const Type                 aType,
         case Max:  iSize = GetMaxSize( aLayoutees, onMajorAxis );    break;
     }
     
-    forEachElement( aLayoutees, iLayoutee )
+    for ( aLayoutees.First(); aLayoutees.Current(); aLayoutees.Next() )
     {
-        (*iLayoutee)->SetSize( iSize, onMajorAxis );
+        aLayoutees.Current()->SetSize( iSize, onMajorAxis );
     }
     
 }
 
-gxPix gxStretch::GetMaxSize( const gxViewElement::List& aLayoutees,
-                             const bool                 onMajorAxis )
+gxPix gxStretch::GetMaxSize(       gxViewElement::Iterator& aLayoutees,
+                             const bool                     onMajorAxis )
 {
     gxPix iLayouteeSize;
     gxPix iSize = 0;
 
-    forEachElement( aLayoutees, iLayoutee )
+    for ( aLayoutees.First(); aLayoutees.Current(); aLayoutees.Next() )
     {
-        iLayouteeSize = (*iLayoutee)->GetSize( onMajorAxis );
+        iLayouteeSize = aLayoutees.Current()->GetSize( onMajorAxis );
         iSize          = gxMax( iSize, iLayouteeSize );
     }
     
