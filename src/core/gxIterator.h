@@ -36,12 +36,12 @@ public:
         UpdateCurrent();
     }
     
-    int Count()
+    virtual int Count()
     {
         return (*mContainer).size();
     }
     
-private:
+protected:
     tContainer* mContainer;
     tIterator   mIterator;
     tElement    mCurrent;

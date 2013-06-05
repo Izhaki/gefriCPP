@@ -41,7 +41,7 @@ void gxBoxLayout::DoLayout( gxViewElement* aLayouter )
 {
     gxRect iContainerBounds = aLayouter->GetInnerBounds();
     
-    gxViewElement::Iterator iLayoutees( aLayouter->GetChildren() );
+    gxViewElement::VisualIterator iLayoutees( aLayouter->GetChildren() );
     
     DoLayout( iContainerBounds, iLayoutees, mConstraints, mOnMajorAxis );
 }

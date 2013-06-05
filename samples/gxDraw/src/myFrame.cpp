@@ -192,7 +192,9 @@ void MyFrame::CreateBorderLayout()
     mEast   = new gxRectangle( gxSize( 50,20 ) );
 
     mContainer->Add( mNorth, mCenter, mSouth, mWest, mEast );
-
+    
+//    mNorth->SetVisible( false );
+//    mEast->SetVisible( false );
     
     mBorderLayout->SetConstraint( mNorth,  new gxRegionConstraint( gxLayoutRegion::North ) );
     mBorderLayout->SetConstraint( mCenter, new gxRegionConstraint( gxLayoutRegion::Center ) );
@@ -248,7 +250,6 @@ void MyFrame::OnMoveFace(wxCommandEvent &e)
 
 void MyFrame::OnModifyLayout(wxCommandEvent &e)
 {
-//TODO    mBorderLayout->SetRect( mWest, gxRect( 0, 0, 100, 40 ) );
 }
 
 

@@ -33,6 +33,53 @@ class gxViewElement: public gxComposite<gxViewElement>
 public:
     gxViewElement();
     ~gxViewElement();
+    
+    // TODO: Consider turning into a caching iterator (one that chaches the
+    // visible items upon construction and otherwise is identical to the base
+    // iterator.
+    class VisualIterator: public Iterator
+    {
+    public:
+        VisualIterator( List* aList ):
+            Iterator( aList )
+        { }
+        
+        virtual void First()
+        {
+            mIterator = (*mContainer).begin();
+            EnsureVisible();
+        }
+        
+        virtual void Next()
+        {
+            ++mIterator;
+            EnsureVisible();
+        }
+        
+        virtual int Count()
+        {
+            int iCount = 0;
+            
+            for ( tIterator iIterator = (*mContainer).begin();
+                  iIterator != (*mContainer).end();
+                  ++iIterator)
+            {
+                iCount++;
+            }
+            return iCount;
+        }
+        
+    private:
+        void EnsureVisible()
+        {
+            while ( !(*mIterator)->IsVisible() && mIterator != (*mContainer).end() )
+            {
+                ++mIterator;
+            }
+            
+            UpdateCurrent();
+        }
+    };
 
     /**
      * @brief Paints the view element and its children.

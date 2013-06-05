@@ -20,7 +20,7 @@ bool gxBorderLayout::IsSupportedConstraint( const gxConstraintId aId )
 void gxBorderLayout::DoLayout( gxViewElement* aLayouter )
 {
 
-    gxViewElement::Iterator iLayoutees( aLayouter->GetChildren() );
+    gxViewElement::VisualIterator iLayoutees( aLayouter->GetChildren() );
 
     // Get the center constrainst. This will also raise assertion if there
     // isn't one, or if there's more than one.
@@ -110,7 +110,7 @@ void gxBorderLayout::LayoutAxis( gxViewElement::List& aFiltered,
     
     AddAxisElements( aFiltered, aOnMajorAxis );
     
-    gxViewElement::Iterator iLayoutees( &aFiltered );
+    gxViewElement::VisualIterator iLayoutees( &aFiltered );
     
     iBoxLayout.DoLayout( aBounds, iLayoutees, mConstraints, aOnMajorAxis );
 }
@@ -140,6 +140,7 @@ void gxBorderLayout::AddRegionElements( gxLayoutRegion::Type aRegion,
     
     gxViewElement* iLayoutee = NULL;
     
+    //TODO need to check if the lement is visible
     forEachConstraint( iRegionConstraints, iConstraint )
     {
         iLayoutee = iConstraint->first.mLayoutee;
