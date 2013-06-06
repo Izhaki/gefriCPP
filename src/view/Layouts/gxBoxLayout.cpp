@@ -49,7 +49,8 @@ void gxBoxLayout::DoLayout( gxViewElement* aLayouter )
 void gxBoxLayout::DoLayout( const gxRect&                  aRect,
                                   gxViewElement::Iterator& aLayoutees,
                             const gxConstraints&           aConstraints,
-                            const bool                     aOnMajorAxis )
+                            const bool                     aOnMajorAxis,
+                            const bool                     aRelative )
 {
     gxDistribute( mDistribute,
                   aRect,                 
@@ -66,5 +67,6 @@ void gxBoxLayout::DoLayout( const gxRect&                  aRect,
              aRect,
              aLayoutees,
              aConstraints,
-             !aOnMajorAxis );
+             !aOnMajorAxis,
+             aRelative );
 }

@@ -17,7 +17,8 @@ struct gxAlign
              const gxRect&                  aRect,
                    gxViewElement::Iterator& aLayoutees,
              const gxConstraints&           aConstraints,
-             const bool                     onMajorAxis );
+             const bool                     onMajorAxis,
+             const bool                     aRelative = true );
 };
 
 #endif //gxAlign_h

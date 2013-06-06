@@ -14,17 +14,33 @@ protected:
     
     virtual void DoLayout( gxViewElement* aLayouter );
 private:
-    void AddAxisElements( gxViewElement::List& aFiltered,
-                          bool                 aOnMajorAxis );
-        
-    void AddRegionElements( gxLayoutRegion::Type aRegion,
-                            gxViewElement::List& aFiltered );
+    // Cache lists of the various elements;
+    gxViewElement::List mCenterElements, mMajorElements, mMinorElements;
     
-    void LayoutAxis( gxViewElement::List& aFiltered,
-                     gxRect&              aBounds,
-                     bool                 aOnMajorAxis );
-    
-    gxViewElement* GetCenterElement( gxViewElement::Iterator& aLayoutees );
+    /**
+     * @brief Caches the center, major and minor elements into member lists
+     */
+    void CacheElements( gxViewElement::Iterator& aLayoutees );
+
+    /**
+     * @brief Returns the center element.
+     *
+     * This method will raise assertion if there isn't only one element with
+     * center constraint.
+     *
+     * The method also makes sure the center element has flex of 1 (or above) on
+     * both the major and minor axes.
+     *
+     * @return The center element if there's only one or NULL otherwise.
+     */
+    gxViewElement* GetCenterElement();
+
+    /**
+     * @brief A helper method to add the items from the second list to the end
+     * of the first one.
+     */
+    void ConcatList( gxViewElement::List& aTo,
+                     gxViewElement::List& aFrom );
 };
 
 

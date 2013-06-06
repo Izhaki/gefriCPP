@@ -21,12 +21,24 @@ public:
                  bool               aOnMajorAxis );
     
     /**
-     * @brief BoxLayout kindly offers this method to BorderLayout.
+     * @brief The actual layout operation.
+     *
+     * This method is promoted to public as BoxLayout kindly offers this method
+     * to BorderLayout.
+     *
+     * @param aRect The rect to align with reference to.
+     * @param aLayoutees A view elements iterator of the elements to lay out.
+     * @param aConstraints The constraints map.     
+     * @param aOnMajorAxis Whether we are layouting on the major or minor axes.
+     * @param aRelative Whether the layoutees are relative to the rect
+     *        provided, or wheter the position of the rect should serve as an
+     *        anchor.
      */
     void DoLayout( const gxRect&                  aRect,
                          gxViewElement::Iterator& aLayoutees,
                    const gxConstraints&           aConstraints,
-                   const bool                     aOnMajorAxis );
+                   const bool                     aOnMajorAxis,
+                   const bool                     aRelative = true );
     
 protected:
     gxStretch::Type    mStretch;

@@ -4,13 +4,18 @@ gxAlign::gxAlign( const Type                     aType,
                   const gxRect&                  aRect,
                         gxViewElement::Iterator& aLayoutees,
                   const gxConstraints&           aConstraints,
-                  const bool                     onMajorAxis )
+                  const bool                     onMajorAxis,
+                  const bool                     aRelative )
 {
     if ( aType == None )
         return;
     
     gxPix iPosition = 0;
     gxPix iContainerSize = aRect.GetSize( onMajorAxis );
+    gxPix iContainerPosition = aRect.GetPosition( onMajorAxis );
+    
+    gxPix iOffset = aRelative ? 0 : iContainerPosition;
+    
     
     for ( aLayoutees.First(); aLayoutees.Current(); aLayoutees.Next() )
     {
@@ -24,6 +29,6 @@ gxAlign::gxAlign( const Type                     aType,
             case End:    iPosition = ( iContainerSize - iSize );     break;
         }
         
-        aLayoutees.Current()->SetPosition( iPosition, onMajorAxis );
+        aLayoutees.Current()->SetPosition( iPosition + iOffset, onMajorAxis );
     }
 }
