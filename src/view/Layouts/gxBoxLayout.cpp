@@ -52,21 +52,29 @@ void gxBoxLayout::DoLayout( const gxRect&                  aRect,
                             const bool                     aOnMajorAxis,
                             const bool                     aRelative )
 {
+    bool iRelative = false;
+    gxRect iRect( aRect );
+    if ( aRelative )
+    {
+        iRect.SetPosition( gxPoint( 0, 0 ) );
+    }
+    
     gxDistribute( mDistribute,
-                  aRect,                 
+                  iRect,
                   aLayoutees,
                   aConstraints,
-                  aOnMajorAxis );
+                  aOnMajorAxis,
+                  iRelative );
     
     gxStretch( mStretch,
-               aRect,
+               iRect,
                aLayoutees,
                !aOnMajorAxis );
 
     gxAlign( mAlign,
-             aRect,
+             iRect,
              aLayoutees,
              aConstraints,
              !aOnMajorAxis,
-             aRelative );
+             iRelative );
 }

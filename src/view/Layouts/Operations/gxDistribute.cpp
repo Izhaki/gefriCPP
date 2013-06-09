@@ -4,7 +4,8 @@ gxDistribute::gxDistribute( const Type                     aType,
                             const gxRect&                  aRect,
                                   gxViewElement::Iterator& aLayoutees,
                             const gxConstraints&           aConstraints,
-                            const bool                     onMajorAxis )
+                            const bool                     onMajorAxis,
+                            const bool                     aRelative )
 {
     // First Set the size of the elements.
     bool iHasFlex = DoSize( aRect, aLayoutees, aConstraints, onMajorAxis );
@@ -15,7 +16,7 @@ gxDistribute::gxDistribute( const Type                     aType,
     Type iType = iHasFlex ? Start : aType;
     
     // Now distribute the elements
-    DoDistribute( iType, aRect, aLayoutees, aConstraints, onMajorAxis );
+    DoDistribute( iType, aRect, aLayoutees, aConstraints, onMajorAxis, aRelative );
 }
 
 bool gxDistribute::DoSize( const gxRect&                  aRect,
@@ -91,9 +92,14 @@ void gxDistribute::DoDistribute( const Type                     aType,
                                  const gxRect&                  aRect,
                                        gxViewElement::Iterator& aLayoutees,
                                  const gxConstraints&           aConstraints,
-                                 const bool                     onMajorAxis )
+                                 const bool                     onMajorAxis,
+                                 const bool                     aRelative )
 {
+    // This position is right for Start.
+    // Notice that we first work out the position in relative coordinates,
+    // and we'll later change it to absolute if needed.
     gxPix iPosition = 0;
+    
     gxPix iSpacing  = 0;
     
     // First work out the initial position of the elements, and the space
@@ -147,6 +153,10 @@ void gxDistribute::DoDistribute( const Type                     aType,
                 iPosition += iSpacing;
         }
     }
+    
+    // Turn the position to absolute coordinates if needed.
+    if ( !aRelative )
+        iPosition += aRect.GetPosition( onMajorAxis );
     
     gxPix iLayouteeSize;
     

@@ -30,9 +30,9 @@ public:
      * @param aLayoutees A view elements iterator of the elements to lay out.
      * @param aConstraints The constraints map.     
      * @param aOnMajorAxis Whether we are layouting on the major or minor axes.
-     * @param aRelative Whether the layoutees are relative to the rect
-     *        provided, or wheter the position of the rect should serve as an
-     *        anchor.
+     * @param aRelative Whether the layoutees are to be positioned relative to
+     * the rect provided (so top-left is 0,0) or using absolute coordinates
+     * (so top-left is the rect position).
      */
     void DoLayout( const gxRect&                  aRect,
                          gxViewElement::Iterator& aLayoutees,
