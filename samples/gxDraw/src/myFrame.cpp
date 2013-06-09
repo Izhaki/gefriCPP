@@ -160,9 +160,9 @@ void MyFrame::CreateBoxLayout()
         
     mHBox   = new gxRectangle( gxRect( 0, 300, 400, 100 ) );
     
-    mLayout = new gxBoxLayout( gxDistribute::Equal,
-                               gxStretch::None,
-                               gxAlign::Middle,
+    mLayout = new gxBoxLayout( gxLayoutDistribute::Equal,
+                               gxLayoutStretch::None,
+                               gxLayoutAlign::Middle,
                                true );
     
     mHBox->SetLayout( mLayout );

@@ -2,8 +2,8 @@
 #define gxLayoutOperations_h
 
 #include "View/Layouts/Operations/gxLayoutSize.h"
-#include "View/Layouts/Operations/gxDistribute.h"
-#include "View/Layouts/Operations/gxStretch.h"
-#include "View/Layouts/Operations/gxAlign.h"
+#include "View/Layouts/Operations/gxLayoutDistribute.h"
+#include "View/Layouts/Operations/gxLayoutStretch.h"
+#include "View/Layouts/Operations/gxLayoutAlign.h"
 
 #endif //gxLayoutOperations_h

@@ -1,9 +1,9 @@
-#include "View/Layouts/Operations/gxStretch.h"
+#include "View/Layouts/Operations/gxLayoutStretch.h"
 
-gxStretch::gxStretch( const Type                     aType,
-                      const gxRect&                  aRect,
-                            gxViewElement::Iterator& aLayoutees,
-                      const bool                     onMajorAxis )
+gxLayoutStretch::gxLayoutStretch( const Type                     aType,
+                                  const gxRect&                  aRect,
+                                        gxViewElement::Iterator& aLayoutees,
+                                  const bool                     onMajorAxis )
 {
     gxPix  iSize = 0;
     
@@ -21,8 +21,8 @@ gxStretch::gxStretch( const Type                     aType,
     
 }
 
-gxPix gxStretch::GetMaxSize(       gxViewElement::Iterator& aLayoutees,
-                             const bool                     onMajorAxis )
+gxPix gxLayoutStretch::GetMaxSize(       gxViewElement::Iterator& aLayoutees,
+                                   const bool                     onMajorAxis )
 {
     gxPix iLayouteeSize;
     gxPix iSize = 0;

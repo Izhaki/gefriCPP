@@ -11,13 +11,13 @@ public:
     
     gxBoxLayout( bool aOnMajorAxis );
 
-    gxBoxLayout( gxDistribute::Type aDistribute,
-                 gxStretch::Type    aStretch,
-                 gxAlign::Type      aAlign );
+    gxBoxLayout( gxLayoutDistribute::Type aDistribute,
+                 gxLayoutStretch::Type    aStretch,
+                 gxLayoutAlign::Type      aAlign );
     
-    gxBoxLayout( gxDistribute::Type aDistribute,
-                 gxStretch::Type    aStretch,
-                 gxAlign::Type      aAlign,
+    gxBoxLayout( gxLayoutDistribute::Type aDistribute,
+                 gxLayoutStretch::Type    aStretch,
+                 gxLayoutAlign::Type      aAlign,
                  bool               aOnMajorAxis );
     
     /**
@@ -37,9 +37,9 @@ public:
                    const bool                     aOnMajorAxis );
     
 protected:
-    gxStretch::Type    mStretch;
-    gxAlign::Type      mAlign;
-    gxDistribute::Type mDistribute;
+    gxLayoutStretch::Type    mStretch;
+    gxLayoutAlign::Type      mAlign;
+    gxLayoutDistribute::Type mDistribute;
     
     virtual void DoLayout( gxViewElement* aLayouter );
     virtual bool IsSupportedConstraint( const gxConstraintId aId );

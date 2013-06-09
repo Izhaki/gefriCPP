@@ -1,10 +1,10 @@
-#include "View/Layouts/Operations/gxAlign.h"
+#include "View/Layouts/Operations/gxLayoutAlign.h"
 
-gxAlign::gxAlign( const Type                     aType,
-                  const gxRect&                  aRect,
-                        gxViewElement::Iterator& aLayoutees,
-                  const gxConstraints&           aConstraints,
-                  const bool                     onMajorAxis )
+gxLayoutAlign::gxLayoutAlign( const Type                     aType,
+                              const gxRect&                  aRect,
+                                    gxViewElement::Iterator& aLayoutees,
+                              const gxConstraints&           aConstraints,
+                              const bool                     onMajorAxis )
 {
     if ( aType == None )
         return;

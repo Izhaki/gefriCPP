@@ -1,11 +1,11 @@
-#include "View/Layouts/Operations/gxDistribute.h"
+#include "View/Layouts/Operations/gxLayoutDistribute.h"
 #include "View/Layouts/Operations/gxLayoutSize.h"
 
-gxDistribute::gxDistribute( const Type                     aType,
-                            const gxRect&                  aRect,
-                                  gxViewElement::Iterator& aLayoutees,
-                            const gxConstraints&           aConstraints,
-                            const bool                     onMajorAxis )
+gxLayoutDistribute::gxLayoutDistribute( const Type                     aType,
+                                        const gxRect&                  aRect,
+                                              gxViewElement::Iterator& aLayoutees,
+                                        const gxConstraints&           aConstraints,
+                                        const bool                     onMajorAxis )
 {
     bool iHasFlex;
 

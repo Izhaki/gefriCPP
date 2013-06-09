@@ -3,7 +3,7 @@
 
 #include "View/Layouts/Constraints/gxConstraints.h"
 
-struct gxAlign
+struct gxLayoutAlign
 {
     enum Type
     {
@@ -22,11 +22,11 @@ struct gxAlign
      * @param aConstraints The constraints map.
      * @param aOnMajorAxis Whether we are layouting on the major or minor axes.
      */
-    gxAlign( const Type                     aType,
-             const gxRect&                  aRect,
-                   gxViewElement::Iterator& aLayoutees,
-             const gxConstraints&           aConstraints,
-             const bool                     onMajorAxis );
+    gxLayoutAlign( const Type                     aType,
+                   const gxRect&                  aRect,
+                         gxViewElement::Iterator& aLayoutees,
+                   const gxConstraints&           aConstraints,
+                   const bool                     onMajorAxis );
 };
 
 #endif //gxAlign_h

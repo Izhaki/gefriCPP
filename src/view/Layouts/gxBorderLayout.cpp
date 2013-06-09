@@ -33,9 +33,9 @@ void gxBorderLayout::DoLayout( gxViewElement* aLayouter )
     
         
     // We'll be using this box layout to help with the layouting
-    gxBoxLayout iBoxLayout( gxDistribute::Start,
-                            gxStretch::Full,
-                            gxAlign::Start );
+    gxBoxLayout iBoxLayout( gxLayoutDistribute::Start,
+                            gxLayoutStretch::Full,
+                            gxLayoutAlign::Start );
     
     // An iterator of the first axis elements to be laid out.
     gxViewElement::Iterator iMains( mOnMajorAxis ? &mMajorElements : &mMinorElements);

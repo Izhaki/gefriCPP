@@ -3,7 +3,7 @@
 
 #include "View/Layouts/Constraints/gxConstraints.h"
 
-struct gxStretch
+struct gxLayoutStretch
 {
     enum Type
     {
@@ -12,10 +12,10 @@ struct gxStretch
         Full
     };
     
-    gxStretch( const Type                     aType,
-               const gxRect&                  aRect,
-                     gxViewElement::Iterator& aLayoutees,
-               const bool                     onMajorAxis );
+    gxLayoutStretch( const Type                     aType,
+                     const gxRect&                  aRect,
+                           gxViewElement::Iterator& aLayoutees,
+                     const bool                     onMajorAxis );
     
     gxPix GetMaxSize(       gxViewElement::Iterator& aLayoutees,
                       const bool                     onMajorAxis );
