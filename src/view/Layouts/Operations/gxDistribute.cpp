@@ -4,8 +4,7 @@ gxDistribute::gxDistribute( const Type                     aType,
                             const gxRect&                  aRect,
                                   gxViewElement::Iterator& aLayoutees,
                             const gxConstraints&           aConstraints,
-                            const bool                     onMajorAxis,
-                            const bool                     aRelative )
+                            const bool                     onMajorAxis )
 {
     // First Set the size of the elements.
     bool iHasFlex = DoSize( aRect, aLayoutees, aConstraints, onMajorAxis );
@@ -16,7 +15,7 @@ gxDistribute::gxDistribute( const Type                     aType,
     Type iType = iHasFlex ? Start : aType;
     
     // Now distribute the elements
-    DoDistribute( iType, aRect, aLayoutees, aConstraints, onMajorAxis, aRelative );
+    DoDistribute( iType, aRect, aLayoutees, aConstraints, onMajorAxis );
 }
 
 bool gxDistribute::DoSize( const gxRect&                  aRect,
@@ -92,8 +91,7 @@ void gxDistribute::DoDistribute( const Type                     aType,
                                  const gxRect&                  aRect,
                                        gxViewElement::Iterator& aLayoutees,
                                  const gxConstraints&           aConstraints,
-                                 const bool                     onMajorAxis,
-                                 const bool                     aRelative )
+                                 const bool                     onMajorAxis )
 {
     // This position is right for Start.
     // Notice that we first work out the position in relative coordinates,
@@ -154,9 +152,8 @@ void gxDistribute::DoDistribute( const Type                     aType,
         }
     }
     
-    // Turn the position to absolute coordinates if needed.
-    if ( !aRelative )
-        iPosition += aRect.GetPosition( onMajorAxis );
+    // Turn the position into an absolute one.
+    iPosition += aRect.GetPosition( onMajorAxis );
     
     gxPix iLayouteeSize;
     

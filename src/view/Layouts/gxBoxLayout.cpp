@@ -39,7 +39,9 @@ bool gxBoxLayout::IsSupportedConstraint( const gxConstraintId aId )
 
 void gxBoxLayout::DoLayout( gxViewElement* aLayouter )
 {
-    gxRect iContainerBounds = aLayouter->GetInnerBounds();
+    // We construct the bouns as relative coordinates, thus we use GetSize -
+    // this will give a (0,0) position.
+    gxRect iContainerBounds( aLayouter->GetInnerBounds().GetSize() );
     
     gxViewElement::VisualIterator iLayoutees( aLayouter->GetChildren() );
     
@@ -49,32 +51,22 @@ void gxBoxLayout::DoLayout( gxViewElement* aLayouter )
 void gxBoxLayout::DoLayout( const gxRect&                  aRect,
                                   gxViewElement::Iterator& aLayoutees,
                             const gxConstraints&           aConstraints,
-                            const bool                     aOnMajorAxis,
-                            const bool                     aRelative )
-{
-    bool iRelative = false;
-    gxRect iRect( aRect );
-    if ( aRelative )
-    {
-        iRect.SetPosition( gxPoint( 0, 0 ) );
-    }
-    
+                            const bool                     aOnMajorAxis )
+{   
     gxDistribute( mDistribute,
-                  iRect,
+                  aRect,
                   aLayoutees,
                   aConstraints,
-                  aOnMajorAxis,
-                  iRelative );
+                  aOnMajorAxis );
     
     gxStretch( mStretch,
-               iRect,
+               aRect,
                aLayoutees,
                !aOnMajorAxis );
 
     gxAlign( mAlign,
-             iRect,
+             aRect,
              aLayoutees,
              aConstraints,
-             !aOnMajorAxis,
-             iRelative );
+             !aOnMajorAxis );
 }

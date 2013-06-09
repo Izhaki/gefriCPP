@@ -19,8 +19,7 @@ struct gxDistribute
                   const gxRect&                  aRect,
                         gxViewElement::Iterator& aLayoutees,
                   const gxConstraints&           aConstraints,
-                  const bool                     onMajorAxis,
-                  const bool                     aRelative = true );
+                  const bool                     onMajorAxis );
 
     bool DoSize( const gxRect&                  aRect,
                        gxViewElement::Iterator& aLayoutees,
@@ -31,8 +30,7 @@ struct gxDistribute
                        const gxRect&                  aRect,
                              gxViewElement::Iterator& aLayoutees,
                        const gxConstraints&           aConstraints,
-                       const bool                     onMajorAxis,
-                       const bool                     aRelative = true );
+                       const bool                     onMajorAxis );
     
 };
 

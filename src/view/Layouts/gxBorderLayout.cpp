@@ -33,15 +33,17 @@ void gxBorderLayout::DoLayout( gxViewElement* aLayouter )
     
         
     // We'll be using this box layout to help with the layouting
-    gxBoxLayout             iBoxLayout( gxDistribute::Start,
-                                        gxStretch::Full,
-                                        gxAlign::Start );    
+    gxBoxLayout iBoxLayout( gxDistribute::Start,
+                            gxStretch::Full,
+                            gxAlign::Start );
     
     // An iterator of the first axis elements to be laid out.
     gxViewElement::Iterator iMains( mOnMajorAxis ? &mMajorElements : &mMinorElements);
     
-    // Do the main axis layout using the layouter bounds
-    iBoxLayout.DoLayout( aLayouter->GetInnerBounds(), iMains, mConstraints, mOnMajorAxis );
+    // Do the main axis layout using the layouter bounds.
+    // (We only take the size as we want the position to be [0,0], as the
+    // layouting is done with relative coordinates.)
+    iBoxLayout.DoLayout( aLayouter->GetInnerBounds().GetSize(), iMains, mConstraints, mOnMajorAxis );
 
     
     // An iterator of the second axis elements to be laid out.
@@ -49,7 +51,7 @@ void gxBorderLayout::DoLayout( gxViewElement* aLayouter )
     
     // Do the sub axis layout - it is done with reference to the current
     // bounds of the center region.
-    iBoxLayout.DoLayout( iCenterElement->GetBounds(), iSubs, mConstraints, !mOnMajorAxis, false );
+    iBoxLayout.DoLayout( iCenterElement->GetBounds(), iSubs, mConstraints, !mOnMajorAxis );
 }
 
 void gxBorderLayout::CacheElements( gxViewElement::Iterator& aLayoutees )
