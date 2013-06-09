@@ -20,18 +20,6 @@ struct gxDistribute
                         gxViewElement::Iterator& aLayoutees,
                   const gxConstraints&           aConstraints,
                   const bool                     onMajorAxis );
-
-    bool DoSize( const gxRect&                  aRect,
-                       gxViewElement::Iterator& aLayoutees,
-                 const gxConstraints&           aConstraints,
-                 const bool                     onMajorAxis );
-    
-    void DoDistribute( const Type                     aType,
-                       const gxRect&                  aRect,
-                             gxViewElement::Iterator& aLayoutees,
-                       const gxConstraints&           aConstraints,
-                       const bool                     onMajorAxis );
-    
 };
 
 #endif //gxDistribute_h
