@@ -26,17 +26,17 @@ const gxRootViewElement* gxViewElement::GetRootViewElement() const
 gxLightweightSystem* gxViewElement::GetLightweightSystem() const
 {
     // Get root view element and return if no such found.
-    const gxRootViewElement *iRoot = GetRootViewElement();
+    const gxRootViewElement* iRoot = GetRootViewElement();
     gxWarnIf( iRoot == NULL, "Could not find root element" );
 
     // Get the lightweight system and return if no such found.
-    gxLightweightSystem *iLws = iRoot->GetLightweightSystem();
+    gxLightweightSystem* iLws = iRoot->GetLightweightSystem();
     gxWarnIf( iLws == NULL, "Could not find the lightweight system" );
 
     return iLws;
 }
 
-void gxViewElement::TransformToAbsolute( gxRect &aRect )
+void gxViewElement::TransformToAbsolute( gxRect& aRect )
 {
     gxViewElement* iParent = GetParent();
     
@@ -49,7 +49,7 @@ void gxViewElement::TransformToAbsolute( gxRect &aRect )
     iParent->TransformToAbsolute( aRect );
 }
 
-void gxViewElement::TransformToLocal( gxRect &aRect )
+void gxViewElement::TransformToLocal( gxRect& aRect )
 {
     // A hackish way of doing transform to local:
     //     Start with a rect at (0, 0).
@@ -62,7 +62,7 @@ void gxViewElement::TransformToLocal( gxRect &aRect )
     aRect -= iOffset.GetPosition();
 }
 
-void gxViewElement::Transform( gxRect &aRect )
+void gxViewElement::Transform( gxRect& aRect )
 {
     aRect += GetBounds().GetPosition();
 }
@@ -117,7 +117,7 @@ void gxViewElement::SetPosition( const gxPix aNewPosition, bool aOnMajorAxis )
     SetBounds( iBounds );
 }
 
-void gxViewElement::GetDescendantsBounds( gxRect &aBounds )
+void gxViewElement::GetDescendantsBounds( gxRect& aBounds )
 {
     if ( IsChildless() )
         return;
@@ -323,13 +323,13 @@ bool gxViewElement::IsClippingChildren()
     return mFlags.IsSet( ClipChildren );
 }
 
-void gxViewElement::OnAddChild( gxViewElement *aChild )
+void gxViewElement::OnAddChild( gxViewElement* aChild )
 {
     aChild->Invalidate();
     aChild->Repaint();
 }
 
-void gxViewElement::OnBeforeChildRemoval( gxViewElement *aChild )
+void gxViewElement::OnBeforeChildRemoval( gxViewElement* aChild )
 {
     // We need revalidation as the deletion of a child might affect layouts etc.
     aChild->Invalidate();

@@ -11,7 +11,7 @@ class gxVisual: public gxViewElement
 {
 public:
     gxVisual();
-    gxVisual( const gxRect &aBounds );
+    gxVisual( const gxRect& aBounds );
     ~gxVisual();
 
     /**
@@ -24,7 +24,7 @@ public:
      * painting of their children to their bounds.
      * @param aPainter The {@link gxPainter painter} to be used for drawing.
      */
-    void Paint( gxPainter &aPainter );
+    void Paint( gxPainter& aPainter );
     
     /**
      * @brief Repaints the view element making its bounds dirty.
@@ -40,10 +40,10 @@ public:
      * @brief Sets new bounds to this view element.
      * @param aNewBounds The new bounds
      */
-    virtual void SetBounds( const gxRect &aNewBounds );
+    virtual void SetBounds( const gxRect& aNewBounds );
   
     // TODO: Docs
-    virtual void GetDescendantsBounds( gxRect &aBounds );
+    virtual void GetDescendantsBounds( gxRect& aBounds );
     
     
     // Layout related methods
@@ -60,12 +60,12 @@ protected:
      * @brief Paints graphics related to this view element.
      * @param aPainter The {@link gxPainter painter} to be used for drawing.
      */
-    virtual void PaintSelf( gxPainter &aPainter ) {}
+    virtual void PaintSelf( gxPainter& aPainter ) {}
     /**
      * @brief Paints the children of this view element.
      * @param aPainter The {@link gxPainter painter} to be used for drawing.
      */
-    virtual void PaintChildren( gxPainter &aPainter );
+    virtual void PaintChildren( gxPainter& aPainter );
 
     /**
      * @brief Paints the border of this view element.
@@ -76,7 +76,7 @@ protected:
      * to paint any borders of the view element.
      * @param aPainter The {@link gxPainter painter} to be used for drawing.
      */
-    virtual void PaintBorder( gxPainter &aPainter ) {};
+    virtual void PaintBorder( gxPainter& aPainter ) {};
 
     /**
      * @brief Translates (moves) the element.

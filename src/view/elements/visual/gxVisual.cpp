@@ -9,7 +9,7 @@ gxVisual::gxVisual() :
 {
 }
 
-gxVisual::gxVisual( const gxRect &aBounds ) :
+gxVisual::gxVisual( const gxRect& aBounds ) :
     mLayout( NULL )
 {
     mBounds = aBounds;
@@ -19,7 +19,7 @@ gxVisual::~gxVisual()
 {
 }
 
-void gxVisual::Paint( gxPainter &aPainter )
+void gxVisual::Paint( gxPainter& aPainter )
 {
     if ( !IsVisible() )
         return;
@@ -70,7 +70,7 @@ void gxVisual::Repaint()
     gxViewElement::Repaint( iBounds, IsRelative() );
 }
 
-void gxVisual::PaintChildren( gxPainter &aPainter )
+void gxVisual::PaintChildren( gxPainter& aPainter )
 {
     // Return if there are no children.
     if ( IsChildless() )
@@ -93,7 +93,7 @@ void gxVisual::PaintChildren( gxPainter &aPainter )
     aPainter.PopState();
 }
 
-void gxVisual::GetDescendantsBounds( gxRect &aBounds )
+void gxVisual::GetDescendantsBounds( gxRect& aBounds )
 {
     // Union with my bounds.
     aBounds.Union( GetBounds() );
@@ -108,7 +108,7 @@ gxRect gxVisual::GetBounds() const
     return mBounds;
 }
 
-void gxVisual::SetBounds( const gxRect &aNewBounds )
+void gxVisual::SetBounds( const gxRect& aNewBounds )
 {
     // Check if either translate or resize happened
     bool iTranslate = aNewBounds.GetPosition() != mBounds.GetPosition();

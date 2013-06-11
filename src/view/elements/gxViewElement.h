@@ -214,7 +214,7 @@ public:
      * Used by TransformToAbsolute.
      * @param aRect The rect to transform.
      */
-    virtual void Transform( gxRect &aRect );
+    virtual void Transform( gxRect& aRect );
     
     /**
      * @brief Transforms a rect (typically bounds) to absolute coordinates.
@@ -222,10 +222,10 @@ public:
      * This is a recursive method that goes all the way up the parent tree.
      * @param aRect The rect to transform.
      */
-    virtual void TransformToAbsolute( gxRect &aRect );
+    virtual void TransformToAbsolute( gxRect& aRect );
     
     
-    virtual void TransformToLocal( gxRect &aRect );
+    virtual void TransformToLocal( gxRect& aRect );
     
     /**
      * @brief Marks the view element and all of its parents as invalid, and
@@ -295,7 +295,7 @@ protected:
      * This is an abstract methods that subclasses will override.
      * @param aPainter The {@link gxPainter painter} to be used for drawing.
      */
-    virtual void PaintChildren( gxPainter &aPainter ) = 0;
+    virtual void PaintChildren( gxPainter& aPainter ) = 0;
 
     /**
      * @brief Returns the {@link gxLightweightSystem lightweight system}
@@ -411,8 +411,8 @@ protected:
     virtual bool IsRelative() { return true; }
 
     
-    virtual void OnAddChild( gxViewElement *aChild );
-    virtual void OnBeforeChildRemoval( gxViewElement *aChild );
+    virtual void OnAddChild( gxViewElement* aChild );
+    virtual void OnBeforeChildRemoval( gxViewElement* aChild );
     virtual void OnAfterChildRemoval();
   
     gxFlags<gx8Flags> mFlags;
