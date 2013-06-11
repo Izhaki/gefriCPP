@@ -116,7 +116,7 @@ void gxVisual::SetBounds( const gxRect& aNewBounds )
     bool iChanged   = iTranslate || iResize;
 
     // Erase the view element if either happened
-    if ( iChanged )
+    if ( iChanged && IsVisible() )
         Erase();
 
     // Preform translation
@@ -133,7 +133,7 @@ void gxVisual::SetBounds( const gxRect& aNewBounds )
     }
 
     // Repaint
-    if ( iChanged )
+    if ( iChanged && IsVisible() )
     {
         Invalidate();
         Repaint();
