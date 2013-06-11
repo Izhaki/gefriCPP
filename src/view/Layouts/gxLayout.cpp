@@ -55,3 +55,7 @@ void gxLayout::Apply()
 {
 }
 
+void gxLayout::Remove( gxViewElement* aLayoutee )
+{
+}
+

@@ -1,4 +1,5 @@
 #include "View/Layouts/Constraints/gxConstraints.h"
+#include "Core/gxLog.h"
 
 // TODO: Move somewhere else?
 template <typename MapType>
@@ -78,5 +79,22 @@ int gxConstraints::GetFlex( gxViewElement* aLayoutee,
         return iSizeConstraint->GetValue();
     } else {
         return 0;
+    }
+}
+
+void gxConstraints::Remove( gxViewElement* aLayoutee )
+{
+    gxViewElement* iLayoutee;
+    
+    for ( Iterator it = mConstraints.begin(); it != mConstraints.end(); )
+    {
+        iLayoutee = it->first.mLayoutee;
+        if ( iLayoutee == aLayoutee )
+        {
+            delete it->second;
+            mConstraints.erase( it++ );
+        } else {
+            ++it;
+        }
     }
 }

@@ -92,6 +92,8 @@ public:
      */
     int GetFlex( gxViewElement* aLayoutee,
                  bool           aOnMajorAxis );
+    
+    void Remove( gxViewElement* aLayoutee );        
 protected:
     // The constraints map
     Map mConstraints;

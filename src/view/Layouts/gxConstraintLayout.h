@@ -37,6 +37,8 @@ public:
         aLayoutee->Invalidate();
     }
     
+    virtual void Remove( gxViewElement* aLayoutee );    
+    
 protected:
     gxConstraints mConstraints;
     

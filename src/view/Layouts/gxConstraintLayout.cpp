@@ -21,3 +21,11 @@ void gxConstraintLayout::Init()
 void gxConstraintLayout::Apply()
 {
 }
+
+void gxConstraintLayout::Remove( gxViewElement* aLayoutee )
+{
+    mConstraints.Remove( aLayoutee );
+    
+    aLayoutee->Invalidate();
+}
+

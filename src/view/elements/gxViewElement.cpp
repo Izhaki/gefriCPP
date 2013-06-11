@@ -334,8 +334,12 @@ void gxViewElement::OnBeforeChildRemoval( gxViewElement *aChild )
     // We need revalidation as the deletion of a child might affect layouts etc.
     aChild->Invalidate();
     
-    // TODO: We need to move the child from the layout.
-    aChild->Erase();
+    gxLayout* iLayout = GetLayout();
+    
+    if ( iLayout )
+        iLayout->Remove( aChild );
+    
+    aChild->Erase();    
 }
 
 void gxViewElement::OnAfterChildRemoval()

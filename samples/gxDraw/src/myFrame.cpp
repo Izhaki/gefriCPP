@@ -250,6 +250,7 @@ void MyFrame::OnMoveFace(wxCommandEvent &e)
 
 void MyFrame::OnModifyLayout(wxCommandEvent &e)
 {
+    mContainer->Remove( mWest );
 }
 
 

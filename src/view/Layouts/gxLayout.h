@@ -30,9 +30,14 @@ public:
     void Layout( gxViewElement* aLayouter );
 
     /**
-     * @brief Invalidates the layout if the view element is part of it
+     * @brief Invalidates the layout if the view element is part of it.
      */    
     void Invalidate( gxViewElement* aLayoutee );
+
+    /**
+     * @brief Removes a layoutee from the layout.
+     */
+    virtual void Remove( gxViewElement* aLayoutee );
     
 protected:
     bool mOnMajorAxis;
