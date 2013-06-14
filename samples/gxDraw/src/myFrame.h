@@ -17,6 +17,7 @@
 #include "View/Elements/Structural/Layers/gxLayer.h"
 #include "View/Layouts/gxBoxLayout.h"
 #include "View/Layouts/gxBorderLayout.h"
+#include "View/Layouts/gxToolbarLayout.h"
 
 #include "core/gxComposite.h"
 
@@ -29,8 +30,10 @@ private:
     
     void InitGefri();
     void CreateFaceAndRuller();
+    
     void CreateBoxLayout();    
     void CreateBorderLayout();
+    void CreateToolbarLayout();
   
     gxLightweightControl *mLightweightControl;
     gxLightweightSystem  *mLightweightSystem;
@@ -45,7 +48,9 @@ private:
     gxLayer*  mPrimaryLayer;
     
     gxBorderLayout *mBorderLayout;    
-    gxRectangle *mContainer, *mCenter, *mNorth, *mSouth, *mWest, *mEast;    
+    gxRectangle *mContainer, *mCenter, *mNorth, *mSouth, *mWest, *mEast;
+    
+    gxToolbarLayout *mToolbarLayout;
     
 public:
   MyFrame(wxWindow   *parent,

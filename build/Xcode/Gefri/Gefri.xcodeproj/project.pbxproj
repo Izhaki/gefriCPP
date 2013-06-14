@@ -14,6 +14,9 @@
 		87030F8C176542AA00B76096 /* gxLayoutDistribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 87030F86176542AA00B76096 /* gxLayoutDistribute.h */; };
 		87030F8D176542AA00B76096 /* gxLayoutStretch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87030F87176542AA00B76096 /* gxLayoutStretch.cpp */; };
 		87030F8E176542AA00B76096 /* gxLayoutStretch.h in Headers */ = {isa = PBXBuildFile; fileRef = 87030F88176542AA00B76096 /* gxLayoutStretch.h */; };
+		87030FA8176A8DA900B76096 /* gxToolbarLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87030FA7176A8DA800B76096 /* gxToolbarLayout.cpp */; };
+		87030FAB176A9C6900B76096 /* gxLayoutPack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87030FAA176A9C6800B76096 /* gxLayoutPack.cpp */; };
+		87030FAD176A9D3300B76096 /* gxPackConstraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 87030FAC176A9D3300B76096 /* gxPackConstraint.h */; };
 		876C5D33164C73E60006CB61 /* gxLightweightControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5CF0164C73E60006CB61 /* gxLightweightControl.cpp */; };
 		876C5D3C164C73E60006CB61 /* gxRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 876C5CFB164C73E60006CB61 /* gxRect.cpp */; };
 		879535C416DA8FC9006D69FE /* gxDivProvider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8795359C16DA8FC9006D69FE /* gxDivProvider.cpp */; };
@@ -57,6 +60,11 @@
 		87030F86176542AA00B76096 /* gxLayoutDistribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxLayoutDistribute.h; path = Layouts/Operations/gxLayoutDistribute.h; sourceTree = "<group>"; };
 		87030F87176542AA00B76096 /* gxLayoutStretch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxLayoutStretch.cpp; path = Layouts/Operations/gxLayoutStretch.cpp; sourceTree = "<group>"; };
 		87030F88176542AA00B76096 /* gxLayoutStretch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxLayoutStretch.h; path = Layouts/Operations/gxLayoutStretch.h; sourceTree = "<group>"; };
+		87030FA6176A8D3B00B76096 /* gxToolbarLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxToolbarLayout.h; path = Layouts/gxToolbarLayout.h; sourceTree = "<group>"; };
+		87030FA7176A8DA800B76096 /* gxToolbarLayout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxToolbarLayout.cpp; path = Layouts/gxToolbarLayout.cpp; sourceTree = "<group>"; };
+		87030FA9176A9C1200B76096 /* gxLayoutPack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxLayoutPack.h; path = Layouts/Operations/gxLayoutPack.h; sourceTree = "<group>"; };
+		87030FAA176A9C6800B76096 /* gxLayoutPack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = gxLayoutPack.cpp; path = Layouts/Operations/gxLayoutPack.cpp; sourceTree = "<group>"; };
+		87030FAC176A9D3300B76096 /* gxPackConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gxPackConstraint.h; path = Layouts/Constraints/gxPackConstraint.h; sourceTree = "<group>"; };
 		8752845516FA6E3100A6B228 /* gxRegionConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxRegionConstraint.h; path = Layouts/Constraints/gxRegionConstraint.h; sourceTree = "<group>"; };
 		876182F7170A15CE001ACBDB /* gxConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxConstraint.h; path = Layouts/Constraints/gxConstraint.h; sourceTree = "<group>"; };
 		876182F8170A1663001ACBDB /* gxPrimitiveConstraint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = gxPrimitiveConstraint.h; path = Layouts/Constraints/gxPrimitiveConstraint.h; sourceTree = "<group>"; };
@@ -402,6 +410,8 @@
 				87ABC03516EBCCC200B77D8D /* gxBoxLayout.cpp */,
 				87ABC03716EBEB8000B77D8D /* gxBorderLayout.h */,
 				87ABC03816EBEBDD00B77D8D /* gxBorderLayout.cpp */,
+				87030FA6176A8D3B00B76096 /* gxToolbarLayout.h */,
+				87030FA7176A8DA800B76096 /* gxToolbarLayout.cpp */,
 			);
 			name = Layouts;
 			sourceTree = "<group>";
@@ -416,6 +426,7 @@
 				876182F8170A1663001ACBDB /* gxPrimitiveConstraint.h */,
 				87ABC03316EBC8ED00B77D8D /* gxSizeConstraint.h */,
 				8752845516FA6E3100A6B228 /* gxRegionConstraint.h */,
+				87030FAC176A9D3300B76096 /* gxPackConstraint.h */,
 			);
 			name = Constraints;
 			sourceTree = "<group>";
@@ -423,15 +434,17 @@
 		87ABC03B16ECEE6400B77D8D /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				87030F83176542AA00B76096 /* gxLayoutAlign.cpp */,
+				87ABC04816ECEEB600B77D8D /* gxLayoutOperations.h */,
 				87030F84176542AA00B76096 /* gxLayoutAlign.h */,
+				87030F83176542AA00B76096 /* gxLayoutAlign.cpp */,
 				87030F8017653EE300B76096 /* gxLayoutSize.h */,
 				87030F8117653FDF00B76096 /* gxLayoutSize.cpp */,
 				87030F85176542AA00B76096 /* gxLayoutDistribute.cpp */,
 				87030F86176542AA00B76096 /* gxLayoutDistribute.h */,
 				87030F87176542AA00B76096 /* gxLayoutStretch.cpp */,
 				87030F88176542AA00B76096 /* gxLayoutStretch.h */,
-				87ABC04816ECEEB600B77D8D /* gxLayoutOperations.h */,
+				87030FA9176A9C1200B76096 /* gxLayoutPack.h */,
+				87030FAA176A9C6800B76096 /* gxLayoutPack.cpp */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -461,6 +474,7 @@
 				87030F8A176542AA00B76096 /* gxLayoutAlign.h in Headers */,
 				87030F8C176542AA00B76096 /* gxLayoutDistribute.h in Headers */,
 				87030F8E176542AA00B76096 /* gxLayoutStretch.h in Headers */,
+				87030FAD176A9D3300B76096 /* gxPackConstraint.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +563,8 @@
 				87030F89176542AA00B76096 /* gxLayoutAlign.cpp in Sources */,
 				87030F8B176542AA00B76096 /* gxLayoutDistribute.cpp in Sources */,
 				87030F8D176542AA00B76096 /* gxLayoutStretch.cpp in Sources */,
+				87030FA8176A8DA900B76096 /* gxToolbarLayout.cpp in Sources */,
+				87030FAB176A9C6900B76096 /* gxLayoutPack.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

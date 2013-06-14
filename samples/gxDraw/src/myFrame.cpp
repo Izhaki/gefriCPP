@@ -108,7 +108,8 @@ void MyFrame::InitGefri()
     
     CreateFaceAndRuller();
 //    CreateBoxLayout();
-    CreateBorderLayout();
+//    CreateBorderLayout();
+    CreateToolbarLayout();
     
     mLightweightSystem->SetContents(mDocument);
 }
@@ -202,6 +203,28 @@ void MyFrame::CreateBorderLayout()
     mBorderLayout->SetConstraint( mWest,   new gxRegionConstraint( gxLayoutRegion::West ) );
     mBorderLayout->SetConstraint( mEast,   new gxRegionConstraint( gxLayoutRegion::East ) );
 
+    mPrimaryLayer->Add( mContainer );
+}
+
+void MyFrame::CreateToolbarLayout()
+{
+    mContainer = new gxRectangle( gxRect( 10, 300, 380, 100 ) );
+    mToolbarLayout = new gxToolbarLayout( false );
+    mContainer->SetLayout( mToolbarLayout );
+    
+    mEast   = new gxRectangle( gxRect( 0,0,30,30 ) );
+    mCenter = new gxRectangle( gxRect( 100,0,30,30 ) );
+    mWest   = new gxRectangle( gxRect( 200,0,30,30 ) );
+    
+    mContainer->Add( mEast, mCenter, mWest );
+    
+    //    mNorth->SetVisible( false );
+    //    mEast->SetVisible( false );
+    
+    mToolbarLayout->SetConstraint( mEast,   new gxPackConstraint( gxLayoutPack::Start ) );
+    mToolbarLayout->SetConstraint( mCenter, new gxPackConstraint( gxLayoutPack::Start ) );
+    mToolbarLayout->SetConstraint( mWest,   new gxPackConstraint( gxLayoutPack::End ) );
+    
     mPrimaryLayer->Add( mContainer );
 }
 

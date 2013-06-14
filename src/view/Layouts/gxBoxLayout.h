@@ -4,6 +4,10 @@
 #include "View/Layouts/gxConstraintLayout.h"
 #include "View/Layouts/Operations/gxLayoutOperations.h"
 
+/**
+ * @brief A layout that sizes and distributes layoutees on the major axis, and
+ * aligns then stretches them on the minor axis.
+ */
 class gxBoxLayout : public gxConstraintLayout
 {
 public:
