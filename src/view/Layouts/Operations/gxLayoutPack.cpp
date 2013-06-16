@@ -1,10 +1,9 @@
 #include "View/Layouts/Operations/gxLayoutPack.h"
 #include "View/Layouts/Constraints/gxPackConstraint.h"
 
-// TODO: change aType to aDefault
-gxLayoutPack::gxLayoutPack( const Type                     aType,
+gxLayoutPack::gxLayoutPack( const Type                     aDefault,
                             const gxRect&                  aRect,
-                            gxViewElement::Iterator& aLayoutees,
+                                  gxViewElement::Iterator& aLayoutees,
                             const gxConstraints&           aConstraints,
                             const bool                     onMajorAxis )
 {
@@ -30,7 +29,7 @@ gxLayoutPack::gxLayoutPack( const Type                     aType,
         {
             iPack = iPackConstraint->GetValue();
         } else {
-            iPack = aType;
+            iPack = aDefault;
         }
         
         switch ( iPack )
@@ -47,10 +46,10 @@ gxLayoutPack::gxLayoutPack( const Type                     aType,
     gxPix iContainerPosition = aRect.GetPosition( onMajorAxis );
     
     gxPix iStartBlockPosition  = iContainerPosition,
-          iMiddleBlockPosition = iContainerPosition + ( iContainerSize - iStartBlockSize ) / 2,
+          iMiddleBlockPosition = iContainerPosition + ( iContainerSize - iMiddleBlockSize ) / 2,
           iEndBlockPosition    = iContainerPosition + ( iContainerSize - iEndBlockSize );
     
-    
+    // Now let's do the positioning
     for ( aLayoutees.First(); aLayoutees.Current(); aLayoutees.Next() )
     {
         iLayouteeSize = aLayoutees.Current()->GetSize( onMajorAxis );
@@ -62,7 +61,7 @@ gxLayoutPack::gxLayoutPack( const Type                     aType,
         {
             iPack = iPackConstraint->GetValue();
         } else {
-            iPack = aType;
+            iPack = aDefault;
         }
         
         switch ( iPack )

@@ -221,8 +221,8 @@ void MyFrame::CreateToolbarLayout()
     //    mNorth->SetVisible( false );
     //    mEast->SetVisible( false );
     
-    mToolbarLayout->SetConstraint( mEast,   new gxPackConstraint( gxLayoutPack::Start ) );
-    mToolbarLayout->SetConstraint( mCenter, new gxPackConstraint( gxLayoutPack::Start ) );
+    mToolbarLayout->SetConstraint( mEast,   new gxPackConstraint( gxLayoutPack::Middle ) );
+    mToolbarLayout->SetConstraint( mCenter, new gxPackConstraint( gxLayoutPack::Middle ) );
     mToolbarLayout->SetConstraint( mWest,   new gxPackConstraint( gxLayoutPack::End ) );
     
     mPrimaryLayer->Add( mContainer );

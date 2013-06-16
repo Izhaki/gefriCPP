@@ -3,6 +3,11 @@
 
 #include "View/Layouts/Constraints/gxConstraints.h"
 
+/**
+ * @brief A class to wrap sizing operation on layutees. The operation takes a
+ * rect and claculates the size of each layoutee based on its constraints,
+ * accounting for flex and percentage based sizes.
+ */
 struct gxLayoutSize
 {
     /**

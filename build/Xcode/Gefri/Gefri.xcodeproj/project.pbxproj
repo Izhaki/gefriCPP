@@ -439,10 +439,10 @@
 				87030F83176542AA00B76096 /* gxLayoutAlign.cpp */,
 				87030F8017653EE300B76096 /* gxLayoutSize.h */,
 				87030F8117653FDF00B76096 /* gxLayoutSize.cpp */,
-				87030F85176542AA00B76096 /* gxLayoutDistribute.cpp */,
 				87030F86176542AA00B76096 /* gxLayoutDistribute.h */,
-				87030F87176542AA00B76096 /* gxLayoutStretch.cpp */,
+				87030F85176542AA00B76096 /* gxLayoutDistribute.cpp */,
 				87030F88176542AA00B76096 /* gxLayoutStretch.h */,
+				87030F87176542AA00B76096 /* gxLayoutStretch.cpp */,
 				87030FA9176A9C1200B76096 /* gxLayoutPack.h */,
 				87030FAA176A9C6800B76096 /* gxLayoutPack.cpp */,
 			);

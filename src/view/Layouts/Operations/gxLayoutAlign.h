@@ -3,6 +3,13 @@
 
 #include "View/Layouts/Constraints/gxConstraints.h"
 
+/**
+ * @brief A class to wrap alignment operation on layutees, so either their
+ * start (top or left), middle, or end (bottom or right) are the same on the
+ * requested axis.
+ *
+ * Note that alignment is typically done on the minor axis.
+ */
 struct gxLayoutAlign
 {
     enum Type
