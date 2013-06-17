@@ -22,7 +22,7 @@ public:
     gxBoxLayout( gxLayoutDistribute::Type aDistribute,
                  gxLayoutStretch::Type    aStretch,
                  gxLayoutAlign::Type      aAlign,
-                 bool               aOnMajorAxis );
+                 bool                     aOnMajorAxis );
     
     /**
      * @brief The actual layout operation.

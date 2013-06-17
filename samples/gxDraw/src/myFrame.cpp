@@ -209,11 +209,15 @@ void MyFrame::CreateBorderLayout()
 void MyFrame::CreateToolbarLayout()
 {
     mContainer = new gxRectangle( gxRect( 10, 300, 380, 100 ) );
-    mToolbarLayout = new gxToolbarLayout( false );
+    
+    mToolbarLayout = new gxToolbarLayout( gxLayoutStretch::Max,
+                                          gxLayoutAlign::Middle,
+                                          true );
+    
     mContainer->SetLayout( mToolbarLayout );
     
     mEast   = new gxRectangle( gxRect( 0,0,30,30 ) );
-    mCenter = new gxRectangle( gxRect( 100,0,30,30 ) );
+    mCenter = new gxRectangle( gxRect( 100,0,30,20 ) );
     mWest   = new gxRectangle( gxRect( 200,0,30,30 ) );
     
     mContainer->Add( mEast, mCenter, mWest );

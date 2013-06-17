@@ -3,7 +3,11 @@
 gxToolbarLayout::gxToolbarLayout()
 {}
 
-gxToolbarLayout::gxToolbarLayout( bool aOnMajorAxis ):
+gxToolbarLayout::gxToolbarLayout( gxLayoutStretch::Type aStretch,
+                                  gxLayoutAlign::Type   aAlign,
+                                  bool                  aOnMajorAxis ):
+    mStretch           ( aStretch     ),
+    mAlign             ( aAlign       ),
     gxConstraintLayout ( aOnMajorAxis )
 {}
 
@@ -24,5 +28,16 @@ void gxToolbarLayout::DoLayout( gxViewElement* aLayouter )
                   iContainerBounds,
                   iLayoutees,
                   mConstraints,
-                  !mOnMajorAxis );
+                  mOnMajorAxis );
+    
+    gxLayoutStretch( mStretch,
+                     iContainerBounds,
+                     iLayoutees,
+                     !mOnMajorAxis );
+    
+    gxLayoutAlign( mAlign,
+                   iContainerBounds,
+                   iLayoutees,
+                   mConstraints,
+                   !mOnMajorAxis );
 }
