@@ -34,6 +34,7 @@ private:
     void CreateBoxLayout();    
     void CreateBorderLayout();
     void CreateToolbarLayout();
+    void CreateOrgLayout();
   
     gxLightweightControl *mLightweightControl;
     gxLightweightSystem  *mLightweightSystem;
@@ -49,6 +50,8 @@ private:
     
     gxBorderLayout *mBorderLayout;    
     gxRectangle *mContainer, *mCenter, *mNorth, *mSouth, *mWest, *mEast;
+    
+    gxRectangle *mEssay, *mIntro, *mMainText, *mConclusion;
     
     gxToolbarLayout *mToolbarLayout;
     

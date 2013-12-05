@@ -318,6 +318,14 @@ void gxViewElement::Hide()
     SetVisible( false );
 }
 
+void gxViewElement::SetClipChildren( bool const aClip )
+{
+    if ( aClip )
+        mFlags.Set( ClipChildren );
+    else
+        mFlags.Unset( ClipChildren );
+}
+
 bool gxViewElement::IsClippingChildren()
 {
     return mFlags.IsSet( ClipChildren );

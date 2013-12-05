@@ -109,7 +109,8 @@ void MyFrame::InitGefri()
     CreateFaceAndRuller();
 //    CreateBoxLayout();
 //    CreateBorderLayout();
-    CreateToolbarLayout();
+//    CreateToolbarLayout();
+    CreateOrgLayout();
     
     mLightweightSystem->SetContents(mDocument);
 }
@@ -230,6 +231,20 @@ void MyFrame::CreateToolbarLayout()
     mToolbarLayout->SetConstraint( mWest,   new gxPackConstraint( gxLayoutPack::End ) );
     
     mPrimaryLayer->Add( mContainer );
+}
+
+void MyFrame::CreateOrgLayout()
+{
+    mEssay = new gxRectangle( gxRect( 10, 300, 50, 50 ) );
+    mEssay->SetClipChildren( false );
+    
+    mIntro      = new gxRectangle( gxRect( 80, -50, 30, 30 ) );
+    mMainText   = new gxRectangle( gxRect( 100, 0, 30, 30 ) );
+    mConclusion = new gxRectangle( gxRect( 120, 50, 30, 30 ) );
+    
+    mEssay->Add( mIntro, mMainText, mConclusion );
+    
+    mPrimaryLayer->Add( mEssay );
 }
 
 void MyFrame::Initialize()

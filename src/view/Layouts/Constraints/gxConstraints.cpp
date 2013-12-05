@@ -45,7 +45,7 @@ gxConstraints::Map gxConstraints::Get( gxConstraintId aId )
         // If the constraint has the same id as the requested one...
         if ( iConstraint->first.mConstraintId == aId )
         {
-            // And it to the result
+            // Add it to the result
             iResult[ iConstraint->first ] = iConstraint->second;
         }
     }

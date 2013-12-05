@@ -206,6 +206,11 @@ public:
     void Hide();
 
     /**
+     * @brief Sets whether or not the view element clips its children
+     */
+    void SetClipChildren( bool const aClip );
+
+    /**
      * @brief Transforms a rect (typically bounds) to the coordinates of this
      * element. Normally called by children.
      *
