@@ -36,7 +36,7 @@ public:
         UpdateCurrent();
     }
     
-    virtual int Count()
+    virtual unsigned long Count()
     {
         return (*mContainer).size();
     }

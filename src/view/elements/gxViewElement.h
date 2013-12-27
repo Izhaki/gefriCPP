@@ -56,7 +56,7 @@ public:
             EnsureVisible();
         }
         
-        virtual int Count()
+        virtual unsigned long Count()
         {
             int iCount = 0;
             

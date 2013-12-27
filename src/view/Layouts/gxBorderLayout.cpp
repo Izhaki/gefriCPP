@@ -102,7 +102,7 @@ void gxBorderLayout::CacheElements( gxViewElement::Iterator& aLayoutees )
 
 gxViewElement* gxBorderLayout::GetCenterElement()
 {
-    int iCenterElementsCount = mCenterElements.size();
+    unsigned long iCenterElementsCount = mCenterElements.size();
     
     gxWarnIf( iCenterElementsCount > 1,  "More than one center region defined in layout" );
     gxWarnIf( iCenterElementsCount == 0, "No center region defined in layout" );

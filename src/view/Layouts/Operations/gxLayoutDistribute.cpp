@@ -30,8 +30,8 @@ gxLayoutDistribute::gxLayoutDistribute( const Type                     aType,
     // between them
     if ( iType != Start )
     {
-        int   iCount        = aLayoutees.Count();
-        int   iElementsSize = 0;
+        unsigned long iCount        = aLayoutees.Count();
+        int           iElementsSize = 0;
         
         // Calulate the total size of all elements
         for ( aLayoutees.First(); aLayoutees.Current(); aLayoutees.Next() )
@@ -55,7 +55,7 @@ gxLayoutDistribute::gxLayoutDistribute( const Type                     aType,
         {
             gxPix iRectSize = aRect.GetSize( onMajorAxis );
             
-            int iSpaceCount;
+            unsigned long iSpaceCount;
             
             if ( iType == Full )
             {
