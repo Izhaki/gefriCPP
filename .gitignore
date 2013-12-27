@@ -13,3 +13,7 @@ build/Xcode/Gefri.xcworkspace/xcuserdata/izhaki.xcuserdatad/xcdebugger/Breakpoin
 build/Xcode/Gefri.xcworkspace/xcuserdata/izhaki.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
 
 build/Xcode/Gefri.xcworkspace/xcuserdata/izhaki.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
+
+Libraries/wxWidgets/OSX/Debug
+Libraries/wxWidgets/OSX/Release
+Libraries/wxWidgets/OSX/Source

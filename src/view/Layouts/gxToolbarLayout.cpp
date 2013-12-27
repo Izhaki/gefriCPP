@@ -18,8 +18,9 @@ bool gxToolbarLayout::IsSupportedConstraint( const gxConstraintId aId )
 
 void gxToolbarLayout::DoLayout( gxViewElement* aLayouter )
 {
-    // We construct the bouns as relative coordinates, thus we use GetSize -
-    // this will give a (0,0) position.
+    // We want the bounds to be in relative coordinates.
+    // In order to ignore the X,Y position of the layouter we simply call GetSize();
+    // this will return a rectangle at coordinates (0,0) with the layouter size.
     gxRect iContainerBounds( aLayouter->GetInnerBounds().GetSize() );
     
     gxViewElement::VisualIterator iLayoutees( aLayouter->GetChildren() );
