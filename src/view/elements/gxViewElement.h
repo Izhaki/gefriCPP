@@ -72,7 +72,7 @@ public:
     private:
         void EnsureVisible()
         {
-            while ( !(*mIterator)->IsVisible() && mIterator != (*mContainer).end() )
+            while ( mIterator != (*mContainer).end() && !(*mIterator)->IsVisible() )
             {
                 ++mIterator;
             }

@@ -106,11 +106,11 @@ void MyFrame::InitGefri()
     
     mZoom->Add( mLayers );
     
-    CreateFaceAndRuller();
+//    CreateFaceAndRuller();
 //    CreateBoxLayout();
 //    CreateBorderLayout();
-//    CreateToolbarLayout();
-    CreateOrgLayout();
+    CreateToolbarLayout();
+//    CreateOrgLayout();
     
     mLightweightSystem->SetContents(mDocument);
 }

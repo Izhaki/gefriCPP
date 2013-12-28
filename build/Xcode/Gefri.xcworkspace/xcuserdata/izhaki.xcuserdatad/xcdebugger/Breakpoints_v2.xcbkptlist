@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../samples/gxDraw/src/myFrame.cpp"
+            timestampString = "409884031.000139"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "MyFrame::CreateToolbarLayout()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../samples/gxDraw/src/myFrame.cpp"
+            timestampString = "409884182.880944"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "MyFrame::InitGefri()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../src/View/Layouts/gxToolbarLayout.cpp"
+            timestampString = "409884482.851895"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "gxToolbarLayout::DoLayout( gxViewElement* aLayouter )"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../src/View/Layouts/Operations/gxLayoutPack.cpp"
+            timestampString = "409884716.496604"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "gxLayoutPack::gxLayoutPack( const Type aDefault, const gxRect&amp; aRect, gxViewElement::Iterator&amp; aLayoutees, const gxConstraints&amp; aConstraints, const bool onMajorAxis )"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "gxLayoutPack::gxLayoutPack(gxLayoutPack::Type, gxRect const&amp;, gxComposite&lt;gxViewElement&gt;::Iterator&amp;, gxConstraints const&amp;, bool)"
+                  moduleName = "gxDraw"
+                  urlString = "file:///Volumes/Data/Development/Desktop/gefri/src/View/Layouts/Operations/gxLayoutPack.cpp"
+                  timestampString = "409884847.806247"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "59">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "gxLayoutPack::gxLayoutPack(gxLayoutPack::Type, gxRect const&amp;, gxComposite&lt;gxViewElement&gt;::Iterator&amp;, gxConstraints const&amp;, bool)"
+                  moduleName = "gxDraw"
+                  urlString = "file:///Volumes/Data/Development/Desktop/gefri/src/View/Layouts/Operations/gxLayoutPack.cpp"
+                  timestampString = "409884847.808167"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "323">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
