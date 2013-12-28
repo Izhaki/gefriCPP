@@ -39,6 +39,5 @@ void gxToolbarLayout::DoLayout( gxViewElement* aLayouter )
     gxLayoutAlign( mAlign,
                    iContainerBounds,
                    iLayoutees,
-                   mConstraints,
                    !mOnMajorAxis );
 }

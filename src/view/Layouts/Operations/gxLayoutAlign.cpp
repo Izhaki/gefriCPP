@@ -3,7 +3,6 @@
 gxLayoutAlign::gxLayoutAlign( const Type                     aType,
                               const gxRect&                  aRect,
                                     gxViewElement::Iterator& aLayoutees,
-                              const gxConstraints&           aConstraints,
                               const bool                     onMajorAxis )
 {
     if ( aType == None )

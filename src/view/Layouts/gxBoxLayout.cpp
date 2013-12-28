@@ -67,6 +67,5 @@ void gxBoxLayout::DoLayout( const gxRect&                  aRect,
     gxLayoutAlign( mAlign,
                    aRect,
                    aLayoutees,
-                   aConstraints,
                    !aOnMajorAxis );
 }
