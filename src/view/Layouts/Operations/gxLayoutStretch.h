@@ -4,7 +4,7 @@
 #include "View/Layouts/Constraints/gxConstraints.h"
 
 /**
- * @brief A class to wrap the stretching operation of layutees. Stretching
+ * @brief A class to wrap the stretching operation of layoutees. Stretching
  * changes the size of each layoutee to either the full size of the container,
  * or that biggest size of all layoutees.
  *

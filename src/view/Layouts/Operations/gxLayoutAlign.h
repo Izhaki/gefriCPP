@@ -4,7 +4,7 @@
 #include "View/Layouts/Constraints/gxConstraints.h"
 
 /**
- * @brief A class to wrap alignment operation on layutees, so either their
+ * @brief A class to wrap alignment operation on layoutees, so either their
  * start (top or left), middle, or end (bottom or right) are the same on the
  * requested axis.
  *

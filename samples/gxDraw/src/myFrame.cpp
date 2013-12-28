@@ -109,8 +109,8 @@ void MyFrame::InitGefri()
 //    CreateFaceAndRuller();
 //    CreateBoxLayout();
 //    CreateBorderLayout();
-    CreateToolbarLayout();
-//    CreateOrgLayout();
+//    CreateToolbarLayout();
+    CreateOrgLayout();
     
     mLightweightSystem->SetContents(mDocument);
 }
