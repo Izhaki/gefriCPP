@@ -5,11 +5,6 @@ A cross-platform C++ MVC-based graphical editing framework, like GEF (Eclipse) o
 
 The library currently adapts on top of [wxWidgets] although with relative ease can be adapted to other toolkits.
 
-Contributor Posts
------------------
-We are currently looking for:
-
-- A **code reviewer** with strong knowladge of C++. (approximately 2 hours per week.)
 
 Development
 -----------
